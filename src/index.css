@@ -67,10 +67,37 @@ body {
 .stats input {
   font-size: 30px;
 }
-#background-video {
+.background-video {
   width: 100%;
+  height: 750px;
   position: absolute;
   top: 0;
   left: 0;
   z-index: -3;
+  overflow-y: hidden;
+}
+.fade-loop {
+  width: calc(100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-animation: opacity 20s infinite;
+}
+
+@-webkit-keyframes opacity {
+  0% {
+    -webkit-filter: opacity(100%);
+  }
+  35% {
+    -webkit-filter: opacity(100%);
+  }
+  50% {
+    -webkit-filter: opacity(0%);
+  }
+  85% {
+    -webkit-filter: opacity(0%);
+  }
+  100% {
+    -webkit-filter: opacity(100%);
+  }
 }
