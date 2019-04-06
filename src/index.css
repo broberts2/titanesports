@@ -1,15 +1,75 @@
 body {
   background-color: rgb(42, 42, 42);
+  margin: 0;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+table td {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .audio_button {
 }
 .audio_button audio {
 }
-.hyperlinks {
-  margin: 10;
+.card {
+  --dim: 350px;
+  --color: white;
+  width: var(--dim);
+  height: calc(var(--dim) / 2);
+  background-color: var(--color);
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+}
+.card h1 {
+  text-align: left;
+  left: 15px;
+  width: 100%;
+  font-size: 25px;
   position: absolute;
+}
+.card img {
+  margin-top: 7.5px;
+  height: 90%;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  opacity: 0.75;
+}
+.content {
+  --bgColor: rgb(42, 42, 42);
+  background-color: var(--bgColor);
+  position: relative;
+}
+.content-shape {
+  --dim: 300px;
+  width: var(--dim);
+  height: var(--dim);
+  border-radius: 50%;
+  background-color: var(--bgColor);
+  position: absolute;
+  top: 0;
+  top: calc(var(--dim) / -3);
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.content-shape img {
+  position: absolute;
+  width: 90%;
+  left: 50%;
   top: 15px;
-  right: 15px;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.content-children {
+  --padding: 100px;
+  padding-top: calc(var(--padding) * 2);
+  padding-bottom: calc(var(--padding) / 2);
 }
 .hyperlinks a {
   font-size: 25px;
@@ -21,8 +81,16 @@ body {
   color: navy;
 }
 .header {
+  position: sticky;
+  top: 0%;
+  margin-bottom: -250px;
+  z-index: 5;
+}
+.header-content {
   background-size: 100%;
   height: 250px;
+}
+.header-content-wrapper {
 }
 .header img {
   width: 100px;
@@ -73,8 +141,8 @@ body {
 }
 .background-video {
   width: 100%;
-  height: 100vh;
-  position: absolute;
+  height: 90vh;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: -3;
@@ -87,7 +155,8 @@ body {
   left: 0;
   -webkit-animation: opacity 20s infinite;
 }
-
+.radial_menu {
+}
 @-webkit-keyframes opacity {
   0% {
     -webkit-filter: opacity(100%);
