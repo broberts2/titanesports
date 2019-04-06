@@ -1,15 +1,17 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import Header from "./components/header";
+import "./index.css";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Titan E-Sports</p>
-        </header>
+      <div>
+        <video id="background-video" loop autoPlay>
+          <source
+            src={require("./webm/animated-kayle-morgana-login.webm")}
+            type={"video/webm"}
+          />
+        </video>
       </div>
     );
   }
