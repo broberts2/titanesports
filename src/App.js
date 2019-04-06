@@ -9,7 +9,7 @@ class App extends Component {
     const _video = await require("./webm/animated-darkstar-thresh.webm");
     this.setState({
       video: (
-        <video id="background-video" loop autoPlay>
+        <video id={"background-video"} preload="auto" loop autoPlay>
           <source src={_video} type={"video/webm"} />
         </video>
       )
