@@ -9,18 +9,18 @@ class Header extends Component {
         <img src={require("../img/logo.png")} />
         <div className={"button-cluster"}>
           <div className={"button"}>
-            <AwesomeButton type={"primary"} size={"medium"}>
-              Text
+            <AwesomeButton type={"primary"} size={"large"}>
+              Join Us on Discord
             </AwesomeButton>
           </div>
           <div className={"button"}>
-            <AwesomeButton type={"primary"} size={"medium"}>
-              Text
+            <AwesomeButton type={"primary"} size={"large"}>
+              Watch Us on Twitch
             </AwesomeButton>
           </div>
           <div className={"button"}>
-            <AwesomeButton type={"primary"} size={"medium"}>
-              Text
+            <AwesomeButton type={"primary"} size={"large"}>
+              Join the League
             </AwesomeButton>
           </div>
         </div>

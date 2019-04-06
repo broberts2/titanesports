@@ -21,6 +21,13 @@ class App extends Component {
       <div>
         {this.state.video ? (
           <div>
+            <div className={"hyperlinks"}>
+              <a>about</a>
+              <a>news</a>
+              <a>statistics</a>
+              <a>contact us</a>
+              <a>business inquiry</a>
+            </div>
             <Header />
             {this.state.video}
           </div>

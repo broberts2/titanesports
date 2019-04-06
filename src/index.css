@@ -1,6 +1,21 @@
 body {
   background-color: rgb(42, 42, 42);
 }
+.hyperlinks {
+  margin: 10;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+.hyperlinks a {
+  font-size: 25px;
+  margin: 10px;
+  cursor: pointer;
+  color: blue;
+}
+.hyperlinks a:hover {
+  color: navy;
+}
 .header {
   background-size: 100%;
   height: 250px;
