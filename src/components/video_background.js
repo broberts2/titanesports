@@ -10,7 +10,16 @@ const videos = [
   require("../webm/c-o-animated-nunu.mp4"),
   require("../webm/c-o-animated-taliyah.mp4"),
   require("../webm/c-o-champion-akali-animated-splash.mp4"),
-  require("../webm/c-o-champion-leona-eclipse-screensaver.mp4")
+  require("../webm/c-o-champion-leona-eclipse-screensaver.mp4"),
+  require("../webm/c-o-champion-irelia-animated-art.mp4"),
+  require("../webm/c-o-animated-aatrox.mp4"),
+  require("../webm/c-o-animated-illaoi.mp4"),
+  require("../webm/c-o-animated-kindred.mp4"),
+  require("../webm/c-o-animated-nami.mp4"),
+  require("../webm/c-o-animated-neeko.mp4"),
+  require("../webm/c-o-animated-rumble-supergalaxy.mp4"),
+  require("../webm/c-o-champion-kayn-assassin-animated.mp4"),
+  require("../webm/c-o-swain-login.mp4")
 ];
 
 const _video = video => {

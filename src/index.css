@@ -1,6 +1,10 @@
 body {
   background-color: rgb(42, 42, 42);
 }
+.audio_button {
+}
+.audio_button audio {
+}
 .hyperlinks {
   margin: 10;
   position: absolute;
