@@ -6,7 +6,7 @@ class App extends Component {
   state = { video: null };
 
   async componentDidMount() {
-    const _video = await require("./webm/animated-kayle-morgana-login.webm");
+    const _video = await require("./webm/animated-darkstar-thresh.webm");
     this.setState({
       video: (
         <video id="background-video" loop autoPlay>
