@@ -2,7 +2,6 @@ body {
   background-color: rgb(42, 42, 42);
 }
 .header {
-  background-image: url("./img/header_background.png");
   background-size: 100%;
   height: 250px;
 }
@@ -15,10 +14,14 @@ body {
   float: right;
   font-size: 100px;
 }
+.header .button-cluster .button {
+  margin: 15px;
+  display: inline-flex;
+}
 #background-video {
   width: 100%;
-  float: left;
+  position: absolute;
   top: 0;
-  padding: none;
-  position: fixed; /* optional depending on what you want to do in your app */
+  left: 0;
+  z-index: -3;
 }

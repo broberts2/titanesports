@@ -8,18 +8,21 @@ class Header extends Component {
       <div className={"header"}>
         <img src={require("../img/logo.png")} />
         <div className={"button-cluster"}>
-          <AwesomeButton type={"primary"} size={"icon"}>
-            Text
-          </AwesomeButton>
-          <AwesomeButton type={"primary"} size={"icon"}>
-            Text
-          </AwesomeButton>
-          <AwesomeButton type={"primary"} size={"icon"}>
-            Text
-          </AwesomeButton>
-          <AwesomeButton type={"primary"} size={"icon"}>
-            Text
-          </AwesomeButton>
+          <div className={"button"}>
+            <AwesomeButton type={"primary"} size={"medium"}>
+              Text
+            </AwesomeButton>
+          </div>
+          <div className={"button"}>
+            <AwesomeButton type={"primary"} size={"medium"}>
+              Text
+            </AwesomeButton>
+          </div>
+          <div className={"button"}>
+            <AwesomeButton type={"primary"} size={"medium"}>
+              Text
+            </AwesomeButton>
+          </div>
         </div>
       </div>
     );

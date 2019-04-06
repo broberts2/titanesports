@@ -6,7 +6,7 @@ class App extends Component {
   state = { video: null };
 
   async componentDidMount() {
-    const _video = await require("./webm/animated-darkstar-thresh.webm");
+    const _video = await require("./webm/champion-garen-godking-animated.webm");
     this.setState({
       video: (
         <video id={"background-video"} preload="auto" loop autoPlay>
@@ -17,7 +17,16 @@ class App extends Component {
   }
 
   render() {
-    return <div>{this.state.video}</div>;
+    return (
+      <div>
+        {this.state.video ? (
+          <div>
+            <Header />
+            {this.state.video}
+          </div>
+        ) : null}
+      </div>
+    );
   }
 }
 
