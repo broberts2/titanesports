@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Header from "./components/header";
+import modal_router from "./components/modal_bodies/modal_router";
 import "./index.css";
 
 class App extends Component {
-  state = { video: null };
+  state = { video: null, modal: false, modalType: "" };
 
   async componentDidMount() {
     const _video = await require("./webm/champion-garen-godking-animated.webm");
@@ -19,16 +20,27 @@ class App extends Component {
   render() {
     return (
       <div>
+        {modal_router(this.state.modalType, this.state.modal, () =>
+          this.setState({ modal: false })
+        )}
         {this.state.video ? (
           <div>
             <div className={"hyperlinks"}>
               <a>About</a>
               <a>News</a>
-              <a>Statistics</a>
+              <a
+                onClick={() =>
+                  this.setState({ modal: true, modalType: "stats" })}
+              >
+                Statistics
+              </a>
               <a>Contact Us</a>
               <a>Business Inquiry</a>
             </div>
-            <Header />
+            <Header
+              modalAction={() =>
+                this.setState({ modal: true, modalType: "leagues" })}
+            />
             {this.state.video}
           </div>
         ) : null}

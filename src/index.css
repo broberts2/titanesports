@@ -36,15 +36,36 @@ body {
 .modal-buttons {
   margin: 0;
   position: absolute;
-  top: 25%;
-  -ms-transform: translateY(-25%);
-  transform: translateY(-25%);
+  top: 20%;
+  -ms-transform: translateY(-20%);
+  transform: translateY(-20%);
   left: 50%;
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
 .modal-buttons .button {
   margin: 15px;
+}
+.stats {
+  position: absolute;
+  top: 10%;
+  -ms-transform: translateY(-20%);
+  transform: translateY(-20%);
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.stats .element {
+  width: 100%;
+  margin: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.stats .radio {
+  display: inline-flex;
+}
+.stats input {
+  font-size: 30px;
 }
 #background-video {
   width: 100%;
