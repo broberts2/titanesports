@@ -11,10 +11,15 @@ table td {
   padding-bottom: 50px;
 }
 .audio_button {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  cursor: pointer;
 }
 .audio_button audio {
 }
 .card {
+  transition: all 0.2s ease-in-out;
   display: inline-flex;
   position: relative;
   cursor: pointer;
@@ -25,6 +30,10 @@ table td {
   color: rgb(0, 66, 94);
   width: 150px;
   height: 150px;
+  transform: scale(0.9);
+}
+.card:hover {
+  transform: scale(1);
 }
 .card h1 {
   color: black;
@@ -36,6 +45,7 @@ table td {
   left: 50%;
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
+  pointer-events: none;
 }
 .card .image {
   position: absolute;
@@ -60,6 +70,7 @@ table td {
   left: 50%;
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
+  pointer-events: none;
 }
 .content-shape img {
   position: absolute;
@@ -91,21 +102,23 @@ table td {
   top: 0%;
   z-index: 5;
   width: 100%;
+  pointer-events: none;
 }
 .header-content {
   background-size: 100%;
-  height: 250px;
 }
 .header-content-wrapper {
 }
 .header img {
-  width: 100px;
-  height: 100px;
+  --dim: 200px;
+  width: var(--dim);
+  height: var(--dim);
   margin: 15px;
 }
 .header .button-cluster {
   float: right;
   font-size: 100px;
+  pointer-events: auto;
 }
 .header .button-cluster .button {
   margin: 0px;

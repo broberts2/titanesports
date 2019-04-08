@@ -1,23 +1,19 @@
 import React, { Component } from "react";
 
 class AudioButton extends Component {
-  componentDidMount() {
-    document.getElementById("audio_button").volume = 0.1;
+  state = { audio: null };
+
+  async componentDidMount() {
+    const sound = await require("../audio/music/tidecaller.mp3");
+    let audio = await new Audio(sound);
+    audio.pause();
+    audio.currentTime = 0;
+    audio.volume = 0.1;
+    audio.play();
   }
 
   render() {
-    return (
-      <div className={"audio_button"}>
-        <audio
-          id={"audio_button"}
-          id={"audio_button"}
-          src={require("../audio/music/tidecaller.mp3")}
-          type={"audio/mpeg"}
-          autoPlay
-          loop
-        />
-      </div>
-    );
+    return <div className={"audio_button"} />;
   }
 }
 

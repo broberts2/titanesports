@@ -30,10 +30,7 @@ class Features extends Component {
               </tr>
               <tr>
                 <td>
-                  <Card
-                    img={"fa-file-contract"}
-                    cb={() => console.log("pressed")}
-                  >
+                  <Card img={"fa-envelope"} cb={() => console.log("pressed")}>
                     <h1>Contact Us</h1>
                   </Card>
                 </td>

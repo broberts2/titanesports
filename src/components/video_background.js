@@ -19,7 +19,8 @@ const videos = [
   require("../webm/c-o-animated-neeko.mp4"),
   require("../webm/c-o-animated-rumble-supergalaxy.mp4"),
   require("../webm/c-o-champion-kayn-assassin-animated.mp4"),
-  require("../webm/c-o-swain-login.mp4")
+  require("../webm/c-o-swain-login.mp4"),
+  require("../webm/c-o-animated-yasuo-dead.mp4")
 ];
 
 const _video = video => {
@@ -31,14 +32,22 @@ const _video = video => {
 };
 
 class VideoBackground extends Component {
+  exclusions = [0, 1, 2, 3];
+
   state = {
-    videoIndex1: 0,
-    videoIndex2: 1,
+    videoIndex1: this.setIndex(),
+    videoIndex2: this.setIndex(),
     loaded: false
   };
 
   setIndex() {
-    return Math.floor(Math.random() * videos.length);
+    let rand;
+    do {
+      rand = Math.floor(Math.random() * videos.length);
+    } while (this.exclusions.includes(rand));
+    this.exclusions.shift();
+    this.exclusions.push(rand);
+    return rand;
   }
 
   async componentDidMount() {

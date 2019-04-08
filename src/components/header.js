@@ -45,7 +45,7 @@ class Header extends Component {
                     type={"primary"}
                     size={"icon"}
                   >
-                    <div className={`fas fa-restroom fa-2x`} />
+                    <div className={`fas fa-file-signature fa-2x`} />
                   </AwesomeButton>
                 </a>
               </div>
