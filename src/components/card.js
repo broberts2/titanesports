@@ -5,7 +5,9 @@ class Card extends Component {
     return (
       <center>
         <div className={"card"} onClick={() => this.props.cb()}>
-          <img src={this.props.img} />
+          <div className={"image"}>
+            <div className={`fas ${this.props.img} fa-8x`} />
+          </div>
           {this.props.children}
         </div>
       </center>

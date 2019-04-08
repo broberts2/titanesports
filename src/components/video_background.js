@@ -24,7 +24,7 @@ const videos = [
 
 const _video = video => {
   return (
-    <video key={video} width={"100%"} preload="auto" loop autoPlay>
+    <video key={video} muted={true} width={"100%"} preload="auto" loop autoPlay>
       <source src={video} type={"video/webm"} />
     </video>
   );
@@ -32,15 +32,18 @@ const _video = video => {
 
 class VideoBackground extends Component {
   state = {
-    videoIndex1: this.setIndex(),
-    videoIndex2: this.setIndex()
+    videoIndex1: 0,
+    videoIndex2: 1,
+    loaded: false
   };
 
   setIndex() {
     return Math.floor(Math.random() * videos.length);
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    await Promise.all(videos.map(el => el));
+    this.setState({ loaded: true });
     const interval = 20000;
     this.interval = setInterval(async () => {
       this.setState({

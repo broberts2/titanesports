@@ -12,8 +12,12 @@ class Header extends Component {
             <div className={"button-cluster"}>
               <div className={"button"}>
                 <a href={"https://discord.gg/u2VHyUR"} target={"_blank"}>
-                  <AwesomeButton type={"primary"} size={"large"}>
-                    Join Us on Discord
+                  <AwesomeButton
+                    style={{ width: "65px", height: "65px" }}
+                    type={"primary"}
+                    size={"icon"}
+                  >
+                    <div className={`fab fa-discord fa-2x`} />
                   </AwesomeButton>
                 </a>
               </div>
@@ -22,8 +26,12 @@ class Header extends Component {
                   href={"https://www.twitch.tv/titanesportz"}
                   target={"_blank"}
                 >
-                  <AwesomeButton type={"primary"} size={"large"}>
-                    Watch Us on Twitch
+                  <AwesomeButton
+                    style={{ width: "65px", height: "65px" }}
+                    type={"primary"}
+                    size={"icon"}
+                  >
+                    <div className={`fab fa-twitch fa-2x`} />
                   </AwesomeButton>
                 </a>
               </div>
@@ -32,8 +40,12 @@ class Header extends Component {
                 onClick={() => this.props.modalAction()}
               >
                 <a>
-                  <AwesomeButton type={"primary"} size={"large"}>
-                    Join the League
+                  <AwesomeButton
+                    style={{ width: "65px", height: "65px" }}
+                    type={"primary"}
+                    size={"icon"}
+                  >
+                    <div className={`fas fa-restroom fa-2x`} />
                   </AwesomeButton>
                 </a>
               </div>

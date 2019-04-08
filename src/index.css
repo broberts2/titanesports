@@ -15,30 +15,33 @@ table td {
 .audio_button audio {
 }
 .card {
-  --dim: 350px;
-  --color: white;
-  width: var(--dim);
-  height: calc(var(--dim) / 2);
-  background-color: var(--color);
-  border-radius: 6px;
+  display: inline-flex;
   position: relative;
   cursor: pointer;
+  background-color: rgb(199, 199, 199);
+  border-radius: 50%;
+  padding: 45px;
+  border: 2px solid black;
+  color: rgb(0, 66, 94);
+  width: 150px;
+  height: 150px;
 }
 .card h1 {
-  text-align: left;
-  left: 15px;
+  color: black;
+  text-align: center;
+  top: 72.5%;
   width: 100%;
-  font-size: 25px;
-  position: absolute;
-}
-.card img {
-  margin-top: 7.5px;
-  height: 90%;
+  font-size: 18px;
   position: absolute;
   left: 50%;
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  opacity: 0.75;
+}
+.card .image {
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
 }
 .content {
   --bgColor: rgb(42, 42, 42);
@@ -71,6 +74,9 @@ table td {
   padding-top: calc(var(--padding) * 2);
   padding-bottom: calc(var(--padding) / 2);
 }
+.features {
+  width: 75%;
+}
 .hyperlinks a {
   font-size: 25px;
   margin: 10px;
@@ -81,10 +87,10 @@ table td {
   color: navy;
 }
 .header {
-  position: sticky;
+  position: fixed;
   top: 0%;
-  margin-bottom: -250px;
   z-index: 5;
+  width: 100%;
 }
 .header-content {
   background-size: 100%;
@@ -102,7 +108,8 @@ table td {
   font-size: 100px;
 }
 .header .button-cluster .button {
-  margin: 15px;
+  margin: 0px;
+  margin-right: 30px;
   display: inline-flex;
 }
 .modal-buttons {
