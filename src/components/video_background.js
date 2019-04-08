@@ -73,9 +73,11 @@ class VideoBackground extends Component {
   render() {
     return (
       <div className={"background-video"}>
-        {_video(videos[this.state.videoIndex1])}
-        <div className={"fade-loop"}>
+        <div style={{ zIndex: 2 }} className={"fade-loop"}>
           {_video(videos[this.state.videoIndex2])}
+        </div>
+        <div style={{ zIndex: 1 }}>
+          {_video(videos[this.state.videoIndex1])}
         </div>
       </div>
     );

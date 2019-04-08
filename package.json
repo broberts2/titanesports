@@ -12,20 +12,17 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build":
+      "rm -r build; rm -r server.zip; react-scripts build; zip -r build.zip build -x *build/static/media*; zip -r server.zip server",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"],
+  "description":
+    "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "devDependencies": {},
   "repository": {
@@ -37,5 +34,5 @@
   "bugs": {
     "url": "https://github.com/broberts2/titanesports/issues"
   },
-  "homepage": "https://github.com/broberts2/titanesports#readme"
+  "homepage": "https://titan-esports.org"
 }

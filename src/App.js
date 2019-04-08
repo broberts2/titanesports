@@ -33,7 +33,7 @@ class App extends Component {
         {modals(this.state.modal, () => this.closeModal())}
         <VideoBackground />
         <Content img={require("./img/lol_logo.png")}>
-          <Features modalControl={() => this.setState({ modal: 2 })} />
+          <img width={"100%"} src={require("./img/website-mockup.png")} />
         </Content>
       </div>
     );
