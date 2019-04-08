@@ -4,8 +4,7 @@ import AudioButton from "./components/audio_button";
 import VideoBackground from "./components/video_background";
 import Content from "./components/content";
 import Features from "./components/features";
-import Leagues from "./components/modals/leagues";
-import Stats from "./components/modals/stats";
+import modals from "./components/modals/_modals";
 import "./index.css";
 
 class App extends Component {
@@ -20,16 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({
-      modals: [
-        <Leagues
-          visible={this.state.modal}
-          closeModal={() => this.closeModal()}
-        />,
-        <Stats
-          visible={this.state.modal}
-          closeModal={() => this.closeModal()}
-        />
-      ]
+      modals
     });
   }
 
@@ -41,7 +31,7 @@ class App extends Component {
     return (
       <div>
         <Header modalAction={() => this.setState({ modal: 1 })} />
-        {this.state.modals}
+        {modals(this.state.modal, () => this.closeModal())}
         <VideoBackground />
         <Content img={require("./img/lol_logo.png")}>
           <Features modalControl={() => this.setState({ modal: 2 })} />

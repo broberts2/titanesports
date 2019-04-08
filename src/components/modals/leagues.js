@@ -3,11 +3,15 @@ import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
 
 export default class Leagues extends Component {
+  compoonentWillReceiveProps(newProps) {
+    console.log(newProps);
+  }
+
   render() {
-    const show = this.props.visible === 1 ? true : false;
+    console.log(this.props.visible);
     return (
       <Modal
-        visible={show}
+        visible={this.props.visible === 1 ? true : false}
         width={"400"}
         height={"300"}
         effect={"fadeInUp"}
