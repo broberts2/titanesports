@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.4.22",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "password-hash": "^1.2.2"
   }
 }

@@ -1,6 +1,8 @@
 module.exports = {
   discord: "https://discord.gg/u2VHyUR",
   twitch: "https://www.twitch.tv/titanesportz",
+  youTube:
+    "https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw?view_as=subscriber",
   googleDocs: {
     teamApplication:
       "https://docs.google.com/forms/d/e/1FAIpQLSdbNu54hkyYr2n3XkPTGQujWWdGJ4iDPAACz5pMRbrEMc3-6g/viewform",

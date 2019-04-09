@@ -22,15 +22,24 @@ class App extends Component {
     });
   }
 
-  closeModal() {
-    this.setState({ modal: 0 });
+  setMenu(modal) {
+    this.setState({ modal });
   }
 
   render() {
     return (
       <div>
-        <Header modalAction={() => this.setState({ modal: 1 })} />
-        {modals(this.state.modal, () => this.closeModal())}
+        <Header
+          modalAction={{
+            activateLeagues: () => this.setMenu(1),
+            activateMiniMenu: () => this.setMenu(3)
+          }}
+        />
+        {modals(
+          this.state.modal,
+          () => this.closeModal(),
+          num => this.setMenu(num)
+        )}
         <VideoBackground />
         <Content img={require("./img/lol_logo.png")}>
           <img width={"100%"} src={require("./img/website-mockup.png")} />
