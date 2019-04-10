@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { AwesomeButton } from "react-awesome-button";
 
 const videos = [
   require("../webm/champion-garen-godking-animated.webm"),

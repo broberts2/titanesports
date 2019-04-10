@@ -1,8 +1,11 @@
+const jwt = require("jsonwebtoken");
+const config = require("../config");
+
 module.exports = {
-  protectedRoute: (req, res, next) => {
+  protected: (req, res, next) => {
     var token = req.headers["authorization"];
     if (token) {
-      jwt.verify(token, app.get("key"), function(err, decoded) {
+      jwt.verify(token, config.secret, (err, decoded) => {
         if (err) {
           return res.json({
             success: false,
