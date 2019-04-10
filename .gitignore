@@ -13,6 +13,7 @@
 # production
 /build
 /build.zip
+/server.zip
 
 # misc
 .DS_Store
