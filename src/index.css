@@ -1,4 +1,7 @@
 @import "keyframes.css";
+html {
+  scroll-behavior: smooth;
+}
 body {
   --universalBgColor: rgb(42, 42, 42);
   background-color: var(--universalBgColor);
@@ -11,6 +14,9 @@ table {
 table td {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+p {
+  font-size: 18px;
 }
 .audio_button {
   position: absolute;
@@ -72,12 +78,12 @@ table td {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
-.content {
+.content-pane {
   --bgColor: rgb(42, 42, 42);
   background-color: var(--bgColor);
   position: relative;
 }
-.content .buffer {
+.content-pane .buffer {
 }
 .content-shape {
   --dim: 300px;
@@ -107,12 +113,19 @@ table td {
 .features {
   width: 75%;
 }
+.fade-in {
+  -webkit-animation: fade-in 0.5s forwards;
+}
 .fade-loop {
   width: calc(100%);
   position: absolute;
   top: 0;
   left: 0;
   -webkit-animation: opacity 20s infinite;
+}
+.fade-out {
+  pointer-events: none;
+  -webkit-animation: fade-out 0.5s forwards;
 }
 .grow {
   -webkit-animation: grow 0.5s forwards;
@@ -206,6 +219,29 @@ table td {
 .shrink-less {
   -webkit-animation: shrink-less 0.5s forwards;
 }
+.terms-of-use {
+  height: 100%;
+  padding: 30px;
+  color: white;
+}
+.terms-of-use .content {
+  height: 85%;
+  color: white;
+  overflow-y: scroll;
+}
+.welcome-button {
+  cursor: pointer;
+  position: absolute;
+  top: 50vh;
+  -ms-transform: translateY(-50vh);
+  transform: translateY(-50vh);
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.welcome-button .button {
+  margin: 15px;
+}
 @media only screen and (max-width: 700px) {
   .content-shape {
     --dim: 150px;
@@ -216,5 +252,8 @@ table td {
     --dim: 100px;
     width: var(--dim);
     height: var(--dim);
+  }
+  .welcome-button {
+    display: none;
   }
 }

@@ -6,7 +6,7 @@ module.exports = {
   GET: url =>
     fetch(riotURL + url + `?api_key=${apiKey}`, {
       method: "GET"
-    }).then(response => response.text()),
+    }).then(response => response.j()),
   POST: url =>
     fetch(riotURL + url + `?api_key=${apiKey}`, {
       method: "POST"

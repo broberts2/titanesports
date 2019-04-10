@@ -32,7 +32,7 @@ module.exports = {
       );
       return response;
     } catch (e) {
-      throw new Error("Unable to login for this user");
+      throw new Error("Authentication failed.");
     }
   }
 };

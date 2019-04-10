@@ -4,6 +4,7 @@ import VideoBackground from "./components/video_background";
 import Content from "./components/content";
 import Features from "./components/features";
 import modals from "./components/modals/_modals";
+import WelcomeButton from "./components/welcome_button";
 import "./index.css";
 
 class App extends Component {
@@ -44,6 +45,7 @@ class App extends Component {
         <Content img={require("./img/lol_logo.png")}>
           <img width={"100%"} src={require("./img/website-mockup.png")} />
         </Content>
+        <WelcomeButton modalAction={() => this.setMenu(4)} />
       </div>
     );
   }

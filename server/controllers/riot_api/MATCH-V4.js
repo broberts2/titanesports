@@ -2,21 +2,24 @@ const Fetch = require("../fetch");
 
 module.exports = {
   // Get match by match ID.
-  matchById: matchId => Fetch.GET(`/lol/match/v4/matches/${matchId}`),
+  matchById: (req, res) =>
+    Fetch.GET(`/lol/match/v4/matches/${req.query.matchId}`),
   // Get matchlist for games played on given account ID and platform ID and filtered using given filter parameters, if any.
-  accountMatchList: accountId =>
-    Fetch.GET(`/lol/match/v4/matchlists/by-account/${encryptedAccountId}`),
+  accountMatchList: (req, res) =>
+    Fetch.GET(`/lol/match/v4/matchlists/by-account/${req.query.accountId}`),
   // Get match timeline by match ID.
-  matchTimelineById: matchId =>
-    Fetch.GET(`/lol/match/v4/timelines/by-match/${matchId}`),
+  matchTimelineById: (req, res) =>
+    Fetch.GET(`/lol/match/v4/timelines/by-match/${req.query.matchId}`),
   // Get match IDs by tournament code.
-  matchIdsByTournamentCode: tournamentCode =>
+  matchIdsByTournamentCode: (req, res) =>
     Fetch.GET(
-      ` /lol/match/v4/matches/by-tournament-code/${tournamentCode}/ids`
+      ` /lol/match/v4/matches/by-tournament-code/${req.query
+        .tournamentCode}/ids`
     ),
   // Get match by match ID and tournament code.
-  matchIdAndTournamentCode: (matchId, tournmentCode) =>
+  matchIdAndTournamentCode: (req, res) =>
     Fetch.GET(
-      `/lol/match/v4/matches/{matchId}/by-tournament-code/${tournamentCode}`
+      `/lol/match/v4/matches/${req.query.matchId}/by-tournament-code/${req.query
+        .tournamentCode}`
     )
 };

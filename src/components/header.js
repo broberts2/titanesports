@@ -12,8 +12,7 @@ class Header extends Component {
     window.addEventListener("resize", () => this.resize());
   }
 
-  resize(e) {
-    console.log(window.outerWidth);
+  resize() {
     window.outerWidth < 701
       ? this.setState({ primaryRender: this.mini })
       : this.setState({ primaryRender: this.standard });

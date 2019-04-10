@@ -1,3 +1,19 @@
+@-webkit-keyframes fade-in {
+  0% {
+    -webkit-filter: opacity(0%);
+  }
+  100% {
+    -webkit-filter: opacity(100%);
+  }
+}
+@-webkit-keyframes fade-out {
+  0% {
+    -webkit-filter: opacity(100%);
+  }
+  100% {
+    -webkit-filter: opacity(0%);
+  }
+}
 @-webkit-keyframes grow {
   0% {
     transform: scale(0.5);

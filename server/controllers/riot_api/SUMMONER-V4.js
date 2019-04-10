@@ -2,15 +2,15 @@ const Fetch = require("../fetch");
 
 module.exports = {
   // Get a summoner by account ID.
-  summonerByAccountId: accountId =>
-    Fetch.GET(`/lol/summoner/v4/summoners/by-account/${accountId}`),
+  summonerByAccountId: (req, res) =>
+    Fetch.GET(`/lol/summoner/v4/summoners/by-account/${req.query.accountId}`),
   // Get a summoner by summoner name.
-  summonerByName: summonerName =>
-    Fetch.GET(`/lol/summoner/v4/summoners/by-name/${summonerName}`),
+  summonerByName: (req, res) =>
+    Fetch.GET(`/lol/summoner/v4/summoners/by-name/${req.query.summonerName}`),
   // Get a summoner by PUUID.
-  summonerByPUUID: PUUID =>
-    Fetch.GET(`/lol/summoner/v4/summoners/by-puuid/${PUUID}`),
+  summonerByPUUID: (req, res) =>
+    Fetch.GET(`/lol/summoner/v4/summoners/by-puuid/${req.query.PUUID}`),
   // Get a summoner by summoner ID.
-  summonerBySummonerId: accountId =>
-    Fetch.GET(`/lol/summoner/v4/summoners/${accountId}`)
+  summonerBySummonerId: (req, res) =>
+    Fetch.GET(`/lol/summoner/v4/summoners/${req.query.accountId}`)
 };

@@ -1,28 +1,7 @@
 import React, { Component } from "react";
 import { AwesomeButton } from "react-awesome-button";
 
-const videos = [
-  require("../webm/champion-garen-godking-animated.webm"),
-  require("../webm/animated-darkstar-thresh.webm"),
-  require("../webm/c-o-animated-azir.mp4"),
-  require("../webm/c-o-animated-zoe-base.mp4"),
-  require("../webm/c-o-animated-aprilfools-2015.mp4"),
-  require("../webm/c-o-animated-aurelionsol.mp4"),
-  require("../webm/c-o-animated-nunu.mp4"),
-  require("../webm/c-o-animated-taliyah.mp4"),
-  require("../webm/c-o-champion-akali-animated-splash.mp4"),
-  require("../webm/c-o-champion-leona-eclipse-screensaver.mp4"),
-  require("../webm/c-o-champion-irelia-animated-art.mp4"),
-  require("../webm/c-o-animated-aatrox.mp4"),
-  require("../webm/c-o-animated-illaoi.mp4"),
-  require("../webm/c-o-animated-kindred.mp4"),
-  require("../webm/c-o-animated-nami.mp4"),
-  require("../webm/c-o-animated-neeko.mp4"),
-  require("../webm/c-o-animated-rumble-supergalaxy.mp4"),
-  require("../webm/c-o-champion-kayn-assassin-animated.mp4"),
-  require("../webm/c-o-swain-login.mp4"),
-  require("../webm/c-o-animated-yasuo-dead.mp4")
-];
+const videos = require("../webm/_videos.js");
 
 const _video = video => {
   return (
@@ -80,6 +59,7 @@ class VideoBackground extends Component {
         <div style={{ zIndex: 1 }}>
           {_video(videos[this.state.videoIndex1])}
         </div>
+        {this.props.children}
       </div>
     );
   }
