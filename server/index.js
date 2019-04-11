@@ -18,6 +18,7 @@ const Match = require("./controllers/riot_api/MATCH-V4");
 const Spectator = require("./controllers/riot_api/SPECTATOR-V4");
 const Summoner = require("./controllers/riot_api/SUMMONER-V4");
 const ThirdParty = require("./controllers/riot_api/THIRD-PARTY-CODE-V4");
+const TournamentStub = require("./controllers/riot_api/TOURNAMENT-STUB-V4");
 
 const { createUser } = require("./controllers/userHandling");
 
@@ -37,11 +38,11 @@ security.use(protected);
 
 security.get("/test", (req, res) => res.json("success"));
 security.get(
-  "/summoner_total_mastery",
+  "/all_summoner_masteries",
   routifyPromise(ChampionMastery.summonerMasteriesAll)
 );
 security.get(
-  "/summoner_total_mastery",
+  "/summoner_champion_mastery",
   routifyPromise(ChampionMastery.summonerChampionMastery)
 );
 security.get(
@@ -111,6 +112,24 @@ security.get(
   "/third_party_code_by_summoner_id",
   routifyPromise(ThirdParty.thirdPartyCode)
 );
+security.post(
+  "/create_tournament",
+  routifyPromise(TournamentStub.createTournamentCode)
+);
+security.get(
+  "/lobby_events_by_tournament_code",
+  routifyPromise(TournamentStub.lobbyEventsByTournamentCode)
+);
+
+security.post(
+  "/create_tournament_provider",
+  routifyPromise(TournamentStub.tournamentProvider)
+);
+security.post(
+  "/create_tournament",
+  routifyPromise(TournamentStub.createTournament)
+);
+
 security.post("/user", routifyPromise(createUser));
 
 app

@@ -14,7 +14,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "rm -r build; rm -r server.zip; react-scripts build; zip -r build.zip build -x *build/static/media*; zip -r server.zip server",
-    "test": "react-scripts test",
+    "test": "react-scripts test && ava",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

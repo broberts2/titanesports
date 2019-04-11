@@ -12,5 +12,5 @@ module.exports = {
     Fetch.GET(`/lol/summoner/v4/summoners/by-puuid/${req.query.PUUID}`),
   // Get a summoner by summoner ID.
   summonerBySummonerId: (req, res) =>
-    Fetch.GET(`/lol/summoner/v4/summoners/${req.query.accountId}`)
+    Fetch.GET(`/lol/summoner/v4/summoners/${req.query.summonerId}`)
 };
