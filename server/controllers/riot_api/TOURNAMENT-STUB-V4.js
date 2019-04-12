@@ -3,26 +3,26 @@ const apiKey = require("../../config").apiKey;
 
 module.exports = {
   // Create a mock tournament code for the given tournament.
-  createTournamentCode: (req, res) =>
+  createTournamentCode: async (req, res) =>
     Fetch.POST(
       `https://americas.api.riotgames.com/lol/tournament-stub/v4/codes?tournamentId=${req
         .query.tournamentId}&api_key=${apiKey}`,
       req.body
     ),
   // Gets a mock list of lobby events by tournament code
-  lobbyEventsByTournamentCode: (req, res) =>
+  lobbyEventsByTournamentCode: async (req, res) =>
     Fetch.GET(
       `https://americas.api.riotgames.com/lol/tournament-stub/v4/lobby-events/by-code/${req
         .query.tournamentCode}?api_key=${apiKey}`
     ),
   // Creates a mock tournament provider and returns its ID
-  tournamentProvider: (req, res) =>
+  tournamentProvider: async (req, res) =>
     Fetch.POST(
       `https://americas.api.riotgames.com/lol/tournament-stub/v4/providers?api_key=${apiKey}`,
       req.body
     ),
   // Creates a mock tournament and returns its ID.
-  createTournament: (req, res) =>
+  createTournament: async (req, res) =>
     Fetch.POST(
       `https://americas.api.riotgames.com/lol/tournament-stub/v4/tournaments?api_key=${apiKey}`,
       req.body

@@ -9,12 +9,12 @@
   "author": "Broc Roberts",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^3.0.5",
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.4.22",
     "node-fetch": "^2.3.0",
-    "nodemon": "^1.18.10",
-    "password-hash": "^1.2.2"
+    "nodemon": "^1.18.10"
   }
 }

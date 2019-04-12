@@ -4,7 +4,7 @@ module.exports = {
   GET: url =>
     fetch(`${url}`, {
       method: "GET"
-    }).then(response => response.text(response)),
+    }).then(response => response.text()),
   POST: (url, body) =>
     fetch(`${url}`, {
       method: "POST",
