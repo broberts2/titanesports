@@ -1,16 +1,17 @@
 const endpoint = require("./config").endpoint;
 const fetch = require("node-fetch");
 const api_key = require("./config").apiKey;
-const request = (url, body) =>
+const request = (url, obj) =>
   fetch(
     endpoint + "/api" + url,
     Object.assign(
       {
         headers: {
-          authorization: api_key
+          authorization: api_key,
+          "Content-Type": "application/json"
         }
       },
-      body
+      obj
     )
   ).then(res => res.json());
 
@@ -61,78 +62,84 @@ module.exports = {
   all_positional_league_entries: body =>
     request(`/all_positional_league_entries`, {
       method: "post",
-      body
+      body: JSON.stringify(body)
     }),
-  league_status_by_shard: test =>
-    request(`/league_status_by_shard?test=${test}`, {
+  league_status_by_shard: () =>
+    request(`/league_status_by_shard`, {
       method: "get"
     }),
-  match_by_id: test =>
-    request(`/match_by_id?test=${test}`, {
+  match_by_id: matchId =>
+    request(`/match_by_id?matchId=${matchId}`, {
       method: "get"
     }),
-  matchlist_by_account_id: test =>
-    request(`/matchlist_by_account_id?test=${test}`, {
+  matchlist_by_account_id: accountId =>
+    request(`/matchlist_by_account_id?accountId=${accountId}`, {
       method: "get"
     }),
-  match_timeline_by_match_id: test =>
-    request(`/match_timeline_by_match_id?test=${test}`, {
+  match_timeline_by_match_id: matchId =>
+    request(`/match_timeline_by_match_id?matchId=${matchId}`, {
       method: "get"
     }),
-  match_ids_by_tournament_code: test =>
-    request(`/match_ids_by_tournament_code?test=${test}`, {
+  match_ids_by_tournament_code: tournamentCode =>
+    request(`/match_ids_by_tournament_code?tournamentCode=${tournamentCode}`, {
       method: "get"
     }),
-  match_by_match_id_and_tournament_code: test =>
-    request(`/match_by_match_id_and_tournament_code?test=${test}`, {
+  match_by_match_id_and_tournament_code: (matchId, tournamentCode) =>
+    request(
+      `/match_by_match_id_and_tournament_code?matchId=${matchId}&tournamentCode=${tournamentCode}`,
+      {
+        method: "get"
+      }
+    ),
+  league_position_in_all_queues_by_summoner_id: summonerId =>
+    request(
+      `/league_position_in_all_queues_by_summoner_id?summonerId=${summonerId}`,
+      {
+        method: "get"
+      }
+    ),
+  featured_games: () =>
+    request(`/featured_games`, {
       method: "get"
     }),
-  league_position_in_all_queues_by_summoner_id: test =>
-    request(`/league_position_in_all_queues_by_summoner_id?test=${test}`, {
+  summoner_by_account_id: accountId =>
+    request(`/summoner_by_account_id?accountId=${accountId}`, {
       method: "get"
     }),
-  featured_games: test =>
-    request(`/featured_games?test=${test}`, {
+  summoner_by_name: summonerName =>
+    request(`/summoner_by_name?summonerName=${summonerName}`, {
       method: "get"
     }),
-  summoner_by_account_id: test =>
-    request(`/summoner_by_account_id?test=${test}`, {
+  summoner_by_puuid: PUUID =>
+    request(`/summoner_by_puuid?PUUID=${PUUID}`, {
       method: "get"
     }),
-  summoner_by_name: test =>
-    request(`/summoner_by_name?test=${test}`, {
+  summoner_by_summoner_id: summonerId =>
+    request(`/summoner_by_summoner_id?summonerId=${summonerId}`, {
       method: "get"
     }),
-  summoner_by_puuid: test =>
-    request(`/summoner_by_puuid?test=${test}`, {
+  third_party_code_by_summoner_id: summonerId =>
+    request(`/third_party_code_by_summoner_id?summonerId=${summonerId}`, {
       method: "get"
     }),
-  summoner_by_summoner_id: test =>
-    request(`/summoner_by_summoner_id?test=${test}`, {
-      method: "get"
-    }),
-  third_party_code_by_summoner_id: test =>
-    request(`/third_party_code_by_summoner_id?test=${test}`, {
-      method: "get"
-    }),
-  create_tournament: body =>
-    request(`/create_tournament`, {
+  create_tournament_code: (tournamentId, body) =>
+    request(`/create_tournament_code?tournamentId=${tournamentId}`, {
       method: "post",
-      body
+      body: JSON.stringify(body)
     }),
   lobby_events_by_tournament_code: body =>
     request(`/lobby_events_by_tournament_code`, {
       method: "post",
-      body
+      body: JSON.stringify(body)
     }),
   create_tournament_provider: body =>
     request(`/create_tournament_provider`, {
       method: "post",
-      body
+      body: JSON.stringify(body)
     }),
   create_tournament: body =>
     request(`/create_tournament`, {
       method: "post",
-      body
+      body: JSON.stringify(body)
     })
 };

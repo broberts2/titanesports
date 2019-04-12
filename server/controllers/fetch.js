@@ -1,15 +1,13 @@
 const fetch = require("node-fetch");
-const riotURL = require("../config").riotURL;
-const apiKey = require("../config").apiKey;
 
 module.exports = {
   GET: url =>
-    fetch(riotURL + url + `?api_key=${apiKey}`, {
+    fetch(`${url}`, {
       method: "GET"
-    }).then(response => response.text()),
+    }).then(response => response.text(response)),
   POST: (url, body) =>
-    fetch(riotURL + url + `?api_key=${apiKey}`, {
+    fetch(`${url}`, {
       method: "POST",
-      body
+      body: JSON.stringify(body)
     }).then(response => response.text())
 };

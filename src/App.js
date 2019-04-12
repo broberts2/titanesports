@@ -7,6 +7,8 @@ import modals from "./components/modals/_modals";
 import WelcomeButton from "./components/welcome_button";
 import "./index.css";
 
+import api from "./api";
+
 class App extends Component {
   state = {
     modal: 0,
@@ -18,6 +20,10 @@ class App extends Component {
   }
 
   componentDidMount() {
+    (async () => {
+      const val = await api.champion_rotation();
+      console.log(val);
+    })();
     this.setState({
       modals
     });

@@ -9,6 +9,7 @@ const path = require("path");
 const protected = require("./controllers/protected").protected;
 const routifyPromise = require("./controllers/util").routifyPromise;
 const security = express.Router();
+const cors = require("cors");
 
 const ChampionMastery = require("./controllers/riot_api/CHAMPION-MASTERY-V4");
 const Champion = require("./controllers/riot_api/CHAMPION-V3");
@@ -24,14 +25,11 @@ const { createUser } = require("./controllers/userHandling");
 
 app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
+app.use(
+  cors({
+    credentials: true
+  })
+);
 
 app.use("/api", security);
 security.use(protected);
@@ -113,7 +111,7 @@ security.get(
   routifyPromise(ThirdParty.thirdPartyCode)
 );
 security.post(
-  "/create_tournament",
+  "/create_tournament_code",
   routifyPromise(TournamentStub.createTournamentCode)
 );
 security.get(
