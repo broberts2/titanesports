@@ -1,13 +1,12 @@
 const endpoint = require("./config").endpoint;
 const fetch = require("node-fetch");
-const api_key = require("./config").apiKey;
+const Cookies = require("js-cookie");
 const request = (url, obj) =>
   fetch(
-    endpoint + "/api" + url,
+    endpoint + url,
     Object.assign(
       {
         headers: {
-          authorization: api_key,
           "Content-Type": "application/json"
         }
       },
@@ -17,129 +16,146 @@ const request = (url, obj) =>
 
 module.exports = {
   all_summoner_masteries: summonerId =>
-    request(`/all_summoner_masteries?summonerId=${summonerId}`, {
+    request(`/api/all_summoner_masteries?summonerId=${summonerId}`, {
       method: "get"
     }),
   summoner_champion_mastery: (summonerId, championId) =>
     request(
-      `/summoner_champion_mastery?summonerId=${summonerId}&championId=${championId}`,
+      `/api/summoner_champion_mastery?summonerId=${summonerId}&championId=${championId}`,
       {
         method: "get"
       }
     ),
   summoner_total_mastery: summonerId =>
-    request(`/summoner_total_mastery?summonerId=${summonerId}`, {
+    request(`/api/summoner_total_mastery?summonerId=${summonerId}`, {
       method: "get"
     }),
   champion_rotation: () =>
-    request(`/champion_rotations`, {
+    request(`/api/champion_rotations`, {
       method: "get"
     }),
   challenger_league_queue: queue =>
-    request(`/challenger_league_queue?queue=${queue}`, {
+    request(`/api/challenger_league_queue?queue=${queue}`, {
       method: "get"
     }),
   grandmaster_league_queue: queue =>
-    request(`/grandmaster_league_queue?queue=${queue}`, {
+    request(`/api/grandmaster_league_queue?queue=${queue}`, {
       method: "get"
     }),
   master_league_queue: queue =>
-    request(`/master_league_queue?queue=${queue}`, {
+    request(`/api/master_league_queue?queue=${queue}`, {
       method: "get"
     }),
   get_league: leagueId =>
-    request(`/get_league?leagueId=${leagueId}`, {
+    request(`/api/get_league?leagueId=${leagueId}`, {
       method: "get"
     }),
   enabled_positional_rank_queues: leagueId =>
-    request(`/enabled_positional_rank_queues`, {
+    request(`/api/enabled_positional_rank_queues`, {
       method: "get"
     }),
   all_league_positions: summonerId =>
-    request(`/all_league_positions?summonerId=${summonerId}`, {
+    request(`/api/all_league_positions?summonerId=${summonerId}`, {
       method: "get"
     }),
   all_positional_league_entries: body =>
-    request(`/all_positional_league_entries`, {
+    request(`/api/all_positional_league_entries`, {
       method: "post",
       body: JSON.stringify(body)
     }),
   league_status_by_shard: () =>
-    request(`/league_status_by_shard`, {
+    request(`/api/league_status_by_shard`, {
       method: "get"
     }),
   match_by_id: matchId =>
-    request(`/match_by_id?matchId=${matchId}`, {
+    request(`/api/match_by_id?matchId=${matchId}`, {
       method: "get"
     }),
   matchlist_by_account_id: accountId =>
-    request(`/matchlist_by_account_id?accountId=${accountId}`, {
+    request(`/api/matchlist_by_account_id?accountId=${accountId}`, {
       method: "get"
     }),
   match_timeline_by_match_id: matchId =>
-    request(`/match_timeline_by_match_id?matchId=${matchId}`, {
+    request(`/api/match_timeline_by_match_id?matchId=${matchId}`, {
       method: "get"
     }),
   match_ids_by_tournament_code: tournamentCode =>
-    request(`/match_ids_by_tournament_code?tournamentCode=${tournamentCode}`, {
-      method: "get"
-    }),
+    request(
+      `/api/match_ids_by_tournament_code?tournamentCode=${tournamentCode}`,
+      {
+        method: "get"
+      }
+    ),
   match_by_match_id_and_tournament_code: (matchId, tournamentCode) =>
     request(
-      `/match_by_match_id_and_tournament_code?matchId=${matchId}&tournamentCode=${tournamentCode}`,
+      `/api/match_by_match_id_and_tournament_code?matchId=${matchId}&tournamentCode=${tournamentCode}`,
       {
         method: "get"
       }
     ),
   league_position_in_all_queues_by_summoner_id: summonerId =>
     request(
-      `/league_position_in_all_queues_by_summoner_id?summonerId=${summonerId}`,
+      `/api/league_position_in_all_queues_by_summoner_id?summonerId=${summonerId}`,
       {
         method: "get"
       }
     ),
   featured_games: () =>
-    request(`/featured_games`, {
+    request(`/api/featured_games`, {
       method: "get"
     }),
   summoner_by_account_id: accountId =>
-    request(`/summoner_by_account_id?accountId=${accountId}`, {
+    request(`/api/summoner_by_account_id?accountId=${accountId}`, {
       method: "get"
     }),
   summoner_by_name: summonerName =>
-    request(`/summoner_by_name?summonerName=${summonerName}`, {
+    request(`/api/summoner_by_name?summonerName=${summonerName}`, {
       method: "get"
     }),
   summoner_by_puuid: PUUID =>
-    request(`/summoner_by_puuid?PUUID=${PUUID}`, {
+    request(`/api/summoner_by_puuid?PUUID=${PUUID}`, {
       method: "get"
     }),
   summoner_by_summoner_id: summonerId =>
-    request(`/summoner_by_summoner_id?summonerId=${summonerId}`, {
+    request(`/api/summoner_by_summoner_id?summonerId=${summonerId}`, {
       method: "get"
     }),
   third_party_code_by_summoner_id: summonerId =>
-    request(`/third_party_code_by_summoner_id?summonerId=${summonerId}`, {
+    request(`/api/third_party_code_by_summoner_id?summonerId=${summonerId}`, {
       method: "get"
     }),
   create_tournament_code: (tournamentId, body) =>
-    request(`/create_tournament_code?tournamentId=${tournamentId}`, {
+    request(`/api/create_tournament_code?tournamentId=${tournamentId}`, {
       method: "post",
       body: JSON.stringify(body)
     }),
   lobby_events_by_tournament_code: body =>
-    request(`/lobby_events_by_tournament_code`, {
+    request(`/api/lobby_events_by_tournament_code`, {
       method: "post",
       body: JSON.stringify(body)
     }),
   create_tournament_provider: body =>
-    request(`/create_tournament_provider`, {
+    request(`/api/create_tournament_provider`, {
       method: "post",
       body: JSON.stringify(body)
     }),
   create_tournament: body =>
-    request(`/create_tournament`, {
+    request(`/api/create_tournament`, {
       method: "post",
       body: JSON.stringify(body)
-    })
+    }),
+  login_user: (username, password) => {
+    const base64encodedData = new Buffer(username + ":" + password).toString(
+      "base64"
+    );
+    return request(`/u/login_user`, {
+      method: "get",
+      headers: {
+        authorization: "Basic " + base64encodedData
+      }
+    });
+  },
+  create_cookie: (name, value) => Cookies.set(name, value, { expires: 1 }),
+  remove_cookie: name => Cookies.remove(name),
+  get_cookie: name => Cookies.get(name)
 };

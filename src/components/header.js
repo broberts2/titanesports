@@ -40,35 +40,23 @@ class Header extends Component {
     <div>
       <div className={"button"}>
         <a href={MediaLink.discord} target={"_blank"}>
-          <AwesomeButton
-            style={{ width: "65px", height: "65px" }}
-            type={"primary"}
-            size={"icon"}
-          >
+          <div className="linkButton">
             <div className={`fab fa-discord fa-2x`} />
-          </AwesomeButton>
+          </div>
         </a>
       </div>
       <div className={"button"}>
         <a href={MediaLink.twitch} target={"_blank"}>
-          <AwesomeButton
-            style={{ width: "65px", height: "65px" }}
-            type={"primary"}
-            size={"icon"}
-          >
+          <div className="linkButton">
             <div className={`fab fa-twitch fa-2x`} />
-          </AwesomeButton>
+          </div>
         </a>
       </div>
       <div className={"button"}>
         <a href={MediaLink.youTube} target={"_blank"}>
-          <AwesomeButton
-            style={{ width: "65px", height: "65px" }}
-            type={"primary"}
-            size={"icon"}
-          >
+          <div className="linkButton">
             <div className={`fab fa-youtube fa-2x`} />
-          </AwesomeButton>
+          </div>
         </a>
       </div>
       <div
@@ -76,13 +64,9 @@ class Header extends Component {
         onClick={() => this.props.modalAction.activateLeagues()}
       >
         <a>
-          <AwesomeButton
-            style={{ width: "65px", height: "65px" }}
-            type={"primary"}
-            size={"icon"}
-          >
+          <div className="linkButton">
             <div className={`fas fa-file-signature fa-2x`} />
-          </AwesomeButton>
+          </div>
         </a>
       </div>
     </div>
@@ -94,13 +78,9 @@ class Header extends Component {
       onClick={() => this.props.modalAction.activateMiniMenu()}
     >
       <a>
-        <AwesomeButton
-          style={{ width: "45px", height: "45px" }}
-          type={"primary"}
-          size={"icon"}
-        >
+        <div className="linkButton">
           <div className={`fas fa-bars fa-1x`} />
-        </AwesomeButton>
+        </div>
       </a>
     </div>
   );
@@ -117,6 +97,16 @@ class Header extends Component {
             <img id={"header-img"} src={require("../img/logo.png")} />
             <div id={"header-buttons"} className={"button-cluster"}>
               {this.state.primaryRender}
+              <h2
+                style={{
+                  float: "right",
+                  marginRight: "30px",
+                  textShadow:
+                    "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"
+                }}
+              >
+                {this.props.headerTitle}
+              </h2>
             </div>
           </div>
         </div>

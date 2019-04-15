@@ -32,23 +32,17 @@ class WelcomeButton extends Component {
               }, 500);
             }}
           >
-            <AwesomeButton
-              style={{ width: "250px", height: "65px" }}
-              type={"primary"}
-              size={"large"}
-            >
-              <h3>Welcome to Titan ESports</h3>
-            </AwesomeButton>
+            <div className="linkButton">Welcome to Titan eSports</div>
           </div>
-          <div className={"button"} onClick={() => this.props.modalAction()}>
-            <AwesomeButton
-              style={{ width: "175px", height: "25px" }}
-              type={"primary"}
-              size={"large"}
-            >
-              Riot API Terms of Use
-            </AwesomeButton>
-          </div>
+          <h2
+            style={{
+              textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"
+            }}
+          >
+            Titan eSports is currently in development and will be experiencing
+            substantial feature and visual updates in the coming weeks. Check
+            back soon!
+          </h2>
         </center>
       </div>
     );

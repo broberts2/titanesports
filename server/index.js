@@ -26,6 +26,7 @@ const Spectator = require("./controllers/riot_api/SPECTATOR-V4");
 const Summoner = require("./controllers/riot_api/SUMMONER-V4");
 const ThirdParty = require("./controllers/riot_api/THIRD-PARTY-CODE-V4");
 const TournamentStub = require("./controllers/riot_api/TOURNAMENT-STUB-V4");
+const Compounds = require("./controllers/compounds");
 
 const User = require("./controllers/userHandling");
 
@@ -79,7 +80,7 @@ security.get(
 );
 security.post(
   "/all_positional_league_entries",
-  routifyPromise(Leagues.allPositionalLeagueEntries)
+  routifyPromise(3, Leagues.allPositionalLeagueEntries)
 );
 security.get(
   "/league_status_by_shard",
@@ -137,6 +138,14 @@ security.post(
   "/create_tournament",
   routifyPromise(3, TournamentStub.createTournament)
 );
+security.get(
+  "/past_season_peak_rank_by_summoner_name",
+  routifyPromiseStandard(3, Compounds.pastSeasonPeakRankBySummonerName)
+);
+security.post(
+  "/past_season_peak_rank_average_by_team",
+  routifyPromiseStandard(3, Compounds.pastSeasonPeakRankAverageByTeam)
+);
 security.get("/verify_user", routifyPromiseStandard(0, User.verifyUser));
 security.put("/update_user", routifyPromiseStandard(3, User.updateUser));
 security.put("/update_self", routifyPromiseNoRestrict(User.updateSelf));
@@ -147,7 +156,7 @@ app.post("/u/create_user", routifyPromiseNoRestrict(User.createUser));
 app.get("/u/login_user", routifyPromiseNoRestrict(User.loginUser));
 app.get("/u/get_user", routifyPromiseNoRestrict(User.getUser));
 
-automation(() => console.log("yo"));
+//automation();
 
 app
   .use(express.static(path.join(__dirname, "public")))
