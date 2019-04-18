@@ -11,22 +11,87 @@ const userSchema = new Schema({
   },
   password: {
     type: String,
-    unique: false,
+    unique: true,
     required: true
   },
   level: {
     type: Number,
-    unique: false,
+    unique: true,
     required: true
   },
   lolAccountId: {
     type: String,
-    unique: false,
+    unique: true,
     required: true
   },
-  matchHistory: {
+  lolSummonerId: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  soloLp: {
+    type: Number,
+    unique: true,
+    required: true
+  },
+  soloTier: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  soloDivision: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  soloRole: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  soloMostPlayed: {
     type: Array,
-    unique: false,
+    unique: true,
+    required: true
+  },
+  flexLp: {
+    type: Number,
+    unique: true,
+    required: true
+  },
+  flexTier: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  flexDivision: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  flexRole: {
+    type: String,
+    unique: true,
+    required: true
+  },
+  flexMostPlayed: {
+    type: Array,
+    unique: true,
+    required: true
+  },
+  memberships: {
+    type: Array,
+    unique: true,
+    required: true
+  },
+  iconId: {
+    type: Number,
+    unique: true,
+    required: true
+  },
+  summonerLevel: {
+    type: Number,
+    unique: true,
     required: true
   }
 });

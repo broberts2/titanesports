@@ -154,9 +154,10 @@ security.delete("/delete_user", routifyPromiseStandard(3, User.deleteUser));
 
 app.post("/u/create_user", routifyPromiseNoRestrict(User.createUser));
 app.get("/u/login_user", routifyPromiseNoRestrict(User.loginUser));
+app.get("/u/get_users", routifyPromiseNoRestrict(User.getAllUsers));
 app.get("/u/get_user", routifyPromiseNoRestrict(User.getUser));
 
-//automation();
+automation();
 
 app
   .use(express.static(path.join(__dirname, "public")))

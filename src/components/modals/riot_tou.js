@@ -6,7 +6,7 @@ export default class RiotTermsOfUse extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === 4 ? true : false}
+        visible={this.props.visible === this.props.index ? true : false}
         width={"75%"}
         height={"75%"}
         effect={"fadeInUp"}

@@ -4,18 +4,31 @@ const bcrypt = require("bcrypt");
 const restrict = require("./restrict");
 const Summoner = require("./riot_api/SUMMONER-V4");
 
+const filterUser = user => ({
+  username: user.username,
+  iconId: user.iconId,
+  soloTier: user.soloTier,
+  soloDivision: user.soloDivision,
+  soloLp: user.soloLp,
+  memberships: user.memberships,
+  soloMostPlayed: user.soloMostPlayed,
+  soloRole: user.soloRole
+});
+
 module.exports = {
   getAllUsers: async () => {
     try {
-      const user = await Users.find({});
-      return user;
+      let users = await Users.find({});
+      //users = users.map(el => filterUser(el));
+      return users;
     } catch (e) {
       throw new Error(e.message);
     }
   },
   getUser: async (req, res) => {
     try {
-      const user = await Users.findOne({ username: req.query.u });
+      let user = await Users.findOne({ username: req.query.u });
+      user = filterUser(user);
       return user;
     } catch (e) {
       throw new Error(e.message);
@@ -23,7 +36,8 @@ module.exports = {
   },
   getSelf: async (req, res) => {
     try {
-      const user = await Users.findOne({ username: req.user_info.username });
+      let user = await Users.findOne({ username: req.user_info.username });
+      user = filterUser(user);
       return user;
     } catch (e) {
       throw new Error(e.message);
@@ -35,8 +49,21 @@ module.exports = {
         username: req.body.username,
         password: bcrypt.hashSync(req.body.password, 10),
         level: 6,
-        lolAccountId: "",
-        matchHistory: []
+        lolAccountId: " ",
+        lolSummonerId: " ",
+        soloLp: 0,
+        soloTier: " ",
+        soloDivision: " ",
+        soloRole: " ",
+        soloMostPlayed: [""],
+        flexLp: 0,
+        flexTier: " ",
+        flexDivision: " ",
+        flexRole: " ",
+        flexMostPlayed: [""],
+        memberships: [""],
+        iconId: 0,
+        summonerLevel: 0
       });
       return user;
     } catch (e) {

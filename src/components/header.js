@@ -3,9 +3,22 @@ import { AwesomeButton } from "react-awesome-button";
 import styles from "react-awesome-button/src/styles/themes/theme-c137";
 import MediaLink from "../media_links";
 import MediaQuery from "react-responsive";
+import api from "../api";
 
 class Header extends Component {
+  state = {
+    primaryRender: this.standard,
+    userLogged: false
+  };
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ userLogged: nextProps.userLogged });
+  }
+
   componentDidMount() {
+    api.get_cookie("titan_key")
+      ? this.props.showUser(true)
+      : this.props.showUser(false);
     this.scale();
     this.resize();
     window.addEventListener("scroll", this.scale);
@@ -14,8 +27,8 @@ class Header extends Component {
 
   resize() {
     window.outerWidth < 701
-      ? this.setState({ primaryRender: this.mini })
-      : this.setState({ primaryRender: this.standard });
+      ? this.setState({ primaryRender: 0 })
+      : this.setState({ primaryRender: 1 });
   }
 
   scale() {
@@ -36,59 +49,6 @@ class Header extends Component {
     }
   }
 
-  standard = (
-    <div>
-      <div className={"button"}>
-        <a href={MediaLink.discord} target={"_blank"}>
-          <div className="linkButton">
-            <div className={`fab fa-discord fa-2x`} />
-          </div>
-        </a>
-      </div>
-      <div className={"button"}>
-        <a href={MediaLink.twitch} target={"_blank"}>
-          <div className="linkButton">
-            <div className={`fab fa-twitch fa-2x`} />
-          </div>
-        </a>
-      </div>
-      <div className={"button"}>
-        <a href={MediaLink.youTube} target={"_blank"}>
-          <div className="linkButton">
-            <div className={`fab fa-youtube fa-2x`} />
-          </div>
-        </a>
-      </div>
-      <div
-        className={"button"}
-        onClick={() => this.props.modalAction.activateLeagues()}
-      >
-        <a>
-          <div className="linkButton">
-            <div className={`fas fa-file-signature fa-2x`} />
-          </div>
-        </a>
-      </div>
-    </div>
-  );
-
-  mini = (
-    <div
-      className={"button"}
-      onClick={() => this.props.modalAction.activateMiniMenu()}
-    >
-      <a>
-        <div className="linkButton">
-          <div className={`fas fa-bars fa-1x`} />
-        </div>
-      </a>
-    </div>
-  );
-
-  state = {
-    primaryRender: this.standard
-  };
-
   render() {
     return (
       <div className={"header"}>
@@ -96,17 +56,65 @@ class Header extends Component {
           <div className={"header-content"}>
             <img id={"header-img"} src={require("../img/logo.png")} />
             <div id={"header-buttons"} className={"button-cluster"}>
-              {this.state.primaryRender}
-              <h2
-                style={{
-                  float: "right",
-                  marginRight: "30px",
-                  textShadow:
-                    "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"
-                }}
-              >
-                {this.props.headerTitle}
-              </h2>
+              {this.state.primaryRender ? (
+                <div>
+                  <div className={"button"}>
+                    <a href={MediaLink.discord} target={"_blank"}>
+                      <div className="linkButton">
+                        <div className={`fab fa-discord fa-2x`} />
+                      </div>
+                    </a>
+                  </div>
+                  <div className={"button"}>
+                    <a href={MediaLink.twitch} target={"_blank"}>
+                      <div className="linkButton">
+                        <div className={`fab fa-twitch fa-2x`} />
+                      </div>
+                    </a>
+                  </div>
+                  <div className={"button"}>
+                    <a href={MediaLink.youTube} target={"_blank"}>
+                      <div className="linkButton">
+                        <div className={`fab fa-youtube fa-2x`} />
+                      </div>
+                    </a>
+                  </div>
+                  <div
+                    className={"button"}
+                    onClick={() => this.props.modalAction.activateLeagues()}
+                  >
+                    <a>
+                      <div className="linkButton">
+                        <div className={`fas fa-file-signature fa-2x`} />
+                      </div>
+                    </a>
+                  </div>
+                  {this.state.userLogged ? (
+                    <div
+                      className={"button"}
+                      onClick={() =>
+                        this.props.modalAction.activateUserProfile()}
+                    >
+                      <a>
+                        <div className="linkButton">
+                          <div className={`fas fa-user fa-2x`} />
+                        </div>
+                      </a>
+                    </div>
+                  ) : null}
+                </div>
+              ) : (
+                <div
+                  className={"button"}
+                  onClick={() => this.props.modalAction.activateMiniMenu()}
+                >
+                  <a>
+                    <div className="linkButton">
+                      <div className={`fas fa-bars fa-1x`} />
+                    </div>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>

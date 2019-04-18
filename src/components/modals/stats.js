@@ -6,7 +6,7 @@ export default class Stats extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === 2 ? true : false}
+        visible={this.props.visible === this.props.index ? true : false}
         width={"75%"}
         height={"400"}
         effect={"fadeInUp"}

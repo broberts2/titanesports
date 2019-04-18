@@ -13,7 +13,8 @@ class App extends Component {
   state = {
     modal: 0,
     modals: null,
-    headerTitle: api.get_cookie("titan_id") || ""
+    userLogged: false,
+    searchTerm: "Phortwenty"
   };
 
   closeModal() {
@@ -24,24 +25,30 @@ class App extends Component {
     this.setState({ modal });
   }
 
-  setHeaderTitle(headerTitle) {
-    this.setState({ headerTitle });
-  }
+  modalActions = {
+    setMenu: num => this.setMenu(num),
+    showUser: userLogged => this.setState({ userLogged }),
+    setSearchTerm: searchTerm => this.setState({ searchTerm })
+  };
 
   render() {
     return (
       <div>
         <Header
-          headerTitle={this.state.headerTitle}
+          userLogged={this.state.userLogged}
+          showUser={userLogged => this.setState({ userLogged })}
           modalAction={{
             activateLeagues: () => this.setMenu(1),
-            activateMiniMenu: () => this.setMenu(3)
+            activateMiniMenu: () => this.setMenu(3),
+            activateUserProfile: () => this.setMenu(7)
           }}
         />
-        {modals(this.state.modal, () => this.closeModal(), {
-          setMenu: num => this.setMenu(num),
-          setHeaderTitle: headerTitle => this.setHeaderTitle(headerTitle)
-        })}
+        {modals(
+          this.state.modal,
+          this.state.searchTerm,
+          () => this.closeModal(),
+          this.modalActions
+        )}
         <VideoBackground />
         <Content img={require("./img/lol_logo.png")}>
           <div>
@@ -141,9 +148,21 @@ class App extends Component {
                             />
                             <div
                               className="linkButton"
+                              onClick={() => this.setMenu(10)}
+                            >
+                              Player Search
+                            </div>
+                            <div
+                              className="linkButton"
                               onClick={() => this.setMenu(5)}
                             >
-                              Players and Teams
+                              Team Search
+                            </div>
+                            <div
+                              className="linkButton"
+                              onClick={() => this.setMenu(5)}
+                            >
+                              Team Roster
                             </div>
                           </div>
                         </div>
@@ -259,15 +278,16 @@ class App extends Component {
                             className="linkButton"
                             onClick={() => this.setMenu(6)}
                           >
-                            {api.get_cookie("titan_key")
-                              ? "Sign Out"
-                              : "Sign In"}
+                            {this.state.userLogged ? "Sign Out" : "Sign In"}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="theSection" style={{ marginTop: "15px" }}>
-                      <div className="linkButton-unfinished">
+                      <div
+                        className="linkButton"
+                        onClick={() => this.setMenu(9)}
+                      >
                         Upcoming Events
                       </div>
                       <div className="rssSpot" />

@@ -6,7 +6,7 @@ export default class Teams extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === 5 ? true : false}
+        visible={this.props.visible === this.props.index ? true : false}
         width={"90%"}
         height={"90%"}
         effect={"fadeInUp"}

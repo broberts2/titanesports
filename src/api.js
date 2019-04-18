@@ -7,7 +7,8 @@ const request = (url, obj) =>
     Object.assign(
       {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          titan_key: Cookies.get("titan_key")
         }
       },
       obj
@@ -153,6 +154,21 @@ module.exports = {
       headers: {
         authorization: "Basic " + base64encodedData
       }
+    });
+  },
+  get_user: username => {
+    return request(`/u/get_user?u=${username}`, {
+      method: "get"
+    });
+  },
+  get_users: () => {
+    return request(`/u/get_users`, {
+      method: "get"
+    });
+  },
+  get_self: () => {
+    return request(`/api/get_self`, {
+      method: "get"
     });
   },
   create_cookie: (name, value) => Cookies.set(name, value, { expires: 1 }),

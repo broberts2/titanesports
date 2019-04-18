@@ -15,17 +15,20 @@ export default class SignIn extends Component {
 
   async login() {
     this.setState({ loader: true });
-    const value = await api.login_user(
-      this.state.username,
-      this.state.password
-    );
+    const value = await new Promise(async resolve => {
+      setTimeout(() => resolve({ error: "No response from server." }), 4000);
+      const response = await api.login_user(
+        this.state.username,
+        this.state.password
+      );
+      resolve(response);
+    });
     if (value.error) {
       this.setState({ response: value.error, loader: false });
     } else {
-      api.create_cookie("titan_key", value.token);
-      api.create_cookie("titan_id", this.state.username);
+      api.create_cookie("titan_key", value);
       this.props.closeModal();
-      this.props.setHeaderTitle(this.state.username);
+      this.props.showUser(true);
       this.setState({
         username: "",
         password: "",
@@ -74,9 +77,8 @@ export default class SignIn extends Component {
         <div
           className="linkButton"
           onClick={() => {
-            this.props.setHeaderTitle("");
+            this.props.showUser(false);
             api.remove_cookie("titan_key");
-            api.remove_cookie("titan_id");
           }}
         >
           Sign Out
@@ -98,7 +100,7 @@ export default class SignIn extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === 6 ? true : false}
+        visible={this.props.visible === this.props.index ? true : false}
         width={"400"}
         height={"335"}
         effect={"fadeInUp"}

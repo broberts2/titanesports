@@ -7,7 +7,7 @@ export default class MenuMini extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === 3 ? true : false}
+        visible={this.props.visible === this.props.index ? true : false}
         width={"400"}
         height={"300"}
         effect={"fadeInUp"}
