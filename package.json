@@ -9,6 +9,7 @@
     "react-awesome-button": "^6.1.0",
     "react-awesome-modal": "^2.0.5",
     "react-dom": "^16.8.6",
+    "react-dropdown": "^1.6.4",
     "react-epic-spinners": "^0.3.0",
     "react-responsive": "^6.1.1",
     "react-router-dom": "^5.0.0",

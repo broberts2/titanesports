@@ -29,6 +29,8 @@ const TournamentStub = require("./controllers/riot_api/TOURNAMENT-STUB-V4");
 const Compounds = require("./controllers/compounds");
 
 const User = require("./controllers/userHandling");
+const Team = require("./controllers/teamHandling");
+const Article = require("./controllers/articleHandling");
 
 app.use(bodyParser.json());
 
@@ -146,6 +148,7 @@ security.post(
   "/past_season_peak_rank_average_by_team",
   routifyPromiseStandard(3, Compounds.pastSeasonPeakRankAverageByTeam)
 );
+security.post("/create_team", routifyPromiseStandard(1, Team.createTeam));
 security.get("/verify_user", routifyPromiseStandard(0, User.verifyUser));
 security.put("/update_user", routifyPromiseStandard(3, User.updateUser));
 security.put("/update_self", routifyPromiseNoRestrict(User.updateSelf));
@@ -156,6 +159,9 @@ app.post("/u/create_user", routifyPromiseNoRestrict(User.createUser));
 app.get("/u/login_user", routifyPromiseNoRestrict(User.loginUser));
 app.get("/u/get_users", routifyPromiseNoRestrict(User.getAllUsers));
 app.get("/u/get_user", routifyPromiseNoRestrict(User.getUser));
+app.get("/t/get_teams", routifyPromiseNoRestrict(Team.getAllTeams));
+app.get("/a/get_articles", routifyPromiseNoRestrict(Article.getAllArticles));
+app.get("/a/create_article", routifyPromiseNoRestrict(Article.createArticle));
 
 automation();
 

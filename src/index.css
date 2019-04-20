@@ -8,12 +8,66 @@ body {
   margin: 0;
 }
 table {
-  table-layout: fixed;
   width: 100%;
+  table-layout: fixed;
 }
 table td {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.article {
+  width: 100%;
+  overflow-y: hidden;
+}
+.article .content {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.article .articles {
+  width: calc(50% - 30px);
+  margin: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+}
+.article .articles:hover {
+  transform: scale(1.01);
+}
+.article .articles img {
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
+}
+.article-body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+}
+.article-body .spacer {
+  height: 15px;
+}
+.article-body .margin {
+  padding: 15px;
+}
+.article-body .content {
+  width: 100%;
+  height: 90%;
+  overflow-y: scroll;
+}
+.article-body .content img {
+  width: 100%;
+  height: calc(100% - 120px);
+  object-fit: cover;
+  object-position: 0 0;
+}
+.article-body .close-button {
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  bottom: 15px;
 }
 .audio_button {
   position: absolute;
@@ -75,10 +129,32 @@ table td {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+.circle-button {
+  --dim: 135px;
+  position: relative;
+  width: var(--dim);
+  height: var(--dim);
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: rgba(42, 42, 42, 0.95);
+  transition: all 0.2s ease-in-out;
+}
+.circle-button:hover {
+  transform: scale(1.1);
+}
+.circle-button .icon {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  color: rgb(200, 200, 200);
+}
 .content-pane {
   --bgColor: rgb(42, 42, 42);
   background-color: var(--bgColor);
   position: relative;
+  padding: 10px;
 }
 .content-pane .buffer {
 }
@@ -200,6 +276,29 @@ table td {
   position: relative;
   padding: 50px;
 }
+.modal-style .sign-in .account-text {
+  margin: 15px;
+  color: rgb(0, 209, 255);
+  cursor: pointer;
+}
+.modal-style .sign-up {
+  position: relative;
+  padding: 50px;
+}
+.modal-style .sign-up h3 {
+  font-weight: normal;
+}
+.modal-style .sign-up h4 {
+  color: red;
+}
+.modal-style .sign-up .content {
+  position: relative;
+  top: 100%;
+}
+.modal-style .sign-up .button {
+  position: relative;
+  padding: 50px;
+}
 .modal-style input {
   height: 100%;
   width: 100%;
@@ -222,6 +321,14 @@ table td {
   position: relative;
   height: 100%;
   padding: 15px;
+}
+.search .back-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 15px;
+  cursor: pointer;
+  z-index: 10;
 }
 .search th {
   text-align: center;
@@ -261,6 +368,16 @@ table td {
   background-color: rgba(27, 27, 27, 0.75);
 }
 .search img {
+  width: 50px;
+  border-radius: 50%;
+  margin: 5px;
+}
+.search .captain-hat {
+  position: relative;
+}
+.search .captain-hat img {
+  position: absolute;
+  top: -20px;
   width: 50px;
   border-radius: 50%;
   margin: 5px;
@@ -337,6 +454,17 @@ table td {
   padding: 15px;
   margin-bottom: 100px;
 }
+.user-profile .settings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.user-profile .settings:hover {
+  transform: scale(1.1);
+}
 .user-profile .back-button {
   position: absolute;
   top: 0;
@@ -394,16 +522,13 @@ table td {
   overflow-y: scroll;
   height: 62.5%;
 }
-
 .user-profile .content .preferred-champions {
-  margin-bottom: 30px;
-  border-bottom: 1pt solid gray;
 }
 .user-profile .content .preferred-champions img {
   border-radius: 50%;
-  width: 65px;
+  width: 45px;
   display: inline-flex;
-  margin: 10px;
+  margin: 3px;
 }
 .user-profile-background img {
   position: absolute;
@@ -421,16 +546,66 @@ table td {
   width: 100%;
   min-width: 300px;
 }
+.user-profile .content table tr {
+  border-bottom: 1px solid black;
+}
 .user-profile .content table .element {
   margin: 0px;
 }
 .user-profile .link-button {
   position: absolute;
 }
+.user-settings {
+  position: relative;
+  height: 100%;
+  padding: 15px;
+}
+.user-settings .container {
+  height: 85%;
+  overflow-y: scroll;
+}
+.user-settings .element {
+  margin-bottom: 50px;
+}
+.user-settings h1 {
+  border-bottom: 2px solid gray;
+  width: 45%;
+}
+.user-settings .approve-icon {
+  color: green;
+}
+.user-settings .deny-icon {
+  color: red;
+}
+.user-settings .button {
+  position: absolute;
+  bottom: 7.5px;
+  width: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.user-settings .button-deny {
+  position: absolute;
+  bottom: 7.5px;
+  width: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  opacity: 0.25;
+  pointer-events: none;
+}
+.user-settings .back-button {
+  margin: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
 .welcome-button {
   cursor: pointer;
   position: absolute;
-  top: 50vh;
+  top: 45vh;
   -ms-transform: translateY(-50vh);
   transform: translateY(-50vh);
   left: 50%;
@@ -439,6 +614,7 @@ table td {
 }
 .welcome-button .button {
   margin: 15px;
+  display: inline-flex;
 }
 @media only screen and (max-width: 700px) {
   .content-shape {

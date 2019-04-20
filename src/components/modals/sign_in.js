@@ -62,6 +62,9 @@ export default class SignIn extends Component {
         <div className="linkButton" onClick={() => this.login()}>
           Sign In
         </div>
+        <div className={"account-text"} onClick={() => this.props.newAccount()}>
+          Don't have an account?
+        </div>
         <center>
           <h3 style={{ color: "rgb(172, 0, 62)", marginTop: "15px" }}>
             {this.state.response}

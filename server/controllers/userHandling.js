@@ -12,7 +12,9 @@ const filterUser = user => ({
   soloLp: user.soloLp,
   memberships: user.memberships,
   soloMostPlayed: user.soloMostPlayed,
-  soloRole: user.soloRole
+  soloRole: user.soloRole,
+  titanRole: user.titanRole,
+  captainTeam: user.captainTeam
 });
 
 module.exports = {
@@ -45,12 +47,20 @@ module.exports = {
   },
   createUser: async (req, res) => {
     try {
+      const summoner = await Summoner.summonerByName({
+        query: {
+          summonerName: req.body.username
+        }
+      }).then(res => JSON.parse(res));
+      if (summoner.status) {
+        return summoner.status;
+      }
       const user = await Users.create({
         username: req.body.username,
         password: bcrypt.hashSync(req.body.password, 10),
         level: 6,
-        lolAccountId: " ",
-        lolSummonerId: " ",
+        lolAccountId: summoner.accountId,
+        lolSummonerId: summoner.id,
         soloLp: 0,
         soloTier: " ",
         soloDivision: " ",
@@ -63,7 +73,9 @@ module.exports = {
         flexMostPlayed: [""],
         memberships: [""],
         iconId: 0,
-        summonerLevel: 0
+        summonerLevel: 0,
+        titanRole: "TOP",
+        captainTeam: ""
       });
       return user;
     } catch (e) {
@@ -99,17 +111,15 @@ module.exports = {
   },
   updateSelf: async (req, res) => {
     if (req.user_info.level > 0) {
-      delete req.body.data.level;
-      delete req.body.data.lolAccountId;
+      delete req.body.level;
+      delete req.body.username;
+      delete req.body.lolAccountId;
     }
-    if (req.body.data.password) {
-      req.body.data.password = bcrypt.hashSync(req.body.password, 10);
+    if (req.body.password) {
+      req.body.password = bcrypt.hashSync(req.body.password, 10);
     }
     try {
-      const user = await Users.update(
-        { _id: req.user_info._id },
-        req.body.data
-      );
+      const user = await Users.update({ _id: req.user_info._id }, req.body);
       return user;
     } catch (e) {
       throw new Error(e.message);

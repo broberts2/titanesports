@@ -166,8 +166,30 @@ module.exports = {
       method: "get"
     });
   },
+  get_teams: () => {
+    return request(`/t/get_teams`, {
+      method: "get"
+    });
+  },
   get_self: () => {
     return request(`/api/get_self`, {
+      method: "get"
+    });
+  },
+  update_self: data => {
+    return request(`/api/update_self`, {
+      method: "put",
+      body: JSON.stringify(data)
+    });
+  },
+  create_user: data => {
+    return request(`/u/create_user`, {
+      method: "post",
+      body: JSON.stringify(data)
+    });
+  },
+  get_articles: () => {
+    return request(`/a/get_articles`, {
       method: "get"
     });
   },

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { AwesomeButton } from "react-awesome-button";
 import styles from "react-awesome-button/src/styles/themes/theme-c137";
-import MediaLink from "../media_links";
 import MediaQuery from "react-responsive";
 import api from "../api";
 
@@ -32,20 +31,25 @@ class Header extends Component {
   }
 
   scale() {
-    const distanceY = window.pageYOffset || document.documentElement.scrollTop,
-      shrinkOn = 400,
-      headerEl = document.getElementById("header-img"),
-      headerEl2 = document.getElementById("header-buttons");
-    if (distanceY > shrinkOn) {
-      headerEl.classList.add("shrink");
-      headerEl.classList.remove("grow");
-      headerEl2.classList.add("shrink-less");
-      headerEl2.classList.remove("grow-less");
-    } else {
-      headerEl.classList.add("grow");
-      headerEl.classList.remove("shrink");
-      headerEl2.classList.add("grow-less");
-      headerEl2.classList.remove("shrink-less");
+    try {
+      const distanceY =
+          window.pageYOffset || document.documentElement.scrollTop,
+        shrinkOn = 400,
+        headerEl = document.getElementById("header-img"),
+        headerEl2 = document.getElementById("header-buttons");
+      if (distanceY > shrinkOn) {
+        headerEl.classList.add("shrink");
+        headerEl.classList.remove("grow");
+        headerEl2.classList.add("shrink-less");
+        headerEl2.classList.remove("grow-less");
+      } else {
+        headerEl.classList.add("grow");
+        headerEl.classList.remove("shrink");
+        headerEl2.classList.add("grow-less");
+        headerEl2.classList.remove("shrink-less");
+      }
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -58,37 +62,6 @@ class Header extends Component {
             <div id={"header-buttons"} className={"button-cluster"}>
               {this.state.primaryRender ? (
                 <div>
-                  <div className={"button"}>
-                    <a href={MediaLink.discord} target={"_blank"}>
-                      <div className="linkButton">
-                        <div className={`fab fa-discord fa-2x`} />
-                      </div>
-                    </a>
-                  </div>
-                  <div className={"button"}>
-                    <a href={MediaLink.twitch} target={"_blank"}>
-                      <div className="linkButton">
-                        <div className={`fab fa-twitch fa-2x`} />
-                      </div>
-                    </a>
-                  </div>
-                  <div className={"button"}>
-                    <a href={MediaLink.youTube} target={"_blank"}>
-                      <div className="linkButton">
-                        <div className={`fab fa-youtube fa-2x`} />
-                      </div>
-                    </a>
-                  </div>
-                  <div
-                    className={"button"}
-                    onClick={() => this.props.modalAction.activateLeagues()}
-                  >
-                    <a>
-                      <div className="linkButton">
-                        <div className={`fas fa-file-signature fa-2x`} />
-                      </div>
-                    </a>
-                  </div>
                   {this.state.userLogged ? (
                     <div
                       className={"button"}

@@ -8,6 +8,8 @@ const Summoner = require("./controllers/riot_api/SUMMONER-V4");
 const ThirdParty = require("./controllers/riot_api/THIRD-PARTY-CODE-V4");
 const TournamentStub = require("./controllers/riot_api/TOURNAMENT-STUB-V4");
 const User = require("./controllers/userHandling");
+const Team = require("./controllers/teamHandling");
+const ranksByNum = require("./ranksByNum");
 const fetch = require("node-fetch");
 const config = require("./config");
 
@@ -47,6 +49,7 @@ const find5MostPlayed = matchData => {
 
 const proccessor = async () => {
   const users = await User.getAllUsers();
+  const teams = await Team.getAllTeams();
   const champion_array = await fetch(
     `http://ddragon.leagueoflegends.com/cdn/${config.currentVersion}/data/en_US/champion.json`,
     {
@@ -73,10 +76,10 @@ const proccessor = async () => {
         leagueData[0].queueType === "RANKED_SOLO_5x5"
           ? leagueData
           : leagueData.reverse();
-      const top5Solo = getChampNames(
-        find5MostPlayed(matchHistory.matches),
-        champion_array
-      );
+      // const top5Solo = getChampNames(
+      //   find5MostPlayed(matchHistory.matches),
+      //   champion_array
+      // );
       await User.updateUser({
         query: { u: user.username },
         body: {
@@ -86,10 +89,39 @@ const proccessor = async () => {
             soloLp: leagueData[0].leaguePoints,
             summonerLevel: accountData.summonerLevel,
             iconId: accountData.profileIconId,
-            soloMostPlayed: top5Solo
+            soloMostPlayed: ["Aatrox", "Aatrox", "Aatrox", "Aatrox", "Aatrox"]
           }
         }
       });
+      await new Promise(resolve => setTimeout(resolve(), 3000));
+    })
+  );
+  await Promise.all(
+    teams.map(async team => {
+      let ranks = await Promise.all(
+        team.members.map(async el => {
+          const user = await User.getUser({
+            query: {
+              u: el
+            }
+          });
+          return ranksByNum(user.soloTier, user.soloDivision, 0);
+        })
+      );
+      const rankSize = ranks.length;
+      if (rankSize > 0) {
+        ranks = ranks.reduce((a, b) => a + b) / rankSize;
+        Team.modifyTeam({
+          query: {
+            t: team.name
+          },
+          body: {
+            data: {
+              pr: String(Math.ceil(ranks))
+            }
+          }
+        });
+      }
       await new Promise(resolve => setTimeout(resolve(), 3000));
     })
   );

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import MediaLink from "../media_links";
 import { AwesomeButton } from "react-awesome-button";
+import api from "../api";
 
 class WelcomeButton extends Component {
   componentDidMount() {
@@ -21,29 +23,17 @@ class WelcomeButton extends Component {
   render() {
     return (
       <div id={"welcome-button"} className={"welcome-button"}>
-        <center>
-          <div
-            className={"button"}
-            onClick={() => {
-              console.log("clicked");
-              document.querySelector(".content-pane").scrollIntoView();
-              setTimeout(() => {
-                window.scrollBy(0, -150);
-              }, 500);
-            }}
-          >
-            <div className="linkButton">Welcome to Titan eSports</div>
-          </div>
-          <h2
-            style={{
-              textShadow: "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black"
-            }}
-          >
-            Titan eSports is currently in development and will be experiencing
-            substantial feature and visual updates in the coming weeks. Check
-            back soon!
-          </h2>
-        </center>
+        {api.get_cookie("titan_key") ? null : (
+          <center>
+            <div className={"button"} onClick={() => this.props.action()}>
+              <div className={"circle-button"}>
+                <div className={"icon"}>
+                  <div className={`fas fa-user-lock fa-4x`} />
+                </div>
+              </div>
+            </div>
+          </center>
+        )}
       </div>
     );
   }

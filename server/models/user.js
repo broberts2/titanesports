@@ -79,6 +79,11 @@ const userSchema = new Schema({
     unique: true,
     required: true
   },
+  titanRole: {
+    type: String,
+    unique: true,
+    required: true
+  },
   memberships: {
     type: Array,
     unique: true,
@@ -93,6 +98,11 @@ const userSchema = new Schema({
     type: Number,
     unique: true,
     required: true
+  },
+  captainTeam: {
+    type: String,
+    unique: false,
+    required: false
   }
 });
 

@@ -9,11 +9,11 @@ class Queues extends Component {
   render() {
     return (
       <div>
-        <table>
+        <table style={{ tableLayout: "auto" }}>
           <tbody>
             <th>{this.props.th}</th>
             <tr>
-              <td align={"left"}>
+              <td align={"left"} width="10%">
                 <div>
                   <h3>{this.props.fv}</h3>
                 </div>
@@ -23,7 +23,7 @@ class Queues extends Component {
                   </h4>
                 </div>
               </td>
-              <td align={"center"}>
+              <td align={"center"} width="20%">
                 <div>
                   <h3>{this.props.tv}</h3>
                 </div>
@@ -33,7 +33,7 @@ class Queues extends Component {
                   </h4>
                 </div>
               </td>
-              <td align={"center"}>
+              <td align={"center"} width="25%">
                 <div>
                   <h3>Preferred Role</h3>
                 </div>
@@ -43,22 +43,23 @@ class Queues extends Component {
                   </h4>
                 </div>
               </td>
-              <td />
+              <td width="45%">
+                <div className={"preferred-champions"}>
+                  <div>
+                    <h3>Preferred Champions</h3>
+                  </div>
+                  {this.props.mostPlayed
+                    ? this.props.mostPlayed.map(el => (
+                        <img
+                          src={`${config.dataDragon}/${config.currentVersion}/img/champion/${el}.png`}
+                        />
+                      ))
+                    : null}
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
-        <div>
-          <h3>Preferred Champions</h3>
-        </div>
-        <div className={"preferred-champions"}>
-          {this.props.mostPlayed
-            ? this.props.mostPlayed.map(el => (
-                <img
-                  src={`${config.dataDragon}/${config.currentVersion}/img/champion/${el}.png`}
-                />
-              ))
-            : null}
-        </div>
       </div>
     );
   }
@@ -86,7 +87,8 @@ class UserProfile extends Component {
       soloLp: user.soloLp,
       soloRole: user.soloRole,
       memberships: user.memberships,
-      soloMostPlayed: user.soloMostPlayed
+      soloMostPlayed: user.soloMostPlayed,
+      titanRole: user.titanRole
     });
   }
 
@@ -127,6 +129,14 @@ class UserProfile extends Component {
         </div>
         <div className={"user-profile"}>
           <div className={"banner"}>
+            {this.props.self ? (
+              <div
+                className={"settings"}
+                onClick={() => this.props.cogAction()}
+              >
+                <i className="fas fa-cog fa-3x" />
+              </div>
+            ) : null}
             <div
               className={"back-button"}
               onClick={() =>
@@ -142,16 +152,18 @@ class UserProfile extends Component {
                   .state.iconId}.png`}
               />
               <div className={"icon-position"}>
-                <img src={position(this.state.soloTier, this.state.soloRole)} />
+                <img
+                  src={position(this.state.soloTier, this.state.titanRole)}
+                />
               </div>
             </div>
             <div className={"banner-name"}>
               <h1>
                 <i>{`${this.state.username}`}</i>
               </h1>
-              <h2>{`(${this.state.memberships
-                ? this.state.memberships[0]
-                : ""})`}</h2>
+              <h2>
+                {this.state.memberships ? `${this.state.memberships[0]}` : ""}
+              </h2>
             </div>
           </div>
           <div className={"content"}>
