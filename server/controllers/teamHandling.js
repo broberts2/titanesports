@@ -22,11 +22,11 @@ module.exports = {
     try {
       const team = await Team.create({
         name: req.body.name,
-        members: req.body.members || ["_0"],
-        subs: req.body.subs || ["_0"],
-        iconId: req.body.iconId || 9,
-        captain: req.body.captain || "_0",
-        pr: "1"
+        members: req.body.members || [req.body.name],
+        subs: req.body.subs || [req.body.name],
+        iconId: req.body.iconId || Math.random() * 1000,
+        captain: req.body.captain || req.body.name,
+        pr: new String(Math.random() * 1000)
       });
       return team;
     } catch (e) {

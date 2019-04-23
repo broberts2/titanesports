@@ -15,6 +15,35 @@ table td {
   padding-top: 5px;
   padding-bottom: 5px;
 }
+input {
+  font-size: 20px;
+  bottom: 0;
+  border: 0;
+  outline: 0;
+  margin: 0px;
+  background: transparent;
+  border-bottom: 2px solid rgb(185, 185, 185);
+  height: 35px;
+  margin: 5px;
+  margin-bottom: 25px;
+  padding-left: 10px;
+  color: rgb(185, 185, 185);
+}
+textarea {
+  font-size: 20px;
+  width: 100%;
+  bottom: 0;
+  border: 0;
+  outline: 0;
+  margin: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom: 0px solid rgb(185, 185, 185);
+  height: 300px;
+  margin: 5px;
+  margin-bottom: 25px;
+  padding-left: 10px;
+  color: rgb(185, 185, 185);
+}
 .article {
   width: 100%;
   overflow-y: hidden;
@@ -30,8 +59,23 @@ table td {
   transition: all 0.2s ease-in-out;
   display: inline-flex;
 }
+.article .articles .newImg {
+  position: relative;
+}
+.article .articles .newImg img {
+}
+.article .articles .newImg .icon {
+  color: rgb(42, 42, 42);
+  top: 25%;
+  -ms-transform: translateY(-25%);
+  transform: translateY(-25%);
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  position: absolute;
+}
 .article .articles:hover {
-  transform: scale(1.01);
+  transform: scale(0.99);
 }
 .article .articles img {
   width: 100%;
@@ -68,6 +112,29 @@ table td {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   bottom: 15px;
+}
+.article-maker {
+  padding: 15px;
+  height: 100%;
+}
+.article .save {
+  width: 50%;
+}
+.article-maker .content {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+}
+.article-maker .content .block {
+  margin-bottom: 50px;
+}
+.article-maker .content .controls {
+  margin-top: -65px;
+  margin-bottom: 25px;
+}
+.article-maker .content .controls i {
+  margin: 5px;
+  cursor: pointer;
 }
 .audio_button {
   position: absolute;
@@ -299,12 +366,6 @@ table td {
   position: relative;
   padding: 50px;
 }
-.modal-style input {
-  height: 100%;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 .modal-button-group {
   position: absolute;
   top: 20%;
@@ -338,22 +399,6 @@ table td {
   position: relative;
   height: 75px;
   background-color: transparent;
-}
-.search .bar input {
-  position: absolute;
-  font-size: 20px;
-  bottom: 0;
-  border: 0;
-  outline: 0;
-  margin: 0px;
-  background: transparent;
-  border-bottom: 2px solid rgb(185, 185, 185);
-  height: 35px;
-  width: 35%;
-  margin: 5px;
-  margin-bottom: 25px;
-  padding-left: 10px;
-  color: rgb(185, 185, 185);
 }
 .search .content {
   position: relative;

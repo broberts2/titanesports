@@ -152,9 +152,16 @@ class App extends Component {
                 >
                   <Articles
                     articles={this.state.articles}
+                    userLogged={this.state.userLogged}
                     setArticle={i => {
-                      this.setMenu(16);
-                      this.setState({ activeArticle: this.state.articles[i] });
+                      if (i < 0) {
+                        this.setMenu(17);
+                      } else {
+                        this.setMenu(16);
+                        this.setState({
+                          activeArticle: this.state.articles[i]
+                        });
+                      }
                     }}
                   />
                   <div className="row" style={{ marginTop: "15px" }}>

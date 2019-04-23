@@ -10,27 +10,27 @@ const teamSchema = new Schema({
   members: {
     type: Array,
     unique: false,
-    required: true
+    required: false
   },
   subs: {
     type: Array,
     unique: false,
-    required: true
+    required: false
   },
   iconId: {
     type: Number,
     unique: false,
-    required: true
+    required: false
   },
   captain: {
     type: String,
     unique: false,
-    required: true
+    required: false
   },
   pr: {
     type: String,
     unique: false,
-    required: true
+    required: false
   }
 });
 

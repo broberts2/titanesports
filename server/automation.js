@@ -59,7 +59,8 @@ const proccessor = async () => {
     .then(res => res.json())
     .then(res => res.data);
   await Promise.all(
-    users.map(async user => {
+    users.map(async (user, i) => {
+      await new Promise(resolve => setTimeout(() => resolve(), 10000 * i));
       let accountData = await Summoner.summonerBySummonerId({
         query: { summonerId: user.lolSummonerId }
       });
@@ -72,28 +73,35 @@ const proccessor = async () => {
       leagueData = JSON.parse(leagueData);
       accountData = JSON.parse(accountData);
       matchHistory = JSON.parse(matchHistory);
-      leagueData =
-        leagueData[0].queueType === "RANKED_SOLO_5x5"
-          ? leagueData
-          : leagueData.reverse();
-      // const top5Solo = getChampNames(
-      //   find5MostPlayed(matchHistory.matches),
-      //   champion_array
-      // );
-      await User.updateUser({
-        query: { u: user.username },
-        body: {
-          data: {
-            soloTier: leagueData[0].tier,
-            soloDivision: leagueData[0].rank,
-            soloLp: leagueData[0].leaguePoints,
-            summonerLevel: accountData.summonerLevel,
-            iconId: accountData.profileIconId,
-            soloMostPlayed: ["Aatrox", "Aatrox", "Aatrox", "Aatrox", "Aatrox"]
+      if (leagueData[0] === undefined) {
+        leagueData = {
+          soloTier: "Unranked",
+          soloDivision: "Unranked",
+          soloLp: 0
+        };
+      } else {
+        leagueData =
+          leagueData[0].queueType === "RANKED_SOLO_5x5"
+            ? leagueData
+            : leagueData.reverse();
+        // const top5Solo = getChampNames(
+        //   find5MostPlayed(matchHistory.matches),
+        //   champion_array
+        // );
+        await User.updateUser({
+          query: { u: user.username },
+          body: {
+            data: {
+              soloTier: leagueData[0].tier,
+              soloDivision: leagueData[0].rank,
+              soloLp: leagueData[0].leaguePoints,
+              summonerLevel: accountData.summonerLevel,
+              iconId: accountData.profileIconId,
+              soloMostPlayed: ["Aatrox", "Aatrox", "Aatrox", "Aatrox", "Aatrox"]
+            }
           }
-        }
-      });
-      await new Promise(resolve => setTimeout(resolve(), 3000));
+        });
+      }
     })
   );
   await Promise.all(
@@ -108,6 +116,9 @@ const proccessor = async () => {
           return ranksByNum(user.soloTier, user.soloDivision, 0);
         })
       );
+      ranks = ranks.filter(el => {
+        return el != null;
+      });
       const rankSize = ranks.length;
       if (rankSize > 0) {
         ranks = ranks.reduce((a, b) => a + b) / rankSize;
@@ -117,7 +128,7 @@ const proccessor = async () => {
           },
           body: {
             data: {
-              pr: String(Math.ceil(ranks))
+              pr: String(Math.round(ranks))
             }
           }
         });

@@ -29,6 +29,9 @@ module.exports = (tier, division, lp) => {
     case "CHALLENGER":
       tierVal += 80;
       break;
+    default:
+      return undefined;
+      break;
   }
   switch (division) {
     case "IV":

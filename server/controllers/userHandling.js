@@ -5,6 +5,7 @@ const restrict = require("./restrict");
 const Summoner = require("./riot_api/SUMMONER-V4");
 
 const filterUser = user => ({
+  level: user.level,
   username: user.username,
   iconId: user.iconId,
   soloTier: user.soloTier,
@@ -46,6 +47,7 @@ module.exports = {
     }
   },
   createUser: async (req, res) => {
+    console.log(req);
     try {
       const summoner = await Summoner.summonerByName({
         query: {
@@ -81,6 +83,10 @@ module.exports = {
     } catch (e) {
       throw new Error(e.message);
     }
+  },
+  getUserLevel: async (req, res) => {
+    console.log(req.query);
+    return "valid";
   },
   loginUser: async (req, res) => {
     const credentials = new Buffer(

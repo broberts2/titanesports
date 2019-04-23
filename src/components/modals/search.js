@@ -11,7 +11,7 @@ class CustomRow extends Component {
   render() {
     return (
       <tr onClick={() => this.props.action()}>
-        <td align="center">
+        <td align="left">
           <div style={{ width: "150px", textAlign: "left" }}>
             {this.props.captain && this.props.captain.length > 0 ? (
               <div className={"captain-hat"}>
@@ -22,17 +22,28 @@ class CustomRow extends Component {
               src={`${config.dataDragon}/${config.currentVersion}/img/profileicon/${this
                 .props.iconId}.png`}
             />
-            {this.props.username}
+            <p
+              style={{
+                display: "inline-flex",
+                marginRight: "-300px"
+              }}
+            >
+              {this.props.username}
+            </p>
           </div>
         </td>
         <td align="center">
           <img src={position(this.props.tier, this.props.role)} />
         </td>
         <td align="center">
-          {this.props.tier} {this.props.division}
+          <p>{this.props.tier}</p> {this.props.division}
         </td>
-        <td align="center">{this.props.lp}</td>
-        <td align="center">{this.props.membership}</td>
+        <td align="center">
+          <p>{this.props.lp}</p>
+        </td>
+        <td align="center">
+          <p>{this.props.membership}</p>
+        </td>
       </tr>
     );
   }
@@ -142,19 +153,21 @@ export default class Search extends Component {
         <div className={"content"}>
           <table>
             <tbody>
-              {this.state.users.map(el => (
-                <CustomRow
-                  captain={el.captainTeam}
-                  username={el.username}
-                  role={el.titanRole}
-                  iconId={el.iconId}
-                  tier={el.soloTier}
-                  division={el.soloDivision}
-                  lp={el.soloLp}
-                  membership={el.memberships[0]}
-                  action={() => this.props.action(el.username)}
-                />
-              ))}
+              {this.state.users.map(el => {
+                return (
+                  <CustomRow
+                    captain={el.captainTeam}
+                    username={el.username}
+                    role={el.titanRole}
+                    iconId={el.iconId}
+                    tier={el.soloTier}
+                    division={el.soloDivision}
+                    lp={el.soloLp}
+                    membership={el.memberships[0]}
+                    action={() => this.props.action(el.username)}
+                  />
+                );
+              })}
             </tbody>
           </table>
         </div>

@@ -2,11 +2,11 @@ const fetch = require("node-fetch");
 
 module.exports = {
   GET: url =>
-    fetch(`${url}`, {
+    fetch(`${encodeURI(url)}`, {
       method: "GET"
     }).then(response => response.text()),
   POST: (url, body) =>
-    fetch(`${url}`, {
+    fetch(`${encodeURI(url)}`, {
       method: "POST",
       body: JSON.stringify(body)
     }).then(response => response.text())

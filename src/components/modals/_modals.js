@@ -12,6 +12,7 @@ import UserSettings from "./user_settings";
 import Teams2 from "./teams2";
 import SignUp from "./sign_up";
 import Article from "./article";
+import ArticleMaker from "./article_maker";
 
 export default (state, searchTerm, batchSearchTerm, cb, activeArticle, Obj) => [
   <Leagues index={1} visible={state} closeModal={() => cb()} />,
@@ -94,6 +95,12 @@ export default (state, searchTerm, batchSearchTerm, cb, activeArticle, Obj) => [
   <SignUp index={15} visible={state} closeModal={() => cb()} />,
   <Article
     index={16}
+    activeArticle={activeArticle}
+    visible={state}
+    closeModal={() => cb()}
+  />,
+  <ArticleMaker
+    index={17}
     activeArticle={activeArticle}
     visible={state}
     closeModal={() => cb()}
