@@ -106,17 +106,25 @@ export default (
     visible={state}
     closeModal={() => cb()}
     editModal={() => Obj.editModal()}
+<<<<<<< HEAD
     setArticles={() => Obj.setArticles()}
+=======
+    getArticles={() => Obj.getArticles()}
+>>>>>>> fc56a5a1f5f3765b485a1af982df80cb0b053532
   />,
   <ArticleMaker
     index={17}
-    setArticles={() => Obj.setArticles()}
+    getArticles={() => Obj.getArticles()}
     visible={state}
     closeModal={() => cb()}
   />,
   <ArticleMaker
     index={18}
+<<<<<<< HEAD
     setArticles={() => Obj.setArticles()}
+=======
+    getArticles={() => Obj.getArticles()}
+>>>>>>> fc56a5a1f5f3765b485a1af982df80cb0b053532
     lastModal={() => Obj.setMenu(16)}
     activeArticle={activeArticle}
     visible={state}
