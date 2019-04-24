@@ -1,0 +1,21 @@
+.circle-button {
+  --dim: 135px;
+  position: relative;
+  width: var(--dim);
+  height: var(--dim);
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: rgba(42, 42, 42, 0.95);
+  transition: all 0.2s ease-in-out;
+}
+.circle-button:hover {
+  transform: scale(1.1);
+}
+.circle-button .icon {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  color: rgb(200, 200, 200);
+}

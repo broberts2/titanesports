@@ -1,0 +1,32 @@
+.header {
+  position: fixed;
+  top: 0%;
+  z-index: 5;
+  width: 100%;
+  pointer-events: none;
+}
+.header img {
+  --dim: 200px;
+  width: var(--dim);
+  height: var(--dim);
+  margin: 15px;
+  transform-origin: 0% 0%;
+}
+.header .button-cluster {
+  transform-origin: 100% 0%;
+  float: right;
+  font-size: 100px;
+  pointer-events: auto;
+}
+.header .button-cluster .button {
+  margin: 0px;
+  margin-right: 30px;
+  display: inline-flex;
+}
+@media only screen and (max-width: 700px) {
+  .header img {
+    --dim: 100px;
+    width: var(--dim);
+    height: var(--dim);
+  }
+}

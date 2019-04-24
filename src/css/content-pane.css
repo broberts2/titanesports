@@ -1,0 +1,8 @@
+.content-pane {
+  --bgColor: rgb(42, 42, 42);
+  background-color: var(--bgColor);
+  position: relative;
+  padding: 10px;
+}
+.content-pane .buffer {
+}

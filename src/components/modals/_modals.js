@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Leagues from "./leagues";
 import Stats from "./stats";
 import MenuMini from "./mini_menu";
-import RiotTermsOfUse from "./riot_tou";
 import Teams from "./teams";
 import SignIn from "./sign_in";
 import UserProfile from "./user_profile";
@@ -31,7 +30,6 @@ export default (
     closeModal={() => cb()}
     action={() => Obj.setMenu(1)}
   />,
-  <RiotTermsOfUse index={4} visible={state} closeModal={() => cb()} />,
   <Teams index={5} visible={state} closeModal={() => cb()} />,
   <SignIn
     index={6}
@@ -108,7 +106,7 @@ export default (
     visible={state}
     closeModal={() => cb()}
     editModal={() => Obj.editModal()}
-    getArticles={() => Obj.setArticles()}
+    setArticles={() => Obj.setArticles()}
   />,
   <ArticleMaker
     index={17}
@@ -118,6 +116,7 @@ export default (
   />,
   <ArticleMaker
     index={18}
+    setArticles={() => Obj.setArticles()}
     lastModal={() => Obj.setMenu(16)}
     activeArticle={activeArticle}
     visible={state}

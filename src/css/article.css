@@ -1,0 +1,42 @@
+.article {
+  text-align: center;
+  width: 100%;
+  overflow-y: hidden;
+}
+.article .content {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.article .articles {
+  width: calc(33% - 30px);
+  margin: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: inline-flex;
+}
+.article .articles .newImg {
+  position: relative;
+}
+.article .articles .newImg img {
+}
+.article .articles .newImg .icon {
+  color: rgb(42, 42, 42);
+  top: 25%;
+  -ms-transform: translateY(-25%);
+  transform: translateY(-25%);
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  position: absolute;
+}
+.article .articles:hover {
+  transform: scale(0.99);
+}
+.article .articles img {
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
+}
+.article .save {
+  width: 50%;
+}

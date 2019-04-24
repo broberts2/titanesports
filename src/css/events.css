@@ -1,0 +1,13 @@
+.events {
+  position: relative;
+  height: 100%;
+  padding: 15px;
+}
+.events .button {
+  position: absolute;
+  bottom: 7.5px;
+  width: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}

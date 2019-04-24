@@ -1,0 +1,31 @@
+.article-maker {
+  padding: 15px;
+  height: 100%;
+}
+.article-maker .content {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+}
+.article-maker .content .back-button {
+  margin: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.article-maker .content .block {
+  margin-bottom: 50px;
+}
+.article-maker .content .block input {
+  width: 35%;
+}
+.article-maker .content .controls {
+  margin-top: -65px;
+  margin-bottom: 25px;
+}
+.article-maker .content .controls i {
+  margin: 5px;
+  cursor: pointer;
+}

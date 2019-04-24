@@ -1,0 +1,19 @@
+.welcome-button {
+  cursor: pointer;
+  position: absolute;
+  top: 45vh;
+  -ms-transform: translateY(-50vh);
+  transform: translateY(-50vh);
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.welcome-button .button {
+  margin: 15px;
+  display: inline-flex;
+}
+@media only screen and (max-width: 700px) {
+  .welcome-button {
+    display: none;
+  }
+}

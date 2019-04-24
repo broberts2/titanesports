@@ -1,0 +1,12 @@
+.modal-button-group {
+  position: absolute;
+  top: 20%;
+  -ms-transform: translateY(-20%);
+  transform: translateY(-20%);
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.modal-button-group .button {
+  margin: 15px;
+}

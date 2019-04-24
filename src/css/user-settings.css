@@ -1,0 +1,47 @@
+.user-settings {
+  position: relative;
+  height: 100%;
+  padding: 15px;
+}
+.user-settings .container {
+  height: 85%;
+  overflow-y: scroll;
+}
+.user-settings .element {
+  margin-bottom: 50px;
+}
+.user-settings h1 {
+  border-bottom: 2px solid gray;
+  width: 45%;
+}
+.user-settings .approve-icon {
+  color: green;
+}
+.user-settings .deny-icon {
+  color: red;
+}
+.user-settings .button {
+  position: absolute;
+  bottom: 7.5px;
+  width: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.user-settings .button-deny {
+  position: absolute;
+  bottom: 7.5px;
+  width: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  opacity: 0.25;
+  pointer-events: none;
+}
+.user-settings .back-button {
+  margin: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}

@@ -31,11 +31,15 @@ export default class Article extends Component {
                     this.props.activeArticle.approved ? (
                       <i
                         className="fas fa-hand-paper fa-3x"
-                        onClick={() => {
+                        onClick={async () => {
                           if (window.confirm("Un-publish this article?")) {
-                            api.update_article(this.props.activeArticle.title, {
-                              approved: false
-                            });
+                            await api.update_article(
+                              this.props.activeArticle.title,
+                              {
+                                approved: false
+                              }
+                            );
+                            await this.props.setArticles();
                             this.props.closeModal();
                           }
                         }}
@@ -43,11 +47,15 @@ export default class Article extends Component {
                     ) : (
                       <i
                         className="fas fa-check-square fa-3x"
-                        onClick={() => {
+                        onClick={async () => {
                           if (window.confirm("Publish this article?")) {
-                            api.update_article(this.props.activeArticle.title, {
-                              approved: true
-                            });
+                            await api.update_article(
+                              this.props.activeArticle.title,
+                              {
+                                approved: true
+                              }
+                            );
+                            await this.props.setArticles();
                             this.props.closeModal();
                           }
                         }}
@@ -62,9 +70,12 @@ export default class Article extends Component {
                   />
                   <i
                     className="fas fa-window-close fa-3x"
-                    onClick={() => {
+                    onClick={async () => {
                       if (window.confirm("Delete this article?")) {
-                        api.delete_article(this.props.activeArticle.title);
+                        await api.delete_article(
+                          this.props.activeArticle.title
+                        );
+                        await this.props.setArticles();
                         this.props.closeModal();
                       }
                     }}

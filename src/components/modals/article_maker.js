@@ -113,6 +113,7 @@ export default class ArticleMaker extends Component {
                       this.state.title = this.state.newTitle;
                       console.log(this.state);
                       await api.update_article(title, this.state);
+                      await this.props.setArticles();
                       this.props.closeModal();
                     }}
                   >
