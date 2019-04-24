@@ -111,8 +111,8 @@ export default class ArticleMaker extends Component {
                     onClick={async () => {
                       const title = this.state.title;
                       this.state.title = this.state.newTitle;
-                      console.log(this.state);
                       await api.update_article(title, this.state);
+                      this.props.getArticles();
                       this.props.closeModal();
                     }}
                   >
@@ -124,8 +124,8 @@ export default class ArticleMaker extends Component {
                     onClick={async () => {
                       this.state.title = this.state.newTitle;
                       await api.create_article(this.state);
+                      this.props.getArticles();
                       this.props.closeModal();
-                      this.props.setArticles();
                     }}
                   >
                     Create
