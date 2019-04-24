@@ -193,6 +193,23 @@ module.exports = {
       method: "get"
     });
   },
+  create_article: body => {
+    return request(`/api/create_article`, {
+      method: "post",
+      body: JSON.stringify(body)
+    });
+  },
+  update_article: (title, data) => {
+    return request(`/api/update_article?title=${title}`, {
+      method: "put",
+      body: JSON.stringify(data)
+    });
+  },
+  delete_article: title => {
+    return request(`/api/delete_article?title=${title}`, {
+      method: "delete"
+    });
+  },
   create_cookie: (name, value) => Cookies.set(name, value, { expires: 1 }),
   remove_cookie: name => Cookies.remove(name),
   get_cookie: name => Cookies.get(name)

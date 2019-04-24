@@ -47,7 +47,6 @@ module.exports = {
     }
   },
   createUser: async (req, res) => {
-    console.log(req);
     try {
       const summoner = await Summoner.summonerByName({
         query: {
@@ -85,7 +84,6 @@ module.exports = {
     }
   },
   getUserLevel: async (req, res) => {
-    console.log(req.query);
     return "valid";
   },
   loginUser: async (req, res) => {

@@ -1,8 +1,18 @@
 import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
+import api from "../../api";
 
 export default class Article extends Component {
+  state = {
+    level: 7
+  };
+
+  async componentDidMount() {
+    const self = await api.get_self();
+    this.setState({ level: self.level });
+  }
+
   render() {
     return (
       <Modal
@@ -15,12 +25,60 @@ export default class Article extends Component {
         <div className={"modal-style"}>
           <div className={"article-body"}>
             <div className={"content"}>
-              <img src={this.props.activeArticle.imgURL} />
+              {this.state.level < 4 && this.props.userLogged ? (
+                <div className={"edit-bar"}>
+                  {this.state.level < 3 ? (
+                    this.props.activeArticle.approved ? (
+                      <i
+                        className="fas fa-hand-paper fa-3x"
+                        onClick={() => {
+                          if (window.confirm("Un-publish this article?")) {
+                            api.update_article(this.props.activeArticle.title, {
+                              approved: false
+                            });
+                            this.props.closeModal();
+                          }
+                        }}
+                      />
+                    ) : (
+                      <i
+                        className="fas fa-check-square fa-3x"
+                        onClick={() => {
+                          if (window.confirm("Publish this article?")) {
+                            api.update_article(this.props.activeArticle.title, {
+                              approved: true
+                            });
+                            this.props.closeModal();
+                          }
+                        }}
+                      />
+                    )
+                  ) : null}
+                  <i
+                    className="fas fa-pen-square fa-3x"
+                    onClick={() => {
+                      this.props.editModal();
+                    }}
+                  />
+                  <i
+                    className="fas fa-window-close fa-3x"
+                    onClick={() => {
+                      if (window.confirm("Delete this article?")) {
+                        api.delete_article(this.props.activeArticle.title);
+                        this.props.closeModal();
+                      }
+                    }}
+                  />
+                </div>
+              ) : null}
+              <div className={"poster"}>
+                <img src={this.props.activeArticle.imgURL} />
+              </div>
               <h1>{this.props.activeArticle.title}</h1>
               <h4>
                 Posted by: <i>{this.props.activeArticle.p}</i>
               </h4>
-              <h5>April 19th, 2019</h5>
+              <h5>{this.props.activeArticle.date}</h5>
               <div className={"spacer"} />
               {this.props.activeArticle.content.map(el => (
                 <div className={"margin"}>

@@ -149,11 +149,23 @@ security.post(
   routifyPromiseStandard(3, Compounds.pastSeasonPeakRankAverageByTeam)
 );
 security.post("/create_team", routifyPromiseStandard(1, Team.createTeam));
+security.post(
+  "/create_article",
+  routifyPromiseStandard(3, Article.createArticle)
+);
 security.get("/verify_user", routifyPromiseStandard(0, User.verifyUser));
 security.put("/update_user", routifyPromiseStandard(3, User.updateUser));
+security.put(
+  "/update_article",
+  routifyPromiseStandard(3, Article.updateArticle)
+);
 security.put("/update_self", routifyPromiseNoRestrict(User.updateSelf));
 security.get("/get_self", routifyPromiseNoRestrict(User.getSelf));
 security.delete("/delete_user", routifyPromiseStandard(3, User.deleteUser));
+security.delete(
+  "/delete_article",
+  routifyPromiseStandard(2, Article.deleteArticle)
+);
 
 app.post("/u/create_user", routifyPromiseNoRestrict(User.createUser));
 app.get("/u/login_user", routifyPromiseNoRestrict(User.loginUser));
@@ -163,7 +175,7 @@ app.get("/t/get_teams", routifyPromiseNoRestrict(Team.getAllTeams));
 app.get("/a/get_articles", routifyPromiseNoRestrict(Article.getAllArticles));
 app.get("/a/create_article", routifyPromiseNoRestrict(Article.createArticle));
 
-automation();
+// automation();
 
 app
   .use(express.static(path.join(__dirname, "public")))

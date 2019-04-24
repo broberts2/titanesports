@@ -14,7 +14,15 @@ import SignUp from "./sign_up";
 import Article from "./article";
 import ArticleMaker from "./article_maker";
 
-export default (state, searchTerm, batchSearchTerm, cb, activeArticle, Obj) => [
+export default (
+  state,
+  searchTerm,
+  batchSearchTerm,
+  cb,
+  activeArticle,
+  userLogged,
+  Obj
+) => [
   <Leagues index={1} visible={state} closeModal={() => cb()} />,
   <Stats index={2} isible={state} closeModal={() => cb()} />,
   <MenuMini
@@ -94,13 +102,23 @@ export default (state, searchTerm, batchSearchTerm, cb, activeArticle, Obj) => [
   />,
   <SignUp index={15} visible={state} closeModal={() => cb()} />,
   <Article
+    userLogged={userLogged}
     index={16}
     activeArticle={activeArticle}
     visible={state}
     closeModal={() => cb()}
+    editModal={() => Obj.editModal()}
+    getArticles={() => Obj.setArticles()}
   />,
   <ArticleMaker
     index={17}
+    setArticles={() => Obj.setArticles()}
+    visible={state}
+    closeModal={() => cb()}
+  />,
+  <ArticleMaker
+    index={18}
+    lastModal={() => Obj.setMenu(16)}
     activeArticle={activeArticle}
     visible={state}
     closeModal={() => cb()}

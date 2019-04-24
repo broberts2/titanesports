@@ -104,8 +104,8 @@ export default class SignIn extends Component {
     return (
       <Modal
         visible={this.props.visible === this.props.index ? true : false}
-        width={"400"}
-        height={"335"}
+        width={"35%"}
+        height={"60%"}
         effect={"fadeInUp"}
         onClickAway={() => {
           this.setState({

@@ -20,11 +20,10 @@ input {
   bottom: 0;
   border: 0;
   outline: 0;
-  margin: 0px;
   background: transparent;
   border-bottom: 2px solid rgb(185, 185, 185);
   height: 35px;
-  margin: 5px;
+  margin: 2.5px;
   margin-bottom: 25px;
   padding-left: 10px;
   color: rgb(185, 185, 185);
@@ -45,6 +44,7 @@ textarea {
   color: rgb(185, 185, 185);
 }
 .article {
+  text-align: center;
   width: 100%;
   overflow-y: hidden;
 }
@@ -53,7 +53,7 @@ textarea {
   white-space: nowrap;
 }
 .article .articles {
-  width: calc(50% - 30px);
+  width: calc(33% - 30px);
   margin: 15px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -83,7 +83,6 @@ textarea {
   object-fit: cover;
 }
 .article-body {
-  position: relative;
   width: 100%;
   height: 100%;
   padding: 15px;
@@ -95,15 +94,28 @@ textarea {
   padding: 15px;
 }
 .article-body .content {
+  position: relative;
   width: 100%;
   height: 90%;
   overflow-y: scroll;
 }
 .article-body .content img {
+}
+.article-body .content .poster img {
   width: 100%;
   height: calc(100% - 120px);
   object-fit: cover;
   object-position: 0 0;
+}
+.article-body .content .edit-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.article-body .content .edit-bar i {
+  margin: 15px;
+  cursor: pointer;
+  color: rgb(0, 209, 255);
 }
 .article-body .close-button {
   width: 50%;
@@ -121,12 +133,23 @@ textarea {
   width: 50%;
 }
 .article-maker .content {
+  position: relative;
   overflow-x: hidden;
   overflow-y: scroll;
   height: 100%;
 }
+.article-maker .content .back-button {
+  margin: 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
 .article-maker .content .block {
   margin-bottom: 50px;
+}
+.article-maker .content .block input {
+  width: 35%;
 }
 .article-maker .content .controls {
   margin-top: -65px;

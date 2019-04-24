@@ -21,11 +21,6 @@ class Card extends Component {
               <div style={{ textAlign: "left" }}>
                 <p>Posted by: {this.props.p}</p>
                 <p>Dated Posted: {this.props.date}</p>
-                <p>
-                  {`Comments: ${this.props.metaData.comments} / Likes: ${this
-                    .props.metaData.likes}
-                      / Views: ${this.props.metaData.views}`}
-                </p>
               </div>
             </div>
           )}
@@ -54,28 +49,33 @@ class Articles extends Component {
   }
 
   render() {
+    let cards = [];
+    if (this.state.level < 4 && this.props.userLogged) {
+      cards.push(
+        <Card activate={() => this.props.setArticle("new")} new={true} />
+      );
+    }
+    this.props.articles.map((el, i) => {
+      const card = (
+        <Card
+          activate={() => this.props.setArticle(i)}
+          imgURL={el.imgURL}
+          title={el.title}
+          p={el.p}
+          date={el.date}
+          metaData={el.metaData}
+        />
+      );
+      if (this.state.level < 4) {
+        cards.push(card);
+      } else if (el.approved) {
+        cards.push(card);
+      }
+    });
     return (
       <div className={"article"}>
         <div className={"content"}>
-          <div>
-            {this.state.level < 4 && this.props.userLogged ? (
-              <Card activate={() => this.props.setArticle(-1)} new={true} />
-            ) : null}
-            {this.props.articles.length > 0 ? (
-              this.props.articles.map((el, i) => (
-                <Card
-                  activate={() => this.props.setArticle(i)}
-                  imgURL={el.imgURL}
-                  title={el.title}
-                  p={el.p}
-                  date={el.date}
-                  metaData={el.metaData}
-                />
-              ))
-            ) : (
-              <Loader />
-            )}
-          </div>
+          <div>{cards}</div>
         </div>
       </div>
     );

@@ -47,13 +47,20 @@ class App extends Component {
     setMenu: num => this.setMenu(num),
     showUser: userLogged => this.setState({ userLogged }),
     setSearchTerm: searchTerm => this.setState({ searchTerm }),
-    setBatchSearchTerm: batchSearchTerm => this.setState({ batchSearchTerm })
+    setBatchSearchTerm: batchSearchTerm => this.setState({ batchSearchTerm }),
+    setArticles: () => this.getArticles(),
+    editModal: () => {
+      this.setMenu(18);
+    }
   };
 
-  async componentDidMount() {
-    const articles = await api.get_articles();
+  async getArticles() {
+    let articles = await api.get_articles();
     this.setState({ articles });
-    console.log(this.state.articles);
+  }
+
+  componentDidMount() {
+    this.getArticles();
   }
 
   render() {
@@ -74,6 +81,7 @@ class App extends Component {
           this.state.batchSearchTerm,
           () => this.closeModal(),
           this.state.activeArticle,
+          this.state.userLogged,
           this.modalActions
         )}
         <VideoBackground />
@@ -154,7 +162,7 @@ class App extends Component {
                     articles={this.state.articles}
                     userLogged={this.state.userLogged}
                     setArticle={i => {
-                      if (i < 0) {
+                      if (i === "new") {
                         this.setMenu(17);
                       } else {
                         this.setMenu(16);
