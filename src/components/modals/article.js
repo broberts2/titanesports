@@ -39,12 +39,7 @@ export default class Article extends Component {
                                 approved: false
                               }
                             );
-<<<<<<< HEAD
                             await this.props.setArticles();
-=======
-                            this.props.getArticles();
->>>>>>> fc56a5a1f5f3765b485a1af982df80cb0b053532
-                            this.props.closeModal();
                           }
                         }}
                       />
@@ -59,12 +54,7 @@ export default class Article extends Component {
                                 approved: true
                               }
                             );
-<<<<<<< HEAD
                             await this.props.setArticles();
-=======
-                            this.props.getArticles();
->>>>>>> fc56a5a1f5f3765b485a1af982df80cb0b053532
-                            this.props.closeModal();
                           }
                         }}
                       />
@@ -83,11 +73,7 @@ export default class Article extends Component {
                         await api.delete_article(
                           this.props.activeArticle.title
                         );
-<<<<<<< HEAD
                         await this.props.setArticles();
-=======
-                        this.props.getArticles();
->>>>>>> fc56a5a1f5f3765b485a1af982df80cb0b053532
                         this.props.closeModal();
                       }
                     }}
