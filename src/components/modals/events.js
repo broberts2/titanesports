@@ -1,9 +1,52 @@
 import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
+import BigCalendar from "react-big-calendar";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import moment from "moment";
 
 export default class Events extends Component {
+  state = {
+    events: [
+      {
+        start: new Date(),
+        end: new Date(moment().add(1, "hours")),
+        title: "Some title"
+      },
+      {
+        start: new Date(moment().add(3, "hours")),
+        end: new Date(moment().add(4, "hours")),
+        title: "Some title"
+      },
+      {
+        start: new Date(moment().add(5, "hours")),
+        end: new Date(moment().add(6, "hours")),
+        title: "Some title"
+      },
+      {
+        start: new Date(moment().add(7, "hours")),
+        end: new Date(moment().add(8, "hours")),
+        title: "Some title"
+      },
+      {
+        start: new Date(moment().add(9, "hours")),
+        end: new Date(moment().add(10, "hours")),
+        title: "Some title"
+      }
+    ]
+  };
   render() {
+    const localizer = BigCalendar.momentLocalizer(moment);
+    const MyCalendar = props => (
+      <div style={{ height: "90%" }}>
+        <BigCalendar
+          localizer={localizer}
+          events={this.state.events}
+          startAccessor="start"
+          endAccessor="end"
+        />
+      </div>
+    );
     return (
       <Modal
         visible={this.props.state.modal === this.props.index ? true : false}
@@ -14,14 +57,7 @@ export default class Events extends Component {
       >
         <div className={"modal-style"}>
           <div className={"events"}>
-            <iframe
-              src="https://calendar.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=titanesportsleague%40gmail.com&amp;color=%231B887A&amp;ctz=America%2FNome"
-              style={{ borderWidth: "0" }}
-              width={"100%"}
-              height={"100%"}
-              frameborder="0"
-              scrolling="no"
-            />
+            <MyCalendar />
             <div className={"button"}>
               <div
                 className="linkButton"

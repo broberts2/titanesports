@@ -4,10 +4,12 @@
   "private": true,
   "dependencies": {
     "js-cookie": "^2.2.0",
+    "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-awesome-button": "^6.1.0",
     "react-awesome-modal": "^2.0.5",
+    "react-big-calendar": "^0.20.4",
     "react-dom": "^16.8.6",
     "react-dropdown": "^1.6.4",
     "react-epic-spinners": "^0.3.0",
