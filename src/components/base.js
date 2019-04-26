@@ -89,16 +89,6 @@ class Base extends Component {
                   className="theSection"
                   style={{ marginTop: "30px", borderRadius: "10px" }}
                 >
-                  <Articles
-                    articles={this.props.state.articles}
-                    userLogged={this.props.state.userLogged}
-                    setArticle={i => {
-                      i < 0
-                        ? this.props.actions.setMenu(17)
-                        : this.props.actions.setMenu(16);
-                      this.props.actions.setArticle(i);
-                    }}
-                  />
                   <div className="row" style={{ marginTop: "15px" }}>
                     <div className="col">
                       <div className="theCards">
@@ -141,6 +131,16 @@ class Base extends Component {
                     </div>
                   </div>
                 </div>
+                <Articles
+                  articles={this.props.state.articles}
+                  userLogged={this.props.state.userLogged}
+                  setArticle={i => {
+                    i < 0
+                      ? this.props.actions.setMenu(17)
+                      : this.props.actions.setMenu(16);
+                    this.props.actions.setArticle(i);
+                  }}
+                />
                 <div className="footerBar">
                   <div className="row">
                     <div className="col sm-6 md-3">
