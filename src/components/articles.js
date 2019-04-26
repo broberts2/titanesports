@@ -1,29 +1,33 @@
 import React, { Component } from "react";
 import Loader from "./modals/loader";
-import api from "../api";
+import api from "../utils/api";
 
 class Card extends Component {
   render() {
     return (
       <div className={"articles"} onClick={() => this.props.activate()}>
-        <div className="theCards">
-          {this.props.new ? (
-            <div className={"newImg"}>
-              <img src={require("../img/new.jpg")} alt />
-              <div className={"icon"}>
-                <div className="fas fa-plus-square fa-6x" />
+        <div
+          className={this.props.approved || this.props.new ? null : "shadow"}
+        >
+          <div className="theCards">
+            {this.props.new ? (
+              <div className={"newImg"}>
+                <img src={require("../img/new.jpg")} alt />
+                <div className={"icon"}>
+                  <div className="fas fa-plus-square fa-6x" />
+                </div>
               </div>
-            </div>
-          ) : (
-            <div>
-              <img src={this.props.imgURL} alt />
-              <h3>{this.props.title}</h3>
-              <div style={{ textAlign: "left" }}>
-                <p>Posted by: {this.props.p}</p>
-                <p>Dated Posted: {this.props.date}</p>
+            ) : (
+              <div>
+                <img src={this.props.imgURL} alt />
+                <h3>{this.props.title}</h3>
+                <div style={{ textAlign: "left" }}>
+                  <p>Posted by: {this.props.p}</p>
+                  <p>Dated Posted: {this.props.date}</p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     );
@@ -34,12 +38,16 @@ class Articles extends Component {
   state = {
     index: 0,
     hover: -1,
-    level: 6
+    level: 6,
+    username: ""
   };
 
   async componentDidMount() {
     const self = await api.get_self();
-    this.setState({ level: self.level });
+    this.setState({
+      level: self.level,
+      username: self.username
+    });
   }
 
   calcIndex(modifier) {
@@ -50,14 +58,15 @@ class Articles extends Component {
 
   render() {
     let cards = [];
-    if (this.state.level < 4 && this.props.userLogged) {
+    if (this.props.userLogged) {
       cards.push(
-        <Card activate={() => this.props.setArticle("new")} new={true} />
+        <Card activate={() => this.props.setArticle(-1)} new={true} />
       );
     }
     this.props.articles.map((el, i) => {
       const card = (
         <Card
+          approved={el.approved}
           activate={() => this.props.setArticle(i)}
           imgURL={el.imgURL}
           title={el.title}
@@ -66,7 +75,7 @@ class Articles extends Component {
           metaData={el.metaData}
         />
       );
-      if (this.state.level < 4) {
+      if (el.p === this.state.username || this.state.level < 3) {
         cards.push(card);
       } else if (el.approved) {
         cards.push(card);

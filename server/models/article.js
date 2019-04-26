@@ -12,6 +12,11 @@ const articleSchema = new Schema({
     unique: false,
     required: true
   },
+  imgCredit: {
+    type: String,
+    unique: false,
+    required: true
+  },
   p: {
     type: String,
     unique: false,

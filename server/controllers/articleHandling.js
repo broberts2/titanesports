@@ -16,6 +16,7 @@ module.exports = {
       const team = await Article.create({
         title: req.body.title,
         imgURL: req.body.imgURL,
+        imgCredit: req.body.imgCredit,
         p: req.body.p,
         date: `${date.getMonth() + 1}.${date.getDate()}.${date.getFullYear()}`,
         metaData: {

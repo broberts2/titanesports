@@ -3,7 +3,7 @@ import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
 import MediaLink from "../../media_links";
 import Loader from "./loader";
-import api from "../../api";
+import api from "../../utils/api";
 
 export default class SignUp extends Component {
   state = {
@@ -224,7 +224,7 @@ export default class SignUp extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === this.props.index ? true : false}
+        visible={this.props.state.modal === this.props.index ? true : false}
         width={"50%"}
         height={"75%"}
         effect={"fadeInUp"}
@@ -237,7 +237,7 @@ export default class SignUp extends Component {
             confirmPassword: "",
             error: null
           });
-          this.props.closeModal();
+          this.props.actions.closeModal();
         }}
       >
         <div className={"modal-style"}>

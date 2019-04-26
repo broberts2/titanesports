@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 import Loader from "./loader";
-import api from "../../api";
+import api from "../../utils/api";
 import config from "../../config";
 import { position } from "../../img/img_router";
+import RadarChart from "../radar_chart";
 
 class Queues extends Component {
   render() {
@@ -66,58 +67,30 @@ class Queues extends Component {
 }
 
 class UserProfile extends Component {
-  state = {
-    loading: true
-  };
-
-  componentWillReceiveProps(newProps) {
-    this.getData(newProps.searchTerm);
-  }
-
-  async getData(searchTerm) {
-    const user = await (this.props.self
-      ? api.get_self()
-      : api.get_user(searchTerm || this.props.searchTerm));
-    this.setState({
-      loading: false,
-      username: user.username,
-      iconId: user.iconId,
-      soloTier: user.soloTier,
-      soloDivision: user.soloDivision,
-      soloLp: user.soloLp,
-      soloRole: user.soloRole,
-      memberships: user.memberships,
-      soloMostPlayed: user.soloMostPlayed,
-      titanRole: user.titanRole
-    });
-  }
-
-  componentDidMount() {
-    this.getData();
-  }
-
   renderBackground() {
-    switch (this.state.soloTier) {
-      case "IRON":
-        return require("../../img/Emblem_Iron.png");
-      case "BRONZE":
-        return require("../../img/Emblem_Bronze.png");
-      case "SILVER":
-        return require("../../img/Emblem_Silver.png");
-      case "GOLD":
-        return require("../../img/Emblem_Gold.png");
-      case "PLATINUM":
-        return require("../../img/Emblem_Platinum.png");
-      case "DIAMOND":
-        return require("../../img/Emblem_Diamond.png");
-      case "MASTER":
-        return require("../../img/Emblem_Master.png");
-      case "GRANDMASTER":
-        return require("../../img/Emblem_Grandmaster.png");
-      case "CHALLENGER":
-        return require("../../img/Emblem_Challenger.png");
-      default:
-        return null;
+    if (this.props.state.spotlightUser) {
+      switch (this.props.state.spotlightUser.soloTier) {
+        case "IRON":
+          return require("../../img/Emblem_Iron.png");
+        case "BRONZE":
+          return require("../../img/Emblem_Bronze.png");
+        case "SILVER":
+          return require("../../img/Emblem_Silver.png");
+        case "GOLD":
+          return require("../../img/Emblem_Gold.png");
+        case "PLATINUM":
+          return require("../../img/Emblem_Platinum.png");
+        case "DIAMOND":
+          return require("../../img/Emblem_Diamond.png");
+        case "MASTER":
+          return require("../../img/Emblem_Master.png");
+        case "GRANDMASTER":
+          return require("../../img/Emblem_Grandmaster.png");
+        case "CHALLENGER":
+          return require("../../img/Emblem_Challenger.png");
+        default:
+          return null;
+      }
     }
   }
 
@@ -129,10 +102,11 @@ class UserProfile extends Component {
         </div>
         <div className={"user-profile"}>
           <div className={"banner"}>
-            {this.props.self ? (
+            {this.props.state.lastModal === 0 ||
+            this.props.state.lastModal === 11 ? (
               <div
                 className={"settings"}
-                onClick={() => this.props.cogAction()}
+                onClick={() => this.props.actions.setMenu(11)}
               >
                 <i className="fas fa-cog fa-3x" />
               </div>
@@ -140,29 +114,34 @@ class UserProfile extends Component {
             <div
               className={"back-button"}
               onClick={() =>
-                this.props.lastModal
-                  ? this.props.lastModal()
-                  : this.props.closeModal()}
+                this.props.state.lastModal === 11
+                  ? this.props.actions.closeModal()
+                  : this.props.actions.lastModal()}
             >
               <i className="fas fa-arrow-alt-circle-left fa-3x" />
             </div>
             <div className={"icon-image"}>
               <img
                 src={`${config.dataDragon}/${config.currentVersion}/img/profileicon/${this
-                  .state.iconId}.png`}
+                  .props.state.spotlightUser.iconId}.png`}
               />
               <div className={"icon-position"}>
                 <img
-                  src={position(this.state.soloTier, this.state.titanRole)}
+                  src={position(
+                    this.props.state.spotlightUser.soloTier,
+                    this.props.state.spotlightUser.titanRole
+                  )}
                 />
               </div>
             </div>
             <div className={"banner-name"}>
               <h1>
-                <i>{`${this.state.username}`}</i>
+                <i>{`${this.props.state.spotlightUser.username}`}</i>
               </h1>
               <h2>
-                {this.state.memberships ? `${this.state.memberships[0]}` : ""}
+                {this.props.state.spotlightUser.memberships
+                  ? `${this.props.state.spotlightUser.memberships[0]}`
+                  : ""}
               </h2>
             </div>
           </div>
@@ -170,12 +149,17 @@ class UserProfile extends Component {
             <Queues
               th={"Ranked Solo/Duo"}
               fv={"Rank"}
-              sv={`${this.state.soloTier} ${this.state.soloDivision}`}
+              sv={`${this.props.state.spotlightUser.soloTier} ${this.props.state
+                .spotlightUser.soloDivision}`}
               tv={"LP"}
-              frv={`${this.state.soloLp}`}
-              fthv={position(this.state.soloTier, this.state.soloRole)}
-              mostPlayed={this.state.soloMostPlayed}
+              frv={`${this.props.state.spotlightUser.soloLp}`}
+              fthv={position(
+                this.props.state.spotlightUser.soloTier,
+                this.props.state.spotlightUser.soloRole
+              )}
+              mostPlayed={this.props.state.spotlightUser.soloMostPlayed}
             />
+            <RadarChart />
           </div>
         </div>
       </div>
@@ -185,14 +169,18 @@ class UserProfile extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === this.props.index ? true : false}
+        visible={this.props.state.modal === this.props.index ? true : false}
         width={"75%"}
         height={"90%"}
         effect={"fadeInUp"}
-        onClickAway={() => this.props.closeModal()}
+        onClickAway={() => this.props.actions.closeModal()}
       >
         <div className={"modal-style"}>
-          {this.state.loading ? <Loader /> : this.renderContent()}
+          {!this.props.state.loading && this.props.state.spotlightUser ? (
+            this.renderContent()
+          ) : (
+            <Loader />
+          )}
         </div>
       </Modal>
     );

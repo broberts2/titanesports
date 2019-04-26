@@ -1,33 +1,90 @@
 import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
+import Loader from "./loader";
+import config from "../../config";
+import api from "../../utils/api";
+import { position } from "../../img/img_router";
+import ranksByNum from "../../utils/ranksByNum";
+
+class CustomRow extends Component {
+  render() {
+    return (
+      <tr onClick={() => this.props.action(this.props.members)}>
+        <td align="center">
+          <div style={{ width: "350px", textAlign: "left" }}>
+            <img
+              src={`${config.dataDragon}/${config.currentVersion}/img/profileicon/${this
+                .props.iconId}.png`}
+            />
+            {this.props.name}
+          </div>
+        </td>
+        <td />
+        <td />
+        <td align="center">{this.props.members.length}</td>
+        <td align="center">{this.props.pr}</td>
+      </tr>
+    );
+  }
+}
 
 export default class Teams extends Component {
+  renderContent() {
+    return (
+      <div style={{ height: "150%" }}>
+        <div className={"bar"}>
+          <input type="text" placeholder="Team Name (currently inactive)" />
+        </div>
+        <table>
+          <tr>
+            <th>Team Name</th>
+            <th />
+            <th />
+            <th>Members</th>
+            <th>Power Ranking</th>
+          </tr>
+        </table>
+        <div className={"content"}>
+          <table>
+            <tbody>
+              {this.props.state.teams.map(el => (
+                <CustomRow
+                  name={el.name}
+                  iconId={el.iconId}
+                  members={el.members}
+                  subs={el.subs}
+                  pr={el.pr}
+                  action={async members => {
+                    await this.props.actions.setUsersByTeam(members);
+                    this.props.actions.setMenu(10);
+                  }}
+                />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     return (
       <Modal
-        visible={this.props.visible === this.props.index ? true : false}
-        width={"90%"}
+        visible={this.props.state.modal === this.props.index ? true : false}
+        width={"75%"}
         height={"90%"}
         effect={"fadeInUp"}
-        onClickAway={() => this.props.closeModal()}
+        onClickAway={() => this.props.actions.closeModal()}
       >
         <div className={"modal-style"}>
-          <div className={"teams"}>
-            <iframe
-              src={
-                "https://docs.google.com/spreadsheets/d/e/2PACX-1vSg9R52HrKes4u8z1E-EU_QOyNsiAqkgLQ8hE4qLj9jfjbnLK9DUH2m56qmPe27nnA9FJtBAFFX4eG_/pubhtml?widget=true&amp;headers=false"
-              }
-              width={"100%"}
-              height={"100%"}
-            />
-            <div className={"button"}>
-              <div
-                className="linkButton"
-                onClick={() => this.props.closeModal()}
-              >
-                close
-              </div>
+          <div className={"search"}>
+            {this.props.state.loading ? <Loader /> : this.renderContent()}
+            <div
+              className={"back-button"}
+              onClick={() => this.props.actions.closeModal()}
+            >
+              <i className="fas fa-arrow-alt-circle-left fa-3x" />
             </div>
           </div>
         </div>

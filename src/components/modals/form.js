@@ -6,11 +6,11 @@ export default class Leagues extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === this.props.index ? true : false}
+        visible={this.props.state.modal === this.props.index ? true : false}
         width={"400"}
         height={"300"}
         effect={"fadeInUp"}
-        onClickAway={() => this.props.closeModal()}
+        onClickAway={() => this.props.actions.closeModal()}
       >
         t
       </Modal>

@@ -6,11 +6,11 @@ export default class Events extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === this.props.index ? true : false}
+        visible={this.props.state.modal === this.props.index ? true : false}
         width={"75%"}
         height={"90%"}
         effect={"fadeInUp"}
-        onClickAway={() => this.props.closeModal()}
+        onClickAway={() => this.props.actions.closeModal()}
       >
         <div className={"modal-style"}>
           <div className={"events"}>
@@ -25,7 +25,7 @@ export default class Events extends Component {
             <div className={"button"}>
               <div
                 className="linkButton"
-                onClick={() => this.props.closeModal()}
+                onClick={() => this.props.actions.closeModal()}
               >
                 close
               </div>

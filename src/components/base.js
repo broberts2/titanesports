@@ -7,21 +7,13 @@ import Features from "./features";
 import modals from "./modals/_modals";
 import WelcomeButton from "./welcome_button";
 import MediaLink from "../media_links";
-import api from "../api";
+import api from "../utils/api";
 
 class Base extends Component {
   render() {
     return (
       <div>
-        <Header
-          userLogged={this.props.state.userLogged}
-          showUser={userLogged => this.props.actions.showUser(userLogged)}
-          modalAction={{
-            activateLeagues: () => this.props.actions.setMenu(1),
-            activateMiniMenu: () => this.props.actions.setMenu(3),
-            activateUserProfile: () => this.props.actions.setMenu(7)
-          }}
-        />
+        <Header state={this.props.state} actions={this.props.actions} />
         <VideoBackground />
         <Content img={require("../img/lol_logo.png")}>
           <div className="container-fluid">
@@ -100,12 +92,10 @@ class Base extends Component {
                     articles={this.props.state.articles}
                     userLogged={this.props.state.userLogged}
                     setArticle={i => {
-                      if (i === "new") {
-                        this.props.actions.setMenu(17);
-                      } else {
-                        this.props.actions.setMenu(16);
-                        this.props.actions.setArticle(i);
-                      }
+                      i < 0
+                        ? this.props.actions.setMenu(17)
+                        : this.props.actions.setMenu(16);
+                      this.props.actions.setArticle(i);
                     }}
                   />
                   <div className="row" style={{ marginTop: "15px" }}>
@@ -114,7 +104,10 @@ class Base extends Component {
                         <img src={require("../img/summoner.png")} alt />
                         <div
                           className="linkButton"
-                          onClick={() => this.props.actions.setMenu(10)}
+                          onClick={() => {
+                            this.props.actions.setUsers();
+                            this.props.actions.setMenu(10);
+                          }}
                         >
                           Player Search
                         </div>
@@ -125,7 +118,10 @@ class Base extends Component {
                         <img src={require("../img/teams.png")} alt />
                         <div
                           className="linkButton"
-                          onClick={() => this.props.actions.setMenu(12)}
+                          onClick={async () => {
+                            await this.props.actions.setTeams();
+                            this.props.actions.setMenu(12);
+                          }}
                         >
                           Team Search
                         </div>
@@ -223,7 +219,7 @@ class Base extends Component {
             </div>
           </div>
         </Content>
-        <WelcomeButton action={() => this.props.actions.setMenu(6)} />
+        <WelcomeButton actions={this.props.actions} />
       </div>
     );
   }

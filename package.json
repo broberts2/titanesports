@@ -13,7 +13,8 @@
     "react-epic-spinners": "^0.3.0",
     "react-responsive": "^6.1.1",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react-svg-radar-chart": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

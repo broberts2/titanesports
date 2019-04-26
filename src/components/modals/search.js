@@ -3,9 +3,9 @@ import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
 import Loader from "./loader";
 import config from "../../config";
-import api from "../../api";
+import api from "../../utils/api";
 import { position } from "../../img/img_router";
-import ranksByNum from "../../ranksByNum";
+import ranksByNum from "../../utils/ranksByNum";
 
 class CustomRow extends Component {
   render() {
@@ -51,100 +51,102 @@ class CustomRow extends Component {
 
 export default class Search extends Component {
   state = {
-    loading: true,
-    users: null
+    username: false,
+    position: false,
+    tier: false,
+    lp: false,
+    membership: false
   };
-
-  sortBy(key, arr) {
-    switch (key) {
-      case "username":
-        return arr.sort((a, b) => (a[key] < b[key] ? -1 : 1));
-      case "position":
-        return arr.sort((a, b) => (a.titanRole < b.titanRole ? -1 : 1));
-      case "soloLp":
-        return arr.sort((a, b) => (a[key] < b[key] ? 1 : -1));
-      case "tier":
-        return arr.sort(
-          (a, b) =>
-            ranksByNum(a.soloTier, a.soloDivision, a.soloLp) <
-            ranksByNum(b.soloTier, b.soloDivision, b.soloLp)
-              ? 1
-              : -1
-        );
-      case "membership":
-        return arr.sort(
-          (a, b) => (a.memberships[0] < b.memberships[0] ? 1 : -1)
-        );
-    }
-  }
-
-  async getData() {
-    if (this.props.batchSearchTerm) {
-      let users = await Promise.all(
-        this.props.batchSearchTerm.map(async el => await api.get_user(el))
-      );
-      users = this.sortBy("username", users);
-      this.setState({ loading: false, users });
-    } else {
-      let users = await api.get_users();
-      users = this.sortBy("username", users);
-      this.setState({ loading: false, users });
-    }
-  }
-
-  componentWillReceiveProps() {
-    this.getData();
-  }
-
-  componentDidMount() {
-    this.getData();
-  }
 
   renderContent() {
     return (
       <div style={{ height: "150%" }}>
         <div className={"bar"}>
-          <input type="text" placeholder="Summoner Name (currently inactive)" />
+          <input
+            style={{ width: "40%" }}
+            type="text"
+            placeholder="Summoner Name"
+          />
         </div>
         <table>
           <tr>
             <th
-              onClick={() =>
-                this.setState({
-                  users: this.sortBy("username", this.state.users)
-                })}
+              className={this.state.username ? "selected" : null}
+              onClick={() => {
+                const state = {
+                  username: !this.state.username,
+                  position: false,
+                  tier: false,
+                  lp: false,
+                  membership: false
+                };
+                this.setState(state);
+                this.props.actions.organizeUsers("username");
+              }}
             >
               Summoner
             </th>
             <th
-              onClick={() =>
-                this.setState({
-                  users: this.sortBy("position", this.state.users)
-                })}
+              className={this.state.position ? "selected" : null}
+              onClick={() => {
+                const state = {
+                  username: false,
+                  position: !this.state.position,
+                  tier: false,
+                  lp: false,
+                  membership: false
+                };
+                this.setState(state);
+                this.props.actions.organizeUsers("position");
+              }}
             >
               Position
             </th>
             <th
-              onClick={() =>
-                this.setState({
-                  users: this.sortBy("tier", this.state.users)
-                })}
+              className={this.state.tier ? "selected" : null}
+              onClick={() => {
+                const state = {
+                  username: false,
+                  position: false,
+                  tier: !this.state.tier,
+                  lp: false,
+                  membership: false
+                };
+                this.setState(state);
+                this.props.actions.organizeUsers("tier");
+              }}
             >
               Tier
             </th>
             <th
-              onClick={() =>
-                this.setState({
-                  users: this.sortBy("soloLp", this.state.users)
-                })}
+              className={this.state.lp ? "selected" : null}
+              onClick={() => {
+                const state = {
+                  username: false,
+                  position: false,
+                  tier: false,
+                  lp: !this.state.lp,
+                  membership: false
+                };
+                this.setState(state);
+                this.props.actions.organizeUsers("soloLp");
+              }}
             >
               LP
             </th>
             <th
-              onClick={() =>
-                this.setState({
-                  users: this.sortBy("membership", this.state.users)
-                })}
+              className={this.state.membership ? "selected" : null}
+              onClick={() => {
+                const state = {
+                  username: false,
+                  position: false,
+                  tier: false,
+                  lp: false,
+                  membership: !this.state.membership
+                };
+                this.setState(state);
+                this.props.actions.organizeUsers("membership");
+              }}
             >
               Team Membership
             </th>
@@ -153,7 +155,7 @@ export default class Search extends Component {
         <div className={"content"}>
           <table>
             <tbody>
-              {this.state.users.map(el => {
+              {this.props.state.users.map(el => {
                 return (
                   <CustomRow
                     captain={el.captainTeam}
@@ -164,7 +166,10 @@ export default class Search extends Component {
                     division={el.soloDivision}
                     lp={el.soloLp}
                     membership={el.memberships[0]}
-                    action={() => this.props.action(el.username)}
+                    action={async () => {
+                      await this.props.actions.spotlightUser(el.username);
+                      this.props.actions.setMenu(7);
+                    }}
                   />
                 );
               })}
@@ -178,33 +183,24 @@ export default class Search extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === this.props.index ? true : false}
+        visible={this.props.state.modal === this.props.index ? true : false}
         width={"75%"}
         height={"90%"}
         effect={"fadeInUp"}
-        onClickAway={() => this.props.closeModal()}
+        onClickAway={() => this.props.actions.closeModal()}
       >
         <div className={"modal-style"}>
           <div className={"search"}>
-            {this.props.batchSearchTerm ? (
-              <div
-                className={"back-button"}
-                onClick={() => this.props.lastModal()}
-              >
-                <i className="fas fa-arrow-alt-circle-left fa-3x" />
-              </div>
-            ) : null}
-            {this.state.loading ? <Loader /> : this.renderContent()}
-            {this.props.batchSearchTerm ? null : (
-              <div className={"button"}>
-                <div
-                  className="linkButton"
-                  onClick={() => this.props.closeModal()}
-                >
-                  close
-                </div>
-              </div>
-            )}
+            <div
+              className={"back-button"}
+              onClick={() =>
+                this.props.state.lastModal === 7
+                  ? this.props.actions.closeModal()
+                  : this.props.actions.lastModal()}
+            >
+              <i className="fas fa-arrow-alt-circle-left fa-3x" />
+            </div>
+            {this.props.state.loading ? <Loader /> : this.renderContent()}
           </div>
         </div>
       </Modal>

@@ -175,7 +175,11 @@ app.get("/t/get_teams", routifyPromiseNoRestrict(Team.getAllTeams));
 app.get("/a/get_articles", routifyPromiseNoRestrict(Article.getAllArticles));
 app.get("/a/create_article", routifyPromiseNoRestrict(Article.createArticle));
 
-// automation();
+try {
+  automation();
+} catch (e) {
+  console.log(e);
+}
 
 app
   .use(express.static(path.join(__dirname, "public")))

@@ -1,19 +1,21 @@
 import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
-import api from "../../api";
+import api from "../../utils/api";
 
 export default class ArticleMaker extends Component {
-  state = this.props.activeArticle
+  state = this.props.state.activeArticle
     ? {
-        imgURL: this.props.activeArticle.imgURL,
-        title: this.props.activeArticle.title,
-        newTitle: this.props.activeArticle.title,
-        p: this.props.activeArticle.p,
-        content: this.props.activeArticle.content
+        imgURL: this.props.state.activeArticle.imgURL,
+        imgCredit: this.props.state.activeArticle.imgCredit,
+        title: this.props.state.activeArticle.title,
+        newTitle: this.props.state.activeArticle.title,
+        p: this.props.state.activeArticle.p,
+        content: this.props.state.activeArticle.content
       }
     : {
         imgURL: "",
+        imgCredit: "",
         title: "",
         newTitle: "",
         p: "",
@@ -21,11 +23,11 @@ export default class ArticleMaker extends Component {
       };
 
   componentWillReceiveProps(newProps) {
-    if (newProps.activeArticle) {
+    if (newProps.state.activeArticle) {
       this.setState(
         Object.assign(
-          { newTitle: newProps.activeArticle.title },
-          newProps.activeArticle
+          { newTitle: newProps.state.activeArticle.title },
+          newProps.state.activeArticle
         )
       );
     }
@@ -41,11 +43,11 @@ export default class ArticleMaker extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === this.props.index ? true : false}
+        visible={this.props.state.modal === this.props.index ? true : false}
         width={"90%"}
         height={"90%"}
         effect={"fadeInUp"}
-        onClickAway={() => this.props.closeModal()}
+        onClickAway={() => this.props.actions.closeModal()}
       >
         <div className={"modal-style"}>
           <div className={"article-maker"}>
@@ -53,9 +55,9 @@ export default class ArticleMaker extends Component {
               <div
                 className={"back-button"}
                 onClick={() =>
-                  this.props.lastModal
-                    ? this.props.lastModal()
-                    : this.props.closeModal()}
+                  this.props.state.lastModal === 17
+                    ? this.props.actions.closeModal()
+                    : this.props.actions.lastModal()}
               >
                 <i className="fas fa-arrow-alt-circle-left fa-3x" />
               </div>
@@ -65,6 +67,14 @@ export default class ArticleMaker extends Component {
                   type="text"
                   value={this.state.imgURL}
                   onChange={e => this.setState({ imgURL: e.target.value })}
+                />
+              </div>
+              <div className={"block"}>
+                <h3>Image Credit</h3>
+                <input
+                  type="text"
+                  value={this.state.imgCredit}
+                  onChange={e => this.setState({ imgCredit: e.target.value })}
                 />
               </div>
               <div className={"block"}>
@@ -105,30 +115,32 @@ export default class ArticleMaker extends Component {
                 ) : null}
               </div>
               <div className={"save"}>
-                {this.props.activeArticle ? (
+                {!this.props.state.activeArticle.title ? (
+                  <div
+                    className="linkButton"
+                    onClick={async () => {
+                      this.state.title = this.state.newTitle;
+                      const user = await api.get_self();
+                      this.state.p = user.username;
+                      await api.create_article(this.state);
+                      this.props.actions.setArticles();
+                      this.props.actions.closeModal();
+                    }}
+                  >
+                    Create
+                  </div>
+                ) : (
                   <div
                     className="linkButton"
                     onClick={async () => {
                       const title = this.state.title;
                       this.state.title = this.state.newTitle;
                       await api.update_article(title, this.state);
-                      await this.props.setArticles();
-                      this.props.closeModal();
+                      await this.props.actions.setArticles();
+                      this.props.actions.closeModal();
                     }}
                   >
                     Update
-                  </div>
-                ) : (
-                  <div
-                    className="linkButton"
-                    onClick={async () => {
-                      this.state.title = this.state.newTitle;
-                      await api.create_article(this.state);
-                      this.props.getArticles();
-                      this.props.closeModal();
-                    }}
-                  >
-                    Create
                   </div>
                 )}
               </div>

@@ -3,7 +3,7 @@ import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
 import MediaLink from "../../media_links";
 import Loader from "./loader";
-import api from "../../api";
+import api from "../../utils/api";
 
 export default class SignIn extends Component {
   state = {
@@ -27,14 +27,15 @@ export default class SignIn extends Component {
       this.setState({ response: value.error, loader: false });
     } else {
       api.create_cookie("titan_key", value);
-      this.props.closeModal();
-      this.props.showUser(true);
+      this.props.actions.showUser(true);
       this.setState({
         username: "",
         password: "",
         response: "",
         loader: false
       });
+      window.location.reload();
+      this.props.actions.closeModal();
     }
   }
 
@@ -62,7 +63,10 @@ export default class SignIn extends Component {
         <div className="linkButton" onClick={() => this.login()}>
           Sign In
         </div>
-        <div className={"account-text"} onClick={() => this.props.newAccount()}>
+        <div
+          className={"account-text"}
+          onClick={() => this.props.actions.setMenu(15)}
+        >
           Don't have an account?
         </div>
         <center>
@@ -80,8 +84,9 @@ export default class SignIn extends Component {
         <div
           className="linkButton"
           onClick={() => {
-            this.props.showUser(false);
+            this.props.actions.showUser(false);
             api.remove_cookie("titan_key");
+            window.location.reload();
           }}
         >
           Sign Out
@@ -103,7 +108,7 @@ export default class SignIn extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === this.props.index ? true : false}
+        visible={this.props.state.modal === this.props.index ? true : false}
         width={"35%"}
         height={"60%"}
         effect={"fadeInUp"}
@@ -113,7 +118,7 @@ export default class SignIn extends Component {
             password: "",
             response: ""
           });
-          this.props.closeModal();
+          this.props.actions.closeModal();
         }}
       >
         <div className={"modal-style"}>

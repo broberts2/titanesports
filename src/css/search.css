@@ -55,3 +55,6 @@
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+.search .selected {
+  color: rgb(0, 247, 255);
+}

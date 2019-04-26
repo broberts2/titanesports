@@ -17,11 +17,25 @@
 }
 .article-body .content img {
 }
+.article-body .content .poster {
+  position: relative;
+}
 .article-body .content .poster img {
   width: 100%;
   height: calc(100% - 120px);
   object-fit: cover;
   object-position: 0 0;
+}
+.article-body .content .poster .signature {
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-family: "Indie Flower", cursive;
+  font-size: 28px;
+}
+.article-body .content .poster .signature a {
+  color: white;
 }
 .article-body .content .edit-bar {
   position: absolute;

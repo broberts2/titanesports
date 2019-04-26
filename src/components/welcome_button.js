@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import MediaLink from "../media_links";
 import { AwesomeButton } from "react-awesome-button";
-import api from "../api";
+import api from "../utils/api";
 
 class WelcomeButton extends Component {
   componentDidMount() {
@@ -25,7 +25,10 @@ class WelcomeButton extends Component {
       <div id={"welcome-button"} className={"welcome-button"}>
         {api.get_cookie("titan_key") ? null : (
           <center>
-            <div className={"button"} onClick={() => this.props.action()}>
+            <div
+              className={"button"}
+              onClick={() => this.props.actions.setMenu(6)}
+            >
               <div className={"circle-button"}>
                 <div className={"icon"}>
                   <div className={`fas fa-user-lock fa-4x`} />

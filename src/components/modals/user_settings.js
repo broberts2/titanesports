@@ -3,7 +3,7 @@ import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import api from "../../api";
+import api from "../../utils/api";
 import { position } from "../../img/img_router";
 
 export default class UserSettings extends Component {
@@ -12,13 +12,16 @@ export default class UserSettings extends Component {
     confirmNewPassword: ""
   };
 
-  async getData() {
-    const data = await api.get_self();
-    this.setState(data);
-  }
-
-  componentDidMount() {
-    this.getData();
+  componentWillReceiveProps(props) {
+    this.setState(
+      Object.assign(
+        {
+          newPassword: "",
+          confirmNewPassword: ""
+        },
+        props.state.spotlightUser
+      )
+    );
   }
 
   async save() {
@@ -51,7 +54,7 @@ export default class UserSettings extends Component {
   render() {
     return (
       <Modal
-        visible={this.props.visible === this.props.index ? true : false}
+        visible={this.props.state.modal === this.props.index ? true : false}
         width={"55%"}
         height={"90%"}
         effect={"fadeInUp"}
@@ -60,7 +63,7 @@ export default class UserSettings extends Component {
             newPassword: "",
             confirmNewPassword: ""
           });
-          this.props.closeModal();
+          this.props.actions.closeModal();
         }}
       >
         <div className={"modal-style"}>
@@ -72,8 +75,8 @@ export default class UserSettings extends Component {
                   newPassword: "",
                   confirmNewPassword: ""
                 });
-                this.props.closeModal();
-                this.props.lastModal();
+                this.props.actions.closeModal();
+                this.props.actions.lastModal();
               }}
             >
               <i className="fas fa-arrow-alt-circle-left fa-3x" />
@@ -175,9 +178,10 @@ export default class UserSettings extends Component {
                         <div
                           className="linkButton"
                           onClick={() => {
-                            this.props.signOut();
+                            this.props.actions.showUser(false);
                             api.remove_cookie("titan_key");
-                            this.props.closeModal();
+                            window.location.reload();
+                            this.props.actions.closeModal();
                           }}
                         >
                           Sign Out
@@ -197,13 +201,14 @@ export default class UserSettings extends Component {
                   ? this.passwordCheck() > 1 ? "button" : "button-deny"
                   : "button"
               }
-              onClick={() => {
-                this.save();
+              onClick={async () => {
+                await this.save();
                 this.setState({
                   newPassword: "",
                   confirmNewPassword: ""
                 });
-                this.props.lastModal();
+                await this.props.actions.spotlightUser();
+                this.props.actions.lastModal();
               }}
             >
               <div className="linkButton">Save</div>
