@@ -86,8 +86,9 @@ p {
 }
 .linkButton-unfinished,
 .linkButton {
+  margin: 10px;
   background-color: #242424;
-  padding: 5px;
+  padding: 15px;
   border-radius: 10px;
   border: solid 1px #525252;
   box-shadow: inset 0px 0px 2px #000;

@@ -56,22 +56,23 @@ class Base extends Component {
                     <div className="col">
                       <h2>External Links</h2>
                       <p>
-                        Check out our Discord, Twitch, and Youtube channels!
+                        Check out our Discord, Twitch, and Youtube channels or
+                        apply for a team!
                       </p>
                     </div>
                     <a href={MediaLink.discord} target={"_blank"}>
                       <div className="linkButton">
-                        <div className={`fab fa-discord fa-2x`} />
+                        <div className={`fab fa-discord fa-4x`} />
                       </div>
                     </a>
                     <a href={MediaLink.twitch} target={"_blank"}>
                       <div className="linkButton">
-                        <div className={`fab fa-twitch fa-2x`} />
+                        <div className={`fab fa-twitch fa-4x`} />
                       </div>
                     </a>
                     <a href={MediaLink.youTube} target={"_blank"}>
                       <div className="linkButton">
-                        <div className={`fab fa-youtube fa-2x`} />
+                        <div className={`fab fa-youtube fa-4x`} />
                       </div>
                     </a>
                     <a>
@@ -79,7 +80,7 @@ class Base extends Component {
                         className="linkButton"
                         onClick={() => this.props.actions.setMenu(1)}
                       >
-                        <div className={`fas fa-file-signature fa-2x`} />
+                        <div className={`fas fa-file-signature fa-4x`} />
                       </div>
                     </a>
                   </div>
