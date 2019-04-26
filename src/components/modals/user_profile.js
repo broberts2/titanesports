@@ -34,30 +34,6 @@ class Queues extends Component {
                   </h4>
                 </div>
               </td>
-              <td align={"center"} width="25%">
-                <div>
-                  <h3>Preferred Role</h3>
-                </div>
-                <div>
-                  <h4>
-                    <img style={{ width: "40px" }} src={this.props.fthv} />
-                  </h4>
-                </div>
-              </td>
-              <td width="45%">
-                <div className={"preferred-champions"}>
-                  <div>
-                    <h3>Preferred Champions</h3>
-                  </div>
-                  {this.props.mostPlayed
-                    ? this.props.mostPlayed.map(el => (
-                        <img
-                          src={`${config.dataDragon}/${config.currentVersion}/img/champion/${el}.png`}
-                        />
-                      ))
-                    : null}
-                </div>
-              </td>
             </tr>
           </tbody>
         </table>
@@ -159,7 +135,6 @@ class UserProfile extends Component {
               )}
               mostPlayed={this.props.state.spotlightUser.soloMostPlayed}
             />
-            <RadarChart />
           </div>
         </div>
       </div>
