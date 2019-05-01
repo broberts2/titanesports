@@ -39,10 +39,13 @@ export default class Article extends Component {
                 className="fas fa-check-square fa-3x"
                 onClick={async () => {
                   if (window.confirm("Publish this article?")) {
+                    const date = new Date();
                     await api.update_article(
                       this.props.state.activeArticle.title,
                       {
-                        approved: true
+                        approved: true,
+                        date: `${date.getMonth() +
+                          1}.${date.getDate()}.${date.getFullYear()}`
                       }
                     );
                     await this.props.actions.setArticles();
@@ -50,6 +53,39 @@ export default class Article extends Component {
                   }
                 }}
               />
+              {this.props.state.activeArticle.sticky ? (
+                <i
+                  className="far fa-sticky-note fa-3x"
+                  onClick={async () => {
+                    if (window.confirm("Un-Sticky this article?")) {
+                      await api.update_article(
+                        this.props.state.activeArticle.title,
+                        {
+                          sticky: false
+                        }
+                      );
+                      await this.props.actions.setArticles();
+                      this.props.actions.closeModal();
+                    }
+                  }}
+                />
+              ) : (
+                <i
+                  className="fas fa-sticky-note fa-3x"
+                  onClick={async () => {
+                    if (window.confirm("Sticky this article?")) {
+                      await api.update_article(
+                        this.props.state.activeArticle.title,
+                        {
+                          sticky: true
+                        }
+                      );
+                      await this.props.actions.setArticles();
+                      this.props.actions.closeModal();
+                    }
+                  }}
+                />
+              )}
               <i
                 className="fas fa-pen-square fa-3x"
                 onClick={() => {

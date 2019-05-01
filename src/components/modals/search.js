@@ -22,27 +22,27 @@ class CustomRow extends Component {
               src={`${config.dataDragon}/${config.currentVersion}/img/profileicon/${this
                 .props.iconId}.png`}
             />
-            <p
+            <h4
               style={{
                 display: "inline-flex",
                 marginRight: "-300px"
               }}
             >
               {this.props.username}
-            </p>
+            </h4>
           </div>
         </td>
         <td align="center">
           <img src={position(this.props.tier, this.props.role)} />
         </td>
         <td align="center">
-          <p>{this.props.tier}</p> {this.props.division}
+          <h4>{this.props.tier}</h4> {this.props.division}
         </td>
         <td align="center">
-          <p>{this.props.lp}</p>
+          <h4>{this.props.lp}</h4>
         </td>
         <td align="center">
-          <p>{this.props.membership}</p>
+          <h4>{this.props.membership}</h4>
         </td>
       </tr>
     );
