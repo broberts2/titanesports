@@ -38,7 +38,7 @@ export default class Events extends Component {
   render() {
     const localizer = BigCalendar.momentLocalizer(moment);
     const MyCalendar = props => (
-      <div style={{ height: "90%" }}>
+      <div className={"calendar"}>
         <BigCalendar
           localizer={localizer}
           events={this.state.events}
