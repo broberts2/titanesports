@@ -56,22 +56,23 @@ class Base extends Component {
                     <div className="col">
                       <h2>External Links</h2>
                       <p>
-                        Check out our Discord, Twitch, and Youtube channels!
+                        Check out our Discord, Twitch, and Youtube channels or
+                        apply for a team!
                       </p>
                     </div>
                     <a href={MediaLink.discord} target={"_blank"}>
                       <div className="linkButton">
-                        <div className={`fab fa-discord fa-2x`} />
+                        <div className={`fab fa-discord fa-4x`} />
                       </div>
                     </a>
                     <a href={MediaLink.twitch} target={"_blank"}>
                       <div className="linkButton">
-                        <div className={`fab fa-twitch fa-2x`} />
+                        <div className={`fab fa-twitch fa-4x`} />
                       </div>
                     </a>
                     <a href={MediaLink.youTube} target={"_blank"}>
                       <div className="linkButton">
-                        <div className={`fab fa-youtube fa-2x`} />
+                        <div className={`fab fa-youtube fa-4x`} />
                       </div>
                     </a>
                     <a>
@@ -79,7 +80,7 @@ class Base extends Component {
                         className="linkButton"
                         onClick={() => this.props.actions.setMenu(1)}
                       >
-                        <div className={`fas fa-file-signature fa-2x`} />
+                        <div className={`fas fa-file-signature fa-4x`} />
                       </div>
                     </a>
                   </div>
@@ -88,16 +89,6 @@ class Base extends Component {
                   className="theSection"
                   style={{ marginTop: "30px", borderRadius: "10px" }}
                 >
-                  <Articles
-                    articles={this.props.state.articles}
-                    userLogged={this.props.state.userLogged}
-                    setArticle={i => {
-                      i < 0
-                        ? this.props.actions.setMenu(17)
-                        : this.props.actions.setMenu(16);
-                      this.props.actions.setArticle(i);
-                    }}
-                  />
                   <div className="row" style={{ marginTop: "15px" }}>
                     <div className="col">
                       <div className="theCards">
@@ -140,6 +131,16 @@ class Base extends Component {
                     </div>
                   </div>
                 </div>
+                <Articles
+                  articles={this.props.state.articles}
+                  userLogged={this.props.state.userLogged}
+                  setArticle={i => {
+                    i < 0
+                      ? this.props.actions.setMenu(17)
+                      : this.props.actions.setMenu(16);
+                    this.props.actions.setArticle(i);
+                  }}
+                />
                 <div className="footerBar">
                   <div className="row">
                     <div className="col sm-6 md-3">
