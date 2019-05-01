@@ -25,7 +25,8 @@ module.exports = {
           views: 0
         },
         approved: false,
-        content: req.body.content
+        content: req.body.content,
+        sticky: false
       });
       return team;
     } catch (e) {

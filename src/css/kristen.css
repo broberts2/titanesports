@@ -132,6 +132,8 @@ p {
   margin-top: 15px;
 }
 .footerBar {
+  margin-top: 15px;
+  width: 100%;
   padding: 15px;
   border-radius: 2px;
   border: solid 1px #777;

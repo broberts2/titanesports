@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import MediaLink from "../media_links";
-import { AwesomeButton } from "react-awesome-button";
 import api from "../utils/api";
 
 class WelcomeButton extends Component {
@@ -23,7 +22,7 @@ class WelcomeButton extends Component {
   render() {
     return (
       <div id={"welcome-button"} className={"welcome-button"}>
-        {api.get_cookie("titan_key") ? null : (
+        {!api.get_cookie("titan_key") ? (
           <center>
             <div
               className={"button"}
@@ -36,7 +35,7 @@ class WelcomeButton extends Component {
               </div>
             </div>
           </center>
-        )}
+        ) : null}
       </div>
     );
   }

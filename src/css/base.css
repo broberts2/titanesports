@@ -42,3 +42,5 @@ textarea {
   padding-left: 10px;
   color: rgb(185, 185, 185);
 }
+p::first-letter {
+}

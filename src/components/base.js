@@ -33,18 +33,15 @@ class Base extends Component {
                       <img src="https://titan-esports.org/static/media/logo.e0299d28.png" />
                     </div>
                     <div className="col" style={{ paddingTop: "10px" }}>
-                      <h4>
-                        Titan Esports Summer Invitational League
-                        &nbsp;&nbsp;&nbsp;<span className="announceDate">
-                          04/07/19
-                        </span>
-                      </h4>
-                      <p>
-                        Hello thlks lks dfkjn asd;lkf al;sdkjfh ljsdhfl
-                        kjafijansdf ijsn dfijns dkfjsdkfjhskdjfhsdkjfh sjkh
-                        dfksjh sfkjhsf kjhsdfkjhsdf kjhsdfkj dhskjsfh ksjdhf
-                        ksjdfh
-                      </p>
+                      <div className="col sm-6 md-3">
+                        <h3>About Titan Esports</h3>
+                        <p>
+                          Titan Esports mission is simple at its core -- promote
+                          a friendly, engaging, comptetitive gaming environment
+                          for all of the dedicated members of our esteemed
+                          community, an dto ensure competitive fairness.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -53,26 +50,19 @@ class Base extends Component {
                     className="row topBlocks"
                     style={{ marginTop: "30px", padding: "15px 5px" }}
                   >
-                    <div className="col">
-                      <h2>External Links</h2>
-                      <p>
-                        Check out our Discord, Twitch, and Youtube channels or
-                        apply for a team!
-                      </p>
-                    </div>
                     <a href={MediaLink.discord} target={"_blank"}>
                       <div className="linkButton">
-                        <div className={`fab fa-discord fa-4x`} />
+                        <div className={`fab fa-discord fa-2x`} />
                       </div>
                     </a>
                     <a href={MediaLink.twitch} target={"_blank"}>
                       <div className="linkButton">
-                        <div className={`fab fa-twitch fa-4x`} />
+                        <div className={`fab fa-twitch fa-2x`} />
                       </div>
                     </a>
                     <a href={MediaLink.youTube} target={"_blank"}>
                       <div className="linkButton">
-                        <div className={`fab fa-youtube fa-4x`} />
+                        <div className={`fab fa-youtube fa-2x`} />
                       </div>
                     </a>
                     <a>
@@ -80,7 +70,7 @@ class Base extends Component {
                         className="linkButton"
                         onClick={() => this.props.actions.setMenu(1)}
                       >
-                        <div className={`fas fa-file-signature fa-4x`} />
+                        <div className={`fas fa-file-signature fa-2x`} />
                       </div>
                     </a>
                   </div>
@@ -89,6 +79,16 @@ class Base extends Component {
                   className="theSection"
                   style={{ marginTop: "30px", borderRadius: "10px" }}
                 >
+                  <h2>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                  </h2>
                   <div className="row" style={{ marginTop: "15px" }}>
                     <div className="col">
                       <div className="theCards">
@@ -131,6 +131,15 @@ class Base extends Component {
                     </div>
                   </div>
                 </div>
+                <h1
+                  style={{
+                    marginTop: "25px",
+                    borderBottom: "2px black solid",
+                    width: "50%"
+                  }}
+                >
+                  Community Articles
+                </h1>
                 <Articles
                   articles={this.props.state.articles}
                   userLogged={this.props.state.userLogged}
@@ -143,15 +152,6 @@ class Base extends Component {
                 />
                 <div className="footerBar">
                   <div className="row">
-                    <div className="col sm-6 md-3">
-                      <h3>About Titan Esports</h3>
-                      <p>
-                        Titan Esports mission is simple at its core -- promote a
-                        friendly, engaging, comptetitive gaming environment for
-                        all of the dedicated members of our esteemed community,
-                        an dto ensure competitive fairness.
-                      </p>
-                    </div>
                     <div className="col sm-6 md-3">
                       <h3>TES Social Media</h3>
                       <div className="row">

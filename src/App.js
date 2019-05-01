@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "babel-polyfill";
 import Base from "./components/base";
 import api from "./utils/api";
 import modals from "./components/modals/_modals";
@@ -57,6 +58,7 @@ class App extends Component {
     setArticles: async () => {
       let articles = await api.get_articles();
       articles = articles.reverse();
+      articles = articles.sort((a, b) => b.sticky - a.sticky);
       this.setState({ articles });
     },
     setUsers: criteria => this.users(criteria),
