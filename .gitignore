@@ -4,6 +4,8 @@
 /node_modules
 /server/node_modules
 /server/config.js
+/server/token.json
+/server/controllers/calendar/credentials.json
 /.pnp
 .pnp.js
 

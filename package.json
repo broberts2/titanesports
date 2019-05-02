@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "googleapis": "^27.0.0",
     "html-to-text": "^5.1.1",
     "js-cookie": "^2.2.0",
     "moment": "^2.24.0",
+    "moment-timezone": "^0.5.25",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
     "react-awesome-button": "^6.1.0",

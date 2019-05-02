@@ -212,5 +212,10 @@ module.exports = {
   },
   create_cookie: (name, value) => Cookies.set(name, value, { expires: 1 }),
   remove_cookie: name => Cookies.remove(name),
-  get_cookie: name => Cookies.get(name)
+  get_cookie: name => Cookies.get(name),
+  get_events: name => {
+    return request(`/c/get_events`, {
+      method: "get"
+    });
+  }
 };

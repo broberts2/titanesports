@@ -125,10 +125,12 @@ export default class Article extends Component {
         width={"75%"}
         height={"90%"}
         effect={"fadeInUp"}
-        onClickAway={() => this.props.actions.closeModal()}
+        onClickAway={() => {
+          this.props.actions.closeModal();
+        }}
       >
         <div className={"modal-style"}>
-          <div className={"article-body"}>
+          <div className={"article-body"} id={"article-body"}>
             <div className={"content"}>
               <div className={"poster"}>
                 <img src={this.props.state.activeArticle.imgURL} />

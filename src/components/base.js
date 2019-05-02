@@ -123,7 +123,7 @@ class Base extends Component {
                         <img src={require("../img/events.png")} alt />
                         <div
                           className="linkButton"
-                          onClick={() => this.props.actions.setMenu(9)}
+                          onClick={() => this.props.actions.setEvents()}
                         >
                           Upcoming Events
                         </div>

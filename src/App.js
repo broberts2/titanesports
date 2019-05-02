@@ -5,6 +5,7 @@ import api from "./utils/api";
 import modals from "./components/modals/_modals";
 import ranksByNum from "./utils/ranksByNum";
 import sortUsers from "./utils/sortUsers";
+import moment from "moment-timezone";
 import "./index.css";
 
 const article_model = {
@@ -34,7 +35,9 @@ class App extends Component {
     spotlightUser: null,
     users: [],
     teams: [],
-    alertHtml: null
+    alertHtml: null,
+    events: [],
+    selectedEvent: null
   };
 
   actions = {
@@ -62,6 +65,10 @@ class App extends Component {
       this.setState({ articles });
     },
     setUsers: criteria => this.users(criteria),
+    setEvent: event => {
+      this.state.selectedEvent = event;
+      this.actions.setMenu(4);
+    },
     setUsersByTeam: members => this.usersByTeam(members),
     setTeams: criteria => this.teams(criteria),
     organizeUsers: criteria => {
@@ -78,6 +85,18 @@ class App extends Component {
       this.setState({
         activeArticle: i < 0 ? article_model : this.state.articles[i]
       }),
+    setEvents: async () => {
+      this.state.loading = true;
+      this.actions.setMenu(9);
+      let events = await api.get_events();
+      console.log(events[0]);
+      events = events.map(el => {
+        el.start = new moment(el.start).tz("America/Chicago").toDate();
+        el.end = new moment(el.end).tz("America/Chicago").toDate();
+        return el;
+      });
+      this.setState({ loading: false, events });
+    },
     editModal: () => {
       this.setMenu(18);
     }

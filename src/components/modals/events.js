@@ -2,46 +2,19 @@ import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
 import BigCalendar from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+import Loader from "./loader";
 import moment from "moment";
 
 export default class Events extends Component {
-  state = {
-    events: [
-      {
-        start: new Date(),
-        end: new Date(moment().add(1, "hours")),
-        title: "Some title"
-      },
-      {
-        start: new Date(moment().add(3, "hours")),
-        end: new Date(moment().add(4, "hours")),
-        title: "Some title"
-      },
-      {
-        start: new Date(moment().add(5, "hours")),
-        end: new Date(moment().add(6, "hours")),
-        title: "Some title"
-      },
-      {
-        start: new Date(moment().add(7, "hours")),
-        end: new Date(moment().add(8, "hours")),
-        title: "Some title"
-      },
-      {
-        start: new Date(moment().add(9, "hours")),
-        end: new Date(moment().add(10, "hours")),
-        title: "Some title"
-      }
-    ]
-  };
   render() {
     const localizer = BigCalendar.momentLocalizer(moment);
     const MyCalendar = props => (
       <div className={"calendar"}>
         <BigCalendar
+          onSelectEvent={e => this.props.actions.setEvent(e)}
+          views={["month", "day"]}
           localizer={localizer}
-          events={this.state.events}
+          events={this.props.state.events}
           startAccessor="start"
           endAccessor="end"
         />
@@ -57,7 +30,15 @@ export default class Events extends Component {
       >
         <div className={"modal-style"}>
           <div className={"events"}>
-            <MyCalendar />
+            <div className={"video"}>
+              <video key={""} muted={true} preload="auto" loop autoPlay>
+                <source
+                  src={require("../../webm/animated-shurima.webm")}
+                  type={"video/webm"}
+                />
+              </video>
+            </div>
+            {this.props.state.loading ? <Loader /> : <MyCalendar />}
             <div className={"button"}>
               <div
                 className="linkButton"
