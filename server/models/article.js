@@ -41,6 +41,11 @@ const articleSchema = new Schema({
     type: Array,
     unique: false,
     required: true
+  },
+  sticky: {
+    type: Boolean,
+    unique: false,
+    required: true
   }
 });
 

@@ -42,3 +42,13 @@ textarea {
   padding-left: 10px;
   color: rgb(185, 185, 185);
 }
+p::first-letter {
+}
+
+textarea,
+select,
+input,
+button:focus {
+  outline-color: transparent;
+  outline-style: none;
+}

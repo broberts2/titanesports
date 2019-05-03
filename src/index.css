@@ -10,6 +10,7 @@
 @import url("./css/content-pane.css");
 @import url("./css/content-shape.css");
 @import url("./css/content-children.css");
+@import url("./css/event.css");
 @import url("./css/events.css");
 @import url("./css/features.css");
 @import url("./css/header-content.css");
@@ -26,4 +27,5 @@
 @import url("./css/user-settings.css");
 @import url("./css/welcome-button.css");
 @import url("./css/radar-chart.css");
+@import url("./css/scrollbar.css");
 @import url("./css/kristen.css");

@@ -7,7 +7,11 @@ class Card extends Component {
     return (
       <div className={"articles"} onClick={() => this.props.activate()}>
         <div
-          className={this.props.approved || this.props.new ? null : "shadow"}
+          className={
+            this.props.approved || this.props.new
+              ? this.props.sticky ? "sticky" : null
+              : "shadow"
+          }
         >
           <div className="theCards">
             {this.props.new ? (
@@ -22,8 +26,10 @@ class Card extends Component {
                 <img src={this.props.imgURL} alt />
                 <h3>{this.props.title}</h3>
                 <div style={{ textAlign: "left" }}>
-                  <p>Posted by: {this.props.p}</p>
-                  <p>Dated Posted: {this.props.date}</p>
+                  <h4>Posted by: {this.props.p}</h4>
+                  {this.props.approved ? (
+                    <h4>Dated Published: {this.props.date}</h4>
+                  ) : null}
                 </div>
               </div>
             )}
@@ -58,15 +64,11 @@ class Articles extends Component {
 
   render() {
     let cards = [];
-    if (this.props.userLogged) {
-      cards.push(
-        <Card activate={() => this.props.setArticle(-1)} new={true} />
-      );
-    }
     this.props.articles.map((el, i) => {
       const card = (
         <Card
           approved={el.approved}
+          sticky={el.sticky}
           activate={() => this.props.setArticle(i)}
           imgURL={el.imgURL}
           title={el.title}
@@ -81,6 +83,11 @@ class Articles extends Component {
         cards.push(card);
       }
     });
+    if (this.props.userLogged) {
+      cards.push(
+        <Card activate={() => this.props.setArticle(-1)} new={true} />
+      );
+    }
     return (
       <div className={"article"}>
         <div className={"content"}>

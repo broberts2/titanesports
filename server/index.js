@@ -3,6 +3,19 @@ const app = express();
 const config = require("./config");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const option = {
+  socketTimeoutMS: 30000,
+  keepAlive: true,
+  reconnectTries: 30000
+};
+mongoose.connect(config.db, option).then(
+  () => {
+    console.log("Database linking successful!");
+  },
+  err => {
+    console.log("Failed to connect to database.");
+  }
+);
 mongoose.connect(config.db);
 const PORT = process.env.PORT || config.port;
 const path = require("path");
@@ -31,6 +44,7 @@ const Compounds = require("./controllers/compounds");
 const User = require("./controllers/userHandling");
 const Team = require("./controllers/teamHandling");
 const Article = require("./controllers/articleHandling");
+const Events = require("./controllers/calendar/eventHandling");
 
 app.use(bodyParser.json());
 
@@ -174,6 +188,7 @@ app.get("/u/get_user", routifyPromiseNoRestrict(User.getUser));
 app.get("/t/get_teams", routifyPromiseNoRestrict(Team.getAllTeams));
 app.get("/a/get_articles", routifyPromiseNoRestrict(Article.getAllArticles));
 app.get("/a/create_article", routifyPromiseNoRestrict(Article.createArticle));
+app.get("/c/get_events", routifyPromiseNoRestrict(Events.getEvents));
 
 try {
   automation();

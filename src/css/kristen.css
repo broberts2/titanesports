@@ -11,8 +11,9 @@ h1 {
 }
 h2 {
   font-size: 18pt;
-  font-weight: normal;
-  color: #ccc;
+  font-weight: bold;
+  font-style: italic;
+  color: #fff;
 }
 h3 {
   font-size: 14pt;
@@ -132,6 +133,8 @@ p {
   margin-top: 15px;
 }
 .footerBar {
+  margin-top: 15px;
+  width: 100%;
   padding: 15px;
   border-radius: 2px;
   border: solid 1px #777;

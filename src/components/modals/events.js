@@ -1,9 +1,25 @@
 import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
+import BigCalendar from "react-big-calendar";
+import Loader from "./loader";
+import moment from "moment";
 
 export default class Events extends Component {
   render() {
+    const localizer = BigCalendar.momentLocalizer(moment);
+    const MyCalendar = props => (
+      <div className={"calendar"}>
+        <BigCalendar
+          onSelectEvent={e => this.props.actions.setEvent(e)}
+          views={["month", "day"]}
+          localizer={localizer}
+          events={this.props.state.events}
+          startAccessor="start"
+          endAccessor="end"
+        />
+      </div>
+    );
     return (
       <Modal
         visible={this.props.state.modal === this.props.index ? true : false}
@@ -14,14 +30,15 @@ export default class Events extends Component {
       >
         <div className={"modal-style"}>
           <div className={"events"}>
-            <iframe
-              src="https://calendar.google.com/calendar/embed?showPrint=0&amp;showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=titanesportsleague%40gmail.com&amp;color=%231B887A&amp;ctz=America%2FNome"
-              style={{ borderWidth: "0" }}
-              width={"100%"}
-              height={"100%"}
-              frameborder="0"
-              scrolling="no"
-            />
+            <div className={"video"}>
+              <video key={""} muted={true} preload="auto" loop autoPlay>
+                <source
+                  src={require("../../webm/animated-shurima.webm")}
+                  type={"video/webm"}
+                />
+              </video>
+            </div>
+            {this.props.state.loading ? <Loader /> : <MyCalendar />}
             <div className={"button"}>
               <div
                 className="linkButton"
