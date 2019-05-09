@@ -17,6 +17,8 @@
 /build.zip
 /server.zip
 /src/config.js
+/_static
+/_static.zip
 
 # misc
 .DS_Store

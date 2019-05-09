@@ -4,6 +4,8 @@ import styles from "react-awesome-button/src/styles/themes/theme-c137";
 import MediaQuery from "react-responsive";
 import api from "../utils/api";
 
+const config = require("../config");
+
 class Header extends Component {
   componentDidMount() {
     this.scale();
@@ -46,7 +48,7 @@ class Header extends Component {
       <div className={"header"}>
         <div className="header-content-wrapper">
           <div className={"header-content"}>
-            <img id={"header-img"} src={require("../img/logo.png")} />
+            <img id={"header-img"} src={`${config.static_url}/img/logo.png`} />
             <div id={"header-buttons"} className={"button-cluster"}>
               <div>
                 {this.props.state.userLogged ? (

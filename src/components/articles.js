@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Loader from "./modals/loader";
 import api from "../utils/api";
 
+const config = require("../config");
+
 class Card extends Component {
   render() {
     return (
@@ -16,7 +18,7 @@ class Card extends Component {
           <div className="theCards">
             {this.props.new ? (
               <div className={"newImg"}>
-                <img src={require("../img/new.jpg")} alt />
+                <img src={`${config.static_url}/img/new.jpg`} alt />
                 <div className={"icon"}>
                   <div className="fas fa-plus-square fa-6x" />
                 </div>

@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
 import Loader from "./loader";
-import config from "../../config";
 import api from "../../utils/api";
-import { position } from "../../img/img_router";
+import { position } from "../../img_router";
 import ranksByNum from "../../utils/ranksByNum";
+
+const config = require("../../config");
 
 class CustomRow extends Component {
   render() {
@@ -15,11 +16,11 @@ class CustomRow extends Component {
           <div style={{ width: "150px", textAlign: "left" }}>
             {this.props.captain && this.props.captain.length > 0 ? (
               <div className={"captain-hat"}>
-                <img src={require("../../img/captain_hat.png")} />
+                <img src={`${config.static_url}/img/captain_hat.png`} />
               </div>
             ) : null}
             <img
-              src={`${config.dataDragon}/${config.currentVersion}/img/profileicon/${this
+              src={`${config.static_url}/${config.version}/img/profileicon/${this
                 .props.iconId}.png`}
             />
             <h4
@@ -55,7 +56,8 @@ export default class Search extends Component {
     position: false,
     tier: false,
     lp: false,
-    membership: false
+    membership: false,
+    searchQuery: ""
   };
 
   renderContent() {
@@ -66,6 +68,12 @@ export default class Search extends Component {
             style={{ width: "40%" }}
             type="text"
             placeholder="Summoner Name"
+            value={this.state.searchQuery}
+            onChange={e => {
+              console.log(e.target.value);
+              this.state.searchQuery = e.target.value;
+              this.props.actions.sorter({ search: e.target.value });
+            }}
           />
         </div>
         <table>
@@ -74,14 +82,14 @@ export default class Search extends Component {
               className={this.state.username ? "selected" : null}
               onClick={() => {
                 const state = {
-                  username: !this.state.username,
+                  username: true,
                   position: false,
                   tier: false,
                   lp: false,
                   membership: false
                 };
                 this.setState(state);
-                this.props.actions.organizeUsers("username");
+                this.props.actions.sorter({ query: "username" });
               }}
             >
               Summoner
@@ -91,13 +99,13 @@ export default class Search extends Component {
               onClick={() => {
                 const state = {
                   username: false,
-                  position: !this.state.position,
+                  position: true,
                   tier: false,
                   lp: false,
                   membership: false
                 };
                 this.setState(state);
-                this.props.actions.organizeUsers("position");
+                this.props.actions.sorter({ query: "position" });
               }}
             >
               Position
@@ -108,12 +116,12 @@ export default class Search extends Component {
                 const state = {
                   username: false,
                   position: false,
-                  tier: !this.state.tier,
+                  tier: true,
                   lp: false,
                   membership: false
                 };
                 this.setState(state);
-                this.props.actions.organizeUsers("tier");
+                this.props.actions.sorter({ query: "tier" });
               }}
             >
               Tier
@@ -125,11 +133,11 @@ export default class Search extends Component {
                   username: false,
                   position: false,
                   tier: false,
-                  lp: !this.state.lp,
+                  lp: true,
                   membership: false
                 };
                 this.setState(state);
-                this.props.actions.organizeUsers("soloLp");
+                this.props.actions.sorter({ query: "soloLp" });
               }}
             >
               LP
@@ -142,10 +150,10 @@ export default class Search extends Component {
                   position: false,
                   tier: false,
                   lp: false,
-                  membership: !this.state.membership
+                  membership: true
                 };
                 this.setState(state);
-                this.props.actions.organizeUsers("membership");
+                this.props.actions.sorter({ query: "membership" });
               }}
             >
               Team Membership

@@ -2,10 +2,11 @@ import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 import { AwesomeButton } from "react-awesome-button";
 import Loader from "./loader";
-import config from "../../config";
 import api from "../../utils/api";
-import { position } from "../../img/img_router";
+import { position } from "../../img_router";
 import ranksByNum from "../../utils/ranksByNum";
+
+const config = require("../../config");
 
 class CustomRow extends Component {
   render() {
@@ -14,7 +15,7 @@ class CustomRow extends Component {
         <td align="center">
           <div style={{ width: "350px", textAlign: "left" }}>
             <img
-              src={`${config.dataDragon}/${config.currentVersion}/img/profileicon/${this
+              src={`${config.static_url}/${config.version}/img/profileicon/${this
                 .props.iconId}.png`}
             />
             {this.props.name}
@@ -34,7 +35,7 @@ export default class Teams extends Component {
     return (
       <div style={{ height: "150%" }}>
         <div className={"bar"}>
-          <input type="text" placeholder="Team Name (currently inactive)" />
+          <input style={{ width: "40%" }} type="text" placeholder="Team Name" />
         </div>
         <table>
           <tr>

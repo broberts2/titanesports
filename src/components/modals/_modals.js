@@ -12,12 +12,14 @@ import SignUp from "./sign_up";
 import Article from "./article";
 import ArticleMaker from "./article_maker";
 import Alert from "./alert";
+import Prodraft from "./prodraft";
 
 export default (state, Obj) => [
   <Leagues index={1} state={state} actions={Obj} />,
   <Alert index={2} state={state} actions={Obj} />,
   <MenuMini index={3} state={state} actions={Obj} />,
   <Event index={4} state={state} actions={Obj} />,
+  <Prodraft index={5} state={state} actions={Obj} />,
   <SignIn index={6} state={state} actions={Obj} />,
   <UserProfile index={7} state={state} actions={Obj} />,
   <Events index={9} state={state} actions={Obj} />,

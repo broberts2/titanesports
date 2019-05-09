@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { AwesomeButton } from "react-awesome-button";
 
-const videos = require("../webm/_videos.js");
+const videos = require("../_videos.js");
 
 const _video = video => {
   return (
@@ -21,7 +21,7 @@ class VideoBackground extends Component {
   };
 
   setIndex() {
-    let rand;
+    let rand = 0;
     do {
       rand = Math.floor(Math.random() * videos.length);
     } while (this.exclusions.includes(rand));

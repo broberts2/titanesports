@@ -1,0 +1,93 @@
+.prodraft {
+  position: relative;
+  height: 100%;
+  padding: 15px;
+  z-index: 1;
+}
+.prodraft .champion-modal {
+  padding: 30px;
+}
+.prodraft .video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  z-index: -1;
+  overflow: hidden;
+}
+.prodraft .video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.prodraft .header {
+  position: relative;
+  border-bottom: 1px solid black;
+}
+.prodraft .header h1 {
+  font-size: 65px;
+  color: rgb(42, 42, 42);
+  z-index: 1;
+}
+.prodraft .header td {
+  text-align: center;
+}
+.prodraft .header .team {
+  position: relative;
+  text-align: center;
+}
+.prodraft .header .team h2 {
+  font-size: 25px;
+  color: rgb(42, 42, 42);
+}
+.prodraft .header .team img {
+  --dim: 150px;
+  width: var(--dim);
+  height: var(--dim);
+  border-radius: 50%;
+  border: 1px solid rgb(42, 42, 42);
+}
+.prodraft .header .team .selected {
+  border: 6px solid rgb(0, 224, 255);
+}
+.prodraft .header .team .show-team {
+  border: 5px solid rgb(0, 201, 255);
+}
+.prodraft .header .team .leave-team {
+}
+.prodraft .body {
+}
+.prodraft .body td {
+}
+.prodraft .body .pick {
+  margin: 5px;
+}
+.prodraft .body .pick img {
+  width: 100%;
+}
+.prodraft .body .ban {
+  position: relative;
+  text-align: center;
+}
+.prodraft .body .ban .champion {
+  position: relative;
+}
+.prodraft .body .ban .champion img {
+  width: 75%;
+  border-radius: 50%;
+  padding: 2px;
+}
+.prodraft .body .ban .ban-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.prodraft .body .ban .ban-image img {
+  width: 75%;
+  border-radius: 50%;
+  opacity: 0.65;
+}

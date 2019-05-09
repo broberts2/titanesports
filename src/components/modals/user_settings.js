@@ -4,7 +4,7 @@ import { AwesomeButton } from "react-awesome-button";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import api from "../../utils/api";
-import { position } from "../../img/img_router";
+import { position } from "../../img_router";
 
 export default class UserSettings extends Component {
   state = {

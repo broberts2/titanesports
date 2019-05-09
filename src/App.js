@@ -4,7 +4,7 @@ import Base from "./components/base";
 import api from "./utils/api";
 import modals from "./components/modals/_modals";
 import ranksByNum from "./utils/ranksByNum";
-import sortUsers from "./utils/sortUsers";
+import sorter from "./utils/sorter";
 import moment from "moment-timezone";
 import "./index.css";
 
@@ -37,7 +37,22 @@ class App extends Component {
     teams: [],
     alertHtml: null,
     events: [],
-    selectedEvent: null
+    selectedEvent: null,
+    pickingTeam: 1,
+    team1: {
+      name: "Shurima",
+      pick: ["Azir", "Renekton", "Nasus", "Aatrox", null],
+      ban: ["Xerath", "Xerath", "Xerath", "Xerath", null],
+      iconId: 55,
+      index: 1
+    },
+    team2: {
+      name: "Enemies of Shurima",
+      pick: ["Kassadin", "Katarina", "Darius", null, null],
+      ban: ["Azir", "Azir", "Azir", "Azir", null],
+      iconId: 56,
+      index: 2
+    }
   };
 
   actions = {
@@ -56,6 +71,9 @@ class App extends Component {
     setAlert: alertHtml => {
       this.setState({ alertHtml, modal: 2 });
     },
+    setPickingTeam: pickingTeam => {
+      this.setState({ pickingTeam });
+    },
     closeModal: () => this.setState({ modal: 0, lastModal: this.state.modal }),
     showUser: userLogged => this.setState({ userLogged }),
     setArticles: async () => {
@@ -71,8 +89,8 @@ class App extends Component {
     },
     setUsersByTeam: members => this.usersByTeam(members),
     setTeams: criteria => this.teams(criteria),
-    organizeUsers: criteria => {
-      const users = sortUsers(criteria || { username: true }, this.state.users);
+    sorter: criteria => {
+      const users = sorter(criteria, this.state.users);
       this.setState({ users });
     },
     spotlightUser: async spotlightUser => {
@@ -89,7 +107,6 @@ class App extends Component {
       this.state.loading = true;
       this.actions.setMenu(9);
       let events = await api.get_events();
-      console.log(events[0]);
       events = events.map(el => {
         el.start = new moment(el.start).tz("America/Chicago").toDate();
         el.end = new moment(el.end).tz("America/Chicago").toDate();
@@ -105,7 +122,7 @@ class App extends Component {
   async users(criteria) {
     this.setState({ loading: true });
     let users = await api.get_users();
-    users = sortUsers(criteria || "username", users);
+    users = sorter(criteria, users);
     this.setState({ users, loading: false });
   }
 

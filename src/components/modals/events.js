@@ -5,6 +5,8 @@ import BigCalendar from "react-big-calendar";
 import Loader from "./loader";
 import moment from "moment";
 
+const config = require("../../config");
+
 export default class Events extends Component {
   render() {
     const localizer = BigCalendar.momentLocalizer(moment);
@@ -18,6 +20,9 @@ export default class Events extends Component {
           startAccessor="start"
           endAccessor="end"
         />
+        <p style={{ color: "rgb(42,42,42)" }}>
+          <i>Eastern Standard Time (EST)</i>
+        </p>
       </div>
     );
     return (
@@ -33,7 +38,7 @@ export default class Events extends Component {
             <div className={"video"}>
               <video key={""} muted={true} preload="auto" loop autoPlay>
                 <source
-                  src={require("../../webm/animated-shurima.webm")}
+                  src={`${config.static_url}/webm/animated-shurima.webm`}
                   type={"video/webm"}
                 />
               </video>

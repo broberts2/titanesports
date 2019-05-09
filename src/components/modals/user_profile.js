@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 import Loader from "./loader";
 import api from "../../utils/api";
-import config from "../../config";
-import { position } from "../../img/img_router";
+import { position } from "../../img_router";
 import RadarChart from "../radar_chart";
+
+const config = require("../../config");
 
 class Queues extends Component {
   render() {
@@ -47,23 +48,23 @@ class UserProfile extends Component {
     if (this.props.state.spotlightUser) {
       switch (this.props.state.spotlightUser.soloTier) {
         case "IRON":
-          return require("../../img/Emblem_Iron.png");
+          return `${config.static_url}/img/tiers/Emblem_Iron.png`;
         case "BRONZE":
-          return require("../../img/Emblem_Bronze.png");
+          return `${config.static_url}/img/tiers/Emblem_Bronze.png`;
         case "SILVER":
-          return require("../../img/Emblem_Silver.png");
+          return `${config.static_url}/img/tiers/Emblem_Silver.png`;
         case "GOLD":
-          return require("../../img/Emblem_Gold.png");
+          return `${config.static_url}/img/tiers/Emblem_Gold.png`;
         case "PLATINUM":
-          return require("../../img/Emblem_Platinum.png");
+          return `${config.static_url}/img/tiers/Emblem_Platinum.png`;
         case "DIAMOND":
-          return require("../../img/Emblem_Diamond.png");
+          return `${config.static_url}/img/tiers/Emblem_Diamond.png`;
         case "MASTER":
-          return require("../../img/Emblem_Master.png");
+          return `${config.static_url}/img/tiers/Emblem_Master.png`;
         case "GRANDMASTER":
-          return require("../../img/Emblem_Grandmaster.png");
+          return `${config.static_url}/img/tiers/Emblem_Grandmaster.png`;
         case "CHALLENGER":
-          return require("../../img/Emblem_Challenger.png");
+          return `${config.static_url}/img/tiers/Emblem_Challenger.png`;
         default:
           return null;
       }
@@ -98,7 +99,7 @@ class UserProfile extends Component {
             </div>
             <div className={"icon-image"}>
               <img
-                src={`${config.dataDragon}/${config.currentVersion}/img/profileicon/${this
+                src={`${config.static_url}/${config.version}/img/profileicon/${this
                   .props.state.spotlightUser.iconId}.png`}
               />
               <div className={"icon-position"}>

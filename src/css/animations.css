@@ -10,7 +10,6 @@
   -webkit-animation: opacity 20s infinite;
 }
 .fade-out {
-  pointer-events: none;
   -webkit-animation: fade-out 0.5s forwards;
 }
 .grow {
@@ -24,4 +23,18 @@
 }
 .shrink-less {
   -webkit-animation: shrink-less 0.5s forwards;
+}
+.show-team {
+  -webkit-animation: show-team 0.5s forwards;
+  -webkit-animation-delay: 0.5s;
+}
+.leave-team {
+  -webkit-animation: leave-team 0.5s forwards;
+}
+.show-team-reverse {
+  -webkit-animation: show-team-reverse 0.5s forwards;
+  -webkit-animation-delay: 0.5s;
+}
+.leave-team-reverse {
+  -webkit-animation: leave-team-reverse 0.5s forwards;
 }

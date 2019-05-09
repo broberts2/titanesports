@@ -9,13 +9,15 @@ import WelcomeButton from "./welcome_button";
 import MediaLink from "../media_links";
 import api from "../utils/api";
 
+const config = require("../config");
+
 class Base extends Component {
   render() {
     return (
       <div>
         <Header state={this.props.state} actions={this.props.actions} />
         <VideoBackground />
-        <Content img={require("../img/lol_logo.png")}>
+        <Content img={`${config.static_url}/img/lol_logo.png`}>
           <div className="container-fluid">
             <div
               style={{
@@ -39,7 +41,7 @@ class Base extends Component {
                           Titan Esports mission is simple at its core -- promote
                           a friendly, engaging, comptetitive gaming environment
                           for all of the dedicated members of our esteemed
-                          community, an dto ensure competitive fairness.
+                          community, and to ensure competitive fairness.
                         </p>
                       </div>
                     </div>
@@ -79,20 +81,22 @@ class Base extends Component {
                   className="theSection"
                   style={{ marginTop: "30px", borderRadius: "10px" }}
                 >
-                  <h2>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
+                  <h2 style={{ fontWeight: "normal" }}>
+                    Welcome to Titan eSports! We are a non-profit league seeking
+                    to provide high quality matches within a competative 5v5
+                    environment. We believe that League of Legends is best
+                    experienced within the context of strong, team oriented
+                    gameplay where cooperation and strategy take priority over
+                    individual skill. We look forward seeing you all on the
+                    Rift!
                   </h2>
                   <div className="row" style={{ marginTop: "15px" }}>
                     <div className="col">
                       <div className="theCards">
-                        <img src={require("../img/summoner.png")} alt />
+                        <img
+                          src={`${config.static_url}/img/summoner.png`}
+                          alt
+                        />
                         <div
                           className="linkButton"
                           onClick={() => {
@@ -106,7 +110,7 @@ class Base extends Component {
                     </div>
                     <div className="col">
                       <div className="theCards">
-                        <img src={require("../img/teams.png")} alt />
+                        <img src={`${config.static_url}/img/teams.png`} alt />
                         <div
                           className="linkButton"
                           onClick={async () => {
@@ -120,7 +124,7 @@ class Base extends Component {
                     </div>
                     <div className="col">
                       <div className="theCards">
-                        <img src={require("../img/events.png")} alt />
+                        <img src={`${config.static_url}/img/events.png`} alt />
                         <div
                           className="linkButton"
                           onClick={() => this.props.actions.setEvents()}

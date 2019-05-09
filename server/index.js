@@ -2,21 +2,6 @@ const express = require("express");
 const app = express();
 const config = require("./config");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
-const option = {
-  socketTimeoutMS: 30000,
-  keepAlive: true,
-  reconnectTries: 30000
-};
-mongoose.connect(config.db, option).then(
-  () => {
-    console.log("Database linking successful!");
-  },
-  err => {
-    console.log("Failed to connect to database.");
-  }
-);
-mongoose.connect(config.db);
 const PORT = process.env.PORT || config.port;
 const path = require("path");
 const protected = require("./controllers/protected").protected;
@@ -29,6 +14,7 @@ const security = express.Router();
 const cors = require("cors");
 const restrict = require("./controllers/restrict");
 const automation = require("./automation");
+const db_connector = require("./db_util");
 
 const ChampionMastery = require("./controllers/riot_api/CHAMPION-MASTERY-V4");
 const Champion = require("./controllers/riot_api/CHAMPION-V3");
@@ -47,6 +33,8 @@ const Article = require("./controllers/articleHandling");
 const Events = require("./controllers/calendar/eventHandling");
 
 app.use(bodyParser.json());
+
+app.use(express.static("../_static"));
 
 app.use(
   cors({
