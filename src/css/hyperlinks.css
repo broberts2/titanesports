@@ -1,9 +1,0 @@
-.hyperlinks a {
-  font-size: 25px;
-  margin: 10px;
-  cursor: pointer;
-  color: blue;
-}
-.hyperlinks a:hover {
-  color: navy;
-}
