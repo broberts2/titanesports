@@ -5,6 +5,7 @@ const Users = require("../models/user");
 module.exports = {
   protected: (req, res, next) => {
     let token = req.headers["titan_key"];
+    console.log(token);
     if (token) {
       jwt.verify(token, config.secret, async (err, decoded) => {
         if (err) {

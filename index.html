@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="HomePage.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Amarante|Roboto|Staatliches&display=swap" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+<body>
+
+
+<div class="header">
+	<div class="container">
+		<div class="row">
+		  <div class="col-md-4">
+		    <img class="logoheader" style="position: absolute; z-index: 1;" src="logo2.png">
+		  </div>
+			<div class="col-md-2" id="logged_user"></div>
+		  <div class="col-md-6">
+			<div class="menu">
+				<a class="menuitem" href="index.html">Home</a>|
+				<a class="menuitem" href="/page/about.html">About</a>|
+				<a class="menuitem" href="/page/articles.html">Articles</a>|
+				<a class="menuitem" href="/page/events.html">Events</a>|
+				<a class="menuitem" href="/page/contact.html">Contact</a>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">&nbsp;</div>
+				<div class="col-sm-2">
+					<div class="social"><a href="https://www.twitch.tv/titanesportz" target="_blank"><i class="fab fa-twitch"></i></a></div>
+				</div>
+				<div class="col-sm-2">
+					<div class="social"><a href="https://discord.gg/9DPxcfp" target="_blank"><i class="fab fa-discord"></i></a></div>
+				</div>
+				<div class="col-sm-2">
+					<div class="social"><a href="https://www.reddit.com/user/Titan_eSports" target="_blank"><i class="fab fa-reddit-square"></i></a></div>
+				</div>
+				<div class="col-sm-2">
+					<div class="social"><a href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank"><i class="fab fa-youtube"></i></a></div>
+				</div>
+				<div class="col-sm-2">
+					<div class="social"><a href="contact.html"><i class="fas fa-envelope"></i></a></div>
+				</div>
+			</div>
+		  </div>
+		</div>
+	</div>
+</div>
+
+<div class="topsection">
+    <div class="video-background" id="video-background"></div>
+	<div class="d-flex justify-content-center" id="sign_in">
+		<div class="bigbutton hvr-growbtn" style="margin-top: 300px;" data-toggle="modal" data-target="#loginModal">
+			<i style="font-size: 45px;" class="fas fa-user-lock"></i><br>Sign In
+		</div>
+	</div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="login-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">User Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<label>Username</label>
+		<div class="input-group mb-3">
+  		<input type="text" class="form-control" placeholder="Username" id="login-username">
+		</div>
+		<label>Password</label>
+		<div class="input-group mb-3">
+			<input type="password" class="form-control" placeholder="Password" id="login-password">
+		</div>
+		<div id="code"></div>
+      </div>
+      <div class="modal-footer">
+				<a href="">Don't have an account?</a>
+        <button type="button" class="btn btn-primary" onclick="loginBtn()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Player Search Modal -->
+<div class="modal fade" id="playerSearchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+    <div class="modal-content" id="playerSearch-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Player Search</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<div class="input-group mb-3">
+			<input type="text" class="form-control" placeholder="player search" oninput="searchPlayer()" id="playerSearch-input">
+		</div>
+		<div id="code"></div>
+		<div id="players"></div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Team Search Modal -->
+<div class="modal fade" id="teamSearchModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+    <div class="modal-content" id="teamSearch-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Team Search</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+		<div class="input-group mb-3">
+			<input type="text" class="form-control" placeholder="team search" oninput="searchTeam()" id="teamSearch-input">
+		</div>
+		<div id="code"></div>
+		<div id="teams"></div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sectionone">
+	<div class="container">
+		<div class="d-flex">
+			<div class="servbtnsec col-8">
+				<div class="container">
+				<div class="d-flex">
+					<div class="col-8">
+						<div class="servbtn hvr-grow" style="background-image: url(faux_btn/1.jpg);" data-toggle="modal" data-target="#playerSearchModal">
+							<div class="servtxt"><strong>Player Search <i class="fas fa-angle-double-right"></i></strong></div>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="servbtn hvr-grow" style="background-image: url(faux_btn/2.jpg);" data-toggle="modal" data-target="#teamSearchModal">
+							<div class="servtxt"><strong>Team Search <i class="fas fa-angle-double-right"></i></strong></div>
+						</div>
+					</div>
+				</div></div>
+				<div class="container" style="margin-top: 25px;">
+				<div class="d-flex">
+					<div class="col-4">
+						<a href="about.html"><div class="servbtn hvr-grow" style="background-image: url(faux_btn/3.jpg);">
+							<div class="servtxt"><strong>About TES <i class="fas fa-angle-double-right"></i></strong></div>
+						</div></a>
+					</div>
+					<div class="col-8">
+						<a href=""><div class="servbtn hvr-grow" style="background-image: url(faux_btn/4.jpg);">
+							<div class="servtxt"><strong>TES Summer Roster Update <i class="fas fa-angle-double-right"></i></strong></div>
+						</div></a>
+					</div>
+				</div></div>
+			</div>
+			<div class="servbtnsec col-4">
+				<a href="events.html"><div class="servbtn1 hvr-grow" style="background-image: url(faux_btn/5.jpg); margin-left: -20px;">
+					<div class="servtxt"><strong>UpComing Events <i class="fas fa-angle-double-right"></i></strong></div>
+				</div></a>
+			</div>
+		</div>
+	</div>
+	<div class="container" style="margin-top: 40px; padding-bottom: 60px;">
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-7">
+				<h1>Welcome to Titan eSports!</h1>
+				<p>We are a non-profit league seeking to provide high quality matches within a competative 5v5 environment. We believe that League of Legends is best experienced within the context of strong, team oriented gameplay where cooperation and strategy take priority over individual skill. We look forward seeing you all on the Rift!</p>
+				<a href="/page/contact.html"><div class="blackbtn hvr-sweep-to-right">Sign Up<i class="fas fa-file-signature" style="margin-left: 15px; font-size: 26px;"></i></div></a>
+			</div>
+			<div class="col-4" style="padding-right: 30px;">
+				<div class="darkbox">
+					<h3>TES Mission Statement</h3>
+					<p style="margin-top: 30px;">Titan Esports mission is simple at its core—promote a friendly, engaging, competitive gaming environment for all of the dedicated members of our esteemed community. TES was founded by a group of friends who came together almost a decade ago with the same common goals: </p>
+					<ul style="list-style: none;">
+					<li>~ Excellence</li>
+					<li>~ Community</li>
+					<li>~ Hospitality</li>
+					<li>~ Competitive Fairness</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+
+<div class="sectiontwo">
+	<div class="container">
+		<div class="row">
+			<h2 style="margin-top: 80px; margin-left: 100px;">Community Articles <i class="fas fa-pen"></i></h2>
+		</div>
+	</div>
+	<div class="container">
+		<div class="d-flex">
+			<div class="servbtnsec2 col-4">
+				<div class="servbtn1 hvr-grow" style="background-image: url(faux_btn/6.jpg);">
+					<div class="artheader"><strong>TES Who? What? Where?</strong><br><div class="author">Posted by: Khyroe</div></div>
+				</div>
+			</div>
+			<div class="servbtnsec2 col-8" style="margin-left: -20px;">
+				<div class="container">
+				<div class="d-flex">
+					<div class="col-6">
+						<div class="servbtn hvr-grow" style="background-image: url(faux_btn/7.jpg);">
+							<div class="artheader"><strong>Development Roadmap</strong><br><div class="author">Posted by: Jetgorilla</div></div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="servbtn hvr-grow" style="background-image: url(faux_btn/7.jpg);">
+							<div class="artheader"><strong>TES Summer Showcase</strong><br><div class="author">Posted by: Jetgorilla</div></div>
+						</div>
+					</div>
+				</div></div>
+				<div class="container" style="margin-top: 25px;">
+				<div class="d-flex">
+					<div class="col-6">
+						<div class="servbtn hvr-grow" style="background-image: url(faux_btn/8.jpg);">
+							<div class="artheader"><strong>Why Esports?</strong><br><div class="author">Posted by: skunkbeartw</div></div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="servbtn hvr-grow" style="background-image: url(faux_btn/8.jpg);">
+							<div class="artheader"><strong>A Quick Announcement</strong><br><div class="author">Posted by: Jetgorilla</div></div>
+						</div>
+					</div>
+				</div></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="sectionthree">
+	<div class="container">
+		<div class="row">
+			<div class="col-3"><img class="logofooter" src="logo2.png"></div>
+			<div class="col-3"><a href="contact.html"><div class="btmbtn hvr-grow" style="background-image: url(faux_btn/10.jpg);">
+				<div class="servtxt"><strong>Want To Write? <i class="fas fa-angle-double-right"></i></strong></div>
+			</div></a></div>
+			<div class="col-3"><a href="https://forms.gle/eYcsyMcHPUfaTcUW9" target="_blank"><div class="btmbtn hvr-grow" style="background-image: url(faux_btn/11.jpg);">
+				<div class="servtxt"><strong>Want To Stream? <i class="fas fa-angle-double-right"></i></strong></div>
+			</div></a></div>
+			<div class="col-3"><a href="contact.html"><div class="btmbtn hvr-grow" style="background-image: url(faux_btn/12.jpg);">
+				<div class="servtxt"><strong>Want To Join? <i class="fas fa-angle-double-right"></i></strong></div>
+			</div></a></div>
+		</div>
+	</div>
+</div>
+
+<div class="footer" style="margin-top: -105px;">
+	<div class="socialfooter container">
+		<div class="row">
+			<div class="col-sm-4">&nbsp;</div>
+			<div class="col-sm-4 ftrtxt">Connect With Us</div>
+			<div class="col-sm-4">
+				<div class="row">
+					<div class="col-sm-2">&nbsp;</div>
+					<div class="col-sm-2">
+						<div class="socialftr"><a href="https://www.twitch.tv/titanesportz" target="_blank"><i class="fab fa-twitch"></i></a></div>
+					</div>
+					<div class="col-sm-2">
+						<div class="socialftr"><a href="https://discord.gg/9DPxcfp" target="_blank"><i class="fab fa-discord"></i></a></div>
+					</div>
+					<div class="col-sm-2">
+						<div class="socialftr"><a href="https://www.reddit.com/user/Titan_eSports" target="_blank"><i class="fab fa-reddit-square"></i></a></div>
+					</div>
+					<div class="col-sm-2">
+						<div class="socialftr"><a href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank"><i class="fab fa-youtube"></i></a></div>
+					</div>
+					<div class="col-sm-2">
+						<div class="socialftr"><a href="contact.html"><i class="fas fa-envelope"></i></a></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="js/script_loader.js"></script>
+
+</body>
+</html>

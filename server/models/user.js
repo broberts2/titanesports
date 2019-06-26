@@ -103,6 +103,11 @@ const userSchema = new Schema({
     type: String,
     unique: false,
     required: false
+  },
+  mail: {
+    type: Array,
+    unique: false,
+    required: false
   }
 });
 

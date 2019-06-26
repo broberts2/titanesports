@@ -10,9 +10,17 @@ module.exports = {
       throw new Error(e.message);
     }
   },
+  getTeam: async (req, res) => {
+    try {
+      let team = await Team.find({ name: req.query.t });
+      return team;
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  },
   modifyTeam: async (req, res) => {
     try {
-      const teams = await Team.update({ name: req.query.t }, req.body.data);
+      const teams = await Team.update({ name: req.query.t }, req.body);
       return teams;
     } catch (e) {
       throw new Error(e.message);

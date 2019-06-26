@@ -6,7 +6,7 @@ const Match = require("./riot_api/MATCH-V4");
 const Spectator = require("./riot_api/SPECTATOR-V4");
 const Summoner = require("./riot_api/SUMMONER-V4");
 const ThirdParty = require("./riot_api/THIRD-PARTY-CODE-V4");
-const TournamentStub = require("./riot_api/TOURNAMENT-STUB-V4");
+const Tournament = require("./riot_api/TOURNAMENT-V4");
 
 const Fetch = require("./fetch");
 const apiKey = require("../config").apiKey;

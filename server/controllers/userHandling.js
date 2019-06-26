@@ -105,6 +105,23 @@ module.exports = {
       throw new Error("Authentication failed.");
     }
   },
+  sendMail: async (req, res) => {
+    try {
+      const user = "shalom!";
+      // const mailObject = {
+      //   to: req.body.to,
+      //   from: req.user_info.username,
+      //   body: req.body.body
+      // };
+      // const user = Users.update(
+      //   { username: req.body.to },
+      //   { $push: { mail: mailObject } }
+      // );
+      return user;
+    } catch (e) {
+      throw new Error(e.message);
+    }
+  },
   updateUser: async (req, res) => {
     try {
       const user = await Users.update({ username: req.query.u }, req.body.data);

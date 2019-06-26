@@ -6,12 +6,16 @@ const Match = require("./controllers/riot_api/MATCH-V4");
 const Spectator = require("./controllers/riot_api/SPECTATOR-V4");
 const Summoner = require("./controllers/riot_api/SUMMONER-V4");
 const ThirdParty = require("./controllers/riot_api/THIRD-PARTY-CODE-V4");
-const TournamentStub = require("./controllers/riot_api/TOURNAMENT-STUB-V4");
+const Tournament = require("./controllers/riot_api/TOURNAMENT-V4");
 const User = require("./controllers/userHandling");
 const Team = require("./controllers/teamHandling");
 const ranksByNum = require("./ranksByNum");
 const fetch = require("node-fetch");
 const config = require("./config");
+
+const USER_CYCLE_WAIT = 5000;
+const TEAM_CYCLE_WAIT = 5000;
+const TOTAL_CYCLE_WAIT = 10000;
 
 const getChampNames = (array, data) => {
   array = array.map(el => {
@@ -50,17 +54,21 @@ const find5MostPlayed = matchData => {
 const proccessor = async () => {
   const users = await User.getAllUsers();
   const teams = await Team.getAllTeams();
-  const champion_array = await fetch(
-    `http://ddragon.leagueoflegends.com/cdn/${config.currentVersion}/data/en_US/champion.json`,
-    {
-      method: "get"
-    }
-  )
-    .then(res => res.json())
-    .then(res => res.data);
-  await Promise.all(
+  const champion_array = require(`/var/www/html/static/${config.currentVersion}/data/en_US/champion.json`);
+  return await Promise.all(
     users.map(async (user, i) => {
-      await new Promise(resolve => setTimeout(() => resolve(), 10000 * i));
+      // await User.updateUser({
+      //   query: { u: user.username },
+      //   body: {
+      //     data: {
+      //       lolSummonerId: lolId,
+      //       lolAccountId: lolAId
+      //     }
+      //   }
+      // });
+      await new Promise(resolve =>
+        setTimeout(() => resolve(), USER_CYCLE_WAIT * i)
+      );
       let accountData = await Summoner.summonerBySummonerId({
         query: { summonerId: user.lolSummonerId }
       });
@@ -88,7 +96,7 @@ const proccessor = async () => {
         //   find5MostPlayed(matchHistory.matches),
         //   champion_array
         // );
-        await User.updateUser({
+        const response = await User.updateUser({
           query: { u: user.username },
           body: {
             data: {
@@ -133,10 +141,11 @@ const proccessor = async () => {
           }
         });
       }
-      await new Promise(resolve => setTimeout(resolve(), 3000));
+      await new Promise(resolve => setTimeout(resolve(), TEAM_CYCLE_WAIT));
     })
   );
   console.log("Database Updated", new Date());
+  return new Promise(resolve => setTimeout(resolve(), TOTAL_CYCLE_WAIT));
 };
 
 module.exports = () => {
@@ -149,9 +158,6 @@ module.exports = () => {
           console.log(e);
         }
         resolve();
-      }),
-      new Promise((resolve, reject) => {
-        setTimeout(() => resolve(), 60000);
       })
     ]);
     return fun();

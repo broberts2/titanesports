@@ -15,6 +15,7 @@ const cors = require("cors");
 const restrict = require("./controllers/restrict");
 const automation = require("./automation");
 const db_connector = require("./db_util");
+db_connector();
 
 const ChampionMastery = require("./controllers/riot_api/CHAMPION-MASTERY-V4");
 const Champion = require("./controllers/riot_api/CHAMPION-V3");
@@ -24,17 +25,16 @@ const Match = require("./controllers/riot_api/MATCH-V4");
 const Spectator = require("./controllers/riot_api/SPECTATOR-V4");
 const Summoner = require("./controllers/riot_api/SUMMONER-V4");
 const ThirdParty = require("./controllers/riot_api/THIRD-PARTY-CODE-V4");
-const TournamentStub = require("./controllers/riot_api/TOURNAMENT-STUB-V4");
+const Tournament = require("./controllers/riot_api/TOURNAMENT-V4");
 const Compounds = require("./controllers/compounds");
 
 const User = require("./controllers/userHandling");
 const Team = require("./controllers/teamHandling");
 const Article = require("./controllers/articleHandling");
 const Events = require("./controllers/calendar/eventHandling");
+const Utility = require("./controllers/utilityHandling");
 
 app.use(bodyParser.json());
-
-app.use(express.static("../_static"));
 
 app.use(
   cors({
@@ -128,19 +128,27 @@ security.get(
 );
 security.post(
   "/create_tournament_code",
-  routifyPromise(3, TournamentStub.createTournamentCode)
+  routifyPromise(3, Tournament.createTournamentCode)
 );
 security.get(
-  "/lobby_events_by_tournament_code",
-  routifyPromise(3, TournamentStub.lobbyEventsByTournamentCode)
+  "/get_tournament_match_by_code",
+  routifyPromise(3, Tournament.createTournamentCode)
+);
+security.put(
+  "/update_tournament_code",
+  routifyPromise(3, Tournament.createTournamentCode)
+);
+security.get(
+  "/get_lobby_events_by_code",
+  routifyPromise(3, Tournament.createTournamentCode)
 );
 security.post(
   "/create_tournament_provider",
-  routifyPromise(3, TournamentStub.tournamentProvider)
+  routifyPromise(3, Tournament.createTournamentCode)
 );
 security.post(
   "/create_tournament",
-  routifyPromise(3, TournamentStub.createTournament)
+  routifyPromise(3, Tournament.createTournamentCode)
 );
 security.get(
   "/past_season_peak_rank_by_summoner_name",
@@ -156,11 +164,13 @@ security.post(
   routifyPromiseStandard(3, Article.createArticle)
 );
 security.get("/verify_user", routifyPromiseStandard(0, User.verifyUser));
-security.put("/update_user", routifyPromiseStandard(3, User.updateUser));
+security.put("/update_user", routifyPromiseStandard(7, User.updateUser));
 security.put(
   "/update_article",
   routifyPromiseStandard(3, Article.updateArticle)
 );
+security.put("/modify_team", routifyPromiseStandard(9, Team.modifyTeam));
+security.post("/send_mail", routifyPromiseStandard(9, User.sendMail));
 security.put("/update_self", routifyPromiseNoRestrict(User.updateSelf));
 security.get("/get_self", routifyPromiseNoRestrict(User.getSelf));
 security.delete("/delete_user", routifyPromiseStandard(3, User.deleteUser));
@@ -174,15 +184,17 @@ app.get("/u/login_user", routifyPromiseNoRestrict(User.loginUser));
 app.get("/u/get_users", routifyPromiseNoRestrict(User.getAllUsers));
 app.get("/u/get_user", routifyPromiseNoRestrict(User.getUser));
 app.get("/t/get_teams", routifyPromiseNoRestrict(Team.getAllTeams));
+app.get("/t/get_team", routifyPromiseNoRestrict(Team.getTeam));
 app.get("/a/get_articles", routifyPromiseNoRestrict(Article.getAllArticles));
 app.get("/a/create_article", routifyPromiseNoRestrict(Article.createArticle));
 app.get("/c/get_events", routifyPromiseNoRestrict(Events.getEvents));
+// app.get("/util/get_icon_count", routifyPromiseNoRestrict(Utility.getIconCount));
+// app.get(
+//   "/util/get_champion_count",
+//   routifyPromiseNoRestrict(Utility.getChampionCount)
+// );
 
-try {
-  automation();
-} catch (e) {
-  console.log(e);
-}
+// automation();
 
 app
   .use(express.static(path.join(__dirname, "public")))
