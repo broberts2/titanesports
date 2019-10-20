@@ -1,0 +1,44 @@
+.header {
+  background-color: #231f20;
+  height: 100px;
+  z-index: 5;
+  position: relative;
+}
+.header .links {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: right;
+}
+.header img {
+  position: absolute;
+  z-index: 1;
+  height: 175%;
+  left: 5%;
+  bottom: 0%;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(50%);
+  text-align: right;
+}
+.header a {
+  display: inline-block;
+  --marginHorizontal: 14px;
+  --marginVertical: 10px;
+  margin-left: var(--marginHorizontal);
+  margin-right: var(--marginHorizontal);
+  margin-top: var(--marginVertical);
+  margin-bottom: var(--marginVertical);
+  font-size: 20px;
+}
+.header i {
+  font-size: 26px;
+}
+.header div {
+  font-family: "Amarante", cursive;
+  font-size: 18px;
+  color: #fff;
+}

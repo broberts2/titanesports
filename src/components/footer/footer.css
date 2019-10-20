@@ -1,0 +1,49 @@
+.footer {
+  position: relative;
+  height: 100px;
+  background-color: #231f20;
+}
+.footer .button-group {
+  position: absolute;
+  top: 50%;
+  height: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 0;
+}
+.footer .button-group .button {
+  overflow: hidden;
+  width: 250px;
+  height: 100%;
+  text-align: center;
+  display: inline-flex;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.footer .button-group .button:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.footer .button-group .button img {
+  height: 100%;
+}
+.footer .logo img {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 10%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 75%;
+}
+.footer h3 {
+  position: absolute;
+  top: 25%;
+  right: 5%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

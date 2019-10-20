@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/server/node_modules
 /.pnp
 .pnp.js
 
@@ -11,7 +12,12 @@
 # production
 /build
 
+# credentials
+/server/config.js
+/src/config.js
+
 # misc
+/server_old
 .DS_Store
 .env.local
 .env.development.local

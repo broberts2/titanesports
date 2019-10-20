@@ -1,0 +1,69 @@
+html {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+body {
+  margin: 0;
+  font-size: 16px;
+  background-color: #cdcdcd;
+}
+div {
+  font-family: "Roboto", sans-serif;
+}
+h1 {
+  color: #fff;
+  font-family: "Amarante", cursive;
+  font-size: 40px;
+}
+h2 {
+  color: #231f20;
+  font-family: "Amarante", cursive;
+  font-size: 40px;
+}
+h3 {
+  color: #fff;
+  font-family: "Amarante", cursive;
+  font-size: 28px;
+}
+p {
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+}
+li {
+  color: #fff;
+}
+a {
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+  font-family: "Amarante", cursive;
+  font-size: 22px;
+}
+a:hover {
+  text-decoration: none;
+  color: rgb(255, 0, 46);
+}
+textarea,
+input {
+  border: 0;
+  border-bottom: 1px solid black;
+  background-color: transparent;
+  font-size: 18px;
+  font-family: "Amarante", cursive;
+  width: 100%;
+}
+textarea:focus,
+input:focus,
+button:focus {
+  outline: none;
+}
+button {
+  cursor: pointer;
+  font-size: 24px;
+  font-family: "Amarante", cursive;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100%;
+}

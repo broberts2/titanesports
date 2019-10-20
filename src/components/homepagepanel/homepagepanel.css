@@ -1,0 +1,114 @@
+.homepagepanel {
+  background-image: linear-gradient(#2a1427, #2b1b29);
+  position: relative;
+  height: 700px;
+}
+.homepagepanel .panels {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 500px;
+}
+.homepagepanel .panels .wrapper {
+  color: #cdcdcd;
+  background-color: black;
+  --border: 3px;
+  transition: all 0.2s ease-in-out;
+  transform: scale(0.925);
+  overflow: hidden;
+  cursor: pointer;
+  border: var(--border) solid #2a2a2a;
+}
+.homepagepanel .panels .wrapper:hover {
+  color: #231f20;
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+}
+.homepagepanel .panels video {
+  height: 100%;
+  opacity: 0.35;
+  transition: opacity 0.25s ease-in-out;
+  -moz-transition: opacity 0.25s ease-in-out;
+  -webkit-transition: opacity 0.25s ease-in-out;
+}
+.homepagepanel .panels video:hover {
+  height: 100%;
+  opacity: 1;
+}
+.homepagepanel .panels .panel-1 {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc(40% - var(--border));
+  height: calc(50% - var(--border));
+}
+.homepagepanel .panels h2 {
+  color: inherit;
+  pointer-events: none;
+  position: absolute;
+  left: 10%;
+  top: 0;
+}
+.homepagepanel .panels i {
+  font-size: 80px;
+  pointer-events: none;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -75%);
+  -ms-transform: translate(-50%, -75%);
+  transform: translate(-50%, -75%);
+}
+.homepagepanel .panels .panel-2 {
+  position: absolute;
+  left: 40%;
+  top: 0;
+  width: calc(25% - var(--border));
+  height: calc(50% - var(--border));
+}
+.homepagepanel .panels .panel-3 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: calc(35% - var(--border));
+  height: calc(100% - var(--border));
+}
+.homepagepanel .panels .panel-4 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: calc(25% - var(--border));
+  height: calc(50% - var(--border));
+}
+.homepagepanel .panels .panel-5 {
+  position: absolute;
+  left: 25%;
+  bottom: 0;
+  width: calc(40% - var(--border));
+  height: calc(50% - var(--border));
+}
+.homepagepanel .snip {
+  width: 50%;
+  max-width: 550px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 50px;
+}
+.homepagepanel .box {
+  background-color: #231f20;
+  width: 30%;
+  max-width: 400px;
+  position: absolute;
+  top: 85%;
+  right: 50px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  padding: 30px;
+}

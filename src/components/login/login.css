@@ -1,0 +1,23 @@
+.login {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+.login .anchor {
+  margin-top: 35px;
+}
+.login .anchor {
+  color: black;
+  cursor: pointer;
+}
+.login .anchor .anchor:hover {
+  color: rgb(255, 0, 46);
+  cursor: pointer;
+}
+.login button {
+  color: black;
+}

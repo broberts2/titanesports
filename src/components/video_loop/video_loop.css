@@ -1,0 +1,64 @@
+.video_loop {
+  position: relative;
+  height: 550px;
+  overflow-y: hidden;
+  width: 100%;
+}
+.video_loop video {
+  width: 100%;
+}
+.video_loop .video1 {
+  position: absolute;
+  width: 100%;
+  top: 0;
+}
+.video_loop .video2 {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  opacity: 0;
+}
+.video_loop .button {
+  transition: all 0.2s ease-in-out;
+  padding: 0px;
+  --dim: 125px;
+  width: var(--dim);
+  height: var(--dim);
+  background-color: rgba(226, 226, 226, 0.5);
+  border: 1px solid black;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.video_loop .button:hover {
+  color: rgb(82, 0, 0);
+  -webkit-transform: translate(-50%, -50%) scale(1.2);
+  -ms-transform: translate(-50%, -50%) scale(1.2);
+  transform: translate(-50%, -50%) scale(1.2);
+}
+.video_loop .button .content {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  color: inherit;
+}
+.video_loop .button .content h1 {
+  color: inherit;
+  font-size: 25px;
+  margin: 0px;
+}
+.video_loop .button .content i {
+  color: inherit;
+  font-size: 35px;
+  margin: 0px;
+}

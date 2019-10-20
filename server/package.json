@@ -1,0 +1,26 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Broc Roberts",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.5",
+    "cors": "^2.8.5",
+    "ejs": "^2.6.2",
+    "express": "^4.16.4",
+    "forever": "^1.0.0",
+    "googleapis": "^39.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "moment-timezone": "^0.5.25",
+    "mongoose": "^5.4.22",
+    "node-fetch": "^2.3.0",
+    "nodemon": "^1.18.10",
+    "require-new": "^1.1.1",
+    "socket.io": "^2.2.0"
+  }
+}
