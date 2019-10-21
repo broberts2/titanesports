@@ -2,6 +2,7 @@ const Users = require("../models/user");
 const fs = require("fs");
 const config = require("../config");
 const bcrypt = require("bcrypt");
+const ObjectId = require("mongodb").ObjectID;
 
 module.exports = {
   createUser: async (req, res) => {
@@ -40,6 +41,34 @@ module.exports = {
       return { token, code: 200, msg: "Login Successful!", u: user.username };
     } catch (e) {
       return { code: 11101, msg: "Authentication Error." };
+    }
+  },
+  getUser: async (req, res) => {
+    const user = await Users.findOne({ _id: ObjectId(req.query.u) });
+    console.log(user);
+    if (!user) {
+      return { code: 11102, msg: "Get User Error." };
+    }
+    try {
+      return { code: 200, msg: "Get User Successful!", user };
+    } catch (e) {
+      return { code: 11102, msg: "Get User Error." };
+    }
+  },
+  validateToken: async (req, res) => {
+    const user = await Users.findOne({ username: req.user_info.username });
+    if (!user) {
+      return { code: 11105, msg: "Unable to Parse User." };
+    }
+    try {
+      return {
+        code: 200,
+        msg: "Token is Valid!",
+        id: user._id,
+        u: user.username
+      };
+    } catch (e) {
+      return { code: 11101, msg: "Invalid or Null Token." };
     }
   }
 };

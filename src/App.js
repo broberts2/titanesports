@@ -4,8 +4,7 @@ import { Route } from "react-router";
 import { ConnectedRouter } from "connected-react-router";
 import configureStore, { history } from "./configureStore";
 
-import Home from "./components/home/home";
-
+import Components from "./components";
 const store = configureStore();
 
 export default class App extends React.Component {
@@ -13,7 +12,8 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <ConnectedRouter history={history}>
-          <Route exact path="/" render={() => <Home />} />
+          <Route exact path="/" render={() => <Components.Home />} />
+          <Route exact path="/user" render={() => <Components.UserAccount />} />
         </ConnectedRouter>
       </Provider>
     );

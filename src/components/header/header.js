@@ -2,16 +2,21 @@ import React from "react";
 import { connect } from "react-redux";
 import "./header.css";
 
+const Api = require("../../Api");
+
 const { read_cookie } = require("sfcookies");
 
 class Header extends React.Component {
   state = {
-    accountLink: <a href={"/contact.html"}>Sign In</a>
+    accountLink: <a href={"/"}>Sign In</a>
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    const res = await Api.validateToken();
     if (read_cookie("titan_key").length > 0) {
-      this.setState({ accountLink: <a href={"/contact.html"}>My Account</a> });
+      this.setState({
+        accountLink: <a href={`/user?u=${res.id}`}>My Account</a>
+      });
     }
   }
 
@@ -21,7 +26,7 @@ class Header extends React.Component {
         <img alt={""} src={require("../../img/logo2.png")} />
         <div className={"links"}>
           <div>
-            <a href={"/index.html"}>Home</a>|<a href={"/about.html"}>About</a>|
+            <a href={"/"}>Home</a>|<a href={"/about.html"}>About</a>|
             <a href={"/articles.html"}>Articles</a>|
             <a href={"/events.html"}>Events</a>|
             <a href={"/contact.html"}>Contact</a>|{this.state.accountLink}

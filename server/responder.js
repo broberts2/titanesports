@@ -15,6 +15,8 @@ module.exports = async (cb, res) => {
   let report = typeof cb === "function" ? await cb() : await cb;
   report = sanitize(report);
   res.json({
+    id: report.id,
+    user: report.user,
     code: report.code,
     msg: report.msg || report.errmsg,
     token: report.token,

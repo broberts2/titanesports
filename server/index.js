@@ -7,20 +7,21 @@ const path = require("path");
 const http = config.production ? require("https") : require("http");
 const fs = require("fs");
 const security = express.Router();
+const protected = require("./protected").protected;
 const cors = require("cors");
 const db_connector = require("./db_util");
 const routes = require("./routes");
 db_connector();
 
+app.use(cors({ origin: true, credentials: true }));
+security.use(cors({ origin: true, credentials: true }));
+
+app.use("/s", security);
+security.use(protected);
+
 app.use(bodyParser.json());
 
-app.use(
-  cors({
-    credentials: true
-  })
-);
-
-routes(app);
+routes(app, security);
 
 app
   .use(express.static(path.join(__dirname, "public")))
