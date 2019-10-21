@@ -105,6 +105,13 @@ class UserAccount extends React.Component {
                     <i ref={"profile_icon"} className={"fas fa-edit"}></i>
                   </div>
                   <div className={"title"}>{this.state.user.username}</div>
+                  <h1>Player Biography</h1>
+                  <Components.TextBox
+                    content={""}
+                    canEdit={this.state.canEdit}
+                    fontSize={32}
+                    fontColor={"white"}
+                  />
                 </div>
               </div>
               <Components.Footer />
