@@ -1,7 +1,7 @@
 const { bake_cookie, read_cookie, delete_cookie } = require("sfcookies");
 const config = require("./config");
 
-module.exports = {
+export default {
   loginUser: async credentials => {
     const user = await fetch(`http://localhost:8000/loginUser`, {
       method: "get",
