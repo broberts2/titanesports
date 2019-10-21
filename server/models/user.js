@@ -19,10 +19,20 @@ const userSchema = new Schema({
     unique: false,
     required: true
   },
-  titanRole: {
+  titanRole1: {
     type: String,
     unique: false,
-    required: true
+    required: false
+  },
+  titanRole2: {
+    type: String,
+    unique: false,
+    required: false
+  },
+  titanRole3: {
+    type: String,
+    unique: false,
+    required: false
   },
   memberships: {
     type: Array,
@@ -40,6 +50,36 @@ const userSchema = new Schema({
     required: false
   },
   email: {
+    type: String,
+    unique: false,
+    required: false
+  },
+  suspended: {
+    type: Boolean,
+    unique: false,
+    required: true
+  },
+  verified: {
+    type: Boolean,
+    unique: false,
+    required: true
+  },
+  isAdmin: {
+    type: Boolean,
+    unique: false,
+    required: true
+  },
+  biography: {
+    type: String,
+    unique: false,
+    required: false
+  },
+  inbox: {
+    type: Object,
+    unique: false,
+    required: false
+  },
+  communityTitle: {
     type: String,
     unique: false,
     required: false

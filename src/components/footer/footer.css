@@ -2,6 +2,7 @@
   position: relative;
   height: 100px;
   background-color: #231f20;
+  width: 100%;
 }
 .footer .button-group {
   position: absolute;

@@ -15,10 +15,28 @@
   position: relative;
   margin-top: 10vw;
   background-color: rgba(34, 30, 31, 1);
-  height: 750px;
   border: 0px solid #cdcdcd;
   padding: 50px;
-  padding-top: 250px;
+  padding-top: 15vw;
+  padding-bottom: 150px;
+}
+.user_account .body .bottom-icons {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.user_account .body .bottom-icons i {
+  margin: 10px;
+  display: inline-flex;
+  font-size: 48px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+}
+.user_account .body .bottom-icons i:hover {
+  transform: scale(1.2);
 }
 .user_account .body .title {
   color: #fff;
@@ -90,4 +108,11 @@
 .user_account .logout i:hover {
   color: #221e1f;
   transform: scale(1.2);
+}
+.user_account .confirm-modal {
+  text-align: center;
+}
+.user_account .confirm-modal h2 {
+  font-size: 48px;
+  margin-bottom: 50px;
 }

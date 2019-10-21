@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import ReactClass from "create-react-class";
 import "./text_box.css";
 
 class TextBox extends React.Component {
   state = {
     domMounted: false,
     content: this.props.content || "",
-    maxContent: this.props.content || "",
     savedContent: this.props.content || ""
   };
 
@@ -14,27 +14,9 @@ class TextBox extends React.Component {
     this.setState({ domMounted: true });
   }
 
-  save() {
-    this.setState({
-      savedContent: this.state.content,
-      maxContent: this.state.content
-    });
-    if (this.props.saveCB) {
-      this.props.saveCB(this.state.savedContent);
-    }
-  }
-
-  reset() {
-    this.setState({
-      content: this.state.savedContent,
-      maxContent: this.state.content
-    });
-  }
-
   revert() {
     this.setState({
-      content: this.state.maxContent,
-      maxContent: this.state.content
+      content: this.state.savedContent
     });
   }
 
@@ -48,6 +30,8 @@ class TextBox extends React.Component {
         className={"text_box"}
       >
         <textarea
+          spellCheck={this.props.canEdit}
+          disabled={!this.props.canEdit}
           value={this.state.content}
           placeholder={this.props.placeholder ? this.props.placeholder : ""}
           onChange={e =>
@@ -57,7 +41,6 @@ class TextBox extends React.Component {
                 })
               : null
           }
-          rows={this.props.rows ? this.props.rows : 4}
           style={{
             spellcheck: this.props.canEdit,
             textIndent: this.props.textIndent ? this.props.textIndent : 35,
@@ -73,14 +56,9 @@ class TextBox extends React.Component {
             }}
             className={"icons"}
           >
-            <i onClick={() => this.save()} className={"fas fa-save"}></i>
             <i
               onClick={() => this.revert()}
               className={"fas fa-share-square"}
-            ></i>
-            <i
-              onClick={() => this.reset()}
-              className={"fas fa-window-close"}
             ></i>
           </div>
         ) : null}

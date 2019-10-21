@@ -3,6 +3,7 @@
   width: 100%;
   border-radius: 3px;
   text-align: center;
+  height: 500px;
 }
 .text_box textarea {
   width: calc(100% - 30px);
@@ -11,10 +12,11 @@
   padding: 15px;
   font-size: inherit;
   color: inherit;
+  height: 100%;
 }
 .text_box .icons {
   position: absolute;
-  bottom: -45px;
+  bottom: -80px;
   right: 0;
 }
 .text_box .icons i {
@@ -28,4 +30,12 @@
 }
 .text_box .icons i:hover {
   transform: scale(1.2);
+}
+.text_box .change-warning {
+  font-family: "Amarante", cursive;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 10px;
+  color: red;
 }
