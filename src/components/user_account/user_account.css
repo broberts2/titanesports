@@ -17,6 +17,8 @@
   background-color: rgba(34, 30, 31, 1);
   height: 750px;
   border: 0px solid #cdcdcd;
+  padding: 50px;
+  padding-top: 250px;
 }
 .user_account .body .title {
   color: #fff;

@@ -32,7 +32,7 @@ class Home extends React.Component {
             openModal={() => this.openModal(Components.Login)}
           />
           <Components.Modal
-            width={"75%"}
+            width={"45%"}
             height={"75%"}
             openModal={modal => this.openModal(modal)}
             setModal={modalVisible => this.setModal(modalVisible)}

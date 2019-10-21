@@ -9,6 +9,7 @@ import SignUp from "./components/sign_up/sign_up";
 import HomePagePanel from "./components/homepagepanel/homepagepanel";
 import HomeArticles from "./components/home_articles/home_articles";
 import Footer from "./components/footer/footer";
+import TextBox from "./components/text_box/text_box";
 
 export default {
   Header,
@@ -21,5 +22,6 @@ export default {
   Footer,
   Home,
   UserAccount,
-  Logout
+  Logout,
+  TextBox
 };

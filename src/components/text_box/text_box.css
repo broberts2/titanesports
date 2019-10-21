@@ -1,0 +1,31 @@
+.text_box {
+  position: relative;
+  width: 100%;
+  border-radius: 3px;
+  text-align: center;
+}
+.text_box textarea {
+  width: calc(100% - 30px);
+  border-bottom: 0px;
+  resize: none;
+  padding: 15px;
+  font-size: inherit;
+  color: inherit;
+}
+.text_box .icons {
+  position: absolute;
+  bottom: -45px;
+  right: 0;
+}
+.text_box .icons i {
+  margin: 10px;
+  display: inline-flex;
+  cursor: pointer;
+  color: inherit;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+}
+.text_box .icons i:hover {
+  transform: scale(1.2);
+}
