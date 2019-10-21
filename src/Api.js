@@ -3,7 +3,7 @@ const config = require("./config");
 
 export default {
   loginUser: async credentials => {
-    const user = await fetch(`http://localhost:8000/loginUser`, {
+    const user = await fetch(`config.serverPath/loginUser`, {
       method: "get",
       headers: {
         Accept: "application/json",
@@ -19,7 +19,7 @@ export default {
     return user;
   },
   getUser: async user_id => {
-    const user = await fetch(`http://localhost:8000/getUser?u=${user_id}`, {
+    const user = await fetch(`config.serverPath/getUser?u=${user_id}`, {
       method: "get",
       headers: {
         Accept: "application/json",
@@ -30,7 +30,7 @@ export default {
   },
   validateToken: async () => {
     const titan_key = read_cookie("titan_key");
-    const user = await fetch(`http://localhost:8000/s/validateToken`, {
+    const user = await fetch(`config.serverPath/s/validateToken`, {
       method: "get",
       headers: {
         Accept: "application/json",
@@ -45,7 +45,7 @@ export default {
     window.location.reload();
   },
   createUser: async userData => {
-    return await fetch(`http://localhost:8000/createUser`, {
+    return await fetch(`config.serverPath/createUser`, {
       method: "post",
       headers: {
         Accept: "application/json",
