@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import "./header.css";
 
-const Api = require("../../Api");
+import Api from "../../Api";
 
 const { read_cookie } = require("sfcookies");
 

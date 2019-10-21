@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./login.css";
 import Components from "../../components";
 
-const Api = require("../../Api");
+import Api from "../../Api";
 
 class Login extends React.Component {
   state = {

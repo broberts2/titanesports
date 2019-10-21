@@ -4,7 +4,7 @@ import Components from "../../components";
 import Loader from "../loader/loader";
 import "./user_account.css";
 
-const Api = require("../../Api");
+import Api from "../../Api";
 
 class UserAccount extends React.Component {
   state = {
