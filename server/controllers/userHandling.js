@@ -10,15 +10,36 @@ module.exports = {
       let user = await Users.create({
         username: req.body.username,
         password: bcrypt.hashSync(req.body.password, 10),
-        level: 6,
+        level: 10,
         memberships: [""],
         iconId: 0,
-        titanRole: "TOP",
+        titanRole1: "",
+        titanRole2: "",
+        titanRole3: "",
         captainTeam: "",
-        email: req.body.email
+        email: req.body.email,
+        biography: "",
+        verified: false,
+        suspended: false,
+        communityTitle: "",
+        isAdmin: false
       });
       user.code = 200;
       user.msg = "Account Creation Successful!";
+      return user;
+    } catch (e) {
+      console.log(e);
+      return e;
+    }
+  },
+  updateUser: async (req, res) => {
+    try {
+      const user = await Users.update(
+        { username: req.user_info.username },
+        req.body
+      );
+      user.code = 200;
+      user.msg = "User Account Updated!";
       return user;
     } catch (e) {
       return e;

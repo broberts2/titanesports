@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Components from "../../components";
 import Loader from "../loader/loader";
 import "./user_account.css";
+import ReactClass from "create-react-class";
 
 import Api from "../../Api";
 
@@ -13,9 +14,7 @@ class UserAccount extends React.Component {
     pageIsValid: false,
     modalVisible: false,
     modal: Components.Logout,
-    user: {
-      username: ""
-    }
+    user: {}
   };
 
   async componentDidMount() {
@@ -37,6 +36,7 @@ class UserAccount extends React.Component {
       user = await Api.getUser(res.id);
       window.location = window.location + `?u=${res.id}`;
     }
+    this.setState({ user: null });
     this.setState({ user: user.user });
     u = urlParams.get("u");
     if (u === res.id) {
@@ -55,6 +55,63 @@ class UserAccount extends React.Component {
   }
 
   editProfileIcon() {}
+
+  confirmUpdate() {
+    const biography = this.refs["player_bio"].children[0].textContent;
+    this.openModal(
+      ReactClass({
+        render() {
+          return (
+            <div className={"confirm-modal"}>
+              <h2>Submit changes to profile?</h2>
+              <button
+                onClick={async () =>
+                  this.props.startRequest(
+                    Api.updateUser({
+                      biography
+                    })
+                  )
+                }
+              >
+                Submit Changes
+              </button>
+            </div>
+          );
+        }
+      })
+    );
+  }
+
+  clearChanges() {
+    const validateQuery = () => this.validateQuery();
+    this.openModal(
+      ReactClass({
+        render() {
+          return (
+            <div className={"confirm-modal"}>
+              <h2>Clear pending changes?</h2>
+              <button
+                onClick={async () =>
+                  this.props.startRequest(
+                    new Promise(async (resolve, reject) => {
+                      const user = await validateQuery();
+                      resolve(
+                        user
+                          ? { msg: "Changes reverted." }
+                          : { msg: "Unable to revert changes." }
+                      );
+                    })
+                  )
+                }
+              >
+                Clear Changes
+              </button>
+            </div>
+          );
+        }
+      })
+    );
+  }
 
   render() {
     return (
@@ -104,14 +161,32 @@ class UserAccount extends React.Component {
                     />
                     <i ref={"profile_icon"} className={"fas fa-edit"}></i>
                   </div>
-                  <div className={"title"}>{this.state.user.username}</div>
+                  {this.state.user ? (
+                    <div className={"title"}>{this.state.user.username}</div>
+                  ) : null}
                   <h1>Player Biography</h1>
-                  <Components.TextBox
-                    content={""}
-                    canEdit={this.state.canEdit}
-                    fontSize={32}
-                    fontColor={"white"}
-                  />
+                  {this.state.user ? (
+                    <div ref={"player_bio"}>
+                      <Components.TextBox
+                        content={this.state.user.biography}
+                        canEdit={this.state.canEdit}
+                        fontSize={32}
+                        fontColor={"white"}
+                      />
+                    </div>
+                  ) : null}
+                  {this.state.canEdit ? (
+                    <div className={"bottom-icons"}>
+                      <i
+                        onClick={() => this.confirmUpdate()}
+                        className={"fas fa-save"}
+                      ></i>
+                      <i
+                        onClick={() => this.clearChanges()}
+                        className={"fas fa-window-close"}
+                      ></i>
+                    </div>
+                  ) : null}
                 </div>
               </div>
               <Components.Footer />

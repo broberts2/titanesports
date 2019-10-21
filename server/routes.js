@@ -14,4 +14,7 @@ module.exports = (app, security) => {
   security.get("/validateToken", async (req, res) =>
     responder(Controllers.UserHandling.validateToken(req), res)
   );
+  security.put("/updateUser", async (req, res) =>
+    responder(Controllers.UserHandling.updateUser(req), res)
+  );
 };

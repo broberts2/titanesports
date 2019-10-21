@@ -45,7 +45,7 @@ class Header extends React.Component {
     return (
       <div className={"header"}>
         <Components.Modal
-          width={"75%"}
+          width={"45%"}
           height={"75%"}
           openModal={modal => this.openModal(modal)}
           setModal={modalVisible => this.setModal(modalVisible)}

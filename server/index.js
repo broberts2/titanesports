@@ -13,13 +13,13 @@ const db_connector = require("./db_util");
 const routes = require("./routes");
 db_connector();
 
+app.use(bodyParser.json());
+
 app.use(cors({ origin: true, credentials: true }));
 security.use(cors({ origin: true, credentials: true }));
 
 app.use("/s", security);
 security.use(protected);
-
-app.use(bodyParser.json());
 
 routes(app, security);
 

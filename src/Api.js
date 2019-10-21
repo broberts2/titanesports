@@ -15,7 +15,6 @@ export default {
     if (user.token) {
       bake_cookie("titan_key", user.token);
     }
-    console.log(user);
     return user;
   },
   getUser: async user_id => {
@@ -52,6 +51,18 @@ export default {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(userData)
+    }).then(res => res.json());
+  },
+  updateUser: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/updateUser`, {
+      method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
     }).then(res => res.json());
   }
 };
