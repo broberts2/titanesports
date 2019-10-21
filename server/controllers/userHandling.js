@@ -45,7 +45,6 @@ module.exports = {
   },
   getUser: async (req, res) => {
     const user = await Users.findOne({ _id: ObjectId(req.query.u) });
-    console.log(user);
     if (!user) {
       return { code: 11102, msg: "Get User Error." };
     }

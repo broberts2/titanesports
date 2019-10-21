@@ -49,54 +49,56 @@ class Modal extends React.Component {
 
   render() {
     return (
-      <ReactModal
-        visible={this.props.visible}
-        width={this.props.width}
-        height={this.props.height}
-        effect="fadeInUp"
-        onClickAway={() =>
-          this.state.requestPending || this.state.requestStatus
-            ? null
-            : this.props.setModal(false)
-        }
-      >
-        <div className={"modal"}>
-          <div className={"header"}>
-            <div className={"img"}>
-              <img alt={""} src={require("../../img/logo2.png")} />
+      <div style={{ pointerEvents: this.props.visible ? "" : "none" }}>
+        <ReactModal
+          visible={this.props.visible}
+          width={this.props.width}
+          height={this.props.height}
+          effect="fadeInUp"
+          onClickAway={() =>
+            this.state.requestPending || this.state.requestStatus
+              ? null
+              : this.props.setModal(false)
+          }
+        >
+          <div className={"modal"}>
+            <div className={"header"}>
+              <div className={"img"}>
+                <img alt={""} src={require("../../img/logo2.png")} />
+              </div>
             </div>
-          </div>
-          <div className={"content-wrapper"}>
-            <div className={"content"}>
-              {this.state.requestStatus ? (
-                this.renderRequest()
-              ) : (
-                <this.props.content
-                  openModal={modal => this.props.openModal(modal)}
-                  startRequest={cb => this.startRequest(cb)}
+            <div className={"content-wrapper"}>
+              <div className={"content"}>
+                {this.state.requestStatus ? (
+                  this.renderRequest()
+                ) : (
+                  <this.props.content
+                    openModal={modal => this.props.openModal(modal)}
+                    startRequest={cb => this.startRequest(cb)}
+                  />
+                )}
+              </div>
+            </div>
+            <div
+              className={`modal-loader`}
+              style={{
+                pointerEvents: this.state.requestPending ? "" : "none",
+                opacity: this.state.requestPending ? 1 : 0
+              }}
+            >
+              <div className={"icon"}>
+                <ReactLoader
+                  type={"Triangle"}
+                  color={"#870018"}
+                  height={250}
+                  width={250}
+                  timeout={0}
                 />
-              )}
+              </div>
             </div>
           </div>
-          <div
-            className={`modal-loader`}
-            style={{
-              pointerEvents: this.state.requestPending ? "" : "none",
-              opacity: this.state.requestPending ? 1 : 0
-            }}
-          >
-            <div className={"icon"}>
-              <ReactLoader
-                type={"Triangle"}
-                color={"#870018"}
-                height={250}
-                width={250}
-                timeout={0}
-              />
-            </div>
-          </div>
-        </div>
-      </ReactModal>
+        </ReactModal>
+      </div>
     );
   }
 }

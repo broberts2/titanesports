@@ -9,12 +9,11 @@
 }
 .login .anchor {
   margin-top: 35px;
-}
-.login .anchor {
   color: black;
   cursor: pointer;
+  font-family: "Amarante", cursive;
 }
-.login .anchor .anchor:hover {
+.login .anchor:hover {
   color: rgb(255, 0, 46);
   cursor: pointer;
 }

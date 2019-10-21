@@ -35,13 +35,16 @@ class SignUp extends React.Component {
           type={"password"}
         />
         <h2>Email Address</h2>
-        <input onChange={e => this.setState({ e: e.target.value })} />
+        <input
+          placeholder={"(Optional)"}
+          onChange={e => this.setState({ e: e.target.value })}
+        />
         <button
           style={
             this.state.u.length > 0 &&
             this.state.p.length > 0 &&
             this.state.p2.length > 0 &&
-            this.state.e.length > 0
+            this.state.p === this.state.p2
               ? {}
               : { pointerEvents: "none", opacity: 0.3 }
           }
@@ -49,7 +52,7 @@ class SignUp extends React.Component {
             this.state.u.length > 0 &&
             this.state.p.length > 0 &&
             this.state.p2.length > 0 &&
-            this.state.e.length > 0
+            this.state.p === this.state.p2
               ? this.props.startRequest(
                   Api.createUser({
                     username: this.state.u,

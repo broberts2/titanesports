@@ -28,7 +28,9 @@ class Home extends React.Component {
     return (
       <div>
         <Loader domMounted={this.state.domMounted}>
-          <Components.Header />
+          <Components.Header
+            openModal={() => this.openModal(Components.Login)}
+          />
           <Components.Modal
             width={"75%"}
             height={"75%"}

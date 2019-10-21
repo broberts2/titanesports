@@ -42,7 +42,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     unique: false,
-    required: true
+    required: false
   }
 });
 

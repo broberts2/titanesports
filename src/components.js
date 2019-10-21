@@ -4,6 +4,7 @@ import Modal from "./components/modal/modal";
 import Home from "./components/home/home";
 import UserAccount from "./components/user_account/user_account";
 import Login from "./components/login/login";
+import Logout from "./components/logout/logout";
 import SignUp from "./components/sign_up/sign_up";
 import HomePagePanel from "./components/homepagepanel/homepagepanel";
 import HomeArticles from "./components/home_articles/home_articles";
@@ -19,5 +20,6 @@ export default {
   HomeArticles,
   Footer,
   Home,
-  UserAccount
+  UserAccount,
+  Logout
 };

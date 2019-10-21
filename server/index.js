@@ -40,7 +40,7 @@ if (config.production) {
     "/etc/letsencrypt/live/titan-esports.org/cert.pem",
     "utf8"
   );
-  server = https.createServer({ key, cert }, app);
+  server = http.createServer({ key, cert }, app);
 } else {
   server = http.createServer(app);
 }
