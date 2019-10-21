@@ -1,5 +1,6 @@
 {
   "name": "titanesports",
+  "homepage": "https://titanesports.org",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rm -rf /var/www/html; mkdir /var/www/html; rm -rf build; react-scripts build; mv -v /titanesports/build/* /var/www/html",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
