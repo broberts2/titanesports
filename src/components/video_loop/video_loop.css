@@ -1,6 +1,6 @@
 .video_loop {
   position: relative;
-  height: 550px;
+  height: 50vw;
   overflow-y: hidden;
   width: 100%;
 }

@@ -13,7 +13,7 @@
 }
 .user_account .body {
   position: relative;
-  margin-top: 100px;
+  margin-top: 10vw;
   background-color: rgba(34, 30, 31, 1);
   height: 750px;
   border: 0px solid #cdcdcd;
@@ -33,7 +33,7 @@
   width: var(--dims);
   height: var(--dims);
   position: absolute;
-  left: 25%;
+  left: 15%;
   top: 0;
   -webkit-transform: translate(-25%, -50%);
   -ms-transform: translate(-25%, -50%);

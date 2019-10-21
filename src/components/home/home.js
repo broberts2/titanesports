@@ -26,7 +26,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={"home"}>
         <Loader domMounted={this.state.domMounted}>
           <Components.Header
             openModal={() => this.openModal(Components.Login)}
