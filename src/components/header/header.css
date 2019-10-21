@@ -24,7 +24,9 @@
   transform: translateY(50%);
   text-align: right;
 }
-.header a {
+.header a,
+.imposter {
+  cursor: pointer;
   display: inline-block;
   --marginHorizontal: 14px;
   --marginVertical: 10px;
@@ -33,6 +35,10 @@
   margin-top: var(--marginVertical);
   margin-bottom: var(--marginVertical);
   font-size: 20px;
+}
+.header .imposter:hover {
+  text-decoration: none;
+  color: rgb(255, 0, 46);
 }
 .header i {
   font-size: 26px;

@@ -10,7 +10,12 @@ class UserAccount extends React.Component {
   state = {
     domMounted: false,
     canEdit: false,
-    pageIsValid: false
+    pageIsValid: false,
+    modalVisible: false,
+    modal: Components.Logout,
+    user: {
+      username: ""
+    }
   };
 
   async componentDidMount() {
@@ -32,11 +37,21 @@ class UserAccount extends React.Component {
       user = await Api.getUser(res.id);
       window.location = window.location + `?u=${res.id}`;
     }
+    this.setState({ user: user.user });
     u = urlParams.get("u");
     if (u === res.id) {
       this.setState({ canEdit: true });
     }
     return user.code === 200;
+  }
+
+  setModal(modalVisible) {
+    this.setState({ modalVisible });
+  }
+
+  openModal(modal) {
+    this.setState({ modalVisible: false, modal });
+    setTimeout(() => this.setState({ modalVisible: true }), 250);
   }
 
   editProfileIcon() {}
@@ -48,6 +63,14 @@ class UserAccount extends React.Component {
           {this.state.pageIsValid ? (
             <div>
               <Components.Header />
+              <Components.Modal
+                width={"45%"}
+                height={"75%"}
+                openModal={() => this.openModal(Components.Logout)}
+                setModal={modalVisible => this.setModal(modalVisible)}
+                visible={this.state.modalVisible}
+                content={this.state.modal}
+              />
               <video muted preload="auto" loop autoPlay>
                 <source
                   src={require("./videos/animated-demacia.webm")}
@@ -55,7 +78,7 @@ class UserAccount extends React.Component {
                 />
               </video>
               {this.state.canEdit ? (
-                <div className={"logout"}>
+                <div onClick={() => this.setModal(true)} className={"logout"}>
                   <i className={"fas fa-sign-out-alt"}></i>
                 </div>
               ) : null}
@@ -81,7 +104,7 @@ class UserAccount extends React.Component {
                     />
                     <i ref={"profile_icon"} className={"fas fa-edit"}></i>
                   </div>
-                  <div className={"title"}>Jetgorilla</div>
+                  <div className={"title"}>{this.state.user.username}</div>
                 </div>
               </div>
               <Components.Footer />
