@@ -1,6 +1,7 @@
 .home_articles {
   position: relative;
   height: 50vw;
+  overflow-x: hidden;
 }
 .home_articles .wrapper {
   position: absolute;
