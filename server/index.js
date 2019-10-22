@@ -15,6 +15,9 @@ db_connector();
 
 app.use(bodyParser.json());
 
+app.use(express.static(`dragontail-${config.currentVersion}`));
+app.use(express.static("profile_videos"));
+
 app.use(cors({ origin: true, credentials: true }));
 security.use(cors({ origin: true, credentials: true }));
 

@@ -27,6 +27,29 @@ export default {
     }).then(res => res.json());
     return user;
   },
+  getProfileVideos: async user_id => {
+    const videos = await fetch(`${config.serverPath}/getProfileVideos`, {
+      method: "get",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then(res => res.json());
+    return videos;
+  },
+  requestProfileIconList: async obj => {
+    const iconList = await fetch(
+      `${config.serverPath}/getIconsList?index=${obj.index}&size=${obj.size}`,
+      {
+        method: "get",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      }
+    ).then(res => res.json());
+    return iconList;
+  },
   validateToken: async () => {
     const titan_key = read_cookie("titan_key");
     const user = await fetch(`${config.serverPath}/s/validateToken`, {

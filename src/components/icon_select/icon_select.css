@@ -1,0 +1,35 @@
+.icon-select {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.icon-select table {
+  width: 100%;
+  table-layout: fixed;
+}
+.icon-select table img {
+  transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -webkit-transition: all 0.1s ease-in-out;
+  cursor: pointer;
+  width: 100%;
+  border: 1px solid black;
+}
+.icon-select table img:hover {
+  transform: scale(1.75);
+}
+.icon-select .controls-wrapper {
+  position: relative;
+  text-align: center;
+}
+.icon-select .controls {
+  display: inline-flex;
+}
+.icon-select .controls button {
+  display: inline-flex;
+  margin: 10px;
+}
+.icon-select .controls .middle {
+  padding-left: 75px;
+  padding-right: 75px;
+}

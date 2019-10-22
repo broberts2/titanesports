@@ -10,6 +10,8 @@ import HomePagePanel from "./components/homepagepanel/homepagepanel";
 import HomeArticles from "./components/home_articles/home_articles";
 import Footer from "./components/footer/footer";
 import TextBox from "./components/text_box/text_box";
+import IconSelect from "./components/icon_select/icon_select";
+import UserProfileVideo from "./components/user_profile_video/user_profile_video";
 
 export default {
   Header,
@@ -23,5 +25,7 @@ export default {
   Home,
   UserAccount,
   Logout,
-  TextBox
+  TextBox,
+  IconSelect,
+  UserProfileVideo
 };

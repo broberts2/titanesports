@@ -7,6 +7,8 @@ import ReactClass from "create-react-class";
 
 import Api from "../../Api";
 
+const config = require("../../config");
+
 class UserAccount extends React.Component {
   state = {
     domMounted: false,
@@ -54,7 +56,9 @@ class UserAccount extends React.Component {
     setTimeout(() => this.setState({ modalVisible: true }), 250);
   }
 
-  editProfileIcon() {}
+  editProfileIcon() {
+    this.openModal(Components.IconSelect);
+  }
 
   confirmUpdate() {
     const biography = this.refs["player_bio"].children[0].textContent;
@@ -121,6 +125,7 @@ class UserAccount extends React.Component {
             <div>
               <Components.Header />
               <Components.Modal
+                validateQuery={() => this.validateQuery()}
                 width={"45%"}
                 height={"75%"}
                 openModal={() => this.openModal(Components.Logout)}
@@ -130,21 +135,37 @@ class UserAccount extends React.Component {
               />
               <video muted preload="auto" loop autoPlay>
                 <source
-                  src={require("./videos/animated-demacia.webm")}
+                  src={`${config.serverPath}/${
+                    this.state.user && this.state.user.profileVideo
+                      ? this.state.user.profileVideo
+                      : `animated-demacia.webm`
+                  }`}
                   type={"video/webm"}
                 />
               </video>
               {this.state.canEdit ? (
-                <div onClick={() => this.setModal(true)} className={"logout"}>
-                  <i className={"fas fa-sign-out-alt"}></i>
+                <div className={"header-options-wrapper"}>
+                  <div className={"header-options"}>
+                    <i
+                      onClick={() =>
+                        this.openModal(Components.UserProfileVideo)
+                      }
+                      className={"fas fa-fire"}
+                    ></i>
+                    <i
+                      onClick={() => this.openModal(Components.Logout)}
+                      className={"fas fa-sign-out-alt"}
+                    ></i>
+                  </div>
                 </div>
               ) : null}
               <div className={"body-wrapper"}>
                 <div className={"body"}>
                   <div className={`player_icon`}>
                     <img
+                      alt={""}
                       onClick={() =>
-                        this.state.canEdit ? this.editProfileIcon : null
+                        this.state.canEdit ? this.editProfileIcon() : null
                       }
                       onMouseEnter={() =>
                         this.state.canEdit
@@ -157,7 +178,11 @@ class UserAccount extends React.Component {
                           : null
                       }
                       className={`${this.state.canEdit ? "edit" : ""}`}
-                      src={require("../../img/temp2.png")}
+                      src={`${config.serverPath}/${
+                        config.currentVersion
+                      }/img/profileicon/${
+                        this.state.user ? this.state.user.iconId : "0.png"
+                      }`}
                     />
                     <i ref={"profile_icon"} className={"fas fa-edit"}></i>
                   </div>

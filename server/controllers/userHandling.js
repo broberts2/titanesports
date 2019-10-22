@@ -12,7 +12,7 @@ module.exports = {
         password: bcrypt.hashSync(req.body.password, 10),
         level: 10,
         memberships: [""],
-        iconId: 0,
+        iconId: "0.png",
         titanRole1: "",
         titanRole2: "",
         titanRole3: "",
@@ -22,13 +22,13 @@ module.exports = {
         verified: false,
         suspended: false,
         communityTitle: "",
-        isAdmin: false
+        isAdmin: false,
+        profileVideo: "animated-demacia.webm"
       });
       user.code = 200;
       user.msg = "Account Creation Successful!";
       return user;
     } catch (e) {
-      console.log(e);
       return e;
     }
   },

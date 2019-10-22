@@ -23,34 +23,34 @@ class HomeArticles extends React.Component {
               <tr>
                 <td>
                   <div className={"img"}>
-                    <img src={require("../../img/temp.jpg")} />
+                    <img alt={""} src={require("../../img/temp.jpg")} />
                   </div>
                 </td>
                 <td>
                   <div className={"img"}>
-                    <img src={require("../../img/temp.jpg")} />
+                    <img alt={""} src={require("../../img/temp.jpg")} />
                   </div>
                 </td>
                 <td>
                   <div ref={"img1"} className={"lg-img"}>
-                    <img src={require("../../img/temp.jpg")} />
+                    <img alt={""} src={require("../../img/temp.jpg")} />
                   </div>
                 </td>
               </tr>
               <tr>
                 <td>
                   <div className={"img"}>
-                    <img src={require("../../img/temp.jpg")} />
+                    <img alt={""} src={require("../../img/temp.jpg")} />
                   </div>
                 </td>
                 <td>
                   <div className={"img"}>
-                    <img src={require("../../img/temp.jpg")} />
+                    <img alt={""} src={require("../../img/temp.jpg")} />
                   </div>
                 </td>
                 <td>
                   <div ref={"img1"} className={"lg-img"}>
-                    <img src={require("../../img/temp.jpg")} />
+                    <img alt={""} src={require("../../img/temp.jpg")} />
                   </div>
                 </td>
               </tr>

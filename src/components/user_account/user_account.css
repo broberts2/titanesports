@@ -5,8 +5,8 @@
   position: fixed;
   right: 0;
   bottom: 0;
-  width: 100%;
   z-index: -100;
+  width: 100%;
 }
 .user_account .body-wrapper {
   padding: 150px;
@@ -90,22 +90,26 @@
 .user_account .edit:hover {
   opacity: 0.25;
 }
-.user_account .logout {
+.user_account .header-options-wrapper {
   position: relative;
 }
-.user_account .logout i {
+.user_account .header-options {
   position: absolute;
   right: 0;
   top: 0;
   font-size: 48px;
   cursor: pointer;
-  transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -webkit-transition: all 0.25s ease-in-out;
   color: #fff;
   margin: 25px;
 }
-.user_account .logout i:hover {
+.user_account .header-options i {
+  display: inline-flex;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  margin: 10px;
+}
+.user_account .header-options i:hover {
   color: #221e1f;
   transform: scale(1.2);
 }
