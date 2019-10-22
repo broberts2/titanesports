@@ -1,14 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import Components from "../../components";
-import Loader from "../loader/loader";
 import "./home.css";
 
 class Home extends React.Component {
   state = {
     domMounted: false,
     modalVisible: false,
-    modal: Components.Login
+    modal: Components.Login,
+    modalSize: {
+      width: "45%",
+      height: "75%"
+    }
   };
 
   componentDidMount() {
@@ -19,34 +22,44 @@ class Home extends React.Component {
     this.setState({ modalVisible });
   }
 
-  openModal(modal) {
-    this.setState({ modalVisible: false, modal });
+  openModal(modal, size) {
+    this.setState({ modalVisible: false, modal, modalSize: size });
     setTimeout(() => this.setState({ modalVisible: true }), 250);
   }
 
   render() {
     return (
       <div className={"home"}>
-        <Loader domMounted={this.state.domMounted}>
+        <Components.Loader domMounted={this.state.domMounted}>
           <Components.Header
             openModal={() => this.openModal(Components.Login)}
           />
           <Components.Modal
-            width={"45%"}
-            height={"75%"}
-            openModal={modal => this.openModal(modal)}
+            width={this.state.modalSize.width}
+            height={this.state.modalSize.height}
+            openModal={modal =>
+              this.openModal(modal, {
+                width: "45%",
+                height: "75%"
+              })
+            }
             setModal={modalVisible => this.setModal(modalVisible)}
             visible={this.state.modalVisible}
             content={this.state.modal}
           />
           <Components.VideoLoop
-            openModal={modal => this.openModal(modal)}
+            openModal={modal =>
+              this.openModal(modal, {
+                width: "45%",
+                height: "75%"
+              })
+            }
             setModal={modalVisible => this.setModal(modalVisible)}
           />
           <Components.HomePagePanel />
           <Components.HomeArticles />
           <Components.Footer />
-        </Loader>
+        </Components.Loader>
       </div>
     );
   }

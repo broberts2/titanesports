@@ -13,14 +13,23 @@ class Header extends React.Component {
     accountLink: (
       <div
         className={"imposter"}
-        onClick={() => this.openModal(Components.Login)}
+        onClick={() =>
+          this.openModal(Components.Login, {
+            width: "45%",
+            height: "75%"
+          })
+        }
         href={"/"}
       >
         Sign In
       </div>
     ),
     modalVisible: false,
-    modal: Components.Login
+    modal: Components.Login,
+    modalSize: {
+      width: "45%",
+      height: "75%"
+    }
   };
 
   async componentDidMount() {
@@ -45,9 +54,14 @@ class Header extends React.Component {
     return (
       <div className={"header"}>
         <Components.Modal
-          width={"45%"}
-          height={"75%"}
-          openModal={modal => this.openModal(modal)}
+          width={this.state.modalSize.width}
+          height={this.state.modalSize.height}
+          openModal={modal =>
+            this.openModal(modal, {
+              width: "45%",
+              height: "75%"
+            })
+          }
           setModal={modalVisible => this.setModal(modalVisible)}
           visible={this.state.modalVisible}
           content={this.state.modal}

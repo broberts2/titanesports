@@ -27,6 +27,26 @@ export default {
     }).then(res => res.json());
     return user;
   },
+  getAllUsers: async () => {
+    const users = await fetch(`${config.serverPath}/getAllUsers`, {
+      method: "get",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then(res => res.json());
+    return users;
+  },
+  getAllTeams: async () => {
+    const teams = await fetch(`${config.serverPath}/getAllUsersTeams`, {
+      method: "get",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then(res => res.json());
+    return teams;
+  },
   getProfileVideos: async user_id => {
     const videos = await fetch(`${config.serverPath}/getProfileVideos`, {
       method: "get",

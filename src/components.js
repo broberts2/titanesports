@@ -12,6 +12,8 @@ import Footer from "./components/footer/footer";
 import TextBox from "./components/text_box/text_box";
 import IconSelect from "./components/icon_select/icon_select";
 import UserProfileVideo from "./components/user_profile_video/user_profile_video";
+import Loader from "./components/loader/loader";
+import PlayerSearch from "./components/player_search/player_search";
 
 export default {
   Header,
@@ -27,5 +29,7 @@ export default {
   Logout,
   TextBox,
   IconSelect,
-  UserProfileVideo
+  UserProfileVideo,
+  Loader,
+  PlayerSearch
 };

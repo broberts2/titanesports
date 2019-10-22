@@ -46,15 +46,17 @@ class HomePagePanel extends React.Component {
   renderPanels() {
     return (
       <div className={"panels"}>
-        <div className={"wrapper panel-1"}>
-          {this.videoButton("vid1", vid1)}
-          <h2>Player Search</h2>
-          <i className={"fas fa-user"}></i>
-        </div>
+        <a href={"/players"}>
+          <div className={"wrapper panel-1"}>
+            {this.videoButton("vid1", vid1)}
+            <h2>Player / Team Search</h2>
+            <i className={"fas fa-users"}></i>
+          </div>
+        </a>
         <div className={"wrapper panel-2"}>
           {this.videoButton("vid2", vid2)}
-          <h2>Team Search</h2>
-          <i className={"fas fa-users"}></i>
+          <h2>FILL LATER</h2>
+          <i className={""}></i>
         </div>
         <div className={"wrapper panel-3"}>
           {this.videoButton("vid3", vid3)}

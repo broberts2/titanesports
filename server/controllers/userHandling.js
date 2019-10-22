@@ -17,6 +17,10 @@ module.exports = {
         titanRole2: "",
         titanRole3: "",
         captainTeam: "",
+        leagues: {
+          gold: false,
+          platinum: false
+        },
         email: req.body.email,
         biography: "",
         verified: false,
@@ -73,6 +77,17 @@ module.exports = {
       return { code: 200, msg: "Get User Successful!", user };
     } catch (e) {
       return { code: 11102, msg: "Get User Error." };
+    }
+  },
+  getAllUsers: async (req, res) => {
+    const users = await Users.find({});
+    if (!users) {
+      return { code: 11102, msg: "Get Users Error." };
+    }
+    try {
+      return { code: 200, msg: "Get Users Successful!", users };
+    } catch (e) {
+      return { code: 11102, msg: "Get Users Error." };
     }
   },
   validateToken: async (req, res) => {

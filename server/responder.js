@@ -19,6 +19,7 @@ module.exports = async (cb, res) => {
     fileList: report.fileList,
     id: report.id,
     user: report.user,
+    users: report.users,
     code: report.code,
     msg: report.msg || report.errmsg,
     token: report.token,
