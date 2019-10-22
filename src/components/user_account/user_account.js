@@ -187,17 +187,33 @@ class UserAccount extends React.Component {
                     <i ref={"profile_icon"} className={"fas fa-edit"}></i>
                   </div>
                   {this.state.user ? (
-                    <div className={"title"}>{this.state.user.username}</div>
+                    <div className={"title"}>
+                      {this.state.user.username}
+                      <h3
+                        style={
+                          this.state.user.isAdmin
+                            ? { color: "#ff7a00" }
+                            : { color: "#6b46ff" }
+                        }
+                      >
+                        {this.state.user.communityTitle}
+                      </h3>
+                    </div>
                   ) : null}
-                  <h1>Player Biography</h1>
-                  {this.state.user ? (
-                    <div ref={"player_bio"}>
-                      <Components.TextBox
-                        content={this.state.user.biography}
-                        canEdit={this.state.canEdit}
-                        fontSize={32}
-                        fontColor={"white"}
-                      />
+                  {this.state.user &&
+                  (this.state.canEdit || this.state.user.biography.length) >
+                    0 ? (
+                    <div>
+                      <h1>Player Biography</h1>
+                      <div ref={"player_bio"}>
+                        <Components.TextBox
+                          placeholder={"(Optional)"}
+                          content={this.state.user.biography}
+                          canEdit={this.state.canEdit}
+                          fontSize={32}
+                          fontColor={"white"}
+                        />
+                      </div>
                     </div>
                   ) : null}
                   {this.state.canEdit ? (

@@ -83,7 +83,7 @@ class UserProfileVideo extends React.Component {
             await this.props.startRequest(
               Api.updateUser({ profileVideo: this.state.selectedVideo })
             );
-            this.props.validateQuery();
+            window.location.reload();
           }}
         >
           Update

@@ -2,13 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 import "./homepagepanel.css";
 
-const vid1 = require("./videos/animated-ionia.webm");
-const vid2 = require("./videos/animated-noxus.webm");
-const vid3 = require("./videos/animated-shurima.webm");
-const vid4 = require("./videos/animated-bilgewater.webm");
-const vid5 = require("./videos/animated-piltover.webm");
-// "animated-piltover.webm"
-// animated-harrowing-2014.webm
+const vid1 = {
+  src: require("./videos/c-o-animated-lunarrevel-2014.mp4"),
+  type: "video/mp4"
+};
+const vid2 = {
+  src: require("./videos/c-o-odyssey-login-webm.mp4"),
+  type: "video/mp4"
+};
+const vid3 = {
+  src: require("./videos/c-o-animated-darius.mp4"),
+  type: "video/mp4"
+};
+const vid4 = {
+  src: require("./videos/animated-bilgewater.webm"),
+  type: "video/webm"
+};
+const vid5 = {
+  src: require("./videos/animated-piltover.webm"),
+  type: "video/webm"
+};
 
 class HomePagePanel extends React.Component {
   state = {
@@ -25,7 +38,7 @@ class HomePagePanel extends React.Component {
         preload="auto"
         loop
       >
-        <source src={src} type={"video/webm"} />
+        <source src={src.src} type={src.type} />
       </video>
     );
   }
