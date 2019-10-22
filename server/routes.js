@@ -11,6 +11,9 @@ module.exports = (app, security) => {
   app.get("/getUser", async (req, res) =>
     responder(Controllers.UserHandling.getUser(req), res)
   );
+  app.get("/getAllUsers", async (req, res) =>
+    responder(Controllers.UserHandling.getAllUsers(req), res)
+  );
   app.get("/getIconsList", async (req, res) =>
     responder(Controllers.UtilityHandling.getIconsList(req), res)
   );

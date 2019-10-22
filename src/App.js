@@ -14,6 +14,11 @@ export default class App extends React.Component {
         <ConnectedRouter history={history}>
           <Route exact path="/" render={() => <Components.Home />} />
           <Route exact path="/user" render={() => <Components.UserAccount />} />
+          <Route
+            exact
+            path="/players"
+            render={() => <Components.PlayerSearch />}
+          />
         </ConnectedRouter>
       </Provider>
     );

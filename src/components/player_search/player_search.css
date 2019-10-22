@@ -1,0 +1,111 @@
+.player_search {
+  width: 100%;
+  text-align: center;
+}
+.player_search .form {
+  background-color: transparent;
+  text-align: left;
+  padding: 50px;
+}
+.player_search .checkboxes {
+}
+.player_search input {
+  width: 50%;
+  font-size: 24px;
+  color: #231f20;
+}
+.player_search .emblems {
+  height: 200px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 75px;
+}
+.player_search .emblems img {
+  height: 100%;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+}
+.player_search .emblems img:hover {
+  transform: scale(1.2);
+}
+.player_search table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 5px;
+}
+.player_search tr {
+  background-color: #231f20;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+}
+.player_search tr:hover {
+  background-color: #571d47;
+}
+.player_search .nohover {
+  text-align: center;
+  cursor: auto;
+  background-color: transparent;
+}
+.player_search .nohover:hover {
+  background-color: transparent;
+}
+.player_search .nohover h3 {
+  color: #231f20;
+  cursor: pointer;
+  display: inline-flex;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+}
+.player_search .nohover h3:hover {
+  transform: scale(1.1);
+}
+.player_search td {
+  border: solid 1px #000;
+  border-style: solid none;
+  padding: 10px;
+}
+.player_search td:first-child {
+  border-left-style: solid;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.player_search td:last-child {
+  border-right-style: solid;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.player_search .icons {
+  text-align: center;
+  height: 100%;
+}
+.player_search .username {
+  text-align: center;
+}
+.player_search .icons img {
+  height: 100px;
+}
+.player_search .profile-img {
+  height: 100px;
+  text-align: center;
+}
+.player_search .profile-img img {
+  border-radius: 10px;
+  height: 100%;
+}
+/* .player_search .card .profile-img h3 {
+  position: absolute;
+  left: 150px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.player_search .card:hover {
+  transform: scale(1.025);
+} */

@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import Components from "../../components";
-import Loader from "../loader/loader";
 import "./name.css";
 
 class Name extends React.Component {
@@ -16,7 +15,9 @@ class Name extends React.Component {
   render() {
     return (
       <div className={"name"}>
-        <Loader domMounted={this.state.domMounted} />
+        <Components.Loader
+          domMounted={this.state.domMounted}
+        ></Components.Loader>
       </div>
     );
   }

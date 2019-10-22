@@ -39,6 +39,11 @@ const userSchema = new Schema({
     unique: false,
     required: true
   },
+  leagues: {
+    type: Object,
+    unique: false,
+    required: false
+  },
   iconId: {
     type: String,
     unique: false,
