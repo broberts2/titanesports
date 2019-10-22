@@ -22,7 +22,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "rm -rf /var/www/html; mkdir /var/www/html; rm -rf build; react-scripts build; mv -v /titanesports/build/* /var/www/html",
-    "upnpack-data-dragon": "tar -x data.tgz",
+    "unpack-data-dragon": "tar -x data.tgz",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
