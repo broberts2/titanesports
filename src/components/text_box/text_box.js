@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import ReactClass from "create-react-class";
 import "./text_box.css";
 
 class TextBox extends React.Component {

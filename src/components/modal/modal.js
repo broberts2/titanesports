@@ -11,15 +11,17 @@ class Modal extends React.Component {
     requestStatus: null
   };
 
-  async startRequest(promise) {
+  async startRequest(promise, ignore) {
     this.setState({ requestPending: true, loadAnim: "anim-fade-in" });
     const value = await promise;
     this.setState({
       requestPending: false,
       loadAnim: "anim-fade-out",
-      requestStatus: {
-        msg: value.msg
-      }
+      requestStatus: ignore
+        ? null
+        : {
+            msg: value.msg
+          }
     });
   }
 
@@ -74,7 +76,8 @@ class Modal extends React.Component {
                 ) : (
                   <this.props.content
                     openModal={modal => this.props.openModal(modal)}
-                    startRequest={cb => this.startRequest(cb)}
+                    startRequest={(cb, ignore) => this.startRequest(cb, ignore)}
+                    validateQuery={() => this.props.validateQuery()}
                   />
                 )}
               </div>

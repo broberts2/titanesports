@@ -1,7 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import Components from "../../components";
-import Loader from "../loader/loader";
 import "./sign_up.css";
 
 import Api from "../../Api";

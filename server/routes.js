@@ -11,6 +11,12 @@ module.exports = (app, security) => {
   app.get("/getUser", async (req, res) =>
     responder(Controllers.UserHandling.getUser(req), res)
   );
+  app.get("/getIconsList", async (req, res) =>
+    responder(Controllers.UtilityHandling.getIconsList(req), res)
+  );
+  app.get("/getProfileVideos", async (req, res) =>
+    responder(Controllers.UtilityHandling.getProfileVideos(req), res)
+  );
   security.get("/validateToken", async (req, res) =>
     responder(Controllers.UserHandling.validateToken(req), res)
   );

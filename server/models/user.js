@@ -40,7 +40,7 @@ const userSchema = new Schema({
     required: true
   },
   iconId: {
-    type: Number,
+    type: String,
     unique: false,
     required: true
   },
@@ -80,6 +80,11 @@ const userSchema = new Schema({
     required: false
   },
   communityTitle: {
+    type: String,
+    unique: false,
+    required: false
+  },
+  profileVideo: {
     type: String,
     unique: false,
     required: false
