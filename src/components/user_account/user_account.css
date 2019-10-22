@@ -45,6 +45,11 @@
   position: absolute;
   right: 10%;
   top: 5%;
+  text-align: right;
+}
+.user_account .body .title h3 {
+  font-style: italic;
+  margin-top: 0px;
 }
 .user_account .body .player_icon {
   --dims: 25vw;

@@ -3,7 +3,7 @@
   width: 100%;
   border-radius: 3px;
   text-align: center;
-  height: 500px;
+  height: 100px;
 }
 .text_box textarea {
   width: calc(100% - 30px);
