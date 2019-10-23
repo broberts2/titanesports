@@ -9,6 +9,30 @@
 }
 .player_search .checkboxes {
 }
+.player_search .search-positions {
+  height: 55px;
+  position: relative;
+}
+.player_search .search-positions img,
+i {
+  margin: 5px;
+  display: inline-block;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+}
+.player_search .search-positions i {
+  position: absolute;
+  top: 12.5%;
+  font-size: 40px;
+  color: rgb(142, 0, 136);
+}
+.player_search .search-positions img:hover,
+i:hover {
+  transform: scale(1.2);
+}
 .player_search input {
   width: 50%;
   font-size: 24px;
@@ -83,6 +107,25 @@
 .player_search .icons {
   text-align: center;
   height: 100%;
+}
+.player_search .icons .element {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+.player_search .icons .element .position {
+  position: absolute;
+  height: 100%;
+  top: 75%;
+  right: 0;
+}
+.player_search .icons .element .position img {
+  height: 25%;
+}
+.player_search .icons .element .position i {
+  -webkit-text-stroke-width: 0px;
+  -webkit-text-stroke-color: rgb(42, 42, 42);
+  font-size: 20px;
 }
 .player_search .username {
   text-align: center;

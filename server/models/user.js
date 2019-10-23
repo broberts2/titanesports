@@ -19,21 +19,6 @@ const userSchema = new Schema({
     unique: false,
     required: true
   },
-  titanRole1: {
-    type: String,
-    unique: false,
-    required: false
-  },
-  titanRole2: {
-    type: String,
-    unique: false,
-    required: false
-  },
-  titanRole3: {
-    type: String,
-    unique: false,
-    required: false
-  },
   memberships: {
     type: Array,
     unique: false,
