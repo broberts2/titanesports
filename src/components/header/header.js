@@ -69,7 +69,7 @@ class Header extends React.Component {
         <img alt={""} src={require("../../img/logo2.png")} />
         <div className={"links"}>
           <div>
-            <a href={"/"}>Home</a>|<a href={"/about.html"}>About</a>|
+            <a href={"/"}>Home</a>|<a href={"/players"}>Players</a>|
             <a href={"/articles.html"}>Articles</a>|
             <a href={"/events.html"}>Events</a>|
             <a href={"/contact.html"}>Contact</a>|{this.state.accountLink}

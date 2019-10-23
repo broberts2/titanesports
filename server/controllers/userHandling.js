@@ -13,13 +13,10 @@ module.exports = {
         level: 10,
         memberships: [""],
         iconId: "0.png",
-        titanRole1: "",
-        titanRole2: "",
-        titanRole3: "",
         captainTeam: "",
         leagues: {
-          gold: false,
-          platinum: false
+          gold: 0,
+          platinum: 0
         },
         email: req.body.email,
         biography: "",

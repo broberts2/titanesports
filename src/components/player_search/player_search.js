@@ -8,10 +8,60 @@ import Api from "../../Api";
 
 const config = require("../../config");
 
-// <h3>{this.props.user.username}</h3>
+const positionImages = {
+  gold: {
+    1: (
+      <img src={require("../../img/ranked-positions/Position_Gold-Top.png")} />
+    ),
+    2: (
+      <img
+        src={require("../../img/ranked-positions/Position_Gold-Jungle.png")}
+      />
+    ),
+    3: (
+      <img src={require("../../img/ranked-positions/Position_Gold-Mid.png")} />
+    ),
+    4: (
+      <img src={require("../../img/ranked-positions/Position_Gold-Bot.png")} />
+    ),
+    5: (
+      <img
+        src={require("../../img/ranked-positions/Position_Gold-Support.png")}
+      />
+    ),
+    6: <i className={"fas fa-user-plus"} style={{ color: "#d69d3c" }} />
+  },
+  platinum: {
+    1: (
+      <img src={require("../../img/ranked-positions/Position_Plat-Top.png")} />
+    ),
+    2: (
+      <img
+        src={require("../../img/ranked-positions/Position_Plat-Jungle.png")}
+      />
+    ),
+    3: (
+      <img src={require("../../img/ranked-positions/Position_Plat-Mid.png")} />
+    ),
+    4: (
+      <img src={require("../../img/ranked-positions/Position_Plat-Bot.png")} />
+    ),
+    5: (
+      <img
+        src={require("../../img/ranked-positions/Position_Plat-Support.png")}
+      />
+    ),
+    6: (
+      <i
+        className={"fas fa-user-plus"}
+        style={{ color: "rgb(51, 166, 170)" }}
+      />
+    )
+  }
+};
 
 class Card extends React.Component {
-  render() {
+  renderUser() {
     return (
       <tr onClick={() => (window.location = `/user?u=${this.props.user._id}`)}>
         <td>
@@ -29,17 +79,35 @@ class Card extends React.Component {
         <td>
           <div className={"icons"}>
             {this.props.user.leagues.gold ? (
-              <img src={require("../../img/ranked-emblems/Emblem_Gold.png")} />
+              <div className={"element"}>
+                <img
+                  src={require("../../img/ranked-emblems/Emblem_Gold.png")}
+                />
+                <div className={"position"}>
+                  {positionImages.gold[this.props.user.leagues.gold]}
+                </div>
+              </div>
             ) : null}
             {this.props.user.leagues.platinum ? (
-              <img
-                src={require("../../img/ranked-emblems/Emblem_Platinum.png")}
-              />
+              <div className={"element"}>
+                <img
+                  src={require("../../img/ranked-emblems/Emblem_Platinum.png")}
+                />
+                <div className={"position"}>
+                  {positionImages.platinum[this.props.user.leagues.platinum]}
+                </div>
+              </div>
             ) : null}
           </div>
         </td>
       </tr>
     );
+  }
+
+  renderTeam() {}
+
+  render() {
+    return this.props.team ? null : this.renderUser();
   }
 }
 
@@ -52,14 +120,20 @@ class PlayerSearch extends React.Component {
       width: "45%",
       height: "75%"
     },
-    query: "",
     selectedLeagues: {
       gold: true,
       platinum: true
     },
+    query: "",
     includes: {
       players: true,
-      teams: false
+      teams: false,
+      top: true,
+      jun: true,
+      mid: true,
+      bot: true,
+      sup: true,
+      sub: true
     },
     users: null,
     teams: null,
@@ -67,9 +141,19 @@ class PlayerSearch extends React.Component {
     teamsList: null
   };
 
-  async componentDidMount() {
-    const users = await Api.getAllUsers();
-    this.buildList(users, null);
+  componentDidMount() {
+    this.rebuild("users");
+  }
+
+  async rebuild(arg) {
+    let users = null;
+    let teams = null;
+    if (arg === "users") {
+      users = await Api.getAllUsers();
+    } else {
+      teams = await Api.getAllTeams();
+    }
+    this.buildList(users, teams);
     this.setState({ domMounted: true });
   }
 
@@ -86,11 +170,79 @@ class PlayerSearch extends React.Component {
     let selectedLeagues = this.state.selectedLeagues;
     selectedLeagues[league] = boolean;
     this.setState({ selectedLeagues });
+    this.buildList(this.state.users, this.state.teams, this.state.query);
   }
 
-  buildList(users, teams) {
-    const usersList = users.users.map(user => <Card user={user} />);
-    this.setState({ users, usersList });
+  searchValidation(query, user) {
+    const search =
+      query && query.length > 0
+        ? user.username.toLowerCase().includes(query.toLowerCase())
+        : true;
+    let leagues = false;
+    if (
+      (this.state.includes.top &&
+        ((this.state.selectedLeagues.gold && user.leagues.gold === 1) ||
+          (this.state.selectedLeagues.platinum &&
+            user.leagues.platinum === 1))) ||
+      (this.state.includes.jun &&
+        ((this.state.selectedLeagues.gold && user.leagues.gold === 2) ||
+          (this.state.selectedLeagues.platinum &&
+            user.leagues.platinum === 2))) ||
+      (this.state.includes.mid &&
+        ((this.state.selectedLeagues.gold && user.leagues.gold === 3) ||
+          (this.state.selectedLeagues.platinum &&
+            user.leagues.platinum === 3))) ||
+      (this.state.includes.bot &&
+        ((this.state.selectedLeagues.gold && user.leagues.gold === 4) ||
+          (this.state.selectedLeagues.platinum &&
+            user.leagues.platinum === 4))) ||
+      (this.state.includes.sup &&
+        ((this.state.selectedLeagues.gold && user.leagues.gold === 5) ||
+          (this.state.selectedLeagues.platinum &&
+            user.leagues.platinum === 5))) ||
+      (this.state.includes.sub &&
+        ((this.state.selectedLeagues.gold && user.leagues.gold === 6) ||
+          (this.state.selectedLeagues.platinum && user.leagues.platinum === 6)))
+    ) {
+      leagues = true;
+    }
+    return search && leagues;
+  }
+
+  buildList(users, teams, query) {
+    const usersList = users
+      ? users.users
+          .map(user => {
+            if (this.searchValidation(query, user)) {
+              return <Card user={user} />;
+            } else {
+              return null;
+            }
+          })
+          .filter(el => el)
+      : null;
+    // const teamsList = teams
+    //   ? users.users
+    //       .map(user => {
+    //         if (
+    //           (this.state.selectedLeagues.gold && user.leagues.gold) ||
+    //           (this.state.selectedLeagues.platinum && user.leagues.platinum)
+    //         ) {
+    //           return <Card user={user} />;
+    //         } else {
+    //           return null;
+    //         }
+    //       })
+    //       .filter(el => el)
+    //   : null;
+    this.setState({ users, usersList, query });
+  }
+
+  setIncludes(key) {
+    let includes = this.state.includes;
+    includes[key] = !this.state.includes[key];
+    this.setState({ includes });
+    this.buildList(this.state.users, this.state.teams, this.state.query);
   }
 
   render() {
@@ -139,7 +291,16 @@ class PlayerSearch extends React.Component {
                 />
               </div>
             </div>
-            <input placeholder={"Search Query"} />
+            <input
+              onChange={e =>
+                this.buildList(
+                  this.state.users,
+                  this.state.teams,
+                  e.target.value
+                )
+              }
+              placeholder={"Search Query"}
+            />
             <div className={"checkboxes"}>
               <label className={"checkbox"}>
                 Players
@@ -167,6 +328,55 @@ class PlayerSearch extends React.Component {
                 />
                 <div className={"checkmark"} />
               </label>
+            </div>
+            <div className={"search-positions"}>
+              <img
+                onClick={() => this.setIncludes("top")}
+                src={require("../../img/ranked-positions/Position_Master-Top.png")}
+                style={
+                  this.state.includes.top ? { opacity: 1 } : { opacity: 0.35 }
+                }
+              />
+              <img
+                onClick={() => this.setIncludes("jun")}
+                src={require("../../img/ranked-positions/Position_Master-Jungle.png")}
+                style={
+                  this.state.includes.jun ? { opacity: 1 } : { opacity: 0.35 }
+                }
+              />
+              <img
+                onClick={() => this.setIncludes("mid")}
+                src={require("../../img/ranked-positions/Position_Master-Mid.png")}
+                style={
+                  this.state.includes.mid ? { opacity: 1 } : { opacity: 0.35 }
+                }
+              />
+              <img
+                onClick={() => this.setIncludes("bot")}
+                src={require("../../img/ranked-positions/Position_Master-Bot.png")}
+                style={
+                  this.state.includes.bot ? { opacity: 1 } : { opacity: 0.35 }
+                }
+              />
+              <img
+                onClick={() => this.setIncludes("sup")}
+                src={require("../../img/ranked-positions/Position_Master-Support.png")}
+                style={
+                  this.state.includes.sup ? { opacity: 1 } : { opacity: 0.35 }
+                }
+              />
+              <i
+                onClick={() => this.setIncludes("sub")}
+                className={"fas fa-user-plus"}
+                style={
+                  this.state.includes.top
+                    ? { opacity: 1 }
+                    : { pointerEvents: "none", opacity: 0.35 }
+                }
+                style={
+                  this.state.includes.sub ? { opacity: 1 } : { opacity: 0.35 }
+                }
+              />
             </div>
             <table cellspacing={"0"} cellpadding={"12px"}>
               <tbody>
