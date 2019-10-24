@@ -28,6 +28,11 @@ h3 {
   font-family: "Amarante", cursive;
   font-size: 28px;
 }
+h4 {
+  color: #fff;
+  font-family: "Amarante", cursive;
+  font-size: 18px;
+}
 p {
   color: #fff;
   font-family: "Roboto", sans-serif;
@@ -106,7 +111,7 @@ button {
 
 /* On mouse-over, add a grey background color */
 .checkbox:hover input ~ .checkmark {
-  background-color: #ccc;
+  background-color: #81004d;
 }
 
 /* When the checkbox is checked, add a blue background */
@@ -137,4 +142,10 @@ button {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+.dropdown {
+  background-color: transparent;
+  border: 0px solid red;
+  text-align: center;
 }

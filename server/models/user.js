@@ -20,7 +20,7 @@ const userSchema = new Schema({
     required: true
   },
   memberships: {
-    type: Array,
+    type: Object,
     unique: false,
     required: true
   },

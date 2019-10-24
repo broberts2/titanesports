@@ -2,8 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import Components from "../../components";
 import Loader from "../loader/loader";
+import positionImages from "../../positionImages";
 import "./user_account.css";
 import ReactClass from "create-react-class";
+import "react-dropdown/style.css";
 
 import Api from "../../Api";
 
@@ -15,6 +17,9 @@ class UserAccount extends React.Component {
     canEdit: false,
     pageIsValid: false,
     modalVisible: false,
+    freeAgentRoll: 1,
+    freeAgentButton: false,
+    positionPreview: positionImages.freeAgent[1],
     modal: Components.Logout,
     user: {}
   };
@@ -39,7 +44,12 @@ class UserAccount extends React.Component {
       window.location = window.location + `?u=${res.id}`;
     }
     this.setState({ user: null });
-    this.setState({ user: user.user });
+    this.setState({
+      user: user.user,
+      freeAgentRoll: user.user.leagues.freeAgent,
+      freeAgentButton: user.user.leagues.freeAgent,
+      positionPreview: positionImages.freeAgent[user.user.leagues.freeAgent]
+    });
     u = urlParams.get("u");
     if (u === res.id) {
       this.setState({ canEdit: true });
@@ -62,6 +72,10 @@ class UserAccount extends React.Component {
 
   confirmUpdate() {
     const biography = this.refs["player_bio"].children[0].textContent;
+    let leagues = this.state.user.leagues;
+    leagues.freeAgent = !this.state.freeAgentButton
+      ? 0
+      : this.state.freeAgentRoll;
     this.openModal(
       ReactClass({
         render() {
@@ -69,13 +83,14 @@ class UserAccount extends React.Component {
             <div className={"confirm-modal"}>
               <h2>Submit changes to profile?</h2>
               <button
-                onClick={async () =>
+                onClick={async () => {
                   this.props.startRequest(
                     Api.updateUser({
+                      leagues,
                       biography
                     })
-                  )
-                }
+                  );
+                }}
               >
                 Submit Changes
               </button>
@@ -115,6 +130,13 @@ class UserAccount extends React.Component {
         }
       })
     );
+  }
+
+  setFreeAgentRoll(roll) {
+    this.setState({
+      freeAgentRoll: roll,
+      positionPreview: positionImages.freeAgent[roll]
+    });
   }
 
   render() {
@@ -198,6 +220,170 @@ class UserAccount extends React.Component {
                       >
                         {this.state.user.communityTitle}
                       </h3>
+                      {positionImages[this.state.user.leagues.gold]}
+                    </div>
+                  ) : null}
+                  <div className={"emblems"}>
+                    {this.state.user && this.state.user.leagues.gold ? (
+                      <div className={"element"}>
+                        <img
+                          src={require("../../img/ranked-emblems/Emblem_Gold.png")}
+                        />
+                        <div className={"position"}>
+                          {positionImages.gold[this.state.user.leagues.gold]}
+                        </div>
+                      </div>
+                    ) : null}
+                    {this.state.user && this.state.user.leagues.platinum ? (
+                      <div className={"element"}>
+                        <img
+                          src={require("../../img/ranked-emblems/Emblem_Platinum.png")}
+                        />
+                        <div className={"position"}>
+                          {
+                            positionImages.platinum[
+                              this.state.user.leagues.platinum
+                            ]
+                          }
+                        </div>
+                      </div>
+                    ) : null}
+                    {this.state.user && this.state.user.leagues.freeAgent ? (
+                      <div className={"element"}>
+                        <img src={require("../../img/free_agent.png")} />
+                        <div className={"position"}>
+                          {
+                            positionImages.freeAgent[
+                              this.state.user.leagues.freeAgent
+                            ]
+                          }
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
+                  {this.state.user && this.state.user.opgg ? (
+                    <div>
+                      <h1>OP.GG Profile</h1>
+                      <a href={this.state.user.opgg} target={"_blank"}>
+                        {this.state.user.opgg}
+                      </a>
+                    </div>
+                  ) : null}
+                  {this.state.user && this.state.canEdit ? (
+                    <div className={"free-agent"}>
+                      <h1>Free Agent Check</h1>
+                      <h4>
+                        Becoming a free agent is a great way to find a team,
+                        especially if you're new to the league or flying solo.
+                        Doing so will list you as a free agent for recruitment
+                        on the player/team search page. Click the image to
+                        toggle and select a position to designate your desired
+                        roll!
+                      </h4>
+                      <h3
+                        style={
+                          this.state.freeAgentButton
+                            ? { color: "rgb(53, 128, 119)" }
+                            : { color: "rgb(113, 4, 34)" }
+                        }
+                      >
+                        {this.state.freeAgentButton ? "ENABLED" : "DISABLED"}
+                      </h3>
+                      <div className={"block"}>
+                        <div className="main">
+                          <img
+                            style={
+                              this.state.freeAgentButton
+                                ? { opacity: 1 }
+                                : { opacity: 0.35 }
+                            }
+                            onClick={() =>
+                              this.setState({
+                                freeAgentButton: !this.state.freeAgentButton
+                              })
+                            }
+                            src={require("../../img/free_agent.png")}
+                          />
+                        </div>
+                        <div
+                          className={"preview"}
+                          style={
+                            this.state.freeAgentButton
+                              ? { opacity: 1 }
+                              : { opacity: 0.35 }
+                          }
+                        >
+                          {this.state.positionPreview}
+                        </div>
+                        <div className={"rolls"}>
+                          <div
+                            onClick={() => this.setFreeAgentRoll(1)}
+                            className={"item"}
+                            style={
+                              this.state.freeAgentButton
+                                ? { opacity: 1 }
+                                : { opacity: 0.35, pointerEvents: "none" }
+                            }
+                          >
+                            {positionImages.freeAgent[1]}
+                          </div>
+                          <div
+                            onClick={() => this.setFreeAgentRoll(2)}
+                            className={"item"}
+                            style={
+                              this.state.freeAgentButton
+                                ? { opacity: 1 }
+                                : { opacity: 0.35, pointerEvents: "none" }
+                            }
+                          >
+                            {positionImages.freeAgent[2]}
+                          </div>
+                          <div
+                            onClick={() => this.setFreeAgentRoll(3)}
+                            className={"item"}
+                            style={
+                              this.state.freeAgentButton
+                                ? { opacity: 1 }
+                                : { opacity: 0.35, pointerEvents: "none" }
+                            }
+                          >
+                            {positionImages.freeAgent[3]}
+                          </div>
+                          <div
+                            onClick={() => this.setFreeAgentRoll(4)}
+                            className={"item"}
+                            style={
+                              this.state.freeAgentButton
+                                ? { opacity: 1 }
+                                : { opacity: 0.35, pointerEvents: "none" }
+                            }
+                          >
+                            {positionImages.freeAgent[4]}
+                          </div>
+                          <div
+                            onClick={() => this.setFreeAgentRoll(5)}
+                            className={"item"}
+                            style={
+                              this.state.freeAgentButton
+                                ? { opacity: 1 }
+                                : { opacity: 0.35, pointerEvents: "none" }
+                            }
+                          >
+                            {positionImages.freeAgent[5]}
+                          </div>
+                          <div
+                            onClick={() => this.setFreeAgentRoll(6)}
+                            className={"item"}
+                            style={
+                              this.state.freeAgentButton
+                                ? { opacity: 1 }
+                                : { opacity: 0.35, pointerEvents: "none" }
+                            }
+                          >
+                            {positionImages.freeAgent[6]}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   ) : null}
                   {this.state.user &&
@@ -214,14 +400,6 @@ class UserAccount extends React.Component {
                           fontColor={"white"}
                         />
                       </div>
-                    </div>
-                  ) : null}
-                  {this.state.user && this.state.user.opgg ? (
-                    <div>
-                      <h1>OP.GG Profile</h1>
-                      <a href={this.state.user.opgg} target={"_blank"}>
-                        {this.state.user.opgg}
-                      </a>
                     </div>
                   ) : null}
                   {this.state.canEdit ? (

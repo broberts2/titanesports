@@ -11,7 +11,10 @@ module.exports = {
         username: req.body.username,
         password: bcrypt.hashSync(req.body.password, 10),
         level: 10,
-        memberships: [""],
+        memberships: {
+          gold: {},
+          platinum: {}
+        },
         iconId: "0.png",
         captainTeam: "",
         leagues: {
