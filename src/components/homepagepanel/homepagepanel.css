@@ -51,7 +51,7 @@
   font-size: 80px;
   pointer-events: none;
   position: absolute;
-  top: 100%;
+  top: 75%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);

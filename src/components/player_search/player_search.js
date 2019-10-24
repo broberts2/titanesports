@@ -29,7 +29,7 @@ const positionImages = {
         src={require("../../img/ranked-positions/Position_Gold-Support.png")}
       />
     ),
-    6: <i className={"fas fa-user-plus"} style={{ color: "#d69d3c" }} />
+    6: <i className={"fas fa-random"} style={{ color: "#d69d3c" }} />
   },
   platinum: {
     1: (
@@ -51,12 +51,7 @@ const positionImages = {
         src={require("../../img/ranked-positions/Position_Plat-Support.png")}
       />
     ),
-    6: (
-      <i
-        className={"fas fa-user-plus"}
-        style={{ color: "rgb(51, 166, 170)" }}
-      />
-    )
+    6: <i className={"fas fa-random"} style={{ color: "rgb(51, 166, 170)" }} />
   }
 };
 
@@ -121,19 +116,20 @@ class PlayerSearch extends React.Component {
       height: "75%"
     },
     selectedLeagues: {
-      gold: true,
-      platinum: true
+      gold: false,
+      platinum: false,
+      freeAgent: false
     },
     query: "",
     includes: {
       players: true,
       teams: false,
-      top: true,
-      jun: true,
-      mid: true,
-      bot: true,
-      sup: true,
-      sub: true
+      top: false,
+      jun: false,
+      mid: false,
+      bot: false,
+      sup: false,
+      sub: false
     },
     users: null,
     teams: null,
@@ -210,7 +206,17 @@ class PlayerSearch extends React.Component {
   }
 
   buildList(users, teams, query) {
-    const usersList = users
+    const noPoro =
+      (this.state.includes.top ||
+        this.state.includes.jun ||
+        this.state.includes.mid ||
+        this.state.includes.bot ||
+        this.state.includes.sup ||
+        this.state.includes.sub) &&
+      (this.state.selectedLeagues.gold ||
+        this.state.selectedLeagues.gold ||
+        this.state.selectedLeagues.freeAgent);
+    const html = users
       ? users.users
           .map(user => {
             if (this.searchValidation(query, user)) {
@@ -221,6 +227,27 @@ class PlayerSearch extends React.Component {
           })
           .filter(el => el)
       : null;
+    const usersList =
+      noPoro && html.length > 0 ? (
+        <table cellspacing={"0"} cellpadding={"12px"}>
+          <tbody>
+            <tr className={"nohover"}>
+              <th />
+              <th>
+                <h3>Username</h3>
+              </th>
+              <th>
+                <h3>Participating Leagues</h3>
+              </th>
+            </tr>
+            {html}
+          </tbody>
+        </table>
+      ) : (
+        <div className={"poro"}>
+          <img src={require("../../img/poro.png")} />
+        </div>
+      );
     // const teamsList = teams
     //   ? users.users
     //       .map(user => {
@@ -289,6 +316,22 @@ class PlayerSearch extends React.Component {
                         }
                   }
                 />
+                <img
+                  onClick={() =>
+                    this.pickLeague(
+                      "freeAgent",
+                      !this.state.selectedLeagues.freeAgent
+                    )
+                  }
+                  src={require("../../img/free_agent.png")}
+                  style={
+                    this.state.selectedLeagues.freeAgent
+                      ? {}
+                      : {
+                          opacity: 0.35
+                        }
+                  }
+                />
               </div>
             </div>
             <input
@@ -332,42 +375,42 @@ class PlayerSearch extends React.Component {
             <div className={"search-positions"}>
               <img
                 onClick={() => this.setIncludes("top")}
-                src={require("../../img/ranked-positions/Position_Master-Top.png")}
+                src={require("../../img/Position_Generic-Top.png")}
                 style={
                   this.state.includes.top ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
               <img
                 onClick={() => this.setIncludes("jun")}
-                src={require("../../img/ranked-positions/Position_Master-Jungle.png")}
+                src={require("../../img/Position_Generic-Jungle.png")}
                 style={
                   this.state.includes.jun ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
               <img
                 onClick={() => this.setIncludes("mid")}
-                src={require("../../img/ranked-positions/Position_Master-Mid.png")}
+                src={require("../../img/Position_Generic-Mid.png")}
                 style={
                   this.state.includes.mid ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
               <img
                 onClick={() => this.setIncludes("bot")}
-                src={require("../../img/ranked-positions/Position_Master-Bot.png")}
+                src={require("../../img/Position_Generic-Bot.png")}
                 style={
                   this.state.includes.bot ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
               <img
                 onClick={() => this.setIncludes("sup")}
-                src={require("../../img/ranked-positions/Position_Master-Support.png")}
+                src={require("../../img/Position_Generic-Support.png")}
                 style={
                   this.state.includes.sup ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
               <i
                 onClick={() => this.setIncludes("sub")}
-                className={"fas fa-user-plus"}
+                className={"fas fa-random"}
                 style={
                   this.state.includes.top
                     ? { opacity: 1 }
@@ -378,20 +421,14 @@ class PlayerSearch extends React.Component {
                 }
               />
             </div>
-            <table cellspacing={"0"} cellpadding={"12px"}>
-              <tbody>
-                <tr className={"nohover"}>
-                  <th />
-                  <th>
-                    <h3>Username</h3>
-                  </th>
-                  <th>
-                    <h3>Participating Leagues</h3>
-                  </th>
-                </tr>
-                {this.state.usersList}
-              </tbody>
-            </table>
+            <div style={{ margin: "20px", marginLeft: "0px" }}>
+              Substitute Player ={" "}
+              <i
+                className={"fas fa-random"}
+                style={{ pointerEvents: "none", color: "#71899c" }}
+              />
+              {this.state.usersList}
+            </div>
           </div>
         </div>
         <Components.Footer />

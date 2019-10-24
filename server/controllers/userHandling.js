@@ -16,7 +16,8 @@ module.exports = {
         captainTeam: "",
         leagues: {
           gold: 0,
-          platinum: 0
+          platinum: 0,
+          freeAgent: 0
         },
         email: req.body.email,
         biography: "",

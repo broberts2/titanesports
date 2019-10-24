@@ -73,7 +73,7 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   font-size: 48px;
-  color: #221e1f;
+  color: rgb(0, 255, 221);
   pointer-events: none;
   transition: opacity 0.25s ease-in-out;
   -moz-transition: opacity 0.25s ease-in-out;

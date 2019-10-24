@@ -7,6 +7,14 @@
   text-align: left;
   padding: 50px;
 }
+.player_search .form .poro {
+  text-align: center;
+  margin: 50px;
+  opacity: 0.5;
+}
+.player_search .form .poro img {
+  height: 25vw;
+}
 .player_search .checkboxes {
 }
 .player_search .search-positions {
@@ -14,7 +22,7 @@
   position: relative;
 }
 .player_search .search-positions img,
-i {
+.player_search .search-positions i {
   margin: 5px;
   display: inline-block;
   height: 100%;
@@ -27,7 +35,7 @@ i {
   position: absolute;
   top: 12.5%;
   font-size: 40px;
-  color: rgb(142, 0, 136);
+  color: #71899c;
 }
 .player_search .search-positions img:hover,
 i:hover {
