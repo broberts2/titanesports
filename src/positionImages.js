@@ -8,7 +8,7 @@ export default {
     5: (
       <img src={require("./img/ranked-positions/Position_Gold-Support.png")} />
     ),
-    6: <img src={require("./img/ranked-positions/Position_Gold-Support.png")} />
+    6: <img src={require("./img/Position_Generic-Sub.png")} />
   },
   platinum: {
     1: <img src={require("./img/ranked-positions/Position_Plat-Top.png")} />,
@@ -18,7 +18,7 @@ export default {
     5: (
       <img src={require("./img/ranked-positions/Position_Plat-Support.png")} />
     ),
-    6: <img src={require("./img/ranked-positions/Position_Plat-Support.png")} />
+    6: <img src={require("./img/Position_Generic-Sub.png")} />
   },
   freeAgent: {
     1: <img src={require("./img/Position_Generic-Top.png")} />,
@@ -26,6 +26,6 @@ export default {
     3: <img src={require("./img/Position_Generic-Mid.png")} />,
     4: <img src={require("./img/Position_Generic-Bot.png")} />,
     5: <img src={require("./img/Position_Generic-Support.png")} />,
-    6: <img src={require("./img/Position_Generic-Support.png")} />
+    6: <img src={require("./img/Position_Generic-Sub.png")} />
   }
 };
