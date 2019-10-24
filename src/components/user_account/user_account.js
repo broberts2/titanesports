@@ -216,6 +216,17 @@ class UserAccount extends React.Component {
                       </div>
                     </div>
                   ) : null}
+                  {this.state.user && this.state.user.opgg ? (
+                    <div>
+                      <h1>OP.GG Profile</h1>
+                      <a
+                        href={"https://na.op.gg/summoner/userName=jetgorilla"}
+                        target={"_blank"}
+                      >
+                        {this.state.user.opgg}
+                      </a>
+                    </div>
+                  ) : null}
                   {this.state.canEdit ? (
                     <div className={"bottom-icons"}>
                       <i
