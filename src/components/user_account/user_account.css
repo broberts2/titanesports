@@ -20,6 +20,66 @@
   padding-top: 15vw;
   padding-bottom: 150px;
 }
+.user_account .body .free-agent {
+}
+.user_account .body .free-agent .block {
+  position: relative;
+  width: 100%;
+  text-align: left;
+}
+.user_account .body .free-agent .block .main img {
+  width: 200px;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+}
+.user_account .body .free-agent .block .main img:hover {
+  transform: scale(1.1);
+}
+.user_account .body .free-agent .block .preview img {
+  width: 100px;
+  position: absolute;
+  left: 25%;
+  top: 25%;
+}
+.user_account .body .free-agent .rolls {
+}
+.user_account .body .free-agent .rolls .item {
+  display: inline-block;
+}
+.user_account .body .free-agent .rolls .item img {
+  width: 55px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+}
+.user_account .body .free-agent .rolls .item img:hover {
+  transform: scale(1.1);
+}
+.user_account .body .emblems {
+  float: right;
+}
+.user_account .body .emblems .element {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+.user_account .body .emblems .element img {
+  height: 100%;
+}
+.user_account .body .emblems .element .position {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  height: 25%;
+}
+.user_account .body .emblems .element .position img {
+  height: 100%;
+}
 .user_account .body .bottom-icons {
   position: absolute;
   bottom: 0;

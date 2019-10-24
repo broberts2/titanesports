@@ -2,58 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import Components from "../../components";
 import Loader from "../loader/loader";
+import positionImages from "../../positionImages";
 import "./player_search.css";
 
 import Api from "../../Api";
 
 const config = require("../../config");
-
-const positionImages = {
-  gold: {
-    1: (
-      <img src={require("../../img/ranked-positions/Position_Gold-Top.png")} />
-    ),
-    2: (
-      <img
-        src={require("../../img/ranked-positions/Position_Gold-Jungle.png")}
-      />
-    ),
-    3: (
-      <img src={require("../../img/ranked-positions/Position_Gold-Mid.png")} />
-    ),
-    4: (
-      <img src={require("../../img/ranked-positions/Position_Gold-Bot.png")} />
-    ),
-    5: (
-      <img
-        src={require("../../img/ranked-positions/Position_Gold-Support.png")}
-      />
-    ),
-    6: <i className={"fas fa-random"} style={{ color: "#d69d3c" }} />
-  },
-  platinum: {
-    1: (
-      <img src={require("../../img/ranked-positions/Position_Plat-Top.png")} />
-    ),
-    2: (
-      <img
-        src={require("../../img/ranked-positions/Position_Plat-Jungle.png")}
-      />
-    ),
-    3: (
-      <img src={require("../../img/ranked-positions/Position_Plat-Mid.png")} />
-    ),
-    4: (
-      <img src={require("../../img/ranked-positions/Position_Plat-Bot.png")} />
-    ),
-    5: (
-      <img
-        src={require("../../img/ranked-positions/Position_Plat-Support.png")}
-      />
-    ),
-    6: <i className={"fas fa-random"} style={{ color: "rgb(51, 166, 170)" }} />
-  }
-};
 
 class Card extends React.Component {
   renderUser() {
@@ -90,6 +44,14 @@ class Card extends React.Component {
                 />
                 <div className={"position"}>
                   {positionImages.platinum[this.props.user.leagues.platinum]}
+                </div>
+              </div>
+            ) : null}
+            {this.props.user.leagues.freeAgent ? (
+              <div className={"element"}>
+                <img src={require("../../img/free_agent.png")} />
+                <div className={"position"}>
+                  {positionImages.freeAgent[this.props.user.leagues.freeAgent]}
                 </div>
               </div>
             ) : null}
@@ -179,26 +141,39 @@ class PlayerSearch extends React.Component {
       (this.state.includes.top &&
         ((this.state.selectedLeagues.gold && user.leagues.gold === 1) ||
           (this.state.selectedLeagues.platinum &&
-            user.leagues.platinum === 1))) ||
+            user.leagues.platinum === 1) ||
+          (this.state.selectedLeagues.freeAgent &&
+            user.leagues.freeAgent === 1))) ||
       (this.state.includes.jun &&
         ((this.state.selectedLeagues.gold && user.leagues.gold === 2) ||
           (this.state.selectedLeagues.platinum &&
-            user.leagues.platinum === 2))) ||
+            user.leagues.platinum === 2) ||
+          (this.state.selectedLeagues.freeAgent &&
+            user.leagues.freeAgent === 2))) ||
       (this.state.includes.mid &&
         ((this.state.selectedLeagues.gold && user.leagues.gold === 3) ||
           (this.state.selectedLeagues.platinum &&
-            user.leagues.platinum === 3))) ||
+            user.leagues.platinum === 3) ||
+          (this.state.selectedLeagues.freeAgent &&
+            user.leagues.freeAgent === 3))) ||
       (this.state.includes.bot &&
         ((this.state.selectedLeagues.gold && user.leagues.gold === 4) ||
           (this.state.selectedLeagues.platinum &&
-            user.leagues.platinum === 4))) ||
+            user.leagues.platinum === 4) ||
+          (this.state.selectedLeagues.freeAgent &&
+            user.leagues.freeAgent === 4))) ||
       (this.state.includes.sup &&
         ((this.state.selectedLeagues.gold && user.leagues.gold === 5) ||
           (this.state.selectedLeagues.platinum &&
-            user.leagues.platinum === 5))) ||
+            user.leagues.platinum === 5) ||
+          (this.state.selectedLeagues.freeAgent &&
+            user.leagues.freeAgent === 5))) ||
       (this.state.includes.sub &&
         ((this.state.selectedLeagues.gold && user.leagues.gold === 6) ||
-          (this.state.selectedLeagues.platinum && user.leagues.platinum === 6)))
+          (this.state.selectedLeagues.platinum &&
+            user.leagues.platinum === 6) ||
+          (this.state.selectedLeagues.freeAgent &&
+            user.leagues.freeAgent === 6)))
     ) {
       leagues = true;
     }
@@ -375,60 +350,48 @@ class PlayerSearch extends React.Component {
             <div className={"search-positions"}>
               <img
                 onClick={() => this.setIncludes("top")}
-                src={require("../../img/Position_Generic-Top.png")}
+                src={positionImages.freeAgent[1].props.src}
                 style={
                   this.state.includes.top ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
               <img
                 onClick={() => this.setIncludes("jun")}
-                src={require("../../img/Position_Generic-Jungle.png")}
+                src={positionImages.freeAgent[2].props.src}
                 style={
                   this.state.includes.jun ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
               <img
                 onClick={() => this.setIncludes("mid")}
-                src={require("../../img/Position_Generic-Mid.png")}
+                src={positionImages.freeAgent[3].props.src}
                 style={
                   this.state.includes.mid ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
               <img
                 onClick={() => this.setIncludes("bot")}
-                src={require("../../img/Position_Generic-Bot.png")}
+                src={positionImages.freeAgent[4].props.src}
                 style={
                   this.state.includes.bot ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
               <img
                 onClick={() => this.setIncludes("sup")}
-                src={require("../../img/Position_Generic-Support.png")}
+                src={positionImages.freeAgent[5].props.src}
                 style={
                   this.state.includes.sup ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
-              <i
+              <img
                 onClick={() => this.setIncludes("sub")}
-                className={"fas fa-random"}
-                style={
-                  this.state.includes.top
-                    ? { opacity: 1 }
-                    : { pointerEvents: "none", opacity: 0.35 }
-                }
+                src={positionImages.freeAgent[6].props.src}
                 style={
                   this.state.includes.sub ? { opacity: 1 } : { opacity: 0.35 }
                 }
               />
             </div>
-            <div style={{ margin: "20px", marginLeft: "0px" }}>
-              Substitute Player ={" "}
-              <i
-                className={"fas fa-random"}
-                style={{ pointerEvents: "none", color: "#71899c" }}
-              />
-              {this.state.usersList}
-            </div>
+            {this.state.usersList}
           </div>
         </div>
         <Components.Footer />
