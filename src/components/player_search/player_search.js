@@ -12,7 +12,9 @@ const config = require("../../config");
 class Card extends React.Component {
   renderUser() {
     return (
-      <tr onClick={() => (window.location = `/user?u=${this.props.user._id}`)}>
+      <tr
+        onClick={() => window.open(`/user?u=${this.props.user._id}`, "_blank")}
+      >
         <td>
           <div className={"profile-img"}>
             <img
