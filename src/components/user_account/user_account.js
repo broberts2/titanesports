@@ -219,10 +219,7 @@ class UserAccount extends React.Component {
                   {this.state.user && this.state.user.opgg ? (
                     <div>
                       <h1>OP.GG Profile</h1>
-                      <a
-                        href={"https://na.op.gg/summoner/userName=jetgorilla"}
-                        target={"_blank"}
-                      >
+                      <a href={this.state.user.opgg} target={"_blank"}>
                         {this.state.user.opgg}
                       </a>
                     </div>
