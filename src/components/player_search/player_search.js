@@ -214,7 +214,7 @@ class PlayerSearch extends React.Component {
         this.state.includes.sup ||
         this.state.includes.sub) &&
       (this.state.selectedLeagues.gold ||
-        this.state.selectedLeagues.gold ||
+        this.state.selectedLeagues.platinum ||
         this.state.selectedLeagues.freeAgent);
     const html = users
       ? users.users
