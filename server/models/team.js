@@ -8,12 +8,7 @@ const teamSchema = new Schema({
     required: true
   },
   members: {
-    type: Array,
-    unique: false,
-    required: false
-  },
-  subs: {
-    type: Array,
+    type: Object,
     unique: false,
     required: false
   },
@@ -22,13 +17,28 @@ const teamSchema = new Schema({
     unique: false,
     required: false
   },
+  teamImage: {
+    type: String,
+    unique: false,
+    required: false
+  },
   captain: {
     type: String,
     unique: false,
     required: false
   },
-  pr: {
-    type: String,
+  stats: {
+    type: Object,
+    unique: false,
+    required: false
+  },
+  legacy: {
+    type: Object,
+    unique: false,
+    required: false
+  },
+  league: {
+    type: Number,
     unique: false,
     required: false
   }

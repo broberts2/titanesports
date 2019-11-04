@@ -137,6 +137,50 @@ i:hover {
 }
 .player_search .username {
   text-align: center;
+  margin: 50px;
+}
+.player_search .members {
+  text-align: right;
+}
+.player_search .members table {
+}
+.player_search .members tr {
+  background-color: transparent;
+  cursor: pointer;
+}
+.player_search .members tr:hover {
+  background-color: transparent;
+}
+.player_search .members td {
+  border: solid 0px #000;
+  border-style: solid none;
+  padding: 10px;
+}
+.player_search .members td:first-child {
+  border-left-style: solid;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.player_search .members td:last-child {
+  border-right-style: solid;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+.player_search .members h4 {
+  text-align: left;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.player_search .members .player {
+  text-align: center;
+  position: relative;
+  display: inline-flex;
+}
+.player_search .members .player img {
+  height: 30px;
+  position: absolute;
+  top: -22.5px;
+  left: -35px;
 }
 .player_search .icons img {
   height: 100px;

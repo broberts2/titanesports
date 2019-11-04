@@ -54,6 +54,7 @@ class UserAccount extends React.Component {
     if (u === res.id) {
       this.setState({ canEdit: true });
     }
+    console.log(user);
     return user.code === 200;
   }
 
@@ -85,7 +86,7 @@ class UserAccount extends React.Component {
               <button
                 onClick={async () => {
                   this.props.startRequest(
-                    Api.updateUser({
+                    Api.updateSelf({
                       leagues,
                       biography
                     })

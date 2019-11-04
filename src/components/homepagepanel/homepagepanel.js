@@ -55,7 +55,7 @@ class HomePagePanel extends React.Component {
         </a>
         <div className={"wrapper panel-2"}>
           {this.videoButton("vid2", vid2)}
-          <h2>FILL LATER</h2>
+          <h2>Titan Draft</h2>
           <i className={""}></i>
         </div>
         <div className={"wrapper panel-3"}>
