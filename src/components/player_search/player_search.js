@@ -9,8 +9,8 @@ import Api from "../../Api";
 
 const config = require("../../config");
 
-class Card extends React.Component {
-  renderUser() {
+class PlayerCard extends React.Component {
+  render() {
     return (
       <tr
         onClick={() => window.open(`/user?u=${this.props.user._id}`, "_blank")}
@@ -62,11 +62,84 @@ class Card extends React.Component {
       </tr>
     );
   }
+}
 
-  renderTeam() {}
+class TeamCard extends React.Component {
+  createPlayersTable() {
+    let row = [];
+    let rows = [];
+    Object.values(this.props.team.members || {})
+      .sort((a, b) => a.role - b.role)
+      .map((el, i) => {
+        row.push(
+          <td>
+            <div style={{ textAlign: "right" }}>
+              <h4>
+                <div className={"player"}>
+                  {
+                    positionImages[
+                      this.props.team.league === 1 ? "gold" : "platinum"
+                    ][el.role]
+                  }
+                </div>
+                {el.name}
+              </h4>
+            </div>
+          </td>
+        );
+        if ((i + 1) % 3 === 0) {
+          rows.push(<tr>{row}</tr>);
+          row = [];
+        }
+      });
+    if (row.length > 0) {
+      rows.push(<tr>{row}</tr>);
+    }
+    return (
+      <table>
+        <tbody>{rows}</tbody>
+      </table>
+    );
+  }
 
   render() {
-    return this.props.team ? null : this.renderUser();
+    return (
+      <tr onClick={() => console.log("yolo")}>
+        <td>
+          <div className={"profile-img"}>
+            <img
+              src={`${config.serverPath}/${config.currentVersion}/img/profileicon/5.png`}
+            />
+          </div>
+        </td>
+        <td>
+          <div className={"username"}>
+            <h3>{this.props.team.name}</h3>
+          </div>
+        </td>
+        <td>
+          <div className={"members"}>{this.createPlayersTable()}</div>
+        </td>
+        <td>
+          <div className={"icons"}>
+            {this.props.team.league === 1 ? (
+              <div className={"element"}>
+                <img
+                  src={require("../../img/ranked-emblems/Emblem_Gold.png")}
+                />
+              </div>
+            ) : null}
+            {this.props.team.league === 2 ? (
+              <div className={"element"}>
+                <img
+                  src={require("../../img/ranked-emblems/Emblem_Platinum.png")}
+                />
+              </div>
+            ) : null}
+          </div>
+        </td>
+      </tr>
+    );
   }
 }
 
@@ -102,17 +175,14 @@ class PlayerSearch extends React.Component {
   };
 
   componentDidMount() {
-    this.rebuild("users");
+    this.rebuild();
   }
 
-  async rebuild(arg) {
+  async rebuild() {
     let users = null;
     let teams = null;
-    if (arg === "users") {
-      users = await Api.getAllUsers();
-    } else {
-      teams = await Api.getAllTeams();
-    }
+    users = await Api.getAllUsers();
+    teams = await Api.getAllTeams();
     this.buildList(users, teams);
     this.setState({ domMounted: true });
   }
@@ -133,7 +203,7 @@ class PlayerSearch extends React.Component {
     this.buildList(this.state.users, this.state.teams, this.state.query);
   }
 
-  searchValidation(query, user) {
+  playerSearchValidation(query, user) {
     const search =
       query && query.length > 0
         ? user.username.toLowerCase().includes(query.toLowerCase())
@@ -182,6 +252,22 @@ class PlayerSearch extends React.Component {
     return search && leagues;
   }
 
+  teamSearchValidation(query, team) {
+    const search =
+      query && query.length > 0
+        ? team.name.toLowerCase().includes(query.toLowerCase())
+        : true;
+    let leagues = false;
+    if (
+      this.state.includes.teams &&
+      ((team.league === 1 && this.state.selectedLeagues.gold) ||
+        (team.league === 2 && this.state.selectedLeagues.platinum))
+    ) {
+      leagues = true;
+    }
+    return search && leagues;
+  }
+
   buildList(users, teams, query) {
     const noPoro =
       (this.state.includes.top ||
@@ -189,15 +275,16 @@ class PlayerSearch extends React.Component {
         this.state.includes.mid ||
         this.state.includes.bot ||
         this.state.includes.sup ||
-        this.state.includes.sub) &&
+        this.state.includes.sub ||
+        this.state.includes.teams) &&
       (this.state.selectedLeagues.gold ||
         this.state.selectedLeagues.platinum ||
         this.state.selectedLeagues.freeAgent);
-    const html = users
+    const userHtml = users
       ? users.users
           .map(user => {
-            if (this.searchValidation(query, user)) {
-              return <Card user={user} />;
+            if (this.playerSearchValidation(query, user)) {
+              return <PlayerCard user={user} />;
             } else {
               return null;
             }
@@ -205,7 +292,7 @@ class PlayerSearch extends React.Component {
           .filter(el => el)
       : null;
     const usersList =
-      noPoro && html.length > 0 ? (
+      noPoro && userHtml.length > 0 ? (
         <table cellspacing={"0"} cellpadding={"12px"}>
           <tbody>
             <tr className={"nohover"}>
@@ -217,7 +304,7 @@ class PlayerSearch extends React.Component {
                 <h3>Participating Leagues</h3>
               </th>
             </tr>
-            {html}
+            {userHtml}
           </tbody>
         </table>
       ) : (
@@ -225,21 +312,43 @@ class PlayerSearch extends React.Component {
           <img src={require("../../img/poro.png")} />
         </div>
       );
-    // const teamsList = teams
-    //   ? users.users
-    //       .map(user => {
-    //         if (
-    //           (this.state.selectedLeagues.gold && user.leagues.gold) ||
-    //           (this.state.selectedLeagues.platinum && user.leagues.platinum)
-    //         ) {
-    //           return <Card user={user} />;
-    //         } else {
-    //           return null;
-    //         }
-    //       })
-    //       .filter(el => el)
-    //   : null;
-    this.setState({ users, usersList, query });
+    const teamHtml = teams
+      ? teams.teams
+          .map(team => {
+            if (this.teamSearchValidation(query, team)) {
+              return <TeamCard team={team} />;
+            } else {
+              return null;
+            }
+          })
+          .filter(el => el)
+      : null;
+    console.log(teamHtml, noPoro);
+    const teamsList =
+      noPoro && teamHtml.length > 0 ? (
+        <table cellspacing={"0"} cellpadding={"12px"}>
+          <tbody>
+            <tr className={"nohover"}>
+              <th />
+              <th>
+                <h3>Team Name</h3>
+              </th>
+              <th>
+                <h3>Members</h3>
+              </th>
+              <th>
+                <h3>Participating League</h3>
+              </th>
+            </tr>
+            {teamHtml}
+          </tbody>
+        </table>
+      ) : (
+        <div className={"poro"}>
+          <img src={require("../../img/poro.png")} />
+        </div>
+      );
+    this.setState({ users, usersList, teams, teamsList, query });
   }
 
   setIncludes(key) {
@@ -293,22 +402,24 @@ class PlayerSearch extends React.Component {
                         }
                   }
                 />
-                <img
-                  onClick={() =>
-                    this.pickLeague(
-                      "freeAgent",
-                      !this.state.selectedLeagues.freeAgent
-                    )
-                  }
-                  src={require("../../img/free_agent.png")}
-                  style={
-                    this.state.selectedLeagues.freeAgent
-                      ? {}
-                      : {
-                          opacity: 0.35
-                        }
-                  }
-                />
+                {this.state.includes.players ? (
+                  <img
+                    onClick={() =>
+                      this.pickLeague(
+                        "freeAgent",
+                        !this.state.selectedLeagues.freeAgent
+                      )
+                    }
+                    src={require("../../img/free_agent.png")}
+                    style={
+                      this.state.selectedLeagues.freeAgent
+                        ? {}
+                        : {
+                            opacity: 0.35
+                          }
+                    }
+                  />
+                ) : null}
               </div>
             </div>
             <input
@@ -329,71 +440,105 @@ class PlayerSearch extends React.Component {
                   checked={this.state.includes.players}
                   onClick={() => {
                     let includes = this.state.includes;
-                    includes.players = !this.state.includes.players;
-                    this.setState({ includes });
+                    includes = {
+                      teams: false,
+                      players: true
+                    };
+                    this.setState({
+                      includes,
+                      selectedLeagues: {
+                        gold: false,
+                        platinum: false,
+                        freeAgent: false
+                      }
+                    });
+                    this.buildList(
+                      this.state.users,
+                      this.state.teams,
+                      this.state.query
+                    );
                   }}
                 />
                 <div className={"checkmark"} />
               </label>
-              <label className={"checkbox"} style={{ opacity: 0.35 }}>
+              <label className={"checkbox"}>
                 Teams
                 <input
                   type={"checkbox"}
                   checked={this.state.includes.teams}
                   onClick={() => {
-                    // let includes = this.state.includes;
-                    // includes.teams = !this.state.includes.teams;
-                    // this.setState({ includes });
+                    let includes = this.state.includes;
+                    includes = {
+                      teams: true,
+                      players: false
+                    };
+                    this.setState({
+                      includes,
+                      selectedLeagues: {
+                        gold: false,
+                        platinum: false,
+                        freeAgent: false
+                      }
+                    });
+                    this.buildList(
+                      this.state.users,
+                      this.state.teams,
+                      this.state.query
+                    );
                   }}
                 />
                 <div className={"checkmark"} />
               </label>
             </div>
-            <div className={"search-positions"}>
-              <img
-                onClick={() => this.setIncludes("top")}
-                src={positionImages.freeAgent[1].props.src}
-                style={
-                  this.state.includes.top ? { opacity: 1 } : { opacity: 0.35 }
-                }
-              />
-              <img
-                onClick={() => this.setIncludes("jun")}
-                src={positionImages.freeAgent[2].props.src}
-                style={
-                  this.state.includes.jun ? { opacity: 1 } : { opacity: 0.35 }
-                }
-              />
-              <img
-                onClick={() => this.setIncludes("mid")}
-                src={positionImages.freeAgent[3].props.src}
-                style={
-                  this.state.includes.mid ? { opacity: 1 } : { opacity: 0.35 }
-                }
-              />
-              <img
-                onClick={() => this.setIncludes("bot")}
-                src={positionImages.freeAgent[4].props.src}
-                style={
-                  this.state.includes.bot ? { opacity: 1 } : { opacity: 0.35 }
-                }
-              />
-              <img
-                onClick={() => this.setIncludes("sup")}
-                src={positionImages.freeAgent[5].props.src}
-                style={
-                  this.state.includes.sup ? { opacity: 1 } : { opacity: 0.35 }
-                }
-              />
-              <img
-                onClick={() => this.setIncludes("sub")}
-                src={positionImages.freeAgent[6].props.src}
-                style={
-                  this.state.includes.sub ? { opacity: 1 } : { opacity: 0.35 }
-                }
-              />
-            </div>
-            {this.state.usersList}
+            {this.state.includes.players ? (
+              <div className={"search-positions"}>
+                <img
+                  onClick={() => this.setIncludes("top")}
+                  src={positionImages.freeAgent[1].props.src}
+                  style={
+                    this.state.includes.top ? { opacity: 1 } : { opacity: 0.35 }
+                  }
+                />
+                <img
+                  onClick={() => this.setIncludes("jun")}
+                  src={positionImages.freeAgent[2].props.src}
+                  style={
+                    this.state.includes.jun ? { opacity: 1 } : { opacity: 0.35 }
+                  }
+                />
+                <img
+                  onClick={() => this.setIncludes("mid")}
+                  src={positionImages.freeAgent[3].props.src}
+                  style={
+                    this.state.includes.mid ? { opacity: 1 } : { opacity: 0.35 }
+                  }
+                />
+                <img
+                  onClick={() => this.setIncludes("bot")}
+                  src={positionImages.freeAgent[4].props.src}
+                  style={
+                    this.state.includes.bot ? { opacity: 1 } : { opacity: 0.35 }
+                  }
+                />
+                <img
+                  onClick={() => this.setIncludes("sup")}
+                  src={positionImages.freeAgent[5].props.src}
+                  style={
+                    this.state.includes.sup ? { opacity: 1 } : { opacity: 0.35 }
+                  }
+                />
+                <img
+                  onClick={() => this.setIncludes("sub")}
+                  src={positionImages.freeAgent[6].props.src}
+                  style={
+                    this.state.includes.sub ? { opacity: 1 } : { opacity: 0.35 }
+                  }
+                />
+              </div>
+            ) : null}
+            {this.state.includes.players
+              ? this.state.usersList
+              : this.state.teamsList}
           </div>
         </div>
         <Components.Footer />

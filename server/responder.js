@@ -11,7 +11,7 @@ const sanitize = report => {
   }
 };
 
-module.exports = async (cb, res) => {
+module.exports = async (cb, res, accessLevel, exact) => {
   let report = typeof cb === "function" ? await cb() : await cb;
   report = sanitize(report);
   res.json({
@@ -23,6 +23,7 @@ module.exports = async (cb, res) => {
     code: report.code,
     msg: report.msg || report.errmsg,
     token: report.token,
-    username: report.u
+    username: report.u,
+    teams: report.teams
   });
 };

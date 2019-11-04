@@ -67,12 +67,22 @@ class Header extends React.Component {
           content={this.state.modal}
         />
         <img alt={""} src={require("../../img/logo2.png")} />
+        <h1
+          style={{
+            position: "absolute",
+            zIndex: 1000,
+            fontSize: "48px",
+            color: "rgb(150, 0, 255)",
+            transform: "rotate(-35deg)"
+          }}
+        >
+          beta
+        </h1>
         <div className={"links"}>
           <div>
             <a href={"/"}>Home</a>|<a href={"/players"}>Players</a>|
-            <a href={"/articles.html"}>Articles</a>|
-            <a href={"/events.html"}>Events</a>|
-            <a href={"/contact.html"}>Contact</a>|{this.state.accountLink}
+            <a href={"/"}>Articles</a>|<a href={"/"}>Events</a>|
+            <a href={"/"}>Contact</a>|{this.state.accountLink}
           </div>
           <div>
             <a href={"https://www.twitch.tv/titanesportz"} target={"_blank"}>

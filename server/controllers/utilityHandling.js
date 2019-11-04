@@ -2,7 +2,7 @@ const fs = require("fs");
 const config = require("../config");
 
 module.exports = {
-  getIconsList: async (req, res) => {
+  getIconsList: async req => {
     const fileList = await new Promise((resolve, reject) => {
       fs.readdir(
         __dirname +
@@ -30,7 +30,7 @@ module.exports = {
       msg: "Icon Fetch Successful!"
     };
   },
-  getProfileVideos: async (req, res) => {
+  getProfileVideos: async req => {
     const fileList = await new Promise((resolve, reject) => {
       fs.readdir(__dirname + `/../profile_videos`, (err, files) => {
         if (err) {

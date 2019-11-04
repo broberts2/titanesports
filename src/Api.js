@@ -38,7 +38,7 @@ export default {
     return users;
   },
   getAllTeams: async () => {
-    const teams = await fetch(`${config.serverPath}/getAllUsersTeams`, {
+    const teams = await fetch(`${config.serverPath}/getAllTeams`, {
       method: "get",
       headers: {
         Accept: "application/json",
@@ -94,6 +94,18 @@ export default {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(userData)
+    }).then(res => res.json());
+  },
+  updateSelf: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/updateSelf`, {
+      method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
     }).then(res => res.json());
   },
   updateUser: async data => {
