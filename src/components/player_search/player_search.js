@@ -70,7 +70,7 @@ class TeamCard extends React.Component {
     let row = [];
     let rows = [];
     Object.values(this.props.team.members || {})
-      .sort((a, b) => a.role - b.role)
+      .sort((a, b) => (a.role < b.role ? -1 : 1))
       .map((el, i) => {
         row.push(
           <td>
@@ -286,6 +286,9 @@ class PlayerSearch extends React.Component {
         this.state.selectedLeagues.freeAgent);
     const userHtml = users
       ? users.users
+          .sort((a, b) =>
+            a.username.toLowerCase() < b.username.toLowerCase() ? -1 : 1
+          )
           .map(user => {
             if (this.playerSearchValidation(query, user)) {
               return <PlayerCard user={user} />;
@@ -318,6 +321,9 @@ class PlayerSearch extends React.Component {
       );
     const teamHtml = teams
       ? teams.teams
+          .sort((a, b) =>
+            a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1
+          )
           .map(team => {
             if (this.teamSearchValidation(query, team)) {
               return <TeamCard team={team} />;
