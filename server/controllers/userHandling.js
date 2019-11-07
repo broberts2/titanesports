@@ -16,7 +16,10 @@ module.exports = {
           platinum: {}
         },
         iconId: "0.png",
-        captainTeam: "",
+        captainTeam: {
+          gold: {},
+          platinum: {}
+        },
         leagues: {
           gold: 0,
           platinum: 0,
@@ -62,10 +65,7 @@ module.exports = {
       };
     }
     try {
-      const user = await Users.update(
-        { username: req.user_info.username },
-        req.body
-      );
+      const user = await Users.update({ _id: req.query.id }, req.body);
       user.code = 200;
       user.msg = "User Account Updated!";
       return user;
@@ -124,7 +124,8 @@ module.exports = {
         code: 200,
         msg: "Token is Valid!",
         id: user._id,
-        u: user.username
+        u: user.username,
+        l: user.level
       };
     } catch (e) {
       return { code: 11101, msg: "Invalid or Null Token." };

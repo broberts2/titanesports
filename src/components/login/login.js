@@ -48,7 +48,7 @@ class Login extends React.Component {
           </button>
           <div
             className={"anchor"}
-            onClick={() => this.props.openModal(Components.SignUp)}
+            onClick={() => this.props.openModal(<Components.SignUp />)}
             style={
               this.state.u.length > 0 || this.state.p.length > 0
                 ? { opacity: 0 }

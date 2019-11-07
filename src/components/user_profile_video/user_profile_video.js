@@ -81,7 +81,7 @@ class UserProfileVideo extends React.Component {
         <button
           onClick={async () => {
             await this.props.startRequest(
-              Api.updateUser({ profileVideo: this.state.selectedVideo })
+              Api.updateSelf({ profileVideo: this.state.selectedVideo })
             );
             window.location.reload();
           }}

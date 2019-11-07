@@ -20,7 +20,7 @@ class UserAccount extends React.Component {
     freeAgentRoll: 1,
     freeAgentButton: false,
     positionPreview: positionImages.freeAgent[1],
-    modal: Components.Logout,
+    modal: <Components.Logout />,
     user: {}
   };
 
@@ -54,7 +54,6 @@ class UserAccount extends React.Component {
     if (u === res.id) {
       this.setState({ canEdit: true });
     }
-    console.log(user);
     return user.code === 200;
   }
 
@@ -68,7 +67,7 @@ class UserAccount extends React.Component {
   }
 
   editProfileIcon() {
-    this.openModal(Components.IconSelect);
+    this.openModal(<Components.IconSelect />);
   }
 
   confirmUpdate() {
@@ -77,60 +76,58 @@ class UserAccount extends React.Component {
     leagues.freeAgent = !this.state.freeAgentButton
       ? 0
       : this.state.freeAgentRoll;
-    this.openModal(
-      ReactClass({
-        render() {
-          return (
-            <div className={"confirm-modal"}>
-              <h2>Submit changes to profile?</h2>
-              <button
-                onClick={async () => {
-                  this.props.startRequest(
-                    Api.updateSelf({
-                      leagues,
-                      biography
-                    })
-                  );
-                }}
-              >
-                Submit Changes
-              </button>
-            </div>
-          );
-        }
-      })
-    );
+    class ConfirmChanges extends React.Component {
+      render() {
+        return (
+          <div className={"confirm-modal"}>
+            <h2>Submit changes to profile?</h2>
+            <button
+              onClick={async () => {
+                this.props.startRequest(
+                  Api.updateSelf({
+                    leagues,
+                    biography
+                  })
+                );
+              }}
+            >
+              Submit Changes
+            </button>
+          </div>
+        );
+      }
+    }
+    this.openModal(<ConfirmChanges />);
   }
 
   clearChanges() {
     const validateQuery = () => this.validateQuery();
-    this.openModal(
-      ReactClass({
-        render() {
-          return (
-            <div className={"confirm-modal"}>
-              <h2>Clear pending changes?</h2>
-              <button
-                onClick={async () =>
-                  this.props.startRequest(
-                    new Promise(async (resolve, reject) => {
-                      const user = await validateQuery();
-                      resolve(
-                        user
-                          ? { msg: "Changes reverted." }
-                          : { msg: "Unable to revert changes." }
-                      );
-                    })
-                  )
-                }
-              >
-                Clear Changes
-              </button>
-            </div>
-          );
-        }
-      })
-    );
+    class ClearChanges extends React.Component {
+      render() {
+        return (
+          <div className={"confirm-modal"}>
+            <h2>Clear pending changes?</h2>
+            <button
+              onClick={async () =>
+                this.props.startRequest(
+                  new Promise(async (resolve, reject) => {
+                    const user = await validateQuery();
+                    resolve(
+                      user
+                        ? { msg: "Changes reverted." }
+                        : { msg: "Unable to revert changes." }
+                    );
+                  })
+                )
+              }
+            >
+              Clear Changes
+            </button>
+          </div>
+        );
+      }
+    }
+    this.openModal(<ClearChanges />);
   }
 
   setFreeAgentRoll(roll) {
@@ -151,11 +148,12 @@ class UserAccount extends React.Component {
                 validateQuery={() => this.validateQuery()}
                 width={"45%"}
                 height={"75%"}
-                openModal={() => this.openModal(Components.Logout)}
+                openModal={() => this.openModal(<Components.Logout />)}
                 setModal={modalVisible => this.setModal(modalVisible)}
                 visible={this.state.modalVisible}
-                content={this.state.modal}
-              />
+              >
+                {this.state.modal}
+              </Components.Modal>
               <video muted preload="auto" loop autoPlay>
                 <source
                   src={`${config.serverPath}/${
@@ -171,12 +169,12 @@ class UserAccount extends React.Component {
                   <div className={"header-options"}>
                     <i
                       onClick={() =>
-                        this.openModal(Components.UserProfileVideo)
+                        this.openModal(<Components.UserProfileVideo />)
                       }
                       className={"fas fa-fire"}
                     ></i>
                     <i
-                      onClick={() => this.openModal(Components.Logout)}
+                      onClick={() => this.openModal(<Components.Logout />)}
                       className={"fas fa-sign-out-alt"}
                     ></i>
                   </div>

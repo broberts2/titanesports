@@ -71,15 +71,16 @@ class Modal extends React.Component {
             </div>
             <div className={"content-wrapper"}>
               <div className={"content"}>
-                {this.state.requestStatus ? (
-                  this.renderRequest()
-                ) : (
-                  <this.props.content
-                    openModal={modal => this.props.openModal(modal)}
-                    startRequest={(cb, ignore) => this.startRequest(cb, ignore)}
-                    validateQuery={() => this.props.validateQuery()}
-                  />
-                )}
+                {this.state.requestStatus
+                  ? this.renderRequest()
+                  : this.props.children
+                  ? React.cloneElement(this.props.children, {
+                      openModal: modal => this.props.openModal(modal),
+                      startRequest: (cb, ignore) =>
+                        this.startRequest(cb, ignore),
+                      validateQuery: () => this.props.validateQuery()
+                    })
+                  : null}
               </div>
             </div>
             <div

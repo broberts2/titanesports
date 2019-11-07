@@ -16,6 +16,11 @@ export default class App extends React.Component {
           <Route exact path="/user" render={() => <Components.UserAccount />} />
           <Route
             exact
+            path="/roster"
+            render={() => <Components.RosterEditor />}
+          />
+          <Route
+            exact
             path="/players"
             render={() => <Components.PlayerSearch />}
           />

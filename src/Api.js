@@ -108,10 +108,47 @@ export default {
       body: JSON.stringify(data)
     }).then(res => res.json());
   },
-  updateUser: async data => {
+  updateUser: async (userId, data) => {
     const titan_key = read_cookie("titan_key");
-    return await fetch(`${config.serverPath}/s/updateUser`, {
+    console.log(userId, data);
+    return await fetch(`${config.serverPath}/s/updateUser?id=${userId}`, {
       method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
+  movePlayerToTeam: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/movePlayerToTeam`, {
+      method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
+  updateTeam: async (teamId, data) => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/updateTeam?id=${teamId}`, {
+      method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
+  removePlayerFromTeam: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/removePlayerFromTeam`, {
+      method: "delete",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

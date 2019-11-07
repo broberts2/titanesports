@@ -35,7 +35,7 @@ const userSchema = new Schema({
     required: true
   },
   captainTeam: {
-    type: String,
+    type: Object,
     unique: false,
     required: false
   },

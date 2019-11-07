@@ -3,9 +3,27 @@
   text-align: center;
 }
 .player_search .form {
+  position: relative;
   background-color: transparent;
   text-align: left;
   padding: 50px;
+}
+.player_search .form .cog {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  font-size: 48px;
+  margin: 25px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+  color: #231f20;
+}
+.player_search .form .cog i {
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
 }
 .player_search .form .poro {
   text-align: center;
@@ -193,14 +211,3 @@ i:hover {
   border-radius: 10px;
   height: 100%;
 }
-/* .player_search .card .profile-img h3 {
-  position: absolute;
-  left: 150px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
-.player_search .card:hover {
-  transform: scale(1.025);
-} */

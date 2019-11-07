@@ -47,6 +47,25 @@ module.exports = {
       return { code: 11102, msg: "Get Teams Error." };
     }
   },
+  updateTeam: async (req, level, exact) => {
+    if (
+      (exact && req.user_info.level !== 0 && level !== req.user_info.level) ||
+      req.user_info.level > level
+    ) {
+      return {
+        msg: "Access Denied",
+        code: 403
+      };
+    }
+    try {
+      const user = await Team.update({ _id: req.query.id }, req.body);
+      user.code = 200;
+      user.msg = "Team Updated!";
+      return user;
+    } catch (e) {
+      return e;
+    }
+  },
   movePlayerToTeam: async req => {
     try {
       const team = await Team.findOne({ _id: req.body.teamId });
@@ -63,7 +82,7 @@ module.exports = {
         }
       );
       if (req.body.fromTeamId) {
-        const team2 = await Team.findOne({ _id: req.body.teamId });
+        const team2 = await Team.findOne({ _id: req.body.fromTeamId });
         members = team2.members ? team2.members : {};
         delete members[req.body.player.playerId];
         await Team.update(
@@ -74,7 +93,10 @@ module.exports = {
         );
       }
       let user = await Users.findOne({ _id: req.body.player.playerId });
-      let memberships = user.memberships;
+      let memberships = user.memberships || {
+        gold: {},
+        platinum: {}
+      };
       memberships[team.league === 1 ? "gold" : "platinum"] = {
         [`${team._id}`]: team._id
       };
@@ -128,8 +150,5 @@ module.exports = {
       console.log(e);
       return { code: 11102, msg: "An Error Occured." };
     }
-  },
-  promotePlayerToCaptain: async req => {
-    // code
   }
 };
