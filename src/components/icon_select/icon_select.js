@@ -36,7 +36,7 @@ class IconSelect extends React.Component {
 
   async updateIcon() {
     await this.props.startRequest(
-      Api.updateUser({ iconId: this.state.selectedImage })
+      Api.updateSelf({ iconId: this.state.selectedImage })
     );
     this.props.validateQuery();
   }
