@@ -587,19 +587,21 @@ class TeamCard extends React.Component {
           <h2>{this.props.data.name}</h2>
         </div>
         {this.props.data.members
-          ? Object.values(this.props.data.members).map((el, i) => (
-              <PlayerCard
-                key={i}
-                openModal={(modal, size) => this.props.openModal(modal, size)}
-                data={el}
-                team={this.props.data}
-                update={data => this.props.update(data)}
-                movePlayerToTeam={data => this.props.movePlayerToTeam(data)}
-                removePlayerFromTeam={data =>
-                  this.props.removePlayerFromTeam(data)
-                }
-              />
-            ))
+          ? Object.values(this.props.data.members)
+              .sort((a, b) => (a.role < b.role ? -1 : 1))
+              .map((el, i) => (
+                <PlayerCard
+                  key={i}
+                  openModal={(modal, size) => this.props.openModal(modal, size)}
+                  data={el}
+                  team={this.props.data}
+                  update={data => this.props.update(data)}
+                  movePlayerToTeam={data => this.props.movePlayerToTeam(data)}
+                  removePlayerFromTeam={data =>
+                    this.props.removePlayerFromTeam(data)
+                  }
+                />
+              ))
           : null}
         <div className={"control"}>
           <i
