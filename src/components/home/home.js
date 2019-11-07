@@ -7,7 +7,7 @@ class Home extends React.Component {
   state = {
     domMounted: false,
     modalVisible: false,
-    modal: Components.Login,
+    modal: <Components.Login />,
     modalSize: {
       width: "45%",
       height: "75%"
@@ -32,7 +32,7 @@ class Home extends React.Component {
       <div className={"home"}>
         <Components.Loader domMounted={this.state.domMounted}>
           <Components.Header
-            openModal={() => this.openModal(Components.Login)}
+            openModal={() => this.openModal(<Components.Login />)}
           />
           <Components.Modal
             width={this.state.modalSize.width}
@@ -45,8 +45,9 @@ class Home extends React.Component {
             }
             setModal={modalVisible => this.setModal(modalVisible)}
             visible={this.state.modalVisible}
-            content={this.state.modal}
-          />
+          >
+            {this.state.modal}
+          </Components.Modal>
           <Components.VideoLoop
             openModal={modal =>
               this.openModal(modal, {

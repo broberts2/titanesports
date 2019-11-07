@@ -14,6 +14,7 @@ import IconSelect from "./components/icon_select/icon_select";
 import UserProfileVideo from "./components/user_profile_video/user_profile_video";
 import Loader from "./components/loader/loader";
 import PlayerSearch from "./components/player_search/player_search";
+import RosterEditor from "./components/roster_editor/roster_editor";
 
 export default {
   Header,
@@ -31,5 +32,6 @@ export default {
   IconSelect,
   UserProfileVideo,
   Loader,
-  PlayerSearch
+  PlayerSearch,
+  RosterEditor
 };

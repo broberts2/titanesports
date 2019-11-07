@@ -14,7 +14,7 @@ class Header extends React.Component {
       <div
         className={"imposter"}
         onClick={() =>
-          this.openModal(Components.Login, {
+          this.openModal(<Components.Login />, {
             width: "45%",
             height: "75%"
           })
@@ -25,7 +25,7 @@ class Header extends React.Component {
       </div>
     ),
     modalVisible: false,
-    modal: Components.Login,
+    modal: <Components.Login />,
     modalSize: {
       width: "45%",
       height: "75%"
@@ -64,8 +64,9 @@ class Header extends React.Component {
           }
           setModal={modalVisible => this.setModal(modalVisible)}
           visible={this.state.modalVisible}
-          content={this.state.modal}
-        />
+        >
+          {this.state.modal}
+        </Components.Modal>
         <img alt={""} src={require("../../img/logo2.png")} />
         <h1
           style={{

@@ -18,6 +18,7 @@ class PlayerCard extends React.Component {
         <td>
           <div className={"profile-img"}>
             <img
+              alt={""}
               src={`${config.serverPath}/${config.currentVersion}/img/profileicon/${this.props.user.iconId}`}
             />
           </div>
@@ -148,6 +149,7 @@ class PlayerSearch extends React.Component {
     domMounted: false,
     modalVisible: false,
     modal: Components.Login,
+    showCog: false,
     modalSize: {
       width: "45%",
       height: "75%"
@@ -174,8 +176,10 @@ class PlayerSearch extends React.Component {
     teamsList: null
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.rebuild();
+    const showCog = await Api.validateToken();
+    this.setState({ showCog: showCog.l < 4 });
   }
 
   async rebuild() {
@@ -323,7 +327,6 @@ class PlayerSearch extends React.Component {
           })
           .filter(el => el)
       : null;
-    console.log(teamHtml, noPoro);
     const teamsList =
       noPoro && teamHtml.length > 0 ? (
         <table cellspacing={"0"} cellpadding={"12px"}>
@@ -363,7 +366,7 @@ class PlayerSearch extends React.Component {
       <Loader domMounted={this.state.domMounted}>
         <Components.Header
           openModal={() =>
-            this.openModal(Components.Login, {
+            this.openModal(<Components.Login />, {
               width: "45%",
               height: "75%"
             })
@@ -371,6 +374,13 @@ class PlayerSearch extends React.Component {
         />
         <div className={"player_search"}>
           <div className={"form"}>
+            {this.state.showCog ? (
+              <a href={`/roster`} target={`_blank`}>
+                <div className={"cog"}>
+                  <i className={"fas fa-cogs"}></i>
+                </div>
+              </a>
+            ) : null}
             <div className={"leagues"}>
               <div className={"emblems"}>
                 <img

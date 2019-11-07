@@ -29,8 +29,11 @@ module.exports = (app, security) => {
   security.put("/updateUser", async (req, res) =>
     responder(Controllers.UserHandling.updateUser(req, 1), res)
   );
+  security.put("/updateTeam", async (req, res) =>
+    responder(Controllers.TeamHandling.updateTeam(req, 1), res)
+  );
   security.put("/updateSelf", async (req, res) =>
-    responder(Controllers.UserHandling.updateUser(req), res)
+    responder(Controllers.UserHandling.updateSelf(req), res)
   );
   security.put("/movePlayerToTeam", async (req, res) =>
     responder(Controllers.TeamHandling.movePlayerToTeam(req), res)
