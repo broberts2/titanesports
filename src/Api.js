@@ -57,6 +57,28 @@ export default {
     }).then(res => res.json());
     return videos;
   },
+  getSlayersGuild: async () => {
+    const videos = await fetch(`${config.serverPath}/getSlayersGuild`, {
+      method: "get",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then(res => res.json());
+    return videos;
+  },
+  updateSlayersGuild: async () => {
+    const titan_key = read_cookie("titan_key");
+    const response = await fetch(`${config.serverPath}/s/updateSlayersGuild`, {
+      method: "get",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      titan_key
+    }).then(res => res.json());
+    return response;
+  },
   requestProfileIconList: async obj => {
     const iconList = await fetch(
       `${config.serverPath}/getIconsList?index=${obj.index}&size=${obj.size}`,
@@ -110,7 +132,6 @@ export default {
   },
   updateUser: async (userId, data) => {
     const titan_key = read_cookie("titan_key");
-    console.log(userId, data);
     return await fetch(`${config.serverPath}/s/updateUser?id=${userId}`, {
       method: "put",
       headers: {

@@ -8,6 +8,12 @@
   text-align: left;
   padding: 50px;
 }
+.player_search .form .title h3 {
+  color: #231f20;
+  text-indent: 50px;
+  margin: 50px;
+  margin-top: 100px;
+}
 .player_search .form .cog {
   position: absolute;
   top: 0%;
@@ -156,6 +162,12 @@ i:hover {
 .player_search .username {
   text-align: center;
   margin: 50px;
+}
+.player_search .opgg {
+  text-align: center;
+}
+.player_search .opgg a {
+  text-align: center;
 }
 .player_search .members {
   text-align: right;

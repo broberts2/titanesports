@@ -47,6 +47,13 @@
   left: 10%;
   top: 0;
 }
+.homepagepanel .panels h3 {
+  color: inherit;
+  pointer-events: none;
+  position: absolute;
+  left: 10%;
+  top: 55px;
+}
 .homepagepanel .panels i {
   font-size: 80px;
   pointer-events: none;
