@@ -1,0 +1,31 @@
+.slayers_guild {
+}
+.slayers_guild .button-wrapper {
+  display: inline-flex;
+  float: right;
+  margin: 15px;
+}
+.slayers_guild .button-wrapper button {
+}
+.slayers_guild .body {
+  padding-bottom: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.slayers_guild .video .content {
+  width: 600px;
+  height: 300px;
+}
+.slayers_guild .title h3 {
+  color: #231f20;
+  text-indent: 50px;
+  margin: 50px;
+  margin-top: 100px;
+}
+.slayers_guild .modal {
+  text-align: center;
+}
+.slayers_guild .modal h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+}

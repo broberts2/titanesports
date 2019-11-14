@@ -56,21 +56,26 @@ class HomePagePanel extends React.Component {
         <div className={"wrapper panel-2"}>
           {this.videoButton("vid2", vid2)}
           <h2>Titan Draft</h2>
+          <h3>(In Development)</h3>
           <i className={""}></i>
         </div>
-        <div className={"wrapper panel-3"}>
-          {this.videoButton("vid3", vid3)}
-          <h2>Slayer's Guild</h2>
-          <i className={"fas fa-meteor"}></i>
-        </div>
+        <a href={"/slayers_guild"}>
+          <div className={"wrapper panel-3"}>
+            {this.videoButton("vid3", vid3)}
+            <h2>Slayer's Guild</h2>
+            <i className={"fas fa-meteor"}></i>
+          </div>
+        </a>
         <div className={"wrapper panel-4"}>
           {this.videoButton("vid4", vid4)}
           <h2 style={{ fontSize: "36px" }}>Roster Update</h2>
+          <h3>(In Development)</h3>
           <i className={"fas fa-scroll"}></i>
         </div>
         <div className={"wrapper panel-5"}>
           {this.videoButton("vid5", vid5)}
           <h2>Upcoming Events</h2>
+          <h3>(In Development)</h3>
           <i className={"far fa-calendar-alt"}></i>
         </div>
       </div>

@@ -10,10 +10,18 @@ import Api from "../../Api";
 const config = require("../../config");
 
 class PlayerCard extends React.Component {
+  state = {
+    noAction: false
+  };
+
   render() {
     return (
       <tr
-        onClick={() => window.open(`/user?u=${this.props.user._id}`, "_blank")}
+        onClick={() =>
+          !this.state.noAction
+            ? window.open(`/user?u=${this.props.user._id}`, "_blank")
+            : null
+        }
       >
         <td>
           <div className={"profile-img"}>
@@ -26,6 +34,18 @@ class PlayerCard extends React.Component {
         <td>
           <div className={"username"}>
             <h3>{this.props.user.username}</h3>
+          </div>
+        </td>
+        <td>
+          <div className={"opgg"}>
+            <a
+              href={this.props.user.opgg}
+              target={"_blank"}
+              onMouseEnter={() => this.setState({ noAction: true })}
+              onMouseLeave={() => this.setState({ noAction: false })}
+            >
+              {this.props.user.opgg}
+            </a>
           </div>
         </td>
         <td>
@@ -308,6 +328,9 @@ class PlayerSearch extends React.Component {
                 <h3>Username</h3>
               </th>
               <th>
+                <h3>OP.GG</h3>
+              </th>
+              <th>
                 <h3>Participating Leagues</h3>
               </th>
             </tr>
@@ -387,6 +410,17 @@ class PlayerSearch extends React.Component {
                 </div>
               </a>
             ) : null}
+            <div className={"title"}>
+              <h3>
+                Welcome to the player search utility. From here you are able to
+                search active players currently participating in Titan eSports
+                or those who are wishing to join a team (Free Agent). To get
+                started, select one or more league(s) (Gold, Platinum, or Free
+                Agent) and then select a role (top, jungle, mid, adc, support or
+                substitue player). You may also specify a player or team name to
+                narrow your results. Give it a try!
+              </h3>
+            </div>
             <div className={"leagues"}>
               <div className={"emblems"}>
                 <img

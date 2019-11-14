@@ -1,5 +1,6 @@
 const Controllers = require("./controllers");
 const responder = require("./responder");
+const riotSanitizer = require("./riotSanitizer");
 
 module.exports = (app, security) => {
   app.post("/createUser", async (req, res) =>
@@ -23,14 +24,20 @@ module.exports = (app, security) => {
   app.get("/getProfileVideos", async (req, res) =>
     responder(Controllers.UtilityHandling.getProfileVideos(req), res)
   );
+  app.get("/getSlayersGuild", async (req, res) =>
+    responder(Controllers.YoutubeAPI.getSlayersGuild(req), res)
+  );
+  security.get("/updateSlayersGuild", async (req, res) =>
+    responder(Controllers.YoutubeAPI.updateSlayersGuild(req, 5, true), res)
+  );
   security.get("/validateToken", async (req, res) =>
     responder(Controllers.UserHandling.validateToken(req), res)
   );
   security.put("/updateUser", async (req, res) =>
-    responder(Controllers.UserHandling.updateUser(req, 1), res)
+    responder(Controllers.UserHandling.updateUser(req, 3), res)
   );
   security.put("/updateTeam", async (req, res) =>
-    responder(Controllers.TeamHandling.updateTeam(req, 1), res)
+    responder(Controllers.TeamHandling.updateTeam(req, 3), res)
   );
   security.put("/updateSelf", async (req, res) =>
     responder(Controllers.UserHandling.updateSelf(req), res)
@@ -43,5 +50,13 @@ module.exports = (app, security) => {
   );
   security.post("/createTeam", async (req, res) =>
     responder(Controllers.TeamHandling.createTeam(req, 3), res)
+  );
+  security.get("/gameData", async (req, res) =>
+    riotSanitizer(
+      Controllers.RiotAPI.fetchGameData(req, 3),
+      req.query.t1,
+      req.query.t2,
+      res
+    )
   );
 };

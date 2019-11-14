@@ -15,6 +15,8 @@ import UserProfileVideo from "./components/user_profile_video/user_profile_video
 import Loader from "./components/loader/loader";
 import PlayerSearch from "./components/player_search/player_search";
 import RosterEditor from "./components/roster_editor/roster_editor";
+import SlayersGuild from "./components/slayers_guild/slayers_guild";
+import MediaPlayer from "./components/media_player/media_player";
 
 export default {
   Header,
@@ -33,5 +35,7 @@ export default {
   UserProfileVideo,
   Loader,
   PlayerSearch,
-  RosterEditor
+  RosterEditor,
+  SlayersGuild,
+  MediaPlayer
 };

@@ -83,7 +83,8 @@ class Header extends React.Component {
           <div>
             <a href={"/"}>Home</a>|<a href={"/players"}>Players</a>|
             <a href={"/"}>Articles</a>|<a href={"/"}>Events</a>|
-            <a href={"/"}>Contact</a>|{this.state.accountLink}
+            <a href={"/slayers_guild"}>Slayer's Guild</a>|
+            {this.state.accountLink}
           </div>
           <div>
             <a href={"https://www.twitch.tv/titanesportz"} target={"_blank"}>

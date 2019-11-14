@@ -33,6 +33,12 @@ class RoleSelect extends React.Component {
     this.setState(state);
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.player.role !== prevProps.player.role) {
+      this.setRole(this.props.player.role);
+    }
+  }
+
   componentDidMount() {
     this.setRole(this.props.player.role);
   }
