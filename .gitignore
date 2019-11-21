@@ -26,6 +26,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+/profile_videos
 /*dragontail*
 
 npm-debug.log*
