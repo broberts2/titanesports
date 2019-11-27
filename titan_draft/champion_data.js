@@ -1,4 +1,4 @@
-/loading/Zconst config = require("../server/config");
+config = require("../server/config");
 const server = config.production
   ? "https://titan-esports.org:7001"
   : "http://localhost:7001";
