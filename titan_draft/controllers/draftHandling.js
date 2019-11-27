@@ -5,6 +5,7 @@ const ObjectId = require("mongodb").ObjectID;
 const uid = require("rand-token").uid;
 
 const config = "../server/config";
+console.log(config);
 const server = config.production
   ? "https://titan-esports.org:7001"
   : "http://localhost:3000";
