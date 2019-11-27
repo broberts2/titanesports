@@ -33,43 +33,60 @@ class Modal extends React.Component {
   };
 
   idCheck(id) {
-    const blue_pick = Object.values(this.props.state.blue.pick).map(el => el);
-    return false;
+    const blue_pick = Object.values(this.props.state.data.blue.pick).some(el =>
+      el && el.name !== "Urf" ? el.id === id : null
+    );
+    const blue_ban = Object.values(this.props.state.data.blue.ban).some(el =>
+      el && el.name !== "Urf" ? el.id === id : null
+    );
+    const red_pick = Object.values(this.props.state.data.red.pick).some(el =>
+      el && el.name !== "Urf" ? el.id === id : null
+    );
+    const red_ban = Object.values(this.props.state.data.red.ban).some(el =>
+      el && el.name !== "Urf" ? el.id === id : null
+    );
+    return blue_pick || blue_ban || red_pick || red_ban;
   }
 
-  buildList(searchTerm = "") {
+  buildList(searchTerm = "", reset) {
     let rows = [];
     let row = [];
     const itemsPerRow = 10;
-    Object.values(this.props.state.championData)
-      .filter(el =>
-        (searchTerm.length > 0 &&
-          !el.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
-        el.suspended ||
-        this.idCheck(el.id)
-          ? null
-          : el
-      )
-      .map((el, i) => {
-        row.push(
-          <td>
-            <Champion
-              data={el}
-              click={data =>
-                this.setState({
-                  previewImage: data.loadingImg,
-                  previewName: data.name,
-                  selectedIndex: data.id
-                })
-              }
-            />
-          </td>
-        );
-        if ((i + 1) % itemsPerRow === 0) {
-          rows.push(<tr>{row}</tr>);
-          row = [];
-        }
+    const champs = Object.values(this.props.state.championData).filter(el =>
+      (searchTerm.length > 0 &&
+        !el.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+      el.suspended ||
+      this.idCheck(el.id)
+        ? null
+        : el
+    );
+    if (reset) {
+      this.setState({
+        previewImage: champs[0].loadingImg,
+        previewName: champs[0].name,
+        selectedIndex: champs[0].id
       });
+    }
+    champs.map((el, i) => {
+      row.push(
+        <td>
+          <Champion
+            data={el}
+            click={data =>
+              this.setState({
+                previewImage: data.loadingImg,
+                previewName: data.name,
+                selectedIndex: data.id
+              })
+            }
+          />
+        </td>
+      );
+      if ((i + 1) % itemsPerRow === 0) {
+        rows.push(<tr>{row}</tr>);
+        row = [];
+      }
+    });
     if (row.length > 0) {
       for (let i = 0; i < itemsPerRow - row.length; i++) {
         row.push(<td></td>);
@@ -85,7 +102,7 @@ class Modal extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.state.modal !== this.props.state.modal) {
-      this.buildList();
+      this.buildList("", true);
     }
   }
 

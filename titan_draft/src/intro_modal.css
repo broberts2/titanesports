@@ -1,0 +1,27 @@
+.intro-modal {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(42, 42, 42);
+  position: relative;
+  border-radius: 3px;
+  text-align: center;
+}
+.intro-modal .body {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.intro-modal .body h1 {
+}
+.intro-modal .body button {
+  font-size: 48px;
+  border-radius: 6px;
+  padding: 10px;
+  width: 50%;
+  color: white;
+  cursor: pointer;
+}

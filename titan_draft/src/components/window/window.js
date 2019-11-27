@@ -23,7 +23,7 @@ class Window extends React.Component {
                     <table>
                       <tbody>
                         <tr>
-                          {Object.values(this.props.state.blue.pick).map(
+                          {Object.values(this.props.state.data.blue.pick).map(
                             (el, i) => (
                               <td>
                                 <Components.Card
@@ -42,7 +42,7 @@ class Window extends React.Component {
                     <table>
                       <tbody>
                         <tr>
-                          {Object.values(this.props.state.blue.ban).map(
+                          {Object.values(this.props.state.data.blue.ban).map(
                             (el, i) => (
                               <td align="center">
                                 <Components.Card
@@ -66,7 +66,7 @@ class Window extends React.Component {
                     <table>
                       <tbody>
                         <tr>
-                          {Object.values(this.props.state.red.pick).map(
+                          {Object.values(this.props.state.data.red.pick).map(
                             (el, i) => (
                               <td>
                                 <Components.Card
@@ -84,7 +84,7 @@ class Window extends React.Component {
                     <table>
                       <tbody>
                         <tr>
-                          {Object.values(this.props.state.red.ban).map(
+                          {Object.values(this.props.state.data.red.ban).map(
                             (el, i) => (
                               <td align="center">
                                 <Components.Card

@@ -9,20 +9,8 @@ class Card extends React.Component {
     animationName: "none"
   };
 
-  async playAudio(audioPath) {
-    let audio = await new Audio(audioPath);
-    audio.play();
-  }
-
   componentDidUpdate(prevProps) {
     if (prevProps.championData !== this.props.championData) {
-      if (this.props.championData) {
-        if (this.props.banned) {
-          this.playAudio(this.props.championData.banAudio);
-        } else {
-          this.playAudio(this.props.championData.pickAudio);
-        }
-      }
       this.setState({ animationName: "flipInY" });
     }
   }
@@ -57,7 +45,13 @@ class Card extends React.Component {
                   )}
                 </div>
                 {this.props.simple ? (
-                  <img src={this.props.championData.loadingImg} />
+                  <img
+                    src={
+                      this.props.championData.loadingImg
+                        ? this.props.championData.loadingImg
+                        : require("../../img/urf_loading.png")
+                    }
+                  />
                 ) : (
                   <video muted preload="auto" loop>
                     <source

@@ -17,17 +17,27 @@ const draftSchema = new Schema({
     unique: false,
     required: true
   },
-  code: {
-    type: String,
-    unique: false,
-    required: true
-  },
   type: {
     type: String,
     unique: false,
     required: true
   },
-  ruleset: {
+  t1_logo: {
+    type: String,
+    unique: false,
+    required: true
+  },
+  t2_logo: {
+    type: String,
+    unique: false,
+    required: true
+  },
+  t1_name: {
+    type: String,
+    unique: false,
+    required: true
+  },
+  t2_name: {
     type: String,
     unique: false,
     required: true
@@ -39,6 +49,36 @@ const draftSchema = new Schema({
   },
   finished: {
     type: Boolean,
+    unique: false,
+    required: true
+  },
+  blue_ready: {
+    type: Boolean,
+    unique: false,
+    required: true
+  },
+  red_ready: {
+    type: Boolean,
+    unique: false,
+    required: true
+  },
+  blue_token: {
+    type: String,
+    unique: false,
+    required: true
+  },
+  red_token: {
+    type: String,
+    unique: false,
+    required: true
+  },
+  blueTime: {
+    type: Number,
+    unique: false,
+    required: true
+  },
+  redTime: {
+    type: Number,
     unique: false,
     required: true
   },

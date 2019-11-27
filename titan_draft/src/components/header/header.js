@@ -15,12 +15,12 @@ class Header extends React.Component {
         >
           <img src={require("../../img/logo.png")} />
           <div className={"blue-time"}>
-            {this.props.state.blueTime >= 0 ? (
+            {this.props.state.blueTime >= 0 && !this.props.state.finished ? (
               <h1>{this.props.state.blueTime}</h1>
             ) : null}
           </div>
           <div className={"red-time"}>
-            {this.props.state.redTime >= 0 ? (
+            {this.props.state.redTime >= 0 && !this.props.state.finished ? (
               <h1>{this.props.state.redTime}</h1>
             ) : null}
           </div>
