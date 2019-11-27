@@ -3,15 +3,10 @@ const config = require("../config");
 
 module.exports = {
   getIconsList: async req => {
-    console.log(
-      config.currentVersion,
-      __dirname +
-        `/../../dragontail-${config.currentVersion}/${config.currentVersion}/img/profileicon`
-    );
     const fileList = await new Promise((resolve, reject) => {
       fs.readdir(
         __dirname +
-          `/../dragontail-${config.currentVersion}/${config.currentVersion}/img/profileicon`,
+          `/../../dragontail-${config.currentVersion}/${config.currentVersion}/img/profileicon`,
         (err, files) => {
           const index = parseInt(req.query.index);
           const size = parseInt(req.query.size);
