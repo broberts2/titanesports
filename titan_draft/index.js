@@ -7,6 +7,7 @@ const serverFig = require("../server/config");
 const cors = require("cors");
 const routes = require("./routes");
 const socket = require("./io");
+const fs = require("fs");
 const db_connector = require("./db_util");
 db_connector();
 
