@@ -15,8 +15,8 @@ db_connector();
 
 app.use(bodyParser.json());
 
-app.use(express.static(`dragontail-${config.currentVersion}`));
-app.use(express.static("profile_videos"));
+app.use(express.static(`../dragontail-${config.currentVersion}`));
+app.use(express.static("../profile_videos"));
 
 app.use(cors({ origin: true, credentials: true }));
 security.use(cors({ origin: true, credentials: true }));
@@ -29,8 +29,7 @@ routes(app, security);
 app
   .use(express.static(path.join(__dirname, "public")))
   .set("views", path.join(__dirname, "views"))
-  .set("view engine", "ejs")
-  .get("/", (req, res) => res.render("pages/index"));
+  .set("view engine", "ejs");
 
 let server = null;
 
