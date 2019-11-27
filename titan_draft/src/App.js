@@ -4,6 +4,11 @@ import ReactModal from "react-awesome-modal";
 import "./intro_modal.css";
 const emitters = require("./emitters");
 
+const config = require("../../server/config");
+const server = config.production
+  ? "https://titan-esports.org:7001"
+  : "http://localhost:3000";
+
 export default class App extends React.Component {
   state = {
     team: 0,
@@ -20,6 +25,10 @@ export default class App extends React.Component {
     red_captain: false,
     blueTime: -1,
     redTime: -1,
+    t1_name: "",
+    t1_logo: "",
+    t2_name: "",
+    t2_logo: "",
     championData: null,
     data: {
       blue: {
@@ -54,9 +63,9 @@ export default class App extends React.Component {
   actions = {
     setModal: modal => this.setState({ modal }),
     getChampionData: async () => {
-      const championData = await fetch(
-        `http://localhost:7001/api/getChampionData`
-      ).then(res => res.json());
+      const championData = await fetch(`${server}/api/getChampionData`).then(
+        res => res.json()
+      );
       this.setState({ championData });
     },
     submitButton: index => {
@@ -102,10 +111,10 @@ export default class App extends React.Component {
           <div>
             <Components.Header
               state={this.state}
-              blue_img={"http://localhost:7001/ADMINS-trans.png"}
-              red_img={"http://localhost:7001/BAKA-trans.png"}
-              blue_team={"Admins"}
-              red_team={"Baka Onii-Chan"}
+              blue_img={this.state.t1_logo}
+              red_img={this.state.t2_logo}
+              blue_team={this.state.t1_name}
+              red_team={this.state.t2_name}
             />
             {this.state.championData ? (
               <Components.Modal
