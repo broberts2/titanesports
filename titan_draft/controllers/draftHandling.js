@@ -69,7 +69,7 @@ module.exports = {
       return {
         blue_link: `${server}?room=${draft._id}&blue_token=${draft.blue_token}`,
         red_link: `${server}?room=${draft._id}&red_token=${draft.red_token}`,
-        spectator_link: `${server}?id=${draft._id}`
+        spectator_link: `${server}?room=${draft._id}`
       };
     } catch (e) {
       console.log(e);
