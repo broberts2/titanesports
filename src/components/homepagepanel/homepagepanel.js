@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import "./homepagepanel.css";
+import Components from "../../components";
 
 const vid1 = {
   src: require("./videos/c-o-animated-lunarrevel-2014.mp4"),
@@ -53,11 +54,13 @@ class HomePagePanel extends React.Component {
             <i className={"fas fa-users"}></i>
           </div>
         </a>
-        <div className={"wrapper panel-2"}>
+        <div
+          className={"wrapper panel-2"}
+          onClick={() => this.props.openModal(<Components.DraftBuilder />)}
+        >
           {this.videoButton("vid2", vid2)}
           <h2>Titan Draft</h2>
-          <h3>(In Development)</h3>
-          <i className={""}></i>
+          <i className={"fas fa-balance-scale"}></i>
         </div>
         <a href={"/slayers_guild"}>
           <div className={"wrapper panel-3"}>
