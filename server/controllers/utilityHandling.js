@@ -32,7 +32,7 @@ module.exports = {
   },
   getProfileVideos: async req => {
     const fileList = await new Promise((resolve, reject) => {
-      fs.readdir(__dirname + `/profile_videos`, (err, files) => {
+      fs.readdir(__dirname + `../../profile_videos`, (err, files) => {
         if (err) {
           reject(err);
         } else {
