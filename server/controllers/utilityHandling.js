@@ -6,7 +6,7 @@ module.exports = {
     console.log(
       config.currentVersion,
       __dirname +
-        `/../dragontail-${config.currentVersion}/${config.currentVersion}/img/profileicon`
+        `/../../dragontail-${config.currentVersion}/${config.currentVersion}/img/profileicon`
     );
     const fileList = await new Promise((resolve, reject) => {
       fs.readdir(
