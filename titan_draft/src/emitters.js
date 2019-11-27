@@ -35,6 +35,10 @@ module.exports = {
         finished: data.draft.finished,
         turn: data.draft.turn,
         team: data.draft.team,
+        t1_name: data.draft.t1_name,
+        t1_logo: data.draft.t1_logo,
+        t2_name: data.draft.t2_name,
+        t2_logo: data.draft.t2_logo,
         modal: false
       };
       if (data.blue_captain) {
