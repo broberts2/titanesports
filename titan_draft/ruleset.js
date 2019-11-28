@@ -1,84 +1,104 @@
 module.exports = {
   tournament: {
     0: {
-      team: 0,
-      card: 0
-    },
-    1: {
-      team: 1,
-      card: 5
-    },
-    2: {
-      team: 0,
-      card: 1
-    },
-    3: {
-      team: 1,
-      card: 6
-    },
-    4: {
-      team: 0,
-      card: 2
-    },
-    5: {
-      team: 1,
-      card: 7
-    },
-    6: {
-      team: 0,
-      card: 3
-    },
-    7: {
-      team: 1,
-      card: 8
-    },
-    8: {
-      team: 0,
-      card: 4
-    },
-    9: {
-      team: 1,
-      card: 9
-    },
-    10: {
+      // blue ban
       team: 0,
       card: 10
     },
-    11: {
+    1: {
+      // red ban
       team: 1,
       card: 15
     },
-    12: {
+    2: {
+      // blue ban
       team: 0,
       card: 11
     },
-    13: {
+    3: {
+      // red ban
       team: 1,
       card: 16
     },
-    14: {
+    4: {
+      // blue ban
       team: 0,
       card: 12
     },
-    15: {
+    5: {
+      // red ban
       team: 1,
       card: 17
     },
-    16: {
+    6: {
+      // blue pick
       team: 0,
-      card: 13
+      card: 0
     },
-    17: {
+    7: {
+      // red pick
+      team: 1,
+      card: 5
+    },
+    8: {
+      // red pick
+      team: 1,
+      card: 6
+    },
+    9: {
+      // blue pick
+      team: 0,
+      card: 1
+    },
+    10: {
+      // blue pick
+      team: 0,
+      card: 2
+    },
+    11: {
+      // red pick
+      team: 1,
+      card: 7
+    },
+    12: {
+      // red ban
       team: 1,
       card: 18
     },
-    18: {
+    13: {
+      // blue ban
+      team: 0,
+      card: 13
+    },
+    14: {
+      // red ban
+      team: 1,
+      card: 19
+    },
+    15: {
+      // blue ban
       team: 0,
       card: 14
     },
-    19: {
+    16: {
+      // red pick
       team: 1,
-      card: 19
+      card: 8
+    },
+    17: {
+      // blue pick
+      team: 0,
+      card: 3
+    },
+    18: {
+      // blue pick
+      team: 0,
+      card: 4
+    },
+    19: {
+      // red pick
+      team: 1,
+      card: 9
     }
   }
 };

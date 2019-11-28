@@ -7,7 +7,7 @@ const uid = require("rand-token").uid;
 const config = require("../../server/config");
 const server = config.production
   ? "https://titan-esports.org:7001"
-  : "http://localhost:3000";
+  : "http://localhost:7001";
 
 module.exports = {
   createDraft: async req => {
@@ -65,11 +65,15 @@ module.exports = {
         t2_name: req.body.t2_name
       });
       draft.code = 200;
-      draft.msg = "Draft Creation Successful!";
+      draft.msg = `Draft Creation Successful!`;
       return {
-        blue_link: `${server}?room=${draft._id}&blue_token=${draft.blue_token}`,
-        red_link: `${server}?room=${draft._id}&red_token=${draft.red_token}`,
-        spectator_link: `${server}?room=${draft._id}`
+        code: draft.code,
+        msg: draft.msg,
+        special: {
+          b: `${server}?room=${draft._id}&blue_token=${draft.blue_token}`,
+          r: `${server}?room=${draft._id}&red_token=${draft.red_token}`,
+          s: `${server}?room=${draft._id}`
+        }
       };
     } catch (e) {
       console.log(e);

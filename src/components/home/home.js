@@ -60,8 +60,8 @@ class Home extends React.Component {
           <Components.HomePagePanel
             openModal={modal =>
               this.openModal(modal, {
-                width: "45%",
-                height: "75%"
+                width: "90%",
+                height: "90%"
               })
             }
           />

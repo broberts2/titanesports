@@ -20,7 +20,8 @@ class Modal extends React.Component {
       requestStatus: ignore
         ? null
         : {
-            msg: value.msg
+            msg: value.msg,
+            special: value.special
           }
     });
   }
@@ -30,9 +31,27 @@ class Modal extends React.Component {
   }
 
   renderRequest() {
+    const link = i => {
+      switch (i) {
+        case 0:
+          return "Blue Link:";
+        case 1:
+          return "Red Link:";
+        case 2:
+          return "Spectator Link: ";
+      }
+    };
     return (
       <div className={"request"}>
         <h2>{this.state.requestStatus.msg}</h2>
+        {this.state.requestStatus.special
+          ? Object.values(this.state.requestStatus.special).map((el, i) => (
+              <div style={{ width: "75%", textAlign: "left" }}>
+                <h3>{link(i)}</h3>
+                <h3 className={"special"}>{el}</h3>
+              </div>
+            ))
+          : null}
         <button
           onClick={() => {
             if (this.state.requestStatus.msg === "Login Successful!") {
