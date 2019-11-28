@@ -124,7 +124,7 @@ class DraftBuilder extends React.Component {
                 )[0][1],
                 t2_logo: Object.values(logo_index).filter((el, i) =>
                   i === this.state.redIndex ? el : null
-                )[0]1,
+                )[0][1],
                 t1_name: this.state.blueTeam,
                 t2_name: this.state.redTeam
               })
