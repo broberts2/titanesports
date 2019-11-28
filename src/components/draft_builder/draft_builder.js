@@ -120,11 +120,11 @@ class DraftBuilder extends React.Component {
               Api.createTitanDraft({
                 type: "tournament",
                 t1_logo: Object.values(logo_index).filter((el, i) =>
-                  i === this.state.blueIndex ? el[1] : null
-                ),
+                  i === this.state.blueIndex ? el : null
+                )[0][1],
                 t2_logo: Object.values(logo_index).filter((el, i) =>
-                  i === this.state.redIndex ? el[1] : null
-                ),
+                  i === this.state.redIndex ? el : null
+                )[0]1,
                 t1_name: this.state.blueTeam,
                 t2_name: this.state.redTeam
               })
