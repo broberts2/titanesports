@@ -86,6 +86,19 @@
   margin-top: var(--margs);
   margin-bottom: var(--margs);
 }
+.modal .request h3 {
+  font-size: 18px;
+  margin: 0;
+  color: black;
+}
+.modal .request .special {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  -webkit-user-select: all; /* Safari */
+  -moz-user-select: all; /* Firefox */
+  -ms-user-select: all; /* IE10+/Edge */
+  user-select: all; /* Standard */
+}
 .modal .request button {
   width: 50%;
 }

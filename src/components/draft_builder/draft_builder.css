@@ -1,0 +1,34 @@
+.draft_builder {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 80%;
+}
+.draft_builder .blue-highlight {
+  border: 2px solid blue;
+}
+.draft_builder .red-highlight {
+  border: 2px solid red;
+}
+.draft_builder .intro {
+  margin-bottom: 25px;
+}
+.draft_builder button {
+  color: black;
+}
+.draft_builder .logos {
+  height: 125px;
+  overflow-y: scroll;
+}
+.draft_builder .logos .image {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.draft_builder .logos .image img {
+  width: 100%;
+  height: 100%;
+}

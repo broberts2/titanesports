@@ -27,6 +27,17 @@ export default {
     }).then(res => res.json());
     return user;
   },
+  createTitanDraft: async data => {
+    console.log("ran with: ", data);
+    return await fetch(`${config.tPath}/api/createDraft`, {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
   getAllUsers: async () => {
     const users = await fetch(`${config.serverPath}/getAllUsers`, {
       method: "get",

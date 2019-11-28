@@ -57,7 +57,14 @@ class Home extends React.Component {
             }
             setModal={modalVisible => this.setModal(modalVisible)}
           />
-          <Components.HomePagePanel />
+          <Components.HomePagePanel
+            openModal={modal =>
+              this.openModal(modal, {
+                width: "90%",
+                height: "90%"
+              })
+            }
+          />
           <Components.HomeArticles />
           <Components.Footer />
         </Components.Loader>
