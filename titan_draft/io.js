@@ -104,8 +104,18 @@ module.exports = io => {
             finished: Ruleset[draft.draft.type][draft.draft.turn + 1]
               ? false
               : true,
-            blueTime: draft.draft.team > 0 ? 60 : -1,
-            redTime: draft.draft.team > 0 ? -1 : 60
+            blueTime:
+              (Ruleset[draft.draft.type][draft.draft.turn + 1]
+                ? Ruleset[draft.draft.type][draft.draft.turn + 1].team
+                : Ruleset[draft.draft.type][draft.draft.turn].team) > 0
+                ? -1
+                : 60,
+            redTime:
+              (Ruleset[draft.draft.type][draft.draft.turn + 1]
+                ? Ruleset[draft.draft.type][draft.draft.turn + 1].team
+                : Ruleset[draft.draft.type][draft.draft.turn].team) > 0
+                ? 60
+                : -1
           }
         });
         draft = await Draft.getDraft({

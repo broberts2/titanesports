@@ -11,7 +11,9 @@ window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
 
 socket.emit("join", params);
 
-const music = new Audio(require("./audio/music.mp3"));
+let music = new Audio(require("./audio/music.mp3"));
+music.volume = 0.25;
+music.loop = true;
 
 module.exports = {
   emit_blue_ready: () => socket.emit("blue_ready"),
@@ -48,12 +50,13 @@ module.exports = {
       }
       cb(state);
       if (data.champion && data.pick) {
-        const audio = new Audio(
+        let audio = new Audio(
           data.champion[data.action === "pick" ? "pickAudio" : "banAudio"]
         );
         console.log(
           data.champion[data.action === "pick" ? "pickAudio" : "banAudio"]
         );
+        audio.volume = 0.25;
         audio.play();
       }
     });
