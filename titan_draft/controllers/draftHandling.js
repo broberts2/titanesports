@@ -59,8 +59,8 @@ module.exports = {
         created: new Date(),
         running: false,
         finished: false,
-        t1_logo: LogoIndex[req.body.t1_logo][1],
-        t2_logo: LogoIndex[req.body.t2_logo][1],
+        t1_logo: req.body.t1_logo,
+        t2_logo: req.body.t2_logo,
         t1_name: req.body.t1_name,
         t2_name: req.body.t2_name
       });
