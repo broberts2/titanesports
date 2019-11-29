@@ -7,6 +7,7 @@
   transform: translate(-50%, -50%);
   width: 80%;
   overflow-y: scroll;
+  height: 100%;
 }
 .draft_builder .blue-highlight {
   border: 2px solid blue;
