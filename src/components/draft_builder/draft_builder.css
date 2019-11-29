@@ -6,8 +6,6 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 80%;
-  overflow-y: scroll;
-  height: 100%;
 }
 .draft_builder .blue-highlight {
   border: 2px solid blue;
@@ -22,6 +20,8 @@
   color: black;
 }
 .draft_builder .logos {
+  height: 125px;
+  overflow-y: scroll;
 }
 .draft_builder .logos .image {
   width: 100%;
