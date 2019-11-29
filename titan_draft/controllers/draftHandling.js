@@ -7,7 +7,7 @@ const uid = require("rand-token").uid;
 const config = require("../../server/config");
 const server = config.production
   ? "https://titan-esports.org:7001"
-  : "http://localhost:7001";
+  : "http://localhost:3000";
 
 module.exports = {
   createDraft: async req => {
