@@ -164,7 +164,7 @@ class Modal extends React.Component {
                       </div>
                     </div>
                   </td>
-                  <td height="100">
+                  <td>
                     <div className={"champion-list"}>
                       <table>
                         <tbody>{this.state.rows}</tbody>
