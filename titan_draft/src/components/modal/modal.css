@@ -3,6 +3,10 @@
   height: 100%;
   position: relative;
   background-color: rgb(42, 42, 42);
+  color: white;
+}
+.modal input {
+  color: white;
 }
 .modal .timer {
   top: 10px;
@@ -13,10 +17,9 @@
   position: absolute;
   border-radius: 50%;
   text-align: center;
-  border: 2px solid black;
+  border: 2px solid white;
 }
 .modal .timer h1 {
-  color: black;
   margin-top: 15px;
 }
 .modal .pick-ban {
@@ -27,7 +30,6 @@
 }
 .modal .pick-ban h1 {
   font-style: italic;
-  color: black;
 }
 .modal .submit {
   position: absolute;
@@ -53,7 +55,6 @@
   left: 75px;
 }
 .modal .champion-picker .search h2 {
-  color: black;
 }
 .modal .champion-picker .search input {
   width: 350px;

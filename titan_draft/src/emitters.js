@@ -12,7 +12,7 @@ window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
 socket.emit("join", params);
 
 let music = new Audio(require("./audio/music.mp3"));
-music.volume = 0.25;
+music.volume = 0.2;
 music.loop = true;
 
 module.exports = {
