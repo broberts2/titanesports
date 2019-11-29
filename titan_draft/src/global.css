@@ -2,6 +2,7 @@ body {
   margin: 0;
   cursor: pointer;
   overflow-y: hidden;
+  font-family: "Amarante", cursive;
 }
 h1 {
   font-size: 42px;
@@ -34,9 +35,13 @@ input {
   background-color: transparent;
   font-size: 34px;
   width: 100%;
+  font-family: "Amarante", cursive;
 }
 textarea:focus,
 input:focus,
 button:focus {
   outline: none;
+}
+button {
+  font-family: "Amarante", cursive;
 }
