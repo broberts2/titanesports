@@ -10,7 +10,7 @@ module.exports = {
         if (err) {
           return res.json({
             code: 509,
-            message: "Failed to authenticate token."
+            msg: "Failed to authenticate token."
           });
         } else {
           try {
@@ -18,7 +18,7 @@ module.exports = {
             if (req.user_info === null) {
               return res.json({
                 code: 510,
-                message: "Failed to authenticate user."
+                msg: "Failed to authenticate user."
               });
             }
             next();
@@ -30,7 +30,7 @@ module.exports = {
     } else {
       return res.status(403).send({
         code: 403,
-        message: "No token provided."
+        msg: "No token provided."
       });
     }
   }
