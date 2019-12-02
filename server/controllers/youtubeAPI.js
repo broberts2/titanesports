@@ -18,7 +18,7 @@ module.exports = {
       `https://www.googleapis.com/youtube/v3/playlistItems?key=${config.youtubeApiKey}&playlistId=${titan_esports_playlist_id}&part=snippet,id&maxResults=50`
     ).then(res => res.json());
     videos = videos.items.map(el => ({
-      publishedAt: el.publishedAt,
+      publishedAt: el.snippet.publishedAt,
       kind: el.kind,
       etag: el.etag,
       id: el.id,

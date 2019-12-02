@@ -27,7 +27,7 @@ module.exports = (app, security) => {
   app.get("/getSlayersGuild", async (req, res) =>
     responder(Controllers.YoutubeAPI.getSlayersGuild(req), res)
   );
-  security.get("/updateSlayersGuild", async (req, res) =>
+  security.put("/updateSlayersGuild", async (req, res) =>
     responder(Controllers.YoutubeAPI.updateSlayersGuild(req, 5, true), res)
   );
   security.get("/validateToken", async (req, res) =>

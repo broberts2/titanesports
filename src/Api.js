@@ -81,12 +81,12 @@ export default {
   updateSlayersGuild: async () => {
     const titan_key = read_cookie("titan_key");
     const response = await fetch(`${config.serverPath}/s/updateSlayersGuild`, {
-      method: "get",
+      method: "put",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      titan_key
+        "Content-Type": "application/json",
+        titan_key
+      }
     }).then(res => res.json());
     return response;
   },
