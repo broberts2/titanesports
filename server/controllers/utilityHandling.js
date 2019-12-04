@@ -116,7 +116,9 @@ module.exports = {
     }
   },
   emailResetKey: async req => {
-    const user = await Users.findOne({ email: req.query.email });
+    const e = `${req.query.email}`;
+    const email = new RegExp(e, "i");
+    const user = await Users.findOne({ email });
     if (!user) {
       return {
         code: 11102,
