@@ -81,7 +81,7 @@ class VideoLoop extends React.Component {
         {this.state.displayLogin ? (
           <div
             className={"button"}
-            onClick={() => this.props.openModal(Components.Login)}
+            onClick={() => this.props.openModal(<Components.Login />)}
           >
             <div className={"content"}>
               <i className={"fas fa-user-lock"}></i>

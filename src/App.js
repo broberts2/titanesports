@@ -29,6 +29,11 @@ export default class App extends React.Component {
             path="/players"
             render={() => <Components.PlayerSearch />}
           />
+          <Route
+            exact
+            path="/reset_password"
+            render={() => <Components.ResetPassword />}
+          />
         </ConnectedRouter>
       </Provider>
     );

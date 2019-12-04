@@ -41,7 +41,7 @@ module.exports = {
       return e;
     }
   },
-  updateSelf: async (req, level, exact) => {
+  updateSelf: async (req, level) => {
     try {
       const user = await Users.update(
         { username: req.user_info.username },
@@ -52,6 +52,29 @@ module.exports = {
       return user;
     } catch (e) {
       return e;
+    }
+  },
+  updateSelfPassword: async (req, level) => {
+    let user = await Users.findOne({ username: req.user_info.username });
+    if (bcrypt.compareSync(req.body.oldPassword, user.password)) {
+      try {
+        user = await Users.update(
+          { username: req.user_info.username },
+          {
+            password: bcrypt.hashSync(req.body.newPassword, 10)
+          }
+        );
+        user.code = 200;
+        user.msg = "User Account Updated!";
+        return user;
+      } catch (e) {
+        return e;
+      }
+    } else {
+      return {
+        code: 503,
+        msg: "Old password was incorrect."
+      };
     }
   },
   updateUser: async (req, level, exact) => {

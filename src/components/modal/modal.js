@@ -30,6 +30,15 @@ class Modal extends React.Component {
     this.setState({ domMounted: true });
   }
 
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.submitRequest &&
+      prevProps.submitRequest !== this.props.submitRequest
+    ) {
+      this.startRequest(this.props.submitRequest());
+    }
+  }
+
   renderRequest() {
     const link = i => {
       switch (i) {
@@ -56,6 +65,10 @@ class Modal extends React.Component {
           onClick={() => {
             if (this.state.requestStatus.msg === "Login Successful!") {
               setTimeout(() => window.location.reload(), 100);
+            } else if (
+              this.state.requestStatus.msg === "Password Successfully Updated!"
+            ) {
+              window.location = "/";
             } else {
               this.props.setModal(false);
               this.setState({ requestStatus: null });

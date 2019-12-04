@@ -17,7 +17,6 @@ module.exports = {
     let videos = await fetch(
       `https://www.googleapis.com/youtube/v3/playlistItems?key=${config.youtubeApiKey}&playlistId=${titan_esports_playlist_id}&part=snippet,id&maxResults=50`
     ).then(res => res.json());
-    console.log(videos);
     videos = videos.items.map(el => ({
       publishedAt: el.snippet.publishedAt,
       kind: el.kind,

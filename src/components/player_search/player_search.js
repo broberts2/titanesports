@@ -175,20 +175,20 @@ class PlayerSearch extends React.Component {
       height: "75%"
     },
     selectedLeagues: {
-      gold: false,
-      platinum: false,
-      freeAgent: false
+      gold: true,
+      platinum: true,
+      freeAgent: true
     },
     query: "",
     includes: {
       players: true,
       teams: false,
-      top: false,
-      jun: false,
-      mid: false,
-      bot: false,
-      sup: false,
-      sub: false
+      top: true,
+      jun: true,
+      mid: true,
+      bot: true,
+      sup: true,
+      sub: true
     },
     users: null,
     teams: null,
@@ -414,11 +414,10 @@ class PlayerSearch extends React.Component {
               <h3>
                 Welcome to the player search utility. From here you are able to
                 search active players currently participating in Titan eSports
-                or those who are wishing to join a team (Free Agent). To get
-                started, select one or more league(s) (Gold, Platinum, or Free
-                Agent) and then select a role (top, jungle, mid, adc, support or
-                substitue player). You may also specify a player or team name to
-                narrow your results. Give it a try!
+                or those who are wishing to join a team (Free Agent). All
+                leagues and positions are selected by default. To narrow your
+                search you may deselect a league and/or roles as well as specify
+                a player/team name. Give it a try!
               </h3>
             </div>
             <div className={"leagues"}>
@@ -497,9 +496,9 @@ class PlayerSearch extends React.Component {
                     this.setState({
                       includes,
                       selectedLeagues: {
-                        gold: false,
-                        platinum: false,
-                        freeAgent: false
+                        gold: true,
+                        platinum: true,
+                        freeAgent: true
                       }
                     });
                     this.buildList(
@@ -525,9 +524,9 @@ class PlayerSearch extends React.Component {
                     this.setState({
                       includes,
                       selectedLeagues: {
-                        gold: false,
-                        platinum: false,
-                        freeAgent: false
+                        gold: true,
+                        platinum: true,
+                        freeAgent: true
                       }
                     });
                     this.buildList(

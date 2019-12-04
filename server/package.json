@@ -19,7 +19,9 @@
     "moment-timezone": "^0.5.25",
     "mongoose": "^5.4.22",
     "node-fetch": "^2.6.0",
+    "node-mailer": "^0.1.1",
     "nodemon": "^1.18.10",
+    "rand-token": "^0.4.0",
     "require-new": "^1.1.1",
     "socket.io": "^2.2.0"
   }
