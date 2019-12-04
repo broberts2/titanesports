@@ -41,7 +41,7 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
-    unique: false,
+    unique: true,
     required: false
   },
   suspended: {
@@ -80,6 +80,11 @@ const userSchema = new Schema({
     required: false
   },
   opgg: {
+    type: String,
+    unique: false,
+    required: false
+  },
+  reset_code: {
     type: String,
     unique: false,
     required: false

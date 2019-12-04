@@ -7,13 +7,15 @@
   transform: translate(-50%, -50%);
   width: 50%;
 }
-.login .anchor {
+.login .anchor-block {
   margin-top: 35px;
+}
+.login .anchor-block .anchor {
   color: black;
   cursor: pointer;
   font-family: "Amarante", cursive;
 }
-.login .anchor:hover {
+.login .anchor-block .anchor:hover {
   color: rgb(255, 0, 46);
   cursor: pointer;
 }

@@ -11,10 +11,18 @@ class UserProfileVideo extends React.Component {
     fileList: null,
     filesPerRow: 4,
     table: null,
-    selectedVideo: null
+    selectedVideo: null,
+    loaded: false
   };
 
   async componentDidMount() {
+    this.props.startRequest(
+      (async () =>
+        await new Promise((resolve, reject) => {
+          setTimeout(() => resolve("stuff"), 3000);
+        }))(),
+      true
+    );
     const fileList = await Api.getProfileVideos();
     this.setState({
       fileList: fileList.fileList,
@@ -47,6 +55,7 @@ class UserProfileVideo extends React.Component {
             selectedVideo: el
           });
         }}
+        onload={() => console.log("loaded!")}
         style={
           sel
             ? sel === el
@@ -81,7 +90,8 @@ class UserProfileVideo extends React.Component {
         <button
           onClick={async () => {
             await this.props.startRequest(
-              Api.updateSelf({ profileVideo: this.state.selectedVideo })
+              Api.updateSelf({ profileVideo: this.state.selectedVideo }),
+              true
             );
             window.location.reload();
           }}

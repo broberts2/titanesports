@@ -6,6 +6,9 @@ module.exports = (app, security) => {
   app.post("/createUser", async (req, res) =>
     responder(Controllers.UserHandling.createUser(req), res)
   );
+  app.post("/compareResetKey", async (req, res) =>
+    responder(Controllers.UtilityHandling.compareResetKey(req), res)
+  );
   app.get("/loginUser", async (req, res) =>
     responder(Controllers.UserHandling.loginUser(req), res)
   );
@@ -24,6 +27,9 @@ module.exports = (app, security) => {
   app.get("/getProfileVideos", async (req, res) =>
     responder(Controllers.UtilityHandling.getProfileVideos(req), res)
   );
+  app.get("/emailResetKey", async (req, res) =>
+    responder(Controllers.UtilityHandling.emailResetKey(req), res)
+  );
   app.get("/getSlayersGuild", async (req, res) =>
     responder(Controllers.YoutubeAPI.getSlayersGuild(req), res)
   );
@@ -41,6 +47,9 @@ module.exports = (app, security) => {
   );
   security.put("/updateSelf", async (req, res) =>
     responder(Controllers.UserHandling.updateSelf(req), res)
+  );
+  security.put("/updateSelfPassword", async (req, res) =>
+    responder(Controllers.UserHandling.updateSelfPassword(req), res)
   );
   security.put("/movePlayerToTeam", async (req, res) =>
     responder(Controllers.TeamHandling.movePlayerToTeam(req), res)

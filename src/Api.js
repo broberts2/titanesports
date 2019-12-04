@@ -141,6 +141,40 @@ export default {
       body: JSON.stringify(data)
     }).then(res => res.json());
   },
+  compareResetKey: async data => {
+    return await fetch(`${config.serverPath}/compareResetKey?key=${data.key}`, {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
+  emailResetKey: async data => {
+    return await fetch(
+      `${config.serverPath}/emailResetKey?email=${data.email}`,
+      {
+        method: "get",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      }
+    ).then(res => res.json());
+  },
+  updateSelfPassword: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/updateSelfPassword`, {
+      method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
   updateUser: async (userId, data) => {
     const titan_key = read_cookie("titan_key");
     return await fetch(`${config.serverPath}/s/updateUser?id=${userId}`, {

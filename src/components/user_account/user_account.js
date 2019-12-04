@@ -11,6 +11,59 @@ import Api from "../../Api";
 
 const config = require("../../config");
 
+class ChangePW extends React.Component {
+  state = {
+    oldPw: "",
+    newPw: "",
+    cNPw: ""
+  };
+
+  render() {
+    return (
+      <div className={"changePw"}>
+        <h1>Change Password?</h1>
+        <h2>Old Password</h2>
+        <input
+          type={"password"}
+          value={this.state.oldPw}
+          onChange={e => this.setState({ oldPw: e.target.value })}
+        />
+        <h2>New Password</h2>
+        <input
+          type={"password"}
+          value={this.state.newPw}
+          onChange={e => this.setState({ newPw: e.target.value })}
+        />
+        <h2>Confirm New Password</h2>
+        <input
+          type={"password"}
+          value={this.state.cNPw}
+          onChange={e => this.setState({ cNPw: e.target.value })}
+        />
+        <button
+          style={
+            this.state.oldPw.length > 0 &&
+            this.state.newPw.length > 0 &&
+            this.state.newPw === this.state.cNPw
+              ? {}
+              : { pointerEvents: "none", opacity: 0.3 }
+          }
+          onClick={() =>
+            this.props.startRequest(
+              Api.updateSelfPassword({
+                oldPassword: this.state.oldPw,
+                newPassword: this.state.newPw
+              })
+            )
+          }
+        >
+          Submit
+        </button>
+      </div>
+    );
+  }
+}
+
 class UserAccount extends React.Component {
   state = {
     domMounted: false,
@@ -21,6 +74,7 @@ class UserAccount extends React.Component {
     freeAgentButton: false,
     positionPreview: positionImages.freeAgent[1],
     modal: <Components.Logout />,
+    email: "",
     user: {}
   };
 
@@ -48,7 +102,8 @@ class UserAccount extends React.Component {
       user: user.user,
       freeAgentRoll: user.user.leagues.freeAgent,
       freeAgentButton: user.user.leagues.freeAgent,
-      positionPreview: positionImages.freeAgent[user.user.leagues.freeAgent]
+      positionPreview: positionImages.freeAgent[user.user.leagues.freeAgent],
+      email: user.user.email
     });
     u = urlParams.get("u");
     if (u === res.id) {
@@ -76,6 +131,7 @@ class UserAccount extends React.Component {
     leagues.freeAgent = !this.state.freeAgentButton
       ? 0
       : this.state.freeAgentRoll;
+    const email = this.state.email;
     class ConfirmChanges extends React.Component {
       render() {
         return (
@@ -86,7 +142,8 @@ class UserAccount extends React.Component {
                 this.props.startRequest(
                   Api.updateSelf({
                     leagues,
-                    biography
+                    biography,
+                    email
                   })
                 );
               }}
@@ -269,6 +326,15 @@ class UserAccount extends React.Component {
                     </div>
                   ) : null}
                   {this.state.user && this.state.canEdit ? (
+                    <div>
+                      <h1>Account Email (Private)</h1>
+                      <input
+                        value={this.state.email}
+                        onChange={e => this.setState({ email: e.target.value })}
+                      />
+                    </div>
+                  ) : null}
+                  {this.state.user && this.state.canEdit ? (
                     <div className={"free-agent"}>
                       <h1>Free Agent Check</h1>
                       <h4>
@@ -399,6 +465,13 @@ class UserAccount extends React.Component {
                           fontColor={"white"}
                         />
                       </div>
+                    </div>
+                  ) : null}
+                  {this.state.user && this.state.canEdit ? (
+                    <div>
+                      <button onClick={() => this.openModal(<ChangePW />)}>
+                        Change Password
+                      </button>
                     </div>
                   ) : null}
                   {this.state.canEdit ? (

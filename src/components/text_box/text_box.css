@@ -4,6 +4,7 @@
   border-radius: 3px;
   text-align: center;
   height: 100px;
+  margin-bottom: 100px;
 }
 .text_box textarea {
   width: calc(100% - 30px);
