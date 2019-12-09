@@ -82,7 +82,7 @@ class Header extends React.Component {
         <div className={"links"}>
           <div>
             <a href={"/"}>Home</a>|<a href={"/players"}>Players</a>|
-            <a href={"/"}>Articles</a>|<a href={"/"}>Events</a>|
+            <a href={"/"}>Articles</a>|<a href={"/events"}>Events</a>|
             <a href={"/slayers_guild"}>Slayer's Guild</a>|
             {this.state.accountLink}
           </div>

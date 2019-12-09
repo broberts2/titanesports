@@ -19,6 +19,7 @@ export default class App extends React.Component {
             path="/slayers_guild"
             render={() => <Components.SlayersGuild />}
           />
+          <Route exact path="/events" render={() => <Components.Events />} />
           <Route
             exact
             path="/roster"

@@ -19,6 +19,8 @@ import SlayersGuild from "./components/slayers_guild/slayers_guild";
 import MediaPlayer from "./components/media_player/media_player";
 import DraftBuilder from "./components/draft_builder/draft_builder";
 import ResetPassword from "./components/reset_password/reset_password";
+import Pip from "./components/pip/pip";
+import Events from "./components/events/events";
 
 export default {
   Header,
@@ -41,5 +43,7 @@ export default {
   SlayersGuild,
   MediaPlayer,
   DraftBuilder,
-  ResetPassword
+  ResetPassword,
+  Pip,
+  Events
 };

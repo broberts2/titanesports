@@ -48,7 +48,6 @@ class SlayersGuild extends React.Component {
   async componentDidMount() {
     let videos = await Api.getSlayersGuild();
     const user = await Api.validateToken();
-    console.log(user);
     if (user.l === 5 || user.l < 3) {
       this.setState({ canEdit: true });
     }

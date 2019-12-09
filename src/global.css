@@ -54,6 +54,11 @@ a:hover {
   text-decoration: none;
   color: rgb(255, 0, 46);
 }
+i {
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+}
 textarea,
 input {
   border: 0;

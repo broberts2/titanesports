@@ -33,6 +33,9 @@ module.exports = (app, security) => {
   app.get("/getSlayersGuild", async (req, res) =>
     responder(Controllers.YoutubeAPI.getSlayersGuild(req), res)
   );
+  app.get("/getEvents", async (req, res) =>
+    responder(Controllers.EventHandling.getEvents(req), res)
+  );
   security.put("/updateSlayersGuild", async (req, res) =>
     responder(Controllers.YoutubeAPI.updateSlayersGuild(req, 5, true), res)
   );
@@ -59,6 +62,15 @@ module.exports = (app, security) => {
   );
   security.post("/createTeam", async (req, res) =>
     responder(Controllers.TeamHandling.createTeam(req, 3), res)
+  );
+  security.post("/createEvent", async (req, res) =>
+    responder(Controllers.EventHandling.createEvent(req, 3), res)
+  );
+  security.put("/updateEvent", async (req, res) =>
+    responder(Controllers.EventHandling.updateEvent(req, 3), res)
+  );
+  security.delete("/removeEvent", async (req, res) =>
+    responder(Controllers.EventHandling.removeEvent(req, 3), res)
   );
   security.get("/gameData", async (req, res) =>
     riotSanitizer(
