@@ -222,5 +222,50 @@ export default {
       },
       body: JSON.stringify(data)
     }).then(res => res.json());
+  },
+  getEvents: async userData => {
+    return await fetch(`${config.serverPath}/getEvents`, {
+      method: "get",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then(res => res.json());
+  },
+  createEvent: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/createEvent`, {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
+  updateEvent: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/updateEvent`, {
+      method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
+  removeEvent: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/removeEvent`, {
+      method: "delete",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
   }
 };

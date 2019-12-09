@@ -75,12 +75,13 @@ class HomePagePanel extends React.Component {
           <h3>(In Development)</h3>
           <i className={"fas fa-scroll"}></i>
         </div>
-        <div className={"wrapper panel-5"}>
-          {this.videoButton("vid5", vid5)}
-          <h2>Upcoming Events</h2>
-          <h3>(In Development)</h3>
-          <i className={"far fa-calendar-alt"}></i>
-        </div>
+        <a href={"/events"}>
+          <div className={"wrapper panel-5"}>
+            {this.videoButton("vid5", vid5)}
+            <h2>Upcoming Events</h2>
+            <i className={"far fa-calendar-alt"}></i>
+          </div>
+        </a>
       </div>
     );
   }

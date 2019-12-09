@@ -47,6 +47,7 @@ class Name extends React.Component {
           >
             {this.state.modal}
           </Components.Modal>
+          <div className={"body"}></div>
         </Components.Loader>
       </div>
     );
