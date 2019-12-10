@@ -13,14 +13,21 @@ const parseDate = date => {
     .toString();
 };
 
-const getIcon = i => {
-  const list = {
-    0: <img src={require("./img/0.png")} />,
-    1: <img src={require("./img/1.png")} />,
-    2: <img src={require("./img/2.png")} />,
-    3: <img src={require("./img/3.png")} />
-  };
-  return list[i];
+const list = {
+  "0": <img src={require("./img/0.png")} />,
+  "1": <img src={require("./img/1.png")} />,
+  "2": <img src={require("./img/2.png")} />,
+  "3": <img src={require("./img/3.png")} />,
+  "4": <img src={require("./img/4.png")} />,
+  "5": <img src={require("./img/5.png")} />,
+  "6": <img src={require("./img/6.png")} />,
+  "7": <img src={require("./img/7.png")} />,
+  "8": <img src={require("./img/8.png")} />,
+  "9": <img src={require("./img/9.png")} />,
+  "10": <img src={require("./img/10.png")} />,
+  "11": <img src={require("./img/11.png")} />,
+  "12": <img src={require("./img/12.png")} />,
+  "13": <img src={require("./img/13.png")} />
 };
 
 class EventViewer extends React.Component {
@@ -31,7 +38,7 @@ class EventViewer extends React.Component {
       time: ""
     },
     title: "",
-    selectedIcon: ""
+    selectedIcon: 0
   };
 
   componentDidMount() {
@@ -62,100 +69,134 @@ class EventViewer extends React.Component {
 
   componentDidUpdate(newProps) {
     if (this.props.events !== newProps.events) {
-      this.setState({ events: this.props.events });
+      this.setState({
+        events: this.props.events,
+        title: this.props.title,
+        selectedIcon: this.props.icon
+      });
     }
   }
 
-  setIcon(i) {
-    this.setState({ selectedIcon: i });
+  setIcon(selectedIcon) {
+    this.setState({ selectedIcon });
   }
 
   render() {
     return (
       <div className={"event-viewer"}>
-        <div className={"img"}>
-          {getIcon(parseInt(this.state.selectedIcon.split(".")[0]))}
-        </div>
-        {this.props.canEdit ? (
-          <div>
-            <input
-              placeholder={"Title"}
-              style={{ marginLeft: "10px", fontSize: "16px", width: "50%" }}
-              value={this.state.title}
-              onChange={e => {
-                this.setState({ title: e.target.value });
-              }}
-            />
-            <div className={"icon-row"}>
-              <img
-                onClick={() => this.setIcon("0.png")}
-                src={require("./img/0.png")}
-              />
-              <img
-                onClick={() => this.setIcon("1.png")}
-                src={require("./img/1.png")}
-              />
-              <img
-                onClick={() => this.setIcon("2.png")}
-                src={require("./img/2.png")}
-              />
-              <img
-                onClick={() => this.setIcon("3.png")}
-                src={require("./img/3.png")}
-              />
-            </div>
-          </div>
-        ) : (
-          <h1>{this.state.title}</h1>
-        )}
-        <h2>
-          {parseDate(this.props.date) === "Invalid date"
-            ? this.props.date
-            : parseDate(this.props.date)}{" "}
-          EST
-        </h2>
+        <table width="100%">
+          <tbody>
+            <tr>
+              <td>
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {this.props.canEdit ? (
+                          <div>
+                            <input
+                              placeholder={"Title"}
+                              style={{
+                                marginLeft: "10px",
+                                fontSize: "16px",
+                                width: "50%"
+                              }}
+                              value={this.state.title}
+                              onChange={e => {
+                                this.setState({ title: e.target.value });
+                              }}
+                            />
+                            <div className={"icon-row"}>
+                              {Object.values(list).map((el, i) => (
+                                <div
+                                  style={{ display: "inline-flex" }}
+                                  onClick={() => this.setIcon(i)}
+                                >
+                                  {el}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        ) : (
+                          <h1>{this.state.title}</h1>
+                        )}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h2>
+                          {parseDate(this.props.date) === "Invalid date"
+                            ? this.props.date
+                            : parseDate(this.props.date)}{" "}
+                          EST
+                        </h2>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+              <td align="right">
+                <div className={"img"}>{list[this.state.selectedIcon]}</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <div className={"items"}>
           <div>
-            {this.state.events.map((el, i) => (
-              <div className={"item"} key={i}>
-                {this.props.canEdit ? (
-                  <div>
-                    <input
-                      placeholder={"Event"}
-                      value={this.state.events[i].text}
-                      onChange={e => {
-                        let events = this.state.events;
-                        events[i].text = e.target.value;
-                        this.setState({ events });
-                      }}
-                    />
-                    <input
-                      placeholder={"Time"}
-                      style={{ marginLeft: "10px", fontSize: "16px" }}
-                      value={this.state.events[i].time}
-                      onChange={e => {
-                        let events = this.state.events;
-                        events[i].time = e.target.value;
-                        this.setState({ events });
-                      }}
-                    />
-                  </div>
-                ) : (
-                  <div>
-                    <h2>{this.state.events[i].time}</h2>
-                    <h3>{this.state.events[i].text}</h3>
-                  </div>
-                )}
-                {this.props.canEdit ? (
-                  <div className={"btns"}>
-                    <i
-                      onClick={() => this.removeEvent(i)}
-                      className={"fas fa-window-close"}
-                    ></i>
-                  </div>
-                ) : null}
-              </div>
-            ))}
+            <table width="100%">
+              <tbody>
+                {this.state.events.map((el, i) => (
+                  <tr>
+                    <td width="15%">
+                      <i
+                        className={"far fa-calendar-alt"}
+                        style={{ pointerEvents: "none" }}
+                      ></i>
+                    </td>
+                    <td>
+                      <div className={"item"} key={i}>
+                        {this.props.canEdit ? (
+                          <div>
+                            <input
+                              placeholder={"Event"}
+                              value={this.state.events[i].text}
+                              onChange={e => {
+                                let events = this.state.events;
+                                events[i].text = e.target.value;
+                                this.setState({ events });
+                              }}
+                            />
+                            <input
+                              placeholder={"Time"}
+                              style={{ marginLeft: "10px", fontSize: "16px" }}
+                              value={this.state.events[i].time}
+                              onChange={e => {
+                                let events = this.state.events;
+                                events[i].time = e.target.value;
+                                this.setState({ events });
+                              }}
+                            />
+                          </div>
+                        ) : (
+                          <div>
+                            <h2>{this.state.events[i].time}</h2>
+                            <h3>{this.state.events[i].text}</h3>
+                          </div>
+                        )}
+                        {this.props.canEdit ? (
+                          <div className={"btns"}>
+                            <i
+                              onClick={() => this.removeEvent(i)}
+                              className={"fas fa-window-close"}
+                            ></i>
+                          </div>
+                        ) : null}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
             {this.props.canEdit ? (
               <div className={"item"}>
                 <input
@@ -251,15 +292,13 @@ class Content extends React.Component {
           title: this.props.events[i].title,
           events: this.props.events[i].events
         };
-        icon_id = parseInt(this.props.events[i].icon.split("."));
+        icon_id = this.props.events[i].icon;
         break;
       }
     }
     return (
       <div className={"sub-tile"}>
-        {icon_id !== null ? (
-          <div className={"img"}>{getIcon(icon_id)}</div>
-        ) : null}
+        {icon_id !== null ? <div className={"img"}>{list[icon_id]}</div> : null}
         {this.props.activeDate === this.props.date ? (
           <i className={"fas fa-search search"}></i>
         ) : null}
@@ -362,11 +401,9 @@ class Events extends React.Component {
                   </video>
                 </div>
                 <Calendar
+                  calendarType={"US"}
                   onClickDay={date => {
-                    if (
-                      parseDate(this.state.date) === parseDate(date) ||
-                      true
-                    ) {
+                    if (parseDate(this.state.date) === parseDate(date)) {
                       const events = this.state.events.filter(el =>
                         el.date === parseDate(date) ? el : null
                       );
@@ -379,7 +416,7 @@ class Events extends React.Component {
                             date={events[0] ? events[0].date : date}
                             title={events[0] ? events[0].title : ""}
                             canEdit={this.state.canEdit}
-                            icon={events[0] ? events[0].icon : "0.png"}
+                            icon={events[0] ? events[0].icon : 0}
                           />,
                           this.state.modalSize
                         );
@@ -399,7 +436,6 @@ class Events extends React.Component {
                       }
                     />
                   )}
-                  value={100}
                   className={"body"}
                   onChange={this.onChange}
                   value={this.state.date}

@@ -512,6 +512,17 @@ module.exports = {
     pickAudio: `${server}/champion_audio/jhin/pick/0.ogg`,
     banAudio: `${server}/champion_audio/jhin/ban/0.ogg`
   },
+  jinx: {
+    id: index++,
+    suspended: false,
+    name: "Jinx",
+    loadingImg: `${server}/img/champion/loading/Jinx_0.jpg`,
+    splashImg: `${server}/img/champion/splash/Jinx_0.jpg`,
+    tileImg: `${server}/img/champion/tiles/Jinx_0.jpg`,
+    vid: `${server}/champion_videos/c-o-animated-jinx.mp4`,
+    pickAudio: `${server}/champion_audio/jinx/pick/0.ogg`,
+    banAudio: `${server}/champion_audio/jinx/ban/0.ogg`
+  },
   kaisa: {
     id: index++,
     suspended: false,
@@ -669,7 +680,7 @@ module.exports = {
   leesin: {
     id: index++,
     suspended: false,
-    name: "Leesin",
+    name: "Lee Sin",
     loadingImg: `${server}/img/champion/loading/LeeSin_0.jpg`,
     splashImg: `${server}/img/champion/splash/LeeSin_0.jpg`,
     tileImg: `${server}/img/champion/tiles/LeeSin_0.jpg`,
@@ -1381,7 +1392,7 @@ module.exports = {
   vayne: {
     id: index++,
     suspended: false,
-    name: "vayne",
+    name: "Vayne",
     loadingImg: `${server}/img/champion/loading/Vayne_0.jpg`,
     splashImg: `${server}/img/champion/splash/Vayne_0.jpg`,
     tileImg: `${server}/img/champion/tiles/Vayne_0.jpg`,
