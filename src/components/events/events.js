@@ -404,7 +404,10 @@ class Events extends React.Component {
                 <Calendar
                   calendarType={"US"}
                   onClickDay={date => {
-                    if (parseDate(this.state.date) === parseDate(date)) {
+                    if (
+                      parseDate(this.state.date) === parseDate(date) ||
+                      true
+                    ) {
                       const events = this.state.events.filter(el =>
                         el.date === parseDate(date) ? el : null
                       );
@@ -439,7 +442,7 @@ class Events extends React.Component {
                   )}
                   className={"body"}
                   onChange={this.onChange}
-                  value={this.state.date}
+                  value={new Date()}
                 />
               </div>
             </div>
