@@ -82,6 +82,8 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
+    "push": "git add .; git commit -am \"auto\"; git push origin master",
+    "merge": "git pull origin master; npm run build; cd /titanesports/titan_draft; npm run build",
     "start": "node scripts/start.js",
     "build": "rm -rf /var/www/html; mkdir /var/www/html; rm -rf build; node scripts/build.js; mv -v /titanesports/build/* /var/www/html",
     "test": "node scripts/test.js"
