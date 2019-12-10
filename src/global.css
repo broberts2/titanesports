@@ -9,6 +9,29 @@ body {
   margin: 0;
   font-size: 16px;
   background-color: #cdcdcd;
+  overflow-y: auto;
+}
+/* * {
+  scrollbar-base-color: #000;
+  scrollbar-face-color: #000;
+  scrollbar-3dlight-color: #000;
+  scrollbar-highlight-color: #000;
+  scrollbar-track-color: #000;
+  scrollbar-arrow-color: black;
+  scrollbar-shadow-color: #000;
+  scrollbar-dark-shadow-color: #000;
+} */
+*::-webkit-scrollbar {
+  overflow: hidden;
+  width: 6px;
+  background-color: transparent;
+}
+*::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(35, 30, 32);
+  outline: 1px solid slategrey;
 }
 div {
   font-family: "Roboto", sans-serif;
