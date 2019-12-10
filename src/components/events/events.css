@@ -2,15 +2,15 @@
 }
 .events .event-viewer {
   position: relative;
+  padding-top: 50px;
 }
 .events .event-viewer h1 {
   color: black;
+  margin: 0px;
+  font-size: 32px;
 }
 .events .event-viewer .img {
   --dimensions: 125px;
-  position: absolute;
-  top: 0;
-  right: 0;
   width: var(--dimensions);
   height: var(--dimensions);
 }
@@ -30,7 +30,10 @@
 }
 .events .event-viewer .items {
   overflow-y: scroll;
-  height: 45vh;
+  height: 35vh;
+}
+.events .event-viewer .items table {
+  table-layout: fixed;
 }
 .events .event-viewer .items .item {
   position: relative;
@@ -58,6 +61,10 @@
 .events .event-viewer .items .item .btns i {
   margin-left: 10px;
   display: inline-flex;
+  font-size: 25px;
+}
+.events .event-viewer .items i {
+  font-size: 50px;
 }
 .events .event-viewer .icon-row {
 }

@@ -13,7 +13,7 @@ const eventSchema = new Schema({
     required: true
   },
   icon: {
-    type: String,
+    type: Number,
     unique: false,
     required: true
   },
