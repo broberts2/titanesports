@@ -226,7 +226,8 @@ class EventViewer extends React.Component {
                 </div>
               </div>
             ) : null}
-            {this.props.canEdit ? (
+            {this.props.canEdit &&
+            !(this.props.isNewEvent && this.state.events.length <= 0) ? (
               <button
                 style={
                   this.state.events.length >= 0
