@@ -335,6 +335,7 @@ class Events extends React.Component {
       height: "75%"
     },
     date: new Date(),
+    nowDate: new Date(),
     events: []
   };
 
@@ -428,7 +429,13 @@ class Events extends React.Component {
                     }
                     this.setState({ date });
                   }}
-                  tileClassName={"tile"}
+                  tileClassName={e =>
+                    `tile ${
+                      e.date <= moment(this.state.nowDate).subtract(1, "days")
+                        ? "dun"
+                        : ""
+                    }`
+                  }
                   tileContent={e => (
                     <Content
                       canEdit={this.state.canEdit}
@@ -442,7 +449,7 @@ class Events extends React.Component {
                   )}
                   className={"body"}
                   onChange={this.onChange}
-                  value={new Date()}
+                  value={this.state.nowDate}
                 />
               </div>
             </div>
