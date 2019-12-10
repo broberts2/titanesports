@@ -9,7 +9,6 @@ body {
   margin: 0;
   font-size: 16px;
   background-color: #cdcdcd;
-  overflow-y: auto;
 }
 /* * {
   scrollbar-base-color: #000;
