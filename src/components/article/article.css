@@ -15,7 +15,6 @@
   -ms-transform: translate(-50%, -50%);
 }
 .article .body {
-  color: black;
 }
 .article .body .title-img {
   position: relative;
@@ -115,6 +114,9 @@
   background-color: var(--backgroundColor);
   padding: 50px;
   text-align: center;
+}
+.article .body .content li {
+  color: black;
 }
 .article .body .content .add {
   text-align: right;

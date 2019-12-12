@@ -8,6 +8,10 @@ import Api from "../../Api";
 const config = require("../../config");
 
 class Confirm extends React.Component {
+  lintJS(article) {
+    return article;
+  }
+
   render() {
     return (
       <div style={{ textAlign: "center" }}>
@@ -15,8 +19,12 @@ class Confirm extends React.Component {
         <button
           onClick={() =>
             this.props.isNew
-              ? this.props.startRequest(Api.createArticle(this.props.article))
-              : this.props.startRequest(Api.updateArticle(this.props.article))
+              ? this.props.startRequest(
+                  Api.createArticle(this.lintJS(this.props.article))
+                )
+              : this.props.startRequest(
+                  Api.updateArticle(this.lintJS(this.props.article))
+                )
           }
         >
           Confirm
@@ -179,7 +187,7 @@ class Article extends React.Component {
                       let content = {};
                       Object.values(this.refs["content"].children).map(
                         (el, i) => {
-                          content[i] = el.textContent;
+                          content[i] = el.innerText;
                         }
                       );
                       article.content = content;
