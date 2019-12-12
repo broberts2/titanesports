@@ -8,8 +8,16 @@ class TextBox extends React.Component {
     savedContent: this.props.content || ""
   };
 
+  setContent(boolean) {
+    if (boolean) {
+      document.getElementById("text").innerText = this.state.savedContent;
+    } else {
+      document.getElementById("text").innerHTML = this.state.savedContent;
+    }
+  }
+
   componentDidMount() {
-    document.getElementById("text").innerHTML = this.state.savedContent;
+    this.setContent();
     this.setState({
       domMounted: true
     });
@@ -20,8 +28,10 @@ class TextBox extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.content !== this.props.content) {
-      this.setState({ content: this.props.content });
+    console.log(prevProps);
+    if (prevProps.canEdit !== this.props.canEdit) {
+      this.setContent(this.props.canEdit);
+      this.setState({ canEdit: this.props.canEdit });
     }
   }
 
@@ -31,7 +41,7 @@ class TextBox extends React.Component {
         style={{
           fontSize: this.props.fontSize ? this.props.fontSize : "inherit",
           color: this.props.fontColor ? this.props.fontColor : "inherit",
-          marginBottom: this.props.canEdit ? "100px" : "0px"
+          marginBottom: this.state.canEdit ? "100px" : "0px"
         }}
         className={"text_box"}
       >
@@ -39,13 +49,13 @@ class TextBox extends React.Component {
           id={"text"}
           contenteditable={"true"}
           style={{
-            backgroundColor: this.props.canEdit
+            backgroundColor: this.state.canEdit
               ? "rgba(42, 42, 42, 0.25)"
               : "transparent",
-            pointerEvents: this.props.canEdit ? "" : "none"
+            pointerEvents: this.state.canEdit ? "" : "none"
           }}
         ></div>
-        {this.props.canEdit ? (
+        {this.state.canEdit ? (
           <div
             style={{
               color: this.props.fontColor ? this.props.fontColor : "inherit"
