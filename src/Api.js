@@ -267,5 +267,59 @@ export default {
       },
       body: JSON.stringify(data)
     }).then(res => res.json());
+  },
+  getArticles: async () => {
+    return await fetch(`${config.serverPath}/getArticles`, {
+      method: "get",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then(res => res.json());
+  },
+  getArticle: async id => {
+    return await fetch(`${config.serverPath}/getArticle?id=${id}`, {
+      method: "get",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      }
+    }).then(res => res.json());
+  },
+  createArticle: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/createArticle`, {
+      method: "post",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
+  updateArticle: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/updateArticle`, {
+      method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
+  removeArticle: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/removeArticle`, {
+      method: "delete",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
   }
 };

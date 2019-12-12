@@ -5,18 +5,24 @@ import "./text_box.css";
 class TextBox extends React.Component {
   state = {
     domMounted: false,
-    content: this.props.content || "",
     savedContent: this.props.content || ""
   };
 
   componentDidMount() {
-    this.setState({ domMounted: true });
+    document.getElementById("text").innerHTML = this.state.savedContent;
+    this.setState({
+      domMounted: true
+    });
   }
 
   revert() {
-    this.setState({
-      content: this.state.savedContent
-    });
+    document.getElementById("text").innerHTML = this.state.savedContent;
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.content !== this.props.content) {
+      this.setState({ content: this.props.content });
+    }
   }
 
   render() {
@@ -24,30 +30,21 @@ class TextBox extends React.Component {
       <div
         style={{
           fontSize: this.props.fontSize ? this.props.fontSize : "inherit",
-          color: this.props.fontColor ? this.props.fontColor : "inherit"
+          color: this.props.fontColor ? this.props.fontColor : "inherit",
+          marginBottom: this.props.canEdit ? "100px" : "0px"
         }}
         className={"text_box"}
       >
-        <textarea
-          spellCheck={this.props.canEdit}
-          disabled={!this.props.canEdit}
-          value={this.state.content}
-          placeholder={this.props.placeholder ? this.props.placeholder : ""}
-          onChange={e =>
-            this.props.canEdit
-              ? this.setState({
-                  content: e.target.value
-                })
-              : null
-          }
+        <div
+          id={"text"}
+          contenteditable={"true"}
           style={{
-            spellcheck: this.props.canEdit,
-            textIndent: this.props.textIndent ? this.props.textIndent : 35,
             backgroundColor: this.props.canEdit
-              ? "rgba(0, 0, 0, 0.15)"
-              : "transparent"
+              ? "rgba(42, 42, 42, 0.25)"
+              : "transparent",
+            pointerEvents: this.props.canEdit ? "" : "none"
           }}
-        />
+        ></div>
         {this.props.canEdit ? (
           <div
             style={{
@@ -58,7 +55,13 @@ class TextBox extends React.Component {
             <i
               onClick={() => this.revert()}
               className={"fas fa-share-square"}
-            ></i>
+            />
+            {this.props.cancel_cb ? (
+              <i
+                onClick={() => this.props.cancel_cb()}
+                className={"far fa-window-close"}
+              />
+            ) : null}
           </div>
         ) : null}
       </div>

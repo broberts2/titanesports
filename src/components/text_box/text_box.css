@@ -3,17 +3,20 @@
   width: 100%;
   border-radius: 3px;
   text-align: center;
-  height: 100px;
-  margin-bottom: 100px;
+  margin-bottom: 0px;
+  text-align: left;
+  text-indent: 50px;
 }
-.text_box textarea {
-  width: calc(100% - 30px);
-  border-bottom: 0px;
-  resize: none;
-  padding: 15px;
-  font-size: inherit;
-  color: inherit;
-  height: 100%;
+#text {
+  --padding: 30px;
+  font-family: "Amarante", cursive;
+  font-size: 32px;
+  width: calc(100% - var(--padding) * 2);
+  padding: var(--padding);
+  border-radius: 4px;
+}
+#text:focus {
+  outline: 0px;
 }
 .text_box .icons {
   position: absolute;

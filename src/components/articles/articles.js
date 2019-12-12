@@ -1,20 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
 import Components from "../../components";
-import "./name.css";
+import "./articles.css";
 
-class Name extends React.Component {
+import Api from "../../Api";
+
+class Articles extends React.Component {
   state = {
     domMounted: false,
     modalVisible: false,
     modalSize: {
       width: "45%",
       height: "75%"
-    }
+    },
+    articles: []
   };
 
-  componentDidMount() {
-    this.setState({ domMounted: true });
+  async componentDidMount() {
+    const articles = await Api.getArticles();
+    this.setState({
+      domMounted: true,
+      articles: Object.values(articles.articles)
+    });
   }
 
   openModal(modal, size) {
@@ -26,9 +33,39 @@ class Name extends React.Component {
     this.setState({ modalVisible });
   }
 
+  builder() {
+    const itemsPerRow = 3;
+    let rows = [];
+    let row = [];
+    this.state.articles.map((el, i) => {
+      row.push(
+        <td height={"300px"}>
+          <Components.ArticlePanel data={el} />
+        </td>
+      );
+      if ((i + 1) % itemsPerRow === 0) {
+        rows.push(<tr>{row}</tr>);
+        row = [];
+      }
+    });
+    if (this.state.articles.length < itemsPerRow) {
+      for (let i = 0; i < itemsPerRow - this.state.articles.length; i++) {
+        row.push(<td />);
+      }
+      rows.push(<tr>{row}</tr>);
+    } else if (row.length > 0) {
+      rows.push(<tr>{row}</tr>);
+    }
+    return (
+      <table width={"100%"} style={{ tableLayout: "fixed" }}>
+        <tbody>{rows}</tbody>
+      </table>
+    );
+  }
+
   render() {
     return (
-      <div className={"name"}>
+      <div className={"articles"}>
         <Components.Loader domMounted={this.state.domMounted}>
           <Components.Header
             openModal={() => this.openModal(<Components.Login />)}
@@ -47,7 +84,7 @@ class Name extends React.Component {
           >
             {this.state.modal}
           </Components.Modal>
-          <div className={"body"}></div>
+          <div className={"body"}>{this.builder()}</div>
           <Components.Footer />
         </Components.Loader>
       </div>
@@ -62,4 +99,4 @@ const mapDispatchToProps = dispatch => ({});
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Name);
+)(Articles);

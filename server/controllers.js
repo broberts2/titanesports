@@ -4,6 +4,7 @@ const TeamHandling = require("./controllers/teamHandling.js");
 const RiotAPI = require("./controllers/riotAPI.js");
 const YoutubeAPI = require("./controllers/youtubeAPI.js");
 const EventHandling = require("./controllers/eventHandling.js");
+const ArticleHandling = require("./controllers/articleHandling.js");
 
 module.exports = {
   UserHandling,
@@ -11,5 +12,6 @@ module.exports = {
   TeamHandling,
   RiotAPI,
   YoutubeAPI,
-  EventHandling
+  EventHandling,
+  ArticleHandling
 };

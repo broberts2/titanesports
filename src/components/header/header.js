@@ -36,7 +36,11 @@ class Header extends React.Component {
     const res = await Api.validateToken();
     if (read_cookie("titan_key").length > 0) {
       this.setState({
-        accountLink: <a href={`/user?u=${res.id}`}>My Account</a>
+        accountLink: (
+          <a href={`/user?u=${res.id}`} target={"_blank"}>
+            My Account
+          </a>
+        )
       });
     }
   }
@@ -81,10 +85,23 @@ class Header extends React.Component {
         </h1>
         <div className={"links"}>
           <div>
-            <a href={"/"}>Home</a>|<a href={"/players"}>Players</a>|
-            <a href={"/"}>Articles</a>|<a href={"/events"}>Events</a>|
-            <a href={"/slayers_guild"}>Slayer's Guild</a>|
-            {this.state.accountLink}
+            <a href={"/"}>Home</a>|
+            <a href={"/players"} target={"_blank"}>
+              Players
+            </a>
+            |
+            <a href={"/articles"} target={"_blank"}>
+              Articles
+            </a>
+            |
+            <a href={"/events"} target={"_blank"}>
+              Events
+            </a>
+            |
+            <a href={"/slayers_guild"} target={"_blank"}>
+              Slayer's Guild
+            </a>
+            |{this.state.accountLink}
           </div>
           <div>
             <a href={"https://www.twitch.tv/titanesportz"} target={"_blank"}>
@@ -104,9 +121,6 @@ class Header extends React.Component {
               target={"_blank"}
             >
               <i className={"fab fa-youtube"}></i>
-            </a>
-            <a href={"contact.html"}>
-              <i className={"fas fa-envelope"}></i>
             </a>
           </div>
         </div>

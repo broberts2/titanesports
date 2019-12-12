@@ -32,6 +32,12 @@ export default class App extends React.Component {
           />
           <Route
             exact
+            path="/articles"
+            render={() => <Components.Articles />}
+          />
+          <Route exact path="/article" render={() => <Components.Article />} />
+          <Route
+            exact
             path="/reset_password"
             render={() => <Components.ResetPassword />}
           />

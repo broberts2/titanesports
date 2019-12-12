@@ -7,45 +7,35 @@ const articleSchema = new Schema({
     unique: true,
     required: true
   },
-  imgURL: {
-    type: String,
-    unique: false,
-    required: true
-  },
-  imgCredit: {
-    type: String,
-    unique: false,
-    required: true
-  },
-  p: {
-    type: String,
-    unique: false,
-    required: true
-  },
-  date: {
-    type: String,
-    unique: false,
-    required: true
-  },
-  metaData: {
+  content: {
     type: Object,
     unique: false,
-    required: true
+    required: false
   },
-  approved: {
-    type: Boolean,
+  author: {
+    type: String,
     unique: false,
     required: true
   },
-  content: {
-    type: Array,
+  date_created: {
+    type: Date,
     unique: false,
     required: true
   },
-  sticky: {
-    type: Boolean,
+  date_published: {
+    type: Date,
     unique: false,
-    required: true
+    required: false
+  },
+  img_path: {
+    type: String,
+    unique: false,
+    required: false
+  },
+  icon: {
+    type: String,
+    unique: false,
+    required: false
   }
 });
 
