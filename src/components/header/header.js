@@ -36,11 +36,7 @@ class Header extends React.Component {
     const res = await Api.validateToken();
     if (read_cookie("titan_key").length > 0) {
       this.setState({
-        accountLink: (
-          <a href={`/user?u=${res.id}`} target={"_blank"}>
-            My Account
-          </a>
-        )
+        accountLink: <a href={`/user?u=${res.id}`}>My Account</a>
       });
     }
   }
@@ -86,39 +82,25 @@ class Header extends React.Component {
         <div className={"links"}>
           <div>
             <a href={"/"}>Home</a>|
-            <a href={"/players"} target={"_blank"}>
+            <a href={"/players"} target={"_"}>
               Players
             </a>
-            |
-            <a href={"/articles"} target={"_blank"}>
-              Articles
-            </a>
-            |
-            <a href={"/events"} target={"_blank"}>
-              Events
-            </a>
-            |
-            <a href={"/slayers_guild"} target={"_blank"}>
-              Slayer's Guild
-            </a>
-            |{this.state.accountLink}
+            |<a href={"/articles"}>Articles</a>|<a href={"/events"}>Events</a>|
+            <a href={"/slayers_guild"}>Slayer's Guild</a>|
+            {this.state.accountLink}
           </div>
           <div>
-            <a href={"https://www.twitch.tv/titanesportz"} target={"_blank"}>
+            <a href={"https://www.twitch.tv/titanesportz"}>
               <i className={"fab fa-twitch"}></i>
             </a>
-            <a href={"https://discord.gg/9DPxcfp"} target={"_blank"}>
+            <a href={"https://discord.gg/9DPxcfp"}>
               <i className={"fab fa-discord"}></i>
             </a>
-            <a
-              href={"https://www.reddit.com/user/Titan_eSports"}
-              target={"_blank"}
-            >
+            <a href={"https://www.reddit.com/user/Titan_eSports"}>
               <i className={"fab fa-reddit-square"}></i>
             </a>
             <a
               href={"https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw"}
-              target={"_blank"}
             >
               <i className={"fab fa-youtube"}></i>
             </a>
