@@ -331,7 +331,7 @@ class Events extends React.Component {
     domMounted: false,
     modalVisible: false,
     modalSize: {
-      width: "45%",
+      width: "750px",
       height: "75%"
     },
     date: new Date(),
@@ -433,6 +433,11 @@ class Events extends React.Component {
                     `tile ${
                       e.date <= moment(this.state.nowDate).subtract(1, "days")
                         ? "dun"
+                        : "std"
+                    } ${
+                      e.date.getDate().toString() ===
+                      this.state.nowDate.getDate().toString()
+                        ? "active"
                         : ""
                     }`
                   }

@@ -47,7 +47,7 @@ class HomePagePanel extends React.Component {
   renderPanels() {
     return (
       <div className={"panels"}>
-        <a href={"/players"}>
+        <a href={"/players"} target={"_blank"}>
           <div className={"wrapper panel-1"}>
             {this.videoButton("vid1", vid1)}
             <h2>Player / Team Search</h2>
@@ -62,11 +62,11 @@ class HomePagePanel extends React.Component {
           <h2>Titan Draft</h2>
           <i className={"fas fa-balance-scale"}></i>
         </div>
-        <a href={"/slayers_guild"}>
+        <a href={"/events"} target={"_blank"}>
           <div className={"wrapper panel-3"}>
-            {this.videoButton("vid3", vid3)}
-            <h2>Slayer's Guild</h2>
-            <i className={"fas fa-meteor"}></i>
+            {this.videoButton("vid5", vid5)}
+            <h2>Events Calendar</h2>
+            <i className={"far fa-calendar-alt"}></i>
           </div>
         </a>
         <div className={"wrapper panel-4"}>
@@ -75,11 +75,11 @@ class HomePagePanel extends React.Component {
           <h3>(In Development)</h3>
           <i className={"fas fa-scroll"}></i>
         </div>
-        <a href={"/events"}>
+        <a href={"/slayers_guild"} target={"_blank"}>
           <div className={"wrapper panel-5"}>
-            {this.videoButton("vid5", vid5)}
-            <h2>Upcoming Events</h2>
-            <i className={"far fa-calendar-alt"}></i>
+            {this.videoButton("vid3", vid3)}
+            <h2>Slayer's Guild</h2>
+            <i className={"fas fa-meteor"}></i>
           </div>
         </a>
       </div>

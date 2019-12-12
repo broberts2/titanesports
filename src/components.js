@@ -21,6 +21,9 @@ import DraftBuilder from "./components/draft_builder/draft_builder";
 import ResetPassword from "./components/reset_password/reset_password";
 import Pip from "./components/pip/pip";
 import Events from "./components/events/events";
+import Articles from "./components/articles/articles";
+import Article from "./components/article/article";
+import ArticlePanel from "./components/article_panel/article_panel";
 
 export default {
   Header,
@@ -45,5 +48,8 @@ export default {
   DraftBuilder,
   ResetPassword,
   Pip,
-  Events
+  Events,
+  Articles,
+  Article,
+  ArticlePanel
 };

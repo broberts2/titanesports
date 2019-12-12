@@ -89,11 +89,20 @@
 .events .body .calendar .tile {
   --tile_height: 200px;
   height: var(--tile_height);
+  color: black;
+  border-radius: 0px;
+}
+.events .body .calendar .tile:hover {
+  background-color: rgba(0, 171, 255, 0.75);
+}
+.events .body .calendar .active {
+  background-color: rgba(255, 179, 101, 0.75);
 }
 .events .body .calendar .dun {
-  --tile_height: 200px;
-  height: var(--tile_height);
-  background-color: rgb(250, 250, 250);
+  background-color: rgba(42, 42, 42, 0.15);
+}
+.events .body .calendar .std {
+  background-color: inherit;
 }
 .events .body .calendar .sub-tile {
   position: relative;

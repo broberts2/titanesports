@@ -27,6 +27,8 @@ module.exports = async (cb, res, accessLevel, exact) => {
     teams: report.teams,
     l: report.l,
     videos: report.videos,
-    events: report.events
+    events: report.events,
+    articles: report.articles,
+    article: report.article
   });
 };
