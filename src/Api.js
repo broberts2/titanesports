@@ -310,6 +310,18 @@ export default {
       body: JSON.stringify(data)
     }).then(res => res.json());
   },
+  setArticleStatus: async data => {
+    const titan_key = read_cookie("titan_key");
+    return await fetch(`${config.serverPath}/s/setArticleStatus`, {
+      method: "put",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        titan_key
+      },
+      body: JSON.stringify(data)
+    }).then(res => res.json());
+  },
   removeArticle: async data => {
     const titan_key = read_cookie("titan_key");
     return await fetch(`${config.serverPath}/s/removeArticle`, {
