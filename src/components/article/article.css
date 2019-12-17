@@ -53,7 +53,6 @@
   z-index: 3;
 }
 .article .body .title-img .title input {
-  width: 100%;
   color: inherit;
   font-size: 82px;
 }
@@ -61,6 +60,26 @@
   width: 75%;
   color: inherit;
   font-size: 32px;
+}
+.article .body .title-img .title .tags {
+  margin-top: 10px;
+  font-size: 40px;
+}
+.article .body .title-img .title .tags table {
+  width: 100%;
+  table-layout: fixed;
+}
+.article .body .title-img .title .tags .ico {
+  opacity: 0.25;
+  transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -webkit-transition: all 0.25s ease-in-out;
+}
+.article .body .title-img .title .tags .ico i {
+  cursor: pointer;
+}
+.article .body .title-img .title .tags .selected {
+  opacity: 1;
 }
 .article .body .title-img .background {
   position: relative;
@@ -125,7 +144,14 @@
 .article .body .content .add i {
   cursor: pointer;
 }
+.article .body .content .approve_bttn {
+  background-color: rgb(0, 224, 255);
+}
+.article .body .content .unapprove_bttn {
+  background-color: rgb(255, 0, 92);
+}
 .article .body .content button {
+  margin-top: 25px;
   width: 50%;
 }
 .article .body .footer {

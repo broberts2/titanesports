@@ -5,33 +5,40 @@ import "./text_box.css";
 class TextBox extends React.Component {
   state = {
     domMounted: false,
-    savedContent: this.props.content || ""
+    savedContent: this.props.content || "",
+    canEdit: false
   };
 
-  setContent(boolean) {
-    if (boolean) {
-      document.getElementById("text").innerText = this.state.savedContent;
+  setContent() {
+    if (this.state.canEdit) {
+      document.getElementById(
+        `text${this.props.index ? this.props.index : ""}`
+      ).innerText = this.state.savedContent;
     } else {
-      document.getElementById("text").innerHTML = this.state.savedContent;
+      document.getElementById(
+        `text${this.props.index ? this.props.index : ""}`
+      ).innerHTML = this.state.savedContent;
     }
   }
 
   componentDidMount() {
-    this.setContent();
     this.setState({
+      canEdit: this.props.canEdit,
       domMounted: true
     });
+    this.setContent();
   }
 
   revert() {
-    document.getElementById("text").innerHTML = this.state.savedContent;
+    document.getElementById(
+      `text${this.props.index ? this.props.index : ""}`
+    ).innerText = this.state.savedContent;
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
-    if (prevProps.canEdit !== this.props.canEdit) {
-      this.setContent(this.props.canEdit);
-      this.setState({ canEdit: this.props.canEdit });
+    if (prevProps.content !== this.props.content) {
+      this.setContent();
+      this.setState({ savedContent: this.props.content });
     }
   }
 
@@ -46,8 +53,9 @@ class TextBox extends React.Component {
         className={"text_box"}
       >
         <div
-          id={"text"}
-          contenteditable={"true"}
+          id={`text${this.props.index ? this.props.index : ""}`}
+          contentEditable={"true"}
+          className={"text"}
           style={{
             backgroundColor: this.state.canEdit
               ? "rgba(42, 42, 42, 0.25)"

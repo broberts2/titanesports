@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Components from "../../components";
 import "./article.css";
+import IconIndex from "./icon_index";
 
 import Api from "../../Api";
 
@@ -17,15 +18,50 @@ class Confirm extends React.Component {
       <div style={{ textAlign: "center" }}>
         <h1 style={{ color: "black" }}>Submit Changes?</h1>
         <button
-          onClick={() =>
-            this.props.isNew
+          onClick={async () => {
+            (await this.props.isNew)
               ? this.props.startRequest(
                   Api.createArticle(this.lintJS(this.props.article))
                 )
-              : this.props.startRequest(
+              : Object.entries(this.props.article.content).length > 0 &&
+                this.props.article.content.constructor === Object
+              ? this.props.startRequest(
                   Api.updateArticle(this.lintJS(this.props.article))
                 )
-          }
+              : this.props.startRequest(
+                  Api.removeArticle(this.lintJS(this.props.article))
+                );
+            this.props.cb();
+          }}
+        >
+          Confirm
+        </button>
+      </div>
+    );
+  }
+}
+
+class Approve extends React.Component {
+  lintJS(article) {
+    return article;
+  }
+
+  render() {
+    return (
+      <div style={{ textAlign: "center" }}>
+        <h1 style={{ color: "black" }}>
+          {this.props.status > 0 ? "Unapprove Article?" : "Approve Article?"}
+        </h1>
+        <button
+          onClick={async () => {
+            this.props.startRequest(
+              Api.setArticleStatus({
+                id: this.props.id,
+                status: this.props.status === 0 ? 1 : 0
+              })
+            );
+            this.props.cb();
+          }}
         >
           Confirm
         </button>
@@ -47,6 +83,7 @@ class Article extends React.Component {
   };
 
   async getArticle(user) {
+    if (!user) user = await Api.validateToken();
     let params = {};
     window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
       params[key] = value;
@@ -70,9 +107,11 @@ class Article extends React.Component {
   async componentDidMount() {
     const user = await Api.validateToken();
     await this.getArticle(user);
+    this.state.canEdit =
+      user.l < 2 || user.username === this.state.article.author;
     this.setState({
-      domMounted: true,
-      canEdit: user.l < 2 || user.username === this.state.article.author
+      boxes: this.populateTextBoxes(this.state.article.content),
+      domMounted: true
     });
   }
 
@@ -83,6 +122,51 @@ class Article extends React.Component {
 
   setModal(modalVisible) {
     this.setState({ modalVisible });
+  }
+
+  populateTextBoxes(content) {
+    const arr = content
+      ? Object.values(content).map((el, i) => (
+          <Components.TextBox
+            index={i}
+            placeholder={""}
+            content={el}
+            canEdit={this.state.canEdit}
+            fontSize={32}
+            fontColor={"black"}
+            cancel_cb={() => this.updateArticleState("remove", i)}
+          />
+        ))
+      : null;
+    return arr;
+  }
+
+  updateArticleState(operation, key) {
+    let article = this.state.article;
+    if (operation === "add") {
+      article.content[key] = "";
+    } else if (operation === "remove") {
+      delete article.content[key];
+    }
+    article.content = Object.assign({}, Object.values(article.content));
+    this.setState({
+      article,
+      boxes: this.populateTextBoxes(article.content)
+    });
+  }
+
+  tagToggle(index) {
+    let article = this.state.article;
+    if (article.icon) {
+      if (article.icon.includes(index)) {
+        article.icon = article.icon.filter(el => (el !== index ? el : null));
+      } else {
+        article.icon.push(index);
+      }
+    } else {
+      article.icon = [index];
+    }
+    this.setState({ article });
   }
 
   render() {
@@ -134,6 +218,29 @@ class Article extends React.Component {
                           }}
                         />
                       </div>
+                      <div className={"tags"}>
+                        <table>
+                          <tbody>
+                            <tr>
+                              {Object.values(IconIndex).map((el, i) => (
+                                <td>
+                                  <div
+                                    className={`ico ${
+                                      this.state.article.icon &&
+                                      this.state.article.icon.includes(i)
+                                        ? "selected"
+                                        : ""
+                                    }`}
+                                    onClick={() => this.tagToggle(i)}
+                                  >
+                                    {el}
+                                  </div>
+                                </td>
+                              ))}
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   ) : (
                     <h1>{this.state.article.title}</h1>
@@ -142,37 +249,16 @@ class Article extends React.Component {
               </div>
               <div className={"buffer"}></div>
               <div className={"content"}>
-                <div ref={"content"}>
-                  {Object.values(this.state.article.content).map((el, i) => (
-                    <Components.TextBox
-                      placeholder={""}
-                      content={el}
-                      canEdit={this.state.canEdit}
-                      fontSize={32}
-                      fontColor={"black"}
-                      cancel_cb={() => {
-                        let article = this.state.article;
-                        article.content = Object.assign(
-                          {},
-                          Object.values(this.state.article.content).filter(
-                            (el2, i2) => (i !== i2 ? el2 : null)
-                          )
-                        );
-                        this.setState({ article });
-                      }}
-                    />
-                  ))}
-                </div>
+                <div ref={"content"}>{this.state.boxes}</div>
                 {this.state.canEdit ? (
                   <div className={"add"}>
                     <i
-                      onClick={() => {
-                        let article = this.state.article;
-                        article.content[
+                      onClick={() =>
+                        this.updateArticleState(
+                          "add",
                           Object.values(this.state.article.content).length
-                        ] = "";
-                        this.setState({ article });
-                      }}
+                        )
+                      }
                       className={"far fa-plus-square"}
                     />
                   </div>
@@ -181,25 +267,62 @@ class Article extends React.Component {
                   <h2>Jetgorilla</h2>
                 </div>
                 {this.state.canEdit ? (
-                  <button
-                    onClick={() => {
-                      let article = this.state.article;
-                      let content = {};
-                      Object.values(this.refs["content"].children).map(
-                        (el, i) => {
-                          content[i] = el.innerText;
+                  <div>
+                    <div>
+                      <button
+                        onClick={() => {
+                          let article = this.state.article;
+                          let content = {};
+                          Object.values(this.refs["content"].children).map(
+                            (el, i) => {
+                              content[i] = el.innerText;
+                            }
+                          );
+                          article.content = content;
+                          this.setState({ article });
+                          this.openModal(
+                            <Confirm
+                              article={article}
+                              isNew={this.state.isNew}
+                              cb={() => this.getArticle()}
+                            />,
+                            this.state.modalSize
+                          );
+                        }}
+                      >
+                        {this.state.isNew
+                          ? "Create Article"
+                          : Object.entries(this.state.article.content).length >
+                              0 &&
+                            this.state.article.content.constructor === Object
+                          ? "Update Article"
+                          : "Delete Article"}
+                      </button>
+                    </div>
+                    <div>
+                      <button
+                        className={
+                          this.state.article.status > 0
+                            ? "unapprove_bttn"
+                            : "approve_bttn"
                         }
-                      );
-                      article.content = content;
-                      this.setState({ article });
-                      this.openModal(
-                        <Confirm article={article} isNew={this.state.isNew} />,
-                        this.state.modalSize
-                      );
-                    }}
-                  >
-                    {this.state.isNew ? "Create Article" : "Update Article"}
-                  </button>
+                        onClick={() =>
+                          this.openModal(
+                            <Approve
+                              id={this.state.article._id}
+                              status={this.state.article.status}
+                              cb={() => this.getArticle()}
+                            />,
+                            this.state.modalSize
+                          )
+                        }
+                      >
+                        {this.state.article.status > 0
+                          ? "Unapprove Article?"
+                          : "Approve Article"}
+                      </button>
+                    </div>
+                  </div>
                 ) : null}
               </div>
             </div>

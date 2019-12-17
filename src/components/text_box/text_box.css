@@ -7,34 +7,34 @@
   text-align: left;
   font-family: "Amarante", cursive;
 }
-#text {
+.text_box .text {
   --padding: 30px;
   font-family: "Amarante", cursive;
   font-size: 32px;
   width: calc(100% - var(--padding) * 2);
   padding: var(--padding);
   border-radius: 4px;
-  color: black;
+  color: inherit;
 }
-#text::selection {
+.text_box .text::selection {
   background: rgb(50, 185, 235); /* WebKit/Blink Browsers */
 }
-#text::-moz-selection {
+.text_box .text::-moz-selection {
   background: rgb(50, 185, 235); /* Gecko Browsers */
 }
-#text:focus {
+.text_box .text:focus {
   outline: 0px;
 }
-#text h1 {
+.text_box .text h1 {
   color: inherit;
 }
-#text h2 {
+.text_box .text h2 {
   color: inherit;
 }
-#text h3 {
+.text_box .text h3 {
   color: inherit;
 }
-#text h4 {
+.text_box .text h4 {
   color: inherit;
 }
 .text_box .icons {

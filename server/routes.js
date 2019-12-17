@@ -84,6 +84,9 @@ module.exports = (app, security) => {
   security.put("/updateArticle", async (req, res) =>
     responder(Controllers.ArticleHandling.updateArticle(req, 3), res)
   );
+  security.put("/setArticleStatus", async (req, res) =>
+    responder(Controllers.ArticleHandling.setArticleStatus(req, 1), res)
+  );
   security.delete("/removeArticle", async (req, res) =>
     responder(Controllers.ArticleHandling.removeArticle(req, 3), res)
   );

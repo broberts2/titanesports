@@ -33,9 +33,14 @@ const articleSchema = new Schema({
     required: false
   },
   icon: {
-    type: String,
+    type: Array,
     unique: false,
     required: false
+  },
+  status: {
+    type: Number,
+    unique: false,
+    required: true
   }
 });
 
