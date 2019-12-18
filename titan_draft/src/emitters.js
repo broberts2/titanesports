@@ -12,7 +12,7 @@ window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
 socket.emit("join", params);
 
 let music = new Audio(require("./audio/music.mp3"));
-music.volume = 0.1;
+music.volume = 0.05;
 music.loop = true;
 
 module.exports = {
@@ -56,7 +56,7 @@ module.exports = {
         console.log(
           data.champion[data.action === "pick" ? "pickAudio" : "banAudio"]
         );
-        audio.volume = 0.2;
+        audio.volume = 0.1;
         audio.play();
       }
     });

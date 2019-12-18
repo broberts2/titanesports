@@ -1,5 +1,9 @@
 module.exports = [
   {
+    fileName: "c-o-animated-aurelionsol.mp4",
+    type: "video/mp4"
+  },
+  {
     fileName: "c-o-animated-kindred.mp4",
     type: "video/mp4"
   },
@@ -8,35 +12,7 @@ module.exports = [
     type: "video/mp4"
   },
   {
-    fileName: "c-o-animated-yasuo-clean.mp4",
-    type: "video/mp4"
-  },
-  {
     fileName: "c-o-animated-nunu.mp4",
-    type: "video/mp4"
-  },
-  {
-    fileName: "c-o-animated-zoe-base.mp4",
-    type: "video/mp4"
-  },
-  {
-    fileName: "c-o-champion-kaisa-animated.mp4",
-    type: "video/mp4"
-  },
-  {
-    fileName: "c-o-champion-kayn-assassin-animated.mp4",
-    type: "video/mp4"
-  },
-  {
-    fileName: "c-o-champion-leona-eclipse-screensaver.mp4",
-    type: "video/mp4"
-  },
-  {
-    fileName: "c-o-animated-darkstar2017.mp4",
-    type: "video/mp4"
-  },
-  {
-    fileName: "c-o-animated-pulsefirecaitlyn.mp4",
     type: "video/mp4"
   },
   {
@@ -44,15 +20,23 @@ module.exports = [
     type: "video/mp4"
   },
   {
+    fileName: "c-o-animated-starguardian2-login.mp4",
+    type: "video/mp4"
+  },
+  {
     fileName: "c-o-animated-vs-login.mp4",
     type: "video/mp4"
   },
   {
-    fileName: "animated-battle-academia.webm",
-    type: "video/webm"
+    fileName: "c-o-champion-kaisa-animated.mp4",
+    type: "video/mp4"
   },
   {
-    fileName: "champion-jhin-darkstar-animated.webm",
-    type: "video/webm"
+    fileName: "c-o-champion-leona-eclipse-screensaver.mp4",
+    type: "video/mp4"
+  },
+  {
+    fileName: "c-o-elementalist-lux-portrait-animation.mp4",
+    type: "video/mp4"
   }
 ];
