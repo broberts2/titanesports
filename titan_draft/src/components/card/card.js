@@ -9,9 +9,21 @@ class Card extends React.Component {
     animationName: "none"
   };
 
+  componentDidMount() {
+    if (this.props.state.active === this.props.id) {
+      this.setState({ animationName: "pulse" });
+    }
+  }
+
   componentDidUpdate(prevProps) {
     if (prevProps.championData !== this.props.championData) {
       this.setState({ animationName: "flipInY" });
+    } else if (prevProps.state.active !== this.props.state.active) {
+      if (this.props.state.active === this.props.id) {
+        this.setState({ animationName: "pulse" });
+      } else {
+        this.setState({ animationName: "none" });
+      }
     }
   }
 
@@ -21,7 +33,7 @@ class Card extends React.Component {
         <Components.Anim animationName={this.state.animationName}>
           <div
             className={`body ${
-              this.props.state.active === this.props.id ? "active" : ""
+              this.props.state.active === this.props.id ? "" : ""
             }`}
             style={{
               width: this.props.banned ? "75%" : "100%",

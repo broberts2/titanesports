@@ -11,6 +11,11 @@
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  text-align: center;
+}
+.window .content table {
+  table-layout: fixed;
+  width: 100%;
 }
 .window .background-video {
   width: 100%;
@@ -24,6 +29,8 @@
   height: 100%;
 }
 .window .content .blue {
+  text-align: center;
 }
 .window .content .red {
+  text-align: center;
 }

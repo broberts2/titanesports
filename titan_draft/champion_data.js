@@ -1084,17 +1084,17 @@ module.exports = {
     pickAudio: `${server}/champion_audio/sejuani/pick/0.ogg`,
     banAudio: `${server}/champion_audio/sejuani/ban/0.ogg`
   },
-  senna: {
-    id: index++,
-    suspended: false,
-    name: "Senna",
-    loadingImg: `${server}/img/champion/loading/Senna_0.jpg`,
-    splashImg: `${server}/img/champion/splash/Senna_0.jpg`,
-    tileImg: `${server}/img/champion/tiles/Senna_0.jpg`,
-    vid: `${server}/champion_videos/c-o-animated-senna.mp4`,
-    pickAudio: `${server}/champion_audio/senna/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/senna/ban/0.ogg`
-  },
+  // senna: {
+  //   id: index++,
+  //   suspended: false,
+  //   name: "Senna",
+  //   loadingImg: `${server}/img/champion/loading/Senna_0.jpg`,
+  //   splashImg: `${server}/img/champion/splash/Senna_0.jpg`,
+  //   tileImg: `${server}/img/champion/tiles/Senna_0.jpg`,
+  //   vid: `${server}/champion_videos/c-o-animated-senna.mp4`,
+  //   pickAudio: `${server}/champion_audio/senna/pick/0.ogg`,
+  //   banAudio: `${server}/champion_audio/senna/ban/0.ogg`
+  // },
   shaco: {
     id: index++,
     suspended: false,

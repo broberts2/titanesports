@@ -1,19 +1,89 @@
 import React from "react";
 import Components from "../../components";
 import "./window.css";
+import "./animations.css";
+
+const Videos = require("./videos.js");
+
+class VideoLoop extends React.Component {
+  state = {
+    displayLogin: false,
+    autoPlayCycleDuration: 24000,
+    domMounted: false,
+    videoIndex: 1,
+    video2Class: "",
+    video1: this.createVideo(0),
+    video2: this.createVideo(1)
+  };
+
+  createVideo(index) {
+    return (
+      <video muted preload="auto" loop autoPlay>
+        <source
+          src={require(`./videos/${Videos[index].fileName}`)}
+          type={Videos[index].type}
+        />
+      </video>
+    );
+  }
+
+  renderVideo(video) {
+    const videoIndex =
+      this.state.videoIndex >= Videos.length - 1
+        ? 0
+        : this.state.videoIndex + 1;
+    this.setState({
+      [video]: null,
+      videoIndex
+    });
+    this.setState({
+      [video]: this.createVideo(videoIndex)
+    });
+  }
+
+  async autoPlay(waiter) {
+    await waiter(this.state.autoPlayCycleDuration / 4);
+    this.setState({ video2Class: "anim-video-fade-in" });
+    await waiter(this.state.autoPlayCycleDuration / 4);
+    this.renderVideo("video1");
+    await waiter(this.state.autoPlayCycleDuration / 4);
+    this.setState({ video2Class: "anim-video-fade-out" });
+    await waiter(this.state.autoPlayCycleDuration / 4);
+    this.renderVideo("video2");
+  }
+
+  componentDidMount() {
+    const waiter = num =>
+      new Promise((resolve, reject) => setTimeout(() => resolve(), num));
+    this.autoPlay(waiter);
+    this.intervalId = setInterval(
+      () => this.autoPlay(waiter),
+      this.state.autoPlayCycleDuration
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        <div style={{ width: "100%", position: "absolute" }}>
+          {this.state.video1}
+        </div>
+        <div
+          className={this.state.video2Class}
+          style={{ width: "100%", position: "absolute" }}
+        >
+          {this.state.video2}
+        </div>
+      </div>
+    );
+  }
+}
 
 class Window extends React.Component {
   render() {
     return (
       <div className={"window"}>
-        <div className={"background-video"}>
-          <video muted preload="auto" loop autoPlay>
-            <source
-              src={require("../../videos/animated-ionia.webm")}
-              type={"video/webm"}
-            />
-          </video>
-        </div>
+        <VideoLoop />
         <div className={"content"}>
           <table>
             <tbody>
@@ -25,7 +95,7 @@ class Window extends React.Component {
                         <tr>
                           {Object.values(this.props.state.data.blue.pick).map(
                             (el, i) => (
-                              <td>
+                              <td align="center">
                                 <Components.Card
                                   state={this.props.state}
                                   id={i}
@@ -39,7 +109,7 @@ class Window extends React.Component {
                         </tr>
                       </tbody>
                     </table>
-                    <table>
+                    <table style={{ marginLeft: "7.5px" }}>
                       <tbody>
                         <tr>
                           {Object.values(this.props.state.data.blue.ban).map(
@@ -68,7 +138,7 @@ class Window extends React.Component {
                         <tr>
                           {Object.values(this.props.state.data.red.pick).map(
                             (el, i) => (
-                              <td>
+                              <td align="left">
                                 <Components.Card
                                   state={this.props.state}
                                   id={i + 5}

@@ -51,5 +51,9 @@ module.exports = {
   ult: {
     0: `${server}/ULT.png`,
     1: `${server}/ULT-trans.png`
+  },
+  rr: {
+    0: `${server}/RR-trans.png`,
+    1: `${server}/RR-trans.png`
   }
 };
