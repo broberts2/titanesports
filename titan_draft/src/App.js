@@ -142,8 +142,12 @@ export default class App extends React.Component {
             : null
         }
       >
-        {this.state.blue_ready && this.state.red_ready ? (
-          <div>
+        {!this.state.error ? (
+          <div
+            style={{
+              opacity: this.state.blue_ready && this.state.red_ready ? "1" : "0"
+            }}
+          >
             <Components.Header
               state={this.state}
               blue_img={this.state.t1_logo}
@@ -165,8 +169,18 @@ export default class App extends React.Component {
               actions={this.actions}
             />
           </div>
-        ) : (
-          <div>
+        ) : null}
+        {!(this.state.blue_ready && this.state.red_ready) ? (
+          <div
+            style={{
+              position: "absolute",
+              width: "100vw",
+              height: "100vh",
+              top: "0",
+              left: "0",
+              zIndex: "8999"
+            }}
+          >
             <video src={lobby_video} preload muted loop autoPlay />
             <ReactModal
               visible={!this.state.blue_ready || !this.state.red_ready}
@@ -202,7 +216,7 @@ export default class App extends React.Component {
               </div>
             </ReactModal>
           </div>
-        )}
+        ) : null}
         {this.state.finished ? (
           <div className={`finished finished-fade-in`}>
             <h1>Draft Complete</h1>
