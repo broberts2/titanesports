@@ -3,6 +3,13 @@ body {
   cursor: pointer;
   overflow-y: hidden;
   font-family: "Amarante", cursive;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Opera and Firefox */
 }
 h1 {
   font-size: 42px;
@@ -44,4 +51,46 @@ button:focus {
 }
 button {
   font-family: "Amarante", cursive;
+}
+.finished {
+  position: absolute;
+  z-index: 5000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.25);
+  text-align: right;
+}
+.finished h1 {
+  margin: 10px;
+  font-size: 72px;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  text-shadow: 4px 4px rgb(0, 0, 0);
+}
+.finished-fade-in {
+  -webkit-animation-name: webkitAnimVideoFadeIn;
+  animation-name: animVideoFadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+@-webkit-keyframes webkitAnimFinishedFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animFinishedFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

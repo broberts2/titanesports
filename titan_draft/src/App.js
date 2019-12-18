@@ -4,10 +4,44 @@ import ReactModal from "react-awesome-modal";
 import "./intro_modal.css";
 const emitters = require("./emitters");
 
+const preloadAssets = true;
+
 const config = require("../../server/config");
 const server = config.production
   ? "https://titan-esports.org:7001"
   : "http://localhost:7001";
+
+const lobby_video = require("./videos/c-o-animated-lunarrevel-2014.mp4");
+const _champion_data = preloadAssets ? require("../champion_data") : null;
+
+const ASSETS = preloadAssets
+  ? Object.assign(
+      {},
+      Object.values(_champion_data).map(el => {
+        return {
+          id: el.id,
+          suspended: el.suspended,
+          name: el.name,
+          loadingImg: el.loadingImg
+            ? require(`../../dragontail-9.23.1/img` +
+                el.loadingImg.split("/img")[1])
+            : null,
+          splashImg: el.splashImg
+            ? require(`../../dragontail-9.23.1/img` +
+                el.splashImg.split("/img")[1])
+            : null,
+          tileImg: el.tileImg
+            ? require(`../../dragontail-9.23.1/img` +
+                el.tileImg.split("/img")[1])
+            : null,
+          pickAudio: require("../../audio/champion_audio" +
+            el.pickAudio.split("/champion_audio")[1]),
+          banAudio: require("../../audio/champion_audio" +
+            el.banAudio.split("/champion_audio")[1])
+        };
+      })
+    )
+  : null;
 
 export default class App extends React.Component {
   state = {
@@ -63,9 +97,9 @@ export default class App extends React.Component {
   actions = {
     setModal: modal => this.setState({ modal }),
     getChampionData: async () => {
-      const championData = await fetch(`${server}/api/getChampionData`).then(
-        res => res.json()
-      );
+      const championData = preloadAssets
+        ? ASSETS
+        : await fetch(`${server}/api/getChampionData`).then(res => res.json());
       this.setState({ championData });
     },
     submitButton: index => {
@@ -97,6 +131,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div
+        style={{ position: "relative" }}
         onClick={() =>
           !this.state.modal &&
           !this.state.finished &&
@@ -118,22 +153,21 @@ export default class App extends React.Component {
             />
             {this.state.championData ? (
               <Components.Modal
+                ASSETS={ASSETS}
                 state={this.state}
                 actions={this.actions}
                 emitters={emitters}
               />
             ) : null}
-            <Components.Window state={this.state} actions={this.actions} />
+            <Components.Window
+              ASSETS={ASSETS}
+              state={this.state}
+              actions={this.actions}
+            />
           </div>
         ) : (
           <div>
-            <video
-              src={require("./videos/c-o-animated-lunarrevel-2014.mp4")}
-              preload
-              muted
-              loop
-              autoPlay
-            />
+            <video src={lobby_video} preload muted loop autoPlay />
             <ReactModal
               visible={!this.state.blue_ready || !this.state.red_ready}
               width={"50%"}
@@ -169,6 +203,11 @@ export default class App extends React.Component {
             </ReactModal>
           </div>
         )}
+        {this.state.finished ? (
+          <div className={`finished finished-fade-in`}>
+            <h1>Draft Complete</h1>
+          </div>
+        ) : null}
       </div>
     );
   }
