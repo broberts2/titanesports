@@ -6,7 +6,8 @@ const config = require("../../../config");
 
 class Card extends React.Component {
   state = {
-    animationName: "none"
+    animationName: "none",
+    opacity: "1"
   };
 
   componentDidMount() {
@@ -17,7 +18,7 @@ class Card extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.championData !== this.props.championData) {
-      this.setState({ animationName: "flipInY" });
+      this.setState({ animationName: "flipInY", opacity: "1" });
     } else if (prevProps.state.active !== this.props.state.active) {
       if (this.props.state.active === this.props.id) {
         this.setState({ animationName: "pulse" });
@@ -39,7 +40,8 @@ class Card extends React.Component {
               width: this.props.banned ? "75%" : "100%",
               backgroundColor: this.props.blue
                 ? "rgb(33, 153, 191)"
-                : "rgb(214, 61, 61)"
+                : "rgb(214, 61, 61)",
+              opacity: this.state.opacity
             }}
           >
             {this.props.championData ? (
