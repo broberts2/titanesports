@@ -1,3 +1,19 @@
+const template = (report, teamName, index, participants) => ({
+  teamName,
+  inhibitorKills: report.teams[index].inhibitorKills,
+  towerKills: report.teams[index].towerKills,
+  dragonKills: report.teams[index].dragonKills,
+  baronKills: report.teams[index].baronKills,
+  riftHeraldKills: report.teams[index].riftHeraldKills,
+  firstDragon: report.teams[index].firstDragon,
+  firstBaron: report.teams[index].firstBaron,
+  firstInhibitor: report.teams[index].firstInhibitor,
+  firstTower: report.teams[index].firstTower,
+  firstBlood: report.teams[index].firstBlood,
+  win: report.teams[index].win === "Win" ? true : false,
+  participants
+});
+
 const sanitize = (report, t1, t2) => {
   report = report.gameData;
   let participants1 = {};
@@ -16,36 +32,8 @@ const sanitize = (report, t1, t2) => {
   //return report;
   return {
     gameTime: report.gameDuration,
-    team1: {
-      teamName: t1,
-      inhibitorKills: report.teams[0].inhibitorKills,
-      towerKills: report.teams[0].towerKills,
-      dragonKills: report.teams[0].dragonKills,
-      baronKills: report.teams[0].baronKills,
-      riftHeraldKills: report.teams[0].riftHeraldKills,
-      firstDragon: report.teams[0].firstDragon,
-      firstBaron: report.teams[0].firstBaron,
-      firstInhibitor: report.teams[0].firstInhibitor,
-      firstTower: report.teams[0].firstTower,
-      firstBlood: report.teams[0].firstBlood,
-      win: report.teams[0].win === "Win" ? true : false,
-      participants: participants1
-    },
-    team2: {
-      teamName: t2,
-      inhibitorKills: report.teams[1].inhibitorKills,
-      towerKills: report.teams[1].towerKills,
-      dragonKills: report.teams[1].dragonKills,
-      baronKills: report.teams[1].baronKills,
-      riftHeraldKills: report.teams[1].riftHeraldKills,
-      firstDragon: report.teams[1].firstDragon,
-      firstBaron: report.teams[1].firstBaron,
-      firstInhibitor: report.teams[1].firstInhibitor,
-      firstTower: report.teams[1].firstTower,
-      firstBlood: report.teams[1].firstBlood,
-      win: report.teams[1].win === "Win" ? true : false,
-      participants: participants2
-    }
+    team1: template(report, t1, 0, participants1),
+    team2: template(report, t2, 1, participants2)
   };
 };
 

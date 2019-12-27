@@ -23,15 +23,15 @@ const ASSETS = preloadAssets
           suspended: el.suspended,
           name: el.name,
           loadingImg: el.loadingImg
-            ? require(`../../dragontail-9.23.1/img` +
+            ? require(`../../dragontail-9.24.2/img` +
                 el.loadingImg.split("/img")[1])
             : null,
           splashImg: el.splashImg
-            ? require(`../../dragontail-9.23.1/img` +
+            ? require(`../../dragontail-9.24.2/img` +
                 el.splashImg.split("/img")[1])
             : null,
           tileImg: el.tileImg
-            ? require(`../../dragontail-9.23.1/img` +
+            ? require(`../../dragontail-9.24.2/img` +
                 el.tileImg.split("/img")[1])
             : null,
           pickAudio: require("../../audio/champion_audio" +

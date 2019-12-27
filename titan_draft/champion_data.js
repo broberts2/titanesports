@@ -83,6 +83,17 @@ module.exports = {
     pickAudio: `${server}/champion_audio/annie/pick/0.ogg`,
     banAudio: `${server}/champion_audio/annie/ban/0.ogg`
   },
+  aphelios: {
+    id: index++,
+    suspended: false,
+    name: "Aphelios",
+    loadingImg: `${server}/img/champion/loading/Aphelios_0.jpg`,
+    splashImg: `${server}/img/champion/splash/Aphelios_0.jpg`,
+    tileImg: `${server}/img/champion/tiles/Aphelios_0.jpg`,
+    vid: `${server}/champion_videos/c-o-animated-senna.mp4`,
+    pickAudio: `${server}/champion_audio/aphelios/pick/0.ogg`,
+    banAudio: `${server}/champion_audio/aphelios/ban/0.ogg`
+  },
   ashe: {
     id: index++,
     suspended: false,
@@ -1084,17 +1095,17 @@ module.exports = {
     pickAudio: `${server}/champion_audio/sejuani/pick/0.ogg`,
     banAudio: `${server}/champion_audio/sejuani/ban/0.ogg`
   },
-  // senna: {
-  //   id: index++,
-  //   suspended: false,
-  //   name: "Senna",
-  //   loadingImg: `${server}/img/champion/loading/Senna_0.jpg`,
-  //   splashImg: `${server}/img/champion/splash/Senna_0.jpg`,
-  //   tileImg: `${server}/img/champion/tiles/Senna_0.jpg`,
-  //   vid: `${server}/champion_videos/c-o-animated-senna.mp4`,
-  //   pickAudio: `${server}/champion_audio/senna/pick/0.ogg`,
-  //   banAudio: `${server}/champion_audio/senna/ban/0.ogg`
-  // },
+  senna: {
+    id: index++,
+    suspended: false,
+    name: "Senna",
+    loadingImg: `${server}/img/champion/loading/Senna_0.jpg`,
+    splashImg: `${server}/img/champion/splash/Senna_0.jpg`,
+    tileImg: `${server}/img/champion/tiles/Senna_0.jpg`,
+    vid: `${server}/champion_videos/c-o-animated-senna.mp4`,
+    pickAudio: `${server}/champion_audio/senna/pick/0.ogg`,
+    banAudio: `${server}/champion_audio/senna/ban/0.ogg`
+  },
   shaco: {
     id: index++,
     suspended: false,
