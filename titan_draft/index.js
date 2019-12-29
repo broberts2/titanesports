@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, "build")));
 app.use(express.static(path.join(__dirname, "../champion-videos")));
 app.use(express.static(path.join(__dirname, "../logos")));
 app.use(express.static(path.join(__dirname, "../audio")));
-app.use(express.static(`../dragontail-${config.currentVersion}`));
+app.use(express.static(`../dragontail-9.24.2`));
 
 app.use(cors({ origin: true, credentials: true }));
 
