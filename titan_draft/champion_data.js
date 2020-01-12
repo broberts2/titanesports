@@ -91,8 +91,8 @@ module.exports = {
     splashImg: `${server}/img/champion/splash/Aphelios_0.jpg`,
     tileImg: `${server}/img/champion/tiles/Aphelios_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-senna.mp4`,
-    pickAudio: `${server}/champion_audio/aphelios/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/aphelios/ban/0.ogg`
+    pickAudio: `${server}/champion_audio/aphelios/pick/0.mp3`,
+    banAudio: `${server}/champion_audio/aphelios/ban/0.mp3`
   },
   ashe: {
     id: index++,
