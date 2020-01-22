@@ -53,9 +53,6 @@ module.exports = {
         let audio = new Audio(
           data.champion[data.action === "pick" ? "pickAudio" : "banAudio"]
         );
-        console.log(
-          data.champion[data.action === "pick" ? "pickAudio" : "banAudio"]
-        );
         audio.volume = 0.1;
         audio.play();
       }

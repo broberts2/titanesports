@@ -256,9 +256,9 @@ class UserAccount extends React.Component {
                           : null
                       }
                       className={`${this.state.canEdit ? "edit" : ""}`}
-                      src={`${config.serverPath}/${
-                        config.currentVersion
-                      }/img/profileicon/${
+                      src={`${
+                        config.serverPath
+                      }/${currentVersion}/img/profileicon/${
                         this.state.user ? this.state.user.iconId : "0.png"
                       }`}
                     />

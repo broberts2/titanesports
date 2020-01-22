@@ -1,5 +1,6 @@
 const fs = require("fs");
 const config = require("../config");
+const currentVersion = require("../../game_version");
 const Users = require("../models/user");
 const ObjectId = require("mongodb").ObjectID;
 const bcrypt = require("bcrypt");
@@ -44,7 +45,7 @@ module.exports = {
     const fileList = await new Promise((resolve, reject) => {
       fs.readdir(
         __dirname +
-          `/../../dragontail-${config.currentVersion}/${config.currentVersion}/img/profileicon`,
+          `/../../dragontail-${currentVersion}/${currentVersion}/img/profileicon`,
         (err, files) => {
           const index = parseInt(req.query.index);
           const size = parseInt(req.query.size);

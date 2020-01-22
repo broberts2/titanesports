@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const config = require("./config");
+const currentVersion = require("../game_version");
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || config.port;
 const path = require("path");
@@ -15,7 +16,7 @@ db_connector();
 
 app.use(bodyParser.json());
 
-app.use(express.static(`../dragontail-${config.currentVersion}`));
+app.use(express.static(`../dragontail-${currentVersion}`));
 app.use(express.static("../profile_videos"));
 
 app.use(cors({ origin: true, credentials: true }));

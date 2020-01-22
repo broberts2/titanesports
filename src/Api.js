@@ -28,7 +28,6 @@ export default {
     return user;
   },
   createTitanDraft: async data => {
-    console.log("ran with: ", data);
     return await fetch(`${config.tPath}/api/createDraft`, {
       method: "post",
       headers: {

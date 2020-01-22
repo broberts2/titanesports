@@ -8,6 +8,7 @@ import "./player_search.css";
 import Api from "../../Api";
 
 const config = require("../../config");
+const currentVersion = require("../game_version");
 
 class PlayerCard extends React.Component {
   state = {
@@ -27,7 +28,7 @@ class PlayerCard extends React.Component {
           <div className={"profile-img"}>
             <img
               alt={""}
-              src={`${config.serverPath}/${config.currentVersion}/img/profileicon/${this.props.user.iconId}`}
+              src={`${config.serverPath}/${currentVersion}/img/profileicon/${this.props.user.iconId}`}
             />
           </div>
         </td>
@@ -129,7 +130,7 @@ class TeamCard extends React.Component {
         <td>
           <div className={"profile-img"}>
             <img
-              src={`${config.serverPath}/${config.currentVersion}/img/profileicon/5.png`}
+              src={`${config.serverPath}/${currentVersion}/img/profileicon/5.png`}
             />
           </div>
         </td>
