@@ -238,11 +238,6 @@ Api.loginUser({
 })
 ```
 
-```
-├── titan_draft ('titan draft' folder. serves files from backend after connecting to port 7001 and connecting via websocket)
-  └── * Needs Documentation *
-```
-
 ## Some basic React Documentation
 
 If you haven't worked with React before and have only worked with html, css, and maybe some vanilla js or jquery, hopefully this will help you. A simple React component will look something like this:
@@ -286,6 +281,8 @@ class Example extends React.Component {
 export default connect()(Example);
 ```
 
+The important takeaway here is the use of the render function within the Example class and the use of imports to include code form other files.
+
 Components can be shared across the site by importing from their specific file like so:
 
 ```javascript
@@ -298,7 +295,7 @@ import Example from "<path_to_file>"
 </div>
 ```
 
-The important takeaway here is the use of the render function within the Example class and the use of imports to include code form other files. There's a ton more to this so I will be adding more documentation when I can but hopefully this makes some sense so far
+There's a ton more to this so I will be adding more documentation when I can but hopefully this makes some sense so far
 
 ## Setting Up the Database
 
