@@ -84,11 +84,133 @@ Now that you have project cloned, dependecies installed, and possess the proper 
   └── * Needs Documentation *
 ```
 
+## Titan E-Sports API Refrence
+
+Rest api reference for TES. You may either make the GET, POST, PUT, or DELETE request yourself or use the Api.js object methods (recommended) to make these calls. **Note: There's a lot to add here so it will be a few days before I have the documentation completed.**
+
+### GET Routes
+
+/loginUser
+Returns `titan_key` token used for protected routes and authentication. Also stores token in web browser as cookie.
+
+```
+Api.loginUser({
+  username: "username",
+  password: "password"
+})
+```
+
+/getUser?u=<user_id>
+
+```
+Api.getUser(id)
+```
+
+/getAllUsers
+
+```
+Api.getAllUsers()
+```
+
+/getAllTeams
+
+```
+Api.getAllTeams()
+```
+
+/getProfileVideos
+
+```
+Api.getProfileVideos()
+```
+
+/getSlayersGuild
+
+```
+Api.getSlayersGuild()
+```
+
+/getIconsList?index=<index>&size=<size>
+
+```
+Api.requestProfileIconList(index, size)
+```
+
+/s/validateToken
+
+```
+Api.validateToken()
+```
+
+### POST Routes
+
+/api/createDraft
+
+```
+Api.createTitanDraft({
+  type: "tournament",
+  t1_logo: "img_path",
+  t2_logo: "img_path",
+  t1_name: "team_name"
+  t2_name: "team_name"
+})
+```
+
+/createUser
+
+```
+Api.createUser({
+  username: "username",
+  password: "password",
+  password2: "confirm_password",
+  email: "email@example.com"
+})
+```
+
+/compareResetKey?key=<key>
+
+```
+Api.compareResetKey({
+  key: "key",
+  password: "password",
+})
+```
+
+### PUT Routes
+
+/updateSlayersGuild
+
+```
+Api.updateSlayersGuild()
+```
+
+/s/updateSelf
+
+```
+Api.updateSelf(obj)
+```
+
+### DELETE Routes
+
+/loginUser
+
+```
+Api.loginUser({
+  username: "username",
+  password: "password"
+})
+```
+
+```
+├── titan_draft ('titan draft' folder. serves files from backend after connecting to port 7001 and connecting via websocket)
+  └── * Needs Documentation *
+```
+
 ## Setting Up the Database
 
 This project uses MongoDB for persistent data and can be found here: https://docs.mongodb.com/manual/installation/.
 I will be adding to this in the future with setup instructions so that you can run your own local database for testing.
-**Note: This will not connect you to the live server. This is for development purposes only but will give you full simulated functionality.**
+**Note: This will not connect you to the live database. This is for development purposes only but will give you full simulated functionality.**
 
 ## Authors & Contributors
 
