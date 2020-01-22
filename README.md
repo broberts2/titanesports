@@ -2,8 +2,6 @@
 
 TES web/server documentation
 
-## Installation Prerequisites
-
 ### Intalling Node.js and NPM
 
 Install Node (npm in included in the default distribution) here: https://nodejs.org/en/download.
@@ -11,6 +9,44 @@ Install Node (npm in included in the default distribution) here: https://nodejs.
 ### Installing Git
 
 Install Git here: https://git-scm.com/downloads.
+
+### Git Commands
+
+Run this command to add new files to your pending commit
+
+```
+git add .
+```
+
+Run this command to add new files to your pending commit
+
+```
+git commit -m "<type in your commit note here>"
+```
+
+Run this command to push your commit to the specified branch
+
+```
+git push remote <branch>
+```
+
+Run this command to pull and merge your current branch from master. You will need to resolve any merge conflicts. Typically, typing ":q" then "enter" is enough. Otherwise, you will need to find the conflict in the mentioned file and choose which code to implement. If this happens, please contact Jetgorilla on discord
+
+```
+git pull origin master
+```
+
+Run this command to fork and create a new branch
+
+```
+git checkout -b <branch>
+```
+
+Run this command to navigate back to specified branch
+
+```
+git checkout <branch>
+```
 
 ## Config Files, Updating, and Running
 
@@ -90,7 +126,8 @@ Rest api reference for TES. You may either make the GET, POST, PUT, or DELETE re
 
 ### GET Routes
 
-/loginUser
+#### /loginUser
+
 Returns `titan_key` token used for protected routes and authentication. Also stores token in web browser as cookie.
 
 ```
@@ -100,43 +137,43 @@ Api.loginUser({
 })
 ```
 
-/getUser?u=<user_id>
+#### /getUser?u=<user_id>
 
 ```
 Api.getUser(id)
 ```
 
-/getAllUsers
+#### /getAllUsers
 
 ```
 Api.getAllUsers()
 ```
 
-/getAllTeams
+#### /getAllTeams
 
 ```
 Api.getAllTeams()
 ```
 
-/getProfileVideos
+#### /getProfileVideos
 
 ```
 Api.getProfileVideos()
 ```
 
-/getSlayersGuild
+#### /getSlayersGuild
 
 ```
 Api.getSlayersGuild()
 ```
 
-/getIconsList?index=<index>&size=<size>
+#### /getIconsList?index=<index>&size=<size>
 
 ```
 Api.requestProfileIconList(index, size)
 ```
 
-/s/validateToken
+#### /s/validateToken
 
 ```
 Api.validateToken()
@@ -144,7 +181,7 @@ Api.validateToken()
 
 ### POST Routes
 
-/api/createDraft
+#### /api/createDraft
 
 ```
 Api.createTitanDraft({
@@ -156,7 +193,7 @@ Api.createTitanDraft({
 })
 ```
 
-/createUser
+#### /createUser
 
 ```
 Api.createUser({
@@ -167,7 +204,7 @@ Api.createUser({
 })
 ```
 
-/compareResetKey?key=<key>
+#### /compareResetKey?key=<key>
 
 ```
 Api.compareResetKey({
@@ -178,13 +215,13 @@ Api.compareResetKey({
 
 ### PUT Routes
 
-/updateSlayersGuild
+#### /updateSlayersGuild
 
 ```
 Api.updateSlayersGuild()
 ```
 
-/s/updateSelf
+#### /s/updateSelf
 
 ```
 Api.updateSelf(obj)
@@ -192,7 +229,7 @@ Api.updateSelf(obj)
 
 ### DELETE Routes
 
-/loginUser
+#### /loginUser
 
 ```
 Api.loginUser({
@@ -205,6 +242,63 @@ Api.loginUser({
 ├── titan_draft ('titan draft' folder. serves files from backend after connecting to port 7001 and connecting via websocket)
   └── * Needs Documentation *
 ```
+
+## Some basic React Documentation
+
+If you haven't worked with React before and have only worked with html, css, and maybe some vanilla js or jquery, hopefully this will help you. A simple React component will look something like this:
+
+```javascript
+import React from "react";
+import { connect } from "react-redux";
+import "./example.css";
+
+import Api from "../../Api";
+
+class Example extends React.Component {
+  // An example of a function that you can use inside or outside of your JSX (optional but extremely useful)
+  barkingFunction() {
+    console.log("I'm a function that prints to the browser console");
+  }
+
+  // This function is really important since this component will not render anything without it
+  render() {
+    // Every time this component is rendered it will run barkFunction()
+    this.barkFunction(); // Equivalent of saying 'Example.barkFunction()'
+    return (
+      <div className={"example"}>
+        <h1>Hello World!</h1>
+        <button
+          onClick={async () => {
+            const result = await Api.loginUser({
+              username: "username",
+              password: "password"
+            });
+            console.log(result);
+          }}
+        >
+          Button that logs in a user
+        </button>
+      </div>
+    );
+  }
+}
+
+export default connect()(Example);
+```
+
+Components can be shared across the site by importing from their specific file like so:
+
+```javascript
+import Example from "<path_to_file>"
+
+...
+
+<div>
+  <Example />
+</div>
+```
+
+The important takeaway here is the use of the render function within the Example class and the use of imports to include code form other files. There's a ton more to this so I will be adding more documentation when I can but hopefully this makes some sense so far
 
 ## Setting Up the Database
 
