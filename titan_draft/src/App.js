@@ -4,44 +4,45 @@ import ReactModal from "react-awesome-modal";
 import "./intro_modal.css";
 const emitters = require("./emitters");
 
-const preloadAssets = true;
-
 const config = require("../../server/config");
+const gameVersion = require("../../game_version");
 const server = config.production
   ? "https://titan-esports.org:7001"
   : "http://localhost:7001";
 
 const lobby_video = require("./videos/c-o-animated-lunarrevel-2014.mp4");
-const _champion_data = preloadAssets ? require("../champion_data") : null;
 
-const ASSETS = preloadAssets
-  ? Object.assign(
-      {},
-      Object.values(_champion_data).map(el => {
-        return {
-          id: el.id,
-          suspended: el.suspended,
-          name: el.name,
-          loadingImg: el.loadingImg
-            ? require(`../../dragontail-9.24.2/img` +
-                el.loadingImg.split("/img")[1])
-            : null,
-          splashImg: el.splashImg
-            ? require(`../../dragontail-9.24.2/img` +
-                el.splashImg.split("/img")[1])
-            : null,
-          tileImg: el.tileImg
-            ? require(`../../dragontail-9.24.2/img` +
-                el.tileImg.split("/img")[1])
-            : null,
-          pickAudio: require("../../audio/champion_audio" +
-            el.pickAudio.split("/champion_audio")[1]),
-          banAudio: require("../../audio/champion_audio" +
-            el.banAudio.split("/champion_audio")[1])
-        };
-      })
-    )
-  : null;
+class VS extends React.Component {
+  render() {
+    return (
+      <div className={"vs"}>
+        <div className={"body"}>
+          <table>
+            <tbody>
+              <tr>
+                <td align={"center"}>
+                  <div className={"blue-img"}>
+                    <img src={this.props.t1_logo} />
+                  </div>
+                </td>
+                <td align={"center"}>
+                  <div className={"vs-img"}>
+                    <img src={require("./img/vs.png")} />
+                  </div>
+                </td>
+                <td align={"center"}>
+                  <div className={"red-img"}>
+                    <img src={this.props.t2_logo} />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    );
+  }
+}
 
 export default class App extends React.Component {
   state = {
@@ -97,9 +98,9 @@ export default class App extends React.Component {
   actions = {
     setModal: modal => this.setState({ modal }),
     getChampionData: async () => {
-      const championData = preloadAssets
-        ? ASSETS
-        : await fetch(`${server}/api/getChampionData`).then(res => res.json());
+      const championData = await fetch(`${server}/api/getChampionData`).then(
+        res => res.json()
+      );
       this.setState({ championData });
     },
     submitButton: index => {
@@ -157,17 +158,12 @@ export default class App extends React.Component {
             />
             {this.state.championData ? (
               <Components.Modal
-                ASSETS={ASSETS}
                 state={this.state}
                 actions={this.actions}
                 emitters={emitters}
               />
             ) : null}
-            <Components.Window
-              ASSETS={ASSETS}
-              state={this.state}
-              actions={this.actions}
-            />
+            <Components.Window state={this.state} actions={this.actions} />
           </div>
         ) : null}
         {!(this.state.blue_ready && this.state.red_ready) ? (
@@ -182,39 +178,45 @@ export default class App extends React.Component {
             }}
           >
             <video src={lobby_video} preload muted loop autoPlay />
-            <ReactModal
-              visible={!this.state.blue_ready || !this.state.red_ready}
-              width={"50%"}
-              height={"50%"}
-              effect="fadeInUp"
-            >
-              <div className={"intro-modal"}>
-                <div className={"body"}>
-                  {this.state.error ? (
-                    <h1 style={{ color: "red" }}>Lobby not found</h1>
-                  ) : (
-                    <h1>Waiting for Ready Check</h1>
-                  )}
-                  {(this.state.blue_captain && !this.state.blue_ready) ||
-                  (this.state.red_captain && !this.state.red_ready) ? (
-                    <button
-                      onClick={() =>
-                        this.state.blue_captain
-                          ? emitters.emit_blue_ready()
-                          : emitters.emit_red_ready()
-                      }
-                      style={{
-                        backgroundColor: this.state.blue_captain
-                          ? "blue"
-                          : "red"
-                      }}
-                    >
-                      {this.state.blue_captain ? "Blue Ready" : "Red Ready"}
-                    </button>
-                  ) : null}
-                </div>
+            <div className={"intro-modal"}>
+              <div className={"blue-ready-header"}>
+                <h1>Ready</h1>
               </div>
-            </ReactModal>
+              <div className={"red-ready-header"}>
+                <h1>Ready</h1>
+              </div>
+              <div className={"body"}>
+                {this.state.error ? (
+                  <h1 style={{ color: "red" }}>Lobby not found</h1>
+                ) : (
+                  <VS
+                    t1_logo={this.state.t1_logo}
+                    t2_logo={this.state.t2_logo}
+                  />
+                )}
+                {(this.state.blue_captain && !this.state.blue_ready) ||
+                (this.state.red_captain && !this.state.red_ready) ? (
+                  <div style={{ position: "relative", height: "100vh" }}>
+                    <div className={"button"}>
+                      <button
+                        onClick={() =>
+                          this.state.blue_captain
+                            ? emitters.emit_blue_ready()
+                            : emitters.emit_red_ready()
+                        }
+                        style={{
+                          backgroundColor: this.state.blue_captain
+                            ? "blue"
+                            : "red"
+                        }}
+                      >
+                        {this.state.blue_captain ? "Blue Ready" : "Red Ready"}
+                      </button>
+                    </div>
+                  </div>
+                ) : null}
+              </div>
+            </div>
           </div>
         ) : null}
         {this.state.finished ? (

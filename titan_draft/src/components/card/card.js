@@ -2,8 +2,6 @@ import React from "react";
 import Components from "../../components";
 import "./card.css";
 
-const config = require("../../../config");
-
 class Card extends React.Component {
   state = {
     animationName: "none",

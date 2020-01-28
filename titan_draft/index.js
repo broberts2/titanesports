@@ -2,7 +2,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const express = require("express");
 const app = express();
-const config = require("./config");
+const gameVersion = require("../game_version");
 const serverFig = require("../server/config");
 const cors = require("cors");
 const routes = require("./routes");
@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, "build")));
 app.use(express.static(path.join(__dirname, "../champion-videos")));
 app.use(express.static(path.join(__dirname, "../logos")));
 app.use(express.static(path.join(__dirname, "../audio")));
-app.use(express.static(`../dragontail-9.24.2`));
+app.use(express.static(`../dragontail-${gameVersion}`));
 
 app.use(cors({ origin: true, credentials: true }));
 
@@ -43,6 +43,6 @@ if (serverFig.production) {
 
 const io = require("socket.io")(server);
 
-server.listen(config.port);
+server.listen(7001);
 
 socket(io);

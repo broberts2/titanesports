@@ -7,6 +7,7 @@ import "./roster_editor.css";
 import Api from "../../Api";
 
 const config = require("../../config");
+const currentVersion = require("../game_version");
 
 class RoleSelect extends React.Component {
   state = {
@@ -283,7 +284,7 @@ class Transfer extends React.Component {
                           <div className={"img"}>
                             <img
                               alt={""}
-                              src={`${config.serverPath}/${config.currentVersion}/img/profileicon/${el.iconId}`}
+                              src={`${config.serverPath}/${currentVersion}/img/profileicon/${el.iconId}`}
                             />
                             <div className={"mini-img"}>
                               <img
@@ -420,7 +421,7 @@ class Add extends React.Component {
                           <div className={"img"}>
                             <img
                               alt={""}
-                              src={`${config.serverPath}/${config.currentVersion}/img/profileicon/${el.iconId}`}
+                              src={`${config.serverPath}/${currentVersion}/img/profileicon/${el.iconId}`}
                             />
                           </div>
                         </td>

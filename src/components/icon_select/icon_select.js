@@ -5,6 +5,7 @@ import "./icon_select.css";
 import Api from "../../Api";
 
 const config = require("../../config");
+const currentVersion = require("../game_version");
 
 class IconSelect extends React.Component {
   state = {
@@ -59,7 +60,7 @@ class IconSelect extends React.Component {
                 });
               }}
               alt={""}
-              src={`${config.serverPath}/${config.currentVersion}/img/profileicon/${el}`}
+              src={`${config.serverPath}/${currentVersion}/img/profileicon/${el}`}
               style={
                 sel
                   ? sel === el
