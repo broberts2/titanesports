@@ -5,7 +5,7 @@ import "./icon_select.css";
 import Api from "../../Api";
 
 const config = require("../../config");
-const currentVersion = require("../game_version");
+const currentVersion = require("../../../game_version");
 
 class IconSelect extends React.Component {
   state = {

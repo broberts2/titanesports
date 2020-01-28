@@ -7,7 +7,7 @@ import "./roster_editor.css";
 import Api from "../../Api";
 
 const config = require("../../config");
-const currentVersion = require("../game_version");
+const currentVersion = require("../../../game_version");
 
 class RoleSelect extends React.Component {
   state = {
