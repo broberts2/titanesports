@@ -11,6 +11,8 @@ import Api from "../../Api";
 
 const config = require("../../config");
 
+const currentVersion = require("../../../game_version");
+
 class ChangePW extends React.Component {
   state = {
     oldPw: "",

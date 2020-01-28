@@ -25,7 +25,7 @@
     "dotenv": "6.2.0",
     "dotenv-expand": "5.1.0",
     "ejs": "^2.7.4",
-    "eslint": "^6.1.0",
+    "eslint": "^6.8.0",
     "eslint-config-react-app": "^5.0.2",
     "eslint-loader": "3.0.2",
     "eslint-plugin-flowtype": "3.13.0",
@@ -84,9 +84,9 @@
   },
   "scripts": {
     "push": "git add .; git commit -am \"auto\"; git push origin master",
-    "merge": "git pull origin master; npm run build; cd /titanesports/titan_draft; npm run build",
+    "merge": "git pull origin master; cd /titanesports/titan_draft; npm run build",
     "start": "node scripts/start.js",
-    "build": "rm -rf /var/www/html; mkdir /var/www/html; rm -rf build; node scripts/build.js; mv -v /titanesports/build/* /var/www/html",
+    "move": "rm -rf /var/www/html; mkdir /var/www/html; cp /titanesports/src/* /var/www/html",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
