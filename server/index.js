@@ -18,6 +18,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(`../dragontail-${currentVersion}`));
 app.use(express.static("../profile_videos"));
+app.use(express.static("./comps/build"));
 
 app.use(cors({ origin: true, credentials: true }));
 security.use(cors({ origin: true, credentials: true }));
@@ -26,6 +27,10 @@ app.use("/s", security);
 security.use(protected);
 
 routes(app, security);
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/comps/build/index.html"));
+});
 
 app
   .use(express.static(path.join(__dirname, "public")))
