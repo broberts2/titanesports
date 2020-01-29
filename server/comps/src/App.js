@@ -2,12 +2,12 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import "./app.css";
 
-import Components from "./comps/components";
+import components from "./comps/components";
 
 export default function App() {
   return (
     <Router>
-      <Route exact path="/video_loop" render={() => <Components.VideoLoop />} />
+      <Route path="/:id" render={props => components({ ...props })} />
     </Router>
   );
 }
