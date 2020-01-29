@@ -84,10 +84,10 @@
   },
   "scripts": {
     "push": "git add .; git commit -am \"auto\"; git push origin master",
-    "merge": "git pull origin master; cd /titanesports/titan_draft; npm run build",
     "start": "node scripts/start.js",
-    "move": "rm -rf /var/www/html; mkdir /var/www/html; cp /titanesports/src/* /var/www/html",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "patch-update": "sh update.sh",
+    "save-src": "rm -rf src-dev; cp /var/www/html /titanesports/src-dev"
   },
   "eslintConfig": {
     "extends": "react-app"
