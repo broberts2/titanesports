@@ -1106,6 +1106,17 @@ module.exports = {
     pickAudio: `${server}/champion_audio/senna/pick/0.ogg`,
     banAudio: `${server}/champion_audio/senna/ban/0.ogg`
   },
+  sett: {
+    id: index++,
+    suspended: false,
+    name: "Sett",
+    loadingImg: `${server}/img/champion/loading/Sett_0.jpg`,
+    splashImg: `${server}/img/champion/splash/Sett_0.jpg`,
+    tileImg: `${server}/img/champion/tiles/Sett_0.jpg`,
+    vid: `${server}/champion_videos/c-o-animated-sett.mp4`,
+    pickAudio: `${server}/champion_audio/sett/pick/0.mp3`,
+    banAudio: `${server}/champion_audio/sett/ban/0.mp3`
+  },
   shaco: {
     id: index++,
     suspended: false,
