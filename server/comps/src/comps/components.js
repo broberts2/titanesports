@@ -1,6 +1,6 @@
 import React from "react";
 import VideoLoop from "./video_loop/video_loop";
-import VideoButton from "./video_loop/video_loop";
+import VideoButton from "./video_button/video_button";
 
 export default arg => {
   switch (arg.match.params.id) {
