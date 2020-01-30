@@ -1,7 +1,7 @@
 import React from "react";
 import { VideoButton } from "arclight-react";
 
-export default function Loop(props) {
+export default function VButton(props) {
   return (
     <VideoButton
       style={"a"}
