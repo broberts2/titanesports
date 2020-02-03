@@ -87,7 +87,7 @@
     "start": "node scripts/start.js",
     "test": "node scripts/test.js",
     "patch-update": "sh update.sh",
-    "save-src": "rm -rf src-dev; cp /var/www/html /titanesports/src-dev"
+    "save-src": "rm -rf src; cp -r /var/www/html src; npm run push"
   },
   "eslintConfig": {
     "extends": "react-app"
