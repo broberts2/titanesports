@@ -10,6 +10,7 @@ body {
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none; /* Non-prefixed version, currently
                                 supported by Chrome, Opera and Firefox */
+  color: white;
 }
 h1 {
   font-size: 42px;

@@ -8,7 +8,11 @@ export default arg => {
       return <VideoLoop />;
     case "VideoButton1":
       return (
-        <VideoButton src={require("./video_button/videos/abstract_blue.mp4")} />
+        <div style={{ width: "500px", height: "400px" }}>
+          <VideoButton
+            src={require("./video_button/videos/abstract_blue.mp4")}
+          />
+        </div>
       );
   }
 };
