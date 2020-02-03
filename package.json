@@ -83,7 +83,8 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "push": "rm -rf src; cp -r /var/www/html src; git add .; git commit -am \"auto\"; git push origin master",
+    "server-push": "rm -rf src; cp -r /var/www/html src; git add .; git commit -am \"auto\"; git push origin master",
+    "local-push": "git add .; git commit -am \"auto\"; git push origin master",
     "pull": "git pull origin master",
     "patch-update": "sh update.sh",
     "restart": "sh restart.centos7.sh",

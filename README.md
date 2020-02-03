@@ -52,10 +52,16 @@ git checkout <branch>
 
 ### Project Node Commands (works for both develepment and production)
 
-Run this command to commit to git with 'auto' comment on master branch. **Note: Requires Github credentials.**
+Run this command to commit to git with 'auto' comment on master branch from local host. **Note: Requires Github credentials.**
 
 ```
-npm run push
+npm run local-push
+```
+
+Run this command to commit to git with 'auto' comment on master branch from web server. **Note: Requires Github credentials.**
+
+```
+npm run server-push
 ```
 
 Run this command to merge with master branch. **Note: :q to exit vim.**
