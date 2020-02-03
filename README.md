@@ -1,4 +1,4 @@
-# Titan eSports
+development# Titan eSports
 
 TES web/server documentation.
 
@@ -11,6 +11,8 @@ Install Node (npm in included in the default distribution) here: https://nodejs.
 Install Git here: https://git-scm.com/downloads.
 
 ### Git Commands
+
+#### Common Commands
 
 Run this command to add new files to your pending commit.
 
@@ -46,6 +48,38 @@ Run this command to navigate back to specified branch.
 
 ```
 git checkout <branch>
+```
+
+### Project Node Commands (works for both develepment and production)
+
+Run this command to commit to git with 'auto' comment on master branch. **Note: Requires Github credentials.**
+
+```
+npm run push
+```
+
+Run this command to merge with master branch. **Note: :q to exit vim.**
+
+```
+npm run pull
+```
+
+Run this command to prompt patch number and automatically update dragontail.
+
+```
+npm run patch-update
+```
+
+Run this command to restart apache, mongodb, back-end, and titan-draft servers.
+
+```
+npm run restart
+```
+
+Run this command to overwrite front-end files with src.
+
+```
+npm run update-src
 ```
 
 ## Config Files, Updating, and Running

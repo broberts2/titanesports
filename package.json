@@ -83,11 +83,11 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "push": "git add .; git commit -am \"auto\"; git push origin master",
-    "start": "node scripts/start.js",
-    "test": "node scripts/test.js",
+    "push": "rm -rf src; cp -r /var/www/html src; git add .; git commit -am \"auto\"; git push origin master",
+    "pull": "git pull origin master",
     "patch-update": "sh update.sh",
-    "save-src": "rm -rf src; cp -r /var/www/html src; npm run push"
+    "restart": "sh restart.centos7.sh",
+    "udpate-src": "rm -rf /var/www/html; cp -r src /var/www/html"
   },
   "eslintConfig": {
     "extends": "react-app"
