@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Staff Roster - Titan eSports | Amateur League of Legends Organization</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="global.css">
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script src="https://kit.fontawesome.com/16b175d215.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Amarante|Roboto|Staatliches&display=swap" rel="stylesheet">
+	<link rel="icon" href="favicon.png"/>
+    <meta name="description" content="Titan eSports Staff Roster">
+</head>
+<body>
+
+
+<!-- Mobile Menu -->
+<div class="d-block d-md-none d-lg-none d-xl-none">
+  <div id="main" align="left">
+    <button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+  </div>
+</div>
+<div id="mySidebar" class="sidebar">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#demo1" data-toggle="collapse">About</a>
+    <div id="demo1" class="collapse">
+      <a class="mmenuitem" href="staff-roster.html">Staff Roster</a>
+      <a class="mmenuitem" href="rules.html">Rules</a>
+      <a class="mmenuitem" href="new-member.html">New Members</a>
+      <a class="mmenuitem" href="https://forms.gle/xMmLSCwRgimdkby3A" target="_blank">Apply For Staff Position</a>
+      <a class="mmenuitem" href="https://forms.gle/pERKk2QP8vDv4b1i9" target="_blank">Apply For Shoutcasting Position</a>
+      <hr>
+    </div>
+  <a href="#demo2" data-toggle="collapse">Players</a>
+    <div id="demo2" class="collapse">
+      <a class="mmenuitem" href="#">Sign In</a>
+      <a class="mmenuitem" href="#">Statistics</a>
+      <a class="mmenuitem" href="https://forms.gle/WcdiyoqgsB7FYTWD7" target="_blank">Appeal Ban Form</a>
+      <hr>
+    </div>
+  <a href="#demo3" data-toggle="collapse">Podcasts</a>
+    <div id="demo3" class="collapse">
+      <a class="mmenuitem" href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank">By The Hearthside</a>
+      <hr>
+    </div>
+  <a href="#demo4" data-toggle="collapse">News & Events</a>
+    <div id="demo4" class="collapse">
+      <a class="mmenuitem" href="articles.html">News Articles</a>
+      <a class="mmenuitem" href="schedule.html">Season Schedule</a>
+      <a class="mmenuitem" href="events.html">Calendar of Events</a>
+      <hr>
+    </div>
+  <a href="#demo5" data-toggle="collapse">Contact</a>
+    <div id="demo5" class="collapse">
+      <a class="mmenuitem" href="contact-us.html">General Contact Us</a>
+      <a class="mmenuitem" href="https://forms.gle/6PDJ4r8Q9mAAExSc6" target="_blank">Player Sign Up Application</a>
+      <a class="mmenuitem" href="https://forms.gle/DKUjoU8MRQ75BNC4A" target="_blank">Team Sign Up Application</a>
+      <a class="mmenuitem" href="https://forms.gle/HULeV8TK82KB6Mn69" target="_blank">Complaint/Report Player Form</a>
+      <a class="mmenuitem" href="https://forms.gle/WcdiyoqgsB7FYTWD7" target="_blank">Appeal Ban Form</a>
+      <a class="mmenuitem" href="roster-change.html">Roster Change Form</a>
+    </div>
+</div>
+
+
+<div class="topsection">
+  <div class="header">
+    <div class="container">
+      <div class="row" align="center">
+        <div class="col-xl-2">
+          <a href="index.html"><span class="title">Titan eSports</span></a>
+        </div>
+        <div class="col-lg-7 d-none d-sm-none d-md-block">
+          <div class="dropdown menuitem">About
+            <div class="dropdown-content">
+                <a href="staff-roster.html">Staff Roster</a>
+                <a href="rules.html">Rules</a>
+                <a href="new-member.html">New Members</a>
+                <a href="https://forms.gle/xMmLSCwRgimdkby3A" target="_blank">Apply For Staff Position</a>
+                <a href="https://forms.gle/pERKk2QP8vDv4b1i9" target="_blank">Apply For Shoutcasting Position</a>
+            </div>
+          </div>
+          <div class="dropdown menuitem">Players
+            <div class="dropdown-content">
+                <a href="#">Sign In</a>
+                <a href="#">Statistics</a>
+                <a href="https://forms.gle/WcdiyoqgsB7FYTWD7" target="_blank">Appeal Ban Form</a>
+            </div>
+          </div>
+          <div class="dropdown menuitem">Podcasts
+            <div class="dropdown-content">
+                <a href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank">By The Hearthside</a>
+            </div>
+          </div>
+          <div class="dropdown menuitem">News & Events
+            <div class="dropdown-content">
+                <a href="articles.html">News Articles</a>
+                <a href="schedule.html">Season Schedule</a>
+                <a href="events.html">Calendar of Events</a>
+            </div>
+          </div>
+          <div class="dropdown menuitem">Contact
+            <div class="dropdown-content">
+                <a href="contact-us.html">General Contact Us</a>
+                <a href="https://forms.gle/6PDJ4r8Q9mAAExSc6" target="_blank">Player Sign Up Application</a>
+                <a href="https://forms.gle/DKUjoU8MRQ75BNC4A" target="_blank">Team Sign Up Application</a>
+                <a href="https://forms.gle/HULeV8TK82KB6Mn69" target="_blank">Complaint/Report Player Form</a>
+                <a href="https://forms.gle/WcdiyoqgsB7FYTWD7" target="_blank">Appeal Ban Form</a>
+                <a href="roster-change.html">Roster Change Form</a>
+            </div>
+          </div>
+          </div>
+          <div class="col-lg-3">
+          <div class="row">
+            <div class="col-2">
+              <div class="social"><a href="https://www.twitch.tv/titanesportz" target="_blank"><i class="fab fa-twitch"></i></a></div>
+            </div>
+            <div class="col-2">
+              <div class="social"><a href="https://discord.gg/9DPxcfp" target="_blank"><i class="fab fa-discord"></i></a></div>
+            </div>
+            <div class="col-2">
+              <div class="social"><a href="https://www.reddit.com/user/Titan_eSports" target="_blank"><i class="fab fa-reddit-square"></i></a></div>
+            </div>
+            <div class="col-2">
+              <div class="social"><a href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank"><i class="fab fa-youtube"></i></a></div>
+            </div>
+            <div class="col-2">
+              <div class="social"><a href="contact.html"><i class="fab fa-instagram"></i></a></div>
+            </div>
+            <div class="col-2">
+              <div class="social"><a href="contact.html"><i class="fab fa-facebook-square"></i></a></div>
+            </div>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div align="center"><img data-aos="zoom-in" class="logoheader" src="teslogo.png"></div>
+</div>
+<div class="transitionblk">&nbsp;</div>
+
+
+
+<!--- Page Content Here --->
+<div style="background-color: #000; padding: 20px 0px;">
+
+<div class="container PgContent" align="center">
+
+	<div style="padding: 30px 0px;"><h2>TES Administrators</h2></div>
+	<!-- Admins -->
+	<div class="row justify-content-center">
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/phort.png" alt="Avatar" style="">
+			      <h3>Phortwenty</h3>
+			      <h4>Admin</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Phortwenty</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Admin of Operations
+					<br><span class="mottitle">Main Job in TES:</span> Plan and Implement Projects, Coordinate Operations
+					<br><span class="mottitle">Favorite Champion:</span> Jarvan IV
+					<br><span class="mottitle">Favorite Lane:</span> Jungle
+					<br><span class="mottitle">Favorite Champion Skin:</span> Zombie Brand
+					<br><span class="mottitle">Favorite Game Outside League:</span> WoW
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> Meteorology enthusiast, Photoshop, coding
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/major.png" alt="Avatar" style="">
+			      <h3>Major</h3>
+			      <h4>Admin</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Major</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Administration
+					<br><span class="mottitle">Main Job in TES:</span> Oversee all leagues and day to day operations in the discord
+					<br><span class="mottitle">Favorite Champion:</span> Orianna
+					<br><span class="mottitle">Favorite Lane:</span> Mid
+					<br><span class="mottitle">Favorite Champion Skin:</span> Project Irella Prestige
+					<br><span class="mottitle">Favorite Game Outside League:</span> Mass Effect / Witcher 3 / World of Warcraft
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> I run a softball team and enjoy football
+					<br><span class="mottitle">Additional Comments:</span> I am  still not getting paid for this
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+	</div>
+
+	<div style="padding: 30px 0px;"><h2>TES Directors</h2></div>
+	<!-- Directors -->
+	<div class="row justify-content-center" >
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/braer.png" alt="Avatar" style="">
+			      <h3>Braer</h3>
+			      <h4>Olympian Director</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Braer</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Olympian League Director
+					<br><span class="mottitle">Main Job in TES:</span> THE LAW
+					<br><span class="mottitle">Favorite Champion:</span> Kled
+					<br><span class="mottitle">Favorite Lane:</span> None
+					<br><span class="mottitle">Favorite Champion Skin:</span> Corporate Mundo
+					<br><span class="mottitle">Favorite Game Outside League:</span> Halo: CE
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> I have sooooo many hobbies, including doing things.
+					<br><span class="mottitle">Additional Comments:</span> DO YOU HEAR THE VOICES TO?!??!?!!?
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/bcancer.png" alt="Avatar" style="">
+			      <h3>BasicallyCancer</h3>
+			      <h4>Gladiator Director</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">BasicallyCancer</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Gladiator League Director
+					<br><span class="mottitle">Main Job in TES:</span> Ensure smooth operation of Gladiator League. Sub and roster approvals and issue resolution.
+					<br><span class="mottitle">Favorite Champion:</span> Thresh
+					<br><span class="mottitle">Favorite Lane:</span> Mid
+					<br><span class="mottitle">Favorite Champion Skin:</span> Dark Star Thresh
+					<br><span class="mottitle">Favorite Game Outside League:</span> Skyrim
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> Ice hockey, cars, sleeping
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/khyroe.png" alt="Avatar" style="">
+			      <h3>Khyroe</h3>
+			      <h4>PIT Director</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Khyroe</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Director of the Player Integrity Team
+					<br><span class="mottitle">Main Job in TES:</span> Dominator/Smurf detection
+					<br><span class="mottitle">Favorite Champion:</span> Blitzcrank
+					<br><span class="mottitle">Favorite Lane:</span> Bottom
+					<br><span class="mottitle">Favorite Champion Skin:</span> DJ Sona
+					<br><span class="mottitle">Favorite Game Outside League:</span> World of Warcraft/FF14
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> Reading, swimming
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+	</div>
+	<div class="row justify-content-center" style="margin-top: 30px;">
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/qurkii.png" alt="Avatar" style="">
+			      <h3>Qurkii</h3>
+			      <h4>Media Design Director</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Qurkii</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Media Design Director
+					<br><span class="mottitle">Main Job in TES:</span> Handling Website Content, Social Media, and most digital marketing
+					<br><span class="mottitle">Favorite Champion:</span> Morgana
+					<br><span class="mottitle">Favorite Lane:</span> Support - but learning top
+					<br><span class="mottitle">Favorite Champion Skin:</span> Boneclaw Shyvana
+					<br><span class="mottitle">Favorite Game Outside League:</span> Spyro or Diablo 2&3
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> I play softball, DnD, read a lot (actually starting up a book club), and garden.
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/jet.png" alt="Avatar" style="">
+			      <h3>Jetgorilla</h3>
+			      <h4>Programming Project Director</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Jetgorilla</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Programming Project Director
+					<br><span class="mottitle">Main Job in TES:</span> Lead developer for TES website, applications/programs, and future projects
+					<br><span class="mottitle">Favorite Champion:</span> Azir
+					<br><span class="mottitle">Favorite Lane:</span> Bot Lane
+					<br><span class="mottitle">Favorite Champion Skin:</span> Warring Kingdoms Azir
+					<br><span class="mottitle">Favorite Game Outside League:</span> RPG's (Divinity Original Sin 2, Pillars of Eternity, Witcher 3)
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> Basketball - Rock Climbing (poorly)
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div style="padding: 30px 0px;"><h2>TES Developers</h2></div>
+	<!-- Developers -->
+	<div class="row justify-content-center" >
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/candle.png" alt="Avatar" style="">
+			      <h3>Candle King</h3>
+			      <h4>Developer</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Candle King</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Roster Staff/Developer
+					<br><span class="mottitle">Main Job in TES:</span> Audio and Music Development
+					<br><span class="mottitle">Favorite Champion:</span> Ahri
+					<br><span class="mottitle">Favorite Lane:</span> Mid
+					<br><span class="mottitle">Favorite Champion Skin:</span> Frostfire Annie
+					<br><span class="mottitle">Favorite Game Outside League:</span> Apex Legends
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> Music Composition and Production, Computer Building, Friendship Growing, Anime Watching
+					<br><span class="mottitle">Additional Comments:</span> I make music for Titan I think...If you need music or just want to check out my personal stuff
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/kirbz.png" alt="Avatar" style="">
+			      <h3>Kirbeeez</h3>
+			      <h4>Developer</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Kirbeeez</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Caster
+					<br><span class="mottitle">Main Job in TES:</span> Caster/Content Creation
+					<br><span class="mottitle">Favorite Champion:</span> Cassiopeia
+					<br><span class="mottitle">Favorite Lane:</span> Mid
+					<br><span class="mottitle">Favorite Champion Skin:</span> Coven Camille
+					<br><span class="mottitle">Favorite Game Outside League:</span> Starcraft 2
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> Spending time with my son :)
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+	</div>
+
+	<div style="padding: 30px 0px;"><h2>TES Roster Staff</h2></div>
+	<!-- Roster Staff -->
+	<div class="row justify-content-center" >
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/aoife.png" alt="Avatar" style="">
+			      <h3>Aoife of Shadows</h3>
+			      <h4>Roster Staff</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Aoife of Shadows</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Roster Staff
+					<br><span class="mottitle">Main Job in TES:</span> Roster of the Olympian League
+					<br><span class="mottitle">Favorite Champion:</span> Soraka
+					<br><span class="mottitle">Favorite Lane:</span> Support
+					<br><span class="mottitle">Favorite Champion Skin:</span> Elderwood Ahri or Nightbringer Soraka
+					<br><span class="mottitle">Favorite Game Outside League:</span> Pokemon
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> Soccer, rodeo, reading, martial arts, Anime, manga
+					<br><span class="mottitle">Additional Comments:</span> Still working my way through college, you are always free to message me for information or advice just know I will only answer outside of classes.
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/exodus.png" alt="Avatar" style="">
+			      <h3>FNF Exodus</h3>
+			      <h4>Shoutcaster</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">FNF Exodus</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Shoutcaster
+					<br><span class="mottitle">Main Job in TES:</span> Shoutcasting
+					<br><span class="mottitle">Favorite Champion:</span> Shen
+					<br><span class="mottitle">Favorite Lane:</span> Bot lane, top is lonely
+					<br><span class="mottitle">Favorite Champion Skin:</span> High Noon Ashe
+					<br><span class="mottitle">Favorite Game Outside League:</span> Auto Chess, Rocket League
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> I'm a big musician, so playing and creating music is a pretty big part of my life. I also enjoy making excel spreadsheets and analyzing stats for fun. Yes. Excel. fight me.
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/wyvern.png" alt="Avatar" style="">
+			      <h3>MasterWyvern</h3>
+			      <h4>Moderator/Shoutcaster</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">MasterWyvern</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Moderator/Shoutcaster
+					<br><span class="mottitle">Main Job in TES:</span> Channel moderation, Shoutcasting
+					<br><span class="mottitle">Favorite Champion:</span> Kindred
+					<br><span class="mottitle">Favorite Lane:</span> JG
+					<br><span class="mottitle">Favorite Champion Skin:</span> Shadowfire Kindred
+					<br><span class="mottitle">Favorite Game Outside League:</span> ARK, Pokemon, or Minecraft
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> Soccer, memes, forgetting what i walked into a room for
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row justify-content-center" style="margin-top: 30px;">
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/sammy.png" alt="Avatar" style="">
+			      <h3>Sammy2Slap</h3>
+			      <h4>Roster Staff Manager</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Sammy2Slap</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Roster Staff Manager
+					<br><span class="mottitle">Main Job in TES:</span> Roster staff Gladiator League
+					<br><span class="mottitle">Favorite Champion:</span> Nautilus
+					<br><span class="mottitle">Favorite Lane:</span> Support <3
+					<br><span class="mottitle">Favorite Champion Skin:</span> Devil Teemo
+					<br><span class="mottitle">Favorite Game Outside League:</span> Golf
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> Golf, League of Legends, Escape Rooms, dying
+					<br><span class="mottitle">Additional Comments:</span> I'm the best #paysammy
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/perfect.png" alt="Avatar" style="">
+			      <h3>PerfectBuild</h3>
+			      <h4>Roster Staff</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">PerfectBuild</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Roster Staff
+					<br><span class="mottitle">Main Job in TES:</span> Roster Staff
+					<br><span class="mottitle">Favorite Champion:</span> Ahri
+					<br><span class="mottitle">Favorite Lane:</span> Mid
+					<br><span class="mottitle">Favorite Champion Skin:</span> KD/A Ahri Prestige Edition
+					<br><span class="mottitle">Favorite Game Outside League:</span> Rainbow Six Siege
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> not really
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/noxian.png" alt="Avatar" style="">
+			      <h3>Noxian Exile</h3>
+			      <h4>Roster staff</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Noxian Exile</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> PIT Member
+					<br><span class="mottitle">Main Job in TES:</span> Player Intergrity
+					<br><span class="mottitle">Favorite Champion:</span> Riven
+					<br><span class="mottitle">Favorite Lane:</span> Mid
+					<br><span class="mottitle">Favorite Champion Skin:</span> Championship Riven 2012 Edition
+					<br><span class="mottitle">Favorite Game Outside League:</span> The Outer Worlds
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="row justify-content-center" style="margin-top: 30px;" >
+		<div class="col-lg-4">
+			<div class="flip-card">
+			  <div class="flip-card-inner">
+			    <div class="flip-card-front">
+			      <img src="mot/monkey.png" alt="Avatar" style="">
+			      <h3>Monkey With Guns</h3>
+			      <h4>Roster staff</h4>
+			    </div>
+			    <div class="flip-card-back">
+			      <h3 align="center">Monkey With Guns</h3>
+			    	<span class="mottitle">Title/Position in TES:</span> Roster staff
+					<br><span class="mottitle">Main Job in TES:</span> Player integrity check, roster/spreadsheet work
+					<br><span class="mottitle">Favorite Champion:</span> Karma/Lucian
+					<br><span class="mottitle">Favorite Lane:</span> Bottom
+					<br><span class="mottitle">Favorite Champion Skin:</span> Project Series
+					<br><span class="mottitle">Favorite Game Outside League:</span> Magic The Gathering
+					<br><span class="mottitle">Any Hobbies Outside Gaming?:</span> Anime and Video Editing
+					<br><span class="mottitle">Additional Comments:</span> Lets have a great season!
+			    </div>
+			  </div>
+			</div>
+		</div>
+
+</div>
+
+
+</div>
+<!--- End of Content--->
+
+
+<div style="background-color: #000; padding: 30px 0px;">
+	<div class="footer" style="margin-top: 30px;">
+		<div class="socialfooter container">
+			<div class="row" align="center" >
+				<div class="col-lg-4"><span class="title">Titan eSports</span></div>
+				<div class="col-lg-4 ftrtxt">Connect With Us</div>
+				<div class="col-lg-4">
+					<div class=" container"><div class="row">
+						<div class="col-2">
+							<div class="social"><a href="https://www.twitch.tv/titanesportz" target="_blank"><i class="fab fa-twitch"></i></a></div>
+						</div>
+						<div class="col-2">
+							<div class="social"><a href="https://discord.gg/9DPxcfp" target="_blank"><i class="fab fa-discord"></i></a></div>
+						</div>
+						<div class="col-2">
+							<div class="social"><a href="https://www.reddit.com/user/Titan_eSports" target="_blank"><i class="fab fa-reddit-square"></i></a></div>
+						</div>
+						<div class="col-2">
+							<div class="social"><a href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank"><i class="fab fa-youtube"></i></a></div>
+						</div>
+						<div class="col-2">
+							<div class="social"><a href="contact.html"><i class="fab fa-instagram"></i></a></div>
+						</div>
+						<div class="col-2">
+							<div class="social"><a href="contact.html"><i class="fab fa-facebook-square"></i></a></div>
+						</div>
+					</div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+/* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
+function openNav() {
+  document.getElementById("mySidebar").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+AOS.init();
+</script>
+
+</body>
+</html>
