@@ -179,12 +179,16 @@ export default class App extends React.Component {
           >
             <video src={lobby_video} preload muted loop autoPlay />
             <div className={"intro-modal"}>
-              <div className={"blue-ready-header"}>
-                <h1>Ready</h1>
-              </div>
-              <div className={"red-ready-header"}>
-                <h1>Ready</h1>
-              </div>
+              {this.state.blue_ready ? (
+                <div className={"blue-ready-header"}>
+                  <h1>Ready</h1>
+                </div>
+              ) : null}
+              {this.state.red_ready ? (
+                <div className={"red-ready-header"}>
+                  <h1>Ready</h1>
+                </div>
+              ) : null}
               <div className={"body"}>
                 {this.state.error ? (
                   <h1 style={{ color: "red" }}>Lobby not found</h1>
