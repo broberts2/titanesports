@@ -1,6 +1,6 @@
 # Titan eSports
 
-TES web/server documentation
+TES web/server documentation.
 
 ### Intalling Node.js and NPM
 
@@ -12,37 +12,37 @@ Install Git here: https://git-scm.com/downloads.
 
 ### Git Commands
 
-Run this command to add new files to your pending commit
+Run this command to add new files to your pending commit.
 
 ```
 git add .
 ```
 
-Run this command to add new files to your pending commit
+Run this command to add new files to your pending commit.
 
 ```
-git commit -m "<type in your commit note here>"
+git commit -m "<type in your commit note here. Can be anything.>"
 ```
 
-Run this command to push your commit to the specified branch
+Run this command to push your commit to the specified branch.
 
 ```
-git push remote <branch>
+git push origin <branch>
 ```
 
-Run this command to pull and merge your current branch from master. You will need to resolve any merge conflicts. Typically, typing ":q" then "enter" is enough. Otherwise, you will need to find the conflict in the mentioned file and choose which code to implement. If this happens, please contact Jetgorilla on discord
+Run this command to pull and merge your current branch from master. You will need to resolve any merge conflicts. Typically, typing ":q" then "enter" is enough. Otherwise, you will need to find the conflict in the mentioned file and choose which code to implement. If this happens, please contact Jetgorilla on discord.
 
 ```
 git pull origin master
 ```
 
-Run this command to fork and create a new branch
+Run this command to fork and create a new branch.
 
 ```
 git checkout -b <branch>
 ```
 
-Run this command to navigate back to specified branch
+Run this command to navigate back to specified branch.
 
 ```
 git checkout <branch>
@@ -82,7 +82,7 @@ module.exports = {
 };
 ```
 
-Now that you have project cloned, dependecies installed, and possess the proper configuration files, you may run `npm start` to spin up the front-end development server. The server will be running on port 3000 by default and may be accessed by navigating to `http://localhost:3000` in your browser.
+Now that you have the project cloned, dependencies installed, and possess the proper configuration files, you may run `npm start` to spin up the front-end development server. The server will be running on port 3000 by default and may be accessed by navigating to `http://localhost:3000` in your browser.
 
 ## File Structure
 
@@ -97,8 +97,6 @@ Now that you have project cloned, dependecies installed, and possess the proper 
 ├── profile_videos (videos used as profile backgrounds on website)
 ├── public (html document injection root - ignore this)
 ├── scripts (npm scripts - ignore this)
-├── src (you will be spending 99% of your time here. this file contains all of the website components)
-  └── * Needs Documentation *
 ├── game_version (used to denote the current game/patch version i.e. 10.2.1. used in both front & back end code)
 ├── package-lock (auto generated from npm - ignore this)
 ├── package (software descriptor and metadata - ignore this)
@@ -124,26 +122,40 @@ Now that you have project cloned, dependecies installed, and possess the proper 
 
 Rest api reference for TES. You may either make the GET, POST, PUT, or DELETE request yourself or use the Api.js object methods (recommended) to make these calls. **Note: There's a lot to add here so it will be a few days before I have the documentation completed.**
 
+### Api Endpoints (Unnecessary with Api object methods)
+
+#### Development
+
+http://localhost:8000
+
+#### Production
+
+https://titan-esports.org:8000
+
 ### GET Routes
 
 #### /loginUser
 
-Returns `titan_key` token used for protected routes and authentication. Also stores token in web browser as cookie.
+Returns a titan_key token as a string when given an object containing username and password.
 
 ```
 Api.loginUser({
-  username: "username",
-  password: "password"
+  username: <string>,
+  password: <string>
 })
 ```
 
-#### /getUser?u=<user_id>
+#### /getUser
+
+Returns an object given a string with the user's MongoDB id.
 
 ```
-Api.getUser(id)
+Api.getUser(<string>)
 ```
 
 #### /getAllUsers
+
+Returns an array of user objects.
 
 ```
 Api.getAllUsers()
@@ -151,11 +163,15 @@ Api.getAllUsers()
 
 #### /getAllTeams
 
+Returns an array of team objects.
+
 ```
 Api.getAllTeams()
 ```
 
 #### /getProfileVideos
+
+Returns an array of available profile video urls.
 
 ```
 Api.getProfileVideos()
@@ -163,139 +179,210 @@ Api.getProfileVideos()
 
 #### /getSlayersGuild
 
+Returns an array of slayer's guild episodes within the youtube slayer's guild playlist.
+
 ```
 Api.getSlayersGuild()
 ```
 
-#### /getIconsList?index=<index>&size=<size>
+#### /requestProfileIconList
+
+Returns an array of available image urls when given an object with and index and size.
 
 ```
-Api.requestProfileIconList(index, size)
+Api.requestProfileIconList({
+  index: <integer>,
+  size: <integer>
+})
 ```
 
 #### /s/validateToken
+
+Returns user object if titan_key header value decryption is successful.
+**Note: Will automatically assign titan_key header from stored titan_key cookie value when called in project.**
 
 ```
 Api.validateToken()
 ```
 
+#### /emailResetKey
+
+Returns confidential key string when given an object with email.
+
+```
+Api.emailResetKey({
+  email: <string>
+})
+```
+
+#### /getEvents
+
+Returns an object array of all scheduled calendar events.
+
+```
+Api.getEvents()
+```
+
+#### /getArticles
+
+Returns an object array of all articles.
+
+```
+Api.getArticles()
+```
+
+#### /getArticle
+
+Returns an article object when given a MongoDB string id.
+
+```
+Api.getArticle(<string>)
+```
+
 ### POST Routes
 
-#### /api/createDraft
+#### /createTitanDraft
+
+Returns a titan_draft object when given an object with type, t1_logo, t2_logo, t1_name, t2_name.
+
+Valid images for t1_logo and t2_logo may be referenced in /titan_draft/logo_index.js.
 
 ```
 Api.createTitanDraft({
-  type: "tournament",
-  t1_logo: "img_path",
-  t2_logo: "img_path",
-  t1_name: "team_name"
-  t2_name: "team_name"
+  type: <string>, // Value must be 'tournament',
+  t1_logo: <string>,
+  t2_logo: <string>,
+  t1_name: <string>,
+  t2_name: <string>,
 })
 ```
 
 #### /createUser
 
+Returns a user object and creates a user document when given an object with username and password.
+
 ```
 Api.createUser({
-  username: "username",
-  password: "password",
-  password2: "confirm_password",
-  email: "email@example.com"
+  username: <string>,
+  password: <string>,
 })
 ```
 
-#### /compareResetKey?key=<key>
+#### /compareResetKey
+
+Description
 
 ```
-Api.compareResetKey({
-  key: "key",
-  password: "password",
-})
+
+```
+
+#### /createEvent
+
+Description
+
+```
+
+```
+
+#### /createArticle
+
+Description
+
+```
+
 ```
 
 ### PUT Routes
 
-#### /updateSlayersGuild
+#### /udpateSlayersGuild
+
+Description
 
 ```
-Api.updateSlayersGuild()
-```
-
-#### /s/updateSelf
 
 ```
-Api.updateSelf(obj)
+
+#### /updateSelf
+
+Description
+
+```
+
+```
+
+#### /updateSelfPassword
+
+Description
+
+```
+
+```
+
+#### /updateUser
+
+Description
+
+```
+
+```
+
+#### /movePlayerToTeam
+
+Description
+
+```
+
+```
+
+#### /updateTeam
+
+Description
+
+```
+
+```
+
+#### /updateEvent
+
+Description
+
+```
+
+```
+
+#### /updateArticle
+
+Description
+
+```
+
 ```
 
 ### DELETE Routes
 
-#### /loginUser
+#### /removePlayerFromTeam
+
+Description
 
 ```
-Api.loginUser({
-  username: "username",
-  password: "password"
-})
+
 ```
 
-## Some basic React Documentation
+#### /removeEvent
 
-If you haven't worked with React before and have only worked with html, css, and maybe some vanilla js or jquery, hopefully this will help you. A simple React component will look something like this:
+Description
 
-```javascript
-import React from "react";
-import { connect } from "react-redux";
-import "./example.css";
-
-import Api from "../../Api";
-
-class Example extends React.Component {
-  // An example of a function that you can use inside or outside of your JSX (optional but extremely useful)
-  barkingFunction() {
-    console.log("I'm a function that prints to the browser console");
-  }
-
-  // This function is really important since this component will not render anything without it
-  render() {
-    // Every time this component is rendered it will run barkFunction()
-    this.barkFunction(); // Equivalent of saying 'Example.barkFunction()'
-    return (
-      <div className={"example"}>
-        <h1>Hello World!</h1>
-        <button
-          onClick={async () => {
-            const result = await Api.loginUser({
-              username: "username",
-              password: "password"
-            });
-            console.log(result);
-          }}
-        >
-          Button that logs in a user
-        </button>
-      </div>
-    );
-  }
-}
-
-export default connect()(Example);
 ```
 
-The important takeaway here is the use of the render function within the Example class and the use of imports to include code form other files.
-
-Components can be shared across the site by importing from their specific file like so:
-
-```javascript
-import Example from "<path_to_file>"
-
-...
-
-<div>
-  <Example />
-</div>
 ```
 
-There's a ton more to this so I will be adding more documentation when I can but hopefully this makes some sense so far
+#### /removeArticle
+
+Description
+
+```
+
+```
 
 ## Setting Up the Database
 
