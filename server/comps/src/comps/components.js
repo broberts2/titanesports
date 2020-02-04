@@ -6,7 +6,7 @@ import VideoButton from "./video_button/video_button";
 export default arg => {
   switch (arg.match.params.id) {
     case "Api":
-      return require(Api);
+      return Api;
     case "VideoLoop":
       return <VideoLoop />;
     case "VideoButton1":

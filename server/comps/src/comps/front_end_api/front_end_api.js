@@ -1,10 +1,10 @@
-// const { bake_cookie, read_cookie, delete_cookie } = require("sfcookies");
-// const config = require("../../../../config");
-// const serverPath = config.production
-//   ? "https://titan-esports.org:8000"
-//   : "http://localhost:8000";
+const { bake_cookie, read_cookie, delete_cookie } = require("sfcookies");
+const config = require("../../../../config");
+const serverPath = config.production
+  ? "https://titan-esports.org:8000"
+  : "http://localhost:8000";
 
-const Api = {
+export default {
   loginUser: async credentials => {
     const user = await fetch(`${serverPath}/loginUser`, {
       method: "get",
