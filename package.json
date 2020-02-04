@@ -88,7 +88,7 @@
     "pull": "git pull origin master",
     "patch-update": "sh update.sh",
     "restart": "sh restart.centos7.sh",
-    "update-src": "cp -r src /var/www/html"
+    "update-src": "rm -rf /var/www/html; cp -r src /var/www; mv /var/www/src /var/www/html"
   },
   "eslintConfig": {
     "extends": "react-app"
