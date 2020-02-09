@@ -16,6 +16,10 @@ module.exports = {
     0: `${server}/BAKA.png`,
     1: `${server}/BAKA-trans.png`
   },
+  baka_pre: {
+    0: `${server}/BAKA-PRESCHOOL.png`,
+    1: `${server}/BAKA-PRESCHOOL.png`
+  },
   csdm: {
     0: `${server}/CSDM.png`,
     1: `${server}/CSDM-trans.png`
@@ -41,8 +45,12 @@ module.exports = {
     1: `${server}/RINC-trans.png`
   },
   rk: {
-    0: `${server}/RK.png`,
-    1: `${server}/RK-trans.png`
+    0: `${server}/RAINBOW-KITTENZ.png`,
+    1: `${server}/RAINBOW-KITTENZ.png`
+  },
+  sk: {
+    0: `${server}/SK.png`,
+    1: `${server}/SK.png`
   },
   sfb: {
     0: `${server}/SFB.png`,
@@ -59,6 +67,14 @@ module.exports = {
   syn: {
     0: `${server}/SYN.png`,
     1: `${server}/SYN.png`
+  },
+  ntf: {
+    0: `${server}/NTF-GAMING.png`,
+    1: `${server}/NTF-GAMING.png`
+  },
+  uc: {
+    0: `${server}/UNKNOWN-CHALLENGERS.png`,
+    1: `${server}/UNKNOWN-CHALLENGERS.png`
   }
   // tk: {
   //   0: `${server}/team_khyroe.png`,
