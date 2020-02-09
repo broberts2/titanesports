@@ -20,10 +20,6 @@ module.exports = {
     0: `${server}/BAKA-PRESCHOOL.png`,
     1: `${server}/BAKA-PRESCHOOL.png`
   },
-  csdm: {
-    0: `${server}/CSDM.png`,
-    1: `${server}/CSDM-trans.png`
-  },
   il: {
     0: `${server}/IL.png`,
     1: `${server}/IL-trans.png`
