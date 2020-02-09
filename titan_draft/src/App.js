@@ -174,7 +174,8 @@ export default class App extends React.Component {
               height: "100vh",
               top: "0",
               left: "0",
-              zIndex: "8999"
+              zIndex: "8999",
+              overflowX: "hidden"
             }}
           >
             <video src={lobby_video} preload muted loop autoPlay />
