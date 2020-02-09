@@ -17,7 +17,7 @@ modals.map(el => {
 let modal = this.document.createElement("div");
 modal.innerHTML = `
   <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg"role="document">
+    <div id="modal-container" class="modal-dialog modal-dialog-centered"role="document">
       <div class="modal-content">
         <div class="modal-img"><img src="teslogo.png"></img></div>
         <div class="modal-header">
