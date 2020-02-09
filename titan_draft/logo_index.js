@@ -36,6 +36,10 @@ module.exports = {
     0: `${server}/NAME.png`,
     1: `${server}/NAME-trans.png`
   },
+  leaf: {
+    0: `${server}/LEAF-ELITES.png`,
+    1: `${server}/LEAF-ELITES.png`
+  },
   rd: {
     0: `${server}/RD.png`,
     1: `${server}/RD-trans.png`
@@ -47,6 +51,10 @@ module.exports = {
   rk: {
     0: `${server}/RAINBOW-KITTENZ.png`,
     1: `${server}/RAINBOW-KITTENZ.png`
+  },
+  ng: {
+    0: `${server}/NOT-GREEDY.png`,
+    1: `${server}/NOT-GREEDY.png`
   },
   sk: {
     0: `${server}/SK.png`,
@@ -63,6 +71,10 @@ module.exports = {
   rr: {
     0: `${server}/RR-trans.png`,
     1: `${server}/RR-trans.png`
+  },
+  sbd: {
+    0: `${server}/STOP-BANNING-DRAVEN.png`,
+    1: `${server}/STOP-BANNING-DRAVEN.png`
   },
   syn: {
     0: `${server}/SYN.png`,
