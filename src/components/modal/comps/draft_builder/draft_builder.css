@@ -1,0 +1,33 @@
+.draft-builder {
+  height: 100%;
+}
+.draft-builder .scroll-table {
+  height: 250px;
+  overflow-y: scroll;
+}
+.draft-builder .img {
+  width: 100%;
+  height: 100%;
+}
+.draft-builder .img img {
+  width: 100%;
+}
+.btn-group {
+  --margin: 15px;
+  margin-top: var(--margin);
+  margin-bottom: var(--margin);
+}
+.draft-builder .inner-glow-blue {
+  -webkit-box-shadow: inset 0 0 30px #00f;
+  -moz-box-shadow: inset 0 0 30px #00f;
+  box-shadow: inset 0 0 30px #00f;
+}
+.draft-builder .inner-glow-red {
+  -webkit-box-shadow: inset 0 0 30px #be1d1d;
+  -moz-box-shadow: inset 0 0 30px #be1d1d;
+  box-shadow: inset 0 0 30px #be1d1d;
+}
+.restrict {
+  opacity: 0.3;
+  pointer-events: none;
+}

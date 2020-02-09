@@ -29,6 +29,7 @@ module.exports = async (cb, res, accessLevel, exact) => {
     videos: report.videos,
     events: report.events,
     articles: report.articles,
-    article: report.article
+    article: report.article,
+    logos: report.logos
   });
 };
