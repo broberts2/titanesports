@@ -18,8 +18,6 @@ app.use(bodyParser.json());
 
 app.use(express.static(`../dragontail-${currentVersion}`));
 app.use(express.static("../profile_videos"));
-app.use(express.static("./comps/build"));
-app.use(express.static("./api"));
 
 app.use(cors({ origin: true, credentials: true }));
 security.use(cors({ origin: true, credentials: true }));

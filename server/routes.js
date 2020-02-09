@@ -42,6 +42,9 @@ module.exports = (app, security) => {
   app.get("/getArticle", async (req, res) =>
     responder(Controllers.ArticleHandling.getArticle(req), res)
   );
+  app.get("/getDraftLogos", async (req, res) =>
+    responder({ logos: require("../titan_draft/logo_index.js") }, res)
+  );
   security.put("/updateSlayersGuild", async (req, res) =>
     responder(Controllers.YoutubeAPI.updateSlayersGuild(req, 5, true), res)
   );
