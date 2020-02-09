@@ -1,9 +1,11 @@
+document.getElementById("modal-container").classList.remove("modal-lg");
 document.getElementById("modal-body").innerHTML = `
-  <h3>Username</h3>
+  <h3>Acount Sign In</h3>
+  <h4>Username</h4>
   <div class="input-group mb-3">
     <input id="sign-in-username" type="text" class="form-control" placeholder="Username" aria-label="Username"></input>
   </div>
-  <h3>Password</h3>
+  <h4>Password</h4>
   <div class="input-group mb-3">
     <input id="sign-in-password" type="password" class="form-control" placeholder="Password" aria-label="Password"></input>
   </div>
@@ -25,8 +27,10 @@ document.getElementById("modal-login-bttn").addEventListener("click", () => {
     .then(res => {
       globals.fns.modalPending(false);
       if (res.code < 300) {
+        globals.fns.saveTitanKey(res.token);
         document.getElementById("modal-error").innerHTML = "";
         $("#modal").modal("hide");
+        location.reload();
       } else {
         document.getElementById("modal-error").innerHTML = res.msg;
       }

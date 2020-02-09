@@ -18,7 +18,9 @@ scripts.map(el => {
 });
 
 let globals = {
-  state: {},
+  state: {
+    _items_loaded: 0
+  },
   fns: {
     saveTitanKey: key => (document.cookie = `titan_key=${key}`),
     readTitanKey: () => {

@@ -1,5 +1,6 @@
 try {
   const setup = async () => {
+    document.getElementById("modal-container").classList.add("modal-lg");
     let selector = "blue";
     let blue_img = null;
     let red_img = null;
@@ -72,10 +73,13 @@ try {
     const createBody = () => {
       let rows = [];
       let row = [];
+      globals.state._items_loaded = 0;
       Object.values(imgs.logos).map((el, i) => {
         row.push(`<td id="draft-cell-${i}" style="padding: 0px;">
             <div class="img">
-              <img id="draft-cell-img-${i}" src="${el["1"]}"></img>
+              <img id="draft-cell-img-${i}" src="${
+          el["1"]
+        }" onload="if(++globals.state._items_loaded >= 10) globals.fns.modalPending(false)"></img>
             </div></td>`);
         if ((i + 1) % 4 === 0) {
           rows.push(`<tr>${row.join()}</tr>`);
@@ -88,6 +92,7 @@ try {
       return rows.toString().replace(/,/g, "");
     };
     document.getElementById("modal-body").innerHTML = `
+        <h3>Titan Draft</h3>
         <div class="draft-builder">
           <div class="scroll-table">
             <table class="table table-bordered table-dark">
@@ -106,10 +111,10 @@ try {
             </div>
           </div>
           <div class="input-group mb-3">
-            <input id="team1-title" oninput="validate()" type="text" class="form-control" placeholder="Blue Team Name" aria-label="Blue-Team"></input>
+            <input id="team1-title" type="text" class="form-control" placeholder="Blue Team Name" aria-label="Blue-Team"></input>
           </div>
           <div class="input-group mb-3">
-            <input id="team2-title" oninput="validate()" type="text" class="form-control" placeholder="Red Team Name" aria-label="Red-Team"></input>
+            <input id="team2-title" type="text" class="form-control" placeholder="Red Team Name" aria-label="Red-Team"></input>
           </div>
         </div>
       `;
@@ -138,6 +143,8 @@ try {
         });
       });
     });
+    document.getElementById("team1-title").addEventListener("input", validate);
+    document.getElementById("team2-title").addEventListener("input", validate);
     document.getElementById("draft-drop-blue").addEventListener("click", () => {
       selector = "blue";
       const bttn = document.getElementById("draft-team-bttn");
@@ -170,7 +177,6 @@ try {
         }
         globals.fns.modalPending(false);
       });
-    globals.fns.modalPending(false);
   };
   setup();
 } catch (e) {}

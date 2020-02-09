@@ -37,8 +37,12 @@ const _post = async (url, data) => {
   return response.json().then(res => res);
 };
 
+// API CALLS
 globals.api.getDraftLogos = data =>
   _t(_get("https://titan-esports.org:8000/getDraftLogos", data));
+
+globals.api.validateToken = () =>
+  _t(_get("https://titan-esports.org:8000/s/validateToken"));
 
 globals.api.loginUser = data =>
   _t(_get("https://titan-esports.org:8000/loginUser", data));
@@ -48,3 +52,22 @@ globals.api.getAllUsers = data =>
 
 globals.api.createDraft = data =>
   _t(_post("https://titan-esports.org:7001/api/createDraft", data));
+
+// AUTHENTICATOR
+(async () => {
+  const res = await globals.api.validateToken();
+  if (res.code < 300) {
+    globals.state.user = {
+      username: res.username
+    };
+    document.getElementById("header-sign-in-bttn").innerHTML = "Sign Out";
+    try {
+      document.getElementById("sign-in-button-wrapper").innerHTML = "";
+    } catch (e) {}
+  } else {
+    globals.state.user = null;
+    try {
+      document.getElementById("header-sign-in-bttn").innerHTML = "Sign In";
+    } catch (e) {}
+  }
+})();

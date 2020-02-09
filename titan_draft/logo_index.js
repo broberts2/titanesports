@@ -83,6 +83,10 @@ module.exports = {
   uc: {
     0: `${server}/UNKNOWN-CHALLENGERS.png`,
     1: `${server}/UNKNOWN-CHALLENGERS.png`
+  },
+  ddd: {
+    0: `${server}/DDD.png`,
+    1: `${server}/DDD.png`
   }
   // tk: {
   //   0: `${server}/team_khyroe.png`,

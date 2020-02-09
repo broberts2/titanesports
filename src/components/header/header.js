@@ -25,7 +25,7 @@ if (header) {
           <div class="dropdown menuitem">
             Players
             <div class="dropdown-content">
-              <a href="#">Sign In</a>
+              <a id="header-sign-in-bttn" href="#" onclick="return false;">Sign In</a>
               <a href="#">Statistics</a>
               <a href="https://forms.gle/WcdiyoqgsB7FYTWD7" target="_blank"
                 >Appeal Ban Form</a
@@ -120,4 +120,14 @@ if (header) {
     </div>
   </div>
 `;
+  document
+    .getElementById("header-sign-in-bttn")
+    .addEventListener("click", () => {
+      if (globals.state.user) {
+        globals.fns.deleteTitanKey();
+        location.reload();
+      } else {
+        globals.fns.buildModal("sign_in");
+      }
+    });
 }
