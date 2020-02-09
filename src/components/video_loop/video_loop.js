@@ -3,11 +3,24 @@ const videoLoop = document.getElementById("video-loop");
 if (videoLoop) {
   const path = "components/video_loop/videos";
   const videos = [
-    { src: "one.mp4", type: "video/mp4" },
-    { src: "two.mp4", type: "video/mp4" },
-    { src: "three.mp4", type: "video/mp4" },
-    { src: "four.mp4", type: "video/mp4" },
-    { src: "five.mp4", type: "video/mp4" }
+    { src: "leona.mp4", type: "video/mp4" },
+    { src: "pyke.mp4", type: "video/mp4" },
+    { src: "nunu.mp4", type: "video/mp4" },
+    { src: "bard.mp4", type: "video/mp4" },
+    { src: "neeko.mp4", type: "video/mp4" },
+    { src: "caitlyn.mp4", type: "video/mp4" },
+    { src: "illaoi.mp4", type: "video/mp4" },
+    { src: "aurelion-sol.mp4", type: "video/mp4" },
+    { src: "kindred.mp4", type: "video/mp4" },
+    { src: "zoe.mp4", type: "video/mp4" },
+    { src: "orianna.mp4", type: "video/mp4" },
+    { src: "irelia.mp4", type: "video/mp4" },
+    { src: "ryze.mp4", type: "video/mp4" },
+    { src: "kalista.mp4", type: "video/mp4" },
+    { src: "udyr.mp4", type: "video/mp4" },
+    { src: "taliyah.mp4", type: "video/mp4" },
+    { src: "vs.mp4", type: "video/mp4" },
+    { src: "azir.mp4", type: "video/mp4" }
   ];
 
   const cycleTime = 36000;
