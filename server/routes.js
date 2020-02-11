@@ -1,6 +1,5 @@
 const Controllers = require("./controllers");
 const responder = require("./responder");
-const riotSanitizer = require("./riotSanitizer");
 
 module.exports = (app, security) => {
   app.post("/createUser", async (req, res) =>
@@ -93,12 +92,7 @@ module.exports = (app, security) => {
   security.delete("/removeArticle", async (req, res) =>
     responder(Controllers.ArticleHandling.removeArticle(req, 3), res)
   );
-  security.get("/gameData", async (req, res) =>
-    riotSanitizer(
-      Controllers.RiotAPI.fetchGameData(req, 3),
-      req.query.t1,
-      req.query.t2,
-      res
-    )
+  security.post("/saveGameToDatabase", async (req, res) =>
+    Controllers.RiotAPI.saveGameToDatabase(req, res, 3)
   );
 };
