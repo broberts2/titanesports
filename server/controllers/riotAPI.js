@@ -6,6 +6,44 @@ const ObjectId = require("mongodb").ObjectID;
 const riotSanitizer = require("../riotSanitizer");
 
 module.exports = {
+  createTournamentCode: async (req, res, level) => {
+    if (req.user_info.level > level) {
+      return res.json({
+        msg: "Access Denied",
+        code: 403
+      });
+    }
+    const _get_code = async () =>
+      await fetch(
+        `https://americas.api.riotgames.com/lol/tournament/v4/codes?tournamentId=529491&api_key=${config.tournamentApiKey}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            mapType: "SUMMONERS_RIFT",
+            metadata: "",
+            pickType: "TOURNAMENT_DRAFT",
+            spectatorType: "LOBBYONLY",
+            teamSize: 5
+          })
+        }
+      )
+        .then(res => res.json())
+        .then(arr => arr[0]);
+    let codes = [];
+    const n = req.query.n && req.query.n > 0 ? req.query.n : 1;
+    for (let i = 0; i < n; i++) {
+      codes.push(_get_code);
+    }
+    codes = await Promise.all(codes.map(el => el()));
+    return res.json({
+      code: 200,
+      msg: "Code Generation Successful!",
+      codes
+    });
+  },
   saveGameToDatabase: async (req, res, level) => {
     if (req.user_info.level > level) {
       return res.json({
@@ -32,12 +70,17 @@ module.exports = {
       );
       let prmsArray = [];
       const calcAvg = (history, stats) => {
-        return Object.values(history).reduce((a, b) => {
+        const _history = Object.values(history);
+        const averageObj = {};
+        _history.reduce((a, b) => {
           for (let key in a) {
-            a[key] = a[key] + b[key];
+            averageObj[key] = a[key] + b[key];
           }
-          return a;
         });
+        for (let key in averageObj) {
+          averageObj[key] = averageObj[key] / _history.length;
+        }
+        return averageObj;
       };
       for (let i = 1; i <= 2; i++) {
         try {
@@ -47,11 +90,13 @@ module.exports = {
                 const statObj = await PlayerStats.findOne({
                   lolAccountId: el.accountId
                 });
+                el.stats.tournamentCode = req.body.code;
+                el.stats.league = req.body.league;
                 if (statObj) {
                   let history =
                     statObj.stats[`season_${data.tesSeason}`].history;
                   history[data._id] = el.stats;
-                  const average = calcAvg(Object.assign({}, history), el.stats);
+                  const average = calcAvg(history, el.stats);
                   await PlayerStats.update(
                     { lolAccountId: el.accountId },
                     {

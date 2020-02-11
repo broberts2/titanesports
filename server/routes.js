@@ -50,6 +50,9 @@ module.exports = (app, security) => {
   security.get("/validateToken", async (req, res) =>
     responder(Controllers.UserHandling.validateToken(req), res)
   );
+  security.get("/createTournamentCode", async (req, res) =>
+    Controllers.RiotAPI.createTournamentCode(req, res, 3)
+  );
   security.put("/updateUser", async (req, res) =>
     responder(Controllers.UserHandling.updateUser(req, 3), res)
   );

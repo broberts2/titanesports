@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const eventSchema = new Schema({
+const gameStatsSchema = new Schema({
   gameVersion: {
     type: String,
     unique: false,
@@ -36,7 +36,12 @@ const eventSchema = new Schema({
     type: Object,
     unique: false,
     required: true
+  },
+  league: {
+    type: Object,
+    unique: false,
+    required: true
   }
 });
 
-module.exports = mongoose.model("GameStats", eventSchema);
+module.exports = mongoose.model("GameStats", gameStatsSchema);
