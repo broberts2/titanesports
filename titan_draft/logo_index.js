@@ -5,8 +5,8 @@ const server = config.production
 
 module.exports = {
   admins: {
-    0: `${server}/ADMINS.png`,
-    1: `${server}/ADMINS-trans.png`
+    0: `${server}/WDGP.png`,
+    1: `${server}/WDGP.png`
   },
   afg: {
     0: `${server}/AFG.png`,
