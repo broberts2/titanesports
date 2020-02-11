@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const eventSchema = new Schema({
+const playerStatsSchema = new Schema({
   lolAccountId: {
     type: String,
     unique: false,
@@ -24,4 +24,4 @@ const eventSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model("PlayerStats", eventSchema);
+module.exports = mongoose.model("PlayerStats", playerStatsSchema);
