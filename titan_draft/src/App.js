@@ -174,8 +174,9 @@ export default class App extends React.Component {
               height: "100vh",
               top: "0",
               left: "0",
-              zIndex: "8999",
-              overflowX: "hidden"
+              zIndex: "2",
+              overflowX: "hidden",
+              overflowY: "hidden"
             }}
           >
             <video src={lobby_video} preload muted loop autoPlay />
@@ -229,6 +230,9 @@ export default class App extends React.Component {
             <h1>Draft Complete</h1>
           </div>
         ) : null}
+        <Components.ReactSlider
+          setVolume={volume => emitters.setVolume(volume)}
+        />
       </div>
     );
   }
