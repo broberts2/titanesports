@@ -44,6 +44,14 @@ module.exports = {
       codes
     });
   },
+  getGameStatsByCode: async (req, res, level) => {
+    const gameStats = await GameStats.find({});
+    return res.json({
+      code: 200,
+      msg: "Code Generation Successful!",
+      codes
+    });
+  },
   saveGameToDatabase: async (req, res, level) => {
     if (req.user_info.level > level) {
       return res.json({
