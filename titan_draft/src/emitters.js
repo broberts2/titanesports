@@ -11,12 +11,38 @@ window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
 
 socket.emit("join", params);
 
-let music = new Audio(require("./audio/music.wav"));
+let blockLobbyMusic = false;
+
+let lobbyMusic = new Audio(require("./audio/lobby_music.mp3"));
+lobbyMusic.volume = 0;
+lobbyMusic.loop = true;
+
+let music = new Audio(require("./audio/music.mp3"));
 music.volume = 0;
 music.loop = true;
 
+const duckLobbyMusic = async () => {
+  const decrement = 0.005;
+  if (lobbyMusic.volume > 0) {
+    if (lobbyMusic.volume > decrement) {
+      lobbyMusic.volume -= decrement;
+    } else {
+      lobbyMusic.volume = 0;
+    }
+    await new Promise((resolve, reject) => {
+      setTimeout(() => resolve(), 250);
+    });
+    return await duckLobbyMusic();
+  }
+  blockLobbyMusic = true;
+};
+
 module.exports = {
-  setVolume: e => (music.volume = e),
+  setVolume: e => {
+    if (!blockLobbyMusic) lobbyMusic.volume = e;
+    music.volume = e;
+  },
+  playLobbyMusic: () => lobbyMusic.play(),
   emit_blue_ready: () => socket.emit("blue_ready"),
   emit_red_ready: () => socket.emit("red_ready"),
   emit_update: data => socket.emit("update", data),
@@ -58,7 +84,15 @@ module.exports = {
         audio.play();
       }
     });
-    socket.on("play-music", () => music.play());
+    socket.on("emit_countdown", () => {
+      music.play();
+      duckLobbyMusic();
+      cb({ countdown: true });
+    });
+    socket.on("play-music", () => {
+      music.play();
+      duckLobbyMusic();
+    });
     socket.on("invalid code", () => {
       cb({
         error: "Lobby not found"

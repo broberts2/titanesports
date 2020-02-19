@@ -25,8 +25,19 @@ const update = async (socket, msg) => {
   }
 };
 
+const countdown = (io, msg, updater, draft) => {
+  if (draft.draft.running) {
+    io.sockets.in(msg.room).emit("emit_countdown");
+    setTimeout(() => {
+      spawn(msg.room, io, updater);
+      io.sockets.in(msg.room).emit("update", draft);
+    }, 5000);
+  } else {
+    io.sockets.in(msg.room).emit("update", draft);
+  }
+};
+
 const spawn = (objId, io, updater) => {
-  io.sockets.in(objId).emit("play-music");
   const cycle = async () => {
     await new Promise((resolve, reject) => {
       setTimeout(() => resolve(), 1000);
@@ -152,8 +163,7 @@ module.exports = io => {
             id: msg.room
           }
         });
-        if (draft.draft.running) spawn(msg.room, io, updater);
-        io.sockets.in(msg.room).emit("update", draft);
+        countdown(io, msg, updater, draft);
       });
       socket.on("red_ready", async () => {
         let draft = await Draft.getDraft({
@@ -173,8 +183,7 @@ module.exports = io => {
             id: msg.room
           }
         });
-        if (draft.draft.running) spawn(msg.room, io, updater);
-        io.sockets.in(msg.room).emit("update", draft);
+        countdown(io, msg, updater, draft);
       });
       socket.on("update", async index => {
         updater(index);

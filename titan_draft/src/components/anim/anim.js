@@ -8,7 +8,16 @@ import {
   fadeOutDown,
   fadeOut,
   fadeIn,
-  bounceIn
+  bounceIn,
+  zoomIn,
+  slideInLeft,
+  slideInRight,
+  slideInUp,
+  slideInDown,
+  slideOutLeft,
+  slideOutRight,
+  slideOutUp,
+  slideOutDown
 } from "react-animations";
 import Radium, { StyleRoot } from "radium";
 
@@ -23,11 +32,11 @@ const styles = {
     animationName: Radium.keyframes(pulse, "pulse")
   },
   fadeOut: {
-    animation: "infinite 1s",
+    animation: "1 1s",
     animationName: Radium.keyframes(fadeOut, "fadeOut")
   },
   fadeIn: {
-    animation: "infinite 1s",
+    animation: "1 0.5s",
     animationName: Radium.keyframes(fadeIn, "fadeIn")
   },
   fadeOutDown: {
@@ -39,12 +48,48 @@ const styles = {
     animationName: Radium.keyframes(flipInY, "flipInY")
   },
   bounceIn: {
-    animation: "infinite 2s",
+    animation: "1 1s",
     animationName: Radium.keyframes(bounceIn, "bounceIn")
+  },
+  slideInLeft: {
+    animation: "1 1s",
+    animationName: Radium.keyframes(slideInLeft, "slideInLeft")
+  },
+  slideInRight: {
+    animation: "1 1s",
+    animationName: Radium.keyframes(slideInRight, "slideInRight")
+  },
+  slideInDown: {
+    animation: "1 1s",
+    animationName: Radium.keyframes(slideInDown, "slideInDown")
+  },
+  slideInUp: {
+    animation: "1 1s",
+    animationName: Radium.keyframes(slideInUp, "slideInUp")
+  },
+  slideOutLeft: {
+    animation: "1 1s",
+    animationName: Radium.keyframes(slideOutLeft, "slideOutLeft")
+  },
+  slideOutRight: {
+    animation: "1 1s",
+    animationName: Radium.keyframes(slideOutRight, "slideOutRight")
+  },
+  slideOutDown: {
+    animation: "1 1s",
+    animationName: Radium.keyframes(slideOutDown, "slideOutDown")
+  },
+  slideOutUp: {
+    animation: "1 1s",
+    animationName: Radium.keyframes(slideOutUp, "slideOutUp")
   },
   zoomInRight: {
     animation: "1 0.5s",
     animationName: Radium.keyframes(zoomInRight, "zoomInRight")
+  },
+  zoomIn: {
+    animation: "1 1s",
+    animationName: Radium.keyframes(zoomIn, "zoomIn")
   },
   flipZoom: {
     animation: "1 1s",

@@ -60,6 +60,15 @@ globals.api.getAllUsers = data => _t(_get(`${serverPath}/getAllUsers`, data));
 globals.api.createDraft = data =>
   _t(_post(`${titanDraftPath}/api/createDraft`, data));
 
+globals.api.saveGameToDatabase = data =>
+  _t(_post(`${titanDraftPath}/s/saveGameToDatabase`, data));
+
+globals.api.getPlayerStatsByLolId = data =>
+  _t(_get(`${titanDraftPath}/s/getPlayerStatsByLolId`, data));
+
+globals.api.getGameStatsByCode = data =>
+  _t(_get(`${titanDraftPath}/s/getGameStatsByCode`, data));
+
 // AUTHENTICATOR
 (async () => {
   const res = await globals.api.validateToken();

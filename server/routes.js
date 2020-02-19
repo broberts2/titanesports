@@ -51,7 +51,7 @@ module.exports = (app, security) => {
     responder(Controllers.UserHandling.validateToken(req), res)
   );
   security.get("/createTournamentCode", async (req, res) =>
-    Controllers.RiotAPI.createTournamentCode(req, res, 3)
+    responder(Controllers.RiotAPI.createTournamentCode(req, 3), res)
   );
   security.put("/updateUser", async (req, res) =>
     responder(Controllers.UserHandling.updateUser(req, 3), res)
@@ -96,6 +96,6 @@ module.exports = (app, security) => {
     responder(Controllers.ArticleHandling.removeArticle(req, 3), res)
   );
   security.post("/saveGameToDatabase", async (req, res) =>
-    Controllers.RiotAPI.saveGameToDatabase(req, res, 3)
+    responder(Controllers.RiotAPI.saveGameToDatabase(req, res, 3))
   );
 };

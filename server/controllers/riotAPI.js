@@ -6,12 +6,12 @@ const ObjectId = require("mongodb").ObjectID;
 const riotSanitizer = require("../riotSanitizer");
 
 module.exports = {
-  createTournamentCode: async (req, res, level) => {
+  createTournamentCode: async (req, level) => {
     if (req.user_info.level > level) {
-      return res.json({
+      return {
         msg: "Access Denied",
         code: 403
-      });
+      };
     }
     const _get_code = async () =>
       await fetch(
@@ -38,21 +38,21 @@ module.exports = {
       codes.push(_get_code);
     }
     codes = await Promise.all(codes.map(el => el()));
-    return res.json({
+    return {
       code: 200,
       msg: "Code Generation Successful!",
       codes
-    });
+    };
   },
   getGameStatsByCode: async (req, res, level) => {
     const gameStats = await GameStats.find({});
-    return res.json({
+    return {
       code: 200,
       msg: "Code Generation Successful!",
       codes
-    });
+    };
   },
-  saveGameToDatabase: async (req, res, level) => {
+  saveGameToDatabase: async (req, level) => {
     if (req.user_info.level > level) {
       return res.json({
         msg: "Access Denied",
@@ -140,13 +140,13 @@ module.exports = {
         }
       }
       await Promise.all(prmsArray);
-      return res.json({
+      return {
         code: 200,
         msg: "Game Stats Save Successful!",
         data
-      });
+      };
     } catch (e) {
-      return res.json({ code: e.code, msg: e.errmsg });
+      return { code: e.code, msg: e.errmsg };
     }
   }
 };
