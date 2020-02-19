@@ -2,7 +2,7 @@
   height: 100px;
   background-color: rgb(42, 42, 42);
   position: relative;
-  z-index: 1000;
+  z-index: 3;
   transition: all 0.25s ease-in-out;
   -moz-transition: all 0.25s ease-in-out;
   -webkit-transition: all 0.25s ease-in-out;

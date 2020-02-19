@@ -10,7 +10,7 @@ const server = config.production
   ? "https://titan-esports.org:7001"
   : "http://localhost:7001";
 
-const lobby_video = require("./videos/c-o-animated-lunarrevel-2014.mp4");
+const lobby_video = require("./videos/yuumi.webm");
 
 class VS extends React.Component {
   render() {
@@ -47,6 +47,8 @@ class VS extends React.Component {
 export default class App extends React.Component {
   state = {
     team: 0,
+    countdown: false,
+    showFill: true,
     running: false,
     finished: false,
     error: null,
@@ -123,6 +125,12 @@ export default class App extends React.Component {
     this.actions.getChampionData();
     this.setState({ intervalId: intervalId });
     this.actions.update(state => this.setState(state));
+    if (
+      !(this.state.blue_ready && this.state.red_ready) ||
+      this.state.showFill
+    ) {
+      emitters.playLobbyMusic();
+    }
   }
 
   componentWillUnmount() {
@@ -166,7 +174,8 @@ export default class App extends React.Component {
             <Components.Window state={this.state} actions={this.actions} />
           </div>
         ) : null}
-        {!(this.state.blue_ready && this.state.red_ready) ? (
+        {!(this.state.blue_ready && this.state.red_ready) ||
+        (this.state.showFill && !this.state.running) ? (
           <div
             style={{
               position: "absolute",
@@ -179,7 +188,7 @@ export default class App extends React.Component {
               overflowY: "hidden"
             }}
           >
-            <video src={lobby_video} preload muted loop autoPlay />
+            <video src={lobby_video} preload loop autoPlay />
             <div className={"intro-modal"}>
               {this.state.blue_ready ? (
                 <div className={"blue-ready-header"}>
@@ -224,6 +233,14 @@ export default class App extends React.Component {
               </div>
             </div>
           </div>
+        ) : null}
+        {this.state.countdown ? (
+          <Components.CountDown
+            setCountdown={countdown => this.setState({ countdown })}
+            setShowFill={showFill => this.setState({ showFill })}
+            t1_logo={this.state.t1_logo}
+            t2_logo={this.state.t2_logo}
+          />
         ) : null}
         {this.state.finished ? (
           <div className={`finished finished-fade-in`}>
