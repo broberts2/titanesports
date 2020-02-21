@@ -83,6 +83,7 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
+    "build-draft": "cd titan_draft; node scripts/build.js",
     "server-push": "cp -r /var/www/html src; git add .; git commit -am \"auto\"; git push origin master",
     "local-push": "git add .; git commit -am \"auto\"; git push origin master",
     "pull": "git pull origin master",
