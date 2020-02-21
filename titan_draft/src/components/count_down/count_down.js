@@ -2,7 +2,7 @@ import React from "react";
 import Components from "../../components";
 import "./count_down.css";
 
-class Name extends React.Component {
+class CountDown extends React.Component {
   state = {
     classes: {
       left: "slideInLeft",
@@ -86,4 +86,4 @@ class Name extends React.Component {
   }
 }
 
-export default Name;
+export default CountDown;
