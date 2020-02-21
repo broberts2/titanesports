@@ -140,6 +140,7 @@
   "babel": {
     "presets": [
       "react-app"
-    ]
+    ],
+    "sourceType": "unambiguous"
   }
 }
