@@ -36,10 +36,6 @@ module.exports = {
     0: `${server}/LEAF-ELITES.png`,
     1: `${server}/LEAF-ELITES.png`
   },
-  rd: {
-    0: `${server}/RD.png`,
-    1: `${server}/RD-trans.png`
-  },
   rinc: {
     0: `${server}/RINC.png`,
     1: `${server}/RINC-trans.png`
@@ -52,6 +48,10 @@ module.exports = {
     0: `${server}/NOT-GREEDY.png`,
     1: `${server}/NOT-GREEDY.png`
   },
+  nfg: {
+    0: `${server}/NFG.png`,
+    1: `${server}/NFG.png`
+  },
   sk: {
     0: `${server}/SK.png`,
     1: `${server}/SK.png`
@@ -59,10 +59,6 @@ module.exports = {
   sfb: {
     0: `${server}/SFB.png`,
     1: `${server}/SFB-trans.png`
-  },
-  ult: {
-    0: `${server}/ULT.png`,
-    1: `${server}/ULT-trans.png`
   },
   rr: {
     0: `${server}/RR-trans.png`,

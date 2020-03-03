@@ -179,7 +179,7 @@ https://titan-esports.org:8000
 Returns a titan_key token as a string when given an object containing username and password.
 
 ```
-Api.loginUser({
+globals.api.loginUser({
   username: <string>,
   password: <string>
 })
@@ -190,7 +190,25 @@ Api.loginUser({
 Returns an object given a string with the user's MongoDB id.
 
 ```
-Api.getUser(<string>)
+globals.api.getUser({
+  user: <string>
+})
+```
+
+#### /getDraftLogos
+
+Returns an object given a string with the user's MongoDB id.
+
+```
+globals.api.getDraftLogos()
+```
+
+#### /getIconList
+
+Returns an object containing icons.
+
+```
+globals.api.getIconList()
 ```
 
 #### /getAllUsers
@@ -198,7 +216,7 @@ Api.getUser(<string>)
 Returns an array of user objects.
 
 ```
-Api.getAllUsers()
+globals.api.getAllUsers()
 ```
 
 #### /getAllTeams
@@ -206,7 +224,7 @@ Api.getAllUsers()
 Returns an array of team objects.
 
 ```
-Api.getAllTeams()
+globals.api.getAllTeams()
 ```
 
 #### /getProfileVideos
@@ -214,7 +232,7 @@ Api.getAllTeams()
 Returns an array of available profile video urls.
 
 ```
-Api.getProfileVideos()
+globals.api.getProfileVideos()
 ```
 
 #### /getSlayersGuild
@@ -222,7 +240,7 @@ Api.getProfileVideos()
 Returns an array of slayer's guild episodes within the youtube slayer's guild playlist.
 
 ```
-Api.getSlayersGuild()
+globals.api.getSlayersGuild()
 ```
 
 #### /requestProfileIconList
@@ -230,7 +248,7 @@ Api.getSlayersGuild()
 Returns an array of available image urls when given an object with and index and size.
 
 ```
-Api.requestProfileIconList({
+globals.api.requestProfileIconList({
   index: <integer>,
   size: <integer>
 })
@@ -242,7 +260,7 @@ Returns user object if titan_key header value decryption is successful.
 **Note: Will automatically assign titan_key header from stored titan_key cookie value when called in project.**
 
 ```
-Api.validateToken()
+globals.api.validateToken()
 ```
 
 #### /emailResetKey
@@ -250,7 +268,7 @@ Api.validateToken()
 Returns confidential key string when given an object with email.
 
 ```
-Api.emailResetKey({
+globals.api.emailResetKey({
   email: <string>
 })
 ```
@@ -260,7 +278,7 @@ Api.emailResetKey({
 Returns an object array of all scheduled calendar events.
 
 ```
-Api.getEvents()
+globals.api.getEvents()
 ```
 
 #### /getArticles
@@ -268,7 +286,7 @@ Api.getEvents()
 Returns an object array of all articles.
 
 ```
-Api.getArticles()
+globals.api.getArticles()
 ```
 
 #### /getArticle
@@ -276,7 +294,9 @@ Api.getArticles()
 Returns an article object when given a MongoDB string id.
 
 ```
-Api.getArticle(<string>)
+globals.api.getArticle({
+  article: <string>
+})
 ```
 
 ### POST Routes
@@ -288,7 +308,7 @@ Returns a titan_draft object when given an object with type, t1_logo, t2_logo, t
 Valid images for t1_logo and t2_logo may be referenced in /titan_draft/logo_index.js.
 
 ```
-Api.createTitanDraft({
+globals.api.createTitanDraft({
   type: <string>, // Value must be 'tournament',
   t1_logo: <string>,
   t2_logo: <string>,
@@ -302,7 +322,7 @@ Api.createTitanDraft({
 Returns a user object and creates a user document when given an object with username and password.
 
 ```
-Api.createUser({
+globals.api.createUser({
   username: <string>,
   password: <string>,
 })
@@ -313,15 +333,23 @@ Api.createUser({
 Description
 
 ```
-
+globals.api.compareResetKey({
+  key: <string>,
+  password: <string>
+})
 ```
 
 #### /createEvent
 
-Description
+Creates a calendar event given an object with date, title, events, and icon.
 
 ```
-
+globals.api.createEvent({
+  date: <string>,
+  title: <string>,
+  events: <array>,
+  icon: <int>
+})
 ```
 
 #### /createArticle
@@ -329,17 +357,19 @@ Description
 Description
 
 ```
-
+globals.api.createEvent({
+  article: <string>
+})
 ```
 
 ### PUT Routes
 
-#### /udpateSlayersGuild
+#### /updateSlayersGuild
 
 Description
 
 ```
-
+globals.api.updateSlayersGuild()
 ```
 
 #### /updateSelf
@@ -347,7 +377,7 @@ Description
 Description
 
 ```
-
+globals.api.updateSelf({...})
 ```
 
 #### /updateSelfPassword
