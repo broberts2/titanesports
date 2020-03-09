@@ -330,7 +330,7 @@ globals.api.createUser({
 
 #### /compareResetKey
 
-Description
+Compares a key with a hashed password.
 
 ```
 globals.api.compareResetKey({
@@ -354,7 +354,7 @@ globals.api.createEvent({
 
 #### /createArticle
 
-Description
+Creates an article object given an object containing an article string.
 
 ```
 globals.api.createEvent({
@@ -364,36 +364,81 @@ globals.api.createEvent({
 
 ### PUT Routes
 
-#### /updateSlayersGuild
+#### /s/updateSlayersGuild
 
-Description
+Updates slayers guild object automatically via youtube api and youtube playlist. Limited calls/hour.
 
 ```
 globals.api.updateSlayersGuild()
 ```
 
-#### /updateSelf
+#### /s/updateSelf
 
-Description
+Updates a self user's object given an object with any combination of the following key-value pairs:
+{
+password: <string>,
+level: <int>,
+memberships: <object>,
+leagues: <object>,
+iconId: <string>,
+captainTeam: <object>,
+email: <string>,
+suspended: <boolean>,
+verified: <boolean>,
+isAdmin: <boolean>,
+biography: <string>,
+inbox: <object>
+communityTitle: <string>,
+profileVideo: <string>,
+opgg: <string>,
+reset_code: <string>,
+lolAccountId: <string>,
+summonerId: <string>
+}
 
 ```
 globals.api.updateSelf({...})
 ```
 
-#### /updateSelfPassword
+#### /s/updateSelfPassword
 
-Description
-
-```
+Changes a self user's password given an object with an old and new password. Success conditional upon old password validation.
 
 ```
-
-#### /updateUser
-
-Description
-
+globals.api.updateSelfPassword({
+  oldPassword: <string>,
+  newPassword: <string>
+})
 ```
 
+#### /s/updateUser?id=<string>
+
+Updates a user's object given an object with a required id and any combination of the following key-value pairs:
+{
+**id: <string>**,
+username: <string>,
+password: <string>,
+level: <int>,
+memberships: <object>,
+leagues: <object>,
+iconId: <string>,
+captainTeam: <object>,
+email: <string>,
+suspended: <boolean>,
+verified: <boolean>,
+isAdmin: <boolean>,
+biography: <string>,
+inbox: <object>
+communityTitle: <string>,
+profileVideo: <string>,
+opgg: <string>,
+reset_code: <string>,
+lolAccountId: <string>,
+summonerId: <string>
+}
+
+```
+globals.api.updateUser({...})
 ```
 
 #### /movePlayerToTeam
