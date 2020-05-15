@@ -160,7 +160,7 @@ Now that you have the project cloned, dependencies installed, and possess the pr
 
 ## Titan E-Sports API Refrence
 
-Rest api reference for TES. You may either make the GET, POST, PUT, or DELETE request yourself or use the Api.js object methods (recommended) to make these calls. **Note: There's a lot to add here so it will be a few days before I have the documentation completed.**
+Rest api reference for TES. You may either make the GET, POST, PUT, or DELETE request yourself or use the **globals.api** object methods (recommended) to make these calls. **Note: There's a lot to add here so it will be a few days before I have the documentation completed.**
 
 ### Api Endpoints (Unnecessary with Api object methods)
 
@@ -309,7 +309,7 @@ Valid images for t1_logo and t2_logo may be referenced in /titan_draft/logo_inde
 
 ```
 globals.api.createTitanDraft({
-  type: <string>, // Value must be 'tournament',
+  type: <string>, // Value must be 'tournament'
   t1_logo: <string>,
   t2_logo: <string>,
   t1_name: <string>,
@@ -348,7 +348,7 @@ globals.api.createEvent({
   date: <string>,
   title: <string>,
   events: <array>,
-  icon: <int>
+  icon: <integer>
 })
 ```
 
@@ -375,29 +375,24 @@ globals.api.updateSlayersGuild()
 #### /s/updateSelf
 
 Updates a self user's object given an object with any combination of the following key-value pairs:
-{
-password: <string>,
-level: <int>,
-memberships: <object>,
-leagues: <object>,
-iconId: <string>,
-captainTeam: <object>,
-email: <string>,
-suspended: <boolean>,
-verified: <boolean>,
-isAdmin: <boolean>,
-biography: <string>,
-inbox: <object>
-communityTitle: <string>,
-profileVideo: <string>,
-opgg: <string>,
-reset_code: <string>,
-lolAccountId: <string>,
-summonerId: <string>
-}
 
 ```
-globals.api.updateSelf({...})
+globals.api.updateSelf({
+  password: <string>,
+  level: <integer>,
+  iconId: <string>,
+  email: <string>,
+  suspended: <boolean>,
+  verified: <boolean>,
+  isAdmin: <boolean>,
+  biography: <string>,
+  communityTitle: <string>,
+  profileVideo: <string>,
+  opgg: <string>,
+  reset_code: <string>,
+  lolAccountId: <string>,
+  summonerId: <string>
+})
 ```
 
 #### /s/updateSelfPassword
@@ -411,42 +406,45 @@ globals.api.updateSelfPassword({
 })
 ```
 
-#### /s/updateUser?id=<string>
+#### /s/updateUser?id=`<string>`
 
 Updates a user's object given an object with a required id and any combination of the following key-value pairs:
-{
-**id: <string>**,
-username: <string>,
-password: <string>,
-level: <int>,
-memberships: <object>,
-leagues: <object>,
-iconId: <string>,
-captainTeam: <object>,
-email: <string>,
-suspended: <boolean>,
-verified: <boolean>,
-isAdmin: <boolean>,
-biography: <string>,
-inbox: <object>
-communityTitle: <string>,
-profileVideo: <string>,
-opgg: <string>,
-reset_code: <string>,
-lolAccountId: <string>,
-summonerId: <string>
-}
 
 ```
-globals.api.updateUser({...})
+globals.api.updateUser({
+  id: <string>,
+  username: <string>,
+  password: <string>,
+  level: <integer>,
+  iconId: <string>,
+  email: <string>,
+  suspended: <boolean>,
+  verified: <boolean>,
+  isAdmin: <boolean>,
+  biography: <string>,
+  communityTitle: <string>,
+  profileVideo: <string>,
+  opgg: <string>,
+  reset_code: <string>,
+  lolAccountId: <string>,
+  summonerId: <string>
+})
 ```
 
 #### /movePlayerToTeam
 
-Description
+Moves a player object to a team and removes from previous team if already a member given a teamId, fromTeamId, and player object.
 
 ```
-
+globals.api.movePlayerToTeam({
+  teamId: <string>,
+  fromTeamId: <string>,
+  player: {
+    playerId: <string>,
+    username: <string>,
+    position: <string>
+  }
+})
 ```
 
 #### /updateTeam
@@ -454,7 +452,9 @@ Description
 Description
 
 ```
+globals.api.updateTeam({
 
+})
 ```
 
 #### /updateEvent
@@ -462,7 +462,9 @@ Description
 Description
 
 ```
+globals.api.updateEvent({
 
+})
 ```
 
 #### /updateArticle
@@ -470,7 +472,9 @@ Description
 Description
 
 ```
+globals.api.updateArticle({
 
+})
 ```
 
 ### DELETE Routes
@@ -480,7 +484,9 @@ Description
 Description
 
 ```
+globals.api.removePlayerFromTeam({
 
+})
 ```
 
 #### /removeEvent
@@ -488,7 +494,9 @@ Description
 Description
 
 ```
+globals.api.removeEvent({
 
+})
 ```
 
 #### /removeArticle
@@ -496,7 +504,9 @@ Description
 Description
 
 ```
+globals.api.removeArticle({
 
+})
 ```
 
 ## Setting Up the Database

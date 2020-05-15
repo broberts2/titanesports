@@ -153,5 +153,24 @@ module.exports = {
     } catch (e) {
       return { code: 11101, msg: "Invalid or Null Token." };
     }
+  },
+  removeUser: async (req, level, exact) => {
+    // if (
+    //   (exact && req.user_info.level !== 0 && level !== req.user_info.level) ||
+    //   req.user_info.level > level
+    // ) {
+    //   return {
+    //     msg: "Access Denied",
+    //     code: 403
+    //   };
+    // }
+    try {
+      const user = await Users.remove({ _id: req.query.id });
+      user.code = 200;
+      user.msg = "User Account Removed!";
+      return user;
+    } catch (e) {
+      return e;
+    }
   }
 };
