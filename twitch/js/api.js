@@ -1,7 +1,7 @@
 const __fetch__ = async url =>
   await fetch(`https://127.0.0.1:2999/liveclientdata/${url}`, {
     method: "GET"
-  }).then(data => JSON.parse(data));
+  }).then(res => res.json()).then(data => data);
 
 const Api = {
   activeplayer: () => __fetch__(`activeplayer`),
