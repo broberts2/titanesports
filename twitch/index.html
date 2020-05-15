@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <script src="js/vars.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/actions.js"></script>
+    <script src="js/interval.js"></script>
+    <style>
+      #div_container {
+        width: 138px;
+        height: 64px;
+        background-image: url("images/buff_timer_background.png");
+        display: flex;
+      }
+      #div_dragon_icon {
+        width: 40%;
+        height: 100%;
+        text-align: center;
+        padding-top: 8px;
+      }
+      #div_dragon_timer {
+        width: 60%;
+        height: 100%;
+        text-align: center;
+        padding-top: 20px;
+      }
+      #dragon_image {
+        width: 46px;
+        height: 46px;
+      }
+      #time {
+        font-size: 22px;
+        font-weight: bold;
+        color: #efefed;
+      }
+      #div_transition {
+        width: 138px;
+        height: 64px;
+        background-image: url("images/buff_timer_background.png");
+      }
+      #div_dragon_icon2 {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        padding-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div_container">
+      <div id="div_dragon_icon">
+        <img id="dragon_image" src="images/cloud.png" />
+      </div>
+      <div id="div_dragon_timer"><span id="time"></span></div>
+    </div>
+    <div id="div_transition" style="display:none;">
+      <div id="div_dragon_icon2">
+        <img id="dragon_image" src="images/cloud.png" />
+      </div>
+    </div>
+  </body>
+</html>
