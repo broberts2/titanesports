@@ -4,7 +4,8 @@ const scripts = [
   "components/footer/footer.js",
   "components/modal/modal.js",
   "components/video_loop/video_loop.js",
-  "components/video_buttons/video_buttons.js"
+  "components/video_buttons/video_buttons.js",
+  "js/testing.js"
 ];
 
 scripts.map(el => {

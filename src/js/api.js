@@ -47,6 +47,20 @@ globals.fns._post = async (url, data) => {
   return response.json().then(res => res);
 };
 
+globals.fns._delete = async (url, data) => {
+  const titan_key = globals.fns.readTitanKey();
+  const response = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      titan_key
+    },
+    body: JSON.stringify(data)
+  });
+  return response.json().then(res => res);
+};
+
 // API CALLS
 let script = document.createElement("script");
 script.src = "js/api_calls.js";

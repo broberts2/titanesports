@@ -1,0 +1,10 @@
+{
+  "name": "Oracle",
+  "version": "1.0.0",
+  "description": "Titan E-Sports Assistant",
+  "main": "index.js",
+  "author": "Broc Roberts",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}

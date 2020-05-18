@@ -83,6 +83,9 @@ module.exports = (app, security) => {
   security.delete("/removeEvent", async (req, res) =>
     responder(Controllers.EventHandling.removeEvent(req, 3), res)
   );
+  security.delete("/removeUser", async (req, res) =>
+    responder(Controllers.UserHandling.removeUser(req, 3), res)
+  );
   security.post("/createArticle", async (req, res) =>
     responder(Controllers.ArticleHandling.createArticle(req, 3), res)
   );

@@ -1,7 +1,10 @@
 // GET
 globals.api.getArticle = data =>
   globals.fns._t(
-    globals.fns._get(`${globals.constants.serverPath}/getArticle`, data)
+    globals.fns._get(
+      `${globals.constants.serverPath}/getArticle?id=${data.id}`,
+      data
+    )
   );
 
 globals.api.getArticles = () =>
@@ -9,14 +12,9 @@ globals.api.getArticles = () =>
     globals.fns._get(`${globals.constants.serverPath}/getArticles`)
   );
 
-globals.api.getDraftLogo = () =>
-  globals.fns._t(
-    globals.fns._get(`${globals.constants.serverPath}/getDraftLogo`)
-  );
-
 globals.api.getDraftLogos = () =>
   globals.fns._t(
-    globals.fns._get(`${globals.constants.serverPath}/getDraftLogos`, data)
+    globals.fns._get(`${globals.constants.serverPath}/getDraftLogos`)
   );
 
 globals.api.getSlayersGuild = () =>
@@ -39,12 +37,15 @@ globals.api.getAllUsers = data =>
 
 globals.api.getUser = data =>
   globals.fns._t(
-    globals.fns._get(`${globals.constants.serverPath}/getUser`, data)
+    globals.fns._get(
+      `${globals.constants.serverPath}/getUser?u=${data.id}`,
+      data
+    )
   );
 
-globals.api.getAllTeams = data =>
+globals.api.getAllTeams = () =>
   globals.fns._t(
-    globals.fns._get(`${globals.constants.serverPath}/getAllTeams`, data)
+    globals.fns._get(`${globals.constants.serverPath}/getAllTeams`)
   );
 
 globals.api.getIconsList = data =>
@@ -184,4 +185,11 @@ globals.api.removePlayerFromTeam = data =>
 globals.api.removeEvent = () =>
   globals.fns._t(
     globals.fns._delete(`${globals.constants.serverPath}/removeEvent`)
+  );
+
+globals.api.removeUser = data =>
+  globals.fns._t(
+    globals.fns._delete(
+      `${globals.constants.serverPath}/s/removeUser?id=${data.id}`
+    )
   );
