@@ -1,12 +1,11 @@
 module.exports = msg => {
   if (msg.content.charAt(0) === "!" || msg.content.charAt(0) === "?") {
     let args = msg.content.split(" ");
+    args[1] = args[1].replace(/\+/g, " ");
     const command = args
       .shift()
       .replace("!", "")
       .replace("?", "");
-    args[0] = args[0].replace(/\+/g, " ");
-    console.log(args);
     return {
       type: msg.content.charAt(0) === "!" ? "exec" : "help",
       command,
