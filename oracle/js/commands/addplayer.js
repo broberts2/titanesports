@@ -3,6 +3,7 @@ const _Colors = require("../_colors");
 const _team_index = require("./team_index");
 const _chain_message = require("../_utils/chain_message");
 const _rolescheck = require("../_utils/_roles_check");
+const _add_tag = require("../_utils/_add_tag");
 const _pos = require("../_utils/_pos");
 const _pos_standings_and_rosters = require("../_utils/_pos_standings_and_rosters");
 const _validate = require("../_utils/_validate");
@@ -53,6 +54,7 @@ module.exports = (client, roles) => ({
               cell2.value = command.args[0];
               await sheet.saveUpdatedCells();
               await sheet2.saveUpdatedCells();
+              await _add_tag(client, command.args[0], role.name);
               return _embed({
                 description: `Your roster addition request has been approved!\n\nTeam: ${
                   role.name
