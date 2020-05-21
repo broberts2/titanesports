@@ -6,7 +6,12 @@ const _help = [
 
 module.exports = client => ({
   exec: () => "?help - Help is not a command.",
-  help: _help.join("~~~").replace(/~~~/g, "\n\n"),
+  help: _help
+    .join("~~~")
+    .replace(
+      /~~~/g,
+      "\n\n-------------------------------------------------------------------------------\n\n"
+    ),
   roles: {},
   status: 0
 });
