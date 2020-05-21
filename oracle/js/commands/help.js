@@ -5,7 +5,8 @@ const _help = [
 ];
 
 module.exports = client => ({
-  exec: () => "?help - Help is not a command.",
+  exec: () =>
+    "!Help does not exist. Perhaps you were looking for\n\n```?help```",
   help: _help
     .join("~~~")
     .replace(

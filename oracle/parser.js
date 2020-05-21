@@ -1,7 +1,7 @@
 const _embed = require("./js/_embed");
 const _Colors = require("./js/_colors");
 const _Response = require("./js/_response");
-const _fun_stuff = require("./js/_utils/_fun_stuff");
+const _fun_stuff = require("./js/_utils/intelligence/_fun_stuff");
 const _parse_commands = require("./js/_utils/_parse_commands");
 const { Gladiator, Olympian } = require("./js/spreadsheet");
 
@@ -18,6 +18,10 @@ const _rolescheck = (ar1, ar2) => {
 };
 
 const _parse = async (msg, client, roles) => {
+  msg.content = msg.content
+    .replace("<@!711694390078341171>", "")
+    .replace("<@&711712219758592071>", "")
+    .trim();
   const command = _parse_commands(msg);
   if (command.type === "exec" || command.type === "help") {
     const Commands = require("./js/_commands")(client, roles);
