@@ -18,9 +18,11 @@ module.exports = (submission, approve, deny) => (client, msg, _director) =>
         )
         .then(collected => {
           if (collected.get("👍").count > collected.get("👎").count) {
-            client.guilds.cache
-              .get("407423677236510730")
-              .members.cache.get(_director)
+            client.guilds.cache;
+            // .get("407423677236510730")
+            // .members.cache.get(_director)
+            client.channels.cache
+              .get("700894664445788260")
               .send(submission)
               .then(msg3 => {
                 msg3.react("👍").then(() => msg3.react("👎"));

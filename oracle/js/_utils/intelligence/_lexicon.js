@@ -19,7 +19,7 @@ module.exports = {
   },
   robots: {
     0: "Did someone say robot?! I love those!",
-    1: "Machines can be pretty handy sometimes"
+    1: "Machines can be pretty handy sometimes."
   },
   default: {
     0: "Herp Derp!",
