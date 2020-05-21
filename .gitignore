@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /titan_draft/node_modules
+/oracle/node_modules
 /titan_draft/build
 /server/node_modules
 /.pnp
