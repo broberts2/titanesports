@@ -1,12 +1,9 @@
 const _Colors = require("../_colors");
 const _embed = require("../_embed");
 
-// Currently Staff Channel
-const _review_channel = "444291643185692684";
+const _review_channel = "708512917011824750";
 
-const _director = "84522855248691200";
-
-module.exports = (submission, approve, deny) => (client, msg, content) =>
+module.exports = (submission, approve, deny) => (client, msg, _director) =>
   client.channels.cache
     .get(_review_channel)
     .send(submission)
@@ -34,9 +31,10 @@ module.exports = (submission, approve, deny) => (client, msg, content) =>
                       max: 5
                     }
                   )
-                  .then(collected => {
+                  .then(async collected => {
                     if (collected.get("👍").count > collected.get("👎").count) {
-                      msg.author.send(approve);
+                      const _approve = await approve();
+                      msg.author.send(_approve);
                       msg3.delete();
                     } else {
                       msg.author.send(deny);

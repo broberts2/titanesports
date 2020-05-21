@@ -16,6 +16,7 @@
 
 # credentials
 /oracle/config.js
+/oracle/client_secret.json
 /server/config.js
 /titan_draft/config.js
 /src/config.js
