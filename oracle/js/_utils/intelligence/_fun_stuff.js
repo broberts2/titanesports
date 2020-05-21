@@ -13,7 +13,10 @@ const _ = msg => fn => lexicon => {
 };
 
 const Constructs = {
-  0: msg => _(msg)(require("./triggers/greetings"))(Lexicon.greetings)
+  0: msg => _(msg)(require("./triggers/robots"))(Lexicon.robots),
+  1: msg => _(msg)(require("./triggers/profanity"))(Lexicon.profanity),
+  2: msg => _(msg)(require("./triggers/greetings"))(Lexicon.greetings),
+  3: msg => _(msg)(require("./triggers/farewell"))(Lexicon.farewell)
 };
 
 module.exports = msg => {
