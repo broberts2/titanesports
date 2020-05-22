@@ -80,11 +80,11 @@ module.exports = (client, roles) => ({
             `Something was wrong with your submission. Please contact a staff member.`
           );
         }
-        return `Your roster change to add a player is up for review!\n\nTeam: ${
-          role.name
-        }\nPlayer: ${command.args[0]}\nPosition: ${command.args[1]}\nOP.GG: ${
-          command.args[2]
-        }`;
+        return `Your roster change to add a player is up for review!\n\nLeague: ${
+          roles.includes("562850378727817236") ? "Gladiator" : "Olympian"
+        }\n\nTeam: ${role.name}\nPlayer: ${command.args[0]}\nPosition: ${
+          command.args[1]
+        }\nOP.GG: ${command.args[2]}`;
       } else {
         return new Error(
           "Hmm, I wasn't able to parse your arguments. You should probably get with a staff member for help or use:\n```?addplayer```."
