@@ -23,9 +23,9 @@ module.exports = (client, roles) => ({
         if (_validated) {
           _chain_message(
             _embed({
-              description: `A new roster addition has been requested:\n\nTeam: ${
-                role.name
-              }\nPlayer: ${command.args[0]}\nPosition: ${
+              description: `A new roster addition has been requested:\n\nLeague: ${
+                roles.includes("562850378727817236") ? "Gladiator" : "Olympian"
+              }\nTeam: ${role.name}\nPlayer: ${command.args[0]}\nPosition: ${
                 command.args[1]
               }\nOP.GG: ${command.args[2]}`,
               status: _Colors[1]
@@ -56,18 +56,20 @@ module.exports = (client, roles) => ({
               await sheet2.saveUpdatedCells();
               await _add_tag(client, command.args[0], role.name);
               return _embed({
-                description: `Your roster addition request has been approved!\n\nTeam: ${
-                  role.name
-                }\nPlayer: ${command.args[0]}\nPosition: ${
+                description: `Your roster addition request has been approved!\n\nLeague: ${
+                  roles.includes("562850378727817236")
+                    ? "Gladiator"
+                    : "Olympian"
+                }\nTeam: ${role.name}\nPlayer: ${command.args[0]}\nPosition: ${
                   command.args[1]
                 }\nOP.GG: ${command.args[2]}`,
                 status: _Colors[0]
               });
             },
             _embed({
-              description: `Your roster addition request has been denied.\n\nTeam: ${
-                role.name
-              }\nPlayer: ${command.args[0]}\nPosition: ${
+              description: `Your roster addition request has been denied.\n\nLeague: ${
+                roles.includes("562850378727817236") ? "Gladiator" : "Olympian"
+              }\nTeam: ${role.name}\nPlayer: ${command.args[0]}\nPosition: ${
                 command.args[1]
               }\nOP.GG: ${command.args[2]}`,
               status: _Colors[2]
@@ -78,11 +80,11 @@ module.exports = (client, roles) => ({
             `Something was wrong with your submission. Please contact a staff member.`
           );
         }
-        return `Your roster change to add a player is up for review!\n\nTeam: ${
-          role.name
-        }\nPlayer: ${command.args[0]}\nPosition: ${command.args[1]}\nOP.GG: ${
-          command.args[2]
-        }`;
+        return `Your roster change to add a player is up for review!\n\nLeague: ${
+          roles.includes("562850378727817236") ? "Gladiator" : "Olympian"
+        }\n\nTeam: ${role.name}\nPlayer: ${command.args[0]}\nPosition: ${
+          command.args[1]
+        }\nOP.GG: ${command.args[2]}`;
       } else {
         return new Error(
           "Hmm, I wasn't able to parse your arguments. You should probably get with a staff member for help or use:\n```?addplayer```."
