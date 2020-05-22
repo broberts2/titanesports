@@ -82,7 +82,7 @@ module.exports = (client, roles) => ({
         }
         return `Your roster change to add a player is up for review!\n\nLeague: ${
           roles.includes("562850378727817236") ? "Gladiator" : "Olympian"
-        }\n\nTeam: ${role.name}\nPlayer: ${command.args[0]}\nPosition: ${
+        }\nTeam: ${role.name}\nPlayer: ${command.args[0]}\nPosition: ${
           command.args[1]
         }\nOP.GG: ${command.args[2]}`;
       } else {
