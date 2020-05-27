@@ -1,6 +1,6 @@
 module.exports = msg => {
   if (msg.content.charAt(0) === "!" || msg.content.charAt(0) === "?") {
-    let args = msg.content.split(" ");
+    let args = msg.content.replace(/\n/g, "").split(" ");
     const command = args
       .shift()
       .replace("!", "")

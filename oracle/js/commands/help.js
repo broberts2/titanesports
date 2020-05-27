@@ -1,7 +1,8 @@
 const _help = [
   require("./addplayer")().help,
   require("./showroles")().help,
-  require("./showchannels")().help
+  require("./showchannels")().help,
+  require("./swapstandings")().help
 ];
 
 module.exports = client => ({
@@ -11,7 +12,7 @@ module.exports = client => ({
     .join("~~~")
     .replace(
       /~~~/g,
-      "\n\n-------------------------------------------------------------------------------\n\n"
+      "\n\n----------------------------------------------------------------------------\n\n"
     ),
   roles: {},
   status: 0
