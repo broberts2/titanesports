@@ -4,91 +4,91 @@ const server = config.production
   : "http://localhost:7001";
 
 module.exports = {
-  ttpis: {
+  ["Today the Plan Is Simple"]: {
     0: `${server}/Today_the_Plan_is_Simple.png`,
     1: `${server}/Today_the_Plan_is_Simple.png`,
   },
-  rpg: {
+  ["Rat Pack Gaming"]: {
     0: `${server}/Rat_Pack_Gaming_Logo.png`,
     1: `${server}/Rat_Pack_Gaming_Logo.png`,
   },
-  rn: {
+  ["Reign New"]: {
     0: `${server}/reignnew.png`,
     1: `${server}/reignnew.png`,
   },
-  syn: {
+  ["Syndicate E-Sports"]: {
     0: `${server}/SYN.png`,
     1: `${server}/SYN.png`,
   },
-  unkown: {
+  Unknown: {
     0: `${server}/unkown.png`,
     1: `${server}/unkown.png`,
   },
-  yok: {
+  ["4k Yeah OK"]: {
     0: `${server}/yeahok.png`,
     1: `${server}/yeahok.png`,
   },
-  sk2: {
+  SK2: {
     0: `${server}/SK2.png`,
     1: `${server}/SK2.png`,
   },
-  glacialsherbert: {
+  ["Glacial Sherbert"]: {
     0: `${server}/GlacialSherbertLogo.png`,
     1: `${server}/GlacialSherbertLogo.png`,
   },
-  lh: {
+  ["Lighthouse Ravens"]: {
     0: `${server}/lighthouse_ravens.png`,
     1: `${server}/lighthouse_ravens.png`,
   },
-  nfg: {
+  NFG: {
     0: `${server}/nfg.png`,
     1: `${server}/nfg.png`,
   },
-  nobleconcern: {
+  ["Noble Concern"]: {
     0: `${server}/noble_concern.png`,
     1: `${server}/noble_concern.png`,
   },
-  rainbowkittenz: {
+  ["Rainbow Kittenz"]: {
     0: `${server}/rainbow_kittenz.png`,
     1: `${server}/rainbow_kittenz.png`,
   },
-  rawr: {
+  ["Rawr"]: {
     0: `${server}/rawr.png`,
     1: `${server}/rawr.png`,
   },
-  dbth: {
+  ["Death By the Thighs"]: {
     0: `${server}/dbth.png`,
     1: `${server}/dbth.png`,
   },
-  friedchicken: {
+  ["Fried Chicken"]: {
     0: `${server}/fried_chicken.png`,
     1: `${server}/fried_chicken.png`,
   },
-  glacial: {
+  ["Glacial Rising Phoenix"]: {
     0: `${server}/glacial.png`,
     1: `${server}/glacial.png`,
   },
-  glacial_equ: {
+  ["Glacial Equinox"]: {
     0: `${server}/glacial_equ.png`,
     1: `${server}/glacial_equ.png`,
   },
-  kyn: {
+  ["Kind Young Ninjas"]: {
     0: `${server}/kyn.png`,
     1: `${server}/kyn.png`,
   },
-  apark: {
+  ["Abusement Park"]: {
     0: `${server}/apark.png`,
     1: `${server}/apark.png`,
   },
-  caf: {
+  ["Cancer and Friends"]: {
     0: `${server}/caf.png`,
     1: `${server}/caf.png`,
   },
-  chaos: {
+  Chaos: {
     0: `${server}/chaos.png`,
     1: `${server}/chaos.png`,
   },
-  deadly_robots: {
+  ["Deadly Robots"]: {
     0: `${server}/deadly_robots.png`,
     1: `${server}/deadly_robots.png`,
   },

@@ -133,8 +133,14 @@ try {
               .src.split("/");
             if (selector === "blue") {
               blue_img = img[img.length - 1];
+              document.getElementById("team1-title").value = Object.keys(
+                imgs.logos
+              )[i];
             } else {
               red_img = img[img.length - 1];
+              document.getElementById("team2-title").value = Object.keys(
+                imgs.logos
+              )[i];
             }
             validate();
           }
