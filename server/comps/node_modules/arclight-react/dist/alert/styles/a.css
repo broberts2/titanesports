@@ -1,0 +1,28 @@
+.alert {
+}
+.alert h1 {
+}
+.alert .body {
+}
+.alert .body .tile {
+}
+.alert .body .content {
+}
+@media only screen and (max-width: 1800px) {
+  .alert h1 {
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .alert h1 {
+  }
+}
+@media only screen and (max-width: 900px) {
+  .alert h1 {
+  }
+}
+@media only screen and (max-width: 600px) {
+  .alert h1 {
+  }
+  .alert .body {
+  }
+}
