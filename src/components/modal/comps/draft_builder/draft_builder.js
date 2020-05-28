@@ -18,9 +18,9 @@ try {
       }
     };
 
-    const success_display = obj => {
+    const success_display = (obj) => {
       document.getElementById("modal-footer").innerHTML = "";
-      const copy = num => {
+      const copy = (num) => {
         let copyText;
         switch (num) {
           case "1":
@@ -75,11 +75,9 @@ try {
       let row = [];
       globals.state._items_loaded = 0;
       Object.values(imgs.logos).map((el, i) => {
-        row.push(`<td id="draft-cell-${i}" style="padding: 0px;">
+        row.push(`<td id="draft-cell-${i}" style="padding: 10px; width: 25%;">
             <div class="img">
-              <img id="draft-cell-img-${i}" src="${
-          el["1"]
-        }" onload="if(++globals.state._items_loaded >= 10) globals.fns.modalPending(false)"></img>
+              <img id="draft-cell-img-${i}" src="${el["1"]}" onload="if(++globals.state._items_loaded >= 10) globals.fns.modalPending(false)"></img>
             </div></td>`);
         if ((i + 1) % 4 === 0) {
           rows.push(`<tr>${row.join()}</tr>`);
@@ -120,7 +118,7 @@ try {
       `;
     Object.values(imgs.logos).map((el, i) => {
       let element = document.getElementById(`draft-cell-${i}`);
-      element.addEventListener("click", e => {
+      element.addEventListener("click", (e) => {
         Object.values(imgs.logos).map((el, i) => {
           if (e.path[2].id !== `draft-cell-${i}`) {
             document
@@ -168,7 +166,7 @@ try {
           t1_logo: blue_img,
           t2_logo: red_img,
           t1_name: document.getElementById("team1-title").value,
-          t2_name: document.getElementById("team2-title").value
+          t2_name: document.getElementById("team2-title").value,
         });
         if (res.code < 300) {
           success_display(res.special);

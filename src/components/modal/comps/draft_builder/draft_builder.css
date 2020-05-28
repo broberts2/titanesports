@@ -5,12 +5,13 @@
   height: 250px;
   overflow-y: scroll;
 }
-.draft-builder .img {
+.draft-builder .scroll-table .img {
   width: 100%;
   height: 100%;
 }
-.draft-builder .img img {
+.draft-builder .scroll-table .img img {
   width: 100%;
+  height: 100%;
 }
 .btn-group {
   --margin: 15px;
