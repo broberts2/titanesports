@@ -3,5 +3,7 @@ module.exports = (client, roles) => ({
   showroles: require("./commands/showroles")(client, roles),
   showchannels: require("./commands/showchannels")(client, roles),
   swapstandings: require("./commands/swapstandings")(client, roles),
-  help: require("./commands/help")()
+  dropplayer: require("./commands/dropplayer")(client, roles),
+  rolerequest: require("./commands/rolerequest")(client, roles),
+  help: require("./commands/help")(),
 });
