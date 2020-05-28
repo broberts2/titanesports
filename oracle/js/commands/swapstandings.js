@@ -30,12 +30,12 @@ const _writeRow = (obj, sheet) => {
   for (let i = 8, j = 0; j < 8; i += 4, j++) {
     sheet.getCell(obj.rowNum, i).value = obj.__array__[j];
   }
-  for (let i = 2, j = 0; i < 7; i += 2, j++) {
-    sheet.getCell(obj.rowNum + 1, i).value = obj.__array2__[j];
-  }
-  for (let i = 8; i < 40; i++) {
-    sheet.getCell(obj.rowNum + 1, i).value = obj.__statline__[i - 8];
-  }
+  // for (let i = 2, j = 0; i < 7; i += 2, j++) {
+  //   sheet.getCell(obj.rowNum + 1, i).value = obj.__array2__[j];
+  // }
+  // for (let i = 8; i < 40; i++) {
+  //   sheet.getCell(obj.rowNum + 1, i).value = obj.__statline__[i - 8];
+  // }
 };
 
 const _validate = (args) => {
