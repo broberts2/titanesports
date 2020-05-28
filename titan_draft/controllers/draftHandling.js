@@ -10,7 +10,7 @@ const server = config.production
   : "http://localhost:7001";
 
 module.exports = {
-  createDraft: async req => {
+  createDraft: async (req) => {
     try {
       let draft = await Draft.create({
         team: 0,
@@ -24,15 +24,15 @@ module.exports = {
               1: null,
               2: null,
               3: null,
-              4: null
+              4: null,
             },
             ban: {
               0: null,
               1: null,
               2: null,
               3: null,
-              4: null
-            }
+              4: null,
+            },
           },
           red: {
             pick: {
@@ -40,18 +40,18 @@ module.exports = {
               1: null,
               2: null,
               3: null,
-              4: null
+              4: null,
             },
             ban: {
               0: null,
               1: null,
               2: null,
               3: null,
-              4: null
-            }
-          }
+              4: null,
+            },
+          },
         },
-        blueTime: 60,
+        blueTime: 45,
         redTime: -1,
         blue_token: uid(16),
         red_token: uid(16),
@@ -62,7 +62,7 @@ module.exports = {
         t1_logo: req.body.t1_logo,
         t2_logo: req.body.t2_logo,
         t1_name: req.body.t1_name,
-        t2_name: req.body.t2_name
+        t2_name: req.body.t2_name,
       });
       draft.code = 200;
       draft.msg = `Draft Creation Successful!`;
@@ -72,15 +72,15 @@ module.exports = {
         special: {
           b: `${server}?room=${draft._id}&blue_token=${draft.blue_token}`,
           r: `${server}?room=${draft._id}&red_token=${draft.red_token}`,
-          s: `${server}?room=${draft._id}`
-        }
+          s: `${server}?room=${draft._id}`,
+        },
       };
     } catch (e) {
       console.log(e);
       return e;
     }
   },
-  updateDraft: async req => {
+  updateDraft: async (req) => {
     let draft = await Draft.update({ _id: req.query.id }, req.body);
     if (!draft) {
       return { code: 11102, msg: "Get Draft Error." };
@@ -93,7 +93,7 @@ module.exports = {
       return { code: 11102, msg: "Get Draft Error." };
     }
   },
-  getDraft: async req => {
+  getDraft: async (req) => {
     const draft = await Draft.findOne({ _id: req.query.id });
     if (!draft) {
       return { code: 11102, msg: "Get Draft Error." };
@@ -104,7 +104,7 @@ module.exports = {
       return { code: 11102, msg: "Get Draft Error." };
     }
   },
-  removeDraft: async req => {
+  removeDraft: async (req) => {
     let draft = await Draft.remove({ _id: req.query.id });
     if (!draft) {
       return { code: 11102, msg: "Delete Draft Error." };
@@ -116,5 +116,5 @@ module.exports = {
     } catch (e) {
       return { code: 11102, msg: "Delete Draft Error." };
     }
-  }
+  },
 };
