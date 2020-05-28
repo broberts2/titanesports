@@ -32,7 +32,7 @@ if (header) {
           <div class="dropdown menuitem">News & Events
             <div class="dropdown-content">
                 <a href="articles.html">News Articles</a>
-                <a href="#">Season Schedule</a>
+                <a href="schedule.html">Season Schedule</a>
                 <a href="events.html">Calendar of Events</a>
             </div>
           </div>
@@ -74,14 +74,14 @@ if (header) {
 
 
 `;
-document
-  .getElementById("header-sign-in-bttn")
-  .addEventListener("click", () => {
-    if (globals.state.user) {
-      globals.fns.deleteTitanKey();
-      location.reload();
-    } else {
-      globals.fns.buildModal("sign_in");
-    }
-  });
+  document
+    .getElementById("header-sign-in-bttn")
+    .addEventListener("click", () => {
+      if (globals.state.user) {
+        globals.fns.deleteTitanKey();
+        location.reload();
+      } else {
+        globals.fns.buildModal("sign_in");
+      }
+    });
 }
