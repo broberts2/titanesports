@@ -21,7 +21,7 @@ const _rowReader = (rowNum, sheet) => {
     teamName,
     __array__,
     __array2__,
-    __statline__
+    __statline__,
   };
 };
 
@@ -38,7 +38,7 @@ const _writeRow = (obj, sheet) => {
   }
 };
 
-const _validate = args => {
+const _validate = (args) => {
   if (!(args.length === 3)) {
     return new Error(
       "You have provided an improper number of argments.\n```?swapstandings```"
@@ -47,11 +47,13 @@ const _validate = args => {
     return new Error(
       "Your first argument did not match 'gladiator' or 'olympian'.\n```?swapstandings```"
     );
+  } else if (!(parseInt(args[1]) % 2 === 0 || parseInt(args[2]) % 2 === 0)) {
+    return new Error("Your row selections must be an even number.");
   }
 };
 
-module.exports = client => ({
-  exec: async command => {
+module.exports = (client) => ({
+  exec: async (command) => {
     const __validate__ = _validate(command.args);
     if (!__validate__) {
       const range = "A1:AN50";
@@ -78,7 +80,7 @@ module.exports = client => ({
   roles: {
     id: "566421797831049216",
     id2: "407684891069906974",
-    id3: "432526140310290458"
+    id3: "432526140310290458",
   },
-  status: 0
+  status: 0,
 });
