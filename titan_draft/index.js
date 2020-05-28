@@ -43,6 +43,12 @@ if (serverFig.production) {
 
 const io = require("socket.io")(server);
 
-server.listen(7001);
+server.listen(7001, () =>
+  console.log(
+    `--------------------------------------------------------------` +
+      `\n\t\tTitan Draft listening on port ${7001}\n` +
+      `--------------------------------------------------------------`
+  )
+);
 
 socket(io);
