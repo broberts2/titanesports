@@ -41,9 +41,9 @@ module.exports = (client, roles) => ({
                   cell = sheet2.getCell(i, j);
                   if (cell.value === command.args[0]) {
                     cell.value = "";
-                    for (let k = 0; k < 4; k++) {
-                      sheet2.getCell(i + 1, j + k).value = "";
-                    }
+                    // for (let k = 0; k < 4; k++) {
+                    //   sheet2.getCell(i + 1, j + k).value = "";
+                    // }
                     return cell;
                   }
                 }
