@@ -1,21 +1,11 @@
-const production = false;
-
-globals.constants.serverPath = production
-  ? "https://titan-esports.org:8000"
-  : "http://localhost:8000";
-
-globals.constants.titanDraftPath = production
-  ? "https//titan-esports.org:7001"
-  : "http://localhost:7001";
-
-globals.fns._t = async prm =>
+const _t = async prm =>
   await new Promise(async (resolve, reject) => {
     setTimeout(() => resolve({ code: 500, msg: "Request timed out." }), 8000);
     const response = await prm;
     resolve(response);
   });
 
-globals.fns._get = async (url, data) => {
+const _get = async (url, data) => {
   const titan_key = globals.fns.readTitanKey();
   const response = await fetch(url, {
     method: "GET",
@@ -33,7 +23,7 @@ globals.fns._get = async (url, data) => {
   return response.json().then(res => res);
 };
 
-globals.fns._post = async (url, data) => {
+const _post = async (url, data) => {
   const titan_key = globals.fns.readTitanKey();
   const response = await fetch(url, {
     method: "POST",
@@ -47,24 +37,21 @@ globals.fns._post = async (url, data) => {
   return response.json().then(res => res);
 };
 
-globals.fns._delete = async (url, data) => {
-  const titan_key = globals.fns.readTitanKey();
-  const response = await fetch(url, {
-    method: "DELETE",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      titan_key
-    },
-    body: JSON.stringify(data)
-  });
-  return response.json().then(res => res);
-};
-
 // API CALLS
-let script = document.createElement("script");
-script.src = "js/api_calls.js";
-document.head.append(script);
+globals.api.getDraftLogos = data =>
+  _t(_get("https://titan-esports.org:8000/getDraftLogos", data));
+
+globals.api.validateToken = () =>
+  _t(_get("https://titan-esports.org:8000/s/validateToken"));
+
+globals.api.loginUser = data =>
+  _t(_get("https://titan-esports.org:8000/loginUser", data));
+
+globals.api.getAllUsers = data =>
+  _t(_get("https://titan-esports.org:8000/getAllUsers", data));
+
+globals.api.createDraft = data =>
+  _t(_post("https://titan-esports.org:7001/api/createDraft", data));
 
 // AUTHENTICATOR
 (async () => {

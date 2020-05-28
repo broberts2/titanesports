@@ -17,62 +17,15 @@
 </head>
 <body>
 
-<!-- Mobile Menu -->
-<div class="d-block d-md-none d-lg-none d-xl-none">
-	<div id="main" align="left">
-		<button class="openbtn" onclick="openNav()">&#9776; Menu</button>
-	</div>
-</div>
-<div id="mySidebar" class="sidebar">
-	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-	<a href="#demo1" data-toggle="collapse">About</a>
-    <div id="demo1" class="collapse">
-      <a class="mmenuitem" href="staff-roster.html">Staff Roster</a>
-      <a class="mmenuitem" href="rules.html">Rules</a>
-      <a class="mmenuitem" href="new-member.html">New Members</a>
-      <a class="mmenuitem" href="https://forms.gle/xMmLSCwRgimdkby3A" target="_blank">Apply For Staff Position</a>
-      <a class="mmenuitem" href="https://forms.gle/pERKk2QP8vDv4b1i9" target="_blank">Apply For Shoutcasting Position</a>
-      <hr>
-    </div>
-  <a href="#demo2" data-toggle="collapse">Players</a>
-    <div id="demo2" class="collapse">
-      <a class="mmenuitem" href="#">Sign In</a>
-      <a class="mmenuitem" href="#">Statistics</a>
-      <a class="mmenuitem" href="https://forms.gle/WcdiyoqgsB7FYTWD7" target="_blank">Appeal Ban Form</a>
-      <hr>
-    </div>
-  <a href="#demo3" data-toggle="collapse">Podcasts</a>
-    <div id="demo3" class="collapse">
-      <a class="mmenuitem" href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank">By The Hearthside</a>
-      <hr>
-    </div>
-  <a href="#demo4" data-toggle="collapse">News & Events</a>
-    <div id="demo4" class="collapse">
-      <a class="mmenuitem" href="articles.html">News Articles</a>
-      <a class="mmenuitem" href="schedule.html">Season Schedule</a>
-      <a class="mmenuitem" href="events.html">Calendar of Events</a>
-      <hr>
-    </div>
-  <a href="#demo5" data-toggle="collapse">Contact</a>
-    <div id="demo5" class="collapse">
-      <a class="mmenuitem" href="contact-us.html">General Contact Us</a>
-      <a class="mmenuitem" href="https://forms.gle/6PDJ4r8Q9mAAExSc6" target="_blank">Player Sign Up Application</a>
-      <a class="mmenuitem" href="https://forms.gle/DKUjoU8MRQ75BNC4A" target="_blank">Team Sign Up Application</a>
-      <a class="mmenuitem" href="https://forms.gle/HULeV8TK82KB6Mn69" target="_blank">Complaint/Report Player Form</a>
-      <a class="mmenuitem" href="https://forms.gle/WcdiyoqgsB7FYTWD7" target="_blank">Appeal Ban Form</a>
-      <a class="mmenuitem" href="roster-change.html">Roster Change Form</a>
-		</div>
-</div>
-
+<div id="mobilemenu"></div>
 
 <div class="topsection">
 	<!-- Background Video Loop -->
 	<div id="video-loop"></div>
-
 	<!-- Header -->
 	<div id="header"></div>
 
-	<div align="center"><img data-aos="zoom-in" class="logoheader" src="teslogo.png"></div>
+	<div align="center"><a href="index.html"><img class="logoheader" src="teslogo.png"></a></div>
 
 	<div id="sign-in-button-wrapper" class="d-flex justify-content-center">
 		<div id="sign-in-button" class="bigbutton hvr-growbtn" style="margin-top: 200px;">
@@ -88,17 +41,17 @@
 
 <div class="transitionblk">&nbsp;</div>
 <div style="background-color: #000; min-height: 200px;">
-	<div align="center"><h1 data-aos="fade-left" style="max-width: 900px;">Titan eSports Is An Amateur eSports Organization That Brings Competitive League of Legends Gameplay To All Skill Levels</h1></div>
+	<div align="center"><h1 style="max-width: 900px;">Titan eSports Is An Amateur eSports Organization That Brings Competitive League of Legends Gameplay To All Skill Levels</h1></div>
 </div>
 
 <div class="sect1bg" style="margin-top: -60px;">
 	<div class="sect1fore" style="min-height: 800px;">
 		<div class="container d-flex justify-content-center">
 			<div class="row" style="padding: 120px 0px; width: 900px;">
-				<div class="col-lg-6" align="center" style=" padding: 60px 0px 40px 0px;"  data-aos="fade-right">
-					<iframe style="border: 5px solid #000; z-index: 1; box-shadow: 5px 5px 5px #000;" width="400" height="225" src="https://www.youtube.com/embed/LR9c7LVIu84" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<div class="col-lg-6" align="center" style=" padding: 60px 0px 40px 0px;" >
+					<iframe style="border: 5px solid #000; z-index: 1; box-shadow: 5px 5px 5px #000;" width="400" height="225" src="https://www.youtube.com/embed/2eYg4d4kn6M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
-				<div class="col-lg-6" data-aos="fade-left">
+				<div class="col-lg-6">
 					<div class="row" style="padding: 0px 20px;">
 						<div class="col-6">
 							<div class="d-flex justify-content-center">
@@ -123,7 +76,7 @@
 					<div class="row" style="padding-top: 30px;">
 						<div class="col-6">
 							<div class="d-flex justify-content-center">
-							    <a href="schedule.html" target="_blank"><div class="servbtn hvr-growbtn" style="">
+							    <a href="" target="_blank"><div class="servbtn hvr-growbtn" style="">
 							        <i style="font-size: 55px;" class="fas fa-calendar-alt"></i><br>Season <br>Schedule
 							    </div></a>
 							</div>
@@ -133,162 +86,161 @@
 							    <div class="servbtn hvr-growbtn" style="">
 							        <i style="font-size: 55px;" class="fas fa-scroll"></i><br>Roster <br>Updates
 							    </div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+						    </div></a>
+					    </div>
+				    </div>
+		        </div>
+		    </div>
+	    </div>
+    </div>
 </div>
-
 <div class="sect2bg" style="">
     <div align="center" style="padding: 20px 0px 50px 0px;">
-        <div class="container d-none d-sm-none d-md-none d-lg-block">
-            <div class="row" style="margin-top: 20px;">
-                <div class="col-lg-7">
-                    <div style="padding: 0px 5px;">
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <div style="padding: 0px 5px 0px 0px;">
-																	<a href="new-member.html">
-	                                  <div id="new-members-bttn-wrapper" data-aos="fade-right" style="height: 300px;">
-																			<div id="new-members-bttn" style="position: absolute; width: 100%; height: 100%;"></div>
-																			<div class="GoldBkg" style="position: relative; z-index: 2; height: 80px;">
-																				<div class="BlockTitle">
-																					<i class="fas fa-user-plus" style="padding-right: 5px;"></i>
-																					New Members
-																				</div>
-																				<div class="BlockText">
-																					New to TES? Click here to get a valet tour of what we offer.
-																				</div>
+			<div class="container d-none d-sm-none d-md-none d-lg-block">
+					<div class="row" style="margin-top: 20px;">
+							<div class="col-lg-7">
+									<div style="padding: 0px 5px;">
+											<div class="row">
+													<div class="col-lg-8">
+															<div style="padding: 0px 5px 0px 0px;">
+																<a href="new-member.html">
+																	<div id="new-members-bttn-wrapper" data-aos="fade-right" style="height: 300px;">
+																		<div id="new-members-bttn" style="position: absolute; width: 100%; height: 100%;"></div>
+																		<div class="GoldBkg" style="position: relative; z-index: 2; height: 80px;">
+																			<div class="BlockTitle">
+																				<i class="fas fa-user-plus" style="padding-right: 5px;"></i>
+																				New Members
 																			</div>
-	                                  </div>
+																			<div class="BlockText">
+																				New to TES? Click here to get a valet tour of what we offer.
+																			</div>
+																		</div>
+																	</div>
+																</a>
+															</div>
+													</div>
+													<div class="col-lg-4">
+															<div style="padding: 0px 0px 0px 5px;">
+																	<a href="staff-roster.html">
+																			<div id="staff-bttn-wrapper" data-aos="fade-down" style="height: 300px;">
+																					<div id="staff-bttn" style="position: absolute; width: 100%; height: 100%;"></div>
+																					<div class="GoldBkg" style="position: relative; z-index: 2; height: 130px; padding-top: 20px;">
+																							<div class="BlockTitle"><i class="fas fa-users" style="padding-right: 5px;"></i>Our Staff</div>
+																							<div class="BlockText">Get to know the TES Staff and take a peak at the team who makes it all happen!</div>
+																					</div>
+																			</div>
 																	</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div style="padding: 0px 0px 0px 5px;">
-                                    <a href="staff-roster.html">
-                                        <div id="staff-bttn-wrapper" data-aos="fade-down" style="height: 300px;">
-																						<div id="staff-bttn" style="position: absolute; width: 100%; height: 100%;"></div>
-																						<div class="GoldBkg" style="position: relative; z-index: 2; height: 130px; padding-top: 20px;">
-                                                <div class="BlockTitle"><i class="fas fa-users" style="padding-right: 5px;"></i>Our Staff</div>
-                                                <div class="BlockText">Get to know the TES Staff and take a peak at the team who makes it all happen!</div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="articles.html">
-                            <div id="articles-bttn-wrapper" data-aos="fade-up" style="margin-top: 40px; height: 200px; padding-top: 0px;">
-																<div id="articles-bttn" style="position: absolute; width: 100%; height: 100%;"></div>
-																<div class="row">
-                                    <div class="col-lg-7">&nbsp;</div>
-                                    <div class="col-lg-5">
-                                        <div class="GoldBkg" style="position: relative; z-index: 2; height: 200px; padding: 25px 15px;">
-                                            <div class="BlockTitle"><i class="far fa-newspaper" style="padding-right: 5px;"></i>News Articles</div>
-                                            <div class="BlockText" style="margin-top: 10px;">Interested in what's new in TES? Get the best advice and tips from our community as well as updates and plans for our League! </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <div style="padding: 0px 5px;">
-                        <a href="contact-us.html">
-                            <div id="contact-bttn-wrapper" data-aos="fade-left" style="height: 130px; padding-top: 0px;">
-																<div id="contact-bttn" style="position: absolute; width: 100%; height: 100%;"></div>
-																<div class="row">
-                                    <div class="col-lg-5">
-                                        <div class="GoldBkg" style="position: relative; z-index: 2; height: 130px; padding-top: 20px;">
-                                            <div class="BlockTitle"><i class="fas fa-envelope-open-text" style="padding-right: 5px;"></i>Contact Us</div>
-                                            <div class="BlockText">Have any questions or concerns? Let us know!</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-7">&nbsp;</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank">
-                            <div id="hearthside-bttn-wrapper" data-aos="fade-up" style="margin-top: 40px; height: 370px;">
-																<div id="hearthside-bttn" style="position: absolute; width: 100%; height: 100%;"></div>
-															  <div class="GoldBkg" style="position: relative; z-index: 2; height: 80px;">
-                                    <div class="BlockTitle"><i class="fas fa-comments" style="padding-right: 5px;"></i>By The Hearthside</div>
-                                    <div class="BlockText">Listen to our weekly talkshow about news, stats, and other topics</div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--mobile-->
-        <div class="container d-lg-none d-xl-none d-md-block">
-            <div class="row" style="margin-top: 20px;">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-6">
-                            <a href="new-member.html">
-                                <div id="new-members-bttn-wrapper-mobile" data-aos="fade-up" style="height: 160px;">
-																		<div id="new-members-bttn-mobile" style="position: absolute; width: 100%; height: 100%;"></div>
-																		<div class="GoldBkg" style="position: relative; z-index: 2; height: 60px;">
-                                        <div class="MobileBlockTitle"><i class="fas fa-user-plus" style="padding-right: 5px;"></i>New Members</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-6">
-                            <a href="staff-roster.html">
-                                <div id="staff-bttn-wrapper-mobile" data-aos="fade-up" style="height: 160px;">
-																		<div id="staff-bttn-mobile" style="position: absolute; width: 100%; height: 100%;"></div>
-																		<div class="GoldBkg" style="position: relative; z-index: 2; height: 60px;">
-                                        <div class="MobileBlockTitle"><i class="fas fa-users" style="padding-right: 5px;"></i>Our Staff</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 30px;">
-                        <div class="col-6">
-                            <a href="articles.html">
-                                <div id="articles-bttn-wrapper-mobile" data-aos="fade-up" style="height: 160px;">
-																		<div id="articles-bttn-mobile" style="position: absolute; width: 100%; height: 100%;"></div>
-																		<div class="GoldBkg" style="position: relative; z-index: 2; height: 60px;">
-                                        <div class="MobileBlockTitle"><i class="far fa-newspaper" style="padding-right: 5px;"></i>News Articles</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-6">
-                            <a href="contact-us.html">
-                                <div id="contact-bttn-wrapper-mobile" data-aos="fade-up" style="height: 160px;">
-																		<div id="contact-bttn-mobile" style="position: absolute; width: 100%; height: 100%;"></div>
-																	  <div class="GoldBkg" style="position: relative; z-index: 2; height: 60px;">
-                                        <div class="MobileBlockTitle"><i class="fas fa-envelope-open-text" style="padding-right: 5px;"></i>Contact Us</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <a href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank">
-                                <div id="hearthside-bttn-wrapper-mobile" data-aos="fade-up" style="margin-top: 15px; height: 180px;">
-																		<div id="hearthside-bttn-mobile" style="position: absolute; width: 100%; height: 100%;"></div>
-																		<div class="GoldBkg" style="position: relative; z-index: 2; height: 60px;">
-                                        <div class="BlockTitle"><i class="fas fa-comments" style="padding-right: 5px;"></i>By The Hearthside</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+															</div>
+													</div>
+											</div>
+											<a href="articles.html">
+													<div id="articles-bttn-wrapper" data-aos="fade-up" style="margin-top: 40px; height: 200px; padding-top: 0px;">
+															<div id="articles-bttn" style="position: absolute; width: 100%; height: 100%;"></div>
+															<div class="row">
+																	<div class="col-lg-7">&nbsp;</div>
+																	<div class="col-lg-5">
+																			<div class="GoldBkg" style="position: relative; z-index: 2; height: 200px; padding: 25px 15px;">
+																					<div class="BlockTitle"><i class="far fa-newspaper" style="padding-right: 5px;"></i>News Articles</div>
+																					<div class="BlockText" style="margin-top: 10px;">Interested in what's new in TES? Get the best advice and tips from our community as well as updates and plans for our League! </div>
+																			</div>
+																	</div>
+															</div>
+													</div>
+											</a>
+									</div>
+							</div>
+							<div class="col-lg-5">
+									<div style="padding: 0px 5px;">
+											<a href="contact-us.html">
+													<div id="contact-bttn-wrapper" data-aos="fade-left" style="height: 130px; padding-top: 0px;">
+															<div id="contact-bttn" style="position: absolute; width: 100%; height: 100%;"></div>
+															<div class="row">
+																	<div class="col-lg-5">
+																			<div class="GoldBkg" style="position: relative; z-index: 2; height: 130px; padding-top: 20px;">
+																					<div class="BlockTitle"><i class="fas fa-envelope-open-text" style="padding-right: 5px;"></i>Contact Us</div>
+																					<div class="BlockText">Have any questions or concerns? Let us know!</div>
+																			</div>
+																	</div>
+																	<div class="col-lg-7">&nbsp;</div>
+															</div>
+													</div>
+											</a>
+											<a href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank">
+													<div id="hearthside-bttn-wrapper" data-aos="fade-up" style="margin-top: 40px; height: 370px;">
+															<div id="hearthside-bttn" style="position: absolute; width: 100%; height: 100%;"></div>
+															<div class="GoldBkg" style="position: relative; z-index: 2; height: 80px;">
+																	<div class="BlockTitle"><i class="fas fa-comments" style="padding-right: 5px;"></i>By The Hearthside</div>
+																	<div class="BlockText">Listen to our weekly talkshow about news, stats, and other topics</div>
+															</div>
+													</div>
+											</a>
+									</div>
+							</div>
+					</div>
+			</div>
+			<!--mobile-->
+			<div class="container d-lg-none d-xl-none d-md-block">
+					<div class="row" style="margin-top: 20px;">
+							<div class="col-lg-12">
+									<div class="row">
+											<div class="col-6">
+													<a href="new-member.html">
+															<div id="new-members-bttn-wrapper-mobile" data-aos="fade-up" style="height: 160px;">
+																	<div id="new-members-bttn-mobile" style="position: absolute; width: 100%; height: 100%;"></div>
+																	<div class="GoldBkg" style="position: relative; z-index: 2; height: 60px;">
+																			<div class="MobileBlockTitle"><i class="fas fa-user-plus" style="padding-right: 5px;"></i>New Members</div>
+																	</div>
+															</div>
+													</a>
+											</div>
+											<div class="col-6">
+													<a href="staff-roster.html">
+															<div id="staff-bttn-wrapper-mobile" data-aos="fade-up" style="height: 160px;">
+																	<div id="staff-bttn-mobile" style="position: absolute; width: 100%; height: 100%;"></div>
+																	<div class="GoldBkg" style="position: relative; z-index: 2; height: 60px;">
+																			<div class="MobileBlockTitle"><i class="fas fa-users" style="padding-right: 5px;"></i>Our Staff</div>
+																	</div>
+															</div>
+													</a>
+											</div>
+									</div>
+									<div class="row" style="margin-top: 30px;">
+											<div class="col-6">
+													<a href="articles.html">
+															<div id="articles-bttn-wrapper-mobile" data-aos="fade-up" style="height: 160px;">
+																	<div id="articles-bttn-mobile" style="position: absolute; width: 100%; height: 100%;"></div>
+																	<div class="GoldBkg" style="position: relative; z-index: 2; height: 60px;">
+																			<div class="MobileBlockTitle"><i class="far fa-newspaper" style="padding-right: 5px;"></i>News Articles</div>
+																	</div>
+															</div>
+													</a>
+											</div>
+											<div class="col-6">
+													<a href="contact-us.html">
+															<div id="contact-bttn-wrapper-mobile" data-aos="fade-up" style="height: 160px;">
+																	<div id="contact-bttn-mobile" style="position: absolute; width: 100%; height: 100%;"></div>
+																	<div class="GoldBkg" style="position: relative; z-index: 2; height: 60px;">
+																			<div class="MobileBlockTitle"><i class="fas fa-envelope-open-text" style="padding-right: 5px;"></i>Contact Us</div>
+																	</div>
+															</div>
+													</a>
+											</div>
+									</div>
+									<div class="row">
+											<div class="col-12">
+													<a href="https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw" target="_blank">
+															<div id="hearthside-bttn-wrapper-mobile" data-aos="fade-up" style="margin-top: 15px; height: 180px;">
+																	<div id="hearthside-bttn-mobile" style="position: absolute; width: 100%; height: 100%;"></div>
+																	<div class="GoldBkg" style="position: relative; z-index: 2; height: 60px;">
+																			<div class="BlockTitle"><i class="fas fa-comments" style="padding-right: 5px;"></i>By The Hearthside</div>
+																	</div>
+															</div>
+													</a>
+											</div>
+									</div>
+							</div>
+					</div>
+			</div>
     </div>
 </div>
 

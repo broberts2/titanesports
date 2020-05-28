@@ -1,11 +1,11 @@
 const scripts = [
   "js/api.js",
   "components/header/header.js",
+  "components/mobilemenu/mobilemenu.js",
   "components/footer/footer.js",
   "components/modal/modal.js",
   "components/video_loop/video_loop.js",
-  "components/video_buttons/video_buttons.js",
-  "js/testing.js"
+  "components/video_buttons/video_buttons.js"
 ];
 
 scripts.map(el => {
@@ -34,6 +34,5 @@ let globals = {
       (document.cookie =
         "titan_key=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;")
   },
-  constants: {},
   api: {}
 };

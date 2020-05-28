@@ -52,4 +52,10 @@ if (config.production) {
   server = http.createServer(app);
 }
 
-server.listen(PORT, () => console.log(`Listening on Port: ${PORT}`));
+server.listen(PORT, () =>
+  console.log(
+    `--------------------------------------------------------------` +
+      `\n\t\tTitan-eSports web server listening on port ${PORT}\n` +
+      `--------------------------------------------------------------`
+  )
+);
