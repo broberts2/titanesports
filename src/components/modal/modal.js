@@ -2,7 +2,7 @@ const modals = ["sign_in.js", "draft_builder.js"];
 const path = "components/modal/comps";
 let modalsObj = {};
 
-modals.map(el => {
+modals.map((el) => {
   modalsObj[el.replace(".js", "")] = () => {
     let script = document.createElement("script");
     script.src = `${path}/${el.replace(".js", "")}/${el}`;
@@ -16,7 +16,7 @@ modals.map(el => {
 
 let modal = this.document.createElement("div");
 modal.innerHTML = `
-  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true" data-backdrop="static">
     <div id="modal-container" class="modal-dialog modal-dialog-centered"role="document">
       <div class="modal-content">
         <div class="modal-img"><img src="teslogo.png"></img></div>
@@ -35,7 +35,7 @@ modal.innerHTML = `
 `;
 document.body.append(modal);
 
-globals.fns.buildModal = _modal => {
+globals.fns.buildModal = (_modal) => {
   switch (_modal) {
     case "sign_in":
       return modalsObj.sign_in();
@@ -44,7 +44,7 @@ globals.fns.buildModal = _modal => {
   }
 };
 
-globals.fns.modalPending = isLoading => {
+globals.fns.modalPending = (isLoading) => {
   if (isLoading) {
     document.body.style = "pointer-events: none;";
     document.getElementById("modal-spinner").innerHTML = `
