@@ -78,10 +78,17 @@ module.exports = {
   getGameStatsByCode: async (req, res, level) => {
     const data = await GameData.findOne({ code: req.query.code });
     console.log(data);
-    return {
-      code: 200,
-      msg: "Code Generation Successful!",
-      data,
-    };
+    if (data) {
+      return {
+        code: 200,
+        msg: "Code Generation Successful!",
+        data,
+      };
+    } else {
+      return {
+        code: 200,
+        msg: "Code does not exist",
+      };
+    }
   },
 };
