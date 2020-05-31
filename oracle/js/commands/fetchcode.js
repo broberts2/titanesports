@@ -28,7 +28,7 @@ module.exports = (client, roles) => ({
     }
   },
   help:
-    "!fetchcode - Returns metadata for an existing code.\n\n```!fetchcode <tournament_code>",
+    "!fetchcode - Returns metadata for an existing code.\n\n```!fetchcode <tournament_code>```",
   roles: { id: "407684891069906974", id1: "664717783971397642" },
   status: 0,
 });
