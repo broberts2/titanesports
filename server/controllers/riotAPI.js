@@ -57,9 +57,14 @@ module.exports = {
     codes = await Promise.all(
       codes.map(async (el, i) => {
         const code = await el(i + 1);
-        console.log(code);
         await GameData.create({
           code,
+          team1: req.query.team1 ? req.query.team1 : null,
+          team2: req.query.team2 ? req.query.team2 : null,
+          weekNum: req.query.weekNum ? req.query.weekNum : null,
+          gameNum: req.query.gameNum ? req.query.gameNum : null,
+          seasonNum: req.query.seasonNum ? req.query.seasonNum : null,
+          league: req.query.league ? req.query.league : null,
         });
         return code;
       })
@@ -71,11 +76,11 @@ module.exports = {
     };
   },
   getGameStatsByCode: async (req, res, level) => {
-    const codes = await GameStats.find({ code: req.query.code });
+    const data = await GameStats.find({ code: req.query.code });
     return {
       code: 200,
       msg: "Code Generation Successful!",
-      codes,
+      data,
     };
   },
 };
