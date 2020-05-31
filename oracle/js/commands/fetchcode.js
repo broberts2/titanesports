@@ -17,13 +17,13 @@ module.exports = (client, roles) => ({
         }
       ).then((_res) => _res.json());
       return `Code fetch successful!\n\n${JSON.stringify({
-        league: res.league,
-        code: res.code,
-        team1: res.team1,
-        team2: res.team2,
-        weekNum: res.weekNum,
-        gameNum: res.gameNum,
-        seasonNum: res.seasonNum,
+        league: res.data.league,
+        code: res.data.code,
+        team1: res.data.team1,
+        team2: res.data.team2,
+        weekNum: res.data.weekNum,
+        gameNum: res.data.gameNum,
+        seasonNum: res.data.seasonNum,
       })}`;
     } else {
       return new Error(
