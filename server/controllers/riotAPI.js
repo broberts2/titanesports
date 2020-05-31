@@ -54,7 +54,6 @@ module.exports = {
     for (let i = 0; i < n; i++) {
       codes.push(_get_code);
     }
-    console.log(codes);
     codes = await Promise.all(
       codes.map(async (el, i) => {
         const code = await el(i + 1);
