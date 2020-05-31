@@ -16,15 +16,7 @@ module.exports = (client, roles) => ({
           },
         }
       ).then((_res) => _res.json());
-      return `Code fetch successful!\n\n${JSON.stringify({
-        league: res.data.league,
-        code: res.data.code,
-        team1: res.data.team1,
-        team2: res.data.team2,
-        weekNum: res.data.weekNum,
-        gameNum: res.data.gameNum,
-        seasonNum: res.data.seasonNum,
-      })}`;
+      return `Code fetch successful!\n\nLeague: ${res.data.league}\nLeague: ${res.data.code}\nLeague: ${res.data.team1}\nLeague: ${res.data.team1}\nLeague: ${res.data.weekNum}\nLeague: ${res.data.gameNum}\nLeague: ${res.data.seasonNum}`;
     } else {
       return new Error(
         "Hmm, I wasn't able to parse your arguments. You should probably get with a staff member for help or use:\n```?createcodes```"
