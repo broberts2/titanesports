@@ -47,7 +47,10 @@ if (config.production) {
     "/etc/letsencrypt/live/titan-esports.org/cert.pem",
     "utf8"
   );
-  server = http.createServer({ key, cert, rejectUnauthorized: false }, app);
+  server = http.createServer(
+    new https.Agent({ key, cert, rejectUnauthorized: false }),
+    app
+  );
 } else {
   server = http.createServer(app);
 }
