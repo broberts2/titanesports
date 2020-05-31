@@ -62,7 +62,7 @@ module.exports = {
           team1: req.query.team1 ? req.query.team1 : null,
           team2: req.query.team2 ? req.query.team2 : null,
           weekNum: req.query.weekNum ? req.query.weekNum : null,
-          gameNum: req.query.gameNum ? req.query.gameNum : null,
+          gameNum: i + 1,
           seasonNum: req.query.seasonNum ? req.query.seasonNum : null,
           league: req.query.league ? req.query.league : null,
         });
