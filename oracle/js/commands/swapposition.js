@@ -41,11 +41,11 @@ module.exports = (client, roles) => ({
             }
           })();
           const sheet2CellSwap = [
-            sheet.getCell(
+            sheet2.getCell(
               getRowNum,
               _pos_standings_and_rosters(command.args[0])
             ),
-            sheet.getCell(
+            sheet2.getCell(
               getRowNum,
               _pos_standings_and_rosters(command.args[1])
             ),
@@ -62,7 +62,7 @@ module.exports = (client, roles) => ({
           await sheet2.saveUpdatedCells();
           client.channels.cache.get(_review_channel).send(
             _embed({
-              description: `A position swap was made:\n\nPerformed By: ${command.msg.author}\nDetails:\n${sheetCellValue2} ---> ${command.args[0]}\n${sheetCellValue1} ---> ${command.args[1]}`,
+              description: `A position swap was made:\n\nPerformed By: ${command.msg.author}\nDetails:\n${sheetCellValue2}\t\t---> ${command.args[0]}\n${sheetCellValue1}\t\t---> ${command.args[1]}`,
               status: _Colors[0],
             })
           );
