@@ -11,7 +11,7 @@ module.exports = (client) => ({
     let str = "--- Commands Index ---";
     for (key in _help) {
       str += `${`\n\n${key}:\n`}${
-        "```" + _help[key].map((el) => `!${el}\n`) + "```"
+        "```" + _help[key].map((el) => `!${el}`).join("\n") + "```"
       }`;
     }
     return str;
