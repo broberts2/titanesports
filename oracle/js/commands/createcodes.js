@@ -8,6 +8,7 @@ module.exports = (client, roles) => ({
       `https://titan-esports.org:8000/s/createTournamentCode?team1=${command.args[0]}&team2=${command.args[1]}&weekNum=${command.args[2]}&seasonNum=${command.args[3]}&league=${command.args[4]}&n=${command.args[5]}`,
       {
         method: "GET",
+        rejectUnauthorized: false,
         headers: {
           titan_key,
         },
