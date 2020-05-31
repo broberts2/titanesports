@@ -16,9 +16,15 @@ module.exports = (client, roles) => ({
           },
         }
       ).then((_res) => _res.json());
-      //delete res.data;
-      console.log(res);
-      return `Code fetch successful!\n\n${res}`;
+      return `Code fetch successful!\n\n${{
+        league: res.league,
+        code: res.code,
+        team1: res.team1,
+        team2: res.team2,
+        weekNum: res.weekNum,
+        gameNum: res.gameNum,
+        seasonNum: res.seasonNum,
+      }}`;
     } else {
       return new Error(
         "Hmm, I wasn't able to parse your arguments. You should probably get with a staff member for help or use:\n```?createcodes```"
