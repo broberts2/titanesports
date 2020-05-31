@@ -54,6 +54,7 @@ module.exports = {
     codes = await Promise.all(
       codes.map(async (el, i) => {
         const code = await el(i + 1);
+        console.log(code);
         await GameData.create({
           code,
         });
