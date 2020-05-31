@@ -7,5 +7,6 @@ module.exports = (client, roles) => ({
   rolerequest: require("./commands/rolerequest")(client, roles),
   createcodes: require("./commands/createcodes")(client, roles),
   fetchcode: require("./commands/fetchcode")(client, roles),
+  swapposition: require("./commands/swapposition")(client, roles),
   help: require("./commands/help")(),
 });

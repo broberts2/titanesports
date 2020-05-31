@@ -7,6 +7,7 @@ const _help = [
   require("./dropplayer")().help,
   require("./createcodes")().help,
   require("./fetchcode")().help,
+  require("./swapposition")().help,
 ];
 
 module.exports = (client) => ({
