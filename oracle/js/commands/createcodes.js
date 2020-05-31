@@ -5,7 +5,8 @@ const titan_key = require("../../config").titan_key;
 module.exports = (client, roles) => ({
   exec: async (command) => {
     const res = await fetch(
-      `${webserver}/s/createTournamentCode?team1=${command.args[0]}&team2=${command.args[1]}&weekNum=${command.args[2]}&seasonNum=${command.args[3]}&league=${command.args[4]}&n=${command.args[5]}`,
+      //`${webserver}/s/createTournamentCode?team1=${command.args[0]}&team2=${command.args[1]}&weekNum=${command.args[2]}&seasonNum=${command.args[3]}&league=${command.args[4]}&n=${command.args[5]}`,
+      `${webserver}/s/createTournamentCode`,
       {
         method: "GET",
         headers: {
