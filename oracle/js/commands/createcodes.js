@@ -19,6 +19,6 @@ module.exports = (client, roles) => ({
   },
   help:
     "!createcodes - Creates a set of riot api game codes.\n\n```!createcodes <team_1> <team_2> <week_num> <season_num> <league> <series_size>```\nValid inputs:\nTeam 1: <team_name>\nTeam 2: <team_name>\nWeek Num: <number>\nSeason Num: <number>\nLeague: gladiator, olympian\nSeries Size (optional): 1, 2, 3, 4, 5, 6, 7",
-  roles: { id: "407684891069906974" },
+  roles: { id: "407684891069906974", id1: "664717783971397642" },
   status: 0,
 });
