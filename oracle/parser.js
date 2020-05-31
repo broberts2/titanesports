@@ -32,7 +32,7 @@ const _parse = async (msg, client, roles) => {
         Object.values(Commands[`${command.command}`].roles),
         roles
       );
-      if (typeof _rolesCheck) {
+      if (_rolesCheck) {
         if (command.type === "exec") {
           description = await Commands[`${command.command}`].exec(
             command,
@@ -42,13 +42,13 @@ const _parse = async (msg, client, roles) => {
                   return {
                     document: Gladiator,
                     //director: "84349569869021184"
-                    director: "286390645130657792"
+                    director: "286390645130657792",
                   };
                 case "631972855218700301":
                   return {
                     document: Olympian,
                     // director: "234798192795975681"
-                    director: "286390645130657792"
+                    director: "286390645130657792",
                   };
                 default:
                   return null;
@@ -73,12 +73,12 @@ const _parse = async (msg, client, roles) => {
     }
     return _embed({
       description,
-      status
+      status,
     });
   } else {
     return _embed({
       description: _fun_stuff(msg.content),
-      status: _Colors[0]
+      status: _Colors[0],
     });
   }
 };
