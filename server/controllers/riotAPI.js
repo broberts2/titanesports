@@ -11,22 +11,23 @@ module.exports = {
         code: 403,
       };
     }
-    const _metadata = (gameNum) => ({
-      team1: req.query.team1
-        ? parseInt(gameNum) % 2 === 0
-          ? req.query.team2
-          : req.query.team1
-        : "",
-      team2: req.query.team2
-        ? parseInt(gameNum) % 2 === 0
-          ? req.query.team1
-          : req.query.team2
-        : "",
-      weekNum: req.query.weekNum ? req.query.weekNum : "",
-      gameNum: gameNum ? gameNum : "",
-      seasonNum: req.query.seasonNum ? req.query.seasonNum : "",
-      league: req.query.league ? req.query.league : "",
-    });
+    const _metadata = (gameNum) =>
+      JSON.stringify({
+        team1: req.query.team1
+          ? parseInt(gameNum) % 2 === 0
+            ? req.query.team2
+            : req.query.team1
+          : "",
+        team2: req.query.team2
+          ? parseInt(gameNum) % 2 === 0
+            ? req.query.team1
+            : req.query.team2
+          : "",
+        weekNum: req.query.weekNum ? req.query.weekNum : "",
+        gameNum: gameNum ? gameNum : "",
+        seasonNum: req.query.seasonNum ? req.query.seasonNum : "",
+        league: req.query.league ? req.query.league : "",
+      });
     const _get_code = async (gameNum) =>
       await fetch(
         `https://americas.api.riotgames.com/lol/tournament/v4/codes?tournamentId=529491&api_key=${config.tournamentApiKey}`,
