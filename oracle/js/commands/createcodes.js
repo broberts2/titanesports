@@ -13,6 +13,7 @@ module.exports = (client, roles) => ({
           titan_key,
           Accept: "application/json",
           "Content-Type": "application/json",
+          strictSSL: false,
         },
       }
     ).then((_res) => _res.json());
