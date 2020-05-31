@@ -1,24 +1,21 @@
-const _help = [
-  require("./addplayer")().help,
-  require("./showroles")().help,
-  require("./showchannels")().help,
-  require("./swapstandings")().help,
-  require("./rolerequest")().help,
-  require("./dropplayer")().help,
-  require("./createcodes")().help,
-  require("./fetchcode")().help,
-  require("./swapposition")().help,
-];
+const _help = {
+  "Administrative Commands": ["showroles", "showchannels", "swapstandings"],
+  "Captain Commands": ["addplayer", "dropplayer", "swapposition"],
+  "Common Commands": ["rolerequest"],
+};
 
 module.exports = (client) => ({
   exec: () =>
     "!Help does not exist. Perhaps you were looking for\n\n```?help```",
-  help: _help
-    .join("~~~")
-    .replace(
-      /~~~/g,
-      "\n\n----------------------------------------------------------------------------\n\n"
-    ),
+  help: (() => {
+    let str = "--- Commands Index ---";
+    for (key in _help) {
+      str += `${`\n\n${key}:\n`}${
+        "```" + _help[key].map((el) => `!${el}\n`) + "```"
+      }`;
+    }
+    return str;
+  })(),
   roles: {},
   status: 0,
 });
