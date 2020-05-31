@@ -23,6 +23,9 @@ module.exports = (app, security) => {
   security.get("/createTournamentCode", async (req, res) =>
     responder(Controllers.RiotAPI.createTournamentCode(req, 3), res)
   );
+  security.get("/getGameStatsByCode", async (req, res) =>
+    responder(Controllers.RiotAPI.getGameStatsByCode(req, 3), res)
+  );
   security.delete("/removeUser", async (req, res) =>
     responder(Controllers.UserHandling.removeUser(req, 3), res)
   );

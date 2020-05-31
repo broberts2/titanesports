@@ -12,6 +12,36 @@ const gameDataSchema = new Schema({
     unique: false,
     required: false,
   },
+  team1: {
+    type: String,
+    unique: false,
+    required: false,
+  },
+  team2: {
+    type: String,
+    unique: false,
+    required: false,
+  },
+  weekNum: {
+    type: String,
+    unique: false,
+    required: false,
+  },
+  gameNum: {
+    type: String,
+    unique: false,
+    required: false,
+  },
+  seasonNum: {
+    type: String,
+    unique: false,
+    required: false,
+  },
+  league: {
+    type: String,
+    unique: false,
+    required: false,
+  },
 });
 
 module.exports = mongoose.model("GameData", gameDataSchema);
