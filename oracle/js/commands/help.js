@@ -6,6 +6,7 @@ const _help = [
   require("./rolerequest")().help,
   require("./dropplayer")().help,
   require("./createcodes")().help,
+  require("./fetchcode")().help,
 ];
 
 module.exports = (client) => ({

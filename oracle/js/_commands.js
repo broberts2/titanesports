@@ -6,5 +6,6 @@ module.exports = (client, roles) => ({
   dropplayer: require("./commands/dropplayer")(client, roles),
   rolerequest: require("./commands/rolerequest")(client, roles),
   createcodes: require("./commands/createcodes")(client, roles),
+  fetchcode: require("./commands/fetchcode")(client, roles),
   help: require("./commands/help")(),
 });
