@@ -47,7 +47,6 @@ module.exports = {
       )
         .then((res) => res.json())
         .then((arr) => {
-          console.log(arr);
           return arr[0];
         });
     let codes = [];
