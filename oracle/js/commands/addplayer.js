@@ -1,6 +1,6 @@
 const _embed = require("../_embed");
 const _Colors = require("../_colors");
-const _team_index = require("./team_index");
+const _team_index = require("../team_index");
 const _chain_message = require("../_utils/chain_message");
 const _rolescheck = require("../_utils/_roles_check");
 const _add_tag = require("../_utils/_add_tag");
@@ -28,7 +28,7 @@ module.exports = (client, roles) => ({
               }\nTeam: ${role.name}\nPlayer: ${command.args[0]}\nPosition: ${
                 command.args[1]
               }\nOP.GG: ${command.args[2]}`,
-              status: _Colors[1]
+              status: _Colors[1],
             }),
             async () => {
               const range = "A1:AN26";
@@ -63,7 +63,7 @@ module.exports = (client, roles) => ({
                 }\nTeam: ${role.name}\nPlayer: ${command.args[0]}\nPosition: ${
                   command.args[1]
                 }\nOP.GG: ${command.args[2]}`,
-                status: _Colors[0]
+                status: _Colors[0],
               });
             },
             _embed({
@@ -72,7 +72,7 @@ module.exports = (client, roles) => ({
               }\nTeam: ${role.name}\nPlayer: ${command.args[0]}\nPosition: ${
                 command.args[1]
               }\nOP.GG: ${command.args[2]}`,
-              status: _Colors[2]
+              status: _Colors[2],
             })
           )(client, command.msg, League.director);
         } else {
@@ -99,5 +99,5 @@ module.exports = (client, roles) => ({
   help:
     "!addplayer - Sends request to add or replace player on team of sender.\n\n```!addplayer <summoner_name> <position> <op.gg>```\nValid inputs:\nsummoner name: <summoner_id>\nposition: 'top', 'jungle', 'middle', 'bottom', 'support', 'sub1', 'sub2', 'sub3'\nop.gg: <op.gg_url>",
   status: 1,
-  roles: { id: "562850378727817236", id2: "631972855218700301" }
+  roles: { id: "562850378727817236", id2: "631972855218700301" },
 });

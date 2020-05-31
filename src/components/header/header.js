@@ -19,7 +19,7 @@ if (header) {
           </div>
           <div class="dropdown menuitem">Players
             <div class="dropdown-content">
-                <a href="#">Sign In</a>
+                <a id="header-sign-in-bttn" href="#">Sign In</a>
                 <a href="#">Statistics</a>
                 <a href="https://forms.gle/WcdiyoqgsB7FYTWD7" target="_blank">Appeal Ban Form</a>
             </div>

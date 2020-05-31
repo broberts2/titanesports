@@ -5,6 +5,7 @@ const _help = [
   require("./swapstandings")().help,
   require("./rolerequest")().help,
   require("./dropplayer")().help,
+  require("./createcodes")().help,
 ];
 
 module.exports = (client) => ({

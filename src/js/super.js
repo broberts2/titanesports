@@ -1,11 +1,11 @@
 const scripts = [
-  "js/api.js",
   "components/header/header.js",
   "components/mobilemenu/mobilemenu.js",
   "components/footer/footer.js",
   "components/modal/modal.js",
   "components/video_loop/video_loop.js",
-  "components/video_buttons/video_buttons.js"
+  "components/video_buttons/video_buttons.js",
+  "js/api.js"
 ];
 
 scripts.map(el => {

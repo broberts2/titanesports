@@ -5,5 +5,6 @@ module.exports = (client, roles) => ({
   swapstandings: require("./commands/swapstandings")(client, roles),
   dropplayer: require("./commands/dropplayer")(client, roles),
   rolerequest: require("./commands/rolerequest")(client, roles),
+  createcodes: require("./commands/createcodes")(client, roles),
   help: require("./commands/help")(),
 });

@@ -1,5 +1,5 @@
 const _rolescheck = require("../_utils/_roles_check");
-const _team_index = require("./team_index");
+const _team_index = require("../team_index");
 
 const _findPlayerInRow = (sheet, row, name) => {
   for (let i = 0; i < 9; i++) {
