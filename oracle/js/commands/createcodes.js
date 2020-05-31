@@ -10,6 +10,8 @@ module.exports = (client, roles) => ({
         method: "GET",
         headers: {
           titan_key,
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
       }
     ).then((_res) => _res.json());
