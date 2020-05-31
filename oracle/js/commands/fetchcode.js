@@ -16,7 +16,7 @@ module.exports = (client, roles) => ({
           },
         }
       ).then((_res) => _res.json());
-      delete res.data;
+      //delete res.data;
       console.log(res);
       return `Code fetch successful!\n\n${res}`;
     } else {
