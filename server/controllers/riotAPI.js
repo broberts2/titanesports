@@ -45,7 +45,10 @@ module.exports = {
         }
       )
         .then((res) => res.json())
-        .then((arr) => arr[0]);
+        .then((arr) => {
+          console.log(arr);
+          return arr[0];
+        });
     let codes = [];
     const n = req.query.n && req.query.n > 0 ? req.query.n : 1;
     for (let i = 0; i < n; i++) {
