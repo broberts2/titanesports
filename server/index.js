@@ -48,7 +48,7 @@ if (config.production) {
     "utf8"
   );
   server = http.createServer(
-    new https.Agent({ key, cert, rejectUnauthorized: false }),
+    new http.Agent({ key, cert, rejectUnauthorized: false }),
     app
   );
 } else {
