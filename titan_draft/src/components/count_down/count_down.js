@@ -60,19 +60,17 @@ class CountDown extends React.Component {
         className={"count_down"}
         style={{
           backgroundColor: this.state.classes.bg,
-          opacity: this.props.opacity,
-          pointerEvents: this.props.opacity ? "all" : "none",
         }}
       >
         <div className={"img"}>
           <div className={"left"}>
             <Components.Anim animationName={this.state.classes.left}>
-              <img src={require("../../img/left_bilgewater.png")} />
+              {this.props.leftImg}
             </Components.Anim>
           </div>
           <div className={"right"}>
             <Components.Anim animationName={this.state.classes.right}>
-              <img src={require("../../img/right_bilgewater.png")} />
+              {this.props.rightImg}
             </Components.Anim>
           </div>
           <div

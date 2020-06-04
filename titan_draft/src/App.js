@@ -143,6 +143,8 @@ export default class App extends React.Component {
   }
 
   render() {
+    const leftImg = <img src={require("./img/left_bilgewater.png")} />;
+    const rightImg = <img src={require("./img/right_bilgewater.png")} />;
     return (
       <div
         style={{ position: "relative" }}
@@ -240,13 +242,16 @@ export default class App extends React.Component {
             </div>
           </div>
         ) : null}
-        <Components.CountDown
-          opacity={this.state.countdown ? 1 : 0}
-          setCountdown={(countdown) => this.setState({ countdown })}
-          setShowFill={(showFill) => this.setState({ showFill })}
-          t1_logo={this.state.t1_logo}
-          t2_logo={this.state.t2_logo}
-        />
+        {this.state.countdown ? (
+          <Components.CountDown
+            setCountdown={(countdown) => this.setState({ countdown })}
+            setShowFill={(showFill) => this.setState({ showFill })}
+            t1_logo={this.state.t1_logo}
+            t2_logo={this.state.t2_logo}
+            leftImg={leftImg}
+            rightImg={rightImg}
+          />
+        ) : null}
         {this.state.finished ? (
           <div className={`finished finished-fade-in`}>
             <h1>Draft Complete</h1>
