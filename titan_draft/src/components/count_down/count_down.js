@@ -61,6 +61,7 @@ class CountDown extends React.Component {
         style={{
           backgroundColor: this.state.classes.bg,
           opacity: this.props.opacity,
+          pointerEvents: this.props.opacity ? "all" : "none",
         }}
       >
         <div className={"img"}>
