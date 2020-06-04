@@ -240,14 +240,13 @@ export default class App extends React.Component {
             </div>
           </div>
         ) : null}
-        {this.state.countdown ? (
-          <Components.CountDown
-            setCountdown={(countdown) => this.setState({ countdown })}
-            setShowFill={(showFill) => this.setState({ showFill })}
-            t1_logo={this.state.t1_logo}
-            t2_logo={this.state.t2_logo}
-          />
-        ) : null}
+        <Components.CountDown
+          opacity={this.state.countdown ? 1 : 0}
+          setCountdown={(countdown) => this.setState({ countdown })}
+          setShowFill={(showFill) => this.setState({ showFill })}
+          t1_logo={this.state.t1_logo}
+          t2_logo={this.state.t2_logo}
+        />
         {this.state.finished ? (
           <div className={`finished finished-fade-in`}>
             <h1>Draft Complete</h1>

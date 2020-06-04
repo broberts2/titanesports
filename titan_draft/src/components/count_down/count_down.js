@@ -20,7 +20,7 @@ class CountDown extends React.Component {
         this.setState({
           active: null,
         });
-        // if (num > 0) this.state.beepSFX.play();
+        if (num > 0) this.state.beepSFX.play();
         this.setState({
           active: (
             <Components.Anim animationName={"zoomIn"}>{num}</Components.Anim>
@@ -60,6 +60,7 @@ class CountDown extends React.Component {
         className={"count_down"}
         style={{
           backgroundColor: this.state.classes.bg,
+          opacity: this.props.opacity,
         }}
       >
         <div className={"img"}>
