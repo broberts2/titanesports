@@ -5,6 +5,7 @@ import Window from "./components/window/window";
 import Modal from "./components/modal/modal";
 import ReactSlider from "./components/slider/slider";
 import CountDown from "./components/count_down/count_down";
+import AppLoader from "./components/app_loader/app_loader";
 
 export default {
   Card,
@@ -13,5 +14,6 @@ export default {
   Window,
   Modal,
   ReactSlider,
-  CountDown
+  CountDown,
+  AppLoader,
 };

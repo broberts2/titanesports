@@ -3,14 +3,11 @@ body {
   cursor: pointer;
   overflow-y: hidden;
   font-family: "Amarante", cursive;
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */
-  -khtml-user-select: none; /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */
-  -ms-user-select: none; /* Internet Explorer/Edge */
-  user-select: none; /* Non-prefixed version, currently
-                                supported by Chrome, Opera and Firefox */
   color: white;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 h1 {
   font-size: 42px;
@@ -62,6 +59,7 @@ button {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.25);
   text-align: right;
+  pointer-events: none;
 }
 .finished h1 {
   margin: 10px;
@@ -94,4 +92,12 @@ button {
   100% {
     opacity: 1;
   }
+}
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }

@@ -5,7 +5,7 @@ import "./card.css";
 class Card extends React.Component {
   state = {
     animationName: "none",
-    opacity: "1"
+    opacity: "1",
   };
 
   componentDidMount() {
@@ -39,7 +39,7 @@ class Card extends React.Component {
               backgroundColor: this.props.blue
                 ? "rgb(33, 153, 191)"
                 : "rgb(214, 61, 61)",
-              opacity: this.state.opacity
+              opacity: this.state.opacity,
             }}
           >
             {this.props.championData ? (
@@ -77,7 +77,7 @@ class Card extends React.Component {
               <div
                 className={this.props.banned ? "banned-container" : "container"}
               >
-                <img src={require("../../img/null.png")} />
+                <img src={require("../../img/null_bilgewater.png")} />
               </div>
             )}
           </div>

@@ -4,7 +4,7 @@ const _Colors = require("../_colors");
 const _roleChannel = "669430659198091264";
 
 module.exports = (client, roles) => ({
-  exec: async (command, League) => {
+  exec: async (command, League, specialRoles) => {
     if (
       client.guilds.cache
         .get("407423677236510730")
@@ -65,5 +65,5 @@ module.exports = (client, roles) => ({
   help:
     "!rolerequest - Requests specified role. Replace spaces with '+' character.\n\n```!rolerequest <exact_role_name>```",
   status: 0,
-  roles: {},
+  roles: { standard: [], special: [] },
 });

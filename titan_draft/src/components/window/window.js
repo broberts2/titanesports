@@ -13,7 +13,7 @@ class VideoLoop extends React.Component {
     videoIndex: 1,
     video2Class: "",
     video1: this.createVideo(0),
-    video2: this.createVideo(1)
+    video2: this.createVideo(1),
   };
 
   createVideo(index) {
@@ -34,10 +34,10 @@ class VideoLoop extends React.Component {
         : this.state.videoIndex + 1;
     this.setState({
       [video]: null,
-      videoIndex
+      videoIndex,
     });
     this.setState({
-      [video]: this.createVideo(videoIndex)
+      [video]: this.createVideo(videoIndex),
     });
   }
 
@@ -53,7 +53,7 @@ class VideoLoop extends React.Component {
   }
 
   componentDidMount() {
-    const waiter = num =>
+    const waiter = (num) =>
       new Promise((resolve, reject) => setTimeout(() => resolve(), num));
     this.autoPlay(waiter);
     this.intervalId = setInterval(
@@ -81,6 +81,7 @@ class VideoLoop extends React.Component {
 
 class Window extends React.Component {
   render() {
+    const _rowBalance = "14.5px";
     return (
       <div className={"window"}>
         <VideoLoop />
@@ -95,7 +96,7 @@ class Window extends React.Component {
                         <tr>
                           {Object.values(this.props.state.data.blue.pick).map(
                             (el, i) => (
-                              <td align="center">
+                              <td align="left">
                                 <Components.Card
                                   state={this.props.state}
                                   id={i}
@@ -109,12 +110,12 @@ class Window extends React.Component {
                         </tr>
                       </tbody>
                     </table>
-                    <table style={{ marginLeft: "7.5px" }}>
+                    <table style={{ marginLeft: _rowBalance }}>
                       <tbody>
                         <tr>
                           {Object.values(this.props.state.data.blue.ban).map(
                             (el, i) => (
-                              <td align="center">
+                              <td align="left">
                                 <Components.Card
                                   state={this.props.state}
                                   id={i + 10}
@@ -131,6 +132,14 @@ class Window extends React.Component {
                     </table>
                   </div>
                 </td>
+                <td width={"10%"}>
+                  <div className={"vs"}>
+                    <img
+                      src={require("../../img/vs_bilgewater.png")}
+                      style={{ width: "100%" }}
+                    />
+                  </div>
+                </td>
                 <td>
                   <div className={"red"}>
                     <table>
@@ -138,7 +147,7 @@ class Window extends React.Component {
                         <tr>
                           {Object.values(this.props.state.data.red.pick).map(
                             (el, i) => (
-                              <td align="left">
+                              <td align="right">
                                 <Components.Card
                                   state={this.props.state}
                                   id={i + 5}
@@ -151,12 +160,12 @@ class Window extends React.Component {
                         </tr>
                       </tbody>
                     </table>
-                    <table>
+                    <table style={{ marginRight: _rowBalance }}>
                       <tbody>
                         <tr>
                           {Object.values(this.props.state.data.red.ban).map(
                             (el, i) => (
-                              <td align="center">
+                              <td align="right">
                                 <Components.Card
                                   state={this.props.state}
                                   id={i + 15}

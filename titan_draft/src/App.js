@@ -3,14 +3,15 @@ import Components from "./components";
 import ReactModal from "react-awesome-modal";
 import "./intro_modal.css";
 const emitters = require("./emitters");
-
 const config = require("../../server/config");
 const gameVersion = require("../../game_version");
 const server = config.production
   ? "https://titan-esports.org:7001"
   : "http://localhost:7001";
 
-const lobby_video = require("./videos/yuumi.webm");
+const lobby_video = require("./videos/animated-bilgewater.webm");
+
+const THEME = "bilgewater";
 
 class VS extends React.Component {
   render() {
@@ -27,7 +28,7 @@ class VS extends React.Component {
                 </td>
                 <td align={"center"}>
                   <div className={"vs-img"}>
-                    <img src={require("./img/vs.png")} />
+                    <img src={require("./img/vs_bilgewater.png")} />
                   </div>
                 </td>
                 <td align={"center"}>
@@ -46,6 +47,7 @@ class VS extends React.Component {
 
 export default class App extends React.Component {
   state = {
+    loaded: false,
     team: 0,
     countdown: false,
     showFill: true,
@@ -74,15 +76,15 @@ export default class App extends React.Component {
           1: null,
           2: null,
           3: null,
-          4: null
+          4: null,
         },
         ban: {
           0: null,
           1: null,
           2: null,
           3: null,
-          4: null
-        }
+          4: null,
+        },
       },
       red: {
         pick: {
@@ -90,25 +92,25 @@ export default class App extends React.Component {
           1: null,
           2: null,
           3: null,
-          4: null
+          4: null,
         },
-        ban: { 0: null, 1: null, 2: null, 3: null, 4: null }
-      }
-    }
+        ban: { 0: null, 1: null, 2: null, 3: null, 4: null },
+      },
+    },
   };
 
   actions = {
-    setModal: modal => this.setState({ modal }),
+    setModal: (modal) => this.setState({ modal }),
     getChampionData: async () => {
-      const championData = await fetch(`${server}/api/getChampionData`).then(
-        res => res.json()
-      );
+      const championData = await fetch(
+        `${server}/api/getChampionData`
+      ).then((res) => res.json());
       this.setState({ championData });
     },
-    submitButton: index => {
+    submitButton: (index) => {
       emitters.emit_update(index);
     },
-    update: emitters.update
+    update: emitters.update,
   };
 
   intervalFunction() {
@@ -124,13 +126,16 @@ export default class App extends React.Component {
     const intervalId = setInterval(() => this.intervalFunction(), 1000);
     this.actions.getChampionData();
     this.setState({ intervalId: intervalId });
-    this.actions.update(state => this.setState(state));
+    this.actions.update((state) => this.setState(state));
     if (
       !(this.state.blue_ready && this.state.red_ready) ||
       this.state.showFill
     ) {
       emitters.playLobbyMusic();
     }
+    window.onload = () => {
+      this.setState({ loaded: true });
+    };
   }
 
   componentWillUnmount() {
@@ -154,7 +159,8 @@ export default class App extends React.Component {
         {!this.state.error ? (
           <div
             style={{
-              opacity: this.state.blue_ready && this.state.red_ready ? "1" : "0"
+              opacity:
+                this.state.blue_ready && this.state.red_ready ? "1" : "0",
             }}
           >
             <Components.Header
@@ -185,7 +191,7 @@ export default class App extends React.Component {
               left: "0",
               zIndex: "2",
               overflowX: "hidden",
-              overflowY: "hidden"
+              overflowY: "hidden",
             }}
           >
             <video src={lobby_video} preload loop autoPlay />
@@ -222,7 +228,7 @@ export default class App extends React.Component {
                         style={{
                           backgroundColor: this.state.blue_captain
                             ? "blue"
-                            : "red"
+                            : "red",
                         }}
                       >
                         {this.state.blue_captain ? "Blue Ready" : "Red Ready"}
@@ -236,8 +242,8 @@ export default class App extends React.Component {
         ) : null}
         {this.state.countdown ? (
           <Components.CountDown
-            setCountdown={countdown => this.setState({ countdown })}
-            setShowFill={showFill => this.setState({ showFill })}
+            setCountdown={(countdown) => this.setState({ countdown })}
+            setShowFill={(showFill) => this.setState({ showFill })}
             t1_logo={this.state.t1_logo}
             t2_logo={this.state.t2_logo}
           />
@@ -248,8 +254,9 @@ export default class App extends React.Component {
           </div>
         ) : null}
         <Components.ReactSlider
-          setVolume={volume => emitters.setVolume(volume)}
+          setVolume={(volume) => emitters.setVolume(volume)}
         />
+        <Components.AppLoader loaded={this.state.loaded} />
       </div>
     );
   }

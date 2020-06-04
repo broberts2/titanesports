@@ -29,7 +29,9 @@ const _parse = async (msg, client, roles) => {
     let status;
     if (Commands[`${command.command}`]) {
       const _rolesCheck = _rolescheck(
-        Object.values(Commands[`${command.command}`].roles),
+        Commands[`${command.command}`].roles.standard.concat(
+          Commands[`${command.command}`].roles.special
+        ),
         roles
       );
       if (_rolesCheck) {
@@ -51,9 +53,17 @@ const _parse = async (msg, client, roles) => {
                     director: "286390645130657792",
                   };
                 default:
-                  return null;
+                  return {
+                    document:
+                      command.args[command.args.length - 1] === "gladiator"
+                        ? Gladiator
+                        : command.args[command.args.length - 1] === "olympian"
+                        ? Olympian
+                        : null,
+                  };
               }
-            })()
+            })(),
+            Commands[`${command.command}`].roles.special
           );
           status =
             typeof description === "object"

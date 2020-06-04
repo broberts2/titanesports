@@ -1,11 +1,16 @@
 const _help = {
-  "Administrative Commands": ["showroles", "showchannels", "swapstandings"],
+  "Administrative Commands": ["showroles", "showchannels"],
+  "Director and Roster Staff Commands": [
+    "swapstandings",
+    "createcodes",
+    "fetchcode",
+  ],
   "Captain Commands": ["addplayer", "dropplayer", "swapposition"],
   "Common Commands": ["rolerequest"],
 };
 
 module.exports = (client) => ({
-  exec: () =>
+  exec: (command, League, specialRoles) =>
     "!Help does not exist. Perhaps you were looking for\n\n```?help```",
   help: (() => {
     let str =
@@ -17,6 +22,9 @@ module.exports = (client) => ({
     }
     return str;
   })(),
-  roles: {},
+  roles: {
+    standard: [],
+    special: [],
+  },
   status: 0,
 });

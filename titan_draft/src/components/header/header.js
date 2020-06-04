@@ -33,7 +33,7 @@ class Header extends React.Component {
                   <img src={this.props.blue_img} />
                 </td>
                 <td>
-                  <h2>{this.props.blue_team}</h2>
+                  <h3>{this.props.blue_team}</h3>
                 </td>
               </tr>
             </tbody>
@@ -44,7 +44,7 @@ class Header extends React.Component {
             <tbody>
               <tr>
                 <td>
-                  <h2>{this.props.red_team}</h2>
+                  <h3>{this.props.red_team}</h3>
                 </td>
                 <td>
                   <img src={this.props.red_img} />

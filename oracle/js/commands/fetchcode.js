@@ -3,7 +3,7 @@ const webserver = require("../../config").webserver;
 const titan_key = require("../../config").titan_key;
 
 module.exports = (client, roles) => ({
-  exec: async (command) => {
+  exec: async (command, League, specialRoles) => {
     if (command.args.length === 1) {
       const res = await fetch(
         `${webserver}/s/getGameStatsByCode?code=${command.args[0]}`,
@@ -29,6 +29,13 @@ module.exports = (client, roles) => ({
   },
   help:
     "!fetchcode - Returns metadata for an existing code.\n\n```!fetchcode <tournament_code>```",
-  roles: { id: "407684891069906974", id1: "664717783971397642" },
+  roles: {
+    standard: [
+      "407684891069906974",
+      "664717783971397642",
+      "432526140310290458",
+    ],
+    special: [],
+  },
   status: 0,
 });

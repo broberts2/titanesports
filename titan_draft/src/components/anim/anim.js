@@ -17,7 +17,7 @@ import {
   slideOutLeft,
   slideOutRight,
   slideOutUp,
-  slideOutDown
+  slideOutDown,
 } from "react-animations";
 import Radium, { StyleRoot } from "radium";
 
@@ -25,76 +25,76 @@ const styles = {
   none: {},
   bounce: {
     animation: "1 1s",
-    animationName: Radium.keyframes(bounce, "bounce")
+    animationName: Radium.keyframes(bounce, "bounce"),
   },
   pulse: {
     animation: "infinite 1s",
-    animationName: Radium.keyframes(pulse, "pulse")
+    animationName: Radium.keyframes(pulse, "pulse"),
   },
   fadeOut: {
-    animation: "1 1s",
-    animationName: Radium.keyframes(fadeOut, "fadeOut")
+    animation: "1 2s forwards",
+    animationName: Radium.keyframes(fadeOut, "fadeOut"),
   },
   fadeIn: {
     animation: "1 0.5s",
-    animationName: Radium.keyframes(fadeIn, "fadeIn")
+    animationName: Radium.keyframes(fadeIn, "fadeIn"),
   },
   fadeOutDown: {
     animation: "infinite 1s",
-    animationName: Radium.keyframes(fadeOutDown, "fadeOutDown")
+    animationName: Radium.keyframes(fadeOutDown, "fadeOutDown"),
   },
   flipInY: {
     animation: "1 0.5s",
-    animationName: Radium.keyframes(flipInY, "flipInY")
+    animationName: Radium.keyframes(flipInY, "flipInY"),
   },
   bounceIn: {
     animation: "1 1s",
-    animationName: Radium.keyframes(bounceIn, "bounceIn")
+    animationName: Radium.keyframes(bounceIn, "bounceIn"),
   },
   slideInLeft: {
     animation: "1 1s",
-    animationName: Radium.keyframes(slideInLeft, "slideInLeft")
+    animationName: Radium.keyframes(slideInLeft, "slideInLeft"),
   },
   slideInRight: {
     animation: "1 1s",
-    animationName: Radium.keyframes(slideInRight, "slideInRight")
+    animationName: Radium.keyframes(slideInRight, "slideInRight"),
   },
   slideInDown: {
     animation: "1 1s",
-    animationName: Radium.keyframes(slideInDown, "slideInDown")
+    animationName: Radium.keyframes(slideInDown, "slideInDown"),
   },
   slideInUp: {
     animation: "1 1s",
-    animationName: Radium.keyframes(slideInUp, "slideInUp")
+    animationName: Radium.keyframes(slideInUp, "slideInUp"),
   },
   slideOutLeft: {
     animation: "1 1s",
-    animationName: Radium.keyframes(slideOutLeft, "slideOutLeft")
+    animationName: Radium.keyframes(slideOutLeft, "slideOutLeft"),
   },
   slideOutRight: {
     animation: "1 1s",
-    animationName: Radium.keyframes(slideOutRight, "slideOutRight")
+    animationName: Radium.keyframes(slideOutRight, "slideOutRight"),
   },
   slideOutDown: {
     animation: "1 1s",
-    animationName: Radium.keyframes(slideOutDown, "slideOutDown")
+    animationName: Radium.keyframes(slideOutDown, "slideOutDown"),
   },
   slideOutUp: {
     animation: "1 1s",
-    animationName: Radium.keyframes(slideOutUp, "slideOutUp")
+    animationName: Radium.keyframes(slideOutUp, "slideOutUp"),
   },
   zoomInRight: {
     animation: "1 0.5s",
-    animationName: Radium.keyframes(zoomInRight, "zoomInRight")
+    animationName: Radium.keyframes(zoomInRight, "zoomInRight"),
   },
   zoomIn: {
     animation: "1 1s",
-    animationName: Radium.keyframes(zoomIn, "zoomIn")
+    animationName: Radium.keyframes(zoomIn, "zoomIn"),
   },
   flipZoom: {
     animation: "1 1s",
-    animationName: Radium.keyframes(merge(zoomInRight, flipInY), "flipZoom")
-  }
+    animationName: Radium.keyframes(merge(zoomInRight, flipInY), "flipZoom"),
+  },
 };
 
 export default class Anim extends React.Component {
@@ -106,7 +106,7 @@ export default class Anim extends React.Component {
             animation: this.props.animation
               ? this.props.animation
               : styles[this.props.animationName].animation,
-            animationName: styles[this.props.animationName].animationName
+            animationName: styles[this.props.animationName].animationName,
           }}
         >
           {this.props.children}

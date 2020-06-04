@@ -3,11 +3,11 @@
   height: calc(100vh - 100px);
 }
 .window .content {
-  width: 100%;
+  width: 98%;
   height: 100%;
   position: absolute;
   left: 50%;
-  top: 65%;
+  top: 70%;
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -29,8 +29,8 @@
   height: 100%;
 }
 .window .content .blue {
-  text-align: center;
+  text-align: left;
 }
 .window .content .red {
-  text-align: center;
+  text-align: right;
 }

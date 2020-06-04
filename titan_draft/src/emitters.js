@@ -13,16 +13,20 @@ socket.emit("join", params);
 
 let blockLobbyMusic = false;
 
-let lobbyMusic = new Audio(require("./audio/lobby_music.mp3"));
+let lobbyMusic = new Audio(
+  require("./audio/Twisted Fate & Graves Login Screen - League of Legends.mp3")
+);
 lobbyMusic.volume = 0;
 lobbyMusic.loop = true;
 
-let music = new Audio(require("./audio/music.mp3"));
+let music = new Audio(
+  require("./audio/Gangplank, the Saltwater Scourge Login Screen - League of Legends.mp3")
+);
 music.volume = 0;
 music.loop = true;
 
 const duckLobbyMusic = async () => {
-  const decrement = 0.005;
+  const decrement = 0.0075;
   if (lobbyMusic.volume > 0) {
     if (lobbyMusic.volume > decrement) {
       lobbyMusic.volume -= decrement;
@@ -30,7 +34,7 @@ const duckLobbyMusic = async () => {
       lobbyMusic.volume = 0;
     }
     await new Promise((resolve, reject) => {
-      setTimeout(() => resolve(), 250);
+      setTimeout(() => resolve(), 200);
     });
     return await duckLobbyMusic();
   }
@@ -38,16 +42,16 @@ const duckLobbyMusic = async () => {
 };
 
 module.exports = {
-  setVolume: e => {
+  setVolume: (e) => {
     if (!blockLobbyMusic) lobbyMusic.volume = e;
     music.volume = e;
   },
   playLobbyMusic: () => lobbyMusic.play(),
   emit_blue_ready: () => socket.emit("blue_ready"),
   emit_red_ready: () => socket.emit("red_ready"),
-  emit_update: data => socket.emit("update", data),
-  update: cb => {
-    socket.on("update", data => {
+  emit_update: (data) => socket.emit("update", data),
+  update: (cb) => {
+    socket.on("update", (data) => {
       let state = {
         blueTime: data.draft.blueTime,
         redTime: data.draft.redTime,
@@ -68,7 +72,7 @@ module.exports = {
         t1_logo: data.draft.t1_logo,
         t2_name: data.draft.t2_name,
         t2_logo: data.draft.t2_logo,
-        modal: false
+        modal: false,
       };
       if (data.blue_captain) {
         state.blue_captain = true;
@@ -95,8 +99,8 @@ module.exports = {
     });
     socket.on("invalid code", () => {
       cb({
-        error: "Lobby not found"
+        error: "Lobby not found",
       });
     });
-  }
+  },
 };

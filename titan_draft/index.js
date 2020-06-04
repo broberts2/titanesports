@@ -20,9 +20,11 @@ app.use(express.static(`../dragontail-${gameVersion}`));
 
 app.use(cors({ origin: true, credentials: true }));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+if (serverFig.production) {
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
+}
 
 routes(app);
 

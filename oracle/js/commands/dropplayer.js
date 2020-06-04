@@ -11,17 +11,33 @@ const _findPlayerInRow = (sheet, row, name) => {
 };
 
 module.exports = (client, roles) => ({
-  exec: async (command, League) => {
+  exec: async (command, League, specialRoles) => {
     let role = _rolescheck(
       _team_index.gladiator.concat(_team_index.olympian),
       roles
     );
+    let _team_;
+    if (!role && _rolescheck(roles, specialRoles)) {
+      command.args.pop();
+      _team_ = command.args.pop().replace(/\+/g, " ");
+
+      if (
+        client.guilds.cache
+          .get("407423677236510730")
+          .roles.cache.map((el) => el.name)
+          .includes(_team_)
+      ) {
+        role = { name: _team_ };
+      }
+    }
     if (command.args.length === 1) {
       if (League) {
         if (role) {
-          role = client.guilds.cache
-            .get("407423677236510730")
-            .roles.cache.get(role);
+          if (!_team_) {
+            role = client.guilds.cache
+              .get("407423677236510730")
+              .roles.cache.get(role);
+          }
           await League.document.setup();
           const sheet = await League.document.getTeamBySheet(role.name);
           await sheet.loadCells("A1:I6");
@@ -74,5 +90,8 @@ module.exports = (client, roles) => ({
   help:
     "!dropplayer - Removes player from team.\n\n```!dropplayer <summoner_name>```",
   status: 0,
-  roles: { id: "562850378727817236", id2: "631972855218700301" },
+  roles: {
+    standard: ["562850378727817236", "631972855218700301"],
+    special: ["432526140310290458", "407684891069906974", "664717783971397642"],
+  },
 });

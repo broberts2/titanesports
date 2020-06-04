@@ -9,7 +9,7 @@ const _validate = require("../_utils/_validate");
 const _review_channel = "669430659198091264";
 
 module.exports = (client, roles) => ({
-  exec: async (command, League) => {
+  exec: async (command, League, specialRoles) => {
     let role = _rolescheck(
       _team_index.gladiator.concat(_team_index.olympian),
       roles
@@ -91,5 +91,8 @@ module.exports = (client, roles) => ({
   help:
     "!swapposition - Swaps two positions within a team.\n\n```!swapposition <position1> <position2>```\nValid inputs:\nposition1: 'top', 'jungle', 'middle', 'bottom', 'support', 'sub1', 'sub2', 'sub3'\nposition2: 'top', 'jungle', 'middle', 'bottom', 'support', 'sub1', 'sub2', 'sub3'",
   status: 0,
-  roles: { id: "562850378727817236", id2: "631972855218700301" },
+  roles: {
+    standard: ["562850378727817236", "631972855218700301"],
+    special: [],
+  },
 });

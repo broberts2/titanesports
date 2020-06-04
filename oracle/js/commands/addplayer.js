@@ -9,7 +9,7 @@ const _pos_standings_and_rosters = require("../_utils/_pos_standings_and_rosters
 const _validate = require("../_utils/_validate");
 
 module.exports = (client, roles) => ({
-  exec: async (command, League) => {
+  exec: async (command, League, specialRoles) => {
     let role = _rolescheck(
       _team_index.gladiator.concat(_team_index.olympian),
       roles
@@ -99,5 +99,8 @@ module.exports = (client, roles) => ({
   help:
     "!addplayer - Sends request to add or replace player on team of sender.\n\n```!addplayer <summoner_name> <position> <op.gg>```\nValid inputs:\nsummoner name: <summoner_id>\nposition: 'top', 'jungle', 'middle', 'bottom', 'support', 'sub1', 'sub2', 'sub3'\nop.gg: <op.gg_url>",
   status: 1,
-  roles: { id: "562850378727817236", id2: "631972855218700301" },
+  roles: {
+    standard: ["631972855218700301", "562850378727817236"],
+    special: [],
+  },
 });

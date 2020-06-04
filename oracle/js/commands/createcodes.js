@@ -3,7 +3,7 @@ const webserver = require("../../config").webserver;
 const titan_key = require("../../config").titan_key;
 
 module.exports = (client, roles) => ({
-  exec: async (command) => {
+  exec: async (command, League, specialRoles) => {
     if (!(command.args.length < 5 || command.args.length > 6)) {
       if (
         command.args[4].toLowerCase() === "gladiator" ||
@@ -36,6 +36,13 @@ module.exports = (client, roles) => ({
   },
   help:
     "!createcodes - Creates a set of riot api game codes.\n\n```!createcodes <team_1> <team_2> <week_num> <season_num> <league> <series_size>```\nValid inputs:\nTeam 1: <team_name>\nTeam 2: <team_name>\nWeek Num: <number>\nSeason Num: <number>\nLeague: gladiator, olympian\nSeries Size (optional): 1, 2, 3, 4, 5, 6, 7",
-  roles: { id: "407684891069906974", id1: "664717783971397642" },
+  roles: {
+    standard: [
+      "407684891069906974",
+      "664717783971397642",
+      "432526140310290458",
+    ],
+    special: [],
+  },
   status: 0,
 });

@@ -53,7 +53,7 @@ const _validate = (args) => {
 };
 
 module.exports = (client) => ({
-  exec: async (command) => {
+  exec: async (command, League, specialRoles) => {
     const __validate__ = _validate(command.args);
     if (!__validate__) {
       const range = "A1:AN50";
@@ -78,9 +78,13 @@ module.exports = (client) => ({
   help:
     "!swapstandings - Swaps two rows on Standins and Rosters sheet.\n\n```!swapstandings <league> <row1> <row2>```\nValid inputs:\nleague: gladiator, olympian\nrow1: <n>\nrow2: <n>",
   roles: {
-    id: "566421797831049216",
-    id2: "407684891069906974",
-    id3: "432526140310290458",
+    standard: [
+      "566421797831049216",
+      "407684891069906974",
+      "432526140310290458",
+      "664717783971397642",
+    ],
+    special: [],
   },
   status: 0,
 });
