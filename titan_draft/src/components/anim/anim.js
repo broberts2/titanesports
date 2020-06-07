@@ -68,11 +68,11 @@ const styles = {
     animationName: Radium.keyframes(slideInUp, "slideInUp"),
   },
   slideOutLeft: {
-    animation: "1 1s",
+    animation: "1 1s forwards",
     animationName: Radium.keyframes(slideOutLeft, "slideOutLeft"),
   },
   slideOutRight: {
-    animation: "1 1s",
+    animation: "1 1s forwards",
     animationName: Radium.keyframes(slideOutRight, "slideOutRight"),
   },
   slideOutDown: {

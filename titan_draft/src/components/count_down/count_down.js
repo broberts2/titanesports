@@ -4,6 +4,7 @@ import "./count_down.css";
 
 class CountDown extends React.Component {
   state = {
+    active: null,
     classes: {
       left: "slideInLeft",
       right: "slideInRight",
@@ -35,7 +36,7 @@ class CountDown extends React.Component {
 
   open() {
     this.setState({
-      active: "",
+      active: "fin",
       classes: {
         left: "slideOutLeft",
         right: "slideOutRight",
@@ -43,15 +44,22 @@ class CountDown extends React.Component {
         bg: "rgba(18, 18, 18, 0)",
       },
     });
-    setTimeout(() => this.props.setCountdown(false), 1000);
+    // setTimeout(() => this.props.setCountdown(false), 1000);
   }
 
   componentDidMount() {
     this.state.beepSFX.volume = 0.025;
-    this.state.classes.bg = "rgba(18, 18, 18, 1)";
-    this.state.classes.circle = "1";
+    this.state.classes.bg = "rgba(18, 18, 18, 0)";
+    this.state.classes.circle = "0";
     setTimeout(() => this.props.setShowFill(false), 2000);
-    this.run(this.state.countDownCount);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.countDown !== prevProps.countDown) {
+      if (this.props.countDown) {
+        this.run(this.state.countDownCount);
+      }
+    }
   }
 
   render() {
@@ -60,17 +68,33 @@ class CountDown extends React.Component {
         className={"count_down"}
         style={{
           backgroundColor: this.state.classes.bg,
+          pointerEvents:
+            this.state.active && this.state.active.length > 0 ? "all" : "none",
         }}
       >
         <div className={"img"}>
           <div className={"left"}>
-            <Components.Anim animationName={this.state.classes.left}>
-              {this.props.leftImg}
+            <Components.Anim
+              animationName={
+                this.state.active ? this.state.classes.left : "none"
+              }
+            >
+              <img
+                src={require("../../img/left_bilgewater.png")}
+                style={{ opacity: this.state.active !== null ? 1 : 0 }}
+              />
             </Components.Anim>
           </div>
           <div className={"right"}>
-            <Components.Anim animationName={this.state.classes.right}>
-              {this.props.rightImg}
+            <Components.Anim
+              animationName={
+                this.state.active ? this.state.classes.right : "none"
+              }
+            >
+              <img
+                src={require("../../img/right_bilgewater.png")}
+                style={{ opacity: this.state.active !== null ? 1 : 0 }}
+              />
             </Components.Anim>
           </div>
           <div
