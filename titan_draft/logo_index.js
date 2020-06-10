@@ -72,6 +72,10 @@ module.exports = {
     0: `${server}/glacial_equ.png`,
     1: `${server}/glacial_equ.png`,
   },
+  ["Anonymous Ruby"]: {
+    0: `${server}/ruby.png`,
+    1: `${server}/ruby.png`,
+  },
   ["Kind Young Ninjas"]: {
     0: `${server}/kyn.png`,
     1: `${server}/kyn.png`,
