@@ -52,7 +52,7 @@ if (header) {
               <div class="social"><a href="https://www.twitch.tv/titanesportz" target="_blank"><i class="fab fa-twitch"></i></a></div>
             </div>
             <div class="col-2">
-              <div class="social"><a href="https://discord.gg/9DPxcfp" target="_blank"><i class="fab fa-discord"></i></a></div>
+              <div class="social"><a href="https://discord.gg/hJKpVPY" target="_blank"><i class="fab fa-discord"></i></a></div>
             </div>
             <div class="col-2">
               <div class="social"><a href="https://www.reddit.com/user/Titan_eSports" target="_blank"><i class="fab fa-reddit-square"></i></a></div>
