@@ -10,7 +10,6 @@ module.exports = async (role, command, Sheet) => {
   if (sheet && sheet2 && pos) {
     await sheet.loadCells(range);
     await sheet2.loadCells(range);
-    const cell = sheet.getCell(1, pos);
     for (let i = 1; i < 26; i += 2) {
       if (sheet2.getCell(i, 1).value === role.name) {
         cell2 = role.name;

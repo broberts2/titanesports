@@ -40,7 +40,7 @@ module.exports = {
             mapType: "SUMMONERS_RIFT",
             metadata: _metadata(gameNum),
             pickType: "TOURNAMENT_DRAFT",
-            spectatorType: "LOBBYONLY",
+            spectatorType: "ALL",
             teamSize: 5,
           }),
         }
