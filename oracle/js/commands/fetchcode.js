@@ -23,7 +23,7 @@ module.exports = (client, roles) => ({
       }
     } else {
       return new Error(
-        "Hmm, I wasn't able to parse your arguments. You should probably get with a staff member for help or use:\n```?createcodes```"
+        "Hmm, I wasn't able to parse your arguments. You should probably get with a staff member for help or use:\n```?fetchcode```"
       );
     }
   },
