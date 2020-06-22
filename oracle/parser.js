@@ -24,9 +24,7 @@ const _shortenDescription = (description, status, arr = []) => {
     let index = description.length - mod;
     while (description.charAt(index++) !== "\n");
     const _split = description.split(index);
-    if (_split[1]) {
-      arr.push(_split[1]);
-    }
+    arr.push(_split[1]);
     return _shortenDescription(_split[0], status, arr);
   } else {
     if (arr.length > 0) {
