@@ -12,6 +12,7 @@ const _findPlayerInRow = (sheet, row, name) => {
 
 module.exports = (client, roles) => ({
   exec: async (command, League, specialRoles) => {
+    console.log(League);
     let role = _rolescheck(
       _team_index.gladiator.concat(_team_index.olympian),
       roles
@@ -19,8 +20,7 @@ module.exports = (client, roles) => ({
     let _team_;
     if (!role && _rolescheck(roles, specialRoles)) {
       command.args.pop();
-      _team_ = command.args.pop().replace(/\+/g, " ");
-
+      _team_ = command.args.pop();
       if (
         client.guilds.cache
           .get("407423677236510730")
@@ -57,9 +57,6 @@ module.exports = (client, roles) => ({
                   cell = sheet2.getCell(i, j);
                   if (cell.value === command.args[0]) {
                     cell.value = "";
-                    // for (let k = 0; k < 4; k++) {
-                    //   sheet2.getCell(i + 1, j + k).value = "";
-                    // }
                     return cell;
                   }
                 }
@@ -88,7 +85,7 @@ module.exports = (client, roles) => ({
     }
   },
   help:
-    "!dropplayer - Removes player from team.\n\n```!dropplayer <summoner_name>```",
+    "!dropplayer - Removes player from team.\n\n```!dropplayer <summoner_name>```\n```!dropplayer <summoner_name> <team_name> <league>```",
   status: 0,
   roles: {
     standard: ["562850378727817236", "631972855218700301"],
