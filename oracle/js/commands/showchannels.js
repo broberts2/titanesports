@@ -1,6 +1,6 @@
 module.exports = (client, roles) => ({
   exec: (command, League, specialRoles) =>
-    console.log(client.channels.cache.map((el) => `${el.id} - ${el.name}\n`)),
+    client.channels.cache.map((el) => `${el.id} - ${el.name}\n`).join(""),
   help: "!showchannels - Sends an array of all guild channels to console.",
   status: 0,
   roles: {

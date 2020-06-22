@@ -17,6 +17,38 @@ const _rolescheck = (ar1, ar2) => {
   return true;
 };
 
+const _shortenDescription = (description, status, arr = []) => {
+  const mod = 1500;
+  description = description.replace(/\n/gm, "\r\n");
+  if (description.length > mod) {
+    let index = description.length - mod;
+    while (description.charAt(index++) !== "\n");
+    const _split = description.split(index);
+    if (_split[1]) {
+      arr.push(_split[1]);
+    }
+    return _shortenDescription(_split[0], status, arr);
+  } else {
+    if (arr.length > 0) {
+      return arr
+        .filter((el) => el)
+        .map((el) =>
+          _embed({
+            description: el.replace(/\r/g, ""),
+            status,
+          })
+        );
+    } else {
+      return [
+        _embed({
+          description: description.replace(/\r/g, ""),
+          status,
+        }),
+      ];
+    }
+  }
+};
+
 const _parse = async (msg, client, roles) => {
   msg.content = msg.content
     .replace("<@!711694390078341171>", "")
@@ -43,7 +75,7 @@ const _parse = async (msg, client, roles) => {
                 case "562850378727817236":
                   return {
                     document: Gladiator,
-                    //director: "84349569869021184"
+                    // director: "84349569869021184"
                     director: "286390645130657792",
                   };
                 case "631972855218700301":
@@ -81,15 +113,14 @@ const _parse = async (msg, client, roles) => {
       description = _Response.bad_request(command.command);
       status = _Colors[2];
     }
-    return _embed({
-      description,
-      status,
-    });
+    return _shortenDescription(description, status);
   } else {
-    return _embed({
-      description: _fun_stuff(msg.content),
-      status: _Colors[0],
-    });
+    return [
+      _embed({
+        description: _fun_stuff(msg.content),
+        status: _Colors[0],
+      }),
+    ];
   }
 };
 

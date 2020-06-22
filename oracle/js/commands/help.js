@@ -5,7 +5,8 @@ const _help = {
     "createcodes",
     "fetchcode",
   ],
-  "Captain Commands": ["addplayer", "dropplayer", "swapposition"],
+  "Captain & Roster Staff Commands": ["dropplayer"],
+  "Captain Commands": ["addplayer", "swapposition"],
   "Common Commands": ["rolerequest"],
 };
 
