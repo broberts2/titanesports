@@ -18,7 +18,7 @@ const _rolescheck = (ar1, ar2) => {
 };
 
 const _shortenDescription = (description, status, arr = []) => {
-  const mod = 1500;
+  const mod = 2048;
   description = description.replace(/\n/gm, "\r\n");
   if (description.length > mod) {
     let index = description.length - mod;
