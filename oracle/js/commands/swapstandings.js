@@ -76,7 +76,7 @@ module.exports = (client) => ({
     }
   },
   help:
-    "!swapstandings - Swaps two rows on Standins and Rosters sheet.\n\n```!swapstandings <league> <row1> <row2>```\nValid inputs:\nleague: gladiator, olympian\nrow1: <n>\nrow2: <n>",
+    "!swapstandings - Swaps two rows on Standings and Rosters sheet.\n\n```!swapstandings <league> <row1> <row2>```\nValid inputs:\nleague: gladiator, olympian\nrow1: <n>\nrow2: <n>",
   roles: {
     standard: [
       "566421797831049216",

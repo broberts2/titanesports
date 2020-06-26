@@ -7,8 +7,13 @@ client.login(config.token);
 
 client.on("message", async (msg) => {
   if (
-    (msg.mentions.users.map((el) => el.id).includes("711694390078341171") ||
-      msg.mentions.roles.map((el) => el.id).includes("711712219758592071") ||
+    (config.oracleIds
+      .map(
+        (id) =>
+          msg.mentions.users.map((el) => el.id).includes(id) ||
+          msg.mentions.roles.map((el) => el.id).includes(id)
+      )
+      .includes(true) ||
       msg.channel.type === "dm") &&
     msg.content.length > 0
   ) {

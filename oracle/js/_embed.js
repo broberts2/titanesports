@@ -6,10 +6,7 @@ module.exports = (obj) =>
     .setTitle("Oracle")
     .setDescription(obj.description)
     .setThumbnail("https://i.gifer.com/XDZT.gif")
-    // .addFields(
-    //   { name: "Regular field title", value: "Some value here" },
-    //   { name: "\u200B", value: "\u200B" }
-    // )
+    .setImage(obj.img)
     .setTimestamp()
     .setFooter(
       "Titan E-Sports Butler",

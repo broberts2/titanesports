@@ -19,13 +19,17 @@ const _rolescheck = (ar1, ar2) => {
 
 const _shortenDescription = (description, status, arr = []) => {
   const mod = 2048;
-  description = description.replace(/\n/gm, "\r\n");
+  description = description.toString().replace(/\n/gm, "\r\n");
   if (description.length > mod) {
-    let index = description.length - mod;
-    while (description.charAt(index++) !== "\n");
-    const _split = description.split(index);
-    arr.push(_split[1]);
-    return _shortenDescription(_split[0], status, arr);
+    let index = 0;
+    while (index++ < mod);
+    while (description.charAt(index--) !== "\n");
+    const _split = [
+      description.substring(0, index),
+      description.substring(index, description.length),
+    ];
+    arr.push(_split[0]);
+    return _shortenDescription(_split[1], status, arr);
   } else {
     if (arr.length > 0) {
       return arr

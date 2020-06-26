@@ -1,5 +1,5 @@
 const _help = {
-  "Administrative Commands": ["showroles", "showchannels"],
+  "Administrative Commands": ["showroles", "showchannels", "flashpoll"],
   "Director and Roster Staff Commands": [
     "swapstandings",
     "createcodes",
@@ -7,7 +7,7 @@ const _help = {
   ],
   "Captain & Roster Staff Commands": ["dropplayer"],
   "Captain Commands": ["addplayer", "swapposition"],
-  "Common Commands": ["rolerequest"],
+  "Common Commands": ["rolerequest", "showdocuments"],
 };
 
 module.exports = (client) => ({
