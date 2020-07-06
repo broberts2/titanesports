@@ -1,0 +1,1 @@
+C:\cygwin64\bin\mintty /bin/bash -li "C:\Users\ustro\Documents\Files\Projects\Titan Esports\_SCRIPTS\games\run.sh"
