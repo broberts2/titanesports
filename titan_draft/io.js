@@ -47,7 +47,7 @@ const spawn = (objId, io, updater) => {
         id: objId,
       },
     });
-    if (draft && !draft.draft.finished) {
+    if (draft && draft.draft && !draft.draft.finished) {
       if (
         (draft.draft.redTime <= 0 && draft.draft.team === 1) ||
         (draft.draft.blueTime <= 0 && draft.draft.team === 0)

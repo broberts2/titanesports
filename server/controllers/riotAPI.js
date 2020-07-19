@@ -69,6 +69,7 @@ module.exports = {
         return code;
       })
     );
+    console.log(codes);
     return {
       code: 200,
       msg: "Code Generation Successful!",
