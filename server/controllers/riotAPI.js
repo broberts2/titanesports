@@ -11,6 +11,7 @@ module.exports = {
         code: 403,
       };
     }
+    console.log("did run");
     const _metadata = (gameNum) =>
       JSON.stringify({
         team1: req.query.team1
