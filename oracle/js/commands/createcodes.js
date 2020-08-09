@@ -20,6 +20,7 @@ module.exports = (client, roles) => ({
             },
           }
         ).then((_res) => _res.json());
+        console.log(res);
         return `Code generation successful! Here you go:\n\n${res.codes.join(
           "\n"
         )}`;

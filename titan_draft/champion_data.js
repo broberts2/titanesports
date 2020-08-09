@@ -15,7 +15,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Aatrox_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-aatrox.mp4`,
     pickAudio: `${server}/champion_audio/aatrox/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/aatrox/ban/0.ogg`
+    banAudio: `${server}/champion_audio/aatrox/ban/0.ogg`,
   },
   ahri: {
     id: index++,
@@ -26,7 +26,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Ahri_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-ahri.mp4`,
     pickAudio: `${server}/champion_audio/ahri/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/ahri/ban/0.ogg`
+    banAudio: `${server}/champion_audio/ahri/ban/0.ogg`,
   },
   akali: {
     id: index++,
@@ -37,7 +37,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Akali_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-akali.mp4`,
     pickAudio: `${server}/champion_audio/akali/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/akali/ban/0.ogg`
+    banAudio: `${server}/champion_audio/akali/ban/0.ogg`,
   },
   alistar: {
     id: index++,
@@ -48,7 +48,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Alistar_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-alistar.mp4`,
     pickAudio: `${server}/champion_audio/alistar/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/alistar/ban/0.ogg`
+    banAudio: `${server}/champion_audio/alistar/ban/0.ogg`,
   },
   amumu: {
     id: index++,
@@ -59,7 +59,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Amumu_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-amumu.mp4`,
     pickAudio: `${server}/champion_audio/amumu/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/amumu/ban/0.ogg`
+    banAudio: `${server}/champion_audio/amumu/ban/0.ogg`,
   },
   anivia: {
     id: index++,
@@ -70,7 +70,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Anivia_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-anivia.mp4`,
     pickAudio: `${server}/champion_audio/anivia/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/anivia/ban/0.ogg`
+    banAudio: `${server}/champion_audio/anivia/ban/0.ogg`,
   },
   annie: {
     id: index++,
@@ -81,7 +81,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Annie_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-annie.mp4`,
     pickAudio: `${server}/champion_audio/annie/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/annie/ban/0.ogg`
+    banAudio: `${server}/champion_audio/annie/ban/0.ogg`,
   },
   aphelios: {
     id: index++,
@@ -92,7 +92,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Aphelios_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-senna.mp4`,
     pickAudio: `${server}/champion_audio/aphelios/pick/0.mp3`,
-    banAudio: `${server}/champion_audio/aphelios/ban/0.mp3`
+    banAudio: `${server}/champion_audio/aphelios/ban/0.mp3`,
   },
   ashe: {
     id: index++,
@@ -103,7 +103,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Ashe_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-ashe.mp4`,
     pickAudio: `${server}/champion_audio/ashe/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/ashe/ban/0.ogg`
+    banAudio: `${server}/champion_audio/ashe/ban/0.ogg`,
   },
   aurelion_sol: {
     id: index++,
@@ -114,7 +114,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/AurelionSol_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-aurelionsol.mp4`,
     pickAudio: `${server}/champion_audio/aurelionsol/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/aurelionsol/ban/0.ogg`
+    banAudio: `${server}/champion_audio/aurelionsol/ban/0.ogg`,
   },
   azir: {
     id: index++,
@@ -125,7 +125,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Azir_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-azir.mp4`,
     pickAudio: `${server}/champion_audio/azir/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/azir/ban/0.ogg`
+    banAudio: `${server}/champion_audio/azir/ban/0.ogg`,
   },
   bard: {
     id: index++,
@@ -136,7 +136,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Bard_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-bard.mp4`,
     pickAudio: `${server}/champion_audio/bard/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/bard/ban/0.ogg`
+    banAudio: `${server}/champion_audio/bard/ban/0.ogg`,
   },
   blitzcrank: {
     id: index++,
@@ -147,7 +147,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Blitzcrank_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated/blitzcrank.mp4`,
     pickAudio: `${server}/champion_audio/blitzcrank/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/blitzcrank/ban/0.ogg`
+    banAudio: `${server}/champion_audio/blitzcrank/ban/0.ogg`,
   },
   brand: {
     id: index++,
@@ -158,7 +158,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Brand_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-brand.mp4`,
     pickAudio: `${server}/champion_audio/brand/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/brand/ban/0.ogg`
+    banAudio: `${server}/champion_audio/brand/ban/0.ogg`,
   },
   braum: {
     id: index++,
@@ -169,7 +169,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Braum_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-braum.mp4`,
     pickAudio: `${server}/champion_audio/braum/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/braum/ban/0.ogg`
+    banAudio: `${server}/champion_audio/braum/ban/0.ogg`,
   },
   caitlyn: {
     id: index++,
@@ -180,7 +180,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Caitlyn_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-caitlyn.mp4`,
     pickAudio: `${server}/champion_audio/caitlyn/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/caitlyn/ban/0.ogg`
+    banAudio: `${server}/champion_audio/caitlyn/ban/0.ogg`,
   },
   camille: {
     id: index++,
@@ -191,7 +191,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Camille_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-camille.mp4`,
     pickAudio: `${server}/champion_audio/camille/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/camille/ban/0.ogg`
+    banAudio: `${server}/champion_audio/camille/ban/0.ogg`,
   },
   cassiopeia: {
     id: index++,
@@ -202,7 +202,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Cassiopeia_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-cassiopeia.mp4`,
     pickAudio: `${server}/champion_audio/cassiopeia/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/cassiopeia/ban/0.ogg`
+    banAudio: `${server}/champion_audio/cassiopeia/ban/0.ogg`,
   },
   chogath: {
     id: index++,
@@ -213,7 +213,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Chogath_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-chogath.mp4`,
     pickAudio: `${server}/champion_audio/chogath/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/chogath/ban/0.ogg`
+    banAudio: `${server}/champion_audio/chogath/ban/0.ogg`,
   },
   corki: {
     id: index++,
@@ -224,7 +224,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Corki_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-corki.mp4`,
     pickAudio: `${server}/champion_audio/corki/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/corki/ban/0.ogg`
+    banAudio: `${server}/champion_audio/corki/ban/0.ogg`,
   },
   darius: {
     id: index++,
@@ -235,7 +235,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Darius_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-darius.mp4`,
     pickAudio: `${server}/champion_audio/darius/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/darius/ban/0.ogg`
+    banAudio: `${server}/champion_audio/darius/ban/0.ogg`,
   },
   diana: {
     id: index++,
@@ -246,7 +246,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Diana_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-diana.mp4`,
     pickAudio: `${server}/champion_audio/diana/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/diana/ban/0.ogg`
+    banAudio: `${server}/champion_audio/diana/ban/0.ogg`,
   },
   drmundo: {
     id: index++,
@@ -257,7 +257,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/DrMundo_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-drmundo.mp4`,
     pickAudio: `${server}/champion_audio/drmundo/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/drmundo/ban/0.ogg`
+    banAudio: `${server}/champion_audio/drmundo/ban/0.ogg`,
   },
   draven: {
     id: index++,
@@ -268,7 +268,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Draven_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-draven.mp4`,
     pickAudio: `${server}/champion_audio/draven/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/draven/ban/0.ogg`
+    banAudio: `${server}/champion_audio/draven/ban/0.ogg`,
   },
   ekko: {
     id: index++,
@@ -279,7 +279,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Ekko_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-ekko.mp4`,
     pickAudio: `${server}/champion_audio/ekko/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/ekko/ban/0.ogg`
+    banAudio: `${server}/champion_audio/ekko/ban/0.ogg`,
   },
   elise: {
     id: index++,
@@ -290,7 +290,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Elise_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-elise.mp4`,
     pickAudio: `${server}/champion_audio/elise/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/elise/ban/0.ogg`
+    banAudio: `${server}/champion_audio/elise/ban/0.ogg`,
   },
   evelynn: {
     id: index++,
@@ -301,7 +301,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Evelynn_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-evelynn.mp4`,
     pickAudio: `${server}/champion_audio/evelynn/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/evelynn/ban/0.ogg`
+    banAudio: `${server}/champion_audio/evelynn/ban/0.ogg`,
   },
   ezreal: {
     id: index++,
@@ -312,7 +312,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Ezreal_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-ezreal.mp4`,
     pickAudio: `${server}/champion_audio/ezreal/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/ezreal/ban/0.ogg`
+    banAudio: `${server}/champion_audio/ezreal/ban/0.ogg`,
   },
   fiddlesticks: {
     id: index++,
@@ -323,7 +323,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/FiddleSticks_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-fiddlesticks.mp4`,
     pickAudio: `${server}/champion_audio/fiddlesticks/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/fiddlesticks/ban/0.ogg`
+    banAudio: `${server}/champion_audio/fiddlesticks/ban/0.ogg`,
   },
   fiora: {
     id: index++,
@@ -334,7 +334,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Fiora_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-fiora.mp4`,
     pickAudio: `${server}/champion_audio/fiora/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/fiora/ban/0.ogg`
+    banAudio: `${server}/champion_audio/fiora/ban/0.ogg`,
   },
   fizz: {
     id: index++,
@@ -345,7 +345,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Fizz_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-fizz.mp4`,
     pickAudio: `${server}/champion_audio/fizz/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/fizz/ban/0.ogg`
+    banAudio: `${server}/champion_audio/fizz/ban/0.ogg`,
   },
   galio: {
     id: index++,
@@ -356,7 +356,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Galio_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-galio.mp4`,
     pickAudio: `${server}/champion_audio/galio/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/gangplank/ban/0.ogg`
+    banAudio: `${server}/champion_audio/gangplank/ban/0.ogg`,
   },
   gangplank: {
     id: index++,
@@ -367,7 +367,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Gangplank_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-gangplank.mp4`,
     pickAudio: `${server}/champion_audio/gangplank/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/gangplank/ban/0.ogg`
+    banAudio: `${server}/champion_audio/gangplank/ban/0.ogg`,
   },
   garen: {
     id: index++,
@@ -378,7 +378,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Garen_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-garen.mp4`,
     pickAudio: `${server}/champion_audio/garen/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/garen/ban/0.ogg`
+    banAudio: `${server}/champion_audio/garen/ban/0.ogg`,
   },
   gnar: {
     id: index++,
@@ -389,7 +389,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Gnar_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-gnar.mp4`,
     pickAudio: `${server}/champion_audio/gnar/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/gnar/ban/0.ogg`
+    banAudio: `${server}/champion_audio/gnar/ban/0.ogg`,
   },
   gragas: {
     id: index++,
@@ -400,7 +400,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Gragas_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-gragas.mp4`,
     pickAudio: `${server}/champion_audio/gragas/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/gragas/ban/0.ogg`
+    banAudio: `${server}/champion_audio/gragas/ban/0.ogg`,
   },
   graves: {
     id: index++,
@@ -411,7 +411,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Graves_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-graves.mp4`,
     pickAudio: `${server}/champion_audio/graves/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/graves/ban/0.ogg`
+    banAudio: `${server}/champion_audio/graves/ban/0.ogg`,
   },
   hecarim: {
     id: index++,
@@ -422,7 +422,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Hecarim_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-hecarim.mp4`,
     pickAudio: `${server}/champion_audio/hecarim/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/hecarim/ban/0.ogg`
+    banAudio: `${server}/champion_audio/hecarim/ban/0.ogg`,
   },
   heimerdinger: {
     id: index++,
@@ -433,7 +433,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Heimerdinger_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-heimerdinger.mp4`,
     pickAudio: `${server}/champion_audio/heimerdinger/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/heimerdinger/ban/0.ogg`
+    banAudio: `${server}/champion_audio/heimerdinger/ban/0.ogg`,
   },
   illaoi: {
     id: index++,
@@ -444,7 +444,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Illaoi_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-illaoi.mp4`,
     pickAudio: `${server}/champion_audio/illaoi/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/illaoi/ban/0.ogg`
+    banAudio: `${server}/champion_audio/illaoi/ban/0.ogg`,
   },
   irelia: {
     id: index++,
@@ -455,7 +455,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Irelia_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-irelia.mp4`,
     pickAudio: `${server}/champion_audio/irelia/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/irelia/ban/0.ogg`
+    banAudio: `${server}/champion_audio/irelia/ban/0.ogg`,
   },
   ivern: {
     id: index++,
@@ -466,7 +466,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Ivern_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-ivern.mp4`,
     pickAudio: `${server}/champion_audio/ivern/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/ivern/ban/0.ogg`
+    banAudio: `${server}/champion_audio/ivern/ban/0.ogg`,
   },
   janna: {
     id: index++,
@@ -477,7 +477,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Janna_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-janna.mp4`,
     pickAudio: `${server}/champion_audio/janna/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/janna/ban/0.ogg`
+    banAudio: `${server}/champion_audio/janna/ban/0.ogg`,
   },
   jarvanIV: {
     id: index++,
@@ -488,7 +488,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/JarvanIV_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-jarvanIV.mp4`,
     pickAudio: `${server}/champion_audio/jarvanIV/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/jarvanIV/ban/0.ogg`
+    banAudio: `${server}/champion_audio/jarvanIV/ban/0.ogg`,
   },
   jax: {
     id: index++,
@@ -499,7 +499,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Jax_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-jax.mp4`,
     pickAudio: `${server}/champion_audio/jax/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/jax/ban/0.ogg`
+    banAudio: `${server}/champion_audio/jax/ban/0.ogg`,
   },
   jayce: {
     id: index++,
@@ -510,7 +510,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Jayce_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-jayce.mp4`,
     pickAudio: `${server}/champion_audio/jayce/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/jayce/ban/0.ogg`
+    banAudio: `${server}/champion_audio/jayce/ban/0.ogg`,
   },
   jhin: {
     id: index++,
@@ -521,7 +521,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Jhin_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-jhin.mp4`,
     pickAudio: `${server}/champion_audio/jhin/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/jhin/ban/0.ogg`
+    banAudio: `${server}/champion_audio/jhin/ban/0.ogg`,
   },
   jinx: {
     id: index++,
@@ -532,7 +532,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Jinx_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-jinx.mp4`,
     pickAudio: `${server}/champion_audio/jinx/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/jinx/ban/0.ogg`
+    banAudio: `${server}/champion_audio/jinx/ban/0.ogg`,
   },
   kaisa: {
     id: index++,
@@ -543,7 +543,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Kaisa_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-kaisa.mp4`,
     pickAudio: `${server}/champion_audio/kaisa/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/kaisa/ban/0.ogg`
+    banAudio: `${server}/champion_audio/kaisa/ban/0.ogg`,
   },
   kalista: {
     id: index++,
@@ -554,7 +554,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Kalista_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-kalista.mp4`,
     pickAudio: `${server}/champion_audio/kalista/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/kalista/ban/0.ogg`
+    banAudio: `${server}/champion_audio/kalista/ban/0.ogg`,
   },
   karma: {
     id: index++,
@@ -565,7 +565,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Karma_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-karma.mp4`,
     pickAudio: `${server}/champion_audio/karma/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/karma/ban/0.ogg`
+    banAudio: `${server}/champion_audio/karma/ban/0.ogg`,
   },
   karthus: {
     id: index++,
@@ -576,7 +576,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Karthus_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-karthus.mp4`,
     pickAudio: `${server}/champion_audio/karthus/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/karthus/ban/0.ogg`
+    banAudio: `${server}/champion_audio/karthus/ban/0.ogg`,
   },
   kassadin: {
     id: index++,
@@ -587,7 +587,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Kassadin_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-kassadin.mp4`,
     pickAudio: `${server}/champion_audio/kassadin/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/kassadin/ban/0.ogg`
+    banAudio: `${server}/champion_audio/kassadin/ban/0.ogg`,
   },
   katarina: {
     id: index++,
@@ -598,7 +598,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Katarina_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-katarina.mp4`,
     pickAudio: `${server}/champion_audio/katarina/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/katarina/ban/0.ogg`
+    banAudio: `${server}/champion_audio/katarina/ban/0.ogg`,
   },
   kayle: {
     id: index++,
@@ -609,7 +609,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Kayle_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-kayle.mp4`,
     pickAudio: `${server}/champion_audio/kayle/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/kayle/ban/0.ogg`
+    banAudio: `${server}/champion_audio/kayle/ban/0.ogg`,
   },
   kayn: {
     id: index++,
@@ -620,7 +620,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Kayn_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-kayn.mp4`,
     pickAudio: `${server}/champion_audio/kayn/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/kayn/ban/0.ogg`
+    banAudio: `${server}/champion_audio/kayn/ban/0.ogg`,
   },
   kennen: {
     id: index++,
@@ -631,7 +631,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Kennen_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-kennen.mp4`,
     pickAudio: `${server}/champion_audio/kennen/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/kennen/ban/0.ogg`
+    banAudio: `${server}/champion_audio/kennen/ban/0.ogg`,
   },
   khazix: {
     id: index++,
@@ -642,7 +642,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Khazix_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-khazix.mp4`,
     pickAudio: `${server}/champion_audio/khazix/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/khazix/ban/0.ogg`
+    banAudio: `${server}/champion_audio/khazix/ban/0.ogg`,
   },
   kindred: {
     id: index++,
@@ -653,7 +653,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Kindred_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-kindred.mp4`,
     pickAudio: `${server}/champion_audio/kindred/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/kindred/ban/0.ogg`
+    banAudio: `${server}/champion_audio/kindred/ban/0.ogg`,
   },
   kled: {
     id: index++,
@@ -664,7 +664,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Kled_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-kled.mp4`,
     pickAudio: `${server}/champion_audio/kled/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/kled/ban/0.ogg`
+    banAudio: `${server}/champion_audio/kled/ban/0.ogg`,
   },
   kogmaw: {
     id: index++,
@@ -675,7 +675,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/KogMaw_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-kogmaw.mp4`,
     pickAudio: `${server}/champion_audio/kogmaw/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/kogmaw/ban/0.ogg`
+    banAudio: `${server}/champion_audio/kogmaw/ban/0.ogg`,
   },
   leblanc: {
     id: index++,
@@ -686,7 +686,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Leblanc_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-leblanc.mp4`,
     pickAudio: `${server}/champion_audio/leblanc/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/leblanc/ban/0.ogg`
+    banAudio: `${server}/champion_audio/leblanc/ban/0.ogg`,
   },
   leesin: {
     id: index++,
@@ -697,7 +697,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/LeeSin_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-leesin.mp4`,
     pickAudio: `${server}/champion_audio/leesin/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/leesin/ban/0.ogg`
+    banAudio: `${server}/champion_audio/leesin/ban/0.ogg`,
   },
   leona: {
     id: index++,
@@ -708,7 +708,18 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Leona_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-leona.mp4`,
     pickAudio: `${server}/champion_audio/leona/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/leona/ban/0.ogg`
+    banAudio: `${server}/champion_audio/leona/ban/0.ogg`,
+  },
+  lillia: {
+    id: index++,
+    suspended: false,
+    name: "Lillia",
+    loadingImg: `${server}/img/champion/loading/Lillia_0.jpg`,
+    splashImg: `${server}/img/champion/splash/Lillia_0.jpg`,
+    tileImg: `${server}/img/champion/tiles/Lillia_0.jpg`,
+    vid: `${server}/champion_videos/c-o-animated-lillia.mp4`,
+    pickAudio: `${server}/champion_audio/lillia/pick/0.ogg`,
+    banAudio: `${server}/champion_audio/lillia/ban/0.ogg`,
   },
   lissandra: {
     id: index++,
@@ -719,7 +730,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Lissandra_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-lissandra.mp4`,
     pickAudio: `${server}/champion_audio/lissandra/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/lissandra/ban/0.ogg`
+    banAudio: `${server}/champion_audio/lissandra/ban/0.ogg`,
   },
   lucian: {
     id: index++,
@@ -730,7 +741,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Lucian_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-lucian.mp4`,
     pickAudio: `${server}/champion_audio/lucian/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/lucian/ban/0.ogg`
+    banAudio: `${server}/champion_audio/lucian/ban/0.ogg`,
   },
   lulu: {
     id: index++,
@@ -741,7 +752,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Lulu_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-lulu.mp4`,
     pickAudio: `${server}/champion_audio/lulu/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/lulu/ban/0.ogg`
+    banAudio: `${server}/champion_audio/lulu/ban/0.ogg`,
   },
   lux: {
     id: index++,
@@ -752,7 +763,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Lux_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-lux.mp4`,
     pickAudio: `${server}/champion_audio/lux/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/lux/ban/0.ogg`
+    banAudio: `${server}/champion_audio/lux/ban/0.ogg`,
   },
   malphite: {
     id: index++,
@@ -763,7 +774,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Malphite_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-malphite.mp4`,
     pickAudio: `${server}/champion_audio/malphite/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/malphite/ban/0.ogg`
+    banAudio: `${server}/champion_audio/malphite/ban/0.ogg`,
   },
   malzahar: {
     id: index++,
@@ -774,7 +785,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Malzahar_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-malzahar.mp4`,
     pickAudio: `${server}/champion_audio/malzahar/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/malzahar/ban/0.ogg`
+    banAudio: `${server}/champion_audio/malzahar/ban/0.ogg`,
   },
   maokai: {
     id: index++,
@@ -785,7 +796,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Maokai_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-maokai.mp4`,
     pickAudio: `${server}/champion_audio/maokai/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/maokai/ban/0.ogg`
+    banAudio: `${server}/champion_audio/maokai/ban/0.ogg`,
   },
   masteryi: {
     id: index++,
@@ -796,7 +807,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/MasterYi_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-masteryi.mp4`,
     pickAudio: `${server}/champion_audio/masteryi/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/masteryi/ban/0.ogg`
+    banAudio: `${server}/champion_audio/masteryi/ban/0.ogg`,
   },
   missfortune: {
     id: index++,
@@ -807,7 +818,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/MissFortune_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-missfortune.mp4`,
     pickAudio: `${server}/champion_audio/missfortune/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/missfortune/ban/0.ogg`
+    banAudio: `${server}/champion_audio/missfortune/ban/0.ogg`,
   },
   mordekaiser: {
     id: index++,
@@ -818,7 +829,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Mordekaiser_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-mordekaiser.mp4`,
     pickAudio: `${server}/champion_audio/mordekaiser/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/mordekaiser/ban/0.ogg`
+    banAudio: `${server}/champion_audio/mordekaiser/ban/0.ogg`,
   },
   morgana: {
     id: index++,
@@ -829,7 +840,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Morgana_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-morgana.mp4`,
     pickAudio: `${server}/champion_audio/morgana/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/morgana/ban/0.ogg`
+    banAudio: `${server}/champion_audio/morgana/ban/0.ogg`,
   },
   nami: {
     id: index++,
@@ -840,7 +851,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Nami_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-nami.mp4`,
     pickAudio: `${server}/champion_audio/nami/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/nami/ban/0.ogg`
+    banAudio: `${server}/champion_audio/nami/ban/0.ogg`,
   },
   nasus: {
     id: index++,
@@ -851,7 +862,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Nasus_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-nasus.mp4`,
     pickAudio: `${server}/champion_audio/nasus/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/nasus/ban/0.ogg`
+    banAudio: `${server}/champion_audio/nasus/ban/0.ogg`,
   },
   nautilus: {
     id: index++,
@@ -862,7 +873,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Nautilus_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-nautilus.mp4`,
     pickAudio: `${server}/champion_audio/nautilus/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/nautilus/ban/0.ogg`
+    banAudio: `${server}/champion_audio/nautilus/ban/0.ogg`,
   },
   neeko: {
     id: index++,
@@ -873,7 +884,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Neeko_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-neeko.mp4`,
     pickAudio: `${server}/champion_audio/neeko/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/neeko/ban/0.ogg`
+    banAudio: `${server}/champion_audio/neeko/ban/0.ogg`,
   },
   nidalee: {
     id: index++,
@@ -884,7 +895,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Nidalee_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-nidalee.mp4`,
     pickAudio: `${server}/champion_audio/nidalee/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/nidalee/ban/0.ogg`
+    banAudio: `${server}/champion_audio/nidalee/ban/0.ogg`,
   },
   nocturne: {
     id: index++,
@@ -895,7 +906,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Nocturne_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-nocturne.mp4`,
     pickAudio: `${server}/champion_audio/nocturne/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/nocturne/ban/0.ogg`
+    banAudio: `${server}/champion_audio/nocturne/ban/0.ogg`,
   },
   nunu: {
     id: index++,
@@ -906,7 +917,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Nunu_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-nunu.mp4`,
     pickAudio: `${server}/champion_audio/nunu/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/nunu/ban/0.ogg`
+    banAudio: `${server}/champion_audio/nunu/ban/0.ogg`,
   },
   olaf: {
     id: index++,
@@ -917,7 +928,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Olaf_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-olaf.mp4`,
     pickAudio: `${server}/champion_audio/olaf/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/olaf/ban/0.ogg`
+    banAudio: `${server}/champion_audio/olaf/ban/0.ogg`,
   },
   orianna: {
     id: index++,
@@ -928,7 +939,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Orianna_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-orianna.mp4`,
     pickAudio: `${server}/champion_audio/orianna/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/orianna/ban/0.ogg`
+    banAudio: `${server}/champion_audio/orianna/ban/0.ogg`,
   },
   ornn: {
     id: index++,
@@ -939,7 +950,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Ornn_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-ornn.mp4`,
     pickAudio: `${server}/champion_audio/ornn/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/ornn/ban/0.ogg`
+    banAudio: `${server}/champion_audio/ornn/ban/0.ogg`,
   },
   pantheon: {
     id: index++,
@@ -950,7 +961,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Pantheon_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-pantheon.mp4`,
     pickAudio: `${server}/champion_audio/pantheon/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/pantheon/ban/0.ogg`
+    banAudio: `${server}/champion_audio/pantheon/ban/0.ogg`,
   },
   poppy: {
     id: index++,
@@ -961,7 +972,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Poppy_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-poppy.mp4`,
     pickAudio: `${server}/champion_audio/poppy/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/poppy/ban/0.ogg`
+    banAudio: `${server}/champion_audio/poppy/ban/0.ogg`,
   },
   pyke: {
     id: index++,
@@ -972,7 +983,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Pyke_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-pyke.mp4`,
     pickAudio: `${server}/champion_audio/pyke/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/pyke/ban/0.ogg`
+    banAudio: `${server}/champion_audio/pyke/ban/0.ogg`,
   },
   qiyana: {
     id: index++,
@@ -983,7 +994,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Qiyana_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-qiyana.mp4`,
     pickAudio: `${server}/champion_audio/qiyana/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/qiyana/ban/0.ogg`
+    banAudio: `${server}/champion_audio/qiyana/ban/0.ogg`,
   },
   quinn: {
     id: index++,
@@ -994,7 +1005,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Quinn_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-quinn.mp4`,
     pickAudio: `${server}/champion_audio/quinn/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/quinn/ban/0.ogg`
+    banAudio: `${server}/champion_audio/quinn/ban/0.ogg`,
   },
   rakan: {
     id: index++,
@@ -1005,7 +1016,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Rakan_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-rakan.mp4`,
     pickAudio: `${server}/champion_audio/rakan/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/rakan/ban/0.ogg`
+    banAudio: `${server}/champion_audio/rakan/ban/0.ogg`,
   },
   rammus: {
     id: index++,
@@ -1016,7 +1027,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Rammus_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-rammus.mp4`,
     pickAudio: `${server}/champion_audio/rammus/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/rammus/ban/0.ogg`
+    banAudio: `${server}/champion_audio/rammus/ban/0.ogg`,
   },
   reksai: {
     id: index++,
@@ -1027,7 +1038,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/RekSai_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-reksai.mp4`,
     pickAudio: `${server}/champion_audio/reksai/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/reksai/ban/0.ogg`
+    banAudio: `${server}/champion_audio/reksai/ban/0.ogg`,
   },
   renekton: {
     id: index++,
@@ -1038,7 +1049,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Renekton_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-renekton.mp4`,
     pickAudio: `${server}/champion_audio/renekton/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/renekton/ban/0.ogg`
+    banAudio: `${server}/champion_audio/renekton/ban/0.ogg`,
   },
   rengar: {
     id: index++,
@@ -1049,7 +1060,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Rengar_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-rengar.mp4`,
     pickAudio: `${server}/champion_audio/rengar/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/rengar/ban/0.ogg`
+    banAudio: `${server}/champion_audio/rengar/ban/0.ogg`,
   },
   riven: {
     id: index++,
@@ -1060,7 +1071,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Riven_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-riven.mp4`,
     pickAudio: `${server}/champion_audio/riven/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/riven/ban/0.ogg`
+    banAudio: `${server}/champion_audio/riven/ban/0.ogg`,
   },
   rumble: {
     id: index++,
@@ -1071,7 +1082,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Rumble_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-rumble.mp4`,
     pickAudio: `${server}/champion_audio/rumble/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/rumble/ban/0.ogg`
+    banAudio: `${server}/champion_audio/rumble/ban/0.ogg`,
   },
   ryze: {
     id: index++,
@@ -1082,7 +1093,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Ryze_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-ryze.mp4`,
     pickAudio: `${server}/champion_audio/ryze/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/ryze/ban/0.ogg`
+    banAudio: `${server}/champion_audio/ryze/ban/0.ogg`,
   },
   sejuani: {
     id: index++,
@@ -1093,7 +1104,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Sejuani_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-sejuani.mp4`,
     pickAudio: `${server}/champion_audio/sejuani/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/sejuani/ban/0.ogg`
+    banAudio: `${server}/champion_audio/sejuani/ban/0.ogg`,
   },
   senna: {
     id: index++,
@@ -1104,7 +1115,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Senna_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-senna.mp4`,
     pickAudio: `${server}/champion_audio/senna/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/senna/ban/0.ogg`
+    banAudio: `${server}/champion_audio/senna/ban/0.ogg`,
   },
   sett: {
     id: index++,
@@ -1115,7 +1126,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Sett_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-sett.mp4`,
     pickAudio: `${server}/champion_audio/sett/pick/0.mp3`,
-    banAudio: `${server}/champion_audio/sett/ban/0.mp3`
+    banAudio: `${server}/champion_audio/sett/ban/0.mp3`,
   },
   shaco: {
     id: index++,
@@ -1126,7 +1137,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Shaco_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-shaco.mp4`,
     pickAudio: `${server}/champion_audio/shaco/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/shaco/ban/0.ogg`
+    banAudio: `${server}/champion_audio/shaco/ban/0.ogg`,
   },
   shen: {
     id: index++,
@@ -1137,7 +1148,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Shen_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-shen.mp4`,
     pickAudio: `${server}/champion_audio/shen/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/shen/ban/0.ogg`
+    banAudio: `${server}/champion_audio/shen/ban/0.ogg`,
   },
   shyvana: {
     id: index++,
@@ -1148,7 +1159,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Shyvana_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-shyvana.mp4`,
     pickAudio: `${server}/champion_audio/shyvana/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/shyvana/ban/0.ogg`
+    banAudio: `${server}/champion_audio/shyvana/ban/0.ogg`,
   },
   singed: {
     id: index++,
@@ -1159,7 +1170,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Singed_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-singed.mp4`,
     pickAudio: `${server}/champion_audio/singed/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/singed/ban/0.ogg`
+    banAudio: `${server}/champion_audio/singed/ban/0.ogg`,
   },
   sion: {
     id: index++,
@@ -1170,7 +1181,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Sion_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-sion.mp4`,
     pickAudio: `${server}/champion_audio/sion/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/sion/ban/0.ogg`
+    banAudio: `${server}/champion_audio/sion/ban/0.ogg`,
   },
   sivir: {
     id: index++,
@@ -1181,7 +1192,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Sivir_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-sivir.mp4`,
     pickAudio: `${server}/champion_audio/sivir/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/sivir/ban/0.ogg`
+    banAudio: `${server}/champion_audio/sivir/ban/0.ogg`,
   },
   skarner: {
     id: index++,
@@ -1192,7 +1203,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Skarner_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-skarner.mp4`,
     pickAudio: `${server}/champion_audio/skarner/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/skarner/ban/0.ogg`
+    banAudio: `${server}/champion_audio/skarner/ban/0.ogg`,
   },
   sona: {
     id: index++,
@@ -1203,7 +1214,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Sona_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-sona.mp4`,
     pickAudio: `${server}/champion_audio/sona/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/sona/ban/0.ogg`
+    banAudio: `${server}/champion_audio/sona/ban/0.ogg`,
   },
   soraka: {
     id: index++,
@@ -1214,7 +1225,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Soraka_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-soraka.mp4`,
     pickAudio: `${server}/champion_audio/soraka/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/soraka/ban/0.ogg`
+    banAudio: `${server}/champion_audio/soraka/ban/0.ogg`,
   },
   swain: {
     id: index++,
@@ -1225,7 +1236,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Swain_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-swain.mp4`,
     pickAudio: `${server}/champion_audio/swain/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/swain/ban/0.ogg`
+    banAudio: `${server}/champion_audio/swain/ban/0.ogg`,
   },
   sylas: {
     id: index++,
@@ -1236,7 +1247,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Sylas_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-sylas.mp4`,
     pickAudio: `${server}/champion_audio/sylas/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/sylas/ban/0.ogg`
+    banAudio: `${server}/champion_audio/sylas/ban/0.ogg`,
   },
   syndra: {
     id: index++,
@@ -1247,7 +1258,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Syndra_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-syndra.mp4`,
     pickAudio: `${server}/champion_audio/syndra/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/syndra/ban/0.ogg`
+    banAudio: `${server}/champion_audio/syndra/ban/0.ogg`,
   },
   tahmkench: {
     id: index++,
@@ -1258,7 +1269,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/TahmKench_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-tahmkench.mp4`,
     pickAudio: `${server}/champion_audio/tahmkench/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/tahmkench/ban/0.ogg`
+    banAudio: `${server}/champion_audio/tahmkench/ban/0.ogg`,
   },
   taliyah: {
     id: index++,
@@ -1269,7 +1280,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Taliyah_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-taliyah.mp4`,
     pickAudio: `${server}/champion_audio/taliyah/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/taliyah/ban/0.ogg`
+    banAudio: `${server}/champion_audio/taliyah/ban/0.ogg`,
   },
   talon: {
     id: index++,
@@ -1280,7 +1291,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Talon_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-talon.mp4`,
     pickAudio: `${server}/champion_audio/talon/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/talon/ban/0.ogg`
+    banAudio: `${server}/champion_audio/talon/ban/0.ogg`,
   },
   taric: {
     id: index++,
@@ -1291,7 +1302,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Taric_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-taric.mp4`,
     pickAudio: `${server}/champion_audio/taric/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/taric/ban/0.ogg`
+    banAudio: `${server}/champion_audio/taric/ban/0.ogg`,
   },
   teemo: {
     id: index++,
@@ -1302,7 +1313,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Teemo_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-teemo.mp4`,
     pickAudio: `${server}/champion_audio/teemo/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/teemo/ban/0.ogg`
+    banAudio: `${server}/champion_audio/teemo/ban/0.ogg`,
   },
   thresh: {
     id: index++,
@@ -1313,7 +1324,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Thresh_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-thresh.mp4`,
     pickAudio: `${server}/champion_audio/thresh/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/thresh/ban/0.ogg`
+    banAudio: `${server}/champion_audio/thresh/ban/0.ogg`,
   },
   tristana: {
     id: index++,
@@ -1324,7 +1335,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Tristana_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-tristana.mp4`,
     pickAudio: `${server}/champion_audio/tristana/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/tristana/ban/0.ogg`
+    banAudio: `${server}/champion_audio/tristana/ban/0.ogg`,
   },
   trundle: {
     id: index++,
@@ -1335,7 +1346,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Trundle_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-trundle.mp4`,
     pickAudio: `${server}/champion_audio/trundle/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/trundle/ban/0.ogg`
+    banAudio: `${server}/champion_audio/trundle/ban/0.ogg`,
   },
   tryndamere: {
     id: index++,
@@ -1346,7 +1357,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Tryndamere_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-tryndamere.mp4`,
     pickAudio: `${server}/champion_audio/tryndamere/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/tryndamere/ban/0.ogg`
+    banAudio: `${server}/champion_audio/tryndamere/ban/0.ogg`,
   },
   twistedfate: {
     id: index++,
@@ -1357,7 +1368,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/TwistedFate_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-twistedfate.mp4`,
     pickAudio: `${server}/champion_audio/twistedfate/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/twistedfate/ban/0.ogg`
+    banAudio: `${server}/champion_audio/twistedfate/ban/0.ogg`,
   },
   twitch: {
     id: index++,
@@ -1368,7 +1379,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Twitch_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-twitch.mp4`,
     pickAudio: `${server}/champion_audio/twitch/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/twitch/ban/0.ogg`
+    banAudio: `${server}/champion_audio/twitch/ban/0.ogg`,
   },
   udyr: {
     id: index++,
@@ -1379,7 +1390,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Udyr_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-udyr.mp4`,
     pickAudio: `${server}/champion_audio/udyr/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/udyr/ban/0.ogg`
+    banAudio: `${server}/champion_audio/udyr/ban/0.ogg`,
   },
   urf: {
     id: index++,
@@ -1387,7 +1398,7 @@ module.exports = {
     name: "Urf",
     vid: `${server}/champion_videos/c-o-animated-urf.mp4`,
     pickAudio: `${server}/champion_audio/urf/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/urf/ban/0.ogg`
+    banAudio: `${server}/champion_audio/urf/ban/0.ogg`,
   },
   urgot: {
     id: index++,
@@ -1398,7 +1409,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Urgot_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-urgot.mp4`,
     pickAudio: `${server}/champion_audio/urgot/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/urgot/ban/0.ogg`
+    banAudio: `${server}/champion_audio/urgot/ban/0.ogg`,
   },
   varus: {
     id: index++,
@@ -1409,7 +1420,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Varus_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-varus.mp4`,
     pickAudio: `${server}/champion_audio/varus/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/varus/ban/0.ogg`
+    banAudio: `${server}/champion_audio/varus/ban/0.ogg`,
   },
   vayne: {
     id: index++,
@@ -1420,7 +1431,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Vayne_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-vayne.mp4`,
     pickAudio: `${server}/champion_audio/vayne/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/vayne/ban/0.ogg`
+    banAudio: `${server}/champion_audio/vayne/ban/0.ogg`,
   },
   veigar: {
     id: index++,
@@ -1431,7 +1442,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Veigar_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-veigar.mp4`,
     pickAudio: `${server}/champion_audio/veigar/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/veigar/ban/0.ogg`
+    banAudio: `${server}/champion_audio/veigar/ban/0.ogg`,
   },
   velkoz: {
     id: index++,
@@ -1442,7 +1453,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Velkoz_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-velkoz.mp4`,
     pickAudio: `${server}/champion_audio/velkoz/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/velkoz/ban/0.ogg`
+    banAudio: `${server}/champion_audio/velkoz/ban/0.ogg`,
   },
   vi: {
     id: index++,
@@ -1453,7 +1464,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Vi_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-vi.mp4`,
     pickAudio: `${server}/champion_audio/vi/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/vi/ban/0.ogg`
+    banAudio: `${server}/champion_audio/vi/ban/0.ogg`,
   },
   viktor: {
     id: index++,
@@ -1464,7 +1475,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Viktor_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-viktor.mp4`,
     pickAudio: `${server}/champion_audio/viktor/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/viktor/ban/0.ogg`
+    banAudio: `${server}/champion_audio/viktor/ban/0.ogg`,
   },
   vladimir: {
     id: index++,
@@ -1475,7 +1486,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Vladimir_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-vladimir.mp4`,
     pickAudio: `${server}/champion_audio/vladimir/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/vladimir/ban/0.ogg`
+    banAudio: `${server}/champion_audio/vladimir/ban/0.ogg`,
   },
   volibear: {
     id: index++,
@@ -1486,7 +1497,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Volibear_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-volibear.mp4`,
     pickAudio: `${server}/champion_audio/volibear/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/volibear/ban/0.ogg`
+    banAudio: `${server}/champion_audio/volibear/ban/0.ogg`,
   },
   warwick: {
     id: index++,
@@ -1497,7 +1508,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Warwick_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-warwick.mp4`,
     pickAudio: `${server}/champion_audio/warwick/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/warwick/ban/0.ogg`
+    banAudio: `${server}/champion_audio/warwick/ban/0.ogg`,
   },
   wukong: {
     id: index++,
@@ -1508,7 +1519,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/MonkeyKing_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-monkeyking.mp4`,
     pickAudio: `${server}/champion_audio/monkeyking/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/monkeyking/ban/0.ogg`
+    banAudio: `${server}/champion_audio/monkeyking/ban/0.ogg`,
   },
   xayah: {
     id: index++,
@@ -1519,7 +1530,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Xayah_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-xayah.mp4`,
     pickAudio: `${server}/champion_audio/xayah/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/xayah/ban/0.ogg`
+    banAudio: `${server}/champion_audio/xayah/ban/0.ogg`,
   },
   xerath: {
     id: index++,
@@ -1530,7 +1541,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Xerath_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-xerath.mp4`,
     pickAudio: `${server}/champion_audio/xerath/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/xerath/ban/0.ogg`
+    banAudio: `${server}/champion_audio/xerath/ban/0.ogg`,
   },
   xinzhao: {
     id: index++,
@@ -1541,7 +1552,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/XinZhao_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-xinzhao.mp4`,
     pickAudio: `${server}/champion_audio/xinzhao/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/xinzhao/ban/0.ogg`
+    banAudio: `${server}/champion_audio/xinzhao/ban/0.ogg`,
   },
   yasuo: {
     id: index++,
@@ -1552,7 +1563,18 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Yasuo_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-yasuo.mp4`,
     pickAudio: `${server}/champion_audio/yasuo/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/yasuo/ban/0.ogg`
+    banAudio: `${server}/champion_audio/yasuo/ban/0.ogg`,
+  },
+  yone: {
+    id: index++,
+    suspended: false,
+    name: "Yone",
+    loadingImg: `${server}/img/champion/loading/Yone_0.jpg`,
+    splashImg: `${server}/img/champion/splash/Yone_0.jpg`,
+    tileImg: `${server}/img/champion/tiles/Yone_0.jpg`,
+    vid: `${server}/champion_videos/c-o-animated-yone.mp4`,
+    pickAudio: `${server}/champion_audio/yone/pick/0.ogg`,
+    banAudio: `${server}/champion_audio/yone/ban/0.ogg`,
   },
   yorick: {
     id: index++,
@@ -1563,7 +1585,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Yorick_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-yorick.mp4`,
     pickAudio: `${server}/champion_audio/yorick/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/yorick/ban/0.ogg`
+    banAudio: `${server}/champion_audio/yorick/ban/0.ogg`,
   },
   yuumi: {
     id: index++,
@@ -1574,7 +1596,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Yuumi_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-yuumi.mp4`,
     pickAudio: `${server}/champion_audio/yuumi/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/yuumi/ban/0.ogg`
+    banAudio: `${server}/champion_audio/yuumi/ban/0.ogg`,
   },
   zac: {
     id: index++,
@@ -1585,7 +1607,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Zac_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-zac.mp4`,
     pickAudio: `${server}/champion_audio/zac/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/zac/ban/0.ogg`
+    banAudio: `${server}/champion_audio/zac/ban/0.ogg`,
   },
   zed: {
     id: index++,
@@ -1596,7 +1618,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Zed_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-zed.mp4`,
     pickAudio: `${server}/champion_audio/zed/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/zed/ban/0.ogg`
+    banAudio: `${server}/champion_audio/zed/ban/0.ogg`,
   },
   ziggs: {
     id: index++,
@@ -1607,7 +1629,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Ziggs_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-ziggs.mp4`,
     pickAudio: `${server}/champion_audio/ziggs/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/ziggs/ban/0.ogg`
+    banAudio: `${server}/champion_audio/ziggs/ban/0.ogg`,
   },
   zilean: {
     id: index++,
@@ -1618,7 +1640,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Zilean_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-zilean.mp4`,
     pickAudio: `${server}/champion_audio/zilean/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/zilean/ban/0.ogg`
+    banAudio: `${server}/champion_audio/zilean/ban/0.ogg`,
   },
   zoe: {
     id: index++,
@@ -1629,7 +1651,7 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Zoe_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-zoe-base.mp4`,
     pickAudio: `${server}/champion_audio/zoe/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/zoe/ban/0.ogg`
+    banAudio: `${server}/champion_audio/zoe/ban/0.ogg`,
   },
   zyra: {
     id: index++,
@@ -1640,6 +1662,6 @@ module.exports = {
     tileImg: `${server}/img/champion/tiles/Zyra_0.jpg`,
     vid: `${server}/champion_videos/c-o-animated-zyra.mp4`,
     pickAudio: `${server}/champion_audio/zyra/pick/0.ogg`,
-    banAudio: `${server}/champion_audio/zyra/ban/0.ogg`
-  }
+    banAudio: `${server}/champion_audio/zyra/ban/0.ogg`,
+  },
 };
