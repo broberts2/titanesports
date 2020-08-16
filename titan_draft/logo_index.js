@@ -68,6 +68,10 @@ module.exports = {
     0: `${server}/glacial.png`,
     1: `${server}/glacial.png`,
   },
+  ["Hyperion Gaming"]: {
+    0: `${server}/hyperion.png`,
+    1: `${server}/hyperion.png`,
+  },
   ["Glacial Equinox"]: {
     0: `${server}/glacial_equ.png`,
     1: `${server}/glacial_equ.png`,
