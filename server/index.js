@@ -1,61 +1,51 @@
+const bodyParser = require("body-parser");
+const path = require("path");
 const express = require("express");
 const app = express();
-const config = require("./config");
-const currentVersion = require("../game_version");
-const bodyParser = require("body-parser");
-const PORT = process.env.PORT || config.port;
-const path = require("path");
-const http = config.production ? require("https") : require("http");
-const fs = require("fs");
-const security = express.Router();
-const protected = require("./protected").protected;
 const cors = require("cors");
-const db_connector = require("./db_util");
 const routes = require("./routes");
+const socket = require("./socket-io/socket-io");
+const fs = require("fs");
+const db_connector = require("./db_util");
+const config = require("./config");
 db_connector();
 
 app.use(bodyParser.json());
-
-app.use(express.static(`../dragontail-${currentVersion}`));
-app.use(express.static("../profile_videos"));
+app.use(express.static(path.join(__dirname, "build")));
 
 app.use(cors({ origin: true, credentials: true }));
-security.use(cors({ origin: true, credentials: true }));
 
-app.use("/s", security);
-security.use(protected);
+// if (serverFig.production) {
+//   app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "build", "index.html"));
+//   });
+// }
 
-routes(app, security);
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/comps/build/index.html"));
-});
-
-app
-  .use(express.static(path.join(__dirname, "public")))
-  .set("views", path.join(__dirname, "views"))
-  .set("view engine", "ejs");
+routes(app);
 
 let server = null;
-
 if (config.production) {
   const key = fs.readFileSync(
     "/etc/letsencrypt/live/titan-esports.org/privkey.pem",
     "utf8"
   );
   const cert = fs.readFileSync(
-    "/etc/letsencrypt/live/titan-esports.org/fullchain.pem",
+    "/etc/letsencrypt/live/titan-esports.org/cert.pem",
     "utf8"
   );
-  server = http.createServer({ key, cert, rejectUnauthorized: false }, app);
+  server = require("https").createServer({ key, cert }, app);
 } else {
-  server = http.createServer(app);
+  server = require("http").createServer(app);
 }
 
-server.listen(PORT, () =>
+const io = require("socket.io")(server);
+
+server.listen(config.port, () =>
   console.log(
     `--------------------------------------------------------------` +
-      `\n\t\tTitan-eSports web server listening on port ${PORT}\n` +
+      `\n\t\tTitan eSports listening on port ${config.port}\n` +
       `--------------------------------------------------------------`
   )
 );
+
+socket(io);

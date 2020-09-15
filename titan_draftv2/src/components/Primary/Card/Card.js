@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import { Transition } from "arclight-react";
 
 const Constraints = styled.div`
@@ -11,6 +11,7 @@ const Constraints = styled.div`
 `;
 
 const Card = styled.div`
+  ${(props) => (props.zIndex ? `z-index: ${props.zIndex};` : null)}
   & img {
     opacity: 1;
     position: absolute;
@@ -52,38 +53,40 @@ const BackDrop = styled.div`
 `;
 
 export default class _ extends React.Component {
-  state = { revealed: false, team: "team_2" };
+  state = { revealed: false };
 
   render() {
     return (
-      <ThemeProvider theme={{}}>
-        <Transition>
+      <Transition
+        trans={{
+          animation: this.props.loadAnims.anims[0],
+          delay: this.props.loadAnims.delay,
+        }}
+      >
+        <Transition
+          trans={{
+            animation: this.props.loadAnims.anims[1],
+            delay: this.props.loadAnims.delay + 0.2,
+          }}
+        >
           <Constraints>
-            <Card>
+            <Card zIndex={this.props.zIndex}>
               <BackDrop />
               <Sub>
                 <img
                   src={
                     this.state.revealed
                       ? require("./img/yone.jpg")
-                      : this.state.team === "team_1"
-                      ? require("../../../config/assets/blue.png")
-                      : require("../../../config/assets/red.png")
+                      : this.props.cardBack
                   }
                 />
               </Sub>
-              <img
-                src={
-                  this.state.team === "team_1"
-                    ? require("../../../config/assets/border-blue.png")
-                    : require("../../../config/assets/border-red.png")
-                }
-              />
+              <img src={this.props.border} />
             </Card>
             {this.state.revealed ? <Text>Yone</Text> : null}
           </Constraints>
         </Transition>
-      </ThemeProvider>
+      </Transition>
     );
   }
 }

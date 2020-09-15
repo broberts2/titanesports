@@ -1,0 +1,27 @@
+
+skeleton.png
+size: 1675,1226
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Untitled_Artwork-1
+  rotate: true
+  xy: 2, 2
+  size: 1222, 1434
+  orig: 1222, 1434
+  offset: 0, 0
+  index: -1
+Untitled_Artwork-2
+  rotate: false
+  xy: 1438, 629
+  size: 235, 595
+  orig: 235, 595
+  offset: 0, 0
+  index: -1
+Untitled_Artwork-3
+  rotate: false
+  xy: 1438, 189
+  size: 174, 438
+  orig: 174, 438
+  offset: 0, 0
+  index: -1

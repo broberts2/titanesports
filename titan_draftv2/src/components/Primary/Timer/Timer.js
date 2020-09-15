@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import { Timer, Transition } from "arclight-react";
 
 const TIMER_SIZE = 100;
@@ -37,29 +37,39 @@ export default class _ extends React.Component {
 
   render() {
     return (
-      <ThemeProvider theme={{}}>
+      
         <_Timer
           team_active={this.props.STATE.team_active}
           last_team_active={this.props.STATE.last_team_active}
         >
           <Transition
-            trans={this.grabTimerTrans(
-              this.props.STATE.team_active,
-              this.props.STATE.last_team_active
-            )}
+            trans={{
+              animation:
+                this.props.STATE.config.TIMER.START_SIDE === "team_1"
+                  ? "fadeInLeft"
+                  : "fadeInRight",
+              delay: this.props.STATE.config.TIMER.DELAY,
+            }}
           >
-            <Timer
-              theme={this.props.STATE.config.THEME}
-              isPlaying={false}
-              size={TIMER_SIZE}
-              seconds={60}
-              crit={7}
-              strokeWidth={4}
-              onComplete={() => console.log("Timer Finished")}
-            />
+            <Transition
+              trans={this.grabTimerTrans(
+                this.props.STATE.team_active,
+                this.props.STATE.last_team_active
+              )}
+            >
+              <Timer
+                theme={this.props.STATE.config.THEME}
+                isPlaying={false}
+                size={TIMER_SIZE}
+                seconds={60}
+                crit={7}
+                strokeWidth={4}
+                onComplete={() => console.log("Timer Finished")}
+              />
+            </Transition>
           </Transition>
         </_Timer>
-      </ThemeProvider>
+      
     );
   }
 }
