@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-node_modules_old
+*node_modules*
 /titan_draft/build
 /.pnp
 .pnp.js
@@ -17,7 +17,7 @@ node_modules_old
 /oracle/client_secret.json
 /server/config.js
 /titan_draft/config.js
-/src/config.js
+config.js
 
 # misc
 /server_old

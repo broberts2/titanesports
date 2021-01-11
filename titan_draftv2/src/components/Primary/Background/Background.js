@@ -8,6 +8,7 @@ const Background = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: pink;
   overflow: hidden;
   opacity: 0.3;
   z-index: 1;
@@ -43,19 +44,21 @@ const Tint = styled.div`
 `;
 
 export default class _ extends React.Component {
+  componentDidMount() {
+    setTimeout(() => this.props.STATE.setLoadPrimary(), 9000);
+    this.props.setVideoLoaded();
+  }
+
   render() {
     return (
       <Background>
         <MediaCycler
           randomize={true}
           trans={null}
-          width={"100%"}
           type={"video"}
-          elements={[
-            require("./img/ionia.webm"),
-            require("./img/targon.webm"),
-            require("./img/wukong.mp4"),
-          ]}
+          elements={this.props.STATE.draftData.BACKGROUND.VIDEOS.map(
+            (el) => this.props.STATE.ENDPOINT + "/" + el
+          )}
           interval={15}
           elementTransition={{
             transIn: { animation: "fadeIn", duration: 3 },
@@ -64,16 +67,16 @@ export default class _ extends React.Component {
         />
         <Transition
           trans={
-            this.props.STATE.team_active > 0
+            this.props.STATE.draftData.TEAM_ACTIVE > 0
               ? { animation: "fadeIn" }
               : { animation: "fadeOut" }
           }
         >
           <Tint
-            team_active={this.props.STATE.team_active}
+            team_active={this.props.STATE.draftData.TEAM_ACTIVE}
             last_team_active={this.props.STATE.last_team_active}
-            team_1_tint={this.props.STATE.config.BACKGROUND.TEAM1TINT}
-            team_2_tint={this.props.STATE.config.BACKGROUND.TEAM2TINT}
+            team_1_tint={this.props.STATE.draftData.BACKGROUND.TEAM1TINT}
+            team_2_tint={this.props.STATE.draftData.BACKGROUND.TEAM2TINT}
           />
         </Transition>
       </Background>

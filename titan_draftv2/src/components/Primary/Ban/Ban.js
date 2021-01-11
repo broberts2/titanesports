@@ -24,38 +24,67 @@ const Text = styled.div`
 `;
 
 export default class _ extends React.Component {
-  state = { revealed: true };
+  state = { loaded: false, c: 0, lim: this.props.play ? 3 : 1 };
+
+  componentDidUpdate(newProps) {
+    if (this.props.play !== newProps.play) {
+      this.setState({ loaded: false });
+    }
+  }
+
+  incLoad() {
+    if (!this.state.loaded && ++this.state.c >= this.state.lim) {
+      this.setState({ loaded: true });
+    }
+  }
+
   render() {
+    const Img1 = (
+      <img
+        onLoad={this.incLoad()}
+        src={this.props.source}
+        width={"70%"}
+        style={{
+          paddingTop: "10%",
+          left: "68%",
+          transform: "translateX(-68%)",
+        }}
+      />
+    );
+    const Img2 = (
+      <img onLoad={this.incLoad()} src={this.props.border} width={"100%"} />
+    );
+    const Img3 = (
+      <img
+        onLoad={this.incLoad()}
+        src={this.props.banLock}
+        width={this.props.play ? "25%" : "100%"}
+      />
+    );
     return (
-      
-        <Transition
-          trans={{
-            animation: this.props.loadAnims.anim,
-            delay: this.props.loadAnims.delay,
-          }}
-        >
-          <Ban>
-            {this.state.revealed ? (
-              <React.Fragment>
-                <img
-                  src={require("./img/yone.jpg")}
-                  width={"70%"}
-                  style={{
-                    paddingTop: "10%",
-                    left: "68%",
-                    transform: "translateX(-68%)",
-                  }}
-                />
-                <img src={this.props.border} width={"100%"} />
-                <img src={this.props.banLock} width={"25%"} />
-                <Text>Heimerdinger</Text>
-              </React.Fragment>
-            ) : (
-              <img src={this.props.banLock} width={"100%"} />
-            )}
-          </Ban>
-        </Transition>
-      
+      <Transition
+        trans={
+          this.props.play
+            ? this.props.play
+            : {
+                animation: this.props.loadAnims.anim,
+                delay: this.props.loadAnims.delay,
+              }
+        }
+      >
+        <Ban>
+          {this.props.play ? (
+            <React.Fragment>
+              {Img1}
+              {Img2}
+              {Img3}
+              <Text>{this.props.name}</Text>
+            </React.Fragment>
+          ) : (
+            Img3
+          )}
+        </Ban>
+      </Transition>
     );
   }
 }

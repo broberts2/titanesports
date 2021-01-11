@@ -53,40 +53,59 @@ const BackDrop = styled.div`
 `;
 
 export default class _ extends React.Component {
-  state = { revealed: false };
+  state = { loaded: true, c: 0, lim: 2 };
+
+  componentDidUpdate(newProps) {
+    if (this.props.play !== newProps.play) {
+      this.setState({ loaded: false });
+    }
+  }
+
+  incLoad() {
+    if (!this.state.loaded && ++this.state.c >= this.state.lim) {
+      this.setState({ loaded: true });
+    }
+  }
 
   render() {
+    const Img1 = (
+      <img
+        onLoad={this.incLoad()}
+        src={this.props.play ? this.props.source : this.props.cardBack}
+      />
+    );
+    const Img2 = <img onLoad={this.incLoad()} src={this.props.border} />;
     return (
-      <Transition
-        trans={{
-          animation: this.props.loadAnims.anims[0],
-          delay: this.props.loadAnims.delay,
-        }}
-      >
-        <Transition
-          trans={{
-            animation: this.props.loadAnims.anims[1],
-            delay: this.props.loadAnims.delay + 0.2,
-          }}
-        >
-          <Constraints>
-            <Card zIndex={this.props.zIndex}>
-              <BackDrop />
-              <Sub>
-                <img
-                  src={
-                    this.state.revealed
-                      ? require("./img/yone.jpg")
-                      : this.props.cardBack
-                  }
-                />
-              </Sub>
-              <img src={this.props.border} />
-            </Card>
-            {this.state.revealed ? <Text>Yone</Text> : null}
-          </Constraints>
-        </Transition>
-      </Transition>
+      <div>
+        {this.state.loaded ? (
+          <Transition
+            trans={{
+              animation: this.props.loadAnims.anims[0],
+              delay: this.props.loadAnims.delay,
+            }}
+          >
+            <Transition
+              trans={
+                this.props.play
+                  ? this.props.play
+                  : {
+                      animation: this.props.loadAnims.anims[1],
+                      delay: this.props.loadAnims.delay + 0.2,
+                    }
+              }
+            >
+              <Constraints>
+                <Card zIndex={this.props.zIndex}>
+                  <BackDrop />
+                  <Sub>{Img1}</Sub>
+                  {Img2}
+                </Card>
+                {this.props.play ? <Text>{this.props.name}</Text> : null}
+              </Constraints>
+            </Transition>
+          </Transition>
+        ) : null}
+      </div>
     );
   }
 }

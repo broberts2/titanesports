@@ -5,10 +5,19 @@ import { Img, Grid, Timer, Button, Transition } from "arclight-react";
 const Select = styled.div`
   width: inherit;
   height: inherit;
+  position: relative;
+  overflow: hidden;
+  & .preview {
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    pointer-events: none;
+  }
 `;
 
 const _Title = styled.div`
-  color: #dfdfdf;
+  color: ${(props) => "#181818"};
   margin-top: 15px;
   & table {
     border-spacing: 20px 0;
@@ -16,6 +25,8 @@ const _Title = styled.div`
 `;
 
 const Container = styled.div`
+  transition: all 0.5s ease;
+  ${(props) => (props.confirming ? "opacity: 0.2;" : null)}
   height: calc(100% - 33.5px);
   ${(props) => (props.confirming ? "pointer-events: none;" : null)}
 `;
@@ -41,7 +52,7 @@ const Prompt = styled.div`
 
 const FilterWrapper = styled.div`
   & img {
-    border: 1px solid white;
+    border: 2px solid ${(props) => "#181818"};
   }
 `;
 
@@ -51,14 +62,12 @@ const Item = styled.div`
   width: 100%;
   color: #e0e0e0;
   cursor: pointer;
+  ${(props) => (props.suspended ? "pointer-events: none;" : null)}
+  ${(props) => (props.suspended ? "opacity: 0.2;" : null)}
   & img {
     width: 100%;
     border-radius: 3px;
     cursor: pointer;
-  }
-  opacity: 0.5;
-  &:hover {
-    opacity: 1;
   }
   .sub {
     position: absolute;
@@ -92,60 +101,143 @@ const Item = styled.div`
 
 export default class _ extends React.Component {
   state = {
+    select: null,
     charactersArray: null,
     confirming: false,
+    hoverIndex: -1,
+    previewSrc: "",
   };
 
   componentDidMount() {
     this.fill();
   }
 
-  item(data) {
+  componentWillReceiveProps(nP) {
+    if (
+      this.props.STATE.modalVisible !== nP.STATE.modalVisible &&
+      nP.STATE.modalVisible
+    ) {
+      this.fill();
+    }
+  }
+
+  item(data, delay) {
     return (
-      <Item onClick={() => this.setState({ confirming: true })}>
-        <Img src={data.img} />
-        <div className={"roles"}>
-          {data.roles.includes("fighter") ? (
-            <Img src={this.props.STATE.config.MODAL.SEARCH.FIGHTER} />
-          ) : null}
-          {data.roles.includes("mage") ? (
-            <Img src={this.props.STATE.config.MODAL.SEARCH.MAGE} />
-          ) : null}
-          {data.roles.includes("marksman") ? (
-            <Img src={this.props.STATE.config.MODAL.SEARCH.MARKSMAN} />
-          ) : null}
-          {data.roles.includes("assassin") ? (
-            <Img src={this.props.STATE.config.MODAL.SEARCH.ASSASSIN} />
-          ) : null}
-          {data.roles.includes("tank") ? (
-            <Img src={this.props.STATE.config.MODAL.SEARCH.TANK} />
-          ) : null}
-          {data.roles.includes("support") ? (
-            <Img src={this.props.STATE.config.MODAL.SEARCH.SUPPORT} />
-          ) : null}
-        </div>
-        <div className={"sub"}>
-          <div className={"text"}>{data.champion}</div>
-        </div>
-      </Item>
+      <Transition
+        trans={{
+          animation: "fadeInLeft",
+          delay,
+        }}
+      >
+        <Item
+          suspended={data.suspended}
+          onClick={() =>
+            this.setState({
+              confirming: true,
+              select: data.champion,
+              previewSrc: data.previewSrc,
+            })
+          }
+          onMouseEnter={() => this.setState({ hoverIndex: data.index })}
+          onMouseLeave={() => this.setState({ hoverIndex: -1 })}
+        >
+          <Img src={data.img} />
+          <div className={"roles"}>
+            {data.roles.includes("fighter") ? (
+              <Img
+                src={
+                  this.props.STATE.ENDPOINT +
+                  "/" +
+                  this.props.STATE.draftData.MODAL.SEARCH.FIGHTER
+                }
+              />
+            ) : null}
+            {data.roles.includes("mage") ? (
+              <Img
+                src={
+                  this.props.STATE.ENDPOINT +
+                  "/" +
+                  this.props.STATE.draftData.MODAL.SEARCH.MAGE
+                }
+              />
+            ) : null}
+            {data.roles.includes("marksman") ? (
+              <Img
+                src={
+                  this.props.STATE.ENDPOINT +
+                  "/" +
+                  this.props.STATE.draftData.MODAL.SEARCH.MARKSMAN
+                }
+              />
+            ) : null}
+            {data.roles.includes("assassin") ? (
+              <Img
+                src={
+                  this.props.STATE.ENDPOINT +
+                  "/" +
+                  this.props.STATE.draftData.MODAL.SEARCH.ASSASSIN
+                }
+              />
+            ) : null}
+            {data.roles.includes("tank") ? (
+              <Img
+                src={
+                  this.props.STATE.ENDPOINT +
+                  "/" +
+                  this.props.STATE.draftData.MODAL.SEARCH.TANK
+                }
+              />
+            ) : null}
+            {data.roles.includes("support") ? (
+              <Img
+                src={
+                  this.props.STATE.ENDPOINT +
+                  "/" +
+                  this.props.STATE.draftData.MODAL.SEARCH.SUPPORT
+                }
+              />
+            ) : null}
+          </div>
+          <div className={"sub"}>
+            <div className={"text"}>{data.champion}</div>
+          </div>
+        </Item>
+      </Transition>
     );
   }
 
-  fill() {
-    const charactersArray = [];
-    for (let i = 0; i < 150; i++) {
-      charactersArray.push(
-        this.item({
-          champion: "Yone",
-          img: require("../img/yone_square.jpg"),
-          roles: ["fighter", "mage"],
-        })
+  fill(filter) {
+    let charactersArray = this.props.STATE.draftData.CHAMPION_DATA;
+    if (filter) {
+      charactersArray = charactersArray.filter((el) =>
+        el.name.toLowerCase().includes(filter) ? el : null
       );
     }
-    this.setState({ charactersArray });
+    charactersArray = charactersArray.map((el, index) =>
+      this.item(
+        {
+          index,
+          champion: el.name,
+          img: this.props.STATE.ENDPOINT + "/dragontail/" + el.tileImg,
+          roles: ["fighter", "mage"],
+          previewSrc: el.splashImg,
+          suspended: el.suspended,
+        },
+        index * 0.02
+      )
+    );
+    if (charactersArray.length < 8) {
+      for (let i = 0; i < 8 - charactersArray.length; i++)
+        charactersArray.push(<td />);
+    }
+    this.setState({
+      charactersArray,
+    });
   }
 
   render() {
+    if (!this.props.STATE.modalVisible && this.state.confirming)
+      this.setState({ confirming: false });
     return (
       <Select>
         <_Title>
@@ -154,13 +246,13 @@ export default class _ extends React.Component {
               <tr>
                 <td>
                   <Timer
-                    theme={this.props.STATE.config.THEME}
-                    isPlaying={false}
+                    resetKey={this.props.STATE.timerResetKey}
+                    theme={this.props.STATE.draftData.THEME}
+                    isPlaying={this.props.STATE.draftData.TEAM_ACTIVE > 0}
                     size={75}
-                    seconds={60}
+                    seconds={this.props.STATE.draftData.TIMER.START_TIME}
                     crit={7}
                     strokeWidth={3}
-                    onComplete={() => console.log("Timer Finished")}
                   />
                 </td>
                 <td>
@@ -177,7 +269,9 @@ export default class _ extends React.Component {
         <Container confirming={this.state.confirming}>
           {this.state.charactersArray ? (
             <Grid
+              onSearchChange={(e) => this.fill(e.target.value.toLowerCase())}
               theme={"Dark"}
+              fixed
               search={true}
               itemsPerRow={8}
               height={"100%"}
@@ -185,26 +279,12 @@ export default class _ extends React.Component {
                 {
                   display: (
                     <FilterWrapper>
-                      <Img src={this.props.STATE.config.MODAL.SEARCH.FIGHTER} />
-                    </FilterWrapper>
-                  ),
-                  active: true,
-                  onClick: (filter) => console.log(filter.active),
-                },
-                {
-                  display: (
-                    <FilterWrapper>
-                      <Img src={this.props.STATE.config.MODAL.SEARCH.MAGE} />
-                    </FilterWrapper>
-                  ),
-                  active: true,
-                  onClick: (filter) => console.log(filter.active),
-                },
-                {
-                  display: (
-                    <FilterWrapper>
                       <Img
-                        src={this.props.STATE.config.MODAL.SEARCH.MARKSMAN}
+                        src={
+                          this.props.STATE.ENDPOINT +
+                          "/" +
+                          this.props.STATE.draftData.MODAL.SEARCH.FIGHTER
+                        }
                       />
                     </FilterWrapper>
                   ),
@@ -215,7 +295,11 @@ export default class _ extends React.Component {
                   display: (
                     <FilterWrapper>
                       <Img
-                        src={this.props.STATE.config.MODAL.SEARCH.ASSASSIN}
+                        src={
+                          this.props.STATE.ENDPOINT +
+                          "/" +
+                          this.props.STATE.draftData.MODAL.SEARCH.MAGE
+                        }
                       />
                     </FilterWrapper>
                   ),
@@ -225,7 +309,13 @@ export default class _ extends React.Component {
                 {
                   display: (
                     <FilterWrapper>
-                      <Img src={this.props.STATE.config.MODAL.SEARCH.TANK} />
+                      <Img
+                        src={
+                          this.props.STATE.ENDPOINT +
+                          "/" +
+                          this.props.STATE.draftData.MODAL.SEARCH.MARKSMAN
+                        }
+                      />
                     </FilterWrapper>
                   ),
                   active: true,
@@ -234,7 +324,43 @@ export default class _ extends React.Component {
                 {
                   display: (
                     <FilterWrapper>
-                      <Img src={this.props.STATE.config.MODAL.SEARCH.SUPPORT} />
+                      <Img
+                        src={
+                          this.props.STATE.ENDPOINT +
+                          "/" +
+                          this.props.STATE.draftData.MODAL.SEARCH.ASSASSIN
+                        }
+                      />
+                    </FilterWrapper>
+                  ),
+                  active: true,
+                  onClick: (filter) => console.log(filter.active),
+                },
+                {
+                  display: (
+                    <FilterWrapper>
+                      <Img
+                        src={
+                          this.props.STATE.ENDPOINT +
+                          "/" +
+                          this.props.STATE.draftData.MODAL.SEARCH.TANK
+                        }
+                      />
+                    </FilterWrapper>
+                  ),
+                  active: true,
+                  onClick: (filter) => console.log(filter.active),
+                },
+                {
+                  display: (
+                    <FilterWrapper>
+                      <Img
+                        src={
+                          this.props.STATE.ENDPOINT +
+                          "/" +
+                          this.props.STATE.draftData.MODAL.SEARCH.SUPPORT
+                        }
+                      />
                     </FilterWrapper>
                   ),
                   active: true,
@@ -245,17 +371,47 @@ export default class _ extends React.Component {
             />
           ) : null}
         </Container>
+        <div className={"preview"}>
+          <Transition
+            trans={{
+              animation: this.state.confirming ? "zoomIn" : "zoomOut",
+              duration: 0.35,
+            }}
+          >
+            <Img
+              width={"100%"}
+              style={{ width: "100%" }}
+              src={
+                this.props.STATE.ENDPOINT +
+                "/dragontail/" +
+                this.state.previewSrc
+              }
+            />
+          </Transition>
+        </div>
         <Transition
           trans={{
             animation: this.state.confirming ? "fadeIn" : "fadeOut",
-            duration: 0.35,
+            duration: 0.15,
           }}
         >
           <Prompt confirming={this.state.confirming}>
-            <h3>Ban Yone?</h3>
+            <h3>Ban {this.state.select}?</h3>
             <div className={"group"}>
               <div className={"bttn"}>
-                <Button theme={"Light"} pop onClick={() => console.log("test")}>
+                <Button
+                  theme={"Light"}
+                  pop
+                  onClick={() =>
+                    this.props.STATE[
+                      this.props.STATE.draftData.DRAFT_ORDER[
+                        this.props.STATE.draftData.EVENTS_LOG.length
+                      ].action === "pick"
+                        ? "pickChampion"
+                        : "banChampion"
+                    ](this.state.select, this.props.STATE.draftData.TEAM_ACTIVE)
+                  }
+                >
                   Confirm
                 </Button>
               </div>

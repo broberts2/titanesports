@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const config = require("./config");
-const Users = require("./models/user");
+const User = require("./models/user");
 
 module.exports = {
   protected: (req, res, next) => {
@@ -10,15 +10,15 @@ module.exports = {
         if (err) {
           return res.json({
             code: 509,
-            msg: "Failed to authenticate token."
+            msg: "Failed to authenticate token.",
           });
         } else {
           try {
-            req.user_info = await Users.findOne({ username: decoded.username });
+            req.user_info = await User.findOne({ username: decoded.username });
             if (req.user_info === null) {
               return res.json({
                 code: 510,
-                msg: "Failed to authenticate user."
+                msg: "Failed to authenticate user.",
               });
             }
             next();
@@ -30,8 +30,8 @@ module.exports = {
     } else {
       return res.status(403).send({
         code: 403,
-        msg: "No token provided."
+        msg: "No token provided.",
       });
     }
-  }
+  },
 };

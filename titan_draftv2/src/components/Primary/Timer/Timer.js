@@ -6,6 +6,7 @@ const TIMER_SIZE = 100;
 
 const _Timer = styled.div`
   position: absolute;
+  z-index: 6;
   top: 50px;
   ${(props) => {
     switch (props.team_active) {
@@ -26,50 +27,48 @@ export default class _ extends React.Component {
     switch (ta) {
       case 0:
         return lta === 1
-          ? this.props.STATE.config.TIMER.LEFT_TRANSITION_OUT
-          : this.props.STATE.config.TIMER.RIGHT_TRANSITION_OUT;
+          ? this.props.STATE.draftData.TIMER.LEFT_TRANSITION_OUT
+          : this.props.STATE.draftData.TIMER.RIGHT_TRANSITION_OUT;
       case 1:
-        return this.props.STATE.config.TIMER.LEFT_TRANSITION;
+        return this.props.STATE.draftData.TIMER.LEFT_TRANSITION;
       case 2:
-        return this.props.STATE.config.TIMER.RIGHT_TRANSITION;
+        return this.props.STATE.draftData.TIMER.RIGHT_TRANSITION;
     }
   }
 
   render() {
     return (
-      
-        <_Timer
-          team_active={this.props.STATE.team_active}
-          last_team_active={this.props.STATE.last_team_active}
+      <_Timer
+        team_active={this.props.STATE.draftData.TEAM_ACTIVE}
+        last_team_active={this.props.STATE.draftData.LAST_TEAM_ACTIVE}
+      >
+        <Transition
+          trans={{
+            animation:
+              this.props.STATE.draftData.TIMER.START_SIDE === "team_1"
+                ? "fadeInLeft"
+                : "fadeInRight",
+            delay: this.props.STATE.draftData.TIMER.DELAY,
+          }}
         >
           <Transition
-            trans={{
-              animation:
-                this.props.STATE.config.TIMER.START_SIDE === "team_1"
-                  ? "fadeInLeft"
-                  : "fadeInRight",
-              delay: this.props.STATE.config.TIMER.DELAY,
-            }}
+            trans={this.grabTimerTrans(
+              this.props.STATE.draftData.TEAM_ACTIVE,
+              this.props.STATE.draftData.LAST_TEAM_ACTIVE
+            )}
           >
-            <Transition
-              trans={this.grabTimerTrans(
-                this.props.STATE.team_active,
-                this.props.STATE.last_team_active
-              )}
-            >
-              <Timer
-                theme={this.props.STATE.config.THEME}
-                isPlaying={false}
-                size={TIMER_SIZE}
-                seconds={60}
-                crit={7}
-                strokeWidth={4}
-                onComplete={() => console.log("Timer Finished")}
-              />
-            </Transition>
+            <Timer
+              resetKey={this.props.STATE.timerResetKey}
+              theme={this.props.STATE.draftData.THEME}
+              isPlaying={this.props.STATE.draftData.TEAM_ACTIVE > 0}
+              size={TIMER_SIZE}
+              seconds={this.props.STATE.draftData.TIMER.START_TIME}
+              crit={7}
+              strokeWidth={4}
+            />
           </Transition>
-        </_Timer>
-      
+        </Transition>
+      </_Timer>
     );
   }
 }

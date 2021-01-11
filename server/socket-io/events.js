@@ -8,7 +8,7 @@ const EMITTERS = {
 
 module.exports = (socket) => (emitters) => (key, room) => {
   socket.join(room);
-  EMITTERS[key].map((el) =>
-    socket.on(el.name, (data) => EVENTS[key][el.name](data, emitters))
-  );
+  for (let _key in EVENTS[key]) {
+    socket.on(_key, (data) => EVENTS[key][_key](data, emitters, room));
+  }
 };

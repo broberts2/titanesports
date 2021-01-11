@@ -8,20 +8,31 @@ const socket = require("./socket-io/socket-io");
 const fs = require("fs");
 const db_connector = require("./db_util");
 const config = require("./config");
+const security = express.Router();
+const protected = require("./protected").protected;
 db_connector();
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "build")));
 
-app.use(cors({ origin: true, credentials: true }));
+app.use("/static", express.static(path.join(__dirname, "../media")));
+app.use(
+  "/dragontail",
+  express.static(path.join(__dirname, `../dragontail-${config.gameVersion}`))
+);
 
-// if (serverFig.production) {
-//   app.get("/", (req, res) => {
-//     res.sendFile(path.join(__dirname, "build", "index.html"));
-//   });
-// }
+app.use(cors());
 
-routes(app);
+app.use("/s", security);
+security.use(cors());
+security.use(protected);
+
+if (config.production) {
+  app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "build", "index.html"));
+  });
+}
+
+routes(app, security);
 
 let server = null;
 if (config.production) {
@@ -38,8 +49,6 @@ if (config.production) {
   server = require("http").createServer(app);
 }
 
-const io = require("socket.io")(server);
-
 server.listen(config.port, () =>
   console.log(
     `--------------------------------------------------------------` +
@@ -48,4 +57,4 @@ server.listen(config.port, () =>
   )
 );
 
-socket(io);
+socket(require("socket.io")(server));

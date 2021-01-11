@@ -26,7 +26,7 @@ export default class _ extends React.Component {
             height: "125px",
             crown: (
               <Transition
-                trans={this.props.STATE.config.HEADER.CROWN_TRANSITION}
+                trans={this.props.STATE.draftData.HEADER.CROWN_TRANSITION}
                 style={{ opacity: 0 }}
               >
                 <div
@@ -37,25 +37,17 @@ export default class _ extends React.Component {
                   }}
                 >
                   <img
-                    src={this.props.STATE.config.LOGO}
+                    src={
+                      this.props.STATE.ENDPOINT +
+                      "/" +
+                      this.props.STATE.draftData.LOGO
+                    }
                     style={{
                       height: "100%",
                     }}
                   />
                   <div style={{ position: "absolute", top: -30, left: -140 }}>
-                    <Particles
-                      width={400}
-                      height={200}
-                      animations={[
-                        {
-                          name: "spiritual",
-                          particleColor: "#00fff0",
-                          x: 50,
-                          y: 100,
-                        },
-                      ]}
-                      invoke={false}
-                    />
+                    <div />
                   </div>
                 </div>
               </Transition>
@@ -63,33 +55,45 @@ export default class _ extends React.Component {
           }}
           controls={[
             <Transition
-              trans={this.props.STATE.config.HEADER.RIGHT_TEAM_TRANSITION}
+              trans={this.props.STATE.draftData.HEADER.RIGHT_TEAM_TRANSITION}
             >
               <img
-                src={require("./img/reignnew.png")}
+                src={
+                  this.props.STATE.ENDPOINT +
+                  "/" +
+                  this.props.STATE.draftData.TEAM_2.LOGO
+                }
                 style={{
-                  height: "200px",
+                  height: "300px",
                 }}
               />
             </Transition>,
             <Transition
-              trans={this.props.STATE.config.HEADER.LEFT_TEAM_TRANSITION}
+              trans={this.props.STATE.draftData.HEADER.LEFT_TEAM_TRANSITION}
             >
               <img
-                src={require("./img/ruby.png")}
+                src={
+                  this.props.STATE.ENDPOINT +
+                  "/" +
+                  this.props.STATE.draftData.TEAM_1.LOGO
+                }
                 style={{
-                  height: "200px",
+                  height: "300px",
                 }}
               />
             </Transition>,
           ]}
         />
         <Transition
-          trans={this.props.STATE.config.HEADER.SEASON_LOGO_TRANSITION}
+          trans={this.props.STATE.draftData.HEADER.SEASON_LOGO_TRANSITION}
         >
           <div style={{ marginTop: "125px", textAlign: "center" }}>
             <img
-              src={this.props.STATE.config.SEASON_LOGO}
+              src={
+                this.props.STATE.ENDPOINT +
+                "/" +
+                this.props.STATE.draftData.SEASON_LOGO
+              }
               style={{
                 width: "200px",
               }}
