@@ -10,7 +10,7 @@
   "author": "Broc Roberts",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
     "ejs": "^2.6.2",
     "eslint": "^6.8.0",
