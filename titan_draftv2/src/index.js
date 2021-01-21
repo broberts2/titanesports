@@ -2,8 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
-const openSocket = require("socket.io-client");
-const socket = openSocket(
+const socket = require("socket.io-client")(
   require("./config").production
     ? "https://titandraft.titan-esports.org"
     : "http://localhost:7000"

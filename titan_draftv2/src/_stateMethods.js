@@ -32,4 +32,5 @@ module.exports = (_this, ENDPOINT) => ({
       red_token: urlParams.get("red_token"),
     });
   },
+  runReplay: (isFast) => (window.location.href += `&replay=${isFast ? "fast" : "full"}`)
 });

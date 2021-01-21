@@ -11,7 +11,6 @@ export default class _ extends React.Component {
         theme={this.props.STATE.draftData.THEME}
         visible={this.props.STATE.modalVisible}
         disableClickAway
-        setVisible={(a) => this.props.STATE.setModalStatus(a)}
       >
         {this.props.STATE.draftData.EVENTS_LOG.length < 20 ? (
           <Select STATE={this.props.STATE} />

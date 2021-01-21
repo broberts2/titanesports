@@ -8,11 +8,12 @@ const Container = styled.div`
 `;
 
 const Tile = styled.div`
+  pointer-events: ${(props) => (props.dFinish ? "none" : "auto")};
   transition: all 0.35s ease;
   width: 100%;
   height: 100%;
   padding: 10px;
-  opacity: ${(props) => (props.id ? (props.id === props.sId ? 1 : 0.25) : 1)};
+  opacity: ${(props) => (props.id && !props.dFinish ? (props.id === props.sId ? 1 : 0.25) : (props.dFinish ? 0.25 : 1))};
   color: white;
 `;
 
@@ -31,21 +32,16 @@ const Comp = styled.div`
 `;
 
 const Title = styled.div`
-  position: absolute;
-  top: 10px;
-  left: 10px;
   font-size: 48px;
-  width: calc(100% - 10px);
   font-weight: bold;
   font-style: italic;
+  width: calc(100% - 40px);
 `;
 
 const Text = styled.div`
-  position: absolute;
-  top: 85%;
-  transform: translateY(-85%);
   font-size: 32px;
-  width: calc(100% - 10px);
+  padding: 50% 0;
+  width: calc(100% - 40px);
 `;
 
 export default class _ extends React.Component {
@@ -53,35 +49,29 @@ export default class _ extends React.Component {
     id: 0,
   };
 
-  tile(id, title, text) {
+  tile(id, title, text, src, cb, dFinish) {
     return (
-      <Tile id={this.state.id} sId={id}>
+      <Tile id={this.state.id} sId={id} dFinish={dFinish}>
         <Comp
+          onClick={() => cb ? cb() : null}
           id={this.state.id}
           sId={id}
           onMouseEnter={() => this.setState({ id })}
           onMouseLeave={() => this.setState({ id: 0 })}
         >
           <img
-            src={this.props.STATE.ENDPOINT + "/static/assets/ekko_19.jpg"}
+            src={this.props.STATE.ENDPOINT + src}
             width={"100%"}
             height={"100%"}
             style={{ objectFit: "cover", borderRadius: "4px" }}
           />
-          <div style={{ margin: "10px", textAlign: "left" }}>
+          <div style={{ position: "absolute", width: "100%", height: "75vh", top: 0, left: 0, textAlign: "left", padding: "20px" }}>
             <Transition
               trans={{
                 animation: this.state.id === id ? "fadeInLeft" : "fadeOutRight",
               }}
             >
               <Title>{title}</Title>
-            </Transition>
-            <Transition
-              trans={{
-                animation: this.state.id === id ? "fadeInLeft" : "fadeOutRight",
-                delay: 0,
-              }}
-            >
               <Text>{text}</Text>
             </Transition>
           </div>
@@ -99,22 +89,29 @@ export default class _ extends React.Component {
               <td>
                 {this.tile(
                   1,
-                  "Replay",
-                  "Text goes here as well as a lot of other really cool stuff. Check this out! I am a very long string."
+                  "True Replay",
+                  "View the finished draft in a true time replay!",
+                  "/static/assets/ekko_19.jpg",
+                  () => this.props.STATE.runReplay()
                 )}
               </td>
               <td>
                 {this.tile(
                   2,
-                  "Replay",
-                  "Text goes here as well as a lot of other really cool stuff. Check this out! I am a very long string."
+                  "Fast Replay",
+                  "View a hastened replay of the draft. This will replay the events over a span of 2 minutes... Perfect for streamers on a tight schedule!",
+                  "/static/assets/ekko_20.jpg", 
+                  () => this.props.STATE.runReplay(true)
                 )}
               </td>
               <td>
                 {this.tile(
                   3,
-                  "Replay",
-                  "Text goes here as well as a lot of other really cool stuff. Check this out! I am a very long string."
+                  "View Current",
+                  "Disconnected or late to the party? View the current draft in progress!",
+                  "/static/assets/ekko_1.jpg", 
+                  null,
+                  this.props.STATE.draftData.EVENTS_LOG.length >= 20
                 )}
               </td>
             </tr>

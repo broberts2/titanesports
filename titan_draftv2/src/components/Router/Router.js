@@ -12,15 +12,24 @@ const Router = styled.div`
 `;
 
 export default class _ extends React.Component {
+
+  componentDidMount() {
+    if(this.props.STATE.draftData.STARTED) {
+      setTimeout(() => this.props.STATE.setModalStatus(true),1000);
+    }
+  }
+
   render() {
     return (
       <Router>
         {this.props.STATE.draftData.STARTED ? (
+          null
+        ) : 
           <React.Fragment>
             <Primary STATE={this.props.STATE} />
             <Presentation STATE={this.props.STATE} />
           </React.Fragment>
-        ) : null}
+        }
         <Pregame STATE={this.props.STATE} />
       </Router>
     );

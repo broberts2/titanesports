@@ -1,5 +1,4 @@
 import Config from "../../config";
-import tooling from "../../__tooling__";
 
 export default (socket, _this) =>
   socket.on("getDraft", async (draftData) => {
@@ -28,5 +27,4 @@ export default (socket, _this) =>
       })
     );
     _this.state.validateKey();
-    if (Config.testing) tooling(_this);
   });

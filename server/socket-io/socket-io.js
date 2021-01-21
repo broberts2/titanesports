@@ -2,6 +2,7 @@ const TitanDraft = require("../controllers/TitanDraft");
 
 const ORIGIN = {
   ["http://localhost:3000"]: "TitanDraft",
+  ["http://localhost:3001"]: "TitanDraft"
 };
 
 module.exports = (io) =>
