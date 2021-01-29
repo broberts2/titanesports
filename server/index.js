@@ -8,8 +8,6 @@ const socket = require("./socket-io/socket-io");
 const fs = require("fs");
 const db_connector = require("./db_util");
 const config = require("./config");
-const security = express.Router();
-const protected = require("./protected").protected;
 db_connector();
 
 app.use(bodyParser.json());
@@ -22,17 +20,13 @@ app.use(
 
 app.use(cors());
 
-app.use("/s", security);
-security.use(cors());
-security.use(protected);
-
 if (config.production) {
   app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "build", "index.html"));
   });
 }
 
-routes(app, security);
+routes(app);
 
 let server = null;
 if (config.production) {
