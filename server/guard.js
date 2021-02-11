@@ -1,7 +1,11 @@
-const fetch = require("node-fetch");
-const config = require("./config");
+const Oracle = require("./controllers/Oracle");
 
 module.exports = async (req, action, cb) => {
-    const canAccess = await fetch(`${config.endpoint}/Oracle/auth_action?token=${req.headers.token}&action=${action}`).then(res => res.json());
+    const canAccess = await Oracle.authAction({
+        query: {
+            token: req.headers.token,
+            action
+        }
+    });
     return canAccess ? await cb(req) : "Unauthorized.";
 }
