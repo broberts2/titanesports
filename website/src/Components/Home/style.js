@@ -121,65 +121,7 @@ export default {
         margin-top: 8vw;
         & table {
             width: 100%;
+            table-layout: fixed;
         }
-    `,
-    FeedGridArticle: styled.div`
-        opacity: ${props => props.stateId > 0 ? (props.stateId === props.id ? 1 : 0.5 ) : 1};
-        transition: all 0.15s ease;
-        cursor: pointer;
-        position: relative;
-        width: 100%;
-        height: 15vw;
-        background-image: url(${props => props.backgroundImg});
-        background-repeat: no-repeat;
-        background-size: cover;
-        border-radius: 4px;
-    `,
-    FeedGridArticleCrownImg: styled.div`
-        position: absolute;
-        top: 3px;
-        left: 3px;
-        width: 20%;
-        border-radius: 4px;
-        & img {
-            width: 100%;
-        }
-    `,
-    FeedGridArticleTitle: styled.div`
-        font-weight: 900;
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin: 15px;
-        font-size: 2vw;
-        background-color: rgba(0, 0, 0, 0.75);
-        padding-left: 30px;
-        padding-right: 30px;
-        border-radius: 5px;
-    `,
-    FeedGridArticleCreated: styled.div`
-        font-weight: 900;
-        position: absolute;
-        top: 3vw;
-        right: 0;
-        margin: 15px;
-        font-size: 1vw;
-        background-color: rgba(0, 0, 0, 0.75);
-        padding-left: 30px;
-        padding-right: 30px;
-        border-radius: 5px;
-    `,
-    FeedGridArticleAuthor: styled.div`
-        font-style: oblique;
-        font-weight: 900;
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        margin: 15px;
-        font-size: 1vw;
-        background-color: rgba(0, 0, 0, 0.75);
-        padding-left: 30px;
-        padding-right: 30px;
-        border-radius: 5px;
     `
 }

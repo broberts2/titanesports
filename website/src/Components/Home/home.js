@@ -7,26 +7,16 @@ export default class Home extends React.Component {
 
     state = {
         panelHoverId: 0,
-        articleHoverId: 0
+        articleHoverId: 0,
+        articles: null
     }
 
-    article(backgroundImg, crown, id) {
+    article(id, data) {
         return (
             <td style={{padding: "20px"}} onMouseEnter={() => this.setState({articleHoverId: id})}>
-                <Style.FeedGridArticle stateId={this.state.articleHoverId} id={id} backgroundImg={this.props.STATE.ENDPOINT + '/' + backgroundImg}>
-                    <Style.FeedGridArticleCrownImg>
-                        <img src={this.props.STATE.ENDPOINT + '/' + crown} />
-                    </Style.FeedGridArticleCrownImg>
-                    <Style.FeedGridArticleTitle>
-                        <Text theme={"Dark"}>Article Title</Text>
-                    </Style.FeedGridArticleTitle>
-                    <Style.FeedGridArticleCreated>
-                        <Text theme={"Dark"}>01/23/2021</Text>
-                    </Style.FeedGridArticleCreated>
-                    <Style.FeedGridArticleAuthor>
-                        <Text theme={"Dark"}>Article Author</Text>
-                    </Style.FeedGridArticleAuthor>
-                </Style.FeedGridArticle>
+                <div style={{opacity: id === this.state.articleHoverId ? 1 : this.state.articleHoverId > 0 ? 0.75 : 1}}>
+                    <Components.ArticlePreview STATE={this.props.STATE} data={data} />
+                </div>
             </td>
         )
     }
@@ -86,23 +76,38 @@ export default class Home extends React.Component {
     }
 
     articleList() {
+        const c = 3;
+        const r = 2;
         let articleNumber = 0;
+        let row = [];
+        let rows = [];
+        for(let i = 0; i < this.state.articles.length && i < c * r; i++) {
+            if(i % c == 0 && i > 0) {
+                rows.push(<tr>{row}</tr>);
+                row = [];
+            }
+            if (this.state.articles[i].published) row.push(this.article(++articleNumber, this.state.articles[i]));
+        }
+        if(this.state.articles.length < c) {
+            for(let i = this.state.articles.length; i < c; i++) {
+                row.push(<td />);
+            }
+            rows.push(<tr>{row}</tr>);
+        } else if(row.length > 0) {
+            rows.push(<tr>{row}</tr>);
+        }
         return (
             <table onMouseLeave={() => this.setState({articleHoverId: 0})}>
                 <tbody>
-                    <tr>
-                        {this.article("static/assets/zilean_1.jpg", "static/assets/article_crown.png", ++articleNumber)}
-                        {this.article("static/assets/zilean_2.jpg", "static/assets/article_crown.png", ++articleNumber)}
-                        {this.article("static/assets/zilean.jpg", "static/assets/article_crown.png", ++articleNumber)}
-                    </tr>
-                    <tr>
-                        {this.article("static/assets/zilean_2.jpg", "static/assets/article_crown.png", ++articleNumber)}
-                        {this.article("static/assets/zilean_2.jpg", "static/assets/article_crown.png", ++articleNumber)}
-                        {this.article("static/assets/zilean_2.jpg", "static/assets/article_crown.png", ++articleNumber)}
-                    </tr>
+                    {rows}
                 </tbody>
             </table>
         )
+    }
+
+    async componentDidMount() {
+        const articles = await this.props.STATE.GLOBAL_METHODS.getArticles();
+        this.setState({articles});
     }
 
     render() {
@@ -137,7 +142,7 @@ export default class Home extends React.Component {
                     }
                     <Style.Divider>
                         <Transition trans={{ animation: this.props.STATE.pageFading ? "zoomOut" : "zoomIn" }}>
-                            <TechDivider filter={"invert(40%) sepia(100%) saturate(1000%) hue-rotate(238deg) brightness(35%) contrast(104%)"} />
+                            <TechDivider filter={Theme[Theme[this.props.STATE.THEME].complement].backgroundFilter} />
                             {this.props.STATE.HOME_PAGE_DIVIDER_IMAGE ? (
                                 <Style.OverlayImg>
                                     <img src={this.props.STATE.ENDPOINT + '/' + this.props.STATE.HOME_PAGE_DIVIDER_IMAGE} />
@@ -177,11 +182,13 @@ export default class Home extends React.Component {
                     </Style.FeedBannerImg>
                     </Transition>
                 </Style.FeedBanner>
-                <Style.FeedGrid>
-                    <Transition inheritDimensions trans={{ animation: this.props.STATE.pageFading ? "zoomOut" : "zoomIn" }}>
-                        {this.articleList()}
-                    </Transition>
-                </Style.FeedGrid>
+                {this.state.articles ? (
+                    <Style.FeedGrid>
+                        <Transition inheritDimensions trans={{ animation: this.props.STATE.pageFading ? "zoomOut" : "zoomIn" }}>
+                            {this.articleList()}
+                        </Transition>
+                    </Style.FeedGrid>
+                ) : null}
             </Style.Base>
         )
     }

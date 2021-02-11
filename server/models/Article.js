@@ -2,8 +2,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Article = new Schema({
+  published: {
+    type: Boolean,
+    unique: false,
+    required: true,
+  },
   authorid: {
     type: String,
+    unique: false,
+    required: false,
+  },
+  tags: {
+    type: Array,
     unique: false,
     required: false,
   },
@@ -13,6 +23,11 @@ const Article = new Schema({
     required: false,
   },
   subject: {
+    type: String,
+    unique: false,
+    required: false,
+  },
+  iconImgUrl: {
     type: String,
     unique: false,
     required: false,
@@ -28,7 +43,7 @@ const Article = new Schema({
     required: false,
   },
   contentblocks: {
-    type: Array,
+    type: Object,
     unique: false,
     required: false,
   },

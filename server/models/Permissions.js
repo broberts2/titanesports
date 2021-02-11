@@ -7,6 +7,11 @@ const Permissions = new Schema({
     unique: false,
     required: true,
   },
+  publishArticles: {
+    type: Array,
+    unique: false,
+    required: true,
+  },
   editArticles: {
     type: Array,
     unique: false,

@@ -1,20 +1,25 @@
-const TitanDraft = require("../controllers/Article");
+const Article = require("../controllers/Article");
+const Guard = require("../guard");
 
 module.exports = (app, pretext) => {
-  app.post(`/${pretext}/post`, async (req, res) => {
-    const result = await Article.post(req);
+  app.post(`/${pretext}/createArticle`, async (req, res) => {
+    const result = await Guard(req, "createArticles", Article.createArticle);
     res.json(result);
   });
-  app.put(`/${pretext}/put`, async (req, res) => {
-    const result = await Article.put(req);
+  app.put(`/${pretext}/updateArticle`, async (req, res) => {
+    const result = await Guard(req, "editArticles", Article.updateArticle);
     res.json(result);
   });
-  app.get(`/${pretext}/get`, async (req, res) => {
-    const result = await Article.get(req);
+  app.put(`/${pretext}/publishArticle`, async (req, res) => {
+    const result = await Guard(req, "publishArticles", Article.publishArticle);
     res.json(result);
   });
-  app.delete(`/${pretext}/delete`, async (req, res) => {
-    const result = await Article.delete(req);
+  app.get(`/${pretext}/getArticles`, async (req, res) => {
+    const result = await Article.getArticles(req);
+    res.json(result);
+  });
+  app.delete(`/${pretext}/deleteArticle`, async (req, res) => {
+    const result = await Guard(req, "deleteArticles", Article.deleteArticle);
     res.json(result);
   });
 };

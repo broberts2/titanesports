@@ -9,6 +9,10 @@ module.exports = (app, pretext) => {
     const result = await Oracle.identify(req);
     res.json(result);
   });
+  app.get(`/${pretext}/getUser`, async (req, res) => {
+    const result = await Oracle.getUser(req);
+    res.json(result);
+  });
   app.get(`/${pretext}/auth_action`, async (req, res) => {
     const result = await Oracle.authAction(req);
     res.json(result);

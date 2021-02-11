@@ -1,6 +1,7 @@
 import React from "react";
 import Style from "./style";
 import { Header, FontAwesomeIcon, Transition, Button, Text, Theme } from "arclight-react";
+import { Utils } from "arclight-react";
 
 export default class Home extends React.Component {render() {
         return (
@@ -73,7 +74,10 @@ export default class Home extends React.Component {render() {
                             trans={{ animation: "fadeInRight", delay: 0.75 }}
                             theme={Theme[this.props.STATE.THEME].complement}
                             pop
-                            onClick={() => this.props.STATE.GLOBAL_METHODS.setURL("/account")}
+                            onClick={async () => {
+                                const user = await this.props.STATE.GLOBAL_METHODS.identify();
+                                this.props.STATE.GLOBAL_METHODS.setURL(`/account?user=${user.discordId}`)
+                            }}
                         >
                             MyAccount
                         </Button> : <div/>,
@@ -105,7 +109,7 @@ export default class Home extends React.Component {render() {
                             trans={{ animation: "fadeInRight", delay: 0.75 }}
                             theme={Theme[this.props.STATE.THEME].complement}
                             pop
-                            onClick={() => window.open("https://www.twitch.tv/titanesportz")}
+                            onClick={() => this.props.STATE.GLOBAL_METHODS.setURL("/articles")}
                         >
                             Articles
                         </Button>,

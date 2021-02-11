@@ -4,6 +4,7 @@ module.exports = {
   post: async (req) => {
     return await Permissions.create({
       createArticles: req.body.createArticles,
+      publishArticles: req.body.publishArticles,
       editArticles: req.body.editArticles,
       deleteArticles: req.body.deleteArticles,
       editSite: req.body.editSite,

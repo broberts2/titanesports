@@ -3,6 +3,7 @@ import styled from "styled-components";
 export default {
     Base: styled.div`
         position: relative;
+        background-color: ${props => props.backgroundColor};
     `,
     Banner: styled.div`
         postion: relative;
@@ -68,6 +69,11 @@ export default {
             width: 100%;
             table-layout: fixed;
         } 
+    `,
+    SignOutButton: styled.div`
+        position: absolute;
+        right: 55px;
+        top: 200px;
     `,
     __temp__: styled.div`
         

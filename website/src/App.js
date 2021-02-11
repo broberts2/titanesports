@@ -25,7 +25,8 @@ export default class App extends React.Component {
   }
 
   async queryConfiguration() {
-    let identity = null;
+    let identity;
+    const identify = async () => await fetch(`${ENDPOINT}/Oracle/identify?access_token=${Utils.Cookies.read_cookie("auth_token")}`).then(res => res.json());
     const ENDPOINT = config.production ? config.productionEndpoint : config.developementEndpoint;
     if (!Utils.Cookies.read_cookie("auth_token")) {
       const params = {};
@@ -37,7 +38,7 @@ export default class App extends React.Component {
       window.history.replaceState(null, null, window.location.pathname);
     }
     if (Utils.Cookies.read_cookie("auth_token")) {
-      identity = await fetch(`${ENDPOINT}/Oracle/identify?access_token=${Utils.Cookies.read_cookie("auth_token")}`).then(res => res.json());
+      identity = await identify();
     }
     const state = await fetch(`${ENDPOINT}/WebsiteConfiguration/get`).then(res => res.json());
     state.ENDPOINT = ENDPOINT;
@@ -56,8 +57,10 @@ export default class App extends React.Component {
       modal: null,
       url: window.location.pathname,
       DISPLAY_NAME: identity ? identity.username : null,
-      AUTHENTICATED_DISCORD_ID: null,
+      NICKNAME: identity ? identity.nickname.split('|')[0].trim() : null,
+      SUB_NAME: identity ? identity.nickname.split('|')[1].trim() : null,
       ACCESS,
+      MY_ID: identity ? identity.id : null,
       GLOBAL_METHODS: {
         setURL: url => {
           this.setState({pageFading: true});
@@ -67,14 +70,57 @@ export default class App extends React.Component {
             window.scrollTo({top: 0, behavior: 'smooth'});
           }, 1000);
         },
+        getUser: async id => {
+          const user = await fetch(`${ENDPOINT}/Oracle/getUser?id=${id}`).then(res => res.json())
+          return user;
+        },
+        signOut: () => {
+          Utils.Cookies.delete_cookie("auth_token");
+          window.location.href = '/';
+        },
         setViewingBadgeId: viewingBadgeId => this.setState({viewingBadgeId}),
         showModal: modal => this.setState({modal}),
         checkAccess,
         doAction,
+        identify,
         getBadge: async (size, id) => {
           const data = await fetch(`${ENDPOINT}/Badge/getBadgeById?id=${id}`).then(res => res.json())
           return { component: <Components.Badge STATE={this.state} cfg={Object.assign(data, {size})} />, data }
         },
+        getArticleById: async id => await fetch(`${ENDPOINT}/Article/getArticles?id=${id}`).then(res => res.json()),
+        getArticles: async () => await fetch(`${ENDPOINT}/Article/getArticles`).then(res => res.json()),
+        createArticle: async data => await fetch(`${ENDPOINT}/Article/createArticle`, {
+          headers: {
+            "Content-Type" : "application/json",
+            token: Utils.Cookies.read_cookie("auth_token")
+          },
+          method: "post", 
+          body: JSON.stringify({ ...data })
+        }).then(res => res.json()),
+        updateArticle: async data => await fetch(`${ENDPOINT}/Article/updateArticle`, {
+          headers: {
+            "Content-Type" : "application/json",
+            token: Utils.Cookies.read_cookie("auth_token")
+          },
+          method: "put", 
+          body: JSON.stringify({ ...data })
+        }).then(res => res.json()),
+        publishArticle: async data => await fetch(`${ENDPOINT}/Article/publishArticle`, {
+          headers: {
+            "Content-Type" : "application/json",
+            token: Utils.Cookies.read_cookie("auth_token")
+          },
+          method: "put", 
+          body: JSON.stringify({ ...data })
+        }).then(res => res.json()),
+        deleteArticle: async data => await fetch(`${ENDPOINT}/Article/deleteArticle`, {
+          headers: {
+            "Content-Type" : "application/json",
+            token: Utils.Cookies.read_cookie("auth_token")
+          },
+          method: "delete", 
+          body: JSON.stringify({ ...data })
+        }).then(res => res.json()),
         getBadgeBatch: async (size, ids) => {
           const badgeArray = await fetch(`${ENDPOINT}/Badge/getBadgeBatchById`, {
             headers: {
@@ -104,7 +150,7 @@ export default class App extends React.Component {
             <Components.Header STATE={this.state}/>
             <Components.Footer STATE={this.state}/>
           </React.Fragment>
-        ) : null}
+        ) : <div style={{height: "100vh"}} />}
       </Style.Base>
     )
   }

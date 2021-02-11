@@ -10,19 +10,14 @@ const Account = new Schema({
   titanPoints: {
     type: Number,
     unique: false,
-    required: false,
+    required: true,
   },
   summonerId: {
     type: String,
-    unique: true,
+    index: { unique: true, sparse: true },
     required: false,
   },
   badges: {
-    type: Array,
-    unique: false,
-    required: false,
-  },
-  memberOf: {
     type: Array,
     unique: false,
     required: false,

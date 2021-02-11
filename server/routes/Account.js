@@ -5,6 +5,10 @@ module.exports = (app, pretext) => {
     const result = await Account.post(req);
     res.json(result);
   });
+  app.post(`/${pretext}/initializeAccounts`, async (req, res) => {
+    const result = await Account.initializeAccounts(req);
+    res.json(result);
+  });
   app.put(`/${pretext}/put`, async (req, res) => {
     const result = await Account.put(req);
     res.json(result);
