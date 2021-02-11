@@ -20,11 +20,11 @@ app.use(
 
 app.use(cors());
 
-if (config.production) {
-  app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-  });
-}
+// if (config.production) {
+//   app.get("/", (req, res) => {
+//     res.sendFile(path.join(__dirname, "build", "index.html"));
+//   });
+// }
 
 routes(app);
 
