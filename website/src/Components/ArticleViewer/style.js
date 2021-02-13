@@ -77,7 +77,7 @@ export default {
         top: 0;
         left: 2.5%;
         transform: translate(2.5%, -60%);
-        font-size: 5vw;
+        font-size: ${props => props.len > 20 ? 125 / props.len : 4.5}vw;
         background-color: ${props => Theme[props.theme].backgroundColor};
     `,
     Block: styled.div`
@@ -91,7 +91,7 @@ export default {
     `,
     BlockContent: styled.div`
         font-size: 1.5vw;
-        ${ props => !props.editing ? `text-indent: 2vw;` : null};
+        ${ props => !props.editing ? `text-indent: 0px;` : null};
         margin-bottom: 85px;
     `,
     NewBlock: styled.div`

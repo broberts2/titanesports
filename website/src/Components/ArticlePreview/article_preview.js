@@ -24,26 +24,34 @@ export default class _ extends React.Component {
                     <Style.FeedGridArticleCrownImg>
                         <img src={this.props.data.iconImgUrl} />
                     </Style.FeedGridArticleCrownImg>
-                    <Style.FeedGridArticleTitle backgroundColor={Theme[this.props.STATE.THEME].backgroundColor} mini={this.props.mini}>
-                        <Text theme={this.props.STATE.THEME}>{this.props.data.title}</Text>
-                    </Style.FeedGridArticleTitle>
-                    <Style.FeedGridArticleCreated backgroundColor={Theme[this.props.STATE.THEME].backgroundColor} mini={this.props.mini}>
-                        <Text theme={this.props.STATE.THEME}>{this.props.data.createddate}</Text>
-                    </Style.FeedGridArticleCreated>
-                    <Style.Tags mini={this.props.mini}>
-                        {this.props.data.tags.map(el => (
-                            <Style.TagsItem mini={this.props.mini} backgroundColor={Theme[this.props.STATE.THEME].backgroundColor} >
-                                <div style={{width: "100%", textAlign: "center"}}>
-                                    <FontAwesomeIcon
-                                        color={Theme[this.props.STATE.THEME].fontColor}
-                                        size={this.props.mini ? "1vw" : "1.25vw"}
-                                        theme={this.props.STATE.THEME}
-                                        icon={parser(el)}
-                                    />
-                                </div>
-                            </Style.TagsItem>
-                        ))}
-                    </Style.Tags>
+                    <Style.FeedGridArticleInfo>
+                        <div>
+                            <Style.FeedGridArticleTitle backgroundColor={Theme[this.props.STATE.THEME].backgroundColor} mini={this.props.mini} len={this.props.data.title.length}>
+                                <Text theme={this.props.STATE.THEME}>{this.props.data.title}</Text>
+                            </Style.FeedGridArticleTitle>
+                        </div>
+                        <div>
+                            <Style.FeedGridArticleCreated backgroundColor={Theme[this.props.STATE.THEME].backgroundColor} mini={this.props.mini}>
+                                <Text theme={this.props.STATE.THEME}>{this.props.data.createddate}</Text>
+                            </Style.FeedGridArticleCreated>
+                        </div>
+                        <div>
+                            <Style.Tags mini={this.props.mini}>
+                                {this.props.data.tags.map(el => (
+                                    <Style.TagsItem mini={this.props.mini} backgroundColor={Theme[this.props.STATE.THEME].backgroundColor} >
+                                        <div style={{width: "100%", textAlign: "center"}}>
+                                            <FontAwesomeIcon
+                                                color={Theme[this.props.STATE.THEME].fontColor}
+                                                size={this.props.mini ? "1vw" : "1.25vw"}
+                                                theme={this.props.STATE.THEME}
+                                                icon={parser(el)}
+                                            />
+                                        </div>
+                                    </Style.TagsItem>
+                                ))}
+                            </Style.Tags>
+                        </div>
+                    </Style.FeedGridArticleInfo>
                     <Style.FeedGridArticleAuthor backgroundColor={Theme[this.props.STATE.THEME].backgroundColor} mini={this.props.mini}>
                         <Text theme={this.props.STATE.THEME}>{this.props.data.author}</Text>
                     </Style.FeedGridArticleAuthor>

@@ -1,4 +1,5 @@
 const Oracle = require("../controllers/Oracle");
+const Guard = require("../guard");
 
 module.exports = (app, pretext) => {
   app.get(`/${pretext}/OATH2`, async (req, res) => {
@@ -13,8 +14,20 @@ module.exports = (app, pretext) => {
     const result = await Oracle.getUser(req);
     res.json(result);
   });
+  app.get(`/${pretext}/getAllUsers`, async (req, res) => {
+    const result = await Oracle.getAllUsers(req);
+    res.json(result);
+  });
+  app.get(`/${pretext}/getAllChannels`, async (req, res) => {
+    const result = await Oracle.getAllChannels(req);
+    res.json(result);
+  });
   app.get(`/${pretext}/auth_action`, async (req, res) => {
     const result = await Oracle.authAction(req);
+    res.json(result);
+  });
+  app.post(`/${pretext}/create_flash_poll`, async (req, res) => {
+    const result = await Guard(req, "oracleFlashPoll", Oracle.createFlashPoll);
     res.json(result);
   });
 };

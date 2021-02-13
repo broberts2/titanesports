@@ -73,7 +73,7 @@ export default {
     SignOutButton: styled.div`
         position: absolute;
         right: 55px;
-        top: 200px;
+        top: 300px;
     `,
     __temp__: styled.div`
         

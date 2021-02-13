@@ -17,13 +17,13 @@ client.on("message", async (msg) => {
       msg.channel.type === "dm") &&
     msg.content.length > 0
   ) {
-    const message = await parser(
-      msg,
-      client,
-      client.guilds.cache
-        .get("407423677236510730")
-        .members.cache.get(msg.author.id)._roles
-    );
+    // const message = await parser(
+    //   msg,
+    //   client,
+    //   client.guilds.fetch("407423677236510730").then(guild => guild.members.fetch(res.id))._roles
+    // );
+    const res = await client.guilds.fetch("407423677236510730").then(guild => guild.members.fetch(res.id))._roles;
+    console.log(res);
     message.map(async (el) => {
       if (msg.channel.type === "dm") {
         msg.author.send(el);

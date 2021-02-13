@@ -30,11 +30,11 @@ class SignIn extends React.Component {
 
     render() {
         return (
-            <Style.SignIn>
+            <Style.SignIn ENDPOINT={this.props.STATE.ENDPOINT}>
                 <Style.SignInContent>
                     <Style.SignInButton active={(this.state.u && this.state.p) || true}>
                         <Button
-                            onClick={() => window.location.replace("https://discord.com/api/oauth2/authorize?client_id=711694390078341171&redirect_uri=http%3A%2F%2Flocalhost%3A7000%2FOracle%2FOATH2&response_type=code&scope=identify%20guilds")}
+                            onClick={() => window.location.replace(this.props.STATE.ORACLEOATH2)}
                             theme={"Light"}
                             pop
                         >
@@ -91,6 +91,15 @@ class Badge extends React.Component {
                 </Style.BaseBadge> 
             ): null 
         )
+    }
+}
+
+class Oracle extends React.Component {
+    render() {
+        switch(this.props.STATE.oracleMethod) {
+            case "Flash Poll":
+                return <Components.OracleMethods.FlashPoll STATE={this.props.STATE} />
+        }
     }
 }
 
@@ -161,11 +170,13 @@ export default class _ extends React.Component {
     selectModal(modal) {
         switch(modal) {
             case "SignIn":
-                return <SignIn THEME={this.props.STATE.THEME} THEME_COMPLEMENT={this.props.STATE.THEME_COMPLEMENT} />
+                return <SignIn THEME={this.props.STATE.THEME} STATE={this.props.STATE} THEME_COMPLEMENT={this.props.STATE.THEME_COMPLEMENT} />
             case "Badge":
                 return <Badge STATE={this.props.STATE} />
             case "FilePicker":
                 return <FilePicker STATE={this.props.STATE} />
+            case "Oracle":
+                return <Oracle STATE={this.props.STATE} />
         }
     }
 

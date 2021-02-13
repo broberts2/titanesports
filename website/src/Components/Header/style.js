@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export default {
     Base: styled.div`
+        margin-top: -50px;
         width: 100%;
         position: absolute;
         left: 0;

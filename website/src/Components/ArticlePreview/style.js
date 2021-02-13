@@ -25,36 +25,38 @@ export default {
             width: 100%;
         }
     `,
-    FeedGridArticleTitle: styled.div`
-        font-weight: 900;
+    FeedGridArticleInfo: styled.div`
         position: absolute;
         top: 0;
         right: 0;
         margin: 15px;
-        font-size: ${props => !props.mini ? "2vw" : "1vw"};
+        text-align: right;
+    `,
+    FeedGridArticleTitle: styled.div`
+        display: inline-block;
+        margin: 2.5px;
+        padding: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: 900;
+        font-size: ${props => !props.mini ? `${(props.len > 20 ? 35 : 20)/props.len}vw` : `${(props.len > 20 ? 17.5 : 10)/props.len}vw`};
         background-color: ${props => props.backgroundColor};
-        padding-left: 30px;
-        padding-right: 30px;
         border-radius: 5px;
     `,
     FeedGridArticleCreated: styled.div`
+        display: inline-block;
+        margin: 2.5px;
+        padding: 10px;
         font-weight: 900;
-        position: absolute;
-        top: ${props => !props.mini ? "3vw" : "1.75vw"};
-        right: 0;
-        margin: 15px;
         font-size: ${props => !props.mini ? "1vw" : "0.75vw"};
         background-color: ${props => props.backgroundColor};
-        padding-left: 30px;
-        padding-right: 30px;
         border-radius: 5px;
     `,
     Tags: styled.div`
+        display: inline-block;
+        margin: 2.5px;
         pointer-events: none;
         font-weight: 900;
-        position: absolute;
-        top: ${props => !props.mini ? "5.25vw" : "3.75vw"};
-        right: 12.5px;
         font-size: ${props => !props.mini ? "1vw" : "0.75vw"};
     `,
     TagsItem: styled.div`

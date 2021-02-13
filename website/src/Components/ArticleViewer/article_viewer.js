@@ -39,19 +39,21 @@ export default class _ extends React.Component {
     }
 
     htmlParser(text) {
-        const elements = ["div", "table"];
-        elements.map(el => {
-            const match = text.match(new RegExp(`(<${el}[^>]*>(?:.|\n)*?<\/${el}>)`, 'g'));
-            if(match) match.map(_ => text = text.replace(_, _.replace(/\n/g,"")))
-        });
-        text = text.replace(/\n/g, "<br>");
+        if(text) {
+            const elements = ["div", "table", "ul", "ol"];
+            elements.map(el => {
+                const match = text.match(new RegExp(`(<${el}[^>]*>(?:.|\n)*?<\/${el}>)`, 'g'));
+                if(match) match.map(_ => text = text.replace(_, _.replace(/\n/g,"")))
+            });
+            text = text.replace(/\n/g, "<br>");
+        }
         return text;
     }
 
     renderBlock(n, content, title) {
         const _ = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
-        content = content ? content.replace(content.match(_), "") : null;
-        title = title ? title.replace(title.match(_), "") : null;
+        if(content) content = content ? content.replace(content.match(_), "") : null;
+        if(title) title = title ? title.replace(title.match(_), "") : null;
         return (
             <Style.Block>
                 {(title && title.length > 0) || this.state.editing ? (
@@ -320,7 +322,7 @@ export default class _ extends React.Component {
                     </Style.Divider>
                     {(this.state.canEditDocument || this.state.canPublishDocument) && this.state.editing ? <Style.PublishDisplay isPublished={this.state.isPublished}>{this.state.isPublished ? `Published` : 'Unpublished'}</Style.PublishDisplay> : null}
                     <Style.Content theme={this.props.STATE.THEME}>
-                        <Style.Title theme={this.props.STATE.THEME}>
+                        <Style.Title theme={this.props.STATE.THEME} len={this.state.title.length}>
                             <Text theme={this.props.STATE.THEME}>
                                 {
                                     this.state.editing ? (
@@ -328,7 +330,7 @@ export default class _ extends React.Component {
                                             password={false}
                                             variant={"outlined"}
                                             theme={this.props.STATE.THEME}
-                                            textSize={"4vw"}
+                                            textSize={`3vw`}
                                             readonly={false}
                                             value={this.state.title}
                                             placeholder={"Document Title"}

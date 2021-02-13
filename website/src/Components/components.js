@@ -12,6 +12,8 @@ import ArticleViewer from "./ArticleViewer/article_viewer";
 import Statistics from "./Statistics/statistics";
 import TitanDraft from "./TitanDraft/titan_draft";
 import NoPoro from "./NoPoro/no_poro";
+import Oracle from "./Oracle/oracle";
+import OracleMethods from "./Oracle/methods/index";
 
 export default {
     Home,
@@ -27,5 +29,7 @@ export default {
     ArticleViewer,
     Statistics,
     TitanDraft,
-    NoPoro
+    NoPoro,
+    Oracle,
+    OracleMethods
 }

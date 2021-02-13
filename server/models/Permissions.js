@@ -42,6 +42,11 @@ const Permissions = new Schema({
     unique: false,
     required: true,
   },
+  oracleFlashPoll: {
+    type: Array,
+    unique: false,
+    required: true,
+  }
 });
 
 module.exports = mongoose.model("Permissions", Permissions);

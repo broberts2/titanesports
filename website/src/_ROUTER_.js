@@ -12,6 +12,8 @@ export default STATE => {
             return <Components.Articles STATE={STATE} />
         case "/article":
             return <Components.ArticleViewer STATE={STATE} />
+        case "/oracle":
+            return <Components.Oracle STATE={STATE} />
         default:
             return <Components.Home STATE={STATE} />
     }

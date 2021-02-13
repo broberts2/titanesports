@@ -17,7 +17,7 @@ export default {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-image: url(http://localhost:7000/static/assets/discord.png);
+        background-image: url(${props => props.ENDPOINT}/static/assets/discord.png);
         background-repeat: no-repeat;
         background-size: cover;
         padding: 25px;
@@ -99,5 +99,5 @@ export default {
             width: 100%;
             height: 100%;
         }
-    `,
+    `
 }
