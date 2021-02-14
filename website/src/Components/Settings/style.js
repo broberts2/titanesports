@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export default {
     Base: styled.div`
-        padding-top: 225px;
+        padding-top: 400px;
         padding-bottom: 0px;
     `,
     PageTitle: styled.div`
         position: absolute;
-        top: 250px;
+        top: 350px;
         left: 3vw;
         font-size: 4vw;
     `,

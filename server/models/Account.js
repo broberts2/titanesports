@@ -17,6 +17,16 @@ const Account = new Schema({
     index: { unique: true, sparse: true },
     required: false,
   },
+  profileBanner: {
+    type: String,
+    unique: false,
+    required: false,
+  },
+  profileIcon: {
+    type: String,
+    unique: false,
+    required: false,
+  },
   badges: {
     type: Array,
     unique: false,

@@ -2,8 +2,14 @@ import styled from "styled-components";
 
 export default {
     Base: styled.div`
-        padding-top: 225px;
+        padding-top: 400px;
         padding-bottom: 150px;
+    `,
+    PageTitle: styled.div`
+        position: absolute;
+        top: 350px;
+        left: 3vw;
+        font-size: 4vw;
     `,
     Divider: styled.div`
         margin-top: 10vw;
@@ -29,11 +35,5 @@ export default {
             width: 100%;
             table-layout: fixed;
         }
-    `,
-    PageTitle: styled.div`
-        position: absolute;
-        top: 250px;
-        left: 3vw;
-        font-size: 4vw;
-    `,
+    `
 }
