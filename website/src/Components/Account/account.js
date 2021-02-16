@@ -1,13 +1,6 @@
 import React from "react";
 import Style from "./style";
-import {
-	Img,
-	Theme,
-	Transition,
-	Text,
-	Button,
-	FontAwesomeIcon,
-} from "arclight-react";
+import { Img, Theme, Transition, Text, Button } from "arclight-react";
 
 export default class _ extends React.Component {
 	spawnBadges(badges) {
@@ -161,7 +154,7 @@ export default class _ extends React.Component {
 														"put",
 														"/Account/updateSelf"
 													);
-													console.log(res);
+													window.location.reload();
 												},
 											});
 											this.props.STATE.GLOBAL_METHODS.showModal("ImagePicker");
@@ -225,7 +218,7 @@ export default class _ extends React.Component {
 										? this.state.profileIcon
 										: this.props.STATE.ENDPOINT +
 										  "/" +
-										  "static/profile_images/default.png"
+										  "static/profile_imgs/default.png"
 								}
 							/>
 							{this.state.editing ? (
@@ -246,7 +239,7 @@ export default class _ extends React.Component {
 														"put",
 														"/Account/updateSelf"
 													);
-													console.log(res);
+													window.location.reload();
 												},
 											});
 											this.props.STATE.GLOBAL_METHODS.showModal("ImagePicker");

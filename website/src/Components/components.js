@@ -14,22 +14,26 @@ import TitanDraft from "./TitanDraft/titan_draft";
 import NoPoro from "./NoPoro/no_poro";
 import Oracle from "./Oracle/oracle";
 import OracleMethods from "./Oracle/methods/index";
+import Team from "./Team/team";
+import SummonersRift from "./SummonersRift/summoners_rift";
 
 export default {
-    Home,
-    Header,
-    Modal,
-    Footer,
-    Staff,
-    Settings,
-    Account,
-    Badge,
-    ArticlePreview,
-    Articles,
-    ArticleViewer,
-    Statistics,
-    TitanDraft,
-    NoPoro,
-    Oracle,
-    OracleMethods
-}
+	Home,
+	Header,
+	Modal,
+	Footer,
+	Staff,
+	Settings,
+	Account,
+	Badge,
+	ArticlePreview,
+	Articles,
+	ArticleViewer,
+	Statistics,
+	TitanDraft,
+	NoPoro,
+	Oracle,
+	OracleMethods,
+	Team,
+	SummonersRift,
+};
