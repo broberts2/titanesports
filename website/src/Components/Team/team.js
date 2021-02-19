@@ -59,7 +59,9 @@ export default class _ extends React.Component {
 							}}
 							theme={Theme[this.props.STATE.THEME].complement}
 						>
-							{data.member.nickname}
+							{data.member.nickname
+								? data.member.nickname
+								: data.member.username}
 						</Text>
 					</Style.MemberRowTitle>
 					<Style.MemberRowPosition>

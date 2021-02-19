@@ -14,9 +14,7 @@ module.exports = {
 			list.map(async (acct) => {
 				try {
 					await Account.create({ discordId: acct.user.id, titanPoints: 0 });
-				} catch (e) {
-					console.log(e);
-				}
+				} catch (e) {}
 			})
 		);
 		return "Success";

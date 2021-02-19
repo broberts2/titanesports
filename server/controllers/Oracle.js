@@ -8,6 +8,10 @@ const OracleUtils = require("../oracle_utils/index")(Oracle);
 
 Oracle.login(config.oracle.token);
 
+Oracle.on("guildMemberAdd", (member) => {
+	Account.post({ body: { discordId: member.id } });
+});
+
 module.exports = {
 	OATH2: async (req) => {
 		const res = await fetch("https://discord.com/api/oauth2/token", {
