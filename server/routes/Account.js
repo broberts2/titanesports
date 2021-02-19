@@ -1,4 +1,5 @@
 const Account = require("../controllers/Account");
+const Guard = require("../guard");
 
 module.exports = (app, pretext) => {
 	app.post(`/${pretext}/post`, async (req, res) => {
@@ -11,6 +12,10 @@ module.exports = (app, pretext) => {
 	});
 	app.put(`/${pretext}/put`, async (req, res) => {
 		const result = await Account.put(req);
+		res.json(result);
+	});
+	app.put(`/${pretext}/verify`, async (req, res) => {
+		const result = await Guard(req, "verifySummoners", Account.verify);
 		res.json(result);
 	});
 	app.put(`/${pretext}/updateSelf`, async (req, res) => {

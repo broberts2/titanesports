@@ -62,13 +62,14 @@ export default class _ extends React.Component {
 
 	multiOpGG() {
 		let query = "https://na.op.gg/multi_old/query=";
-		console.log(this.props.data);
 		const members = Object.values(this.props.data)
 			.filter((el) => (el && el.summonerName ? el : null))
 			.map((el) => el.summonerName)
 			.join(",");
 		const subs = this.props.data.subs
-			? this.props.data.subs.filter((el) => (el && el.summonerName ? el : null))
+			? this.props.data.subs
+					.filter((el) => (el.member && el.member.summonerName ? el : null))
+					.map((el) => el.member.summonerName)
 			: null;
 		if (!this.state.ignoreBaseClick)
 			window.open(

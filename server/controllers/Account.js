@@ -22,4 +22,11 @@ module.exports = {
 	get: async () => await Account.findOne({}),
 	put: async (req) =>
 		await Account.updateOne({ discordId: req.body.id }, req.body),
+	verify: async (req) => {
+		await Account.updateOne(
+			{ discordId: req.body.id },
+			{ summonerId: req.body.summonerId }
+		);
+		return "Success";
+	},
 };

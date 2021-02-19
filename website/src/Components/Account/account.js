@@ -1,6 +1,13 @@
 import React from "react";
 import Style from "./style";
-import { Img, Theme, Transition, Text, Button } from "arclight-react";
+import {
+	Img,
+	Theme,
+	Transition,
+	Text,
+	Button,
+	TextField,
+} from "arclight-react";
 
 export default class _ extends React.Component {
 	spawnBadges(badges) {
@@ -61,7 +68,11 @@ export default class _ extends React.Component {
 			user.badges
 		);
 		const names = user.nickname ? user.nickname.split("|") : [user.username];
+		const canVerify = await this.props.STATE.GLOBAL_METHODS.checkAccess(
+			"verifySummoners"
+		);
 		this.setState({
+			canVerify,
 			user: params.user,
 			isMe: this.props.STATE.MY_ID === params.user,
 			editing: false,
@@ -72,6 +83,7 @@ export default class _ extends React.Component {
 			profileBanner: user.profileBanner,
 			profileIcon: user.profileIcon,
 			opGG: user.opGG,
+			tempOpGG: user.opGG ? user.opGG : "",
 		});
 	}
 
@@ -85,6 +97,70 @@ export default class _ extends React.Component {
 				Looks like you don't have any badges yet. Participate in TES events and
 				tournaments to earn more!
 			</Style.NoBadges>
+		);
+	}
+
+	verified() {
+		return (
+			<Style.Verified>
+				{this.state.opGG && !this.state.canVerify ? (
+					<React.Fragment>
+						<Text theme={this.props.STATE.THEME}>Verified</Text>
+						<a href={this.state.opGG} target={"_blank"}>
+							Player Lookup
+						</a>
+					</React.Fragment>
+				) : null}
+				{this.state.canVerify ? (
+					<React.Fragment>
+						<TextField
+							password={false}
+							variant={"outlined"}
+							theme={this.props.STATE.THEME}
+							textSize={null}
+							readonly={false}
+							value={this.state.tempOpGG}
+							placeholder={"Summoner Id"}
+							onChange={(e) => this.setState({ tempOpGG: e.target.value })}
+						/>
+						<div
+							style={
+								this.state.tempOpGG.length > 0
+									? null
+									: { opacity: 0.25, pointerEvents: "none" }
+							}
+						>
+							<Button
+								theme={Theme[this.props.STATE.THEME].complement}
+								pop
+								onClick={async () => {
+									if (
+										window.confirm(
+											this.state.opGG
+												? `Un-verify and remove the bound SummonerId?`
+												: `Verify this user with the SummonerId: '${this.state.tempOpGG}'?`
+										)
+									) {
+										const res = await this.props.STATE.GLOBAL_METHODS.doAction(
+											{ summonerId: this.state.tempOpGG },
+											"put",
+											`/Account/verify`
+										);
+										alert(
+											res === "Success"
+												? "Operation successful!"
+												: "Something went wrong."
+										);
+										window.reload();
+									}
+								}}
+							>
+								<div style={{ width: "200px" }}>Verify</div>
+							</Button>
+						</div>
+					</React.Fragment>
+				) : null}
+			</Style.Verified>
 		);
 	}
 
@@ -219,15 +295,7 @@ export default class _ extends React.Component {
 											</Style.ModifyCrown>
 										) : null}
 									</Style.ProfileCrown>
-
-									{this.state.opGG ? (
-										<Style.Verified>
-											<Text theme={this.props.STATE.THEME}>Verified</Text>
-											<a href={this.state.opGG} target={"_blank"}>
-												Player Lookup
-											</a>
-										</Style.Verified>
-									) : null}
+									{this.verified()}
 								</div>
 							</Transition>
 						</Style.Banner>
@@ -270,7 +338,7 @@ export default class _ extends React.Component {
 								<Text theme={this.props.STATE.THEME}>Profile Badges</Text>
 							</Style.SectionHeader>
 							{this.state.badges && this.state.badges.length > 0
-								? this.badgesSection("Season 6 - Divinity")
+								? this.badgesSection("")
 								: this.noBadges()}
 						</Style.PageContent>
 					</React.Fragment>

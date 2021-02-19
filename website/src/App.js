@@ -15,6 +15,7 @@ export default class App extends React.Component {
 		const editTitanDraft = await _("editTitanDraft");
 		const oracleFlashPoll = await _("oracleFlashPoll");
 		const oracleGetAllUsers = await _("oracleGetAllUsers");
+		const verifySummoners = await _("oracleGetAllUsers");
 		return {
 			createArticles,
 			editArticles,
@@ -24,6 +25,7 @@ export default class App extends React.Component {
 			editTitanDraft,
 			oracleFlashPoll,
 			oracleGetAllUsers,
+			verifySummoners,
 		};
 	}
 
