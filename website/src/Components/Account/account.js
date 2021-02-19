@@ -60,7 +60,7 @@ export default class _ extends React.Component {
 			"7vw",
 			user.badges
 		);
-		const names = user.nickname.split("|");
+		const names = user.nickname ? user.nickname.split("|") : [user.username];
 		this.setState({
 			user: params.user,
 			isMe: this.props.STATE.MY_ID === params.user,
@@ -254,7 +254,7 @@ export default class _ extends React.Component {
 									}}
 									theme={this.props.STATE.THEME}
 								>
-									{this.state.subname}
+									{this.state.subname ? this.state.subname : null}
 								</Text>
 							</Style.TitleSecondary>
 						</Style.Title>
