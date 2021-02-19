@@ -34,17 +34,15 @@ module.exports = {
 		const discData = await Oracle.guilds
 			.fetch(config.guildId)
 			.then((guild) => guild.members.fetch(res.id));
-		const {
-			badges,
-			memberOf,
-			discordId,
-			titanPoints,
-			profileBanner,
-			profileIcon,
-			summonerId,
-		} = await Account.findOne({
+		const acct = await Account.findOne({
 			discordId: res.id,
 		});
+		const discordId = acct.discordId;
+		const titanPoints = acct.titanPoints;
+		const profileBanner = acct.profileBanner;
+		const profileIcon = acct.profileIcon;
+		const badges = acct.badges;
+		const summonerId = acct.summonerId;
 		let opGG;
 		let summonerName;
 		if (summonerId) {
@@ -60,7 +58,6 @@ module.exports = {
 			{
 				summonerName,
 				badges,
-				memberOf,
 				discordId,
 				titanPoints,
 				profileBanner,
@@ -70,7 +67,7 @@ module.exports = {
 			},
 			res,
 			{
-				nickname: discData.nickname,
+				nickname: discData.nickname ? discData.nickname : discData.username,
 				avatarUrl: `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}.png`,
 			}
 		);

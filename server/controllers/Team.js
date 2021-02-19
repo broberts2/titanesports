@@ -19,27 +19,39 @@ module.exports = {
 	getAllTeams: async (req) => await Team.find({}),
 	getTeamById: async (req) => {
 		const team = await Team.findOne({ _id: req.query.id });
-		const memberTop = await Oracle.getUser({ query: { id: team.memberTopId } });
-		const memberJungle = await Oracle.getUser({
-			query: { id: team.memberJungleId },
-		});
-		const memberMiddle = await Oracle.getUser({
-			query: { id: team.memberMidId },
-		});
-		const memberBottom = await Oracle.getUser({
-			query: { id: team.memberBottomId },
-		});
-		const memberSupport = await Oracle.getUser({
-			query: { id: team.memberSupportId },
-		});
-		const subs = await Promise.all(
-			team.subsIds.map(
-				async (id) =>
-					await Oracle.getUser({
-						query: { id },
-					})
-			)
-		);
+		const memberTop = team.memberTopId
+			? await Oracle.getUser({ query: { id: team.memberTopId } })
+			: null;
+		const memberJungle = team.memberJungleId
+			? await Oracle.getUser({
+					query: { id: team.memberJungleId },
+			  })
+			: null;
+		const memberMiddle = team.memberMidId
+			? await Oracle.getUser({
+					query: { id: team.memberMidId },
+			  })
+			: null;
+		const memberBottom = team.memberBottomId
+			? await Oracle.getUser({
+					query: { id: team.memberBottomId },
+			  })
+			: null;
+		const memberSupport = team.memberSupportId
+			? await Oracle.getUser({
+					query: { id: team.memberSupportId },
+			  })
+			: null;
+		const subs = team.subsIds
+			? await Promise.all(
+					team.subsIds.map(
+						async (id) =>
+							await Oracle.getUser({
+								query: { id },
+							})
+					)
+			  )
+			: null;
 		return {
 			name: team.name,
 			banner: team.banner,

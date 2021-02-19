@@ -18,6 +18,7 @@ import Team from "./Team/team";
 import Teams from "./Teams/teams";
 import Stats from "./Stats/stats";
 import SummonersRift from "./SummonersRift/summoners_rift";
+import Community from "./Community/community";
 
 export default {
 	Home,
@@ -40,4 +41,5 @@ export default {
 	Teams,
 	SummonersRift,
 	Stats,
+	Community,
 };

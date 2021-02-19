@@ -51,11 +51,18 @@ export default class Home extends React.Component {
 				trans={{ animation: "fadeInRight", delay: 0.5 }}
 				theme={Theme[this.props.STATE.THEME].complement}
 				pop
+				onClick={() => this.props.STATE.GLOBAL_METHODS.setURL("/community")}
+			>
+				Community
+			</Button>,
+			<Button
+				trans={{ animation: "fadeInRight", delay: 0.5 }}
+				theme={Theme[this.props.STATE.THEME].complement}
+				pop
 				onClick={() => this.props.STATE.GLOBAL_METHODS.setURL("/")}
 			>
 				Home
 			</Button>,
-			null,
 			null,
 			null,
 		];

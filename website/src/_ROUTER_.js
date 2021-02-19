@@ -22,6 +22,8 @@ export default (STATE) => {
 			return <Components.Stats STATE={STATE} />;
 		case "/titan_draft":
 			return <Components.TitanDraft STATE={STATE} />;
+		case "/community":
+			return <Components.Community STATE={STATE} />;
 		default:
 			return <Components.Home STATE={STATE} />;
 	}

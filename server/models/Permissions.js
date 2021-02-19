@@ -37,6 +37,11 @@ const Permissions = new Schema({
 		unique: false,
 		required: true,
 	},
+	verifySummoners: {
+		type: Array,
+		unique: false,
+		required: true,
+	},
 	editBadges: {
 		type: Array,
 		unique: false,

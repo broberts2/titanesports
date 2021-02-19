@@ -8,7 +8,6 @@ export default class _ extends React.Component {
 		const teams = await fetch(
 			`${this.props.STATE.ENDPOINT}/Team/get_all_teams`
 		).then((res) => res.json());
-		console.log(teams);
 		this.setState({ teams });
 	}
 

@@ -129,6 +129,7 @@ export default class _ extends React.Component {
 			"get",
 			`/Team/get_team_by_id?id=${params.id}`
 		);
+		console.log(team);
 		const badges = team.badges
 			? await this.props.STATE.GLOBAL_METHODS.getBadgeBatch("7vw", team.badges)
 			: [];
