@@ -68,65 +68,75 @@ export default class _ extends React.Component {
 	}
 
 	render() {
-		return this.state && this.state.canAccess ? (
+		return (
 			<Style.Base>
-				<Style.PageTitle>
-					<Text
-						trans={{
-							animation: this.props.STATE.pageFading
-								? "fadeOutLeft"
-								: "fadeInLeft",
-						}}
-						theme={this.props.STATE.THEME}
-					>
-						Oracle
-					</Text>
-				</Style.PageTitle>
-				<Style.Banner>
-					<Style.BannerImg
-						boxColor={
-							Theme[Theme[this.props.STATE.THEME].complement].backgroundColor
-						}
-					>
-						<Img
-							trans={{
-								animation: this.props.STATE.pageFading ? "zoomOut" : "zoomIn",
-							}}
-							src={this.props.STATE.ENDPOINT + "/" + "static/assets/oracle.gif"}
-						/>
-					</Style.BannerImg>
-				</Style.Banner>
-				<Style.Divider>
-					<DiamondDivider
-						filter={
-							Theme[Theme[this.props.STATE.THEME].complement].backgroundFilter
-						}
+				{this.state && this.state.canAccess ? (
+					<React.Fragment>
+						<Style.PageTitle>
+							<Text
+								trans={{
+									animation: this.props.STATE.pageFading
+										? "fadeOutLeft"
+										: "fadeInLeft",
+								}}
+								theme={this.props.STATE.THEME}
+							>
+								Oracle
+							</Text>
+						</Style.PageTitle>
+						<Style.Banner>
+							<Style.BannerImg
+								boxColor={
+									Theme[Theme[this.props.STATE.THEME].complement]
+										.backgroundColor
+								}
+							>
+								<Img
+									trans={{
+										animation: this.props.STATE.pageFading
+											? "zoomOut"
+											: "zoomIn",
+									}}
+									src={
+										this.props.STATE.ENDPOINT + "/" + "static/assets/oracle.gif"
+									}
+								/>
+							</Style.BannerImg>
+						</Style.Banner>
+						<Style.Divider>
+							<DiamondDivider
+								filter={
+									Theme[Theme[this.props.STATE.THEME].complement]
+										.backgroundFilter
+								}
+							/>
+						</Style.Divider>
+						{this.itemTable(
+							[
+								{
+									access: this.state.oracleFlashPoll,
+									fnt: "Flash Poll",
+									img:
+										"https://www.transparentpng.com/thumb/magic/magic-hd-photo-png-12.png",
+								},
+								{
+									access: this.state.oracleGetAllUsers,
+									fnt: "Get All Users",
+									img:
+										"https://www.transparentpng.com/thumb/magic/magic-hd-photo-png-12.png",
+								},
+							].filter((el) => (el.access ? el : null))
+						)}
+					</React.Fragment>
+				) : this.state ? (
+					<Components.NoPoro
+						align={"right"}
+						trans={{ animation: "fadeInUp" }}
+						text={"401 Unauthorized"}
+						STATE={this.props.STATE}
 					/>
-				</Style.Divider>
-				{this.itemTable(
-					[
-						{
-							access: this.state.oracleFlashPoll,
-							fnt: "Flash Poll",
-							img:
-								"https://www.transparentpng.com/thumb/magic/magic-hd-photo-png-12.png",
-						},
-						{
-							access: this.state.oracleGetAllUsers,
-							fnt: "Get All Users",
-							img:
-								"https://www.transparentpng.com/thumb/magic/magic-hd-photo-png-12.png",
-						},
-					].filter((el) => (el.access ? el : null))
-				)}
+				) : null}
 			</Style.Base>
-		) : this.state ? (
-			<Components.NoPoro
-				align={"right"}
-				trans={{ animation: "fadeInUp" }}
-				text={"401 Unauthorized"}
-				STATE={this.props.STATE}
-			/>
-		) : null;
+		);
 	}
 }

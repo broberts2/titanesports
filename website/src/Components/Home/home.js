@@ -123,7 +123,7 @@ export default class Home extends React.Component {
 						this.props.STATE.ENDPOINT + "/" + "static/assets/statistics.png",
 						++hoverNumber,
 						this.props.STATE.HOME_PAGE_PANEL_STATISTICS,
-						() => console.log("hello world")
+						() => this.props.STATE.GLOBAL_METHODS.setURL(`/stats`)
 					)}
 				</td>
 				<td style={{ padding }}>

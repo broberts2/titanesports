@@ -18,6 +18,8 @@ export default (STATE) => {
 			return <Components.Teams STATE={STATE} />;
 		case "/team":
 			return <Components.Team STATE={STATE} />;
+		case "/stats":
+			return <Components.Stats STATE={STATE} />;
 		case "/titan_draft":
 			return <Components.TitanDraft STATE={STATE} />;
 		default:

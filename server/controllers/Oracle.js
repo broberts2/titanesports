@@ -46,6 +46,7 @@ module.exports = {
 			discordId: res.id,
 		});
 		let opGG;
+		let summonerName;
 		if (summonerId) {
 			const summoner = await fetch(
 				`https://na1.api.riotgames.com/lol/summoner/v4/summoners/${summonerId}?api_key=${config.riotGeneralApiKey}`
@@ -53,9 +54,11 @@ module.exports = {
 				.then((res) => res.json())
 				.then((res) => res.name);
 			opGG = `https://na.op.gg/summoner/userName=${summoner}`;
+			summonerName = summoner;
 		}
 		return Object.assign(
 			{
+				summonerName,
 				badges,
 				memberOf,
 				discordId,

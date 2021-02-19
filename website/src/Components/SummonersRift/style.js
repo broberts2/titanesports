@@ -9,6 +9,7 @@ export default {
 		width: calc(100% - 40px);
 		padding: 20px;
 		& img {
+			cursor: pointer;
 			border-radius: 10px;
 			width: 100%;
 		}
@@ -33,11 +34,11 @@ export default {
 	`,
 	PinUserImg: styled.div`
 		transform-origin: center;
-		top: 3.5%;
-		left: 7.5%;
+		top: 2%;
+		left: 0%;
 		z-index: 2;
 		position: absolute;
-		width: 85%;
+		width: 100%;
 		& img {
 			border-radius: 50%;
 			width: 100%;

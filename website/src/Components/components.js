@@ -16,6 +16,7 @@ import Oracle from "./Oracle/oracle";
 import OracleMethods from "./Oracle/methods/index";
 import Team from "./Team/team";
 import Teams from "./Teams/teams";
+import Stats from "./Stats/stats";
 import SummonersRift from "./SummonersRift/summoners_rift";
 
 export default {
@@ -38,4 +39,5 @@ export default {
 	Team,
 	Teams,
 	SummonersRift,
+	Stats,
 };

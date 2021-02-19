@@ -3,6 +3,7 @@ import styled from "styled-components";
 export default {
 	Base: styled.div`
 		position: relative;
+		min-height: 100vh;
 		background-color: ${(props) => props.backgroundColor};
 	`,
 	Banner: styled.div`
@@ -13,13 +14,20 @@ export default {
 		border-bottom: 10px solid ${(props) => props.lineColor};
 	`,
 	BannerProfileImg: styled.div`
+		opacity: 0;
+		pointer-events: none;
+		position: relative;
+		text-align: center;
+		& img {
+			width: 10%;
+		}
+	`,
+	ProfileCrown: styled.div`
 		margin-top: calc(-20vw / 3);
 		margin-left: 5%;
-		width: 20vw;
-		height: 20vw;
-		border: 10px solid ${(props) => props.lineColor};
-		border-radius: 50%;
-		overflow: hidden;
+		width: 25vw;
+		height: 25vw;
+		border: 0px solid ${(props) => props.lineColor};
 		& img {
 			width: 100%;
 			height: 100%;
@@ -59,13 +67,6 @@ export default {
 		padding-right: 5vw;
 		font-style: italic;
 		font-size: 1.75vw;
-	`,
-	ProfileCrown: styled.div`
-		position: relative;
-		text-align: center;
-		& img {
-			width: 17.5%;
-		}
 	`,
 	SectionHeader: styled.div`
 		font-size: 3vw;

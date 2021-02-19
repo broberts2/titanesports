@@ -173,14 +173,53 @@ export default class _ extends React.Component {
 								}}
 							>
 								<div style={{ position: "absolute" }}>
-									<Style.BannerProfileImg
-										lineColor={
-											Theme[Theme[this.props.STATE.THEME].complement]
-												.backgroundColor
-										}
-									>
-										<Img src={this.state.avatarUrl} />
-									</Style.BannerProfileImg>
+									<Style.ProfileCrown>
+										<Img
+											trans={{
+												animation: this.props.STATE.pageFading
+													? "zoomOut"
+													: "zoomIn",
+											}}
+											src={
+												this.state.profileIcon
+													? this.state.profileIcon
+													: this.props.STATE.ENDPOINT +
+													  "/" +
+													  "static/profile_imgs/default.png"
+											}
+										/>
+										{this.state.editing ? (
+											<Style.ModifyCrown>
+												<Button
+													theme={Theme[this.props.STATE.THEME].complement}
+													pop
+													onClick={() => {
+														this.props.STATE.GLOBAL_METHODS.setFilePickerDir({
+															dir: "profile_imgs",
+															cb: async (file) => {
+																const res = await this.props.STATE.GLOBAL_METHODS.doAction(
+																	{
+																		profileIcon: file,
+																		id: this.state.user,
+																		myId: this.props.STATE.MY_ID,
+																	},
+																	"put",
+																	"/Account/updateSelf"
+																);
+																window.location.reload();
+															},
+														});
+														this.props.STATE.GLOBAL_METHODS.showModal(
+															"ImagePicker"
+														);
+													}}
+												>
+													<div style={{ width: "300px" }}>Change Crown</div>
+												</Button>
+											</Style.ModifyCrown>
+										) : null}
+									</Style.ProfileCrown>
+
 									{this.state.opGG ? (
 										<Style.Verified>
 											<Text theme={this.props.STATE.THEME}>Verified</Text>
@@ -219,48 +258,13 @@ export default class _ extends React.Component {
 								</Text>
 							</Style.TitleSecondary>
 						</Style.Title>
-						<Style.ProfileCrown>
-							<Img
-								trans={{
-									animation: this.props.STATE.pageFading ? "zoomOut" : "zoomIn",
-								}}
-								src={
-									this.state.profileIcon
-										? this.state.profileIcon
-										: this.props.STATE.ENDPOINT +
-										  "/" +
-										  "static/profile_imgs/default.png"
-								}
-							/>
-							{this.state.editing ? (
-								<Style.ModifyCrown>
-									<Button
-										theme={Theme[this.props.STATE.THEME].complement}
-										pop
-										onClick={() => {
-											this.props.STATE.GLOBAL_METHODS.setFilePickerDir({
-												dir: "profile_imgs",
-												cb: async (file) => {
-													const res = await this.props.STATE.GLOBAL_METHODS.doAction(
-														{
-															profileIcon: file,
-															id: this.state.user,
-															myId: this.props.STATE.MY_ID,
-														},
-														"put",
-														"/Account/updateSelf"
-													);
-													window.location.reload();
-												},
-											});
-											this.props.STATE.GLOBAL_METHODS.showModal("ImagePicker");
-										}}
-									>
-										<div style={{ width: "300px" }}>Change Crown</div>
-									</Button>
-								</Style.ModifyCrown>
-							) : null}
-						</Style.ProfileCrown>
+						<Style.BannerProfileImg
+							lineColor={
+								Theme[Theme[this.props.STATE.THEME].complement].backgroundColor
+							}
+						>
+							<Img src={this.state.avatarUrl} />
+						</Style.BannerProfileImg>
 						<Style.PageContent>
 							<Style.SectionHeader>
 								<Text theme={this.props.STATE.THEME}>Profile Badges</Text>
