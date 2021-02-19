@@ -9,7 +9,10 @@ const OracleUtils = require("../oracle_utils/index")(Oracle);
 Oracle.login(config.oracle.token);
 
 Oracle.on("guildMemberAdd", (member) => {
-	Account.post({ body: { discordId: member.id } });
+	Account.create({
+		discordId: member.id,
+		titanPoints: 0,
+	});
 });
 
 module.exports = {

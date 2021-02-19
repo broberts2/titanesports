@@ -90,7 +90,7 @@ export default class _ extends React.Component {
 	}
 
 	listMembers(arr) {
-		return arr.map((el) => this.memberRow(el));
+		return arr.map((el) => (el.member ? this.memberRow(el) : null));
 	}
 
 	spawnBadges(badges) {
@@ -131,7 +131,6 @@ export default class _ extends React.Component {
 			"get",
 			`/Team/get_team_by_id?id=${params.id}`
 		);
-		console.log(team);
 		const badges = team.badges
 			? await this.props.STATE.GLOBAL_METHODS.getBadgeBatch("7vw", team.badges)
 			: [];
@@ -228,6 +227,7 @@ export default class _ extends React.Component {
 										mid: this.state.members[2].member,
 										bottom: this.state.members[3].member,
 										support: this.state.members[4].member,
+										subs: this.state.members.slice(5),
 									}}
 									STATE={this.props.STATE}
 								/>
