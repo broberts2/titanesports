@@ -309,6 +309,76 @@ class ImagePicker extends React.Component {
 	}
 }
 
+class TitanDraft extends React.Component {
+	render() {
+		const bttn = (text, copyText) => (
+			<tr>
+				<td align={"center"}>
+					<Button
+						trans={{ animation: "fadeInRight", delay: 0.5 }}
+						theme={Theme[this.props.STATE.THEME].complement}
+						pop
+						onClick={() => {
+							navigator.clipboard.writeText(copyText);
+							alert("Link copied to clipboard!");
+						}}
+					>
+						<div style={{ width: "50vw" }}>{text}</div>
+					</Button>
+				</td>
+			</tr>
+		);
+		return (
+			<Style.TitanDraft>
+				<Style.TitanDraftTitle>
+					<Text theme={this.props.STATE.THEME}>Titan Draft</Text>
+				</Style.TitanDraftTitle>
+				<Style.TitanDraftStatus>
+					<Text theme={this.props.STATE.THEME}>Creation Successful!</Text>
+				</Style.TitanDraftStatus>
+				<Style.TitanDraftVs>
+					<table>
+						<tbody>
+							<tr>
+								<td align={"center"}>
+									<Img
+										src={`${this.props.STATE.ENDPOINT}/${this.props.STATE.TITAN_DRAFT.TEAM_1.LOGO}`}
+									/>
+								</td>
+								<td align={"center"}>
+									<Img
+										style={{ width: "50%" }}
+										src={`${this.props.STATE.ENDPOINT}/static/assets/vs.png`}
+									/>
+								</td>
+								<td align={"center"}>
+									<Img
+										src={`${this.props.STATE.ENDPOINT}/${this.props.STATE.TITAN_DRAFT.TEAM_2.LOGO}`}
+									/>
+								</td>
+							</tr>
+							<tr>
+								{bttn(
+									"Blue Team Captain Link - Copy to clipboard",
+									this.props.STATE.TITAN_DRAFT.LINKS.TEAM_1
+								)}
+								{bttn(
+									"Red Team Captain Link - Copy to clipboard",
+									this.props.STATE.TITAN_DRAFT.LINKS.TEAM_2
+								)}
+								{bttn(
+									"Spectator Link - Copy to clipboard",
+									this.props.STATE.TITAN_DRAFT.LINKS.SPECTATOR
+								)}
+							</tr>
+						</tbody>
+					</table>
+				</Style.TitanDraftVs>
+			</Style.TitanDraft>
+		);
+	}
+}
+
 export default class _ extends React.Component {
 	selectModal(modal) {
 		switch (modal) {
@@ -328,6 +398,8 @@ export default class _ extends React.Component {
 				return <Oracle STATE={this.props.STATE} />;
 			case "ImagePicker":
 				return <ImagePicker STATE={this.props.STATE} />;
+			case "TitanDraft":
+				return <TitanDraft STATE={this.props.STATE} />;
 		}
 	}
 

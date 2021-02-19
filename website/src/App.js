@@ -98,6 +98,7 @@ export default class App extends React.Component {
 						: null,
 				ACCESS,
 				MY_ID: identity ? identity.id : null,
+				TITAN_DRAFT: null,
 				GLOBAL_METHODS: {
 					setURL: (url) => {
 						this.setState({ pageFading: true });
@@ -107,6 +108,7 @@ export default class App extends React.Component {
 							window.scrollTo({ top: 0, behavior: "smooth" });
 						}, 1000);
 					},
+					setTitanDraft: (TITAN_DRAFT) => this.setState({ TITAN_DRAFT }),
 					setFilePickerDir: (filePickerDir) => this.setState({ filePickerDir }),
 					getUser: async (id) => {
 						const user = await fetch(

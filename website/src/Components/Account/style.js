@@ -25,6 +25,17 @@ export default {
 			height: 100%;
 		}
 	`,
+	Verified: styled.div`
+		position: absolute;
+		top: 1vw;
+		left: calc(100% + 2vw);
+		font-size: 2vw;
+		font-style: italic;
+		cursor: pointer;
+		& a {
+			white-space: nowrap;
+		}
+	`,
 	BannerBGImg: styled.div`
 		width: 100%;
 		height: 100%;
@@ -36,6 +47,7 @@ export default {
 		}
 	`,
 	Title: styled.div`
+		pointer-events: none;
 		text-align: right;
 	`,
 	TitlePrimary: styled.div`

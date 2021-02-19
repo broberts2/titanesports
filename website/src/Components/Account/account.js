@@ -71,6 +71,7 @@ export default class _ extends React.Component {
 			subname: names[1] ? names[1].trim() : null,
 			profileBanner: user.profileBanner,
 			profileIcon: user.profileIcon,
+			opGG: user.opGG,
 		});
 	}
 
@@ -171,14 +172,24 @@ export default class _ extends React.Component {
 										: "fadeInLeft",
 								}}
 							>
-								<Style.BannerProfileImg
-									lineColor={
-										Theme[Theme[this.props.STATE.THEME].complement]
-											.backgroundColor
-									}
-								>
-									<Img src={this.state.avatarUrl} />
-								</Style.BannerProfileImg>
+								<div style={{ position: "absolute" }}>
+									<Style.BannerProfileImg
+										lineColor={
+											Theme[Theme[this.props.STATE.THEME].complement]
+												.backgroundColor
+										}
+									>
+										<Img src={this.state.avatarUrl} />
+									</Style.BannerProfileImg>
+									{this.state.opGG ? (
+										<Style.Verified>
+											<Text theme={this.props.STATE.THEME}>Verified</Text>
+											<a href={this.state.opGG} target={"_blank"}>
+												Player Lookup
+											</a>
+										</Style.Verified>
+									) : null}
+								</div>
 							</Transition>
 						</Style.Banner>
 						<Style.Title>

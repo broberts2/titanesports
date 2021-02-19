@@ -15,6 +15,7 @@ import NoPoro from "./NoPoro/no_poro";
 import Oracle from "./Oracle/oracle";
 import OracleMethods from "./Oracle/methods/index";
 import Team from "./Team/team";
+import Teams from "./Teams/teams";
 import SummonersRift from "./SummonersRift/summoners_rift";
 
 export default {
@@ -35,5 +36,6 @@ export default {
 	Oracle,
 	OracleMethods,
 	Team,
+	Teams,
 	SummonersRift,
 };

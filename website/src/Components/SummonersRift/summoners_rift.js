@@ -18,9 +18,12 @@ export default class _ extends React.Component {
 		}
 	}
 
-	pin(p, c, i) {
+	pin(p, c, i, id) {
 		return (
-			<Style.Pin c={c}>
+			<Style.Pin
+				c={c}
+				onClick={() => window.open(`/account?user=${id}`, "_blank")}
+			>
 				<Style.PinBase>
 					<Img
 						style={{
@@ -55,27 +58,32 @@ export default class _ extends React.Component {
 					{this.pin(
 						"top",
 						{ x: "29%", y: "-4%" },
-						this.props.data.top.avatarUrl
+						this.props.data.top.avatarUrl,
+						this.props.data.top.id
 					)}
 					{this.pin(
 						"jungle",
 						{ x: "35%", y: "20%" },
-						this.props.data.jungle.avatarUrl
+						this.props.data.jungle.avatarUrl,
+						this.props.data.jungle.id
 					)}
 					{this.pin(
 						"middle",
 						{ x: "47.5%", y: "20%" },
-						this.props.data.mid.avatarUrl
+						this.props.data.mid.avatarUrl,
+						this.props.data.mid.id
 					)}
 					{this.pin(
 						"bottom",
 						{ x: "65%", y: "50%" },
-						this.props.data.bottom.avatarUrl
+						this.props.data.bottom.avatarUrl,
+						this.props.data.bottom.id
 					)}
 					{this.pin(
 						"support",
 						{ x: "75%", y: "60%" },
-						this.props.data.support.avatarUrl
+						this.props.data.support.avatarUrl,
+						this.props.data.support.id
 					)}
 				</Style.BaseImg>
 			</Style.Base>

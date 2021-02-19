@@ -41,11 +41,30 @@ module.exports = {
 			titanPoints,
 			profileBanner,
 			profileIcon,
+			summonerId,
 		} = await Account.findOne({
 			discordId: res.id,
 		});
+		let opGG;
+		if (summonerId) {
+			const summoner = await fetch(
+				`https://na1.api.riotgames.com/lol/summoner/v4/summoners/${summonerId}?api_key=${config.riotGeneralApiKey}`
+			)
+				.then((res) => res.json())
+				.then((res) => res.name);
+			opGG = `https://na.op.gg/summoner/userName=${summoner}`;
+		}
 		return Object.assign(
-			{ badges, memberOf, discordId, titanPoints, profileBanner, profileIcon },
+			{
+				badges,
+				memberOf,
+				discordId,
+				titanPoints,
+				profileBanner,
+				profileIcon,
+				summonerId,
+				opGG,
+			},
 			res,
 			{
 				nickname: discData.nickname,

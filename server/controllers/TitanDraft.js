@@ -25,11 +25,13 @@ module.exports = {
 				CAPTAIN_TOKEN: "123blue_team",
 				READY: false,
 				LOGO: req.body.TEAM_1.LOGO,
+				NAME: req.body.TEAM_1.NAME,
 			}),
 			TEAM_2: Object.assign(DRAFT_CONFIG.TEAM_2, {
 				CAPTAIN_TOKEN: "123red_team",
 				READY: false,
 				LOGO: req.body.TEAM_2.LOGO,
+				NAME: req.body.TEAM_2.NAME,
 			}),
 			HEADER: DRAFT_CONFIG.HEADER,
 			TIMER: DRAFT_CONFIG.TIMER,

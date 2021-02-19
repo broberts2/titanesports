@@ -14,8 +14,12 @@ export default (STATE) => {
 			return <Components.ArticleViewer STATE={STATE} />;
 		case "/oracle":
 			return <Components.Oracle STATE={STATE} />;
+		case "/teams":
+			return <Components.Teams STATE={STATE} />;
 		case "/team":
 			return <Components.Team STATE={STATE} />;
+		case "/titan_draft":
+			return <Components.TitanDraft STATE={STATE} />;
 		default:
 			return <Components.Home STATE={STATE} />;
 	}

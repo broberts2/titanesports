@@ -43,6 +43,9 @@ export default class _ extends React.Component {
 		return (
 			<Style.MemberRow>
 				<Style.MemberRowContent
+					onClick={() =>
+						window.open(`/account?user=${data.member.id}`, "_blank")
+					}
 					backgroundColor={`${
 						Theme[Theme[this.props.STATE.THEME].complement].backgroundColor
 					}`}
@@ -129,7 +132,6 @@ export default class _ extends React.Component {
 		const badges = team.badges
 			? await this.props.STATE.GLOBAL_METHODS.getBadgeBatch("7vw", team.badges)
 			: [];
-		console.log(badges);
 		this.setState({
 			badges: badges.map((el) => el.component),
 			name: team.name,
@@ -211,7 +213,7 @@ export default class _ extends React.Component {
 						<Style.SummonersRift>
 							<div
 								style={{
-									width: "100vw",
+									width: "50vw",
 									minWidth: "500px",
 									display: "inline-block",
 								}}

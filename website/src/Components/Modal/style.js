@@ -119,4 +119,31 @@ export default {
 			cursor: pointer;
 		}
 	`,
+	TitanDraftTitle: styled.div`
+		font-size: 3vw;
+		font-style: italic;
+		position: absolute;
+		top: 10px;
+		left: 75px;
+	`,
+	TitanDraftStatus: styled.div`
+		margin-top: 100px;
+		font-size: 2vw;
+	`,
+	TitanDraftVs: styled.div`
+		height: 75%;
+		overflow-x: hidden;
+		overflow-y: auto;
+		width: 100%;
+		& table {
+			table-layout: fixed;
+			width: 100%;
+		}
+		& img {
+			width: 100%;
+		}
+	`,
+	TitanDraft: styled.div`
+		height: 100%;
+	`,
 };

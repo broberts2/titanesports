@@ -106,13 +106,13 @@ export default class Home extends React.Component {
 			<React.Fragment>
 				<td style={{ padding }}>
 					{this.panelItem(
-						"About Us",
+						"Teams",
 						"70%",
 						"40%",
 						this.props.STATE.ENDPOINT + "/" + "static/assets/about_us.png",
 						++hoverNumber,
 						this.props.STATE.HOME_PAGE_PANEL_ABOUT_US,
-						() => console.log("hello world")
+						() => this.props.STATE.GLOBAL_METHODS.setURL(`/teams`)
 					)}
 				</td>
 				<td style={{ padding }}>
@@ -134,7 +134,7 @@ export default class Home extends React.Component {
 						this.props.STATE.ENDPOINT + "/" + "static/assets/draft.png",
 						++hoverNumber,
 						this.props.STATE.HOME_PAGE_PANEL_TITAN_DRAFT,
-						() => console.log("hello world")
+						() => this.props.STATE.GLOBAL_METHODS.setURL(`/titan_draft`)
 					)}
 				</td>
 				<td style={{ padding }}>
@@ -145,7 +145,7 @@ export default class Home extends React.Component {
 						this.props.STATE.ENDPOINT + "/" + "static/assets/article.png",
 						++hoverNumber,
 						this.props.STATE.HOME_PAGE_PANEL_COMMUNITY_ARTICLES,
-						() => console.log("hello world")
+						() => this.props.STATE.GLOBAL_METHODS.setURL(`/articles`)
 					)}
 				</td>
 				<td style={{ padding }}>
@@ -294,17 +294,13 @@ export default class Home extends React.Component {
 						<Style.FeedDivider>
 							<Style.FeedDividerText>
 								<Text theme={Theme[this.props.STATE.THEME].complement}>
-									Spring Split Coming Soon!
+									{this.props.STATE.HOME_MESSAGE}
 								</Text>
 							</Style.FeedDividerText>
 						</Style.FeedDivider>
 						<Style.FeedBannerImg>
 							<img
-								src={
-									this.props.STATE.ENDPOINT +
-									"/" +
-									"static/assets/azir_char.png"
-								}
+								src={`${this.props.STATE.ENDPOINT}/${this.props.STATE.HOME_MESSAGE_IMAGE}`}
 							/>
 						</Style.FeedBannerImg>
 					</Transition>
