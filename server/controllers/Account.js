@@ -12,7 +12,11 @@ module.exports = {
 		const list = await Oracle.getAllUsers(req);
 		await Promise.all(
 			list.map(async (acct) => {
-				await Account.create({ discordId: acct.user.id, titanPoints: 0 });
+				try {
+					await Account.create({ discordId: acct.user.id, titanPoints: 0 });
+				} catch (e) {
+					console.log(e);
+				}
 			})
 		);
 		return "Success";
