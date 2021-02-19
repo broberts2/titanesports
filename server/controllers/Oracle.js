@@ -37,40 +37,44 @@ module.exports = {
 		const acct = await Account.findOne({
 			discordId: res.id,
 		});
-		const discordId = acct.discordId;
-		const titanPoints = acct.titanPoints;
-		const profileBanner = acct.profileBanner;
-		const profileIcon = acct.profileIcon;
-		const badges = acct.badges;
-		const summonerId = acct.summonerId;
-		let opGG;
-		let summonerName;
-		if (summonerId) {
-			const summoner = await fetch(
-				`https://na1.api.riotgames.com/lol/summoner/v4/summoners/${summonerId}?api_key=${config.riotGeneralApiKey}`
-			)
-				.then((res) => res.json())
-				.then((res) => res.name);
-			opGG = `https://na.op.gg/summoner/userName=${summoner}`;
-			summonerName = summoner;
-		}
-		return Object.assign(
-			{
-				summonerName,
-				badges,
-				discordId,
-				titanPoints,
-				profileBanner,
-				profileIcon,
-				summonerId,
-				opGG,
-			},
-			res,
-			{
-				nickname: discData.nickname ? discData.nickname : discData.username,
-				avatarUrl: `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}.png`,
+		if (acct) {
+			const discordId = acct.discordId;
+			const titanPoints = acct.titanPoints;
+			const profileBanner = acct.profileBanner;
+			const profileIcon = acct.profileIcon;
+			const badges = acct.badges;
+			const summonerId = acct.summonerId;
+			let opGG;
+			let summonerName;
+			if (summonerId) {
+				const summoner = await fetch(
+					`https://na1.api.riotgames.com/lol/summoner/v4/summoners/${summonerId}?api_key=${config.riotGeneralApiKey}`
+				)
+					.then((res) => res.json())
+					.then((res) => res.name);
+				opGG = `https://na.op.gg/summoner/userName=${summoner}`;
+				summonerName = summoner;
 			}
-		);
+			return Object.assign(
+				{
+					summonerName,
+					badges,
+					discordId,
+					titanPoints,
+					profileBanner,
+					profileIcon,
+					summonerId,
+					opGG,
+				},
+				res,
+				{
+					nickname: discData.nickname ? discData.nickname : discData.username,
+					avatarUrl: `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}.png`,
+				}
+			);
+		} else {
+			return null;
+		}
 	},
 	getAllUsers: async (req) => {
 		const userList = await Oracle.guilds
