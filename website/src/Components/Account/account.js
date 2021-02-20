@@ -71,7 +71,6 @@ export default class _ extends React.Component {
 		const canVerify = await this.props.STATE.GLOBAL_METHODS.checkAccess(
 			"verifySummoners"
 		);
-		console.log(user);
 		this.setState({
 			discordId: user.discordId,
 			canVerify,
@@ -85,7 +84,7 @@ export default class _ extends React.Component {
 			profileBanner: user.profileBanner,
 			profileIcon: user.profileIcon,
 			opGG: user.opGG,
-			tempOpGG: user.opGG ? user.opGG : "",
+			tempSummonerId: user.summonerId ? user.summonerId : "",
 		});
 	}
 
@@ -121,13 +120,15 @@ export default class _ extends React.Component {
 							theme={this.props.STATE.THEME}
 							textSize={null}
 							readonly={false}
-							value={this.state.tempOpGG}
+							value={this.state.tempSummonerId}
 							placeholder={"Summoner Id"}
-							onChange={(e) => this.setState({ tempOpGG: e.target.value })}
+							onChange={(e) =>
+								this.setState({ tempSummonerId: e.target.value })
+							}
 						/>
 						<div
 							style={
-								this.state.tempOpGG.length > 0
+								this.state.tempSummonerId.length > 0 || this.state.opGG
 									? null
 									: { opacity: 0.25, pointerEvents: "none" }
 							}
@@ -140,15 +141,15 @@ export default class _ extends React.Component {
 										window.confirm(
 											this.state.opGG
 												? `Un-verify and remove the bound SummonerId?`
-												: `Verify this user with the SummonerId: '${this.state.tempOpGG}'?`
+												: `Verify this user with the SummonerId: '${this.state.tempSummonerId}'?`
 										)
 									) {
 										const res = await this.props.STATE.GLOBAL_METHODS.doAction(
 											{
-												discordId: this.state.discordId,
+												id: this.state.discordId,
 												summonerId: this.state.opGG
 													? null
-													: this.state.tempOpGG,
+													: this.state.tempSummonerId,
 											},
 											"put",
 											`/Account/verify`
@@ -162,7 +163,9 @@ export default class _ extends React.Component {
 									}
 								}}
 							>
-								<div style={{ width: "200px" }}>Verify</div>
+								<div style={{ width: "200px" }}>
+									{this.state.opGG ? `Un-Verify` : `Verify`}
+								</div>
 							</Button>
 						</div>
 					</React.Fragment>

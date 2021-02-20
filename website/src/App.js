@@ -43,14 +43,11 @@ export default class App extends React.Component {
 		const ORACLEOATH2 = config.production
 			? config.productionDiscordOATH2
 			: config.developmentDiscordOATH2;
-		if (!Utils.Cookies.read_cookie("auth_token")) {
-			const params = {};
-			window.location.href.replace(
-				/[?&]+([^=&]+)=([^&]*)/gi,
-				(m, key, value) => {
-					params[key] = value;
-				}
-			);
+		const params = {};
+		window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
+			params[key] = value;
+		});
+		if (params.auth_token && params.refresh_token) {
 			Utils.Cookies.bake_cookie("auth_token", params.auth_token);
 			Utils.Cookies.bake_cookie("refresh_token", params.refresh_token);
 			window.history.replaceState(null, null, window.location.pathname);
