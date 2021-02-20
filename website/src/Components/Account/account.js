@@ -72,6 +72,7 @@ export default class _ extends React.Component {
 			"verifySummoners"
 		);
 		this.setState({
+			discordId: user.discordId,
 			canVerify,
 			user: params.user,
 			isMe: this.props.STATE.MY_ID === params.user,
@@ -142,7 +143,12 @@ export default class _ extends React.Component {
 										)
 									) {
 										const res = await this.props.STATE.GLOBAL_METHODS.doAction(
-											{ summonerId: this.state.tempOpGG },
+											{
+												discordId: this.state.discordId,
+												summonerId: this.state.opGG
+													? null
+													: this.state.tempOpGG,
+											},
 											"put",
 											`/Account/verify`
 										);
@@ -151,7 +157,7 @@ export default class _ extends React.Component {
 												? "Operation successful!"
 												: "Something went wrong."
 										);
-										window.reload();
+										window.location.reload();
 									}
 								}}
 							>

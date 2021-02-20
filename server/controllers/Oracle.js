@@ -210,6 +210,11 @@ module.exports = {
 				.fetch(config.guildId)
 				.then((res) => res.members);
 			const roles = await memebers.fetch(user.id).then((res) => res._roles);
+			console.log(
+				permissionSet,
+				req.query.action,
+				permissionSet[req.query.action]
+			);
 			return permissionSet[req.query.action].some((a) => roles.includes(a));
 		}
 		return false;
