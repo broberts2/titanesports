@@ -71,6 +71,7 @@ export default class _ extends React.Component {
 		const canVerify = await this.props.STATE.GLOBAL_METHODS.checkAccess(
 			"verifySummoners"
 		);
+		console.log(user);
 		this.setState({
 			discordId: user.discordId,
 			canVerify,
