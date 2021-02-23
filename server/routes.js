@@ -12,13 +12,8 @@ const ROUTES = {
 	RIOT: require("./routes/RIOT"),
 };
 
-module.exports = (app, callback) => {
+module.exports = (app) => {
 	for (let key in ROUTES) {
 		ROUTES[key](app, key);
 	}
-	callback.post(`/RIOT/callback`, async (req, res) => {
-		const RIOT = require("./controllers/RIOT");
-		const result = await RIOT.callback(req);
-		res.json(result);
-	});
 };
