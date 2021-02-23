@@ -28,6 +28,7 @@ export default {
 		}
 	`,
 	BannerTeamImg: styled.div`
+		position: relative;
 		background-color: ${(props) => props.backgroundColor};
 		margin-top: calc(-20vw / 2);
 		margin-left: calc(50% - 10vw);
@@ -37,8 +38,12 @@ export default {
 		border-radius: 50%;
 		overflow: hidden;
 		& img {
-			width: 100%;
-			height: 100%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 75%;
+			object-fit: cover;
 		}
 	`,
 	TitlePrimary: styled.div`

@@ -9,6 +9,7 @@ export default {
 	Banner: styled.div`
 		text-align: center;
 		width: 100%;
+		min-height: 75vh;
 		& img {
 			width: 75%;
 		}
@@ -57,11 +58,19 @@ export default {
 		right: 100px;
 		background-color: ${(props) => props.backgroundColor};
 		border-radius: 50%;
+		overflow: hidden;
 		padding: 1vw;
 		transform: translateY(-50%);
-		border: 0.6vw solid ${(props) => props.borderColor};
+		border: 0.4vw solid ${(props) => props.borderColor};
+		width: 6vw;
+		height: 6vw;
 		& img {
-			height: 6vw;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 75%;
+			object-fit: cover;
 		}
 	`,
 };

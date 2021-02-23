@@ -167,8 +167,8 @@ export default class _ extends React.Component {
 											: "fadeIn",
 									}}
 									src={`${this.props.STATE.ENDPOINT}/${
-										this.state.teamBanner
-											? this.state.teamBanner
+										this.state.banner
+											? this.state.banner
 											: "static/team_banners/default.png"
 									}`}
 								/>
@@ -192,8 +192,8 @@ export default class _ extends React.Component {
 								>
 									<Img
 										src={`${this.props.STATE.ENDPOINT}/${
-											this.state.teamLogo
-												? this.state.teamLogo
+											this.state.logo
+												? this.state.logo
 												: "static/team_logos/default.png"
 										}`}
 									/>

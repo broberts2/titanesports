@@ -1,5 +1,6 @@
 const config = require("../config");
 const fetch = require("node-fetch");
+const fs = require("fs");
 
 module.exports = {
 	getGamesPlayedLastSeason: async (req) => {
@@ -36,5 +37,9 @@ module.exports = {
 			seasonEnd: seasonEnd,
 			gamesPlayed: res.length,
 		};
+	},
+	callback: async (req) => {
+		console.log(req.body);
+		return "Success!";
 	},
 };
