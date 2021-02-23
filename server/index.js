@@ -29,7 +29,7 @@ riot.use(cors());
 //   });
 // }
 
-routes(app);
+routes(app, riot);
 
 let server = null;
 let riotCb = (server = require("http").createServer(app));
