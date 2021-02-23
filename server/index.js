@@ -32,7 +32,7 @@ riot.use(cors());
 routes(app, riot);
 
 let server = null;
-let riotCb = (server = require("http").createServer(app));
+let riotCb = (server = require("http").createServer(riot));
 if (config.production) {
 	const key = fs.readFileSync(
 		"/etc/letsencrypt/live/titan-esports.org/privkey.pem",
