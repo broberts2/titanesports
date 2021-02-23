@@ -2,6 +2,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const express = require("express");
 const app = express();
+const riot = express();
 const cors = require("cors");
 const routes = require("./routes");
 const socket = require("./socket-io/socket-io");
@@ -11,6 +12,7 @@ const config = require("./config");
 db_connector();
 
 app.use(bodyParser.json());
+riot.use(bodyParser.json());
 
 app.use("/static", express.static(path.join(__dirname, "../media")));
 app.use(
@@ -19,6 +21,7 @@ app.use(
 );
 
 app.use(cors());
+riot.use(cors());
 
 // if (config.production) {
 //   app.get("/", (req, res) => {
@@ -29,6 +32,7 @@ app.use(cors());
 routes(app);
 
 let server = null;
+let riotCb = (server = require("http").createServer(app));
 if (config.production) {
 	const key = fs.readFileSync(
 		"/etc/letsencrypt/live/titan-esports.org/privkey.pem",
@@ -43,6 +47,7 @@ if (config.production) {
 	server = require("http").createServer(app);
 }
 
+riotCb.listen(7001);
 server.listen(config.port, () =>
 	console.log(
 		`--------------------------------------------------------------` +

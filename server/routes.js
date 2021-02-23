@@ -1,3 +1,4 @@
+const RIOT = require("./controllers/RIOT");
 const ROUTES = {
 	TitanDraft: require("./routes/TitanDraft"),
 	Account: require("./routes/Account"),
@@ -12,8 +13,12 @@ const ROUTES = {
 	RIOT: require("./routes/RIOT"),
 };
 
-module.exports = (app) => {
+module.exports = (app, riot) => {
 	for (let key in ROUTES) {
 		ROUTES[key](app, key);
 	}
+	riot.post(`/RIOT/callback`, async (req, res) => {
+		const result = await RIOT.callback(req);
+		res.json(result);
+	});
 };
