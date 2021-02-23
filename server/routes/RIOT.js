@@ -5,4 +5,8 @@ module.exports = (app, pretext) => {
 		const result = await RIOT.getGamesPlayedLastSeason(req);
 		res.json(result);
 	});
+	app.post(`/${pretext}/callback`, async (req, res) => {
+		const result = await RIOT.callback(req);
+		res.json(result);
+	});
 };
