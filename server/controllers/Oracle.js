@@ -4,6 +4,7 @@ const fetch = require("node-fetch");
 const Oracle = new Discord.Client();
 const Permissions = require("../controllers/Permissions");
 const Account = require("../models/Account");
+const Team = require("../models/Team");
 const OracleUtils = require("../oracle_utils/index")(Oracle);
 
 Oracle.login(config.oracle.token);
@@ -90,6 +91,13 @@ module.exports = {
 		return userList;
 	},
 	createTournamentCodes: async (req) => {
+		const t1 = await Team.findOne({ name: req.body.team1 }).then(
+			(res) => res._id
+		);
+		const t2 = await Team.findOne({ name: req.body.team2 }).then(
+			(res) => res._id
+		);
+		console.log(t1, t2);
 		const promises = [];
 		for (let i = 1; i <= req.body.codeCount; i++) {
 			promises.push(
@@ -103,8 +111,8 @@ module.exports = {
 							},
 							body: JSON.stringify({
 								metadata: JSON.stringify({
-									team1: i % 2 === 0 ? req.body.team2 : req.body.team1,
-									team2: i % 2 === 0 ? req.body.team1 : req.body.team2,
+									team1: i % 2 === 0 ? t2 : t1,
+									team2: i % 2 === 0 ? t1 : t2,
 									weekNum: req.body.weekNum,
 									gameNum: i,
 									seasonNum: req.body.seasonNum,
