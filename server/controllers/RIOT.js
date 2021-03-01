@@ -66,11 +66,11 @@ module.exports = {
 				message: `${team1.name} vs ${team2.name}\n\nGame ${
 					gameData.metadata.gameNum
 				} Results\n\n${
-					gameData.metadata.team1.win ? team1.name : team2.name
-				} - win!`,
+					gameData.teams[0].win ? team1.name : team2.name
+				} - wins!`,
 				status: null,
 				img: `https://titan-esports.org:7000/${
-					gameData.metadata.team1.win ? team1.logo : team2.logo
+					gameData.teams[0].win ? team1.logo : team2.logo
 				}`,
 			});
 		}
