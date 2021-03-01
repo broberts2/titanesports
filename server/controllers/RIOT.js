@@ -58,7 +58,6 @@ module.exports = {
 			query: { tournamentCode: req.body.shortCode },
 		});
 		const metaData = JSON.parse(req.body.metaData.replace(/'/g, '"'));
-		console.log(metaData);
 		const team1 = await Team.findOne({
 			_id: metaData.team1,
 		});
@@ -69,7 +68,7 @@ module.exports = {
 			OracleUtils.SendMessage({
 				channel: "801661248361725994",
 				message: `${team1.name} vs ${team2.name}\n\nGame ${
-					gameData.metadata.gameNum
+					metaData.gameNum
 				} Results\n\n${
 					gameData.teams[0].win ? team1.name : team2.name
 				} - wins!`,
