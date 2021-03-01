@@ -59,6 +59,7 @@ module.exports = {
 			query: { tournamentCode: req.body.shortCode },
 		});
 		const metaData = JSON.parse(gameData.metaData);
+		console.log(gameData.metaData);
 		console.log(metaData);
 		const team1 = await Team.findOne({
 			_id: metaData.team1,
