@@ -64,6 +64,8 @@ module.exports = {
 		const team2 = await Team.findOne({
 			_id: metaData.team2,
 		});
+		console.log(team1);
+		console.log(team2);
 		if (team1 && team2) {
 			OracleUtils.SendMessage({
 				channel: "801661248361725994",
