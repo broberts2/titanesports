@@ -103,10 +103,10 @@ module.exports = {
 							},
 							body: JSON.stringify({
 								metadata: JSON.stringify({
-									team1: req.body.team1,
-									team2: req.body.team2,
+									team1: i % 2 === 0 ? req.body.team2 : req.body.team1,
+									team2: i % 2 === 0 ? req.body.team1 : req.body.team2,
 									weekNum: req.body.weekNum,
-									gameNum: 1,
+									gameNum: i,
 									seasonNum: req.body.seasonNum,
 									league: req.body.league,
 								}),
