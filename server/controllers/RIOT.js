@@ -1,6 +1,8 @@
 const config = require("../config");
 const fetch = require("node-fetch");
+const Team = require("../models/Team");
 const fs = require("fs");
+const OracleUtils = require("./Oracle").OracleUtils;
 
 module.exports = {
 	getGamesPlayedLastSeason: async (req) => {
@@ -38,24 +40,40 @@ module.exports = {
 			gamesPlayed: res.length,
 		};
 	},
-	createCodes: async (req) => {
-		const code = await fetch(
-			`https://americas.api.riotgames.com/lol/tournament/v4/codes?tournamentId=${config.tournamentId}&api_key=${config.riotTournamentKey}`,
-			{
-				headers: { ["Content-Type"]: "application/json" },
-				body: JSON.stringify({
-					metadata: req.body.metadata,
-					mapType: "SUMMONERS_RIFT",
-					pickType: "TOURNAMENT_DRAFT",
-					spectatorType: "ALL",
-					teamSize: 5,
-				}),
-			}
+	fetchGameData: async (req) => {
+		const matchId = await fetch(
+			`https://na1.api.riotgames.com/lol/match/v4/matches/by-tournament-code/${req.query.tournamentCode}/ids?api_key=${config.riotTournamentKey}`
 		).then((res) => res.json());
-		return code;
+		if (matchId[0]) {
+			const data = await fetch(
+				`https://na1.api.riotgames.com/lol/match/v4/matches/${matchId}?api_key=${config.riotGeneralApiKey}`
+			).then((res) => res.json());
+			return data;
+		} else {
+			return matchId;
+		}
 	},
 	callback: async (req) => {
 		console.log(req.body);
+		const gameData = await module.exports.fetchGameData({
+			query: { tournamentCode: req.body.shortCode },
+		});
+		const team1 = await Team.findOne({ _id: gameData.metadata.team1 });
+		const team2 = await Team.findOne({ _id: gameData.metadata.team2 });
+		if (team1 && team2) {
+			OracleUtils.SendMessage({
+				channel: "801661248361725994",
+				message: `${team1.name} vs ${team2.name}\n\nGame ${
+					gameData.metadata.gameNum
+				} Results\n\n${
+					gameData.metadata.team1.win ? team1.name : team2.name
+				} - win!`,
+				status: null,
+				img: `https://titan-esports.org:7000/${
+					gameData.metadata.team1.win ? team1.logo : team2.logo
+				}`,
+			});
+		}
 		return "Success!";
 	},
 };

@@ -9,7 +9,10 @@ export default class _ extends React.Component {
 		return (
 			<Modal
 				theme={this.props.STATE.draftData.THEME}
-				visible={this.props.STATE.modalVisible}
+				visible={
+					this.props.STATE.modalVisible &&
+					this.props.STATE.draftData.EVENTS_LOG.length < 20
+				}
 				setVisible={(modalVisible) =>
 					this.props.STATE.setModalStatus(modalVisible)
 				}

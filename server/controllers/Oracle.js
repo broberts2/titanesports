@@ -17,6 +17,7 @@ Oracle.on("guildMemberAdd", (member) => {
 });
 
 module.exports = {
+	OracleUtils,
 	OATH2: async (req) => {
 		const res = await fetch("https://discord.com/api/oauth2/token", {
 			method: "POST",
@@ -97,7 +98,6 @@ module.exports = {
 		const t2 = await Team.findOne({ name: req.body.team2 }).then(
 			(res) => res._id
 		);
-		console.log(t1, t2);
 		const promises = [];
 		for (let i = 1; i <= req.body.codeCount; i++) {
 			promises.push(
