@@ -18,6 +18,10 @@ module.exports = (app, pretext) => {
 		const result = await Guard(req, "oracleGetAllUsers", Oracle.getAllUsers);
 		res.json(result);
 	});
+	app.get(`/${pretext}/getAllRoles`, async (req, res) => {
+		const result = await Guard(req, "oracleGetAllRoles", Oracle.getAllRoles);
+		res.json(result);
+	});
 	app.get(`/${pretext}/getAllChannels`, async (req, res) => {
 		const result = await Oracle.getAllChannels(req);
 		res.json(result);
@@ -28,6 +32,14 @@ module.exports = (app, pretext) => {
 	});
 	app.post(`/${pretext}/create_flash_poll`, async (req, res) => {
 		const result = await Guard(req, "oracleFlashPoll", Oracle.createFlashPoll);
+		res.json(result);
+	});
+	app.post(`/${pretext}/create_tournament_codes`, async (req, res) => {
+		const result = await Guard(
+			req,
+			"oracleCreateCodes",
+			Oracle.createTournamentCodes
+		);
 		res.json(result);
 	});
 };

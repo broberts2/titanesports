@@ -16,6 +16,11 @@ export default {
 		font-style: italic;
 		font-size: 3vw;
 	`,
+	Title2: styled.div`
+		text-align: left;
+		font-style: italic;
+		font-size: 1.8vw;
+	`,
 	Description: styled.div`
 		text-align: left;
 		font-size: 2vw;
@@ -41,6 +46,7 @@ export default {
 				: "height: 200px;"}
 		overflow: auto;
 	`,
+	Dropdown: styled.div``,
 	ScrollItemsItem: styled.div`
 		&:hover {
 			background-color: red;

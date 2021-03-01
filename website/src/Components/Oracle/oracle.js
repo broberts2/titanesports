@@ -60,10 +60,22 @@ export default class _ extends React.Component {
 		const oracleGetAllUsers = await this.props.STATE.GLOBAL_METHODS.checkAccess(
 			"oracleGetAllUsers"
 		);
+		const oracleGetAllRoles = await this.props.STATE.GLOBAL_METHODS.checkAccess(
+			"oracleGetAllRoles"
+		);
+		const oracleCreateCodes = await this.props.STATE.GLOBAL_METHODS.checkAccess(
+			"oracleCreateCodes"
+		);
 		this.setState({
-			canAccess: oracleFlashPoll || oracleGetAllUsers,
+			canAccess:
+				oracleFlashPoll ||
+				oracleGetAllUsers ||
+				oracleGetAllRoles ||
+				oracleCreateCodes,
 			oracleFlashPoll,
 			oracleGetAllUsers,
+			oracleGetAllRoles,
+			oracleCreateCodes,
 		});
 	}
 
@@ -84,46 +96,60 @@ export default class _ extends React.Component {
 								Oracle
 							</Text>
 						</Style.PageTitle>
-						<Style.Banner>
-							<Style.BannerImg
-								boxColor={
-									Theme[Theme[this.props.STATE.THEME].complement]
-										.backgroundColor
-								}
-							>
-								<Img
-									trans={{
-										animation: this.props.STATE.pageFading
-											? "zoomOut"
-											: "zoomIn",
-									}}
-									src={
-										this.props.STATE.ENDPOINT + "/" + "static/assets/oracle.gif"
-									}
-								/>
-							</Style.BannerImg>
-						</Style.Banner>
-						<Style.Divider>
-							<DiamondDivider
-								filter={
-									Theme[Theme[this.props.STATE.THEME].complement]
-										.backgroundFilter
-								}
-							/>
-						</Style.Divider>
+						{false ? (
+							<React.Fragment>
+								<Style.Banner>
+									<Style.BannerImg
+										boxColor={
+											Theme[Theme[this.props.STATE.THEME].complement]
+												.backgroundColor
+										}
+									>
+										<Img
+											trans={{
+												animation: this.props.STATE.pageFading
+													? "zoomOut"
+													: "zoomIn",
+											}}
+											src={
+												this.props.STATE.ENDPOINT +
+												"/" +
+												"static/assets/oracle.gif"
+											}
+										/>
+									</Style.BannerImg>
+								</Style.Banner>
+								<Style.Divider>
+									<DiamondDivider
+										filter={
+											Theme[Theme[this.props.STATE.THEME].complement]
+												.backgroundFilter
+										}
+									/>
+								</Style.Divider>
+							</React.Fragment>
+						) : null}
 						{this.itemTable(
 							[
 								{
 									access: this.state.oracleFlashPoll,
 									fnt: "Flash Poll",
-									img:
-										"https://www.transparentpng.com/thumb/magic/magic-hd-photo-png-12.png",
+									img: `${this.props.STATE.ENDPOINT}/static/assets/flash_poll.png`,
 								},
 								{
 									access: this.state.oracleGetAllUsers,
 									fnt: "Get All Users",
-									img:
-										"https://www.transparentpng.com/thumb/magic/magic-hd-photo-png-12.png",
+									img: `${this.props.STATE.ENDPOINT}/static/assets/users.png`,
+								},
+								{
+									access: this.state.oracleGetAllRoles,
+									fnt: "Get All Roles",
+									img: `${this.props.STATE.ENDPOINT}/static/assets/roles.png`,
+								},
+								{
+									access: this.state.oracleCreateCodes,
+									fnt: "Create Tournament Codes",
+									img: `${this.props.STATE.ENDPOINT}/static/assets/codes.png`,
 								},
 							].filter((el) => (el.access ? el : null))
 						)}

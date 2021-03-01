@@ -1,6 +1,13 @@
 import React from "react";
 import Style from "./style";
-import { Button, Theme, TextField, Img, TextArea } from "arclight-react";
+import {
+	Button,
+	Theme,
+	TextField,
+	Img,
+	TextArea,
+	Dropdown,
+} from "arclight-react";
 
 class ScrollItems extends React.Component {
 	state = {};
@@ -57,6 +64,28 @@ class Intro extends React.Component {
 			<Style.Component>
 				<Style.Title>{this.props.title}</Style.Title>
 				<Style.Description>{this.props.description}</Style.Description>
+			</Style.Component>
+		);
+	}
+}
+
+class _Dropdown extends React.Component {
+	render() {
+		return (
+			<Style.Component>
+				<Style.Title2>{this.props.title}</Style.Title2>
+				<Style.Dropdown>
+					<Dropdown
+						defaultValue={this.props.items[0]}
+						label={"Teams"}
+						theme={Theme[this.props.STATE.THEME].complement}
+						onChange={(e) => this.props.onChange(e.target.value)}
+						items={this.props.items.map((el) => ({
+							component: <div>{el}</div>,
+							value: el,
+						}))}
+					/>
+				</Style.Dropdown>
 			</Style.Component>
 		);
 	}
@@ -217,6 +246,21 @@ class ProvideAnAnswer extends React.Component {
 	}
 }
 
+class ReadOnlyText extends React.Component {
+	render() {
+		return (
+			<Style.Component>
+				<TextArea
+					readonly
+					value={this.props.value}
+					height={"300px"}
+					theme={this.props.STATE.THEME}
+				/>
+			</Style.Component>
+		);
+	}
+}
+
 export default {
 	ScrollItems,
 	Intro,
@@ -226,4 +270,6 @@ export default {
 	ProvideAnAnswer,
 	TimeInput,
 	ScrollList,
+	Dropdown: _Dropdown,
+	ReadOnlyText,
 };

@@ -89,11 +89,63 @@ module.exports = {
 			.then((guild) => guild.members.fetch());
 		return userList;
 	},
+	createTournamentCodes: async (req) => {
+		const promises = [];
+		for (let i = 1; i <= req.body.codeCount; i++) {
+			promises.push(
+				new Promise(async (resolve, reject) => {
+					await fetch(
+						`https://americas.api.riotgames.com/lol/tournament/v4/codes?tournamentId=${config.tournamentId}&api_key=${config.riotTournamentKey}`,
+						{
+							method: "post",
+							headers: {
+								"Content-Type": "application/json",
+							},
+							body: JSON.stringify({
+								metadata: JSON.stringify({
+									team1: req.body.team1,
+									team2: req.body.team2,
+									weekNum: req.body.weekNum,
+									gameNum: 1,
+									seasonNum: req.body.seasonNum,
+									league: req.body.league,
+								}),
+								mapType: req.body.mapType,
+								pickType: req.body.pickType,
+								spectatorType: req.body.spectatorType,
+								teamSize: req.body.teamSize,
+							}),
+						}
+					)
+						.then((res) => res.json())
+						.then((res) => resolve(res));
+				})
+			);
+		}
+		const res = await Promise.all(promises);
+		if (res.status && res.status.status_code > 299) {
+			return { msg: `${res.status.status_code} - ${res.status.message}` };
+		}
+		return {
+			msg: "Success!",
+			data: {
+				team1: req.body.team1,
+				team2: req.body.team2,
+				codes: res,
+			},
+		};
+	},
 	getAllChannels: async (req) => {
 		const channelList = await Oracle.guilds
 			.fetch(config.guildId)
 			.then((guild) => guild.channels.cache);
 		return channelList;
+	},
+	getAllRoles: async (req) => {
+		const roles = await Oracle.guilds
+			.fetch(config.guildId)
+			.then((guild) => guild.roles.cache);
+		return roles;
 	},
 	identify: async (req) => {
 		const res = await fetch("https://discord.com/api/users/@me", {
@@ -206,10 +258,10 @@ module.exports = {
 				},
 			}).then((res) => res.json());
 			const permissionSet = await Permissions.get();
-			const memebers = await Oracle.guilds
+			const members = await Oracle.guilds
 				.fetch(config.guildId)
 				.then((res) => res.members);
-			const roles = await memebers.fetch(user.id).then((res) => res._roles);
+			const roles = await members.fetch(user.id).then((res) => res._roles);
 			return permissionSet[req.query.action].some((a) => roles.includes(a));
 		}
 		return false;

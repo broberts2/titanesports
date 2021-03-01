@@ -30,6 +30,7 @@ export default {
 		}
 	`,
 	Panels: styled.div`
+		margin-top: 100px;
 		padding: 20px;
 		font-size: 2vw;
 		& table {

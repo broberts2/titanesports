@@ -144,6 +144,16 @@ class Oracle extends React.Component {
 				return (
 					<Components.OracleMethods.GetAllUsers STATE={this.props.STATE} />
 				);
+			case "Get All Roles":
+				return (
+					<Components.OracleMethods.GetAllRoles STATE={this.props.STATE} />
+				);
+			case "Create Tournament Codes":
+				return (
+					<Components.OracleMethods.CreateTournamentCodes
+						STATE={this.props.STATE}
+					/>
+				);
 		}
 	}
 }

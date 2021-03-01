@@ -38,6 +38,22 @@ module.exports = {
 			gamesPlayed: res.length,
 		};
 	},
+	createCodes: async (req) => {
+		const code = await fetch(
+			`https://americas.api.riotgames.com/lol/tournament/v4/codes?tournamentId=${config.tournamentId}&api_key=${config.riotTournamentKey}`,
+			{
+				headers: { ["Content-Type"]: "application/json" },
+				body: JSON.stringify({
+					metadata: req.body.metadata,
+					mapType: "SUMMONERS_RIFT",
+					pickType: "TOURNAMENT_DRAFT",
+					spectatorType: "ALL",
+					teamSize: 5,
+				}),
+			}
+		).then((res) => res.json());
+		return code;
+	},
 	callback: async (req) => {
 		console.log(req.body);
 		return "Success!";

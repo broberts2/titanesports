@@ -57,6 +57,16 @@ const Permissions = new Schema({
 		unique: false,
 		required: true,
 	},
+	oracleGetAllRoles: {
+		type: Array,
+		unique: false,
+		required: true,
+	},
+	oracleCreateCodes: {
+		type: Array,
+		unique: false,
+		required: true,
+	},
 });
 
 module.exports = mongoose.model("Permissions", Permissions);
