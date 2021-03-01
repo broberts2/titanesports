@@ -58,8 +58,12 @@ module.exports = {
 		const gameData = await module.exports.fetchGameData({
 			query: { tournamentCode: req.body.shortCode },
 		});
-		const team1 = await Team.findOne({ _id: gameData.metadata.team1 });
-		const team2 = await Team.findOne({ _id: gameData.metadata.team2 });
+		const team1 = await Team.findOne({
+			_id: JSON.parse(gameData.metaData).team1,
+		});
+		const team2 = await Team.findOne({
+			_id: JSON.parse(gameData.metaData).team2,
+		});
 		if (team1 && team2) {
 			OracleUtils.SendMessage({
 				channel: "801661248361725994",
