@@ -54,13 +54,11 @@ module.exports = {
 		}
 	},
 	callback: async (req) => {
-		console.log(req.body);
 		const gameData = await module.exports.fetchGameData({
 			query: { tournamentCode: req.body.shortCode },
 		});
-		console.log(req.body.shortCode);
-		console.log(gameData);
-		const metaData = JSON.parse(gameData.metaData.replace(/'/g, '"'));
+		const metaData = JSON.parse(req.body.metaData.replace(/'/g, '"'));
+		console.log(metaData);
 		const team1 = await Team.findOne({
 			_id: metaData.team1,
 		});
