@@ -58,11 +58,13 @@ module.exports = {
 		const gameData = await module.exports.fetchGameData({
 			query: { tournamentCode: req.body.shortCode },
 		});
+		const metaData = JSON.parse(gameData.metaData);
+		console.log(metaData);
 		const team1 = await Team.findOne({
-			_id: JSON.parse(gameData.metaData).team1,
+			_id: metaData.team1,
 		});
 		const team2 = await Team.findOne({
-			_id: JSON.parse(gameData.metaData).team2,
+			_id: metaData.team2,
 		});
 		if (team1 && team2) {
 			OracleUtils.SendMessage({
