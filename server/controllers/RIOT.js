@@ -66,7 +66,7 @@ module.exports = {
 		});
 		if (team1 && team2) {
 			const img = `https://titan-esports.org:7000/${
-				gameData.teams[0].win ? team1.logo : team2.logo
+				gameData.teams[0].win === "Win" ? team1.logo : team2.logo
 			}`;
 			console.log(img);
 			OracleUtils.SendMessage({
@@ -74,7 +74,7 @@ module.exports = {
 				message: `${team1.name} vs ${team2.name}\n\nGame ${
 					metaData.gameNum
 				} Results\n\n${
-					gameData.teams[0].win ? team1.name : team2.name
+					gameData.teams[0].win === "Win" ? team1.name : team2.name
 				} - wins!`,
 				status: null,
 				img,
