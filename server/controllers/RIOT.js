@@ -64,9 +64,11 @@ module.exports = {
 		const team2 = await Team.findOne({
 			_id: metaData.team2,
 		});
-		console.log(team1);
-		console.log(team2);
 		if (team1 && team2) {
+			const img = `https://titan-esports.org:7000/${
+				gameData.teams[0].win ? team1.logo : team2.logo
+			}`;
+			console.log(img);
 			OracleUtils.SendMessage({
 				channel: "801661248361725994",
 				message: `${team1.name} vs ${team2.name}\n\nGame ${
@@ -75,9 +77,7 @@ module.exports = {
 					gameData.teams[0].win ? team1.name : team2.name
 				} - wins!`,
 				status: null,
-				img: `https://titan-esports.org:7000/${
-					gameData.teams[0].win ? team1.logo : team2.logo
-				}`,
+				img,
 			});
 		}
 		return "Success!";
