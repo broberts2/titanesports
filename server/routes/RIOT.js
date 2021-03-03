@@ -6,8 +6,8 @@ module.exports = (app, pretext) => {
 		const result = await RIOT.getGamesPlayedLastSeason(req);
 		res.json(result);
 	});
-	app.get(`/${pretext}/fetchGameData`, async (req, res) => {
-		const result = await RIOT.fetchGameData(req);
+	app.get(`/${pretext}/fetchTournamentGameData`, async (req, res) => {
+		const result = await RIOT.fetchTournamentGameData(req);
 		res.json(result);
 	});
 	app.post(`/${pretext}/createCodes`, async (req, res) => {

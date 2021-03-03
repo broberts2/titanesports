@@ -11,6 +11,8 @@ const ROUTES = {
 	Badge: require("./routes/Badge"),
 	Team: require("./routes/Team"),
 	RIOT: require("./routes/RIOT"),
+	GameData: require("./routes/GameData"),
+	DataDragon: require("./routes/DataDragon"),
 };
 
 module.exports = (app, riot) => {

@@ -1,6 +1,7 @@
 const config = require("../config");
 const fetch = require("node-fetch");
 const Team = require("../models/Team");
+const GameData = require("../models/GameData");
 const fs = require("fs");
 const OracleUtils = require("./Oracle").OracleUtils;
 
@@ -40,36 +41,82 @@ module.exports = {
 			gamesPlayed: res.length,
 		};
 	},
-	fetchGameData: async (req) => {
+	fetchTournamentGameData: async (req) => {
+		const metaData = await fetch(
+			`https://americas.api.riotgames.com/lol/tournament/v4/codes/${req.query.tournamentCode}?api_key=${config.riotTournamentKey}`
+		)
+			.then((res) => res.json())
+			.then((res) => {
+				res.metaData = JSON.parse(res.metaData.replace(/'/g, '"'));
+				return res;
+			});
 		const matchId = await fetch(
 			`https://na1.api.riotgames.com/lol/match/v4/matches/by-tournament-code/${req.query.tournamentCode}/ids?api_key=${config.riotTournamentKey}`
+		)
+			.then((res) => res.json())
+			.then((res) => res[0]);
+		const gameData = await fetch(
+			`https://na1.api.riotgames.com/lol/match/v4/matches/${matchId}/by-tournament-code/${req.query.tournamentCode}?api_key=${config.riotTournamentKey}`
 		).then((res) => res.json());
-		if (matchId[0]) {
-			const data = await fetch(
-				`https://na1.api.riotgames.com/lol/match/v4/matches/${matchId}?api_key=${config.riotGeneralApiKey}`
-			).then((res) => res.json());
-			return data;
-		} else {
-			return matchId;
+		gameData.metaData = metaData;
+		gameData.tournamentCode = metaData.code;
+		const participantIdentities = gameData.participantIdentities;
+		const participants = gameData.participants;
+		delete gameData.participantIdentities;
+		delete gameData.participants;
+		gameData.teams = {
+			blue: gameData.teams[0],
+			red: gameData.teams[1],
+		};
+		gameData.teams.blue.discordId = metaData.metaData.team1;
+		gameData.teams.red.discordId = metaData.metaData.team2;
+		gameData.teams.blue.players = {};
+		gameData.teams.red.players = {};
+		const pos = (n) => {
+			n = n % 5;
+			switch (n) {
+				case 0:
+					return "top";
+				case 1:
+					return "jungle";
+				case 2:
+					return "middle";
+				case 3:
+					return "bottom";
+				case 4:
+					return "support";
+			}
+		};
+		for (let i = 0; i < participants.length; i++) {
+			const _ = pos(i);
+			const __ = i < 5 ? "blue" : "red";
+			gameData.teams[__].players[_] =
+				participants[participantIdentities[i].participantId - 1];
+			if (gameData.teams[__].players[_]) {
+				delete participantIdentities[i].player.summonerName;
+				gameData.teams[__].players[_].identity = participantIdentities[i];
+			}
+		}
+		try {
+			return await GameData.create(gameData);
+		} catch (e) {
+			return e;
 		}
 	},
 	callback: async (req) => {
-		const gameData = await module.exports.fetchGameData({
+		const gameData = await module.exports.fetchTournamentGameData({
 			query: { tournamentCode: req.body.shortCode },
 		});
-		console.log(req.body);
-		const metaData = JSON.parse(req.body.metaData.replace(/'/g, '"'));
-		const team1 = await Team.findOne({
-			_id: metaData.team1,
+		const team1 = await Team.find({
+			discordId: gameData.metaData.metaData.team1,
 		});
-		const team2 = await Team.findOne({
-			_id: metaData.team2,
+		const team2 = await Team.find({
+			discordId: gameData.metaData.metaData.team2,
 		});
 		if (team1 && team2) {
 			const img = `https://titan-esports.org:7000/${
 				gameData.teams[0].win === "Win" ? team1.logo : team2.logo
 			}`;
-			console.log(img);
 			OracleUtils.SendMessage({
 				channel: "801661248361725994",
 				message: `${team1.name} vs ${team2.name}\n\nGame ${

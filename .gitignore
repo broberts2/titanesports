@@ -17,6 +17,8 @@
 **/client_secret.json
 
 # misc
+/oracle_depricated
+/server_depricated
 /server_old
 .DS_Store
 .env.local
