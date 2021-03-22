@@ -9,7 +9,6 @@ import Badge from "./Badge/badge";
 import ArticlePreview from "./ArticlePreview/article_preview";
 import Articles from "./Articles/articles";
 import ArticleViewer from "./ArticleViewer/article_viewer";
-import Statistics from "./Statistics/statistics";
 import TitanDraft from "./TitanDraft/titan_draft";
 import NoPoro from "./NoPoro/no_poro";
 import Oracle from "./Oracle/oracle";
@@ -32,7 +31,6 @@ export default {
 	ArticlePreview,
 	Articles,
 	ArticleViewer,
-	Statistics,
 	TitanDraft,
 	NoPoro,
 	Oracle,

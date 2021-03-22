@@ -117,16 +117,16 @@ module.exports = {
 			const img = `https://titan-esports.org:7000/${
 				gameData.teams[0].win === "Win" ? team1.logo : team2.logo
 			}`;
-			OracleUtils.SendMessage({
-				channel: "801661248361725994",
-				message: `${team1.name} vs ${team2.name}\n\nGame ${
-					metaData.gameNum
-				} Results\n\n${
-					gameData.teams[0].win === "Win" ? team1.name : team2.name
-				} - wins!`,
-				status: null,
-				img,
-			});
+			// OracleUtils.SendMessage({
+			// 	channel: "801661248361725994",
+			// 	message: `${team1.name} vs ${team2.name}\n\nGame ${
+			// 		metaData.gameNum
+			// 	} Results\n\n${
+			// 		gameData.teams[0].win === "Win" ? team1.name : team2.name
+			// 	} - wins!`,
+			// 	status: null,
+			// 	img,
+			// });
 		}
 		return "Success!";
 	},
