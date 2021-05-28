@@ -1,23 +1,31 @@
 const RIOT = require("./controllers/RIOT");
 const ROUTES = {
-	TitanDraft: require("./routes/TitanDraft"),
-	Account: require("./routes/Account"),
-	TitanDraftConfiguration: require("./routes/TitanDraftConfiguration"),
-	WebsiteConfiguration: require("./routes/WebsiteConfiguration"),
-	ChampionData: require("./routes/ChampionData"),
-	Article: require("./routes/Article"),
-	Permissions: require("./routes/Permissions"),
-	Oracle: require("./routes/Oracle"),
-	Badge: require("./routes/Badge"),
-	Team: require("./routes/Team"),
-	RIOT: require("./routes/RIOT"),
-	GameData: require("./routes/GameData"),
-	DataDragon: require("./routes/DataDragon"),
+	discord: {},
+	leagueoflegends: {
+		TitanDraft: require("./routes/leagueoflegends/TitanDraft"),
+		Account: require("./routes/leagueoflegends/Account"),
+		TitanDraftConfiguration: require("./routes/leagueoflegends/TitanDraftConfiguration"),
+		WebsiteConfiguration: require("./routes/leagueoflegends/WebsiteConfiguration"),
+		ChampionData: require("./routes/leagueoflegends/ChampionData"),
+		Article: require("./routes/leagueoflegends/Article"),
+		Permissions: require("./routes/leagueoflegends/Permissions"),
+		Oracle: require("./routes/leagueoflegends/Oracle"),
+		Badge: require("./routes/leagueoflegends/Badge"),
+		Team: require("./routes/leagueoflegends/Team"),
+		RIOT: require("./routes/leagueoflegends/RIOT"),
+		GameData: require("./routes/leagueoflegends/GameData"),
+		DataDragon: require("./routes/leagueoflegends/DataDragon"),
+	},
+	valorant: {},
+	worldofwarcraft: {},
+	valheim: {},
 };
 
 module.exports = (app, riot) => {
 	for (let key in ROUTES) {
-		ROUTES[key](app, key);
+		for (let subkey in ROUTES[key]) {
+			ROUTES[key][subkey](app, key, subkey);
+		}
 	}
 	riot.post(`/RIOT/callback`, async (req, res) => {
 		const result = await RIOT.callback(req);

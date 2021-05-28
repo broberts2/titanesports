@@ -24,7 +24,6 @@ export default class _ extends React.Component {
 						)
 				)
 		);
-		console.log(users);
 	}
 
 	async componentDidMount() {
@@ -114,7 +113,9 @@ export default class _ extends React.Component {
 							/>
 						</Style.Banner>
 						<Style.Blurb>
-							<Text theme={this.props.STATE.THEME}>Lorum Ipsum</Text>
+							<Text theme={this.props.STATE.THEME}>
+								List of all TES community members.
+							</Text>
 						</Style.Blurb>
 						<Style.List>
 							<Style.ListSearch>

@@ -27,5 +27,8 @@ export default {
 	Table: styled.div`
 		margin-bottom: 20px;
 	`,
+	Dropdown: styled.div`
+		width: 90%;
+	`,
 	__temp__: styled.div``,
 };

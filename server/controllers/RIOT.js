@@ -47,7 +47,9 @@ module.exports = {
 		)
 			.then((res) => res.json())
 			.then((res) => {
-				res.metaData = JSON.parse(res.metaData.replace(/'/g, '"'));
+				res.metaData = res.metaData
+					? JSON.parse(res.metaData.replace(/'/g, '"'))
+					: null;
 				return res;
 			});
 		const matchId = await fetch(
@@ -93,7 +95,6 @@ module.exports = {
 			gameData.teams[__].players[_] =
 				participants[participantIdentities[i].participantId - 1];
 			if (gameData.teams[__].players[_]) {
-				delete participantIdentities[i].player.summonerName;
 				gameData.teams[__].players[_].identity = participantIdentities[i];
 			}
 		}

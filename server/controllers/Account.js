@@ -23,7 +23,6 @@ module.exports = {
 	put: async (req) =>
 		await Account.updateOne({ discordId: req.body.id }, req.body),
 	verify: async (req) => {
-		console.log(req);
 		await Account.updateOne(
 			{ discordId: req.body.id },
 			{ summonerId: req.body.summonerId }

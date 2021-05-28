@@ -1,5 +1,7 @@
-import Game from "./game";
 import Stats from "./stats";
-import Team from "./team";
+import Players from "./players";
+import Series from "./series";
+import Week from "./week";
+import Teams from "./teams";
 
-export default { Game, Stats, Team };
+export default { Stats, Players, Series, Week, Teams };

@@ -15,7 +15,7 @@ export default class _ extends React.Component {
 					this.props.STATE.GLOBAL_METHODS.showModal("Oracle");
 				}}
 				width={"100%"}
-				height={"25vw"}
+				height={"20vw"}
 				theme={Theme[this.props.STATE.THEME].complement}
 			>
 				<Text theme={Theme[this.props.STATE.THEME].complement}>{fnt}</Text>
@@ -24,7 +24,7 @@ export default class _ extends React.Component {
 	}
 
 	itemTable(items) {
-		const n = 3;
+		const n = 4;
 		let row = [];
 		let rows = [];
 		for (let i = 0; i < items.length; i++) {
@@ -134,22 +134,22 @@ export default class _ extends React.Component {
 								{
 									access: this.state.oracleFlashPoll,
 									fnt: "Flash Poll",
-									img: `${this.props.STATE.ENDPOINT}/static/assets/flash_poll.png`,
+									img: `${this.props.STATE.ENDPOINT}/static/assets/oracle.png`,
 								},
 								{
 									access: this.state.oracleGetAllUsers,
 									fnt: "Get All Users",
-									img: `${this.props.STATE.ENDPOINT}/static/assets/users.png`,
+									img: `${this.props.STATE.ENDPOINT}/static/assets/oracle.png`,
 								},
 								{
 									access: this.state.oracleGetAllRoles,
 									fnt: "Get All Roles",
-									img: `${this.props.STATE.ENDPOINT}/static/assets/roles.png`,
+									img: `${this.props.STATE.ENDPOINT}/static/assets/oracle.png`,
 								},
 								{
 									access: this.state.oracleCreateCodes,
 									fnt: "Create Tournament Codes",
-									img: `${this.props.STATE.ENDPOINT}/static/assets/codes.png`,
+									img: `${this.props.STATE.ENDPOINT}/static/assets/oracle.png`,
 								},
 							].filter((el) => (el.access ? el : null))
 						)}

@@ -33,6 +33,7 @@ module.exports = {
 				"Content-Type": "application/x-www-form-urlencoded",
 			},
 		}).then((res) => res.json());
+		console.log(res);
 		return `${config.client}?auth_token=${res.access_token}&refresh_token=${res.refresh_token}`;
 	},
 	getUser: async (req) => {

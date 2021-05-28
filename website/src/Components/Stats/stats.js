@@ -1,6 +1,6 @@
 import React from "react";
 import Style from "./style";
-import { Text, Img, Table, Theme } from "arclight-react";
+import { Text, Img } from "arclight-react";
 import Tables from "./tables/index";
 
 export default class _ extends React.Component {
@@ -23,6 +23,7 @@ export default class _ extends React.Component {
 		gameData.teams.blue.name = team1.name;
 		gameData.teams.red.name = team2.name;
 		this.setState({ gameData });
+		console.log(this.state);
 	}
 
 	render() {
@@ -66,7 +67,10 @@ export default class _ extends React.Component {
 								Filters
 							</Text>
 						</Style.PanelTitle>
-						<Tables.Game STATE={this.props.STATE} DATA={this.state.gameData} />
+						<Tables.Players
+							STATE={this.props.STATE}
+							DATA={this.state.gameData}
+						/>
 					</React.Fragment>
 				) : null}
 			</Style.Base>
