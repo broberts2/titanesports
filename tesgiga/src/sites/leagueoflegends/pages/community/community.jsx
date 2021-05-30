@@ -22,13 +22,17 @@ export default (props) => {
 	});
 	const [pagination, setPagination] = React.useState(false);
 	const posButton = (pos, text) => (
-		<div
+		<Grid
+			item
+			xs={4}
+			sm={2}
 			style={{
 				opacity: !positions[pos] ? 0.3 : 1,
 				transition: "all 0.5s ease",
 			}}
 		>
 			<Components.PrimaryButton
+				fill
 				onClick={() =>
 					setPositions(
 						Object.assign({ ...positions }, { [pos]: !positions[pos] })
@@ -37,19 +41,19 @@ export default (props) => {
 			>
 				{text}
 			</Components.PrimaryButton>
-		</div>
+		</Grid>
 	);
 	React.useEffect(() => {
 		props._();
 		window.addEventListener("scroll", () => {
-			setPagination(window.pageYOffset > 1200 ? true : false);
+			setPagination(window.pageYOffset > 800 ? true : false);
 		});
 		return () => window.removeEventListener("scroll", () => {});
 	});
 	return (
 		<ThemeProvider theme={Components.Themes.Dark}>
 			<div className={classes.root}>
-				<Components.Header cfg={"leagueoflegends"} />
+				<Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
 				<Box
 					className={classes.formSelector}
 					display="flex"
@@ -112,16 +116,19 @@ export default (props) => {
 						<Components.Typography variant="h6">
 							Positions
 						</Components.Typography>
-						<Box display="flex">
+						<Grid container>
 							{posButton("top", "Top")}
 							{posButton("jungle", "Jungle")}
 							{posButton("middle", "Middle")}
 							{posButton("bottom", "Bottom")}
 							{posButton("support", "Support")}
-						</Box>
+						</Grid>
 						<Box display="flex">
 							<div>
-								<Components.Typography variant="h6">
+								<Components.Typography
+									variant="h6"
+									className={classes.typography6}
+								>
 									Free Agents Only
 								</Components.Typography>
 								<Components.Switch
@@ -135,7 +142,10 @@ export default (props) => {
 								/>
 							</div>
 							<div style={{ marginLeft: "50px" }}>
-								<Components.Typography variant="h6">
+								<Components.Typography
+									variant="h6"
+									className={classes.typography6}
+								>
 									Rostered Players Only
 								</Components.Typography>
 								<Components.Switch
@@ -177,7 +187,7 @@ export default (props) => {
 						</div>
 					</Box>
 					<Box display="flex" justifyContent="center">
-						<Components.Typography variant="h4">
+						<Components.Typography variant="h4" className={classes.typography4}>
 							Results 1 - 8 of 1200
 						</Components.Typography>
 					</Box>

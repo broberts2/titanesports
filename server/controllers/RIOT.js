@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const Team = require("../models/Team");
 const GameData = require("../models/GameData");
 const fs = require("fs");
-const OracleUtils = require("./Oracle").OracleUtils;
+const OracleUtils = require("./admin/Oracle").OracleUtils;
 
 module.exports = {
 	getGamesPlayedLastSeason: async (req) => {

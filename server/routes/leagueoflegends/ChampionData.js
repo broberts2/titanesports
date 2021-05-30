@@ -1,4 +1,4 @@
-const ChampionData = require("../controllers/ChampionData");
+const ChampionData = require("../../controllers/ChampionData");
 
 module.exports = (app, subdomain, pretext) => {
 	app.post(`/${subdomain}/${pretext}/post`, async (req, res) => {

@@ -19,8 +19,8 @@ export default makeStyles((theme) => ({
 		borderRadius: "50%",
 		transform: "translate(-50%, -50%)",
 		width: "50%",
-		padding: "6px",
-		backgroundColor: "white",
+		padding: "2.5%",
+		backgroundColor: theme.palette.primary.main,
 		"& img": {
 			borderRadius: "50%",
 			width: "100%",

@@ -4,13 +4,15 @@ import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import Components from "../../components/components";
 import Style from "./style";
 import { Button, Grid, IconButton, Toolbar, Box } from "@material-ui/core";
+import _GlobalActions from "../../globalactions/index";
 
-const cfg = (config) => {
+const cfg = (config, setModal) => {
+	const GlobalActions = _GlobalActions();
 	switch (config) {
 		case "leagueoflegends":
 			return {
 				title: "League of Legends",
-				redir: "/leagueoflegends",
+				redir: "/",
 				controls: [
 					{
 						text: "Statistics",
@@ -29,6 +31,13 @@ const cfg = (config) => {
 						text: "Community",
 						cb: () => (window.location.href = "/community"),
 					},
+					{
+						text: GlobalActions.Utils.isSignedIn() ? "Sign Out" : "Sign In",
+						cb: () =>
+							GlobalActions.Utils.isSignedIn()
+								? GlobalActions.Utils.signOut()
+								: setModal({ state: true, body: "Login" }),
+					},
 				],
 			};
 	}
@@ -36,7 +45,7 @@ const cfg = (config) => {
 
 export default (props) => {
 	const classes = Style(props)();
-	const config = cfg(props.cfg);
+	const config = cfg(props.cfg, props.setModal);
 	return (
 		<div className={classes.root}>
 			<AppBar
@@ -50,13 +59,17 @@ export default (props) => {
 							<Box display="flex">
 								<IconButton
 									color="inherit"
-									onClick={() => (window.location.href = "/")}
+									onClick={() =>
+										(window.location = `${window.location.protocol}//${
+											window.location.host.split(".")[1]
+										}`)
+									}
 								>
 									<ArrowBackRoundedIcon />
 								</IconButton>
 								<img
 									className={classes.logo}
-									src="https://titan-esports.org:7000/static/assets/logo.png"
+									src="https://pbs.twimg.com/profile_images/1254529867040854017/VHD01B2Y.jpg"
 								/>
 								<Components.Typography
 									variant="h4"

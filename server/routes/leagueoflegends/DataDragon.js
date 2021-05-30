@@ -1,4 +1,4 @@
-const DataDragon = require("../controllers/DataDragon");
+const DataDragon = require("../../controllers/DataDragon");
 
 module.exports = (app, subdomain, pretext) => {
 	app.get(`/${subdomain}/${pretext}/getChampionDataById`, async (req, res) => {

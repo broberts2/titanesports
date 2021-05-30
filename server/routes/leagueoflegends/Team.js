@@ -1,4 +1,4 @@
-const Team = require("../controllers/Team");
+const Team = require("../../controllers/Team");
 
 module.exports = (app, subdomain, pretext) => {
 	app.post(`/${subdomain}/${pretext}/post`, async (req, res) => {

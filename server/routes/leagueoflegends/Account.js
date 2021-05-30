@@ -1,5 +1,5 @@
-const Account = require("../controllers/Account");
-const Guard = require("../guard");
+const Account = require("../../controllers/Account");
+const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {
 	app.post(`/${subdomain}/${pretext}/post`, async (req, res) => {

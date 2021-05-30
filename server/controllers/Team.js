@@ -1,5 +1,5 @@
 const Team = require("../models/Team");
-const Oracle = require("../controllers/Oracle");
+const Oracle = require("./admin/Oracle");
 
 module.exports = {
 	post: async (req) => {

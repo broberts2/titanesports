@@ -1,4 +1,4 @@
-const TitanDraftConfiguration = require("../controllers/TitanDraftConfiguration");
+const TitanDraftConfiguration = require("../../controllers/TitanDraftConfiguration");
 
 const ConfigID = "5faf2c5f28e55d0812a77ee9";
 

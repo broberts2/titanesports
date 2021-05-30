@@ -1,5 +1,5 @@
-const WebsiteConfiguration = require("../controllers/WebsiteConfiguration");
-const Guard = require("../guard");
+const WebsiteConfiguration = require("../../controllers/WebsiteConfiguration");
+const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {
 	app.get(`/${subdomain}/${pretext}/get`, async (req, res) => {

@@ -1,21 +1,48 @@
-import { bake_cookie, read_cookie, delete_cookie } from "sfcookies";
+import _Cookies from "universal-cookie";
 import config from "../config";
 
+const Cookies = new _Cookies();
+
 const utils = {
+	discordRedirect: () => {
+		let endpoint = config.production
+			? config.productionDiscordOATH2
+			: config.developmentDiscordOATH2;
+		endpoint = endpoint.split("<___>");
+		return `${endpoint[0]}${window.location.hostname.split(".")[0]}${
+			endpoint[1]
+		}`;
+	},
+	discordReturnDirect: () => {
+		const params = {};
+		window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
+			params[key] = value;
+		});
+		if (params.auth_token && params.refresh_token) {
+			utils.writeTokens(params.auth_token, params.refresh_token);
+			window.history.replaceState(null, null, window.location.pathname);
+		}
+	},
+	getUrlParameters: () => {
+		const params = {};
+		window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, (m, key, value) => {
+			params[key] = value;
+		});
+		return params;
+	},
 	writeTokens: (auth_token, refresh_token) => {
-		bake_cookie(auth_token);
-		bake_cookie(refresh_token);
+		Cookies.set("auth_token", auth_token);
+		Cookies.set("refresh_token", refresh_token);
 	},
 	getTokens: () => ({
-		auth_token: read_cookie("auth_token"),
-		refresh_token: read_cookie("refresh_token"),
+		auth_token: Cookies.get("auth_token"),
+		refresh_token: Cookies.get("refresh_token"),
 	}),
 	deleteTokens: () => {
-		delete_cookie("auth_token");
-		delete_cookie("refresh_token");
+		Cookies.remove("auth_token");
+		Cookies.remove("refresh_token");
 	},
 	request: async (url, method, data, loadingVarCb) => {
-		if (loadingVarCb) loadingVarCb(true);
 		const res = await fetch(
 			`${
 				config.production
@@ -31,7 +58,6 @@ const utils = {
 				body: data ? JSON.stringify(data) : null,
 			}
 		).then((res) => res.json());
-		if (loadingVarCb) loadingVarCb(false);
 		return res;
 	},
 };

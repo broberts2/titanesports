@@ -27,7 +27,7 @@ export default (props) => {
 	return (
 		<ThemeProvider theme={Components.Themes.Dark}>
 			<div className={classes.root}>
-				<Components.Header cfg={"leagueoflegends"} />
+				<Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
 				<Components.Banner
 					src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt429f1a46bd589b2b/605b9ac25a03370f176ce46c/LoL_WR_KV_Banner_1920x1080.jpg"
 					icon="https://static.wikia.nocookie.net/leagueoflegends/images/e/e5/Arcane_Comet_rune.png"
@@ -90,6 +90,14 @@ export default (props) => {
 					more recently with desktop publishing software like Aldus PageMaker
 					including versions of Lorem Ipsum
 				</Components.Blurb>
+				<Grid container display="flex">
+					<Grid item xs={6}>
+						<Components.InteractiveCard />
+					</Grid>
+					<Grid item xs={6}>
+						<Components.InteractiveCard />
+					</Grid>
+				</Grid>
 				<Components.Footer />
 			</div>
 		</ThemeProvider>

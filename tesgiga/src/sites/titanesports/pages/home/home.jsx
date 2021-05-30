@@ -73,7 +73,7 @@ export default (props) => {
 											anim={"grow"}
 											delay={1500}
 											onClick={() =>
-												(window.location.href = "/leagueoflegends")
+												(window.location = `${window.location.protocol}//leagueoflegends.${window.location.host}`)
 											}
 											title={"League of Legends"}
 											src={

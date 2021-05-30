@@ -1,5 +1,5 @@
-const Article = require("../controllers/Article");
-const Guard = require("../guard");
+const Article = require("../../controllers/Article");
+const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {
 	app.post(`/${subdomain}/${pretext}/createArticle`, async (req, res) => {

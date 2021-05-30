@@ -1,5 +1,5 @@
-const GameData = require("../controllers/GameData");
-const Guard = require("../guard");
+const GameData = require("../../controllers/GameData");
+const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {
 	app.post(`/${subdomain}/${pretext}/postGameData`, async (req, res) => {

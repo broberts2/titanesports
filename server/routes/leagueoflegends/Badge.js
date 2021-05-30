@@ -1,5 +1,5 @@
-const Badge = require("../controllers/Badge");
-const Guard = require("../guard");
+const Badge = require("../../controllers/Badge");
+const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {
 	app.post(`/${subdomain}/${pretext}/post`, async (req, res) => {

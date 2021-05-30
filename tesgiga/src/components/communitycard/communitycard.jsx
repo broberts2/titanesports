@@ -6,7 +6,7 @@ export default (props) => {
 	const classes = Style();
 	const miniblock = (data) => (
 		<div className={classes.miniblock}>
-			<Components.Typography variant="h6">
+			<Components.Typography variant="h6" color="inherit">
 				{data.text}
 				<br />
 				{data.link ? (

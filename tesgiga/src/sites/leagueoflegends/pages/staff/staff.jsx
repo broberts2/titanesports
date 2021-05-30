@@ -9,13 +9,13 @@ export default (props) => {
 		<Components.InteractiveCard fill onClick={() => null}>
 			<Box className={classes.card}>
 				<img className={classes.cardimg} src={props.data.img} />
-				<Components.Typography variant="h2">
+				<Components.Typography className={classes.typographyh2} variant="h2">
 					<b>{props.data.name}</b>
 				</Components.Typography>
-				<Components.Typography variant="h4">
+				<Components.Typography className={classes.typographyh3} variant="h4">
 					{props.data.title}
 				</Components.Typography>
-				<Components.Typography variant="h3">
+				<Components.Typography className={classes.typographyh4} variant="h3">
 					{props.data.duty}
 				</Components.Typography>
 			</Box>
@@ -29,7 +29,7 @@ export default (props) => {
 					{data
 						.sort((el1, el2) => (el1.name < el2.name ? -1 : 1))
 						.map((el) => (
-							<Grid item xs={12} md={4}>
+							<Grid item xs={6} md={4}>
 								<Card
 									data={{
 										img: el.img,
@@ -48,7 +48,7 @@ export default (props) => {
 	return (
 		<ThemeProvider theme={Components.Themes.Dark}>
 			<div className={classes.root}>
-				<Components.Header cfg={"leagueoflegends"} />
+				<Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
 				<Components.Ruby src="https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png" />
 				<Components.Blurb title={"TES Staff"}>
 					Welcome to the TES staff page. Here you will find all staff members

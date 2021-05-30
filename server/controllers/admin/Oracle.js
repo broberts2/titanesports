@@ -1,11 +1,12 @@
-const config = require("../config");
+const config = require("../../config");
 const Discord = require("discord.js");
 const fetch = require("node-fetch");
 const Oracle = new Discord.Client();
-const Permissions = require("../controllers/Permissions");
-const Account = require("../models/Account");
-const Team = require("../models/Team");
-const OracleUtils = require("../oracle_utils/index")(Oracle);
+const Permissions = require("../Permissions");
+const Account = require("../../models/Account");
+const Team = require("../../models/Team");
+const { set } = require("mongoose");
+const OracleUtils = require("../../oracle_utils/index")(Oracle);
 
 Oracle.login(config.oracle.token);
 
@@ -18,14 +19,14 @@ Oracle.on("guildMemberAdd", (member) => {
 
 module.exports = {
 	OracleUtils,
-	OATH2: async (req) => {
+	OATH2: async (req, subdomain) => {
 		const res = await fetch("https://discord.com/api/oauth2/token", {
 			method: "POST",
 			body: new URLSearchParams({
 				client_id: config.oracle.client_id,
 				client_secret: config.oracle.client_secret,
 				grant_type: "authorization_code",
-				redirect_uri: `${config.endpoint}/Oracle/OATH2`,
+				redirect_uri: `${config.endpoint}/${subdomain}/Oracle/OATH2`,
 				code: req.query.code,
 				scope: "the scopes",
 			}),
@@ -34,7 +35,8 @@ module.exports = {
 			},
 		}).then((res) => res.json());
 		console.log(res);
-		return `${config.client}?auth_token=${res.access_token}&refresh_token=${res.refresh_token}`;
+		const path = config.client.split("//");
+		return `${path[0]}//${subdomain}.${path[1]}?auth_token=${res.access_token}&refresh_token=${res.refresh_token}`;
 	},
 	getUser: async (req) => {
 		const res = await Oracle.guilds
@@ -260,7 +262,7 @@ module.exports = {
 		return "Success!";
 	},
 	authAction: async (req) => {
-		if (req.query.token) {
+		if (req.headers.token && req.headers.token !== "undefined") {
 			const user = await fetch("https://discord.com/api/users/@me", {
 				headers: {
 					authorization: `Bearer ${req.query.token}`,
@@ -272,6 +274,32 @@ module.exports = {
 				.then((res) => res.members);
 			const roles = await members.fetch(user.id).then((res) => res._roles);
 			return permissionSet[req.query.action].some((a) => roles.includes(a));
+		}
+		return false;
+	},
+	getMyPermissions: async (req) => {
+		if (req.headers.token && req.headers.token !== "undefined") {
+			const user = await fetch("https://discord.com/api/users/@me", {
+				headers: {
+					authorization: `Bearer ${req.headers.token}`,
+				},
+			}).then((res) => res.json());
+			const permissionSet = await Permissions.get();
+			const members = await Oracle.guilds
+				.fetch(config.guildId)
+				.then((res) => res.members);
+			const roles = await members.fetch(user.id).then((res) => res._roles);
+			const set = {};
+			for (let key in permissionSet) {
+				if (Array.isArray(permissionSet[key])) {
+					if (permissionSet[key].some((a) => roles.includes(a))) {
+						set[key] = true;
+					} else {
+						set[key] = false;
+					}
+				}
+			}
+			return set;
 		}
 		return false;
 	},

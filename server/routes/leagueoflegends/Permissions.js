@@ -1,4 +1,4 @@
-const Permissions = require("../controllers/Permissions");
+const Permissions = require("../../controllers/Permissions");
 
 module.exports = (app, subdomain, pretext) => {
 	app.post(`/${subdomain}/${pretext}/post`, async (req, res) => {

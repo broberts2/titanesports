@@ -1,5 +1,5 @@
-const RIOT = require("../controllers/RIOT");
-const Guard = require("../guard");
+const RIOT = require("../../controllers/RIOT");
+const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {
 	app.get(

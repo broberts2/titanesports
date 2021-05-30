@@ -1,4 +1,4 @@
-const TitanDraft = require("../controllers/TitanDraft");
+const TitanDraft = require("../../controllers/TitanDraft");
 
 module.exports = (app, subdomain, pretext) => {
 	app.post(`/${subdomain}/${pretext}/post`, async (req, res) => {

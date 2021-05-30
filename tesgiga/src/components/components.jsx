@@ -17,6 +17,7 @@ import Switch from "./switch/switch";
 import Fab from "./fab/fab";
 import Title from "./title/title";
 import MiniLoader from "./miniloader/miniloader";
+import Modal from "./modal/modal";
 import Themes from "../themes/index";
 
 export default {
@@ -40,4 +41,5 @@ export default {
 	Fab,
 	Title,
 	MiniLoader,
+	Modal,
 };

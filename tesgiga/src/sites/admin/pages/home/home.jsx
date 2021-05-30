@@ -24,7 +24,33 @@ import GroupWorkRoundedIcon from "@material-ui/icons/GroupWorkRounded";
 import PeopleRoundedIcon from "@material-ui/icons/PeopleRounded";
 import Divider from "@material-ui/core/Divider";
 import Components from "../../../../components/components";
+import _GlobalActions from "../../../../globalactions/index";
+import Panels from "./panels/index";
 import Style from "./style";
+
+const GlobalActions = _GlobalActions("admin");
+
+const panelSelector = (conditions) => {
+	if (conditions.isAuth) {
+		if (conditions.displayService === "Oracle") {
+			return <Panels.Oracle />;
+		} else if (conditions.displayService === "OBS Streamlabs") {
+			return <Panels.OBSStreamlabs />;
+		} else if (conditions.displayService === "Team Manager") {
+			return <Panels.TeamManager />;
+		} else if (conditions.displayService === "Player Manager") {
+			return <Panels.PlayerManager />;
+		} else if (conditions.displayService === "Media Manager") {
+			return <Panels.MediaManager />;
+		}
+	} else {
+		if (conditions.isAuth === 0) {
+			return <Panels.AccessDenied />;
+		} else {
+			return <Panels.SignIn />;
+		}
+	}
+};
 
 const items = (
 	classes,
@@ -33,6 +59,7 @@ const items = (
 	setDisplayService,
 	gsAccordion,
 	setGsAccordion,
+	setModal,
 	isAuth
 ) => {
 	const listItem = (key, displayName, icon, inactive) => (
@@ -51,69 +78,77 @@ const items = (
 		</ListItem>
 	);
 	return [
-		{
-			icon: <GamesRoundedIcon />,
-			accordion: (
-				<Accordion
-					expanded={gsAccordion}
-					onClick={() => setGsAccordion(!gsAccordion)}
-				>
-					<AccordionSummary
-						expandIcon={<ExpandMoreIcon />}
-						aria-controls="panel1a-content"
-						id="panel1a-header"
-					>
-						<Components.Typography>Games & Services</Components.Typography>
-					</AccordionSummary>
-					<AccordionDetails>
-						<List>
-							{listItem("li0", "Discord", <SettingsApplicationsRoundedIcon />)}
-							{listItem("li1", "League of Legends", <SportsEsportsIcon />)}
-							{listItem("li2", "Valorant", <SportsEsportsIcon />, true)}
-							{listItem(
-								"li3",
-								"World of Warcraft",
-								<SportsEsportsIcon />,
-								true
-							)}
-							{listItem("li4", "Valheim", <SportsEsportsIcon />, true)}
-						</List>
-					</AccordionDetails>
-				</Accordion>
-			),
-		},
-		{
-			divider: true,
-		},
-		displayName === "Discord"
+		isAuth
+			? {
+					icon: <GamesRoundedIcon />,
+					accordion: (
+						<Accordion
+							expanded={gsAccordion}
+							onClick={() => setGsAccordion(!gsAccordion)}
+						>
+							<AccordionSummary
+								expandIcon={<ExpandMoreIcon />}
+								aria-controls="panel1a-content"
+								id="panel1a-header"
+							>
+								<Components.Typography>Games & Services</Components.Typography>
+							</AccordionSummary>
+							<AccordionDetails>
+								<List>
+									{listItem(
+										"li0",
+										"Discord",
+										<SettingsApplicationsRoundedIcon />
+									)}
+									{listItem("li1", "League of Legends", <SportsEsportsIcon />)}
+									{listItem("li2", "Valorant", <SportsEsportsIcon />, true)}
+									{listItem(
+										"li3",
+										"World of Warcraft",
+										<SportsEsportsIcon />,
+										true
+									)}
+									{listItem("li4", "Valheim", <SportsEsportsIcon />, true)}
+								</List>
+							</AccordionDetails>
+						</Accordion>
+					),
+			  }
+			: null,
+		isAuth
+			? {
+					divider: true,
+			  }
+			: null,
+		isAuth && displayName === "Discord"
 			? {
 					text: "Oracle",
 					icon: <TimelineSharpIcon />,
 					cb: () => setDisplayService("Oracle"),
 			  }
 			: null,
-		displayName === "League of Legends"
+		isAuth && displayName === "League of Legends"
 			? {
 					text: "OBS Streamlabs",
 					icon: <OndemandVideoSharpIcon />,
 					cb: () => setDisplayService("OBS Streamlabs"),
 			  }
 			: null,
-		displayName === "League of Legends"
+		isAuth && displayName === "League of Legends"
 			? {
 					text: "Team Manager",
 					icon: <GroupWorkRoundedIcon />,
 					cb: () => setDisplayService("Team Manager"),
 			  }
 			: null,
-		displayName === "League of Legends"
+		isAuth && displayName === "League of Legends"
 			? {
 					text: "Player Manager",
 					icon: <PeopleRoundedIcon />,
 					cb: () => setDisplayService("Player Manager"),
 			  }
 			: null,
-		displayName === "League of Legends"
+		isAuth && displayName === "League of Legends"
 			? {
 					text: "Media Manager",
 					icon: <PanoramaOutlinedIcon />,
@@ -122,11 +157,15 @@ const items = (
 			: null,
 		isAuth
 			? {
-					text: "Sign Out",
+					text: <div style={{ minWidth: "300px" }}>Sign Out</div>,
 					icon: <ExitToAppRoundedIcon />,
-					cb: () => alert("was called"),
+					cb: () => GlobalActions.Utils.signOut(),
 			  }
-			: null,
+			: {
+					text: <div style={{ minWidth: "300px" }}>Sign In</div>,
+					icon: <ExitToAppRoundedIcon />,
+					cb: () => setModal({ state: true, body: "Login" }),
+			  },
 	];
 };
 
@@ -135,7 +174,7 @@ export default (props) => {
 	const [displayName, setDisplayName] = React.useState("Discord");
 	const [displayService, setDisplayService] = React.useState("Oracle");
 	const [gsAccordion, setGsAccordion] = React.useState(false);
-	const [isAuth, setIsAuth] = React.useState({}); // assign an object here with permissions on successful auth
+	const [isAuth, setIsAuth] = React.useState(null); // assign an object here with permissions on successful auth
 	const listItems = (arr) => (
 		<List>
 			{arr
@@ -157,27 +196,48 @@ export default (props) => {
 				)}
 		</List>
 	);
-	React.useEffect(() => props._());
+	React.useEffect(async () => {
+		const permissions = await GlobalActions.Requests.getMyPermissions();
+		const canAccess = () => {
+			for (let key in permissions) {
+				if (permissions[key]) {
+					return true;
+				}
+			}
+			return false;
+		};
+		if (permissions) {
+			if (canAccess) {
+				setIsAuth(permissions);
+			} else {
+				setIsAuth(0);
+			}
+		} else {
+			setIsAuth(false);
+		}
+		props._();
+	});
 	return (
 		<ThemeProvider theme={Components.Themes.Dark}>
 			<div className={classes.root}>
-				{isAuth && props.isLoaded ? (
-					<Box style={{ width: "100%", height: "100%" }} flexDirection="row">
-						<Box style={{ width: "362.5px" }}>
-							<Drawer variant="permanent" anchor={"left"}>
-								{listItems(
-									items(
-										classes,
-										displayName,
-										setDisplayName,
-										setDisplayService,
-										gsAccordion,
-										setGsAccordion,
-										isAuth
-									)
-								)}
-							</Drawer>
-						</Box>
+				<Box style={{ width: "100%", height: "100%" }} flexDirection="row">
+					<Box style={{ width: "362.5px" }}>
+						<Drawer variant="permanent" anchor={"left"}>
+							{listItems(
+								items(
+									classes,
+									displayName,
+									setDisplayName,
+									setDisplayService,
+									gsAccordion,
+									setGsAccordion,
+									props.setModal,
+									isAuth
+								)
+							)}
+						</Drawer>
+					</Box>
+					{isAuth ? (
 						<div className={classes.displayName}>
 							<Components.Typography anim={"grow"} variant="h4">
 								{displayName}
@@ -186,22 +246,18 @@ export default (props) => {
 								{displayService}
 							</Components.Typography>
 						</div>
-						<Box
-							display="flex"
-							justifyContent="center"
-							alignItems="center"
-							className={classes.content}
-						>
-							<div className={classes.innercontent}>
-								<Components.Typography anim={"grow"} variant="h4">
-									Stuff
-								</Components.Typography>
-							</div>
-						</Box>
+					) : null}
+					<Box
+						display="flex"
+						justifyContent="center"
+						alignItems="center"
+						className={classes.content}
+					>
+						<div className={classes.innercontent}>
+							{panelSelector({ isAuth, displayService })}
+						</div>
 					</Box>
-				) : (
-					"you need to auth"
-				)}
+				</Box>
 			</div>
 		</ThemeProvider>
 	);

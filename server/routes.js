@@ -1,6 +1,8 @@
 const RIOT = require("./controllers/RIOT");
 const ROUTES = {
-	discord: {},
+	admin: {
+		Oracle: require("./routes/admin/Oracle"),
+	},
 	leagueoflegends: {
 		TitanDraft: require("./routes/leagueoflegends/TitanDraft"),
 		Account: require("./routes/leagueoflegends/Account"),

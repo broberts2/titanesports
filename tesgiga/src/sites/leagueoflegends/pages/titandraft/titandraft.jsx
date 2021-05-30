@@ -9,7 +9,7 @@ export default (props) => {
 	return (
 		<ThemeProvider theme={Components.Themes.Dark}>
 			<div className={classes.root}>
-				<Components.Header cfg={"leagueoflegends"} />
+				<Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
 				<Components.Ruby src="http://opgg-static.akamaized.net/images/lol/perk/8112.png" />
 				<Components.Blurb title={"Titan Draft"}>
 					Welcome to the TES Titan draft. League of Legends does not allow
