@@ -1,4 +1,5 @@
 const TitanDraftConfiguration = require("../../controllers/TitanDraftConfiguration");
+const ResponseHandler = require("../../response_handler");
 
 const ConfigID = "5faf2c5f28e55d0812a77ee9";
 

@@ -5,6 +5,7 @@ export default (props) =>
 		root: {
 			position: props.tranparent ? "absolute" : "relative",
 			zIndex: 1500,
+			marginTop: "100px",
 		},
 		toolbarbuttons: {},
 		appbar: {

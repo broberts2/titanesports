@@ -1,4 +1,5 @@
 const DataDragon = require("../../controllers/DataDragon");
+const ResponseHandler = require("../../response_handler");
 
 module.exports = (app, subdomain, pretext) => {
 	app.get(`/${subdomain}/${pretext}/getChampionDataById`, async (req, res) => {

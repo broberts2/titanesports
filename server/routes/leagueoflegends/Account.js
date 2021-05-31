@@ -1,4 +1,5 @@
 const Account = require("../../controllers/Account");
+const ResponseHandler = require("../../response_handler");
 const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {

@@ -1,4 +1,5 @@
 const Oracle = require("../../controllers/admin/Oracle");
+const ResponseHandler = require("../../response_handler");
 const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {

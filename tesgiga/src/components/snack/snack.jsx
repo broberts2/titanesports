@@ -11,9 +11,10 @@ export default (props) => {
 	const classes = Style();
 	return (
 		<Snackbar
+			style={{ zIndex: 1501 }}
 			open={props.open}
 			autoHideDuration={6000}
-			onClose={() => props.close()}
+			onClose={() => (props.close ? props.close() : null)}
 		>
 			<Alert severity={props.severity}>{props.children}</Alert>
 		</Snackbar>

@@ -22,6 +22,7 @@ import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import SettingsApplicationsRoundedIcon from "@material-ui/icons/SettingsApplicationsRounded";
 import GroupWorkRoundedIcon from "@material-ui/icons/GroupWorkRounded";
 import PeopleRoundedIcon from "@material-ui/icons/PeopleRounded";
+import PersonPinRoundedIcon from "@material-ui/icons/PersonPinRounded";
 import Divider from "@material-ui/core/Divider";
 import Components from "../../../../components/components";
 import _GlobalActions from "../../../../globalactions/index";
@@ -42,6 +43,8 @@ const panelSelector = (conditions) => {
 			return <Panels.PlayerManager />;
 		} else if (conditions.displayService === "Media Manager") {
 			return <Panels.MediaManager />;
+		} else if (conditions.displayService === "Lottery Applications") {
+			return <Panels.LotteryApplications />;
 		}
 	} else {
 		if (conditions.isAuth === 0) {
@@ -155,6 +158,13 @@ const items = (
 					cb: () => setDisplayService("Media Manager"),
 			  }
 			: null,
+		isAuth && displayName === "League of Legends"
+			? {
+					text: "Lottery Applications",
+					icon: <PersonPinRoundedIcon />,
+					cb: () => setDisplayService("Lottery Applications"),
+			  }
+			: null,
 		isAuth
 			? {
 					text: <div style={{ minWidth: "300px" }}>Sign Out</div>,
@@ -216,7 +226,7 @@ export default (props) => {
 			setIsAuth(false);
 		}
 		props._();
-	});
+	}, []);
 	return (
 		<ThemeProvider theme={Components.Themes.Dark}>
 			<div className={classes.root}>

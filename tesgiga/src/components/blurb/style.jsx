@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 export default makeStyles((theme) => ({
 	root: {
 		padding: "100px",
+		paddingTop: "0px",
 		[theme.breakpoints.down("sm")]: {
 			padding: "20px",
 		},

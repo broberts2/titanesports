@@ -42,22 +42,33 @@ const utils = {
 		Cookies.remove("auth_token");
 		Cookies.remove("refresh_token");
 	},
-	request: async (url, method, data, loadingVarCb) => {
-		const res = await fetch(
-			`${
-				config.production
-					? config.productionEndpoint
-					: config.developementEndpoint
-			}${url}`,
-			{
-				headers: {
-					"Content-Type": "application/json",
-					token: utils.getTokens().auth_token,
-				},
-				method,
-				body: data ? JSON.stringify(data) : null,
-			}
-		).then((res) => res.json());
+	request: async (url, method, data) => {
+		const res = await new Promise(async (resolve) => {
+			setTimeout(
+				() =>
+					resolve({
+						code: 408,
+						message: "Request Timed Out",
+					}),
+				8000
+			);
+			const res = await fetch(
+				`${
+					config.production
+						? config.productionEndpoint
+						: config.developementEndpoint
+				}${url}`,
+				{
+					headers: {
+						"Content-Type": "application/json",
+						token: utils.getTokens().auth_token,
+					},
+					method,
+					body: data ? JSON.stringify(data) : null,
+				}
+			).then((res) => res.json());
+			resolve(res);
+		});
 		return res;
 	},
 };

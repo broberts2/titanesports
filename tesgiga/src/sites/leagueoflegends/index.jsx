@@ -4,6 +4,7 @@ import Staff from "./pages/staff/staff";
 import Articles from "./pages/articles/articles";
 import Statistics from "./pages/statistics/statistics";
 import TitanDraft from "./pages/titandraft/titandraft";
+import Divinity from "./pages/divinity/divinity";
 
 export default {
 	Home,
@@ -12,4 +13,5 @@ export default {
 	Articles,
 	Statistics,
 	TitanDraft,
+	Divinity,
 };

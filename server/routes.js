@@ -2,6 +2,7 @@ const RIOT = require("./controllers/RIOT");
 const ROUTES = {
 	admin: {
 		Oracle: require("./routes/admin/Oracle"),
+		Applications: require("./routes/admin/Applications"),
 	},
 	leagueoflegends: {
 		TitanDraft: require("./routes/leagueoflegends/TitanDraft"),

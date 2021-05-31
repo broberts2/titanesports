@@ -1,4 +1,5 @@
 const Team = require("../../controllers/Team");
+const ResponseHandler = require("../../response_handler");
 
 module.exports = (app, subdomain, pretext) => {
 	app.post(`/${subdomain}/${pretext}/post`, async (req, res) => {

@@ -26,7 +26,7 @@ export default makeStyles((theme) => ({
 	typography4: {
 		//backgroundColor: theme.palette.background.default,
 		//borderRadius: "10px",
-		//padding: 10,
+		padding: 10,
 		[theme.breakpoints.down("sm")]: {
 			fontSize: `calc(${theme.typography.h4.fontSize} / 1.5)`,
 		},

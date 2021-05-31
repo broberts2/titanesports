@@ -20,7 +20,21 @@ export default (subdomain) => ({
 	Requests: {
 		getMyPermissions: async () =>
 			await Utils.request(`/${subdomain}/Oracle/getMyPermissions`, "get", null),
-		getUser: async () =>
-			await Utils.request(`/${subdomain}/Account/getUser`, "get", null),
+		postApplication: async (body, origin, category) =>
+			await Utils.request(
+				`/${subdomain}/Applications/postApplication`,
+				"post",
+				{
+					JSON: JSON.stringify(body),
+					origin,
+					category,
+				}
+			),
+		getApplications: async () =>
+			await Utils.request(
+				`/${subdomain}/Applications/getApplications`,
+				"get",
+				null
+			),
 	},
 });

@@ -1,4 +1,5 @@
 const TitanDraft = require("../../controllers/TitanDraft");
+const ResponseHandler = require("../../response_handler");
 
 module.exports = (app, subdomain, pretext) => {
 	app.post(`/${subdomain}/${pretext}/post`, async (req, res) => {

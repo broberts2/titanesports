@@ -90,13 +90,28 @@ export default (props) => {
 					more recently with desktop publishing software like Aldus PageMaker
 					including versions of Lorem Ipsum
 				</Components.Blurb>
-				<Grid container display="flex">
-					<Grid item xs={6}>
-						<Components.InteractiveCard />
-					</Grid>
-					<Grid item xs={6}>
-						<Components.InteractiveCard />
-					</Grid>
+				<Components.Block>Summer Leagues</Components.Block>
+				<Grid
+					container
+					spacing={0}
+					className={classes.majorsub2}
+					align="center"
+					justify="center"
+				>
+					<Card
+						onClick={() => (window.location.href = "/divinity")}
+						title={"Divinity"}
+						src={
+							"https://i.pinimg.com/originals/d7/58/1b/d7581b2a1033309523d20c9d1a1f4589.png"
+						}
+					/>
+					<Card
+						onClick={() => (window.location.href = "/statistics")}
+						title={"Conquerors"}
+						src={
+							"https://i.pinimg.com/originals/6a/10/c7/6a10c7e84c9f4e4aa9412582d28f3fd2.png"
+						}
+					/>
 				</Grid>
 				<Components.Footer />
 			</div>

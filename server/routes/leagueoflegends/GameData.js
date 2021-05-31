@@ -1,4 +1,5 @@
 const GameData = require("../../controllers/GameData");
+const ResponseHandler = require("../../response_handler");
 const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {

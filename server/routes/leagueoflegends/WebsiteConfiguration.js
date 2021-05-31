@@ -1,4 +1,5 @@
 const WebsiteConfiguration = require("../../controllers/WebsiteConfiguration");
+const ResponseHandler = require("../../response_handler");
 const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {

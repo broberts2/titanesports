@@ -18,6 +18,9 @@ import Fab from "./fab/fab";
 import Title from "./title/title";
 import MiniLoader from "./miniloader/miniloader";
 import Modal from "./modal/modal";
+import Form from "./form/form";
+import RadioButton from "./radiobutton/radiobutton";
+import CheckBox from "./checkbox/checkbox";
 import Themes from "../themes/index";
 
 export default {
@@ -42,4 +45,7 @@ export default {
 	Title,
 	MiniLoader,
 	Modal,
+	Form,
+	RadioButton,
+	CheckBox,
 };
