@@ -63,7 +63,7 @@ export default (props) => {
 									onClick={() =>
 										(window.location = `${window.location.protocol}//${
 											window.location.host.split(".")[1]
-										}${myConfig.production ? ".org" : null}`)
+										}${myConfig.production ? ".org" : ""}`)
 									}
 								>
 									<ArrowBackRoundedIcon />
