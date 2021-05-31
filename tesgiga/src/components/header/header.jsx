@@ -70,7 +70,7 @@ export default (props) => {
 								</IconButton>
 								<img
 									className={classes.logo}
-									src="https://pbs.twimg.com/profile_images/1254529867040854017/VHD01B2Y.jpg"
+									src="https://titan-esports.org:7000/static/media/logo.png"
 								/>
 								<Components.Typography
 									variant="h4"
