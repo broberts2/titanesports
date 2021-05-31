@@ -6,16 +6,16 @@ import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
 import Components from "../../../../../../components/components";
 import _GlobalActions from "../../../../../../globalactions/index";
 import Style from "./style";
+import Labels from "../../../../../../labels";
 
 const GlobalActions = _GlobalActions("admin");
 
 const RenderForm = (props) => {
+	const Component = Components.Form[props.component];
 	return (
 		<Slide direction={props.slideDirection} in={true} index={props.index}>
 			<div>
-				<Components.Form.LotteryApplications
-					data={props.applications[props.index]}
-				/>
+				<Component data={props.applications[props.index]} />
 			</div>
 		</Slide>
 	);
@@ -28,14 +28,18 @@ export default (props) => {
 		index: 0,
 	});
 	React.useEffect(async () => {
-		const res = await GlobalActions.Requests.getApplications().then((res) =>
-			res.result.map((el) => (el.JSON = JSON.parse(el.JSON)))
-		);
+		const res = await GlobalActions.Requests.getApplications(
+			props.callout
+		).then((res) => res.result.map((el) => (el.JSON = JSON.parse(el.JSON))));
 		setState((lastState) => ({ ...lastState, applications: res }));
-	}, []);
+	}, [props.callout]);
+	console.log("stuff");
 	return (
 		<div className={classes.root}>
-			<div className={classes.close}>
+			<div
+				className={classes.close}
+				style={{ display: state.applications.length < 1 ? "none" : "" }}
+			>
 				<Components.Fab
 					onClick={() => {
 						window.confirm("Delete Document?");
@@ -47,20 +51,33 @@ export default (props) => {
 			<Box display="flex" width={"100%"} height={"100%"}>
 				<Box
 					m="auto"
-					style={{ overflowY: "scroll", overflowX: "hidden" }}
+					style={{
+						overflowY: state.applications.length > 0 ? "scroll" : "hidden",
+						overflowX: "hidden",
+					}}
 					height={"100%"}
 				>
-					{state.applications.length > 0
-						? RenderForm(
-								{
-									applications: state.applications,
-									slideDirection: "left",
-									index: state.index,
-								},
-								(state) => setState((lastState) => ({ ...lastState, state }))
-						  )
-						: null}
-					<Box className={classes.fabs}>
+					{state.applications.length > 0 ? (
+						RenderForm(
+							{
+								component: props.component,
+								applications: state.applications,
+								slideDirection: "left",
+								index: state.index,
+							},
+							(state) => setState((lastState) => ({ ...lastState, state }))
+						)
+					) : (
+						<Box display="flex" width={"100%"} height={"100%"}>
+							<Box m="auto">
+								<img className={classes.poro} src={Labels.images.poro} />
+							</Box>
+						</Box>
+					)}
+					<Box
+						className={classes.fabs}
+						style={{ display: state.applications.length < 1 ? "none" : "" }}
+					>
 						<Box display="flex">
 							<div
 								className={classes.subfabs}

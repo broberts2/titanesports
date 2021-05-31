@@ -4,7 +4,6 @@ import {
 	AccordionDetails,
 	AccordionSummary,
 	Box,
-	Grid,
 	List,
 	ListItem,
 	ListItemIcon,
@@ -23,6 +22,7 @@ import SettingsApplicationsRoundedIcon from "@material-ui/icons/SettingsApplicat
 import GroupWorkRoundedIcon from "@material-ui/icons/GroupWorkRounded";
 import PeopleRoundedIcon from "@material-ui/icons/PeopleRounded";
 import PersonPinRoundedIcon from "@material-ui/icons/PersonPinRounded";
+import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import Divider from "@material-ui/core/Divider";
 import Components from "../../../../components/components";
 import _GlobalActions from "../../../../globalactions/index";
@@ -43,8 +43,38 @@ const panelSelector = (conditions) => {
 			return <Panels.PlayerManager />;
 		} else if (conditions.displayService === "Media Manager") {
 			return <Panels.MediaManager />;
-		} else if (conditions.displayService === "Lottery Applications") {
-			return <Panels.LotteryApplications />;
+		} else if (
+			conditions.displayService === "Lottery Applications - Divinity"
+		) {
+			return (
+				<Panels.Applications
+					callout="Lottery Applications - Divinity"
+					component={"LotteryApplication_Divinity"}
+				/>
+			);
+		} else if (
+			conditions.displayService === "Lottery Applications - Conquerors"
+		) {
+			return (
+				<Panels.Applications
+					callout="Lottery Applications - Conquerors"
+					component={"LotteryApplication_Conquerors"}
+				/>
+			);
+		} else if (conditions.displayService === "Team Applications - Divinity") {
+			return (
+				<Panels.Applications
+					callout="Team Applications - Divinity"
+					component={"TeamApplication_Divinity"}
+				/>
+			);
+		} else if (conditions.displayService === "Team Applications - Conquerors") {
+			return (
+				<Panels.Applications
+					callout="Team Applications - Conquerors"
+					component={"TeamApplication_Conquerors"}
+				/>
+			);
 		}
 	} else {
 		if (conditions.isAuth === 0) {
@@ -160,9 +190,30 @@ const items = (
 			: null,
 		isAuth && displayName === "League of Legends"
 			? {
-					text: "Lottery Applications",
+					text: "Lottery Applications - Divinity",
 					icon: <PersonPinRoundedIcon />,
-					cb: () => setDisplayService("Lottery Applications"),
+					cb: () => setDisplayService("Lottery Applications - Divinity"),
+			  }
+			: null,
+		isAuth && displayName === "League of Legends"
+			? {
+					text: "Lottery Applications - Conquerors",
+					icon: <PersonPinRoundedIcon />,
+					cb: () => setDisplayService("Lottery Applications - Conquerors"),
+			  }
+			: null,
+		isAuth && displayName === "League of Legends"
+			? {
+					text: "Team Applications - Divinity",
+					icon: <SupervisedUserCircleIcon />,
+					cb: () => setDisplayService("Team Applications - Divinity"),
+			  }
+			: null,
+		isAuth && displayName === "League of Legends"
+			? {
+					text: "Team Applications - Conquerors",
+					icon: <SupervisedUserCircleIcon />,
+					cb: () => setDisplayService("Team Applications - Conquerors"),
 			  }
 			: null,
 		isAuth
@@ -226,6 +277,7 @@ export default (props) => {
 			setIsAuth(false);
 		}
 		props._();
+		console.log("spam");
 	}, []);
 	return (
 		<ThemeProvider theme={Components.Themes.Dark}>

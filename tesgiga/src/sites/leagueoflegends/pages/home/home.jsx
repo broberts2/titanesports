@@ -31,7 +31,7 @@ export default (props) => {
 				<Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
 				<Components.Banner
 					src={Labels.backgrounds.kindred}
-					icon="https://static.wikia.nocookie.net/leagueoflegends/images/e/e5/Arcane_Comet_rune.png"
+					icon={Labels.images.comet}
 				/>
 				<Components.Block>
 					Titan eSports Is An Amateur eSports Organization That Brings
@@ -47,37 +47,27 @@ export default (props) => {
 					<Card
 						onClick={() => (window.location.href = "/statistics")}
 						title={"Statistics"}
-						src={
-							"https://static.wikia.nocookie.net/liberproeliis/images/4/4d/Akali.png"
-						}
+						src={Labels.images.zed}
 					/>
 					<Card
 						onClick={() => (window.location.href = "/titandraft")}
 						title={"Titan Draft"}
-						src={
-							"https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/d398176b-315f-45d5-9933-bdac77db56ab/da0xy1f-55b1cad8-2442-4570-98a9-460635c554b5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2QzOTgxNzZiLTMxNWYtNDVkNS05OTMzLWJkYWM3N2RiNTZhYlwvZGEweHkxZi01NWIxY2FkOC0yNDQyLTQ1NzAtOThhOS00NjA2MzVjNTU0YjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-NKSX5fnN9glTXVV-7ToNxjQJ48b8QSs-mguayc-VKc"
-						}
+						src={Labels.images.azir}
 					/>
 					<Card
 						onClick={() => (window.location.href = "/articles")}
 						title={"News & Articles"}
-						src={
-							"https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-au/production/en-au/static/fighter-7a08920b696ecdb673edeeae1d3c616e.png"
-						}
+						src={Labels.images.yasuo}
 					/>
 					<Card
 						onClick={() => (window.location.href = "/staff")}
 						title={"TES Staff"}
-						src={
-							"https://lolstatic-a.akamaihd.net/frontpage/apps/prod/harbinger-l10-website/en-us/production/en-us/static/marksman-b339ed8fd7e04ff2c3fca022c5d299fb.png"
-						}
+						src={Labels.images.jinx}
 					/>
 					<Card
 						onClick={() => (window.location.href = "/community")}
 						title={"Community Hub"}
-						src={
-							"https://purepng.com/public/uploads/thumbnail//purepng.com-cyberpop-zoe-skinlolleague-of-legendsrenderzoecyberpop-331521945068typhq.png"
-						}
+						src={Labels.images.zoe}
 					/>
 				</Grid>
 				<Components.Blurb title={"What is TES all about?"}>
@@ -102,16 +92,12 @@ export default (props) => {
 					<Card
 						onClick={() => (window.location.href = "/divinity")}
 						title={"Divinity"}
-						src={
-							"https://i.pinimg.com/originals/d7/58/1b/d7581b2a1033309523d20c9d1a1f4589.png"
-						}
+						src={Labels.images.gold}
 					/>
 					<Card
 						onClick={() => (window.location.href = "/statistics")}
 						title={"Conquerors"}
-						src={
-							"https://i.pinimg.com/originals/6a/10/c7/6a10c7e84c9f4e4aa9412582d28f3fd2.png"
-						}
+						src={Labels.images.diamond}
 					/>
 				</Grid>
 				<Components.Footer />

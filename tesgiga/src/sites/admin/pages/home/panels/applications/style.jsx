@@ -31,4 +31,11 @@ export default makeStyles((theme) => ({
 			fontSize: `calc(${theme.typography.h4.fontSize} / 1.5)`,
 		},
 	},
+	poro: {
+		opacity: 0.25,
+		width: "75%",
+		[theme.breakpoints.down("sm")]: {
+			width: "100%",
+		},
+	},
 }));

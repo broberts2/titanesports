@@ -7,5 +7,5 @@ module.exports = {
 			origin: req.body.origin,
 			category: req.body.category,
 		}),
-	get: async (req) => await Applications.find({}),
+	get: async (req) => await Applications.find({ category: req.query.category }),
 };

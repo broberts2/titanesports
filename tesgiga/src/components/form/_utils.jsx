@@ -44,7 +44,9 @@ const Document = (props) => {
 				? (state[el.props.title] = {
 						order: i,
 						isBlurb: true,
-						value: el.props.children.map((el) => _childMerge(el)).join(""),
+						value: Array.isArray(el.props.children)
+							? el.props.children.map((el) => _childMerge(el)).join("")
+							: el.props.children,
 				  })
 				: null
 		);
@@ -220,6 +222,7 @@ const Submit = (props) => {
 			}
 		}
 		disablePageScroll();
+		console.log(props.state);
 		props.setSending(true);
 		return new Promise(async (resolve) => {
 			const res = await GlobalActions.Requests.postApplication(

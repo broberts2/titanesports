@@ -34,7 +34,6 @@ module.exports = {
 				"Content-Type": "application/x-www-form-urlencoded",
 			},
 		}).then((res) => res.json());
-		console.log(res);
 		const path = config.client.split("//");
 		return `${path[0]}//${subdomain}.${path[1]}?auth_token=${res.access_token}&refresh_token=${res.refresh_token}`;
 	},

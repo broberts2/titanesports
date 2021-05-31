@@ -1,16 +1,19 @@
 import React from "react";
 import { ThemeProvider } from "@material-ui/core";
+import { Slide } from "@material-ui/core";
 import Components from "../../../../components/components";
+import Labels from "../../../../labels/index";
 import Style from "./style";
 
 export default (props) => {
 	const classes = Style();
+	const [radio, setRadio] = React.useState("Lottery Application");
 	React.useEffect(() => props._());
 	return (
 		<ThemeProvider theme={Components.Themes.Dark}>
 			<div className={classes.root}>
 				<Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
-				<Components.Ruby src="https://lh3.googleusercontent.com/BwP1lvXOvhUSJ27-jrgI9c2eywtrzCyvxl1SmkhFmI8s-h3t5MsAM_4nm9kijc7DZZY-98mbXpSk-_9Z7oh3vEztsE-KvzzbQNBMstXDK8sKE9rGRqHpXUaxZvoFWIlMCw=w1440" />
+				<Components.Ruby src={Labels.images.gold} />
 				<Components.Blurb title={"Divinity League"}>
 					Lorem Ipsum is simply dummy text of the printing and typesetting
 					industry. Lorem Ipsum has been the industry's standard dummy text ever
@@ -22,7 +25,19 @@ export default (props) => {
 					more recently with desktop publishing software like Aldus PageMaker
 					including versions of Lorem Ipsum.
 				</Components.Blurb>
-				<Components.Form.LotteryApplications />
+				<div className={classes.radioButton}>
+					<Components.RadioButton
+						row
+						onChange={(e) => setRadio(e)}
+						value={radio}
+						items={["Lottery Application", "Team Application"]}
+					/>
+				</div>
+				{radio === "Lottery Application" ? (
+					<Components.Form.LotteryApplication_Divinity />
+				) : (
+					<Components.Form.TeamApplication_Divinity />
+				)}
 				<Components.Footer />
 			</div>
 		</ThemeProvider>

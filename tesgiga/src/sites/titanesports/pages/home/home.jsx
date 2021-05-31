@@ -53,7 +53,7 @@ export default (props) => {
 										className={classes.typographywelcometext}
 									>
 										You've reached our games hub. Please select one of our
-										currently supported games for new, tournaments, and more!
+										currently supported games for news, tournaments, and more!
 									</Components.Typography>
 								</Box>
 							</Grid>

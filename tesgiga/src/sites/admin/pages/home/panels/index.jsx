@@ -5,7 +5,7 @@ import MediaManager from "./mediamanager/mediamanager";
 import OBSStreamlabs from "./obsstreamlabs/obsstreamlabs";
 import PlayerManager from "./playermanager/playermanager";
 import TeamManager from "./teammanager/teammanager";
-import LotteryApplications from "./lotteryapplications/lotteryapplications";
+import Applications from "./applications/applications";
 
 export default {
 	SignIn,
@@ -15,5 +15,5 @@ export default {
 	OBSStreamlabs,
 	PlayerManager,
 	TeamManager,
-	LotteryApplications,
+	Applications,
 };

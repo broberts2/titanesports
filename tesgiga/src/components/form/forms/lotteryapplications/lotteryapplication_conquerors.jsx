@@ -1,14 +1,13 @@
 import React from "react";
+import Labels from "../../../../labels/index";
 import Utils from "../../_utils";
 
 export default (props) => {
 	return (
 		<Utils.Document
 			data={props.data}
-			img={
-				"https://static.wikia.nocookie.net/leagueoflegends/images/7/79/Phase_Rush_rune.png"
-			}
-			category={"Staff Applications"}
+			img={Labels.images.oceandrake}
+			category={"Lottery Applications - Conquerors"}
 		>
 			<Utils.Blurb
 				title={"Titan Esports 2021 Spring Invitational Lottery Application"}

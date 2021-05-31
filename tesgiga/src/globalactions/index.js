@@ -30,9 +30,9 @@ export default (subdomain) => ({
 					category,
 				}
 			),
-		getApplications: async () =>
+		getApplications: async (category) =>
 			await Utils.request(
-				`/${subdomain}/Applications/getApplications`,
+				`/${subdomain}/Applications/getApplications?category=${category}`,
 				"get",
 				null
 			),
