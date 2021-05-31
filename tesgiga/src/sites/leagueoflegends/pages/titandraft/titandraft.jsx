@@ -1,6 +1,7 @@
 import React from "react";
 import { ThemeProvider } from "@material-ui/core";
 import Components from "../../../../components/components";
+import Labels from "../../../../labels/index";
 import Style from "./style";
 
 export default (props) => {
@@ -10,7 +11,7 @@ export default (props) => {
 		<ThemeProvider theme={Components.Themes.Dark}>
 			<div className={classes.root}>
 				<Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
-				<Components.Ruby src="http://opgg-static.akamaized.net/images/lol/perk/8112.png" />
+				<Components.Ruby src={Labels.images.electrocute} />
 				<Components.Blurb title={"Titan Draft"}>
 					Welcome to the TES Titan draft. League of Legends does not allow
 					players access to all champions (unless they have paid for them) in
