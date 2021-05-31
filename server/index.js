@@ -34,17 +34,20 @@ routes(app, riot);
 
 app.get(`/gitHook`, async (req, res) => {
 	console.log(req);
-	exec("ls -la", (error, stdout, stderr) => {
-		if (error) {
-			console.log(`error: ${error.message}`);
-			return res.json(error.message);
+	exec(
+		`cd /titanesports/tesgiga; git pull origin master; rm -rf /var/www/html/build; rm -rf /titanesports/tesgiga/build; npm run build; mv build /var/www/html; rm -rf build`,
+		(error, stdout, stderr) => {
+			if (error) {
+				console.log(`error: ${error.message}`);
+				return res.json(error.message);
+			}
+			if (stderr) {
+				console.log(`stderr: ${stderr}`);
+				return res.json(stderr);
+			}
+			return res.json("Auto-deploy successful!");
 		}
-		if (stderr) {
-			console.log(`stderr: ${stderr}`);
-			return res.json(stderr);
-		}
-		return res.json("Auto-deplay successful!");
-	});
+	);
 });
 
 let server = null;
