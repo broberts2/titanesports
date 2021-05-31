@@ -15,5 +15,6 @@ export default {
 		logo: `${_}/static/media/logo.png`,
 		lol: `${_}/static/media/lol.png`,
 		valorant: `${_}/static/media/valorant.png`,
+		worldofwarcraft: `${_}/static/media/worldofwarcraft.png`,
 	},
 };
