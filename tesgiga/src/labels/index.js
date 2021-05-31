@@ -20,5 +20,6 @@ export default {
 	},
 	backgrounds: {
 		violet: `${_}/static/backgrounds/violet.png`,
+		kindred: `${_}/static/backgrounds/kindred.png`,
 	},
 };

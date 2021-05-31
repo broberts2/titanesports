@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid, ThemeProvider, Box } from "@material-ui/core";
 import Components from "../../../../components/components";
+import Labels from "../../../../labels/index";
 import Style from "./style";
 
 export default (props) => {
@@ -29,7 +30,7 @@ export default (props) => {
 			<div className={classes.root}>
 				<Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
 				<Components.Banner
-					src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/blt429f1a46bd589b2b/605b9ac25a03370f176ce46c/LoL_WR_KV_Banner_1920x1080.jpg"
+					src={Labels.backgrounds.kindred}
 					icon="https://static.wikia.nocookie.net/leagueoflegends/images/e/e5/Arcane_Comet_rune.png"
 				/>
 				<Components.Block>
