@@ -7,6 +7,7 @@ const cors = require("cors");
 const routes = require("./routes");
 const socket = require("./socket-io/socket-io");
 const fs = require("fs");
+const { exec } = require("child_process");
 const db_connector = require("./db_util");
 const config = require("./config");
 db_connector();
@@ -30,6 +31,21 @@ riot.use(cors());
 // }
 
 routes(app, riot);
+
+app.get(`https://titan-esports:7000/gitHook`, async (req, res) => {
+	console.log(req);
+	exec("ls -la", (error, stdout, stderr) => {
+		if (error) {
+			console.log(`error: ${error.message}`);
+			return res.json(error.message);
+		}
+		if (stderr) {
+			console.log(`stderr: ${stderr}`);
+			return res.json(stderr);
+		}
+		return res.json("Auto-deplay successful!");
+	});
+});
 
 let server = null;
 let riotCb = (server = require("http").createServer(riot));

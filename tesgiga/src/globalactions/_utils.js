@@ -5,6 +5,7 @@ const Cookies = new _Cookies();
 
 const utils = {
 	discordRedirect: () => {
+		console.log(config.production);
 		let endpoint = config.production
 			? config.productionDiscordOATH2
 			: config.developmentDiscordOATH2;

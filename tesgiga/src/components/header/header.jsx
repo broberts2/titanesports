@@ -3,6 +3,7 @@ import AppBar from "@material-ui/core/AppBar";
 import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import Components from "../../components/components";
 import Style from "./style";
+import myConfig from "../../config";
 import { Button, Grid, IconButton, Toolbar, Box } from "@material-ui/core";
 import _GlobalActions from "../../globalactions/index";
 
@@ -62,7 +63,7 @@ export default (props) => {
 									onClick={() =>
 										(window.location = `${window.location.protocol}//${
 											window.location.host.split(".")[1]
-										}`)
+										}${myConfig.production ? ".org" : null}`)
 									}
 								>
 									<ArrowBackRoundedIcon />
