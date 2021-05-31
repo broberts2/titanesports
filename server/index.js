@@ -15,7 +15,7 @@ db_connector();
 app.use(bodyParser.json());
 riot.use(bodyParser.json());
 
-app.use("/static", express.static(path.join(__dirname, "../media")));
+app.use("/static", express.static(path.join(__dirname, "../static")));
 app.use(
 	"/dragontail",
 	express.static(path.join(__dirname, `../dragontail-${config.gameVersion}`))
