@@ -76,17 +76,13 @@ export default (props) => {
 												(window.location = `${window.location.protocol}//leagueoflegends.${window.location.host}`)
 											}
 											title={"League of Legends"}
-											src={
-												"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNxDA1hZ4ZusIVrQYo1AOE-pwWF65z_WIhCScyrKeuV6uu5TYeC1hfVlTjCHIOQfax1fY&usqp=CAU"
-											}
+											src={Labels.images.lol}
 										/>
 										<Card
 											disabled
 											onClick={() => alert("Shalom")}
 											title={"Valorant"}
-											src={
-												"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPZn5vwH5Wb7NFo4HD-fnPGyA-nR1ZfYB3TQ&usqp=CAU"
-											}
+											src={Labels.images.valorant}
 										/>
 										<Card
 											disabled

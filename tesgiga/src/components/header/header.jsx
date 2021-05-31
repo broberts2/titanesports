@@ -2,6 +2,7 @@ import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import Components from "../../components/components";
+import Labels from "../../labels/index";
 import Style from "./style";
 import myConfig from "../../config";
 import { Button, Grid, IconButton, Toolbar, Box } from "@material-ui/core";
@@ -68,10 +69,7 @@ export default (props) => {
 								>
 									<ArrowBackRoundedIcon />
 								</IconButton>
-								<img
-									className={classes.logo}
-									src="https://titan-esports.org:7000/static/media/logo.png"
-								/>
+								<img className={classes.logo} src={Labels.images.logo} />
 								<Components.Typography
 									variant="h4"
 									className={classes.title}
