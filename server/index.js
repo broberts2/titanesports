@@ -32,7 +32,7 @@ riot.use(cors());
 
 routes(app, riot);
 
-app.get(`https://titan-esports.org:7000/gitHook`, async (req, res) => {
+app.get(`/gitHook`, async (req, res) => {
 	console.log(req);
 	exec("ls -la", (error, stdout, stderr) => {
 		if (error) {
