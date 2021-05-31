@@ -1,12 +1,12 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { blueGrey as primary } from "@material-ui/core/colors";
+import Labels from "../../../../labels/index";
 
 export default makeStyles((theme) => ({
 	root: {
 		width: "100vw",
 		height: "100vh",
-		backgroundImage:
-			"url(https://basic-admin.basicagency.com/uploads/Work/Riot/Images/_1920xAUTO_crop_center-center_65_none/Riot-Case-Study-Hero-Image-Desktop.jpg)",
+		backgroundImage: `url(${Labels.backgrounds.violet})`,
 		background: "no-repeat",
 		backgroundSize: "cover",
 		overflowX: "hidden",
@@ -15,6 +15,7 @@ export default makeStyles((theme) => ({
 		},
 	},
 	typographywelcometitle: {
+		color: theme.palette.background.default,
 		[theme.breakpoints.down("xs")]: {
 			fontSize: theme.typography.h4.fontSize,
 		},
@@ -23,6 +24,7 @@ export default makeStyles((theme) => ({
 		},
 	},
 	typographywelcometext: {
+		color: theme.palette.background.default,
 		[theme.breakpoints.down("xs")]: {
 			fontSize: theme.typography.h6.fontSize,
 		},

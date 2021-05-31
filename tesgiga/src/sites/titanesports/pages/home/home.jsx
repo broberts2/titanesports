@@ -52,11 +52,8 @@ export default (props) => {
 										delay={2000}
 										className={classes.typographywelcometext}
 									>
-										Lorem Ipsum is simply dummy text of the printing and
-										typesetting industry. Lorem Ipsum has been the industry's
-										standard dummy text ever since the 1500s, when an unknown
-										printer took a galley of type and scrambled it to make a
-										like Aldus PageMaker including versions of Lorem Ipsum.
+										You've reached our games hub. Please select one of our
+										currently supported games for new, tournaments, and more!
 									</Components.Typography>
 								</Box>
 							</Grid>
@@ -94,9 +91,7 @@ export default (props) => {
 											disabled
 											onClick={() => alert("Shalom")}
 											title={"Valheim"}
-											src={
-												"https://www.guilded.gg/asset/GameIcons/Valheim-lg.png"
-											}
+											src={Labels.images.valheim}
 										/>
 									</Grid>
 								</div>

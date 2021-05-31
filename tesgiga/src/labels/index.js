@@ -12,9 +12,13 @@ export default {
 	youtube: "https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw",
 	facebook: "https://www.facebook.com/titanesportz/",
 	images: {
-		logo: `${_}/static/media/logo.png`,
-		lol: `${_}/static/media/lol.png`,
-		valorant: `${_}/static/media/valorant.png`,
-		worldofwarcraft: `${_}/static/media/worldofwarcraft.png`,
+		logo: `${_}/static/images/logo.png`,
+		lol: `${_}/static/images/lol.png`,
+		valorant: `${_}/static/images/valorant.png`,
+		worldofwarcraft: `${_}/static/images/worldofwarcraft.png`,
+		valheim: `${_}/static/images/valheim.png`,
+	},
+	backgrounds: {
+		violet: `${_}/static/backgrounds/violet.png`,
 	},
 };

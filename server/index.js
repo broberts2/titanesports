@@ -33,21 +33,10 @@ riot.use(cors());
 routes(app, riot);
 
 app.post(`/gitHook`, async (req, res) => {
-	console.log(req);
 	exec(
-		`cd /titanesports/tesgiga; git pull origin master; rm -rf /var/www/html/build; rm -rf /titanesports/tesgiga/build; npm run build; mv build /var/www/html; rm -rf build`,
-		(error, stdout, stderr) => {
-			if (error) {
-				console.log(`error: ${error.message}`);
-				return res.json(error.message);
-			}
-			if (stderr) {
-				console.log(`stderr: ${stderr}`);
-				return res.json(stderr);
-			}
-			return res.json("Auto-deploy successful!");
-		}
+		`cd /titanesports/tesgiga; git pull origin master; npm install; rm -rf /var/www/html/build; rm -rf /titanesports/tesgiga/build; npm run build; mv build /var/www/html; rm -rf build`
 	);
+	return res.json("Auto-deploy successful!");
 });
 
 let server = null;
