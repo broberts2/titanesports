@@ -32,7 +32,7 @@ riot.use(cors());
 
 routes(app, riot);
 
-app.get(`/gitHook`, async (req, res) => {
+app.post(`/gitHook`, async (req, res) => {
 	console.log(req);
 	exec(
 		`cd /titanesports/tesgiga; git pull origin master; rm -rf /var/www/html/build; rm -rf /titanesports/tesgiga/build; npm run build; mv build /var/www/html; rm -rf build`,
