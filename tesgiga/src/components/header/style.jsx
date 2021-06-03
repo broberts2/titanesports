@@ -4,6 +4,8 @@ export default (props) =>
 	makeStyles((theme) => ({
 		root: {
 			position: props.tranparent ? "absolute" : "relative",
+			width: "100%",
+			overflow: "hidden",
 		},
 		toolbarbuttons: {
 			marginLeft: "auto",

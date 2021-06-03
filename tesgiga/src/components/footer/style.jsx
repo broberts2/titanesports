@@ -6,6 +6,8 @@ export default (props) =>
 			position: props.tranparent ? "absolute" : "relative",
 			zIndex: 1500,
 			marginTop: "100px",
+			width: "100%",
+			overflow: "hidden",
 		},
 		toolbarbuttons: {},
 		appbar: {

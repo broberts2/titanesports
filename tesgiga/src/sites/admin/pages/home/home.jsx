@@ -21,7 +21,6 @@ import ExitToAppRoundedIcon from "@material-ui/icons/ExitToAppRounded";
 import SettingsApplicationsRoundedIcon from "@material-ui/icons/SettingsApplicationsRounded";
 import GroupWorkRoundedIcon from "@material-ui/icons/GroupWorkRounded";
 import PeopleRoundedIcon from "@material-ui/icons/PeopleRounded";
-import PersonPinRoundedIcon from "@material-ui/icons/PersonPinRounded";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import Divider from "@material-ui/core/Divider";
 import Components from "../../../../components/components";
@@ -33,8 +32,16 @@ const GlobalActions = _GlobalActions("admin");
 
 const panelSelector = (conditions) => {
 	if (conditions.isAuth) {
-		if (conditions.displayService === "Oracle") {
-			return <Panels.Oracle />;
+		if (
+			conditions.displayService === "Oracle" &&
+			conditions.displayName === "Discord"
+		) {
+			return <Panels.OracleDiscord />;
+		} else if (
+			conditions.displayService === "Oracle" &&
+			conditions.displayName === "League of Legends"
+		) {
+			return <Panels.OracleLeagueOfLegends />;
 		} else if (conditions.displayService === "OBS Streamlabs") {
 			return <Panels.OBSStreamlabs />;
 		} else if (conditions.displayService === "Team Manager") {
@@ -142,7 +149,7 @@ const items = (
 					divider: true,
 			  }
 			: null,
-		isAuth && displayName === "Discord"
+		isAuth && (displayName === "Discord" || displayName === "League of Legends")
 			? {
 					text: "Oracle",
 					icon: <TimelineSharpIcon />,
@@ -298,7 +305,7 @@ export default (props) => {
 						className={classes.content}
 					>
 						<div className={classes.innercontent}>
-							{panelSelector({ isAuth, displayService })}
+							{panelSelector({ isAuth, displayService, displayName })}
 						</div>
 					</Box>
 				</Box>

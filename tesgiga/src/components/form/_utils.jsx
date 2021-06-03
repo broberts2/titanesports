@@ -59,7 +59,7 @@ const Document = (props) => {
 				className={classes.body}
 				style={{
 					opacity: !sending ? 1 : 0.3,
-					pointerEvents: sending ? "none" : "",
+					pointerEvents: sending || snack.severity === "success" ? "none" : "",
 				}}
 			>
 				<Components.Ruby src={props.img} />
