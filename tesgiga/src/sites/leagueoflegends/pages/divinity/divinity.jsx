@@ -1,13 +1,11 @@
 import React from "react";
 import { ThemeProvider } from "@material-ui/core";
-import { Slide } from "@material-ui/core";
 import Components from "../../../../components/components";
 import Labels from "../../../../labels/index";
 import Style from "./style";
 
 export default (props) => {
 	const classes = Style();
-	const [radio, setRadio] = React.useState("Lottery Application");
 	React.useEffect(() => props._());
 	return (
 		<ThemeProvider theme={Components.Themes.Dark}>
@@ -25,19 +23,6 @@ export default (props) => {
 					more recently with desktop publishing software like Aldus PageMaker
 					including versions of Lorem Ipsum.
 				</Components.Blurb>
-				<div className={classes.radioButton}>
-					<Components.RadioButton
-						row
-						onChange={(e) => setRadio(e)}
-						value={radio}
-						items={["Lottery Application", "Team Application"]}
-					/>
-				</div>
-				{radio === "Lottery Application" ? (
-					<Components.Form.LotteryApplication_Divinity />
-				) : (
-					<Components.Form.TeamApplication_Divinity />
-				)}
 				<Components.Footer />
 			</div>
 		</ThemeProvider>

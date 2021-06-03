@@ -31,6 +31,8 @@ export default {
 		firedrake: `${_}/static/images/firedrake.png`,
 		oceandrake: `${_}/static/images/oceandrake.png`,
 		poro: `${_}/static/images/poro.png`,
+		scroll: `${_}/static/images/scroll.png`,
+		poppy: `${_}/static/images/poppy.png`,
 	},
 	backgrounds: {
 		violet: `${_}/static/backgrounds/violet.png`,

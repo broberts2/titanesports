@@ -25,6 +25,7 @@ export default (props) => {
 						{createRoute("/articles", Sites.LeagueOfLegends.Articles)}
 						{createRoute("/staff", Sites.LeagueOfLegends.Staff)}
 						{createRoute("/community", Sites.LeagueOfLegends.Community)}
+						{createRoute("/applications", Sites.LeagueOfLegends.Applications)}
 						{createRoute("/divinity", Sites.LeagueOfLegends.Divinity)}
 					</React.Fragment>
 				);

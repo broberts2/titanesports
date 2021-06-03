@@ -30,8 +30,8 @@ const cfg = (config, setModal) => {
 					},
 					{ text: "Staff", cb: () => (window.location.href = "/staff") },
 					{
-						text: "Community",
-						cb: () => (window.location.href = "/community"),
+						text: "Applications",
+						cb: () => (window.location.href = "/applications"),
 					},
 					{
 						text: GlobalActions.Utils.isSignedIn() ? "Sign Out" : "Sign In",

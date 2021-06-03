@@ -43,24 +43,6 @@ const panelSelector = (conditions) => {
 			return <Panels.PlayerManager />;
 		} else if (conditions.displayService === "Media Manager") {
 			return <Panels.MediaManager />;
-		} else if (
-			conditions.displayService === "Lottery Applications - Divinity"
-		) {
-			return (
-				<Panels.Applications
-					callout="Lottery Applications - Divinity"
-					component={"LotteryApplication_Divinity"}
-				/>
-			);
-		} else if (
-			conditions.displayService === "Lottery Applications - Conquerors"
-		) {
-			return (
-				<Panels.Applications
-					callout="Lottery Applications - Conquerors"
-					component={"LotteryApplication_Conquerors"}
-				/>
-			);
 		} else if (conditions.displayService === "Team Applications - Divinity") {
 			return (
 				<Panels.Applications
@@ -73,6 +55,13 @@ const panelSelector = (conditions) => {
 				<Panels.Applications
 					callout="Team Applications - Conquerors"
 					component={"TeamApplication_Conquerors"}
+				/>
+			);
+		} else if (conditions.displayService === "Staff Applications") {
+			return (
+				<Panels.Applications
+					callout="Staff Applications"
+					component={"StaffApplication"}
 				/>
 			);
 		}
@@ -190,20 +179,6 @@ const items = (
 			: null,
 		isAuth && displayName === "League of Legends"
 			? {
-					text: "Lottery Applications - Divinity",
-					icon: <PersonPinRoundedIcon />,
-					cb: () => setDisplayService("Lottery Applications - Divinity"),
-			  }
-			: null,
-		isAuth && displayName === "League of Legends"
-			? {
-					text: "Lottery Applications - Conquerors",
-					icon: <PersonPinRoundedIcon />,
-					cb: () => setDisplayService("Lottery Applications - Conquerors"),
-			  }
-			: null,
-		isAuth && displayName === "League of Legends"
-			? {
 					text: "Team Applications - Divinity",
 					icon: <SupervisedUserCircleIcon />,
 					cb: () => setDisplayService("Team Applications - Divinity"),
@@ -214,6 +189,13 @@ const items = (
 					text: "Team Applications - Conquerors",
 					icon: <SupervisedUserCircleIcon />,
 					cb: () => setDisplayService("Team Applications - Conquerors"),
+			  }
+			: null,
+		isAuth && displayName === "League of Legends"
+			? {
+					text: "Staff Applications",
+					icon: <SupervisedUserCircleIcon />,
+					cb: () => setDisplayService("Staff Applications"),
 			  }
 			: null,
 		isAuth
