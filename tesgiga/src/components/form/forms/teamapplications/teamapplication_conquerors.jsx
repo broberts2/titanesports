@@ -13,7 +13,9 @@ export default (props) => {
 					category={"Team Applications - Conquerors"}
 				>
 					<Utils.Blurb
-						title={"Titan Esports 2021 Spring Invitational Team Application"}
+						title={
+							"Titan Esports 2021 Summer/Fall Invitational Team Application"
+						}
 					>
 						We're back and excited to announce our 2021 Spring Invitational
 						Tournament! In addition to filling out this application form, we ask
