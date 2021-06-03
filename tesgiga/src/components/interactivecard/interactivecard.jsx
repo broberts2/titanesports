@@ -14,7 +14,7 @@ export default (props) => {
 				props.onClick && !props.disabled ? props.onClick() : null
 			}
 		>
-			<CardContent style={{ height: "100%" }}>
+			<CardContent style={{ height: "100%", paddingBottom: "75px" }}>
 				<Box
 					style={{ height: "100%" }}
 					display="flex"
@@ -33,7 +33,7 @@ export default (props) => {
 					</CardActions>
 				</Box>
 			) : (
-				<div style={{ height: "75px" }} />
+				<div style={{ height: "0px" }} />
 			)}
 		</Card>
 	);

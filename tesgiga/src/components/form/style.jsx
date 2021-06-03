@@ -4,13 +4,11 @@ export default makeStyles((theme) => ({
 	root: {
 		position: "relative",
 		width: "calc(100% - 200px)",
-		[theme.breakpoints.down("sm")]: {
-			width: "calc(100% - 5px)",
-		},
 		height: "100%",
 		padding: "100px",
 		[theme.breakpoints.down("sm")]: {
 			padding: "10px",
+			width: "calc(100% - 25px)",
 		},
 	},
 	body: {

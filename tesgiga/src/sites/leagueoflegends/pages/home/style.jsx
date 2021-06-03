@@ -7,14 +7,12 @@ export default makeStyles((theme) => ({
 	},
 	cardimg: {
 		width: "100%",
-		marginBottom: "75px",
+		marginBottom: "10px",
 	},
 	typographycardtext: {
 		color: theme.palette.background.default,
-		position: "absolute",
-		bottom: 0,
 		fontSize: theme.typography.h4.fontSize,
-		[theme.breakpoints.down("sm")]: {
+		[theme.breakpoints.down("xs")]: {
 			fontSize: theme.typography.h6.fontSize,
 		},
 	},

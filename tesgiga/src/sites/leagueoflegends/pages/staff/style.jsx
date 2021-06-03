@@ -10,12 +10,12 @@ export default makeStyles((theme) => ({
 	},
 	typographyh2: {
 		[theme.breakpoints.down("sm")]: {
-			fontSize: `calc(${theme.typography.h2.fontSize} / 3)`,
+			fontSize: `calc(${theme.typography.h3.fontSize} / 3)`,
 		},
 	},
 	typographyh3: {
 		[theme.breakpoints.down("sm")]: {
-			fontSize: `calc(${theme.typography.h3.fontSize} / 3)`,
+			fontSize: `calc(${theme.typography.h5.fontSize} / 3)`,
 		},
 	},
 	typographyh4: {

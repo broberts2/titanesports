@@ -15,7 +15,4 @@ export default (props) =>
 			opacity: props.disabled ? 0.5 : 1,
 			color: theme.palette.background.default,
 		},
-		pos: {
-			marginBottom: 12,
-		},
 	}));

@@ -8,7 +8,7 @@ export default (props) => {
 	const classes = Style();
 	const Card = (props) => {
 		return (
-			<Grid item xs={6} sm={2} align="flex">
+			<Grid item xs={6} md={4} lg={3} xl={2} align="flex">
 				<Components.InteractiveCard
 					anim={props.anim}
 					delay={props.delay}

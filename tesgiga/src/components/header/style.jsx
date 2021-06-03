@@ -17,7 +17,7 @@ export default (props) =>
 			marginLeft: "25px",
 			marginTop: "30px",
 			minWidth: "400px",
-			[theme.breakpoints.down("sm")]: {
+			[theme.breakpoints.down("md")]: {
 				marginLeft: "15px",
 				marginTop: "17.5px",
 				fontSize: 12,
@@ -26,14 +26,14 @@ export default (props) =>
 		logo: {
 			height: "75px",
 			padding: "15px",
-			[theme.breakpoints.down("sm")]: {
+			[theme.breakpoints.down("md")]: {
 				display: "none",
 			},
 		},
 		buttons: {
 			textAlign: "right",
 			marginTop: "30px",
-			[theme.breakpoints.down("sm")]: {
+			[theme.breakpoints.down("md")]: {
 				display: "none",
 			},
 		},

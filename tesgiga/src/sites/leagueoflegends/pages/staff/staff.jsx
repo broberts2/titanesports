@@ -9,13 +9,13 @@ export default (props) => {
 		<Components.InteractiveCard fill onClick={() => null}>
 			<Box className={classes.card}>
 				<img className={classes.cardimg} src={props.data.img} />
-				<Components.Typography className={classes.typographyh2} variant="h2">
+				<Components.Typography className={classes.typographyh2} variant="h4">
 					<b>{props.data.name}</b>
 				</Components.Typography>
-				<Components.Typography className={classes.typographyh3} variant="h4">
+				<Components.Typography className={classes.typographyh3} variant="h6">
 					{props.data.title}
 				</Components.Typography>
-				<Components.Typography className={classes.typographyh4} variant="h3">
+				<Components.Typography className={classes.typographyh4} variant="h5">
 					{props.data.duty}
 				</Components.Typography>
 			</Box>
@@ -29,7 +29,7 @@ export default (props) => {
 					{data
 						.sort((el1, el2) => (el1.name < el2.name ? -1 : 1))
 						.map((el) => (
-							<Grid item xs={6} md={4}>
+							<Grid item xs={6} lg={3}>
 								<Card
 									data={{
 										img: el.img,
