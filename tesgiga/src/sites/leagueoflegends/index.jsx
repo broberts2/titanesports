@@ -5,6 +5,7 @@ import Articles from "./pages/articles/articles";
 import Statistics from "./pages/statistics/statistics";
 import TitanDraft from "./pages/titandraft/titandraft";
 import Divinity from "./pages/divinity/divinity";
+import Conquerors from "./pages/conquerors/conquerors";
 import Applications from "./pages/applications/applications";
 
 export default {
@@ -15,5 +16,6 @@ export default {
 	Statistics,
 	TitanDraft,
 	Divinity,
+	Conquerors,
 	Applications,
 };

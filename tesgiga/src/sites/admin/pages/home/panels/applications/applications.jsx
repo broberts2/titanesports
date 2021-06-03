@@ -33,7 +33,6 @@ export default (props) => {
 		).then((res) => res.result.map((el) => (el.JSON = JSON.parse(el.JSON))));
 		setState((lastState) => ({ ...lastState, applications: res }));
 	}, [props.callout]);
-	console.log("stuff");
 	return (
 		<div className={classes.root}>
 			<div

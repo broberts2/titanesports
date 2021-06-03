@@ -65,8 +65,8 @@ export default (props) => {
 						src={Labels.images.jinx}
 					/>
 					<Card
-						onClick={() => (window.location.href = "/community")}
-						title={"Community Hub"}
+						onClick={() => (window.location.href = "/applications")}
+						title={"Applications"}
 						src={Labels.images.zoe}
 					/>
 				</Grid>
@@ -95,7 +95,7 @@ export default (props) => {
 						src={Labels.images.gold}
 					/>
 					<Card
-						onClick={() => (window.location.href = "/statistics")}
+						onClick={() => (window.location.href = "/conquerors")}
 						title={"Conquerors"}
 						src={Labels.images.diamond}
 					/>
