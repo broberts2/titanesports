@@ -59,21 +59,27 @@ export default (props) => {
 						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
 						name: "Phortwenty",
 						title: "Administrator",
-						duty: "Operations & Statistics",
-					},
-					{
-						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
-						name: "Major",
-						title: "Administrator",
-						duty: "Administrations",
+						duty: "League Operations",
 					},
 				])}
 				{buildSection("Directors", [
 					{
 						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
+						name: "Braer",
+						title: "Director",
+						duty: "Game Development",
+					},
+					{
+						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
+						name: "Donteatbees",
+						title: "Director",
+						duty: "League Director",
+					},
+					{
+						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
 						name: "Jetgorilla",
 						title: "Director",
-						duty: "Programming & Architecture",
+						duty: "Programming & APIs",
 					},
 					{
 						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
@@ -83,21 +89,15 @@ export default (props) => {
 					},
 					{
 						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
+						name: "Qurkii",
+						title: "Director",
+						duty: "Finance",
+					},
+					{
+						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
 						name: "Sammy2Slap",
 						title: "Director",
-						duty: "Ban Appeals",
-					},
-					{
-						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
-						name: "Basically Cancer",
-						title: "Director",
-						duty: "League Director",
-					},
-					{
-						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
-						name: "Braer",
-						title: "Director",
-						duty: "",
+						duty: "Roster Staff",
 					},
 					{
 						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
@@ -105,14 +105,14 @@ export default (props) => {
 						title: "Director",
 						duty: "Player Integrity",
 					},
+				])}
+				{buildSection("Developers", [
 					{
 						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
 						name: "Khyroe",
-						title: "Director",
-						duty: "Analytics",
+						title: "Developer",
+						duty: "Content Developer",
 					},
-				])}
-				{buildSection("Developers", [
 					{
 						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
 						name: "LolGermRat",
@@ -124,6 +124,28 @@ export default (props) => {
 						name: "Poptartism",
 						title: "Developer",
 						duty: "Graphic Design",
+					},
+				])}
+				{buildSection("Staff", [
+					{
+						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
+						name: "Kappa Krusader",
+						title: "Staff",
+						duty: "Moderator",
+					},
+				])}
+				{buildSection("SHOUTCASTERS", [
+					{
+						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
+						name: "JangoUltimus",
+						title: "Shoutcaster",
+						duty: "",
+					},
+					{
+						img: "https://static.wikia.nocookie.net/leagueoflegends/images/4/46/Fleet_Footwork_rune.png",
+						name: "MannyOrSonny",
+						title: "Shoutcaster",
+						duty: "",
 					},
 				])}
 				<Components.Footer />

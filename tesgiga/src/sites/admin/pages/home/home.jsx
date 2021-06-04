@@ -22,6 +22,7 @@ import SettingsApplicationsRoundedIcon from "@material-ui/icons/SettingsApplicat
 import GroupWorkRoundedIcon from "@material-ui/icons/GroupWorkRounded";
 import PeopleRoundedIcon from "@material-ui/icons/PeopleRounded";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
+import ShareRoundedIcon from "@material-ui/icons/ShareRounded";
 import Divider from "@material-ui/core/Divider";
 import Components from "../../../../components/components";
 import _GlobalActions from "../../../../globalactions/index";
@@ -42,6 +43,11 @@ const panelSelector = (conditions) => {
 			conditions.displayName === "League of Legends"
 		) {
 			return <Panels.OracleLeagueOfLegends />;
+		} else if (
+			conditions.displayService === "Oracle" &&
+			conditions.displayName === "Social Media"
+		) {
+			return <Panels.OracleSocialMedia />;
 		} else if (conditions.displayService === "OBS Streamlabs") {
 			return <Panels.OBSStreamlabs />;
 		} else if (conditions.displayService === "Team Manager") {
@@ -130,14 +136,15 @@ const items = (
 										<SettingsApplicationsRoundedIcon />
 									)}
 									{listItem("li1", "League of Legends", <SportsEsportsIcon />)}
-									{listItem("li2", "Valorant", <SportsEsportsIcon />, true)}
+									{listItem("li2", "Social Media", <ShareRoundedIcon />)}
+									{listItem("li3", "Valorant", <SportsEsportsIcon />, true)}
 									{listItem(
-										"li3",
+										"li4",
 										"World of Warcraft",
 										<SportsEsportsIcon />,
 										true
 									)}
-									{listItem("li4", "Valheim", <SportsEsportsIcon />, true)}
+									{listItem("li5", "Valheim", <SportsEsportsIcon />, true)}
 								</List>
 							</AccordionDetails>
 						</Accordion>
@@ -149,7 +156,10 @@ const items = (
 					divider: true,
 			  }
 			: null,
-		isAuth && (displayName === "Discord" || displayName === "League of Legends")
+		isAuth &&
+		(displayName === "Discord" ||
+			displayName === "League of Legends" ||
+			displayName === "Social Media")
 			? {
 					text: "Oracle",
 					icon: <TimelineSharpIcon />,

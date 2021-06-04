@@ -33,6 +33,7 @@ export default {
 		poro: `${_}/static/images/poro.png`,
 		scroll: `${_}/static/images/scroll.png`,
 		poppy: `${_}/static/images/poppy.png`,
+		twitter: `${_}/static/images/twitter.png`,
 	},
 	backgrounds: {
 		violet: `${_}/static/backgrounds/violet.png`,

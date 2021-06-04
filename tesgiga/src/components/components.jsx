@@ -21,6 +21,7 @@ import Modal from "./modal/modal";
 import Form from "./form/form";
 import RadioButton from "./radiobutton/radiobutton";
 import CheckBox from "./checkbox/checkbox";
+import OracleCommands from "./oraclecommands/oraclecommands";
 import Themes from "../themes/index";
 
 export default {
@@ -48,4 +49,5 @@ export default {
 	Form,
 	RadioButton,
 	CheckBox,
+	OracleCommands,
 };
