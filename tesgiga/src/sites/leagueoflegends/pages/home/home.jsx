@@ -30,6 +30,7 @@ export default (props) => {
 			<div className={classes.root}>
 				<Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
 				<Components.Banner
+					top
 					src={Labels.backgrounds.kindred}
 					icon={Labels.images.comet}
 				/>

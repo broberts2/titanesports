@@ -2,7 +2,7 @@ import React from "react";
 import Style from "./style";
 
 export default (props) => {
-	const classes = Style();
+	const classes = Style(props)();
 	return (
 		<div className={classes.root}>
 			<div className={classes.background}>

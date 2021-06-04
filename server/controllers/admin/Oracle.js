@@ -37,6 +37,9 @@ module.exports = {
 		const path = config.client.split("//");
 		return `${path[0]}//${subdomain}.${path[1]}?auth_token=${res.access_token}&refresh_token=${res.refresh_token}`;
 	},
+	openDM: async (req) => {
+		// Open DM in discord from staff page on website
+	},
 	getUser: async (req) => {
 		const res = await Oracle.guilds
 			.fetch(config.guildId)
@@ -244,7 +247,7 @@ module.exports = {
 						obj.count > 1 ? "(s)" : ""
 					}!`;
 				}
-				return `Well that's awkward. Nobdy voted!`;
+				return `Well that's awkward. Nobody voted!`;
 			};
 			OracleUtils.SendMessage({
 				channel: req.body.channelId,
@@ -261,20 +264,17 @@ module.exports = {
 		return "Success!";
 	},
 	authAction: async (req) => {
-		if (req.headers.token && req.headers.token !== "undefined") {
-			const user = await fetch("https://discord.com/api/users/@me", {
-				headers: {
-					authorization: `Bearer ${req.query.token}`,
-				},
-			}).then((res) => res.json());
-			const permissionSet = await Permissions.get();
-			const members = await Oracle.guilds
-				.fetch(config.guildId)
-				.then((res) => res.members);
-			const roles = await members.fetch(user.id).then((res) => res._roles);
-			return permissionSet[req.query.action].some((a) => roles.includes(a));
-		}
-		return false;
+		const user = await fetch("https://discord.com/api/users/@me", {
+			headers: {
+				authorization: `Bearer ${req.query.token}`,
+			},
+		}).then((res) => res.json());
+		const permissionSet = await Permissions.get();
+		const members = await Oracle.guilds
+			.fetch(config.guildId)
+			.then((res) => res.members);
+		const roles = await members.fetch(user.id).then((res) => res._roles);
+		return permissionSet[req.query.action].some((a) => roles.includes(a));
 	},
 	getMyPermissions: async (req) => {
 		if (req.headers.token && req.headers.token !== "undefined") {

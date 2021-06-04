@@ -9,7 +9,7 @@ export default (props) => {
 		<Components.InteractiveCard
 			fill
 			onClick={() =>
-				props.data.id
+				props.data.id && false
 					? window.open(`https://discord.com/channels/@me/${props.data.id}`)
 					: null
 			}
