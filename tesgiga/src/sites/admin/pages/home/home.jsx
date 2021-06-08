@@ -290,7 +290,6 @@ export default (props) => {
       setIsAuth(false);
     }
     props._();
-    console.log("spam");
   }, []);
   return (
     <ThemeProvider theme={Components.Themes.Dark}>

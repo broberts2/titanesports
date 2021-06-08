@@ -8,7 +8,7 @@ export default (props) => {
     <form className={classes.root} noValidate autoComplete="false">
       <TextField
         multiline={props.multiline}
-        rows={4}
+        rows={10}
         id="standard-basic"
         style={{ width: "100%" }}
         value={props.value}
