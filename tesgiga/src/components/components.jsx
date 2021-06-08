@@ -1,53 +1,53 @@
-import PrimaryButton from "./primarybutton/primarybutton";
-import Snack from "./snack/snack";
-import InteractiveCard from "./interactivecard/interactivecard";
-import PageLoader from "./pageloader/pageloader";
-import Transitions from "./transitions/transitions";
-import Typography from "./typography/typography";
-import Header from "./header/header";
-import Footer from "./footer/footer";
-import Banner from "./banner/banner";
-import Ruby from "./ruby/ruby";
-import Block from "./block/block";
-import Blurb from "./blurb/blurb";
-import CommunityCard from "./communitycard/communitycard";
-import TextField from "./textfield/textfield";
-import Tooltip from "./tooltip/tooltip";
-import Switch from "./switch/switch";
-import Fab from "./fab/fab";
-import Title from "./title/title";
-import MiniLoader from "./miniloader/miniloader";
-import Modal from "./modal/modal";
-import Form from "./form/form";
-import RadioButton from "./radiobutton/radiobutton";
-import CheckBox from "./checkbox/checkbox";
-import OracleCommands from "./oraclecommands/oraclecommands";
-import Themes from "../themes/index";
+import PrimaryButton from "components/primarybutton/primarybutton";
+import Snack from "components/snack/snack";
+import InteractiveCard from "components/interactivecard/interactivecard";
+import PageLoader from "components/pageloader/pageloader";
+import Transitions from "components/transitions/transitions";
+import Typography from "components/typography/typography";
+import Header from "components/header/header";
+import Footer from "components/footer/footer";
+import Banner from "components/banner/banner";
+import Ruby from "components/ruby/ruby";
+import Block from "components/block/block";
+import Blurb from "components/blurb/blurb";
+import CommunityCard from "components/communitycard/communitycard";
+import TextField from "components/textfield/textfield";
+import Tooltip from "components/tooltip/tooltip";
+import Switch from "components/switch/switch";
+import Fab from "components/fab/fab";
+import Title from "components/title/title";
+import MiniLoader from "components/miniloader/miniloader";
+import Modal from "components/modal/modal";
+import Form from "components/form/form";
+import RadioButton from "components/radiobutton/radiobutton";
+import CheckBox from "components/checkbox/checkbox";
+import OracleCommands from "components/oraclecommands/oraclecommands";
+import Themes from "themes/index";
 
 export default {
-	CommunityCard,
-	PrimaryButton,
-	Themes,
-	Snack,
-	InteractiveCard,
-	PageLoader,
-	Transitions,
-	Typography,
-	Header,
-	Banner,
-	Ruby,
-	Block,
-	Blurb,
-	Footer,
-	TextField,
-	Tooltip,
-	Switch,
-	Fab,
-	Title,
-	MiniLoader,
-	Modal,
-	Form,
-	RadioButton,
-	CheckBox,
-	OracleCommands,
+  CommunityCard,
+  PrimaryButton,
+  Themes,
+  Snack,
+  InteractiveCard,
+  PageLoader,
+  Transitions,
+  Typography,
+  Header,
+  Banner,
+  Ruby,
+  Block,
+  Blurb,
+  Footer,
+  TextField,
+  Tooltip,
+  Switch,
+  Fab,
+  Title,
+  MiniLoader,
+  Modal,
+  Form,
+  RadioButton,
+  CheckBox,
+  OracleCommands,
 };

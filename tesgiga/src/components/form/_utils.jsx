@@ -1,8 +1,8 @@
 import { Box, CircularProgress } from "@material-ui/core";
 import React from "react";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
-import Components from "../components";
-import _GlobalActions from "../../globalactions/index";
+import Components from "components/components";
+import _GlobalActions from "globalactions/index";
 import Style from "./style";
 
 const GlobalActions = _GlobalActions("admin");

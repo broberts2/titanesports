@@ -1,4 +1,5 @@
 {
+  "baseUrl": "src",
   "name": "tesgiga",
   "version": "0.1.0",
   "private": true,

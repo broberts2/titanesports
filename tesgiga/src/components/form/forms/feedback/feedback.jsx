@@ -1,11 +1,17 @@
 import React from "react";
-import Slide from "@material-ui/core/Slide";
-import Labels from "../../../../labels/index";
+import Components from "components/components";
+import Labels from "labels/index";
 import Utils from "../../_utils";
 
 export default (props) => {
   return (
-    <Slide direction="left" in={true} mountOnEnter unmountOnExit>
+    <Components.Transitions
+      anim={"Slide"}
+      direction="left"
+      in={true}
+      mountOnEnter
+      unmountOnExit
+    >
       <div>
         <Utils.Document
           data={props.data}
@@ -25,6 +31,6 @@ export default (props) => {
           <Utils.Submit />
         </Utils.Document>
       </div>
-    </Slide>
+    </Components.Transitions>
   );
 };

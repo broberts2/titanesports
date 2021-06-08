@@ -1,5 +1,5 @@
 import _Cookies from "universal-cookie";
-import config from "../config";
+import config from "config";
 
 const Cookies = new _Cookies();
 

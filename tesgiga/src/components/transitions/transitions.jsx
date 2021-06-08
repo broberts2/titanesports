@@ -1,19 +1,16 @@
 import React from "react";
-import { Grow } from "@material-ui/core";
+import { Grow, Slide } from "@material-ui/core";
 
 const TransitionGroup = {
-	Grow,
+  Grow,
+  Slide,
 };
 
 export default (props) => {
-	switch (props.anim) {
-		case "grow":
-			return (
-				<TransitionGroup.Grow in={true} timeout={props.delay ? props.delay : 0}>
-					{props.children}
-				</TransitionGroup.Grow>
-			);
-		default:
-			return <div>{props.children}</div>;
-	}
+  if (props.anim) {
+    const Component = TransitionGroup[props.anim];
+    return <Component {...props}>{props.children}</Component>;
+  } else {
+    return <div>{props.children}</div>;
+  }
 };

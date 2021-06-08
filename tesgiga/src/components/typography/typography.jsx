@@ -1,11 +1,11 @@
 import { Typography } from "@material-ui/core";
-import Transitions from "../transitions/transitions";
+import Components from "components/components";
 import React from "react";
 
 export default (props) => {
-	return (
-		<Transitions anim={props.anim} delay={props.delay}>
-			<Typography {...props}>{props.children}</Typography>
-		</Transitions>
-	);
+  return (
+    <Components.Transitions anim={"Grow"} in={true} mountOnEnter unmountOnExit>
+      <Typography {...props}>{props.children}</Typography>
+    </Components.Transitions>
+  );
 };
