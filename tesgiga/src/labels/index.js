@@ -37,6 +37,7 @@ export default {
     poppy: `${_}/static/images/poppy.png`,
     twitter: `${_}/static/images/twitter.png`,
     discord: `${_}/static/images/discord.png`,
+    zilean: `${_}/static/images/zilean.png`,
   },
   backgrounds: {
     violet: `${_}/static/backgrounds/violet.png`,
