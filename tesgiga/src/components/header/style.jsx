@@ -31,6 +31,7 @@ export default (props) =>
       height: "75px",
       marginLeft: "25px",
       marginTop: "12.5px",
+      marginBottom: "12.5px",
       "& img": {
         height: "100%",
       },
@@ -42,6 +43,7 @@ export default (props) =>
       },
     },
     logo: {
+      display: "none",
       height: "75px",
       padding: "15px",
       [theme.breakpoints.down("md")]: {
