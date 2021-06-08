@@ -13,11 +13,11 @@ export default (props) => {
           category={"Community Feedback"}
         >
           <Utils.Blurb title={"Community Feedback"}>
-            We here at TES do our best to provide our community exicting, fair,
-            and wholesome content. However, we don't always hit our mark. If you
-            have something you'd like to say, please submit a comment below. Our
-            staff will be happy to read what you have to say! (Note: All
-            submissions are fully anonymous)
+            We here at TES do our best to provide our community with exicting,
+            fair, and engaging content. However, we don't always hit our mark.
+            If you have something you'd like to say, please submit a comment
+            below. Our staff will be happy to read what you have to say! (Note:
+            All submissions are fully anonymous)
           </Utils.Blurb>
           <Utils.InputLong isInput required>
             Submit your response here.

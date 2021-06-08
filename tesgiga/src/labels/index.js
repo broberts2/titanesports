@@ -38,6 +38,7 @@ export default {
     twitter: `${_}/static/images/twitter.png`,
     discord: `${_}/static/images/discord.png`,
     zilean: `${_}/static/images/zilean.png`,
+    leagueoflegends: `${_}/static/images/leagueoflegends.png`,
   },
   backgrounds: {
     violet: `${_}/static/backgrounds/violet.png`,

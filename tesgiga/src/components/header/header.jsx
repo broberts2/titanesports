@@ -17,6 +17,7 @@ const cfg = (config, setModal) => {
     case "leagueoflegends":
       return {
         title: "League of Legends",
+        img: Labels.images.leagueoflegends,
         redir: "/",
         controls: [
           {
@@ -74,13 +75,22 @@ export default (props) => {
                   <ArrowBackRoundedIcon />
                 </IconButton>
                 <img className={classes.logo} src={Labels.images.logo} />
-                <Components.Typography
-                  variant="h4"
-                  className={classes.title}
-                  onClick={() => (window.location.href = config.redir)}
-                >
-                  {config.title}
-                </Components.Typography>
+                {config.img ? (
+                  <div
+                    className={classes.headerImg}
+                    onClick={() => (window.location.href = config.redir)}
+                  >
+                    <img src={config.img} />
+                  </div>
+                ) : (
+                  <Components.Typography
+                    variant="h4"
+                    className={classes.title}
+                    onClick={() => (window.location.href = config.redir)}
+                  >
+                    {config.title}
+                  </Components.Typography>
+                )}
               </Box>
             </Grid>
             <Grid item xs={8} className={classes.buttons}>

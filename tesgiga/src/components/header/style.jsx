@@ -26,6 +26,21 @@ export default (props) =>
         fontSize: 12,
       },
     },
+    headerImg: {
+      cursor: "pointer",
+      height: "75px",
+      marginLeft: "25px",
+      marginTop: "12.5px",
+      "& img": {
+        height: "100%",
+      },
+      [theme.breakpoints.down("md")]: {
+        height: "50px",
+        marginLeft: "25px",
+        marginTop: "5px",
+        marginBottom: "5px",
+      },
+    },
     logo: {
       height: "75px",
       padding: "15px",
