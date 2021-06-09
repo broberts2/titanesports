@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@material-ui/styles";
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Components from "components/components";
+import Components from "components/index";
 import GlobalActions from "globalactions/index";
 import Sites from "sites/index";
 import Routes from "routes";

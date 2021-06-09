@@ -1,5 +1,5 @@
 import { Typography } from "@material-ui/core";
-import Components from "components/components";
+import Components from "components/index";
 import React from "react";
 
 export default (props) => {

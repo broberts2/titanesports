@@ -1,7 +1,7 @@
 import { Box, CircularProgress } from "@material-ui/core";
 import React from "react";
 import { disablePageScroll, enablePageScroll } from "scroll-lock";
-import Components from "components/components";
+import Components from "components/index";
 import _GlobalActions from "globalactions/index";
 import Style from "./style";
 

@@ -24,8 +24,8 @@ import PeopleRoundedIcon from "@material-ui/icons/PeopleRounded";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import ShareRoundedIcon from "@material-ui/icons/ShareRounded";
 import Divider from "@material-ui/core/Divider";
-import Components from "../../../../components/components";
-import _GlobalActions from "../../../../globalactions/index";
+import Components from "components/index";
+import _GlobalActions from "globalactions/index";
 import Panels from "./panels/index";
 import Style from "./style";
 

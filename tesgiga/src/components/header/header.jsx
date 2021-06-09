@@ -4,7 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded";
 import Collapse from "@material-ui/core/Collapse";
-import Components from "components/components";
+import Components from "components/index";
 import Labels from "labels/index";
 import Style from "./style";
 import myConfig from "config";

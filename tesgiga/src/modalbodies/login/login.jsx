@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, ThemeProvider } from "@material-ui/core";
-import Components from "../../components/components";
-import Labels from "../../labels/index";
-import _GlobalActions from "../../globalactions/index";
+import Components from "components/index";
+import Labels from "labels/index";
+import _GlobalActions from "globalactions/index";
 import Style from "./style";
 
 export default (props) => {

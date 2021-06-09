@@ -7,8 +7,15 @@ export default (props) => {
   return (
     <form className={classes.root} noValidate autoComplete="false">
       <TextField
+        onKeyDown={(e) => {
+          if (e.key === "Tab" && props.multiline) {
+            document.execCommand("insertText", false, "\t");
+            e.preventDefault();
+            return false;
+          }
+        }}
         multiline={props.multiline}
-        rows={10}
+        rows={props.rows ? props.rows : 10}
         id="standard-basic"
         style={{ width: "100%" }}
         value={props.value}

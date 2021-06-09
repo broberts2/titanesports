@@ -1,6 +1,6 @@
 import React from "react";
 import Labels from "labels/index";
-import Components from "components/components";
+import Components from "components/index";
 import Utils from "../../_utils";
 
 export default (props) => {

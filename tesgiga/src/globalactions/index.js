@@ -10,6 +10,7 @@ export default (subdomain) => ({
         arr.map((el) => new Promise((resolve) => el.onload(resolve(el))))
       );
     },
+    getUrlParameters: Utils.getUrlParameters,
     discordSignIn: () => window.location.replace(Utils.discordRedirect()),
     discordReturnDirect: () => Utils.discordReturnDirect(),
     signOut: () => {
@@ -33,6 +34,12 @@ export default (subdomain) => ({
     getApplications: async (category) =>
       await Utils.request(
         `/${subdomain}/Applications/getApplications?category=${category}`,
+        "get",
+        null
+      ),
+    getArticles: async (id) =>
+      await Utils.request(
+        `/${subdomain}/Article/getArticles${id ? `?id=${id}` : ""}`,
         "get",
         null
       ),

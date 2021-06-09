@@ -2,7 +2,7 @@ import React from "react";
 import { ThemeProvider, Typography } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import Components from "components/components";
+import Components from "components/index";
 import Labels from "labels/index";
 import Style from "./style";
 

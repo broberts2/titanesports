@@ -1,6 +1,6 @@
 import React from "react";
 import Style from "./style";
-import Components from "components/components";
+import Components from "components/index";
 import { Tooltip } from "@material-ui/core";
 
 export default (props) => {

@@ -1,6 +1,6 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
-import Components from "components/components";
+import Components from "components/index";
 import Style from "./style";
 import { Button, Grid, Toolbar, Box } from "@material-ui/core";
 

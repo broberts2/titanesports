@@ -3,7 +3,7 @@ import { Grid, ThemeProvider, Box, Switch } from "@material-ui/core";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import AddRoundedIcon from "@material-ui/icons/AddRounded";
-import Components from "../../../../components/components";
+import Components from "components/index";
 import Style from "./style";
 
 export default (props) => {

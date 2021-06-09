@@ -3,10 +3,10 @@ import React from "react";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import CloseRoundedIcon from "@material-ui/icons/CloseRounded";
-import Components from "../../../../../../components/components";
-import _GlobalActions from "../../../../../../globalactions/index";
+import Components from "components/index";
+import _GlobalActions from "globalactions/index";
 import Style from "./style";
-import Labels from "../../../../../../labels";
+import Labels from "labels";
 
 const GlobalActions = _GlobalActions("admin");
 

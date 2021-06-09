@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, ThemeProvider, Box } from "@material-ui/core";
-import Components from "../../../../components/components";
+import Components from "components/index";
 import Labels from "../../../../labels/index";
 import Style from "./style";
 
