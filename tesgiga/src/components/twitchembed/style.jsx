@@ -7,6 +7,9 @@ export default makeStyles((theme) => ({
     padding: "50px",
     [theme.breakpoints.down("sm")]: {
       height: "300px",
+      width: "calc(100% - 10px)",
+      paddingLeft: "5px",
+      paddingRight: "5px",
     },
   },
 }));

@@ -27,7 +27,8 @@ export default (props) =>
       height: "100%",
       "& img": {
         width: "100%",
-        objectFit: "fill",
+        height: "100%",
+        objectFit: "cover",
       },
     },
     icon: {

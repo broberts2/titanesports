@@ -27,6 +27,7 @@ export default (props) =>
       },
     },
     headerImg: {
+      zIndex: 1499,
       cursor: "pointer",
       height: "75px",
       marginLeft: "25px",

@@ -29,10 +29,17 @@ export default makeStyles((theme) => ({
   tags: {
     position: "absolute",
     right: 0,
-    top: "-145px",
+    top: "-250px",
     "& img": {
       width: "150px",
       margin: "-25px",
+    },
+    [theme.breakpoints.down("sm")]: {
+      top: "-100px",
+      "& img": {
+        width: "50px",
+        margin: "-15px",
+      },
     },
   },
   miniloader: {
@@ -41,5 +48,12 @@ export default makeStyles((theme) => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+  },
+  editBannerButton: {
+    position: "absolute",
+    zIndex: 1400,
+    [theme.breakpoints.down("sm")]: {
+      top: "200px",
+    },
   },
 }));

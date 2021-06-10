@@ -90,7 +90,7 @@ export default (props) => {
           ) : null}
         </div>
         {state.editing ? (
-          <div style={{ position: "absolute", zIndex: 1400 }}>
+          <div className={classes.editBannerButton}>
             {state.editingBanner ? (
               <Components.TextField
                 value={state.article.bannerimgurl}
