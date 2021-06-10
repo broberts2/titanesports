@@ -23,7 +23,7 @@ export default (props) => {
               "Titan Esports 2021 Summer/Fall Invitational Team Application"
             }
           >
-            We're back and excited to announce our 2021 Spring Invitational
+            We're back and excited to announce our 2021 Summer Invitational
             Tournament! In addition to filling out this application form, we ask
             for all players/teams to please join the Titan Esports Discord (
             <a href={"https://discord.gg/3g987Uz2"}>
@@ -33,12 +33,11 @@ export default (props) => {
             below.
           </Utils.Blurb>
           <Utils.Blurb title={"League Info"}>
-            Player cap: Players can not have surpassed Platinum III in Season 10
-            or 11
+            Player cap: Players can not have surpassed PLAT I in Season 10 or 11
             <br />
             Tournament type: best of 3 series
             <br />
-            Day/Time: Mondays @ 8 EST, starts on February 22nd, 2021
+            Day/Time: Sundays @ 7 EST, starts on July 25th, 2021
             <br />
             Regular season length: 9 weeks
             <br />

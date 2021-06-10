@@ -20,8 +20,9 @@ const matchTag = (tag) => {
 const _Card = (classes) => (_) => {
   const article = _.article;
   return (
-    <Grid item xs={12} md={6} lg={4} align="flex">
+    <Grid item className={classes.gridItem} xs={12} md={6} lg={4} align="flex">
       <Components.InteractiveCard
+        fill
         onClick={() => (window.location = `/article?id=${article._id}`)}
       >
         <div className={classes.cardBody}>

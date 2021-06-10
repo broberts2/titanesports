@@ -1,5 +1,5 @@
-import TwitterPost from "./oraclecommands/twitterpost/twitterpost";
+import OmniPost from "./oraclecommands/omnipost/omnipost";
 
 export default {
-	TwitterPost,
+  OmniPost,
 };

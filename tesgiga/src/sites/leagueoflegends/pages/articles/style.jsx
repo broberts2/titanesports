@@ -17,6 +17,7 @@ export default makeStyles((theme) => ({
     top: 0,
     left: 0,
   },
+  gridItem: {},
   typography6: {
     fontWeight: 800,
     fontStyle: "italic",
