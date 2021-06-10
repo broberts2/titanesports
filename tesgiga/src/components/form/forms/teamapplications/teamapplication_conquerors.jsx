@@ -26,9 +26,7 @@ export default (props) => {
             We're back and excited to announce our 2021 Summer Invitational
             Tournament! In addition to filling out this application form, we ask
             for all players/teams to please join the Titan Esports Discord (
-            <a href={"https://discord.gg/3g987Uz2"}>
-              https://discord.gg/3g987Uz2
-            </a>
+            <a href={Labels.discord}>{Labels.discord}</a>
             ). This is required during tournament games. See League details
             below.
           </Utils.Blurb>
