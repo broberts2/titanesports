@@ -23,6 +23,7 @@ import RadioButton from "components/radiobutton/radiobutton";
 import CheckBox from "components/checkbox/checkbox";
 import Box from "components/box/box";
 import CircularProgress from "components/circularprogress/circularprogress";
+import TwitchEmbed from "components/twitchembed/twitchembed";
 import OracleCommands from "components/oraclecommands/oraclecommands";
 import Themes from "themes/index";
 
@@ -53,5 +54,6 @@ export default {
   CheckBox,
   CircularProgress,
   Box,
+  TwitchEmbed,
   OracleCommands,
 };

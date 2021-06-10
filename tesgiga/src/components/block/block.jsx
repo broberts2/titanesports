@@ -5,7 +5,7 @@ import Style from "./style";
 export default (props) => {
   const classes = Style();
   return (
-    <Components.Typography className={classes.root}>
+    <Components.Typography {...props} className={classes.root}>
       {props.children}
     </Components.Typography>
   );

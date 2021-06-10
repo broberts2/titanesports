@@ -34,7 +34,7 @@ export default (props) => {
           src={Labels.backgrounds.kindred}
           icon={Labels.images.comet}
         />
-        <Components.Block>
+        <Components.Block style={{ display: "none" }}>
           Titan eSports Is An Amateur eSports Organization That Brings
           Competitive League of Legends Gameplay To All Skill Levels
         </Components.Block>
@@ -71,17 +71,7 @@ export default (props) => {
             src={Labels.images.scroll}
           />
         </Grid>
-        <Components.Blurb title={"What is TES all about?"}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum
-        </Components.Blurb>
+        <Components.TwitchEmbed />
         <Components.Block>Summer Leagues</Components.Block>
         <Grid
           container
