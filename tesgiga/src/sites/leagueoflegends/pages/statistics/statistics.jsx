@@ -11,7 +11,7 @@ export default (props) => {
     <ThemeProvider theme={Components.Themes.Dark}>
       <div className={classes.root}>
         <Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
-        <Components.Ruby src={Labels.images.sorcery} />
+        <Components.Ruby src={"faChartPie"} />
         <Components.Blurb title={"Statistics"}>
           Welcome to the TES Titan draft. League of Legends does not allow
           players access to all champions (unless they have paid for them) in

@@ -70,7 +70,7 @@ export default (props) => {
     <ThemeProvider theme={Components.Themes.Dark}>
       <div className={classes.root}>
         <Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
-        <Components.Ruby src={Labels.images.unsealedspellbook} />
+        <Components.Ruby src={"faMicrophone"} />
         <Components.Blurb title={"News & Staff Articles"}>
           Welcome to the TES News & Articles section! Here you find our newest
           announcements, schedules, and seasonal power rankings. You'll also

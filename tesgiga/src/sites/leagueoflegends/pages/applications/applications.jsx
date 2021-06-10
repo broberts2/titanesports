@@ -43,7 +43,7 @@ export default (props) => {
     <ThemeProvider theme={Components.Themes.Dark}>
       <div className={classes.root}>
         <Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
-        <Components.Ruby src={Labels.images.scroll} />
+        <Components.Ruby src={"faScroll"} />
         <Components.Blurb title={"Forms & Applications"}>
           Welcome to the TES forms and applications page.
         </Components.Blurb>

@@ -40,12 +40,13 @@ export default {
     zilean: `${_}/static/images/zilean.png`,
     leagueoflegends: `${_}/static/images/leagueoflegends.png`,
     tags: {
-      pinned: `${_}/static/images/aery.png`,
+      pinned: `${_}/static/images/presstheattack.png`,
       rankings: `${_}/static/images/electrocute.png`,
     },
   },
   backgrounds: {
     violet: `${_}/static/backgrounds/violet.png`,
+    otter: `${_}/static/backgrounds/otter.jpg`,
     kindred: `${_}/static/backgrounds/kindred.png`,
   },
 };

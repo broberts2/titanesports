@@ -16,10 +16,18 @@ export default (props) => {
           fill
           onClick={() => props.onClick()}
         >
-          <img className={classes.cardimg} src={props.src} />
-          <Components.Typography className={classes.typographycardtext}>
-            {props.title}
-          </Components.Typography>
+          <div className={classes.card}>
+            {props.img ? (
+              <img className={classes.cardimg} src={props.src} />
+            ) : (
+              <div className={classes.iconImg}>
+                <Components.FontAwesome icon={props.src} />
+              </div>
+            )}
+            <Components.Typography className={classes.typographycardtext}>
+              {props.title}
+            </Components.Typography>
+          </div>
         </Components.InteractiveCard>
       </Grid>
     );
@@ -31,7 +39,7 @@ export default (props) => {
         <Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
         <Components.Banner
           top
-          src={Labels.backgrounds.kindred}
+          src={Labels.backgrounds.otter}
           icon={Labels.images.comet}
         />
         <Components.Block style={{ display: "none" }}>
@@ -48,27 +56,27 @@ export default (props) => {
           <Card
             onClick={() => (window.location.href = "/statistics")}
             title={"Statistics"}
-            src={Labels.images.sorcery}
+            src={"faChartPie"}
           />
           <Card
             onClick={() => (window.location.href = "/titandraft")}
             title={"Titan Draft"}
-            src={Labels.images.electrocute}
+            src={"faDragon"}
           />
           <Card
             onClick={() => (window.location.href = "/articles")}
             title={"News & Articles"}
-            src={Labels.images.unsealedspellbook}
+            src={"faMicrophone"}
           />
           <Card
             onClick={() => (window.location.href = "/staff")}
             title={"TES Staff"}
-            src={Labels.images.fleetfootwork}
+            src={"faUserFriends"}
           />
           <Card
             onClick={() => (window.location.href = "/applications")}
             title={"Applications"}
-            src={Labels.images.scroll}
+            src={"faScroll"}
           />
         </Grid>
         <Components.TwitchEmbed />
@@ -83,11 +91,13 @@ export default (props) => {
           <Card
             onClick={() => (window.location.href = "/divinity")}
             title={"Divinity"}
+            img
             src={Labels.images.gold}
           />
           <Card
             onClick={() => (window.location.href = "/conquerors")}
             title={"Conquerors"}
+            img
             src={Labels.images.diamond}
           />
         </Grid>

@@ -12,6 +12,17 @@ export default makeStyles((theme) => ({
       width: "35%",
     },
   },
+  card: {
+    paddingBottom: "25px",
+  },
+  iconImg: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+    marginTop: "25px",
+    marginBottom: "25px",
+    padding: "50px",
+  },
   typographycardtext: {
     color: theme.palette.background.default,
     fontSize: theme.typography.h4.fontSize,

@@ -58,7 +58,7 @@ export default (props) => {
     <ThemeProvider theme={Components.Themes.Dark}>
       <div className={classes.root}>
         <Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
-        <Components.Ruby src={Labels.images.fleetfootwork} />
+        <Components.Ruby src={"faUserFriends"} />
         <Components.Blurb title={"TES Staff"}>
           Welcome to the TES staff page. Here you will find all staff members
           responsible for TES - League of Legends operations.

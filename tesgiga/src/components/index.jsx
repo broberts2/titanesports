@@ -25,6 +25,7 @@ import Box from "components/box/box";
 import CircularProgress from "components/circularprogress/circularprogress";
 import TwitchEmbed from "components/twitchembed/twitchembed";
 import OracleCommands from "components/oraclecommands/oraclecommands";
+import FontAwesome from "components/fontawesome/fontawesome";
 import Themes from "themes/index";
 
 export default {
@@ -56,4 +57,5 @@ export default {
   Box,
   TwitchEmbed,
   OracleCommands,
+  FontAwesome,
 };

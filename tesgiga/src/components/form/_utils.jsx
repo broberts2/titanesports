@@ -62,7 +62,7 @@ const Document = (props) => {
           pointerEvents: sending || snack.severity === "success" ? "none" : "",
         }}
       >
-        <Components.Ruby src={props.img} />
+        <Components.Ruby src={props.img} img />
         <Box display="flex" width={"100%"} height={"100%"}>
           <Box m="auto">
             {props.children.map((el) =>

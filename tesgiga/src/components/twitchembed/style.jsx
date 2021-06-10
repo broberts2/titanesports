@@ -5,5 +5,8 @@ export default makeStyles((theme) => ({
     width: "calc(100% - 100px)",
     height: "500px",
     padding: "50px",
+    [theme.breakpoints.down("sm")]: {
+      height: "300px",
+    },
   },
 }));

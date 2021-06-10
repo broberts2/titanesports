@@ -16,7 +16,7 @@ export default (props) => {
           url={"https://www.twitch.tv/titanesportz"}
           width={"100%"}
           height={"100%"}
-          style={{ maxWidth: "1000px" }}
+          style={{ maxWidth: "inherit" }}
           controls
         />
       </Components.Box>

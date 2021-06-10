@@ -7,11 +7,11 @@ export default (props) =>
       width: "100%",
       height: "600px",
       borderBottom: "3px solid black",
-      marginBottom: "150px",
+      marginBottom: "250px",
       [theme.breakpoints.down("sm")]: {
         height: "200px",
         borderBottom: "1px solid black",
-        marginBottom: "50px",
+        marginBottom: "100px",
       },
     },
     background: {

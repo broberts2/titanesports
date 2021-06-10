@@ -18,10 +18,12 @@ export default (props) => {
           fill
           onClick={() => props.onClick()}
         >
-          <img className={classes.cardimg} src={props.src} />
-          <Components.Typography className={classes.typographycardtext}>
-            {props.title}
-          </Components.Typography>
+          <div className={classes.card}>
+            <img className={classes.cardimg} src={props.src} />
+            <Components.Typography className={classes.typographycardtext}>
+              {props.title}
+            </Components.Typography>
+          </div>
         </Components.InteractiveCard>
       </Grid>
     );

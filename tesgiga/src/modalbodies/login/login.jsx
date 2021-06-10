@@ -13,7 +13,7 @@ export default (props) => {
       <div className={classes.root}>
         <Box display="flex" width={"100%"} height={"100%"}>
           <Box m="auto" style={{ textAlign: "center" }}>
-            <Components.Ruby src={Labels.images.discord} />
+            <Components.Ruby src={Labels.images.discord} img />
             <Components.PrimaryButton
               fill
               onClick={() => GlobalActions.Utils.discordSignIn()}
