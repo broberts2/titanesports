@@ -3,7 +3,7 @@ const ResponseHandler = require("../../response_handler");
 const Guard = require("../../guard");
 
 module.exports = (app, subdomain, pretext) => {
-  app.post(`/${subdomain}/${pretext}/createArticle`, async (req, res) => {
+  app.post(`/${subdomain}/${pretext}/postArticle`, async (req, res) => {
     const result = await Guard(req, "createArticles", Article.createArticle);
     res.json(result);
   });

@@ -23,4 +23,23 @@ export default makeStyles((theme) => ({
     marginBottom: "20px",
     padding: "10px",
   },
+  tagsWrapper: {
+    position: "relative",
+  },
+  tags: {
+    position: "absolute",
+    right: 0,
+    top: "-145px",
+    "& img": {
+      width: "150px",
+      margin: "-25px",
+    },
+  },
+  miniloader: {
+    pointerEvents: "none",
+    position: "fixed",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+  },
 }));

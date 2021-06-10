@@ -33,7 +33,7 @@ export default makeStyles((theme) => ({
     borderRadius: "6px",
   },
   cardImgIcon: {
-    height: "85%",
+    height: "80%",
     position: "absolute",
     bottom: 0,
     right: 0,

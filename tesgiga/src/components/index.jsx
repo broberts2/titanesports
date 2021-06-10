@@ -22,6 +22,7 @@ import Form from "components/form/form";
 import RadioButton from "components/radiobutton/radiobutton";
 import CheckBox from "components/checkbox/checkbox";
 import Box from "components/box/box";
+import CircularProgress from "components/circularprogress/circularprogress";
 import OracleCommands from "components/oraclecommands/oraclecommands";
 import Themes from "themes/index";
 
@@ -50,6 +51,7 @@ export default {
   Form,
   RadioButton,
   CheckBox,
+  CircularProgress,
   Box,
   OracleCommands,
 };

@@ -20,7 +20,7 @@ export default (subdomain) => ({
   },
   Requests: {
     getMyPermissions: async () =>
-      await Utils.request(`/${subdomain}/Oracle/getMyPermissions`, "get", null),
+      await Utils.request(`/admin/Oracle/getMyPermissions`, "get", null),
     postApplication: async (body, origin, category) =>
       await Utils.request(
         `/${subdomain}/Applications/postApplication`,
@@ -36,6 +36,20 @@ export default (subdomain) => ({
         `/${subdomain}/Applications/getApplications?category=${category}`,
         "get",
         null
+      ),
+    postArticle: async (article) =>
+      await Utils.request(`/${subdomain}/Article/postArticle`, "post", article),
+    updateArticle: async (article) =>
+      await Utils.request(
+        `/${subdomain}/Article/updateArticle`,
+        "put",
+        article
+      ),
+    publishArticle: async (article) =>
+      await Utils.request(
+        `/${subdomain}/Article/publishArticle`,
+        "put",
+        article
       ),
     getArticles: async (id) =>
       await Utils.request(

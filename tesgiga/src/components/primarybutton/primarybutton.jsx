@@ -7,6 +7,7 @@ export default (props) => {
   const classes = Style(props)();
   const Bttn = (
     <Button
+      {...props}
       className={classes.root}
       onClick={() => (props.onClick ? props.onClick() : null)}
       disabled={props.disabled ? props.disabled : false}

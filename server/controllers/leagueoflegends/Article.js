@@ -21,12 +21,14 @@ module.exports = {
   },
   updateArticle: async (req) => {
     delete req.body.published;
-    const res = await Article.updateOne({ _id: req.body.id }, req.body);
+    delete req.body.createddate;
+    delete req.body.modifieddate;
+    const res = await Article.updateOne({ _id: req.body._id }, req.body);
     return "Success!";
   },
   publishArticle: async (req) => {
     const res = await Article.updateOne(
-      { _id: req.body.id },
+      { _id: req.body._id },
       { published: req.body.published, modifieddate: new Date() }
     );
     return "Success!";
@@ -46,7 +48,10 @@ module.exports = {
           return Object.assign(
             {},
             el._doc,
-            { createddate: moment(el.createddate).format("MMM Do, YYYY") },
+            {
+              createddate: moment(el.createddate).format("MMM Do, YYYY"),
+              modifieddate: moment(el.modifieddate).format("MMM Do, YYYY"),
+            },
             { author: user.nickname.split("|")[0].trim() }
           );
         })

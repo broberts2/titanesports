@@ -8,14 +8,17 @@ import Style from "./style";
 
 const GlobalActions = _GlobalActions("leagueoflegends");
 
+const matchTag = (tag) => {
+  switch (tag) {
+    case "pinned":
+      return Labels.images.tags.pinned;
+    case "rankings":
+      return Labels.images.tags.rankings;
+  }
+};
+
 const _Card = (classes) => (_) => {
   const article = _.article;
-  const matchTag = (tag) => {
-    switch (tag) {
-      case "pinned":
-        return Labels.images.electrocute;
-    }
-  };
   return (
     <Grid item xs={12} md={6} lg={4} align="flex">
       <Components.InteractiveCard
@@ -50,9 +53,16 @@ export default (props) => {
   const classes = Style();
   const Card = _Card(classes);
   const [articles, setArticles] = React.useState([]);
+  const [permissions, setPermissions] = React.useState({});
+  const [tags, setTags] = React.useState({
+    pinned: { text: "Pinned", value: true },
+    rankings: { text: "Rankings", value: true },
+  });
   React.useEffect(async () => {
     const res = await GlobalActions.Requests.getArticles();
-    setArticles(res);
+    const permissions = await GlobalActions.Requests.getMyPermissions();
+    setPermissions(permissions);
+    if (res) setArticles(res.filter((el) => (el.published ? el : null)));
     props._();
   }, []);
   return (
@@ -66,12 +76,43 @@ export default (props) => {
           find many short blogs from staff members here detailing what they've
           been up to.
         </Components.Blurb>
+        <Components.Box display="flex">
+          {Object.keys(tags).map((key) => (
+            <Components.PrimaryButton
+              style={{ opacity: tags[key].value ? 1 : 0.35 }}
+              onClick={() => {
+                const newTags = tags;
+                newTags[key]["value"] = !newTags[key]["value"];
+                setTags((lastTags) => ({ ...lastTags, ...newTags }));
+              }}
+            >
+              <img
+                style={{
+                  width: "30px",
+                  marginTop: "-10px",
+                  marginBottom: "-10px",
+                  marginRight: "10px",
+                }}
+                src={matchTag(key)}
+              />
+              {tags[key].text}
+            </Components.PrimaryButton>
+          ))}
+        </Components.Box>
         <Grid container container spacing={0}>
           {articles
-            .filter((el) => (el.published ? el : null))
-            .map((article) => (
-              <Card article={article} />
-            ))}
+            ? articles
+                .filter((article) => {
+                  let value = false;
+                  article.tags.map((tag) =>
+                    Object.keys(tags).map((key) =>
+                      tags[key].value && tag === key ? (value = true) : null
+                    )
+                  );
+                  return value;
+                })
+                .map((article) => <Card article={article} />)
+            : null}
         </Grid>
         <Components.Footer />
       </div>

@@ -96,7 +96,7 @@ const Document = (props) => {
         className={classes.miniloader}
         style={{ display: !sending ? "none" : "" }}
       >
-        <CircularProgress style={{ color: "purple" }} size={240} />
+        <CircularProgress style={{ color: "red" }} size={120} />
       </div>
     </div>
   );
@@ -255,7 +255,6 @@ const Submit = (props) => {
       }
     }
     disablePageScroll();
-    console.log(props.state);
     props.setSending(true);
     return new Promise(async (resolve) => {
       const res = await GlobalActions.Requests.postApplication(

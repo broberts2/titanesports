@@ -39,6 +39,10 @@ export default {
     discord: `${_}/static/images/discord.png`,
     zilean: `${_}/static/images/zilean.png`,
     leagueoflegends: `${_}/static/images/leagueoflegends.png`,
+    tags: {
+      pinned: `${_}/static/images/aery.png`,
+      rankings: `${_}/static/images/electrocute.png`,
+    },
   },
   backgrounds: {
     violet: `${_}/static/backgrounds/violet.png`,
