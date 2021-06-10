@@ -39,7 +39,7 @@ export default (props) => {
         <Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
         <Components.Banner
           top
-          src={Labels.backgrounds.otter}
+          src={Labels.backgrounds.baron}
           icon={Labels.images.comet}
         />
         <Components.Block style={{ display: "none" }}>

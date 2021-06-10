@@ -48,5 +48,6 @@ export default {
     violet: `${_}/static/backgrounds/violet.png`,
     otter: `${_}/static/backgrounds/otter.jpg`,
     kindred: `${_}/static/backgrounds/kindred.png`,
+    baron: `${_}/static/backgrounds/baron.jpg`,
   },
 };
