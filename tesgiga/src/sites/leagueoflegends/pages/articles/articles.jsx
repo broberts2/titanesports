@@ -20,7 +20,15 @@ const matchTag = (tag) => {
 const _Card = (classes) => (_) => {
   const article = _.article;
   return (
-    <Grid item className={classes.gridItem} xs={12} md={6} lg={4} align="flex">
+    <Grid
+      item
+      className={classes.gridItem}
+      style={{ opacity: article.published ? 1 : 0.35 }}
+      xs={12}
+      md={6}
+      lg={4}
+      align="flex"
+    >
       <Components.InteractiveCard
         fill
         onClick={() => (window.location = `/article?id=${article._id}`)}
@@ -63,7 +71,16 @@ export default (props) => {
     const res = await GlobalActions.Requests.getArticles();
     const permissions = await GlobalActions.Requests.getMyPermissions();
     setPermissions(permissions);
-    if (res) setArticles(res.filter((el) => (el.published ? el : null)));
+    if (res)
+      setArticles(
+        res.filter((el) =>
+          el.published ||
+          permissions.publishArticles ||
+          el.authorid === permissions._myId
+            ? el
+            : null
+        )
+      );
     props._();
   }, []);
   return (
