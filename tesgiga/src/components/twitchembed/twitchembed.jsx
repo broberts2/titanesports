@@ -1,8 +1,25 @@
 import React from "react";
 import ReactPlayer from "react-player";
+import Components from "components/index";
 import Style from "./style";
 
 export default (props) => {
-  const classes = Style;
-  return <ReactPlayer url={"https://www.twitch.tv/titanesportz"} controls />;
+  const classes = Style();
+  return (
+    <div className={classes.root}>
+      <Components.Box
+        display={"flex"}
+        style={{ height: "100%", textAlign: "center" }}
+        justifyContent="center"
+      >
+        <ReactPlayer
+          url={"https://www.twitch.tv/titanesportz"}
+          width={"100%"}
+          height={"100%"}
+          style={{ maxWidth: "1000px" }}
+          controls
+        />
+      </Components.Box>
+    </div>
+  );
 };

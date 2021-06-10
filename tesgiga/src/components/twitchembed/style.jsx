@@ -1,5 +1,9 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
-	root: {},
+  root: {
+    width: "calc(100% - 100px)",
+    height: "500px",
+    padding: "50px",
+  },
 }));
