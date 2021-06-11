@@ -30,51 +30,43 @@ const T = new Twit({
 module.exports = {
   post: async (req) => {
     const res = await new Promise((resolve) => {
-      const b64content = req.body.img
-        ? fs.readFileSync(
-            `${__dirname}/../../../static/images/${req.body.img}`,
-            {
-              encoding: "base64",
-            }
-          )
-        : null;
-      if (b64content) {
-        T.post(
-          "media/upload",
-          { media_data: b64content },
-          (err, data, response) => {
-            const mediaIdStr = data.media_id_string;
-            const altText = "";
-            const meta_params = {
-              media_id: mediaIdStr,
-              alt_text: { text: altText },
-            };
-            T.post(
-              "media/metadata/create",
-              meta_params,
-              (err, data, response) => {
-                if (!err) {
-                  const params = {
-                    status: req.body.tweet,
-                    media_ids: [mediaIdStr],
-                  };
-                  T.post(
-                    "statuses/update",
-                    { status: req.body.tweet },
-                    (err, data, response) => {
-                      resolve(response);
-                    }
-                  );
-                }
+      const b64content = fs.readFileSync(
+        `${__dirname}/../../../static/images/${req.body.img}`,
+        {
+          encoding: "base64",
+        }
+      );
+      T.post(
+        "media/upload",
+        { media_data: b64content },
+        (err, data, response) => {
+          const mediaIdStr = data.media_id_string;
+          const altText = "";
+          const meta_params = {
+            media_id: mediaIdStr,
+            alt_text: { text: altText },
+          };
+          T.post(
+            "media/metadata/create",
+            meta_params,
+            (err, data, response) => {
+              if (!err) {
+                const params = {
+                  status: req.body.tweet,
+                  media_ids: [mediaIdStr],
+                };
+                T.post(
+                  "statuses/update",
+                  { status: req.body.tweet },
+                  (err, data, response) => {
+                    resolve(response);
+                  }
+                );
               }
-            );
-          }
-        );
-      } else {
-        T.post("statuses/update", params, (err, data, response) => {
-          resolve(response);
-        });
-      }
+            }
+          );
+        }
+      );
     });
     return res;
   },
