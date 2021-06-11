@@ -229,6 +229,15 @@ export default (props) => {
         >
           <Components.CircularProgress style={{ color: "red" }} size={120} />
         </div>
+        <Components.Box display="flex" justifyContent="flex-end">
+          <Components.Typography
+            className={classes.author}
+            style={{ display: state.editing ? "none" : "" }}
+            variant="h4"
+          >
+            {state.article.author}
+          </Components.Typography>
+        </Components.Box>
         <Components.Footer />
       </div>
     </ThemeProvider>

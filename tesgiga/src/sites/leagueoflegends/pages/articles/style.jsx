@@ -52,6 +52,9 @@ export default makeStyles((theme) => ({
     zIndex: 1499,
     position: "absolute",
     top: "100px",
+    [theme.breakpoints.down("sm")]: {
+      top: "200px",
+    },
     right: 0,
   },
   cardImgIcon: {

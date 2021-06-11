@@ -18,6 +18,13 @@ export default makeStyles((theme) => ({
   blockText: {
     fontSize: theme.typography.body1.fontSize,
   },
+  author: {
+    marginRight: "50px",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "25px",
+      fontSize: `calc(${theme.typography.h4.fontSize}/1.25)`,
+    },
+  },
   block: {
     marginTop: "20px",
     marginBottom: "20px",
