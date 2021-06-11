@@ -29,15 +29,34 @@ export default (props) => {
   });
   const update = (nS) => setState((lastState) => ({ ...lastState, ...nS }));
   React.useEffect(async () => {
-    const article = await GlobalActions.Requests.getArticles(id).then((res) =>
-      res ? res[0] : null
-    );
-    if (id && article) {
-      const permissions = await GlobalActions.Requests.getMyPermissions();
+    const permissions = await GlobalActions.Requests.getMyPermissions();
+    if (id !== "new") {
+      const article = await GlobalActions.Requests.getArticles(id).then((res) =>
+        res ? res[0] : null
+      );
+      if (id && article) {
+        setState((lastState) => ({
+          ...lastState,
+          permissions,
+          authorid: permissions._myId,
+          article,
+        }));
+      } else {
+        window.location = "/articles";
+      }
+    } else if (permissions.createArticles) {
       setState((lastState) => ({
         ...lastState,
         permissions,
-        article,
+        article: {
+          bannerimgurl: Labels.backgrounds.otter,
+          iconImgUrl: Labels.images.logo,
+          published: false,
+          title: "New Article Title",
+          authorid: permissions._myId,
+          subject: "",
+          contentblocks: [],
+        },
       }));
     } else {
       window.location = "/articles";
@@ -59,7 +78,7 @@ export default (props) => {
             right: 0,
           }}
         >
-          {state.permissions.editArticles ? (
+          {state.permissions.editArticles && !state.article.published ? (
             <Components.PrimaryButton
               onClick={() =>
                 setState((lastState) => ({
@@ -71,7 +90,7 @@ export default (props) => {
               {state.editing ? "Disable Editing " : "Enable Editing"}
             </Components.PrimaryButton>
           ) : null}
-          {state.permissions.publishArticles ? (
+          {state.permissions.publishArticles && id !== "new" ? (
             <Components.PrimaryButton
               onClick={(value) =>
                 fns.publishArticle(state, (nState, nSnack) => {
@@ -83,8 +102,15 @@ export default (props) => {
               {state.article.published ? "Un-Publish" : "Publish"}
             </Components.PrimaryButton>
           ) : null}
-          {state.permissions.deleteArticles ? (
-            <Components.PrimaryButton onClick={() => null}>
+          {state.permissions.deleteArticles && id !== "new" ? (
+            <Components.PrimaryButton
+              onClick={() =>
+                fns.deleteArticle(state, (nState, nSnack) => {
+                  if (state) setState({ ...state, ...nState });
+                  if (snack) setSnack({ ...snack, ...nSnack });
+                })
+              }
+            >
               Delete Article
             </Components.PrimaryButton>
           ) : null}
@@ -150,10 +176,7 @@ export default (props) => {
           </Components.Box>
         ) : null}
         <div className={classes.body}>
-          <Title
-            state={state}
-            cb={(nS) => setState((lastState) => ({ ...lastState, nS }))}
-          />
+          <Title state={state} cb={update} />
           {state.article.contentblocks
             ? Object.values(state.article.contentblocks).map((block) => (
                 <Block state={state} n={block.n} cb={update} />
@@ -162,24 +185,40 @@ export default (props) => {
         </div>
         {state.editing ? (
           <Components.Box display="flex" flexDirection="row-reverse">
-            <Components.PrimaryButton onClick={() => null}>
+            <Components.PrimaryButton
+              onClick={() =>
+                fns.discardChanges(state, (article) =>
+                  setState((lastState) => ({ ...lastState, article }))
+                )
+              }
+            >
               Discard All
             </Components.PrimaryButton>
             <Components.PrimaryButton
               onClick={() =>
-                fns.updateArticle(state, (nState, nSnack) => {
-                  if (state) setState({ ...state, ...nState });
-                  if (snack) setSnack({ ...snack, ...nSnack });
-                })
+                fns[id === "new" ? "postArticle" : "updateArticle"](
+                  state,
+                  (nState, nSnack) => {
+                    if (state) setState({ ...state, ...nState });
+                    if (snack) setSnack({ ...snack, ...nSnack });
+                  }
+                )
               }
             >
-              Save All
+              {id !== "new" ? "Update All" : "Create Article"}
             </Components.PrimaryButton>
           </Components.Box>
         ) : null}
         <Components.Snack
           severity={snack.severity}
-          close={() => setSnack({ ...snack, open: false })}
+          close={() => {
+            if (snack.message === "Article creation successful") {
+              window.location = `/article?id=${snack.id}`;
+            } else if (snack.message === `Article deletion successful`) {
+              window.location = `/articles`;
+            }
+            setSnack({ ...snack, open: false });
+          }}
           open={snack.open}
         >
           {snack.message}

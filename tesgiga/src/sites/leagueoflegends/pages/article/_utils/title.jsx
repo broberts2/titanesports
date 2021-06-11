@@ -1,5 +1,6 @@
 import React from "react";
 import Components from "components/index";
+import fns from "./fns";
 import Style from "../style";
 
 export default (props) => {
@@ -7,26 +8,27 @@ export default (props) => {
   const [state, setState] = React.useState({ editing: false });
   return (
     <Components.Typography className={classes.title}>
-      {props.state.article.title}
+      {state.editing ? (
+        <Components.TextField
+          value={props.state.article.title}
+          onChange={(title) => {
+            const newState = props.state;
+            newState.article.title = title;
+            props.cb(newState);
+          }}
+        />
+      ) : (
+        props.state.article.title
+      )}
       {props.state.editing ? (
         <Components.Box display="flex" flexDirection="row-reverse">
           <Components.PrimaryButton
-            onClick={() =>
-              setState((lastState) => ({
-                ...lastState,
-                editing: !lastState.editing,
-              }))
-            }
+            onClick={() => fns.insertBlock(props.state, -1, props.cb)}
           >
-            {state.editing ? "Preview" : "Insert Block"}
+            Insert Block
           </Components.PrimaryButton>
           <Components.PrimaryButton
-            onClick={() =>
-              setState((lastState) => ({
-                ...lastState,
-                editing: !lastState.editing,
-              }))
-            }
+            onClick={() => setState({ editing: !state.editing })}
           >
             {state.editing ? "Preview" : "Edit Title"}
           </Components.PrimaryButton>

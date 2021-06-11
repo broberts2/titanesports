@@ -48,6 +48,12 @@ export default makeStyles((theme) => ({
     objectFit: "cover",
     borderRadius: "6px",
   },
+  newArticleButton: {
+    zIndex: 1499,
+    position: "absolute",
+    top: "100px",
+    right: 0,
+  },
   cardImgIcon: {
     height: "50%",
     position: "absolute",

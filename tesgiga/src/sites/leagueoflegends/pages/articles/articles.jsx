@@ -87,6 +87,15 @@ export default (props) => {
     <ThemeProvider theme={Components.Themes.Dark}>
       <div className={classes.root}>
         <Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
+        {permissions.createArticles ? (
+          <div className={classes.newArticleButton}>
+            <Components.PrimaryButton
+              onClick={() => (window.location = "/article?id=new")}
+            >
+              Create Article
+            </Components.PrimaryButton>
+          </div>
+        ) : null}
         <Components.Ruby src={"faMicrophone"} />
         <Components.Blurb title={"News & Staff Articles"}>
           Welcome to the TES News & Articles section! Here you find our newest
@@ -122,11 +131,18 @@ export default (props) => {
             ? articles
                 .filter((article) => {
                   let value = false;
-                  article.tags.map((tag) =>
-                    Object.keys(tags).map((key) =>
-                      tags[key].value && tag === key ? (value = true) : null
-                    )
-                  );
+                  if (
+                    article.authorid === permissions._myId ||
+                    permissions.publishArticles
+                  ) {
+                    return true;
+                  } else {
+                    article.tags.map((tag) =>
+                      Object.keys(tags).map((key) =>
+                        tags[key].value && tag === key ? (value = true) : null
+                      )
+                    );
+                  }
                   return value;
                 })
                 .map((article) => <Card article={article} />)

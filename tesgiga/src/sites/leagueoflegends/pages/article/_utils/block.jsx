@@ -14,7 +14,17 @@ export default (props) => {
       {state.editing && props.state.editing ? (
         <Components.TextField
           value={props.state.article.contentblocks[props.n].title}
-          onChange={(title) => null}
+          onChange={(title) =>
+            fns.editBlock(
+              props.state,
+              {
+                title,
+                content: props.state.article.contentblocks[props.n].content,
+              },
+              props.n,
+              props.cb
+            )
+          }
         />
       ) : (
         <div
@@ -29,7 +39,17 @@ export default (props) => {
           multiline
           rows={20}
           value={props.state.article.contentblocks[props.n].content}
-          onChange={(content) => null}
+          onChange={(content) =>
+            fns.editBlock(
+              props.state,
+              {
+                title: props.state.article.contentblocks[props.n].title,
+                content,
+              },
+              props.n,
+              props.cb
+            )
+          }
         />
       ) : (
         <div
@@ -49,7 +69,9 @@ export default (props) => {
             </Components.PrimaryButton>
           ) : null}
           {!state.editing ? (
-            <Components.PrimaryButton onClick={() => null}>
+            <Components.PrimaryButton
+              onClick={() => fns.insertBlock(props.state, props.n, props.cb)}
+            >
               Insert Block
             </Components.PrimaryButton>
           ) : null}

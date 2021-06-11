@@ -34,7 +34,7 @@ module.exports = {
     return "Success!";
   },
   deleteArticle: async (req) => {
-    await Article.remove({ _id: req.body.id });
+    const res = await Article.remove({ _id: req.body.id });
     return "Success!";
   },
   getArticles: async (req) => {

@@ -57,6 +57,10 @@ export default (subdomain) => ({
         "get",
         null
       ),
+    deleteArticle: async (id) =>
+      await Utils.request(`/${subdomain}/Article/deleteArticle`, "delete", {
+        id,
+      }),
     deleteApplication: async (id) =>
       await Utils.request(
         `/${subdomain}/Applications/deleteApplication`,
