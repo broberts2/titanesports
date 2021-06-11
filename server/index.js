@@ -36,16 +36,19 @@ app.post(`/gitHook`, async (req, res) => {
   exec(`cd /titanesports/tesgiga; git pull origin master;`, () => {
     console.log("Git pull successful.");
     res.json("Auto-deploy successful!");
-    // exec(`cd /titanesports/tesgiga; npm install;`, () => {
-    //   console.log("Npm install successful.");
-    //   exec(
-    //     `cd /titanesports/tesgiga; rm -rf /var/www/html/build; rm -rf /titanesports/tesgiga/build; npm run build; mv build /var/www/html; rm -rf build`,
-    //     () => {
-    //       console.log("Npm build successful.");
-    //       res.json("Auto-deploy successful!");
-    //     }
-    //   );
-    // });
+    exec(
+      `NODE_OPTIONS=--max_old_space_size=1000; cd /titanesports/tesgiga; npm install;`,
+      () => {
+        console.log("Npm install successful.");
+        exec(
+          `NODE_OPTIONS=--max_old_space_size=1000; cd /titanesports/tesgiga; rm -rf /var/www/html/build; rm -rf /titanesports/tesgiga/build; npm run build; mv build /var/www/html; rm -rf build`,
+          () => {
+            console.log("Npm build successful.");
+            res.json("Auto-deploy successful!");
+          }
+        );
+      }
+    );
   });
 });
 
