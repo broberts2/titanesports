@@ -32,12 +32,13 @@ export default (subdomain) => {
             category,
           }
         ),
-      omniPost: async (message) => {
-        return await actions.Requests.postTweet(message);
+      omniPost: async (message, img) => {
+        return await actions.Requests.postTweet(message, img);
       },
-      postTweet: async (tweet) =>
+      postTweet: async (tweet, img) =>
         await Utils.request(`/${subdomain}/Twitter/postTweet`, "post", {
           tweet,
+          img,
         }),
       getApplications: async (category) =>
         await Utils.request(

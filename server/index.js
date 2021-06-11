@@ -45,7 +45,7 @@ app.post(`/gitHook`, async (req, res) => {
     exec(`cd /titanesports/tesgiga; npm install;`, () => {
       console.log("Npm install successful.");
       exec(
-        `NODE_OPTIONS=--max_old_space_size=512; cd /titanesports/tesgiga; rm -rf /var/www/html/build; rm -rf /titanesports/tesgiga/build; npm run build; mv build /var/www/html; rm -rf build`,
+        `NODE_OPTIONS=--max_old_space_size=256; cd /titanesports/tesgiga; rm -rf /var/www/html/build; rm -rf /titanesports/tesgiga/build; npm run build; mv build /var/www/html; rm -rf build`,
         () => {
           console.log("Npm build successful.");
           res.json("Auto-deploy successful!");

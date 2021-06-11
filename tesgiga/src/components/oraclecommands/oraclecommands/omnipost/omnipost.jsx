@@ -13,6 +13,7 @@ export default (props) => {
       twitter: false,
     },
     textValue: "",
+    radioValue: "titan.png",
   });
   return (
     <Utils.Document
@@ -23,12 +24,16 @@ export default (props) => {
         state.textValue.length > 0
       }
       onSubmit={async () => {
-        await GlobalActions.Requests.omniPost(state.textValue);
+        await GlobalActions.Requests.omniPost(
+          state.textValue,
+          state.radioValue
+        );
         setState({
           checkBox: {
             twitter: false,
           },
           textValue: "",
+          radioValue: "titan.png",
         });
       }}
     >
@@ -38,6 +43,14 @@ export default (props) => {
         items={["Twitter"]}
         onChange={(checkBox) =>
           setState((lastState) => ({ ...lastState, checkBox }))
+        }
+      />
+      <Components.RadioButton
+        value={state.radioValue}
+        items={["titan.png", "allstars.jpeg", "invitational.png"]}
+        row
+        onChange={(radioValue) =>
+          setState((lastState) => ({ ...lastState, radioValue }))
         }
       />
       <Components.TextField
