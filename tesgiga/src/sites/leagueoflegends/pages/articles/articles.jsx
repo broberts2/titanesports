@@ -10,6 +10,8 @@ const GlobalActions = _GlobalActions("leagueoflegends");
 
 const matchTag = (tag) => {
   switch (tag) {
+    case "all":
+      return Labels.images.tags.all;
     case "pinned":
       return Labels.images.tags.pinned;
     case "rankings":
@@ -64,6 +66,7 @@ export default (props) => {
   const [articles, setArticles] = React.useState([]);
   const [permissions, setPermissions] = React.useState({});
   const [tags, setTags] = React.useState({
+    all: { text: "All", value: true },
     pinned: { text: "Pinned", value: true },
     rankings: { text: "Rankings", value: true },
   });
@@ -130,19 +133,12 @@ export default (props) => {
           {articles
             ? articles
                 .filter((article) => {
-                  let value = false;
-                  if (
-                    article.authorid === permissions._myId ||
-                    permissions.publishArticles
-                  ) {
-                    return true;
-                  } else {
-                    article.tags.map((tag) =>
-                      Object.keys(tags).map((key) =>
-                        tags[key].value && tag === key ? (value = true) : null
-                      )
-                    );
-                  }
+                  let value = tags.all.value;
+                  article.tags.map((tag) =>
+                    Object.keys(tags).map((key) =>
+                      tags[key].value && tag === key ? (value = true) : null
+                    )
+                  );
                   return value;
                 })
                 .map((article) => <Card article={article} />)

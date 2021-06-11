@@ -40,6 +40,7 @@ export default {
     zilean: `${_}/static/images/zilean.png`,
     leagueoflegends: `${_}/static/images/leagueoflegends.png`,
     tags: {
+      all: `${_}/static/images/graspoftheundying.png`,
       pinned: `${_}/static/images/presstheattack.png`,
       rankings: `${_}/static/images/electrocute.png`,
     },
