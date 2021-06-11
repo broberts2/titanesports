@@ -57,6 +57,7 @@ export default (props) => {
         rows={6}
         multiline
         value={state.textValue}
+        invertColor
         onChange={(textValue) =>
           setState((lastState) => ({ ...lastState, textValue }))
         }

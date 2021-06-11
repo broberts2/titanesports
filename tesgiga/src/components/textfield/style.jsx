@@ -4,6 +4,6 @@ export default (props) =>
   makeStyles((theme) => ({
     root: {},
     inputProps: {
-      color: theme.palette.background.default,
+      color: props.invertColor ? theme.palette.background.default : "",
     },
   }));
