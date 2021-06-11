@@ -26,7 +26,7 @@ export default (props) => {
       onSubmit={async () => {
         await GlobalActions.Requests.omniPost(
           state.textValue,
-          state.radioValue
+          state.radioValue === "none" ? null : state.radioValue
         );
         setState({
           checkBox: {
@@ -47,7 +47,7 @@ export default (props) => {
       />
       <Components.RadioButton
         value={state.radioValue}
-        items={["titan.png", "allstars.jpeg", "invitational.png"]}
+        items={["titan.png", "allstars.jpeg", "invitational.png", "none"]}
         row
         onChange={(radioValue) =>
           setState((lastState) => ({ ...lastState, radioValue }))
