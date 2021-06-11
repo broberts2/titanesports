@@ -58,9 +58,13 @@ module.exports = {
                     status: req.body.tweet,
                     media_ids: [mediaIdStr],
                   };
-                  T.post("statuses/update", params, (err, data, response) => {
-                    resolve(response);
-                  });
+                  T.post(
+                    "statuses/update",
+                    { status: req.body.tweet },
+                    (err, data, response) => {
+                      resolve(response);
+                    }
+                  );
                 }
               }
             );
