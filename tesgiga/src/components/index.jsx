@@ -24,6 +24,8 @@ import CheckBox from "components/checkbox/checkbox";
 import Box from "components/box/box";
 import CircularProgress from "components/circularprogress/circularprogress";
 import TwitchEmbed from "components/twitchembed/twitchembed";
+import Transferlist from "components/transferlist/transferlist";
+import Picklist from "components/picklist/picklist";
 import OracleCommands from "components/oraclecommands/oraclecommands";
 import FontAwesome from "components/fontawesome/fontawesome";
 import Themes from "themes/index";
@@ -58,4 +60,6 @@ export default {
   TwitchEmbed,
   OracleCommands,
   FontAwesome,
+  Transferlist,
+  Picklist,
 };

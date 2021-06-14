@@ -11,4 +11,7 @@ export default makeStyles((theme) => ({
     top: 0,
     right: 0,
   },
+  roster: {
+    height: "250px",
+  },
 }));

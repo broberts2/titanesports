@@ -111,16 +111,15 @@ export default (props) => {
             Due to increasing overhead costs for shoutcasting, marketing, and
             server costs we do require a minimal entry fee from each team's
             captain/organization leader. <br />
-            <br />
             - This fee is $10 PER TEAM and is due before the start of the league
             season
             <br />
             - Entry fees will contribute to the current split's prize pool
             <br />
-            - 1st place team receives 50% of the entry fees
+            - 1st place team receives 75% of the entry fees
             <br />
             - 2nd place receives 25% of the entry fees
-            <br />- remaining 25% will go towards operating costs
+            <br />
           </Utils.Blurb>
           <Utils.RadioInput
             isInput

@@ -10,7 +10,7 @@ const Forms = {
     component: Components.Form.TeamApplication_Divinity,
   },
   conquerors: {
-    title: "Conqueror's League Application",
+    title: "Conqueror League Application",
     component: Components.Form.TeamApplication_Conquerors,
   },
   staff: {

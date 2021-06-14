@@ -47,7 +47,14 @@ export default (props) => {
       />
       <Components.RadioButton
         value={state.radioValue}
-        items={["titan.png", "allstars.jpeg", "invitational.png", "none"]}
+        items={[
+          "titan.png",
+          "allstars.jpeg",
+          "invitational.png",
+          "divinity.png",
+          "conqueror.png",
+          "none",
+        ]}
         row
         onChange={(radioValue) =>
           setState((lastState) => ({ ...lastState, radioValue }))

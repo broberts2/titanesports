@@ -92,13 +92,13 @@ export default (props) => {
             onClick={() => (window.location.href = "/divinity")}
             title={"Divinity"}
             img
-            src={Labels.images.gold}
+            src={Labels.images.divinitylogo}
           />
           <Card
             onClick={() => (window.location.href = "/conquerors")}
-            title={"Conquerors"}
+            title={"Conqueror"}
             img
-            src={Labels.images.diamond}
+            src={Labels.images.conquerorlogo}
           />
         </Grid>
         <Components.Footer />

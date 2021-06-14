@@ -12,6 +12,10 @@ export default {
   youtube: "https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw",
   facebook: "https://www.facebook.com/titanesportz/",
   images: {
+    divinity: `${_}/static/images/divinity.png`,
+    divinitylogo: `${_}/static/images/divinitylogo.png`,
+    conqueror: `${_}/static/images/conqueror.png`,
+    conquerorlogo: `${_}/static/images/conquerorlogo.png`,
     logo: `${_}/static/images/logo.png`,
     lol: `${_}/static/images/lol.png`,
     valorant: `${_}/static/images/valorant.png`,

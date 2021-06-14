@@ -16,7 +16,6 @@ export default (props) => {
   });
   React.useEffect(async () => {
     const logos = await GlobalActions.Requests.getTeamLogos();
-    console.log(logos);
   }, []);
   const Card = (props) => {
     return (
@@ -97,7 +96,16 @@ export default (props) => {
             )
           }
           validate={() => null}
-        ></Utils.Document>
+        >
+          <div className={classes.roster}>
+            <Components.Typography>Set Roster</Components.Typography>
+            <Components.Transferlist
+              disableAllTransferRight
+              itemsLeft={["Jetgorilla", "Braer", "Khyroe", "Phortwenty"]}
+              itemsRight={["Major", "Germ", "Sammy", "Mute", "ZER0BII"]}
+            />
+          </div>
+        </Utils.Document>
       ) : null}
     </React.Fragment>
   );

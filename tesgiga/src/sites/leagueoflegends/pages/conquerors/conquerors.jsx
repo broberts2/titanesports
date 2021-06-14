@@ -11,8 +11,8 @@ export default (props) => {
     <ThemeProvider theme={Components.Themes.Dark}>
       <div className={classes.root}>
         <Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
-        <Components.Ruby src={Labels.images.diamond} img />
-        <Components.Blurb title={"Conquerors League"}>
+        <Components.Ruby src={Labels.images.conquerorlogo} img />
+        <Components.Blurb title={"Conqueror League"}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industry. Lorem Ipsum has been the industry's standard dummy text ever
           since the 1500s, when an unknown printer took a galley of type and
