@@ -24,6 +24,9 @@ export default (props) => {
             input: classes.inputProps,
           },
         }}
+        InputLabelProps={{
+          style: classes.inputLabelProps.color,
+        }}
         onChange={(e) =>
           props.onChange ? props.onChange(e.target.value) : null
         }

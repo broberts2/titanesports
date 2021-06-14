@@ -62,6 +62,7 @@ export default (props) => {
               "Player scouting",
               "Content creator",
               "Shoutcasting",
+              "Podcast",
             ]}
           />
           <Utils.Submit />

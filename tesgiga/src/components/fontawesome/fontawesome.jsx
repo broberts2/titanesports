@@ -10,6 +10,7 @@ import {
   faMicrophone,
   faUserFriends,
   faScroll,
+  faPlusSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Icons = {
@@ -19,6 +20,7 @@ const Icons = {
   faMicrophone,
   faUserFriends,
   faScroll,
+  faPlusSquare,
 };
 
 export default (props) => {

@@ -43,6 +43,12 @@ module.exports = (app, subdomain, pretext) => {
 
     // ResponseHandler(Oracle.identify, req, res);
   });
+  app.get(`/${subdomain}/${pretext}/getTeamLogos`, async (req, res) => {
+    const result = await Oracle.getTeamLogos();
+    res.json(result);
+
+    // ResponseHandler(Oracle.identify, req, res);
+  });
   app.post(`/${subdomain}/${pretext}/create_flash_poll`, async (req, res) => {
     const result = await Guard(req, "oracleFlashPoll", Oracle.createFlashPoll);
     res.json(result);

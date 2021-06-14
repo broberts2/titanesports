@@ -17,30 +17,32 @@ const Document = (props) => {
         </Components.Typography>
         <Components.Typography>{props.description}</Components.Typography>
         {props.children}
-        <Components.PrimaryButton
-          onClick={async () => {
-            if (props.validate()) {
-              if (window.confirm("Are you sure?")) {
-                setSending(true);
-                const res = await props.onSubmit();
+        {props.onSubmit ? (
+          <Components.PrimaryButton
+            onClick={async () => {
+              if (props.validate()) {
+                if (window.confirm("Are you sure?")) {
+                  setSending(true);
+                  const res = await props.onSubmit();
+                  setSnack({
+                    severity: "success",
+                    open: true,
+                    message: "Operation successful",
+                  });
+                  setSending(false);
+                }
+              } else {
                 setSnack({
-                  severity: "success",
+                  severity: "warning",
                   open: true,
-                  message: "Operation successful",
+                  message: "Please fill all required form fields",
                 });
-                setSending(false);
               }
-            } else {
-              setSnack({
-                severity: "warning",
-                open: true,
-                message: "Please fill all required form fields",
-              });
-            }
-          }}
-        >
-          Submit
-        </Components.PrimaryButton>
+            }}
+          >
+            Submit
+          </Components.PrimaryButton>
+        ) : null}
         <div
           className={classes.miniLoader}
           style={{ display: sending ? "" : "none" }}

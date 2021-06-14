@@ -40,6 +40,10 @@ module.exports = {
   openDM: async (req) => {
     // Open DM in discord from staff page on website
   },
+  getTeamLogos: async (req) => {
+    const imgs = OracleUtils.readStaticDirectory("teamlogos");
+    return imgs;
+  },
   getUser: async (req) => {
     const res = await Oracle.guilds
       .fetch(config.guildId)

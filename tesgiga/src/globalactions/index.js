@@ -70,6 +70,8 @@ export default (subdomain) => {
           "get",
           null
         ),
+      getTeamLogos: async (id) =>
+        await Utils.request(`/admin/Oracle/getTeamLogos`, "get", null),
       deleteArticle: async (id) =>
         await Utils.request(`/${subdomain}/Article/deleteArticle`, "delete", {
           id,

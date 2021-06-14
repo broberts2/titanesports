@@ -7,7 +7,7 @@ export default (props) => {
   const classes = Style();
   return (
     <div className={classes.root}>
-      <Components.OracleCommands.OmniPost img={Labels.images.electrocute} />
+      <Components.OracleCommands.OmniPost />
     </div>
   );
 };

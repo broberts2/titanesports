@@ -3,7 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 export default (props) =>
   makeStyles((theme) => ({
     root: {
-      backgroundColor: theme.palette.primary.main,
+      backgroundColor: props.invertColor
+        ? theme.palette.background.default
+        : theme.palette.primary.main,
       cursor: props.onClick && !props.disabled ? "pointer" : "",
       height: props.fill ? `calc(100% - ${theme.spacing(1) * 2}px)` : "",
       margin: theme.spacing(1),
@@ -13,6 +15,8 @@ export default (props) =>
       },
       transition: "all 0.5s ease",
       opacity: props.disabled ? 0.5 : 1,
-      color: theme.palette.background.default,
+      color: props.invertColor
+        ? theme.palette.primary.main
+        : theme.palette.background.default,
     },
   }));
