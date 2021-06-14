@@ -23,6 +23,7 @@ export default (props) => {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </Components.Blurb>
+        <img className={classes.promo} src={Labels.images.divinity} />
         <Components.Footer />
       </div>
     </ThemeProvider>
