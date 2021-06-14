@@ -15,7 +15,7 @@ export default (props) => {
       <div>
         <Utils.Document
           data={props.data}
-          img={Labels.images.oceandrake}
+          img={Labels.images.divinitylogo}
           category={"Team Applications - Divinity"}
         >
           <Utils.Blurb
