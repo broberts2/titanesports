@@ -287,6 +287,7 @@ module.exports = {
           authorization: `Bearer ${req.headers.token}`,
         },
       }).then((res) => res.json());
+      console.log(user);
       const permissionSet = await Permissions.get();
       const members = await Oracle.guilds
         .fetch(config.guildId)
