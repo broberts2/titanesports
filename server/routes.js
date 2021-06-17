@@ -1,13 +1,13 @@
-const RIOT = require("./controllers/RIOT");
+const RIOT = require("./controllers/leagueoflegends/RIOT");
 const ROUTES = {
   admin: {
     Oracle: require("./routes/admin/Oracle"),
     Applications: require("./routes/admin/Applications"),
     Twitter: require("./routes/admin/Twitter"),
+    Account: require("./routes/admin/Account"),
   },
   leagueoflegends: {
     TitanDraft: require("./routes/leagueoflegends/TitanDraft"),
-    Account: require("./routes/leagueoflegends/Account"),
     TitanDraftConfiguration: require("./routes/leagueoflegends/TitanDraftConfiguration"),
     WebsiteConfiguration: require("./routes/leagueoflegends/WebsiteConfiguration"),
     ChampionData: require("./routes/leagueoflegends/ChampionData"),

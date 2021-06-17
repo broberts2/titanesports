@@ -32,6 +32,17 @@ export default (subdomain) => {
             category,
           }
         ),
+      createTeam: async (body) =>
+        await Utils.request(`/${subdomain}/Team/createTeam`, "post", body),
+      updateTeam: async (body) =>
+        await Utils.request(`/${subdomain}/Team/updateTeam`, "put", body),
+      getTeams: async (query) =>
+        await Utils.request(
+          `/${subdomain}/Team/getTeams${
+            query ? `?query=${JSON.stringify(query)}` : ""
+          }`,
+          "get"
+        ),
       omniPost: async (message, img) => {
         return await actions.Requests.postTweet(message, img);
       },
@@ -40,6 +51,25 @@ export default (subdomain) => {
           tweet,
           img,
         }),
+      verifyBySummonerName: async (query) =>
+        await Utils.request(
+          `/${subdomain}/RIOT/verifyBySummonerName?name=${query}`,
+          "get"
+        ),
+      verifyBySummonerId: async (query) =>
+        await Utils.request(
+          `/${subdomain}/RIOT/verifyBySummonerId?id=${query}`,
+          "get"
+        ),
+      updateUser: async (body) =>
+        await Utils.request(`/${subdomain}/Account/updateUser`, "put", body),
+      getUsers: async (query) =>
+        await Utils.request(
+          `/${subdomain}/Oracle/getUsers${
+            query ? `?query=${JSON.stringify(query)}` : ""
+          }`,
+          "get"
+        ),
       getApplications: async (category) =>
         await Utils.request(
           `/${subdomain}/Applications/getApplications?category=${category}`,

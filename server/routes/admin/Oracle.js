@@ -10,11 +10,8 @@ module.exports = (app, subdomain, pretext) => {
   app.get(`/${subdomain}/${pretext}/identify`, async (req, res) => {
     ResponseHandler(Oracle.identify, req, res);
   });
-  app.get(`/${subdomain}/${pretext}/getUser`, async (req, res) => {
-    ResponseHandler(Oracle.getUser, req, res);
-  });
-  app.get(`/${subdomain}/${pretext}/getAllUsers`, async (req, res) => {
-    const result = await Guard(req, "oracleGetAllUsers", Oracle.getAllUsers);
+  app.get(`/${subdomain}/${pretext}/getUsers`, async (req, res) => {
+    const result = await Guard(req, "getAllUsers", Oracle.getUsers);
     res.json(result);
 
     // ResponseHandler(Oracle.identify, req, res);

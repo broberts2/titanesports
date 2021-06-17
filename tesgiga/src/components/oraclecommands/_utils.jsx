@@ -16,32 +16,68 @@ const Document = (props) => {
           {props.title}
         </Components.Typography>
         <Components.Typography>{props.description}</Components.Typography>
-        {props.children}
-        {props.onSubmit ? (
-          <Components.PrimaryButton
-            onClick={async () => {
-              if (props.validate()) {
-                if (window.confirm("Are you sure?")) {
-                  setSending(true);
-                  const res = await props.onSubmit();
+        {props.children
+          ? Array.isArray(props.children)
+            ? props.children
+                .filter((el) => (el ? el : null))
+                .map((el) => React.cloneElement(el, { setSnack, setSending }))
+            : React.cloneElement(props.children, { setSnack, setSending })
+          : null}
+        {props.onSubmit || props.onCreate ? (
+          <React.Fragment>
+            <Components.PrimaryButton
+              onClick={async () => {
+                if (!props.validate || props.validate()) {
+                  if (window.confirm("Are you sure?")) {
+                    setSending(true);
+                    const res = props.onSubmit
+                      ? await props.onSubmit()
+                      : await props.onCreate();
+                    setSnack({
+                      severity: "success",
+                      open: true,
+                      message: "Operation successful",
+                    });
+                    setSending(false);
+                  }
+                } else {
                   setSnack({
-                    severity: "success",
+                    severity: "warning",
                     open: true,
-                    message: "Operation successful",
+                    message: "Please fill all required form fields",
                   });
-                  setSending(false);
                 }
-              } else {
-                setSnack({
-                  severity: "warning",
-                  open: true,
-                  message: "Please fill all required form fields",
-                });
-              }
-            }}
-          >
-            Submit
-          </Components.PrimaryButton>
+              }}
+            >
+              {props.onSubmit ? "Submit" : "Create"}
+            </Components.PrimaryButton>
+            {props.onDelete ? (
+              <Components.PrimaryButton
+                onClick={async () => {
+                  if (!props.validate || props.validate()) {
+                    if (window.confirm("Are you sure?")) {
+                      setSending(true);
+                      const res = await props.onDelete();
+                      setSnack({
+                        severity: "success",
+                        open: true,
+                        message: "Operation successful",
+                      });
+                      setSending(false);
+                    }
+                  } else {
+                    setSnack({
+                      severity: "warning",
+                      open: true,
+                      message: "Please fill all required form fields",
+                    });
+                  }
+                }}
+              >
+                Delete
+              </Components.PrimaryButton>
+            ) : null}
+          </React.Fragment>
         ) : null}
         <div
           className={classes.miniLoader}

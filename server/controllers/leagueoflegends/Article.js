@@ -44,7 +44,9 @@ module.exports = {
       );
       const articles = await Promise.all(
         _articles.map(async (el) => {
-          const user = await Oracle.getUser({ query: { id: el.authorid } });
+          const user = await Oracle.getUsers({
+            query: { discordId: el.authorid },
+          });
           return Object.assign(
             {},
             el._doc,
@@ -52,7 +54,7 @@ module.exports = {
               createddate: moment(el.createddate).format("MMM Do, YYYY"),
               modifieddate: moment(el.modifieddate).format("MMM Do, YYYY"),
             },
-            { author: user.nickname.split("|")[0].trim() }
+            { author: user.displayname }
           );
         })
       );

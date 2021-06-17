@@ -9,7 +9,7 @@ export default (props) => {
     <Button
       {...props}
       className={classes.root}
-      onClick={() => (props.onClick ? props.onClick() : null)}
+      onClick={() => (props.onClick ? props.onClick(props) : null)}
       disabled={props.disabled ? props.disabled : false}
       variant="contained"
       color="primary"

@@ -2,20 +2,20 @@ const Team = require("../../controllers/leagueoflegends/Team");
 const ResponseHandler = require("../../response_handler");
 
 module.exports = (app, subdomain, pretext) => {
-  app.post(`/${subdomain}/${pretext}/post`, async (req, res) => {
-    const result = await Team.post(req);
+  app.post(`/${subdomain}/${pretext}/createTeam`, async (req, res) => {
+    const result = await Team.createTeam(req);
     res.json(result);
   });
-  app.put(`/${subdomain}/${pretext}/put`, async (req, res) => {
-    const result = await Team.put(req);
+  app.put(`/${subdomain}/${pretext}/updateTeam`, async (req, res) => {
+    const result = await Team.updateTeam(req);
     res.json(result);
   });
   app.get(`/${subdomain}/${pretext}/get_team_by_id`, async (req, res) => {
     const result = await Team.getTeamById(req);
     res.json(result);
   });
-  app.get(`/${subdomain}/${pretext}/get_all_teams`, async (req, res) => {
-    const result = await Team.getAllTeams(req);
+  app.get(`/${subdomain}/${pretext}/getTeams`, async (req, res) => {
+    const result = await Team.getTeams(req);
     res.json(result);
   });
   app.delete(`/${subdomain}/${pretext}/delete`, async (req, res) => {

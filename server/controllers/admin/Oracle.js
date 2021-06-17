@@ -44,61 +44,32 @@ module.exports = {
     const imgs = OracleUtils.readStaticDirectory("teamlogos");
     return imgs;
   },
-  getUser: async (req) => {
-    const res = await Oracle.guilds
+  getUsers: async (req) => {
+    const discordUsers = await Oracle.guilds
       .fetch(config.guildId)
-      .then((guild) => guild.members.fetch(req.query.id))
-      .then((res) => res.user);
-    const discData = await Oracle.guilds
-      .fetch(config.guildId)
-      .then((guild) => guild.members.fetch(res.id));
-    const acct = await Account.findOne({
-      discordId: res.id,
-    });
-    if (acct) {
-      const discordId = acct.discordId;
-      const titanPoints = acct.titanPoints;
-      const profileBanner = acct.profileBanner;
-      const profileIcon = acct.profileIcon;
-      const badges = acct.badges;
-      const summonerId = acct.summonerId;
-      let opGG;
-      let summonerName;
-      if (summonerId) {
-        const summoner = await fetch(
-          `https://na1.api.riotgames.com/lol/summoner/v4/summoners/${summonerId}?api_key=${config.riotGeneralApiKey}`
-        )
-          .then((res) => res.json())
-          .then((res) => res.name);
-        opGG = `https://na.op.gg/summoner/userName=${summoner}`;
-        summonerName = summoner;
-      }
-      return Object.assign(
-        {
-          summonerName,
-          badges,
-          discordId,
-          titanPoints,
-          profileBanner,
-          profileIcon,
-          summonerId,
-          opGG,
-        },
-        res,
-        {
-          nickname: discData.nickname ? discData.nickname : discData.username,
-          avatarUrl: `https://cdn.discordapp.com/avatars/${res.id}/${res.avatar}.png`,
+      .then((guild) => guild.members.fetch())
+      .then((res) => res);
+    const accts = await Account.find(
+      req.query && req.query.query ? JSON.parse(req.query.query) : {}
+    );
+    const builtAccounts = accts
+      .map((acct) => {
+        const dUser = discordUsers.get(acct.discordId);
+        if (dUser && !dUser.user.bot) {
+          return {
+            roles: dUser._roles,
+            nickname: dUser.nickname,
+            displayname: dUser.nickname
+              ? dUser.nickname.split("|")[0].trim()
+              : dUser.user.username,
+            ...dUser.user,
+            ...acct._doc,
+          };
         }
-      );
-    } else {
-      return null;
-    }
-  },
-  getAllUsers: async (req) => {
-    const userList = await Oracle.guilds
-      .fetch(config.guildId)
-      .then((guild) => guild.members.fetch());
-    return userList;
+      })
+      .filter((el) => (el ? el : null))
+      .sort((a, b) => (a.displayname < b.displayname ? -1 : 1));
+    return builtAccounts.length === 1 ? builtAccounts[0] : builtAccounts;
   },
   createTournamentCodes: async (req) => {
     const t1 = await Team.findOne({ name: req.body.team1 }).then(
@@ -287,7 +258,6 @@ module.exports = {
           authorization: `Bearer ${req.headers.token}`,
         },
       }).then((res) => res.json());
-      console.log(user);
       const permissionSet = await Permissions.get();
       const members = await Oracle.guilds
         .fetch(config.guildId)

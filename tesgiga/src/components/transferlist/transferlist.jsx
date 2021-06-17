@@ -35,33 +35,31 @@ export default (props) => {
     }
     setChecked(newChecked);
   };
-
   const handleAllRight = () => {
     setRight(right.concat(left));
     setLeft([]);
-    if (props.onChange) props.onChange(left, right);
   };
-
   const handleCheckedRight = () => {
     setRight(right.concat(leftChecked));
     setLeft(not(left, leftChecked));
     setChecked(not(checked, leftChecked));
-    if (props.onChange) props.onChange(left, right);
   };
-
   const handleCheckedLeft = () => {
     setLeft(left.concat(rightChecked));
     setRight(not(right, rightChecked));
     setChecked(not(checked, rightChecked));
-    if (props.onChange) props.onChange(left, right);
   };
-
   const handleAllLeft = () => {
     setLeft(left.concat(right));
     setRight([]);
-    if (props.onChange) props.onChange(left, right);
   };
-
+  React.useEffect(() => {
+    if (props.onChange) props.onChange(left, right);
+  }, [left, right]);
+  React.useEffect(() => {
+    setLeft(props.itemsLeft);
+    setRight(props.itemsRight);
+  }, [props.trigger]);
   const customList = (items) => (
     <div className={classes.list}>
       <List dense component="div" role="list">
