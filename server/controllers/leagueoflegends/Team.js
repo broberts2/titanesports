@@ -7,7 +7,11 @@ module.exports = {
   },
   getTeams: async (req) =>
     await Team.find(
-      req.query && req.query.query ? JSON.parse(req.query.query) : {}
+      req.query && req.query.query
+        ? typeof req.query.query === "string"
+          ? JSON.parse(req.query.query)
+          : req.query.query
+        : {}
     ),
   updateTeam: async (req) =>
     await Team.updateOne({ _id: req.body._id }, req.body),

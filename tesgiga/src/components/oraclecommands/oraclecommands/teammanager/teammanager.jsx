@@ -55,6 +55,7 @@ export default (props) => {
     setState((lastState) => ({
       ...lastState,
       players,
+      allTeams: teams,
       teams,
       logos,
       itemsLeft: [],
@@ -86,9 +87,26 @@ export default (props) => {
             value={state.radioValue}
             items={["Divinity League", "Conqueror League"]}
             row
-            onChange={(radioValue) =>
-              setState((lastState) => ({ ...lastState, radioValue }))
-            }
+            onChange={(radioValue) => {
+              const teams = {};
+              Object.keys(state.allTeams).map((key) =>
+                state.allTeams[key].league === radioValue ||
+                key === "<new team>"
+                  ? (teams[key] = state.allTeams[key])
+                  : null
+              );
+              setState((lastState) => ({
+                ...lastState,
+                radioValue,
+                teams,
+                team: "<new team>",
+                itemsLeft: Object.keys(state.players.fwd).filter((id) =>
+                  !state.teams["<new team>"].roster.includes(id)
+                    ? state.players.fwd[id]
+                    : null
+                ),
+              }));
+            }}
           />
           <Components.Typography>Select a Team</Components.Typography>
           {state.teams ? (

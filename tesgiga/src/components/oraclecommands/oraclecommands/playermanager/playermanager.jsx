@@ -225,6 +225,31 @@ export default (props) => {
             >
               Update By Summoner Id
             </Components.PrimaryButton>
+            <Components.PrimaryButton
+              style={
+                state.userList[state.selectedPlayer].summonerId &&
+                state.userList[state.selectedPlayer].summonerId.length > 0
+                  ? {}
+                  : { opacity: 0.35, pointerEvents: "none" }
+              }
+              onClick={async (myProps) => {
+                myProps.setSending(true);
+                const userList = state.userList;
+                userList[state.selectedPlayer].summonerId = null;
+                const response = await GlobalActions.Requests.updateUser(
+                  userList[state.selectedPlayer]
+                );
+                setState((lastState) => ({ ...lastState, userList }));
+                myProps.setSnack({
+                  severity: "success",
+                  open: true,
+                  message: "Summoner un-verified",
+                });
+                myProps.setSending(false);
+              }}
+            >
+              Un-verify
+            </Components.PrimaryButton>
             <br />
           </Utils.Document>
         </div>
