@@ -271,6 +271,7 @@ export default (props) => {
     </List>
   );
   React.useEffect(async () => {
+    await new Promise((resolve) => setTimeout(() => resolve(), 5));
     const permissions = await GlobalActions.Requests.getMyPermissions();
     const canAccess = () => {
       for (let key in permissions) {

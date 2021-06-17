@@ -2,6 +2,7 @@ import React from "react";
 import Components from "components/index";
 import { Grid } from "@material-ui/core";
 import _GlobalActions from "globalactions/index";
+import config from "config";
 import Utils from "../../_utils";
 import Style from "./style";
 
@@ -122,20 +123,43 @@ export default (props) => {
         </Utils.Document>
       </div>
       {state.team ? (
-        <div style={{ flex: "1 1 auto", overflowY: "auto" }}>
+        <div
+          style={{ flex: "1 1 auto", overflowY: "auto", position: "relative" }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              right: 0,
+              display: !state.logo ? "none" : "",
+            }}
+          >
+            <img
+              src={`${
+                config.production
+                  ? config.productionEndpoint
+                  : config.developementEndpoint
+              }/static/teamlogos/${state.logo}`}
+              style={{ width: "200px" }}
+            />
+          </div>
           <Utils.Document
             title={
               state.editing === "On" ? (
-                <Components.TextField
-                  invertColor
-                  label={"Team Name"}
-                  value={state.teams[state.team].name}
-                  onChange={(e) => {
-                    const teams = state.teams;
-                    state.teams[state.team].name = e;
-                    setState((lastState) => ({ ...lastState, teams }));
-                  }}
-                />
+                <Grid container>
+                  <Grid item xs={7}>
+                    <Components.TextField
+                      invertColor
+                      label={"Team Name"}
+                      value={state.teams[state.team].name}
+                      onChange={(e) => {
+                        const teams = state.teams;
+                        state.teams[state.team].name = e;
+                        setState((lastState) => ({ ...lastState, teams }));
+                      }}
+                    />
+                  </Grid>
+                </Grid>
               ) : (
                 state.team
               )
