@@ -50,7 +50,11 @@ module.exports = {
       .then((guild) => guild.members.fetch())
       .then((res) => res);
     const accts = await Account.find(
-      req.query && req.query.query ? JSON.parse(req.query.query) : {}
+      req.query && req.query.query
+        ? typeof req.query.query === "string"
+          ? JSON.parse(req.query.query)
+          : req.query.query
+        : {}
     );
     const builtAccounts = accts
       .map((acct) => {

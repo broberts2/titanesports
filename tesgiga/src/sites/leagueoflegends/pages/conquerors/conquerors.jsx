@@ -13,15 +13,18 @@ export default (props) => {
         <Components.Header cfg={"leagueoflegends"} setModal={props.setModal} />
         <Components.Ruby src={Labels.images.conquerorlogo} img />
         <Components.Blurb title={"Conqueror League"}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          Sign up now for the pre-made Plat 1 99 LP Conqueror League where 10
+          teams battle it out to find out who has what it takes to be the 2021
+          Conqueror Summer Invitational Champions and win a portion of the $100
+          prize pool. All team entries are $10 each.
+          <br />
+          <br />
+          <a
+            href="https://leagueoflegends.titan-esports.org/applications?form=conquerors"
+            target="_blank"
+          >
+            https://leagueoflegends.titan-esports.org/applications?form=conquerors
+          </a>
         </Components.Blurb>
         <img className={classes.promo} src={Labels.images.conqueror} />
         <Components.Footer />

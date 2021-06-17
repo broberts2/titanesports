@@ -45,8 +45,9 @@ module.exports = {
       const articles = await Promise.all(
         _articles.map(async (el) => {
           const user = await Oracle.getUsers({
-            query: { discordId: el.authorid },
+            query: { query: { discordId: el.authorid } },
           });
+          console.log(user);
           return Object.assign(
             {},
             el._doc,
