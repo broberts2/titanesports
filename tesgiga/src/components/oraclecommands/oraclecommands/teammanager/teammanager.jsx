@@ -263,7 +263,8 @@ export default (props) => {
                 <Components.Picklist
                   onChange={(e) => {
                     const teams = state.teams;
-                    teams[state.team][map[el]] = state.players.rev[e].discordId;
+                    teams[state.team][map[el]] =
+                      e && e.length > 0 ? state.players.rev[e].discordId : null;
                     setState((lastState) => ({ ...lastState, teams }));
                   }}
                   allowNone
@@ -288,7 +289,10 @@ export default (props) => {
                 <Components.Picklist
                   onChange={(reqSub) => {
                     const subs = state.subs;
-                    subs[key] = state.players.rev[reqSub].discordId;
+                    subs[key] =
+                      reqSub && reqSub.length > 0
+                        ? state.players.rev[reqSub].discordId
+                        : null;
                     setState((lastState) => ({ ...lastState, subs }));
                   }}
                   allowNone

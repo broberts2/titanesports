@@ -46,10 +46,7 @@ export default (props) => {
   return (
     <div style={{ display: "flex", flexFlow: "column", height: "100%" }}>
       <div style={{ flex: "0 1 auto" }}>
-        <Utils.Document
-          title={"Players"}
-          description={"Create, edit, or delete a player."}
-        >
+        <Utils.Document title={"Players"} description={"Manage a player."}>
           <div className={classes.editRadio} style={{ display: "none" }}>
             <Components.Typography>Enable Editing</Components.Typography>
             <Components.RadioButton
