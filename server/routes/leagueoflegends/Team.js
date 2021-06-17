@@ -18,8 +18,8 @@ module.exports = (app, subdomain, pretext) => {
     const result = await Team.getTeams(req);
     res.json(result);
   });
-  app.delete(`/${subdomain}/${pretext}/delete`, async (req, res) => {
-    const result = await Team.delete(req);
+  app.delete(`/${subdomain}/${pretext}/deleteTeam`, async (req, res) => {
+    const result = await Team.deleteTeam(req);
     res.json(result);
   });
 };

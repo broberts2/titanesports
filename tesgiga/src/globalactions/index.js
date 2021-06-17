@@ -34,6 +34,8 @@ export default (subdomain) => {
         ),
       createTeam: async (body) =>
         await Utils.request(`/${subdomain}/Team/createTeam`, "post", body),
+      deleteTeam: async (body) =>
+        await Utils.request(`/${subdomain}/Team/deleteTeam`, "delete", body),
       updateTeam: async (body) =>
         await Utils.request(`/${subdomain}/Team/updateTeam`, "put", body),
       getTeams: async (query) =>

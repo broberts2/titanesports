@@ -11,4 +11,5 @@ module.exports = {
     ),
   updateTeam: async (req) =>
     await Team.updateOne({ _id: req.body._id }, req.body),
+  deleteTeam: async (req) => await Team.remove({ _id: req.body._id }),
 };

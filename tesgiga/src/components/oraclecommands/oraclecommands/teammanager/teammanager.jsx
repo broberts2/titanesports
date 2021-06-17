@@ -168,7 +168,15 @@ export default (props) => {
                   }
                 : null
             }
-            onDelete={!state.teams[state.team].isNew ? () => null : null}
+            onDelete={
+              !state.teams[state.team].isNew
+                ? async () => {
+                    const response = await GlobalActionsLeagueOfLegends.Requests.deleteTeam(
+                      state.teams[state.team]
+                    );
+                  }
+                : null
+            }
             validate={() => true}
           >
             <div>
