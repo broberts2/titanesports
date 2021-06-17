@@ -37,7 +37,6 @@ export default (props) => {
       arr.map((el) => (obj[el.displayname] = el));
       return obj;
     });
-    console.log(userList);
     setState((lastState) => ({
       ...lastState,
       userList,
@@ -236,9 +235,6 @@ export default (props) => {
                 myProps.setSending(true);
                 const userList = state.userList;
                 userList[state.selectedPlayer].summonerId = null;
-                const response = await GlobalActions.Requests.updateUser(
-                  userList[state.selectedPlayer]
-                );
                 setState((lastState) => ({ ...lastState, userList }));
                 myProps.setSnack({
                   severity: "success",

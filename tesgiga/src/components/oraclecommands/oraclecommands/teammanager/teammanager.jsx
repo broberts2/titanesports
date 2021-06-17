@@ -243,9 +243,13 @@ export default (props) => {
                   itemsLeft={state.itemsLeft.map(
                     (el) => state.players.fwd[el].displayname
                   )}
-                  itemsRight={state.teams[state.team].roster.map(
-                    (id) => state.players.fwd[id].displayname
-                  )}
+                  itemsRight={state.teams[state.team].roster
+                    .map((id) =>
+                      state.players.fwd[id]
+                        ? state.players.fwd[id].displayname
+                        : null
+                    )
+                    .filter((el) => (el ? el : null))}
                   onChange={(itemsLeft, itemsRight) => {
                     const teams = state.teams;
                     teams[state.team].roster = itemsRight.map(
@@ -264,9 +268,13 @@ export default (props) => {
                   }}
                   allowNone
                   invertColor
-                  items={state.teams[state.team].roster.map(
-                    (id) => state.players.fwd[id].displayname
-                  )}
+                  items={state.teams[state.team].roster
+                    .map((id) =>
+                      state.players.fwd[id]
+                        ? state.players.fwd[id].displayname
+                        : null
+                    )
+                    .filter((el) => (el ? el : null))}
                   value={
                     state.players.fwd[state.teams[state.team][map[el]]]
                       ? state.players.fwd[state.teams[state.team][map[el]]]
@@ -285,9 +293,13 @@ export default (props) => {
                   }}
                   allowNone
                   invertColor
-                  items={state.teams[state.team].roster.map(
-                    (id) => state.players.fwd[id].displayname
-                  )}
+                  items={state.teams[state.team].roster
+                    .map((id) =>
+                      state.players.fwd[id]
+                        ? state.players.fwd[id].displayname
+                        : null
+                    )
+                    .filter((el) => (el ? el : null))}
                   value={
                     state.players.fwd[state.subs[key]]
                       ? state.players.fwd[state.subs[key]].displayname
