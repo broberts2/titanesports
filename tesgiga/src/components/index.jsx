@@ -22,11 +22,14 @@ import Form from "components/form/form";
 import RadioButton from "components/radiobutton/radiobutton";
 import CheckBox from "components/checkbox/checkbox";
 import Box from "components/box/box";
+import Grid from "components/grid/grid";
 import CircularProgress from "components/circularprogress/circularprogress";
 import TwitchEmbed from "components/twitchembed/twitchembed";
 import Transferlist from "components/transferlist/transferlist";
 import Picklist from "components/picklist/picklist";
 import OracleCommands from "components/oraclecommands/oraclecommands";
+import AnimeOrb from "components/animeorb/animeorb";
+import TitleBar from "components/titlebar/titlebar";
 import FontAwesome from "components/fontawesome/fontawesome";
 import Themes from "themes/index";
 
@@ -57,9 +60,12 @@ export default {
   CheckBox,
   CircularProgress,
   Box,
+  Grid,
   TwitchEmbed,
   OracleCommands,
   FontAwesome,
   Transferlist,
   Picklist,
+  AnimeOrb,
+  TitleBar,
 };

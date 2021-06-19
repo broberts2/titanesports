@@ -33,6 +33,12 @@ export default (props) => {
         return (
           <React.Fragment>{createRoute("/", Sites.Admin.Home)}</React.Fragment>
         );
+      case "titandraft":
+        return (
+          <React.Fragment>
+            {createRoute("/", Sites.TitanDraft.Home)}
+          </React.Fragment>
+        );
       default:
         return (
           <React.Fragment>

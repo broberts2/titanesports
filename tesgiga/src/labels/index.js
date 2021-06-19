@@ -12,7 +12,13 @@ export default {
   youtube: "https://www.youtube.com/channel/UCo5klVtSLp2YLch8ye_FBRw",
   facebook: "https://www.facebook.com/titanesportz/",
   images: {
+    hdcircle: `${_}/static/images/hdcircle.png`,
     divinity: `${_}/static/images/divinity.png`,
+    toplane: `${_}/static/images/toplane.png`,
+    jungle: `${_}/static/images/jungle.png`,
+    midlane: `${_}/static/images/midlane.png`,
+    botlane: `${_}/static/images/botlane.png`,
+    support: `${_}/static/images/support.png`,
     divinitylogo: `${_}/static/images/divinitylogo.png`,
     conqueror: `${_}/static/images/conqueror.png`,
     conquerorlogo: `${_}/static/images/conquerorlogo.png`,
@@ -54,5 +60,19 @@ export default {
     otter: `${_}/static/backgrounds/otter.jpg`,
     kindred: `${_}/static/backgrounds/kindred.png`,
     baron: `${_}/static/backgrounds/baron.jpg`,
+  },
+  dragontail: {
+    champions: {
+      splash: (champion) =>
+        `${_}/dragontail/img/champion/splash/${champion}_0.jpg`,
+      tile: (champion) =>
+        `${_}/dragontail/img/champion/tiles/${champion}_0.jpg`,
+    },
+  },
+  backgroundvideos: {
+    background1: `${_}/static/backgroundvideos/background1.mp4`,
+    background2: `${_}/static/backgroundvideos/background2.mp4`,
+    background3: `${_}/static/backgroundvideos/background3.mp4`,
+    background4: `${_}/static/backgroundvideos/background4.mp4`,
   },
 };
