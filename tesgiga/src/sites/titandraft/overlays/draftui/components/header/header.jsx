@@ -23,7 +23,11 @@ export default (props) => {
             {props.state.blueteam.name}
           </Components.TitleBar>
           <div style={{ textAlign: "right", height: "100%" }}>
-            <img src={Labels.images.aery} className={classes.titlebarImg} />
+            <img
+              src={Labels.images[props.state.blueteam.logo]}
+              className={classes.titlebarImg}
+              style={{ display: !props.state.blueteam.logo ? "none" : "" }}
+            />
           </div>
         </div>
       </Components.Grid>
@@ -45,7 +49,11 @@ export default (props) => {
             {props.state.redteam.name}
           </Components.TitleBar>
           <div style={{ textAlign: "left", height: "100%" }}>
-            <img src={Labels.images.aery} className={classes.titlebarImg} />
+            <img
+              src={Labels.images[props.state.redteam.logo]}
+              className={classes.titlebarImg}
+              style={{ display: !props.state.blueteam.logo ? "none" : "" }}
+            />
           </div>
         </div>
       </Components.Grid>

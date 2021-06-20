@@ -47,7 +47,6 @@ module.exports = {
           const user = await Oracle.getUsers({
             query: { query: { discordId: el.authorid } },
           });
-          console.log(user);
           return Object.assign(
             {},
             el._doc,

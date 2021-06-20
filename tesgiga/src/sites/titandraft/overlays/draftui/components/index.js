@@ -6,6 +6,7 @@ import Footer from "./footer/footer";
 import ActionButton from "./actionbutton/actionbutton";
 import PickGrid from "./pickgrid/pickgrid";
 import HDCircle from "./hdcircle/hdcircle";
+import Passive from "./passive/passive";
 
 export default {
   Header,
@@ -16,4 +17,5 @@ export default {
   ActionButton,
   PickGrid,
   HDCircle,
+  Passive,
 };

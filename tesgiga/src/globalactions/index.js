@@ -1,4 +1,5 @@
 import Utils from "./_utils";
+import TitanState from "sites/titandraft/state/index";
 
 export default (subdomain) => {
   const actions = {
@@ -34,6 +35,17 @@ export default (subdomain) => {
         ),
       createTeam: async (body) =>
         await Utils.request(`/${subdomain}/Team/createTeam`, "post", body),
+      createDraft: async (body) => {
+        TitanState.blueteam = Object.assign(TitanState.blueteam, body.blueteam);
+        TitanState.redteam = Object.assign(TitanState.redteam, body.redteam);
+        return await Utils.request(
+          `/${subdomain}/TitanDraft/createDraft`,
+          "post",
+          {
+            state: TitanState,
+          }
+        );
+      },
       deleteTeam: async (body) =>
         await Utils.request(`/${subdomain}/Team/deleteTeam`, "delete", body),
       updateTeam: async (body) =>

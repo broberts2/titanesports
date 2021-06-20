@@ -12,7 +12,14 @@ export default (props) => {
         xs={3}
         style={{ marginLeft: "7.5px", marginRight: "-7.55px" }}
       >
-        <DraftComponents.PickRow items={props.state.blueteam.pickcard} />
+        <DraftComponents.PickRow
+          nextAction={props.nextAction}
+          team={"blueteam"}
+          action={"pickcard"}
+          bgvideo={"background4"}
+          items={props.state.blueteam.pickcard}
+          nullimg={"water"}
+        />
       </Components.Grid>
       <Components.Grid
         item
@@ -22,10 +29,28 @@ export default (props) => {
         alignItems="flex-end"
         justify="center"
       >
-        <DraftComponents.PickGrid />
+        <DraftComponents.PickGrid
+          actionId={props.actionId}
+          ChampionData={props.ChampionData}
+          setActionId={(i) => props.setActionId(i)}
+          state={props.state}
+        />
+        <DraftComponents.Passive
+          actionId={props.actionId}
+          ChampionData={props.SingleChampionData}
+          setActionId={(i) => props.setActionId(i)}
+          state={props.state}
+        />
       </Components.Grid>
       <Components.Grid item xs={3}>
-        <DraftComponents.PickRow items={props.state.redteam.pickcard} />
+        <DraftComponents.PickRow
+          nextAction={props.nextAction}
+          team={"redteam"}
+          action={"pickcard"}
+          bgvideo={"background2"}
+          items={props.state.redteam.pickcard}
+          nullimg={"fire"}
+        />
       </Components.Grid>
     </Components.Grid>
   );

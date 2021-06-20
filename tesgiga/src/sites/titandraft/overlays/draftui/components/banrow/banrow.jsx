@@ -14,12 +14,37 @@ export default (props) => {
       direction={props.reverse ? "row-reverse" : "row"}
       className={classes.root}
     >
-      {items.map((el) => (
+      {items.map((el, i) => (
         <Components.Grid item xs={2}>
           <div className={classes.item}>
+            <video
+              style={{
+                display:
+                  props.nextAction &&
+                  props.team === props.nextAction.team &&
+                  props.action === props.nextAction.action &&
+                  (props.reverse ? 4 - i : i) === props.nextAction.index
+                    ? ""
+                    : "none",
+              }}
+              src={Labels.backgroundvideos[props.bgvideo]}
+              className={classes.bgvideo}
+              muted
+              loop
+              autoPlay
+            />
             {el ? (
               <React.Fragment>
-                <img src={Labels.dragontail.champions.splash(el.img)} />
+                <img
+                  src={Labels.dragontail.champions.splash(el.img)}
+                  className={classes.notnull}
+                  style={{ display: !el.img ? "none" : "" }}
+                />
+                <img
+                  src={Labels.images[props.nullimg]}
+                  className={classes.null}
+                  style={{ display: el.img ? "none" : "" }}
+                />
                 <div className={classes.title}>
                   <Components.Typography>{el.title}</Components.Typography>
                 </div>

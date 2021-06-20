@@ -3,6 +3,6 @@ import draft from "./draft";
 
 export default {
   draft,
-  blueteam: team,
-  redteam: team,
+  blueteam: JSON.parse(JSON.stringify(team)),
+  redteam: JSON.parse(JSON.stringify(team)),
 };

@@ -1,1 +1,1 @@
-export default (state, setState, champion) => {};
+export default (socket, championId) => socket.emit("ban", championId);

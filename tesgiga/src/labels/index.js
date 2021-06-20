@@ -49,6 +49,8 @@ export default {
     discord: `${_}/static/images/discord.png`,
     zilean: `${_}/static/images/zilean.png`,
     leagueoflegends: `${_}/static/images/leagueoflegends.png`,
+    water: `${_}/static/images/water.png`,
+    fire: `${_}/static/images/fire.png`,
     tags: {
       all: `${_}/static/images/graspoftheundying.png`,
       pinned: `${_}/static/images/presstheattack.png`,

@@ -81,4 +81,10 @@ server.listen(config.port, () =>
   )
 );
 
-socket(require("socket.io")(server));
+socket(
+  require("socket.io")(server, {
+    cors: {
+      origin: "*",
+    },
+  })
+);

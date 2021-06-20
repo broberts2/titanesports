@@ -1,24 +1,12 @@
-const TitanDraft = require("../controllers/TitanDraft");
-
-const ORIGIN = {
-  ["http://leagueoflegends.localhost:3000"]: "TitanDraft",
-  ["http://leagueoflegends.localhost:3001"]: "TitanDraft",
-  ["https://leagueoflegends.titan-esports.org"]: "TitanDraft",
-  ["https://www.leagueoflegends.titan-esports.org"]: "TitanDraft",
-};
+const TitanDraft = require("../titandraft/index");
+const _ = (shake) => shake.split("//")[1].split(".")[0];
 
 module.exports = (io) =>
   io.on("connection", (socket) => {
     socket.on("join", async (msg) => {
-      const Emitters = require("./emitters")(io)(socket)(
-        ORIGIN[socket.handshake.headers.origin],
-        msg.draft
-      );
-      require("./events")(socket)(Emitters)(
-        ORIGIN[socket.handshake.headers.origin],
-        msg.draft
-      );
-      const draftData = await TitanDraft.get({ query: { id: msg.draft } });
-      Emitters.getDraft(draftData);
+      switch (_(socket.handshake.headers.origin)) {
+        case "titandraft":
+          return TitanDraft(io, socket, msg.lobby, msg.token);
+      }
     });
   });

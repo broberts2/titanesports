@@ -6,8 +6,10 @@ const ROUTES = {
     Twitter: require("./routes/admin/Twitter"),
     Account: require("./routes/admin/Account"),
   },
+  titandraft: {
+    TitanDraft: require("./routes/titandraft/TitanDraft"),
+  },
   leagueoflegends: {
-    TitanDraft: require("./routes/leagueoflegends/TitanDraft"),
     TitanDraftConfiguration: require("./routes/leagueoflegends/TitanDraftConfiguration"),
     WebsiteConfiguration: require("./routes/leagueoflegends/WebsiteConfiguration"),
     ChampionData: require("./routes/leagueoflegends/ChampionData"),

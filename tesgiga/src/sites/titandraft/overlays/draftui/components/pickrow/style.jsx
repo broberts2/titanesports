@@ -16,13 +16,6 @@ export default makeStyles((theme) => ({
     borderRadius: "4px",
     overflow: "hidden",
     position: "relative",
-    "& img": {
-      opacity: 1,
-      position: "absolute",
-      width: `calc(100% - ${padding * 2}px)`,
-      height: `calc(100% - ${padding * 2}px)`,
-      objectFit: "cover",
-    },
   },
   title: {
     position: "absolute",
@@ -33,4 +26,26 @@ export default makeStyles((theme) => ({
     fontWeight: 800,
   },
   subtitle: { position: "absolute", bottom: 0, right: 0, padding: "10px" },
+  notnull: {
+    opacity: 1,
+    position: "absolute",
+    width: `calc(100% - ${padding * 2}px)`,
+    height: `calc(100% - ${padding * 2}px)`,
+    objectFit: "cover",
+  },
+  null: {
+    opacity: 1,
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    height: `50%`,
+  },
+  bgvideo: {
+    opacity: 0.75,
+    position: "absolute",
+    width: `calc(100% - 10px)`,
+    height: `calc(100% - 10px)`,
+    objectFit: "cover",
+  },
 }));

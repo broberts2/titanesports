@@ -3,6 +3,7 @@ import bancard from "./bancard";
 
 export default {
   name: "Destroyers",
+  logo: "aery",
   pickcard: {
     0: pickcard,
     1: pickcard,

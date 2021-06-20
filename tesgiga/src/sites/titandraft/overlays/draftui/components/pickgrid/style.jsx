@@ -11,8 +11,9 @@ export default (props) =>
       padding: "30px",
     },
     item: {
+      cursor: "pointer",
       position: "relative",
-      padding: "2px",
+      padding: "1px",
       "& img": {
         width: "100%",
       },
@@ -21,7 +22,7 @@ export default (props) =>
       width: "100%",
       position: "absolute",
       padding: "40px",
-      top: "-95px",
+      top: "-110px",
     },
     title: {
       position: "absolute",
@@ -29,7 +30,6 @@ export default (props) =>
       padding: "10px",
     },
     position: {
-      width: "50px",
-      display: "inline-block",
+      width: "100%",
     },
   }));

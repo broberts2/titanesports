@@ -6,4 +6,7 @@ export default makeStyles((theme) => ({
     height: "15vh",
     width: "100%",
   },
+  timer: {
+    textAlign: "center",
+  },
 }));
