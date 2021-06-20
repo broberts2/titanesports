@@ -9,7 +9,7 @@ import Style from "./style";
 
 const socket = require("socket.io-client")(
   require("config").production
-    ? "https://titandraft.titan-esports.org"
+    ? "https://titan-esports.org:7000"
     : "http://localhost:7000"
 );
 socket.emit("join", GlobalActions("titandraft").Utils.getUrlParameters());
