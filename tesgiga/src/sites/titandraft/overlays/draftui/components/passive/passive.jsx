@@ -5,7 +5,12 @@ import Style from "./style";
 export default (props) => {
   const classes = Style(props)();
   return (
-    <div className={classes.root}>
+    <div
+      className={classes.root}
+      style={{
+        display: props.access === props.state.draft.actingteam ? "none" : "",
+      }}
+    >
       <Components.Grid container style={{ width: "100%" }}>
         <Components.Grid item xs={3}></Components.Grid>
         <Components.Grid item xs={6}>

@@ -1,9 +1,10 @@
 import React from "react";
-import { Grow, Slide } from "@material-ui/core";
+import { Grow, Slide, Fade } from "@material-ui/core";
 
 const TransitionGroup = {
   Grow,
   Slide,
+  Fade,
 };
 
 export default (props) => {

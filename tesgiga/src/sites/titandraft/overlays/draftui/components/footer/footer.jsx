@@ -15,6 +15,7 @@ export default (props) => {
         style={{ marginLeft: "7.5px", marginRight: "-7.55px" }}
       >
         <DraftComponents.BanRow
+          actingTeam={props.state.draft.actingteam}
           nextAction={props.nextAction}
           team={"blueteam"}
           action={"bancard"}
@@ -25,7 +26,7 @@ export default (props) => {
         />
       </Components.Grid>
       <Components.Grid item xs={2}>
-        {props.actionId && props.nextAction ? (
+        {props.actionId && props.nextAction && props.state.starteddate ? (
           <DraftComponents.ActionButton
             onClick={() => Actions.banchampion(props.actionId)}
             text={`${props.nextAction.action === "bancard" ? "Ban" : "Pick"} ${
@@ -37,7 +38,11 @@ export default (props) => {
           className={classes.timer}
           style={{
             display:
-              props.state.timer > 0 && !props.state.finisheddate ? "" : "none",
+              props.state.timer > 0 &&
+              !props.state.finisheddate &&
+              props.state.starteddate
+                ? ""
+                : "none",
           }}
         >
           <Components.Typography

@@ -6,7 +6,7 @@ export default (props) => {
     <props.route exact={!Default} path={route}>
       <Page
         isLoaded={!loading}
-        _={() => cb(false)}
+        _={(value) => cb(value)}
         modal={props.modal}
         setModal={props.setModal}
       />

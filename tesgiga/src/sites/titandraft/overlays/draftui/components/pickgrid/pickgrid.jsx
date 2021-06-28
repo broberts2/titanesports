@@ -64,7 +64,8 @@ export default (props) => {
         position: "relative",
         display:
           props.finisheddate ||
-          props.state.access !== props.state.draft.actingteam
+          !props.state.starteddate ||
+          props.access !== props.state.draft.actingteam
             ? "none"
             : "",
       }}

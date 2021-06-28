@@ -32,7 +32,7 @@ export default () => {
             sites={Sites}
             route={Route}
             loading={loading}
-            cb={() => setTimeout(() => setLoading(), 250)}
+            cb={(value) => setTimeout(() => setLoading(value), 250)}
             modal={modal}
             setModal={_setModal}
           />

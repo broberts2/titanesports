@@ -119,6 +119,7 @@ const items = (
       <ListItemText primary={displayName} />
     </ListItem>
   );
+  console.log(isAuth);
   return [
     isAuth
       ? {
@@ -245,6 +246,7 @@ const items = (
 
 export default (props) => {
   const classes = Style();
+  let isSignedIn;
   const [displayName, setDisplayName] = React.useState("Discord");
   const [displayService, setDisplayService] = React.useState("Oracle");
   const [gsAccordion, setGsAccordion] = React.useState(false);
@@ -273,6 +275,7 @@ export default (props) => {
   React.useEffect(async () => {
     await new Promise((resolve) => setTimeout(() => resolve(), 5));
     const permissions = await GlobalActions.Requests.getMyPermissions();
+    delete permissions._myId;
     const canAccess = () => {
       for (let key in permissions) {
         if (permissions[key]) {
@@ -282,7 +285,7 @@ export default (props) => {
       return false;
     };
     if (permissions) {
-      if (canAccess) {
+      if (canAccess()) {
         setIsAuth(permissions);
       } else {
         setIsAuth(0);
@@ -296,22 +299,20 @@ export default (props) => {
     <ThemeProvider theme={Components.Themes.Dark}>
       <div className={classes.root}>
         <Box style={{ width: "100%", height: "100%" }} flexDirection="row">
-          <Box style={{ width: "362.5px" }}>
-            <Drawer variant="permanent" anchor={"left"}>
-              {listItems(
-                items(
-                  classes,
-                  displayName,
-                  setDisplayName,
-                  setDisplayService,
-                  gsAccordion,
-                  setGsAccordion,
-                  props.setModal,
-                  isAuth
-                )
-              )}
-            </Drawer>
-          </Box>
+          <Drawer variant="permanent" anchor={"left"}>
+            {listItems(
+              items(
+                classes,
+                displayName,
+                setDisplayName,
+                setDisplayService,
+                gsAccordion,
+                setGsAccordion,
+                props.setModal,
+                isAuth
+              )
+            )}
+          </Drawer>
           {isAuth ? (
             <div className={classes.displayName}>
               <Components.Typography anim={"grow"} variant="h4">

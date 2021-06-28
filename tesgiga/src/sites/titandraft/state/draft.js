@@ -1,3 +1,3 @@
 export default {
-  actingteam: "blueteam",
+  actingteam: "none",
 };

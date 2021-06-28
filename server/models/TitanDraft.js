@@ -33,6 +33,11 @@ const TitanDraft = new Schema({
     unique: false,
     required: false,
   },
+  primed: {
+    type: Boolean,
+    unique: false,
+    required: false,
+  },
   history: {
     type: Object,
     unique: false,

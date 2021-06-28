@@ -40,7 +40,7 @@ module.exports = async (util, data) => {
       state: util.document.state,
       history: util.document.history,
       finisheddate:
-        Object.values(util.document.history).length >=
+        Object.values(util.document.history).length >
         Object.values(util.OrderSet).length - 1
           ? new Date()
           : util.document.finisheddate
@@ -48,6 +48,7 @@ module.exports = async (util, data) => {
           : null,
     }
   );
+  util.document = await util.TitanDraft.findOne({ _id: util.lobby });
   util.actions.sendnextaction(util);
   util.actions.broadcast(util);
   if (util.document.history) {

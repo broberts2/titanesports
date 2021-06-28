@@ -1,8 +1,5 @@
 echo "Game Version:";
 read varname
-rm game_version.js
-touch game_version.js
-echo "module.exports = \"$varname\"" >> game_version.js
 rm -rf *dragontail*
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
   wget -c https://ddragon.leagueoflegends.com/cdn/dragontail-$varname.tgz

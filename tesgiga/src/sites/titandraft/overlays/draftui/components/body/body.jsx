@@ -30,12 +30,14 @@ export default (props) => {
         justify="center"
       >
         <DraftComponents.PickGrid
+          access={props.access}
           actionId={props.actionId}
           ChampionData={props.ChampionData}
           setActionId={(i) => props.setActionId(i)}
           state={props.state}
         />
         <DraftComponents.Passive
+          access={props.access}
           actionId={props.actionId}
           ChampionData={props.SingleChampionData}
           setActionId={(i) => props.setActionId(i)}
@@ -44,6 +46,7 @@ export default (props) => {
       </Components.Grid>
       <Components.Grid item xs={3}>
         <DraftComponents.PickRow
+          actingTeam={props.state.draft.actingteam}
           nextAction={props.nextAction}
           team={"redteam"}
           action={"pickcard"}

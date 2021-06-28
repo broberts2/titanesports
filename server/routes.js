@@ -10,8 +10,6 @@ const ROUTES = {
     TitanDraft: require("./routes/titandraft/TitanDraft"),
   },
   leagueoflegends: {
-    TitanDraftConfiguration: require("./routes/leagueoflegends/TitanDraftConfiguration"),
-    WebsiteConfiguration: require("./routes/leagueoflegends/WebsiteConfiguration"),
     ChampionData: require("./routes/leagueoflegends/ChampionData"),
     Article: require("./routes/leagueoflegends/Article"),
     Permissions: require("./routes/leagueoflegends/Permissions"),

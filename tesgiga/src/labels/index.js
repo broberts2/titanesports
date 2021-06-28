@@ -51,6 +51,8 @@ export default {
     leagueoflegends: `${_}/static/images/leagueoflegends.png`,
     water: `${_}/static/images/water.png`,
     fire: `${_}/static/images/fire.png`,
+    vs: `${_}/static/images/vs.png`,
+    elements: `${_}/static/images/elements.png`,
     tags: {
       all: `${_}/static/images/graspoftheundying.png`,
       pinned: `${_}/static/images/presstheattack.png`,

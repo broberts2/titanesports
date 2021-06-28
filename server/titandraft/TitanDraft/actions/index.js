@@ -7,4 +7,5 @@ module.exports = {
   sendchampiondata: require("./sendchampiondata"),
   championaction: require("./championaction"),
   sendnextaction: require("./sendnextaction"),
+  broadcasttransition: require("./broadcasttransition"),
 };

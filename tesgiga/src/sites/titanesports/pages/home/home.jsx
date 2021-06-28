@@ -73,24 +73,28 @@ export default (props) => {
                       title={"League of Legends"}
                       src={Labels.images.lol}
                     />
-                    <Card
-                      disabled
-                      onClick={() => alert("Shalom")}
-                      title={"Valorant"}
-                      src={Labels.images.valorant}
-                    />
-                    <Card
-                      disabled
-                      onClick={() => alert("Shalom")}
-                      title={"World of Warcraft"}
-                      src={Labels.images.worldofwarcraft}
-                    />
-                    <Card
-                      disabled
-                      onClick={() => alert("Shalom")}
-                      title={"Valheim"}
-                      src={Labels.images.valheim}
-                    />
+                    {false ? (
+                      <React.Fragment>
+                        <Card
+                          disabled
+                          onClick={() => alert("Shalom")}
+                          title={"Valorant"}
+                          src={Labels.images.valorant}
+                        />
+                        <Card
+                          disabled
+                          onClick={() => alert("Shalom")}
+                          title={"World of Warcraft"}
+                          src={Labels.images.worldofwarcraft}
+                        />
+                        <Card
+                          disabled
+                          onClick={() => alert("Shalom")}
+                          title={"Valheim"}
+                          src={Labels.images.valheim}
+                        />
+                      </React.Fragment>
+                    ) : null}
                   </Grid>
                 </div>
               </Grid>

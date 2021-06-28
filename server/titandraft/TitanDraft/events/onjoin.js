@@ -4,6 +4,7 @@ module.exports = async (util) => {
     if (util.document) {
       util.socket.join(util.lobby);
       util.socket.emit("validate", {
+        draft: util.document,
         access:
           util.token === util.document.bluetoken
             ? "blueteam"
@@ -14,6 +15,7 @@ module.exports = async (util) => {
       util.actions.whisper(util);
       util.actions.sendchampiondata(util);
       util.events.banchampion(util);
+      util.events.readycheck(util);
       util.actions.sendnextaction(util, "whisper");
       if (util.document.history) {
         util.actions.sendchampiondata(
@@ -22,7 +24,7 @@ module.exports = async (util) => {
             .data
         );
       }
-      util.actions.startinstance(util);
+      //util.actions.startinstance(util);
     } else {
       util.socket.emit("validate", { access: "noexist" });
     }

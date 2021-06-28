@@ -13,6 +13,7 @@ export default (props) => {
             <video
               style={{
                 display:
+                  props.actingTeam !== "none" &&
                   props.nextAction &&
                   props.team === props.nextAction.team &&
                   props.action === props.nextAction.action &&
