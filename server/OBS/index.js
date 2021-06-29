@@ -29,7 +29,6 @@ server.listen(config.port + 2, () =>
 
 const socket = require("socket.io-client")(config.endpoint, {
 	transports: ["websocket"],
-	rejectUnauthorized: false,
 });
 const Events = require("./events/index")(exec, socket);
 (async () => {
