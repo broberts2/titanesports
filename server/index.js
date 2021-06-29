@@ -72,16 +72,6 @@ if (config.production) {
 
 routes(app, riot);
 
-socket(
-	require("socket.io")(server, {
-		cors: {
-			origin: "*",
-		},
-		rejectUnauthorized: false,
-	}),
-	app
-);
-
 riotCb.listen(config.port + 1);
 server.listen(config.port, () =>
 	console.log(
@@ -89,4 +79,13 @@ server.listen(config.port, () =>
 			`\n\t\tTitan eSports listening on port ${config.port}\n` +
 			`--------------------------------------------------------------`
 	)
+);
+
+socket(
+	require("socket.io")(server, {
+		cors: {
+			origin: "*",
+		},
+	}),
+	app
 );
