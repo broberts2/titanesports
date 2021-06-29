@@ -3,4 +3,5 @@ module.exports = (exec, socket) => ({
 	startOBS: () => require("./startOBS")(exec, socket),
 	exitOBS: () => require("./exitOBS")(exec, socket),
 	queryOBSStatus: () => require("./queryOBSStatus")(exec, socket),
+	connect: () => require("./connect")(exec, socket),
 });

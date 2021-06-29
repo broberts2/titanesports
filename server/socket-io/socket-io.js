@@ -8,9 +8,7 @@ module.exports = (io, app) => {
 			switch (_(socket.handshake.headers.origin)) {
 				case "titandraft":
 					return TitanDraft(io, socket, msg.lobby, msg.token);
-				case "admin":
-					return null; //TitanDraft(io, socket);
-				default:
+				case "OBS":
 					return OBS(msg, io, socket, app);
 			}
 		});

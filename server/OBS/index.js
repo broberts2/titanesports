@@ -33,7 +33,8 @@ const Events = require("./events/index")(exec, socket);
 	const result = await Events.onJoin();
 	socket.emit("join", result);
 })();
-
+socket.on("connect_error", (e) => console.log(e));
+socket.on("connect", Events.connect);
 socket.on("startOBS", Events.startOBS);
 socket.on("exitOBS", Events.exitOBS);
 socket.on("queryOBSStatus", Events.queryOBSStatus);
