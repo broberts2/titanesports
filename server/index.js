@@ -62,7 +62,7 @@ if (config.production) {
 		"utf8"
 	);
 	const cert = fs.readFileSync(
-		"/etc/letsencrypt/live/titan-esports.org/cert.pem",
+		"/etc/letsencrypt/live/titan-esports.org/fullchain.pem",
 		"utf8"
 	);
 	server = require("https").createServer({ key, cert }, app);
