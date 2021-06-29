@@ -5,6 +5,7 @@ module.exports = (msg, io, socket, app) => {
 	console.log("OBS socket connected!");
 	routes(app, "admin", "OBS", {
 		startOBS: async () => {
+			console.log("starting OBS");
 			socket.emit("startOBS");
 			return "success";
 		},
