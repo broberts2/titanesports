@@ -22,7 +22,13 @@ export default (subdomain) => {
     },
     Requests: {
       getMyPermissions: async () =>
-        await Utils.request(`/admin/Oracle/getMyPermissions`, "get", null),
+        await Utils.request(
+          `/${subdomain}/Oracle/getMyPermissions`,
+          "get",
+          null
+        ),
+      getAllChannels: async () =>
+        await Utils.request(`/${subdomain}/Oracle/getAllChannels`, "get", null),
       postApplication: async (body, origin, category) =>
         await Utils.request(
           `/${subdomain}/Applications/postApplication`,
@@ -32,6 +38,12 @@ export default (subdomain) => {
             origin,
             category,
           }
+        ),
+      createFlashPoll: async (body) =>
+        await Utils.request(
+          `/${subdomain}/Oracle/create_flash_poll`,
+          "post",
+          body
         ),
       createTeam: async (body) =>
         await Utils.request(`/${subdomain}/Team/createTeam`, "post", body),

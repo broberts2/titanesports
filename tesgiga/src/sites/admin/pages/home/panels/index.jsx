@@ -8,16 +8,18 @@ import OBSStreamlabs from "./obsstreamlabs/obsstreamlabs";
 import PlayerManager from "./playermanager/playermanager";
 import TeamManager from "./teammanager/teammanager";
 import Applications from "./applications/applications";
+import FlashPoll from "./flashpoll/flashpoll";
 
 export default {
-	SignIn,
-	AccessDenied,
-	OracleDiscord,
-	OracleLeagueOfLegends,
-	OracleSocialMedia,
-	MediaManager,
-	OBSStreamlabs,
-	PlayerManager,
-	TeamManager,
-	Applications,
+  SignIn,
+  AccessDenied,
+  OracleDiscord,
+  OracleLeagueOfLegends,
+  OracleSocialMedia,
+  MediaManager,
+  OBSStreamlabs,
+  PlayerManager,
+  TeamManager,
+  Applications,
+  FlashPoll,
 };

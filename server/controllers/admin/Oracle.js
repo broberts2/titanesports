@@ -272,10 +272,14 @@ module.exports = {
       };
       for (let key in permissionSet) {
         if (Array.isArray(permissionSet[key])) {
-          if (permissionSet[key].some((a) => roles.includes(a))) {
-            set[key] = true;
+          if (roles) {
+            if (permissionSet[key].some((a) => roles.includes(a))) {
+              set[key] = true;
+            } else {
+              set[key] = false;
+            }
           } else {
-            set[key] = false;
+            return false;
           }
         }
       }
