@@ -86,6 +86,7 @@ socket(
 		cors: {
 			origin: "*",
 		},
+		rejectUnauthorized: false,
 	}),
 	app
 );
