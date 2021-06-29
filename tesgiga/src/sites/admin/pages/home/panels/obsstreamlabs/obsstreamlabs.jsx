@@ -5,5 +5,9 @@ import Style from "./style";
 
 export default (props) => {
 	const classes = Style();
-	return <div className={classes.root}>OBS Streamlabs</div>;
+	return (
+		<div className={classes.root}>
+			<Components.OracleCommands.OBSStreamlabs />
+		</div>
+	);
 };

@@ -11,15 +11,15 @@ import Applications from "./applications/applications";
 import FlashPoll from "./flashpoll/flashpoll";
 
 export default {
-  SignIn,
-  AccessDenied,
-  OracleDiscord,
-  OracleLeagueOfLegends,
-  OracleSocialMedia,
-  MediaManager,
-  OBSStreamlabs,
-  PlayerManager,
-  TeamManager,
-  Applications,
-  FlashPoll,
+	SignIn,
+	AccessDenied,
+	OracleDiscord,
+	OracleLeagueOfLegends,
+	OracleSocialMedia,
+	MediaManager,
+	OBSStreamlabs,
+	PlayerManager,
+	TeamManager,
+	Applications,
+	FlashPoll,
 };
