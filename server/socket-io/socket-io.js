@@ -1,5 +1,5 @@
 const TitanDraft = require("../titandraft/index");
-const OBS = require("../controllers/admin/obs");
+const OBS = require("../controllers/admin/OBS");
 const _ = (shake) => (shake ? shake.split("//")[1].split(".")[0] : "OBS");
 
 module.exports = (io, app) => {
