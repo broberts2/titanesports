@@ -12,5 +12,6 @@ module.exports = (io, app) => {
 					return OBS(msg, io, socket, app);
 			}
 		});
+		socket.on("error", (e) => console.log(e));
 	});
 };
