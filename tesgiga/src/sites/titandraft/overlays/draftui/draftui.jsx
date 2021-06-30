@@ -13,6 +13,7 @@ const Music = new Howl({
 	html5: true,
 	format: ["mp3", "aac"],
 	volume: 0.05,
+	loop: true,
 });
 
 export default (props) => {
