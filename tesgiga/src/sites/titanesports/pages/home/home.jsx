@@ -28,11 +28,11 @@ export default (props) => {
       </Grid>
     );
   };
-  React.useEffect(() => props._());
   return (
     <ThemeProvider theme={Components.Themes.Dark}>
       <div className={classes.root}>
         <video
+          onCanPlay={() => props._()}
           autoPlay
           preload
           loop
