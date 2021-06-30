@@ -4,7 +4,6 @@ import Labels from "../../../../labels/index";
 
 export default makeStyles((theme) => ({
   root: {
-    backgroundColor: "white",
     position: "relative",
     width: "100vw",
     height: "100vh",
