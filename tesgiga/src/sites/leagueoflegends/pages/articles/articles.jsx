@@ -71,24 +71,22 @@ export default (props) => {
 		rankings: { text: "Rankings", value: true },
 	});
 	React.useEffect(async () => {
-		try {
-			const res = await GlobalActions.Requests.getArticles();
-			const permissions = await GlobalActions.Requests.getMyPermissions();
-			setPermissions(permissions);
-			if (res)
-				setArticles(
-					res.filter((el) =>
-						el.published ||
-						permissions.publishArticles ||
-						el.authorid === permissions._myId
-							? el
-							: null
-					)
-				);
-			props._();
-		} catch (e) {
-			console.log(e);
-		}
+		const res = await GlobalActions.Requests.getArticles();
+		console.log(res);
+		const permissions = await GlobalActions.Requests.getMyPermissions();
+		console.log(permissions);
+		setPermissions(permissions);
+		if (res)
+			setArticles(
+				res.filter((el) =>
+					el.published ||
+					permissions.publishArticles ||
+					el.authorid === permissions._myId
+						? el
+						: null
+				)
+			);
+		props._();
 	}, []);
 	return (
 		<ThemeProvider theme={Components.Themes.Dark}>
