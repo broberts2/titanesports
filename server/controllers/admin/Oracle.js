@@ -270,7 +270,6 @@ module.exports = {
 			const set = {
 				_myId: user.id,
 			};
-			console.log(`checkpoint ${++i}`);
 			for (let key in permissionSet) {
 				if (Array.isArray(permissionSet[key])) {
 					if (roles) {
