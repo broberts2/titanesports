@@ -256,39 +256,41 @@ module.exports = {
 		return permissionSet[req.query.action].some((a) => roles.includes(a));
 	},
 	getMyPermissions: async (req) => {
-		try {
-			if (req.headers.token && req.headers.token !== "undefined") {
-				const user = await fetch("https://discord.com/api/users/@me", {
-					headers: {
-						authorization: `Bearer ${req.headers.token}`,
-					},
-				}).then((res) => res.json());
-				const permissionSet = await Permissions.get();
-				const members = await Oracle.guilds
-					.fetch(config.guildId)
-					.then((res) => res.members);
-				const roles = await members.fetch(user.id).then((res) => res._roles);
-				const set = {
-					_myId: user.id,
-				};
-				for (let key in permissionSet) {
-					if (Array.isArray(permissionSet[key])) {
-						if (roles) {
-							if (permissionSet[key].some((a) => roles.includes(a))) {
-								set[key] = true;
-							} else {
-								set[key] = false;
-							}
+		let i = 0;
+		if (req.headers.token && req.headers.token !== "undefined") {
+			const user = await fetch("https://discord.com/api/users/@me", {
+				headers: {
+					authorization: `Bearer ${req.headers.token}`,
+				},
+			}).then((res) => res.json());
+			console.log(`checkpoint ${++i}`);
+			const permissionSet = await Permissions.get();
+			console.log(`checkpoint ${++i}`);
+			const members = await Oracle.guilds
+				.fetch(config.guildId)
+				.then((res) => res.members);
+			console.log(`checkpoint ${++i}`);
+			const roles = await members.fetch(user.id).then((res) => res._roles);
+			console.log(`checkpoint ${++i}`);
+			const set = {
+				_myId: user.id,
+			};
+			console.log(`checkpoint ${++i}`);
+			for (let key in permissionSet) {
+				if (Array.isArray(permissionSet[key])) {
+					if (roles) {
+						if (permissionSet[key].some((a) => roles.includes(a))) {
+							set[key] = true;
 						} else {
-							return false;
+							set[key] = false;
 						}
+					} else {
+						return false;
 					}
 				}
-				return set;
 			}
-			return false;
-		} catch (e) {
-			console.log(e);
+			return set;
 		}
+		return false;
 	},
 };

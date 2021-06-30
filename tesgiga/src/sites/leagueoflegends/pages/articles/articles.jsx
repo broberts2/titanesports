@@ -72,9 +72,7 @@ export default (props) => {
 	});
 	React.useEffect(async () => {
 		const res = await GlobalActions.Requests.getArticles();
-		console.log(res);
 		const permissions = await GlobalActions.Requests.getMyPermissions();
-		console.log(permissions);
 		setPermissions(permissions);
 		if (res)
 			setArticles(
