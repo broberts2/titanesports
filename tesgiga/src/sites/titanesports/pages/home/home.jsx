@@ -32,6 +32,14 @@ export default (props) => {
   return (
     <ThemeProvider theme={Components.Themes.Dark}>
       <div className={classes.root}>
+        <video
+          autoPlay
+          preload
+          loop
+          muted
+          src={Labels.backgroundvideos.background5}
+          className={classes.backgroundvideo}
+        />
         <Grid className={classes.grid} container spacing={0}>
           <Grid className={classes.major} item xs={12} sm={10}>
             <Grid
@@ -53,7 +61,7 @@ export default (props) => {
                     className={classes.typographywelcometext}
                   >
                     You've reached our games hub. Please select one of our
-                    currently supported games for news, tournaments, and more!
+                    supported games for news, tournaments, and more!
                   </Components.Typography>
                 </Box>
               </Grid>

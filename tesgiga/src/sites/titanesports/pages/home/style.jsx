@@ -4,9 +4,10 @@ import Labels from "../../../../labels/index";
 
 export default makeStyles((theme) => ({
   root: {
+    backgroundColor: "white",
+    position: "relative",
     width: "100vw",
     height: "100vh",
-    backgroundImage: `url(${Labels.backgrounds.violet})`,
     background: "no-repeat",
     backgroundSize: "cover",
     overflowX: "hidden",
@@ -15,7 +16,7 @@ export default makeStyles((theme) => ({
     },
   },
   typographywelcometitle: {
-    color: theme.palette.background.default,
+    color: "slategray",
     [theme.breakpoints.down("xs")]: {
       fontSize: theme.typography.h4.fontSize,
     },
@@ -24,7 +25,7 @@ export default makeStyles((theme) => ({
     },
   },
   typographywelcometext: {
-    color: theme.palette.background.default,
+    color: theme.palette.background.main,
     [theme.breakpoints.down("xs")]: {
       fontSize: theme.typography.h6.fontSize,
     },
@@ -59,8 +60,10 @@ export default makeStyles((theme) => ({
   items: {
     marginTop: "25px",
   },
+  grid: {
+    position: "relative",
+  },
   gridpanel: {
-    backgroundColor: primary["900"],
     padding: "15px",
   },
   logo: {
@@ -68,5 +71,13 @@ export default makeStyles((theme) => ({
   },
   cardimg: {
     width: "50%",
+  },
+  backgroundvideo: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
   },
 }));
