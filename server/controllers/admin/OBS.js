@@ -3,7 +3,6 @@ const { exec } = require("child_process");
 
 module.exports = (msg, io, socket, app) => {
 	console.log("OBS socket connected!");
-	console.log(socket);
 	routes(app, "admin", "OBS", {
 		startOBS: async () => {
 			socket.emit("startOBS");
