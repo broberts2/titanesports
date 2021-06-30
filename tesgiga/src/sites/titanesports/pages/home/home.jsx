@@ -81,14 +81,14 @@ export default (props) => {
                       title={"League of Legends"}
                       src={Labels.images.lol}
                     />
+                    <Card
+                      disabled
+                      onClick={() => null}
+                      title={"Valorant"}
+                      src={Labels.images.valorant}
+                    />
                     {false ? (
                       <React.Fragment>
-                        <Card
-                          disabled
-                          onClick={() => alert("Shalom")}
-                          title={"Valorant"}
-                          src={Labels.images.valorant}
-                        />
                         <Card
                           disabled
                           onClick={() => alert("Shalom")}
