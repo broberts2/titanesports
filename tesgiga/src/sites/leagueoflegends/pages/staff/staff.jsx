@@ -69,23 +69,22 @@ export default (props) => {
             discordId: "405139546305593346",
             name: "Phortwenty",
             title: "Administrator",
-            duty: "League Operations",
+            duty: "Operations",
           },
         ])}
         {buildSection("Directors", [
           {
             img: Labels.images.fleetfootwork,
-            discordId: "91010124667183104",
-            name: "Braer",
-            title: "Director",
-            duty: "Game Development",
-          },
-          {
-            img: Labels.images.fleetfootwork,
             discordId: "650848077766459426",
             name: "DontEatBees",
             title: "Director",
-            duty: "League Director",
+            duty: "Divinity League Director",
+          },
+          {
+            img: Labels.images.fleetfootwork,
+            name: "JangoUltimus",
+            title: "Director",
+            duty: "Media Director",
           },
           {
             img: Labels.images.fleetfootwork,
@@ -96,17 +95,17 @@ export default (props) => {
           },
           {
             img: Labels.images.fleetfootwork,
-            discordId: "715789607358169119",
-            name: "Mute",
-            title: "Director",
-            duty: "League Director",
+            discordId: "563966121578070018",
+            name: "Khyroe",
+            title: "Developer",
+            duty: "Content Director",
           },
           {
             img: Labels.images.fleetfootwork,
-            discordId: "538489444064428042",
-            name: "Qurkii",
+            discordId: "715789607358169119",
+            name: "Mute",
             title: "Director",
-            duty: "Finance",
+            duty: "Conqueror League Director",
           },
           {
             img: Labels.images.fleetfootwork,
@@ -126,27 +125,41 @@ export default (props) => {
         {buildSection("Developers", [
           {
             img: Labels.images.fleetfootwork,
-            discordId: "563966121578070018",
-            name: "Khyroe",
+            discordId: "801913137497374752",
+            name: "Hawk",
             title: "Developer",
-            duty: "Content Developer",
+            duty: "Content Creator",
           },
           {
             img: Labels.images.fleetfootwork,
             discordId: "801913137497374752",
-            name: "LolGermRat",
+            name: "S10 Survivor",
             title: "Developer",
-            duty: "Information Technology",
+            duty: "Content Creator",
           },
           {
             img: Labels.images.fleetfootwork,
-            discordId: "679912644852973592",
-            name: "Poptartism",
+            discordId: "801913137497374752",
+            name: "SHOTDUCK",
             title: "Developer",
-            duty: "Graphic Design",
+            duty: "Content Creator",
+          },
+          {
+            img: Labels.images.fleetfootwork,
+            discordId: "801913137497374752",
+            name: "Uhavedaddyissues",
+            title: "Developer",
+            duty: "Content Creator",
           },
         ])}
         {buildSection("Staff", [
+          {
+            img: Labels.images.fleetfootwork,
+            discordId: "850209060753899550",
+            name: "Batman",
+            title: "Staff",
+            duty: "Player Integrity",
+          },
           {
             img: Labels.images.fleetfootwork,
             discordId: "850209060753899550",
@@ -154,14 +167,22 @@ export default (props) => {
             title: "Staff",
             duty: "Moderator",
           },
-        ])}
-        {buildSection("SHOUTCASTERS", [
           {
             img: Labels.images.fleetfootwork,
-            name: "JangoUltimus",
-            title: "Shoutcaster",
-            duty: "",
+            discordId: "850209060753899550",
+            name: "SEMZ",
+            title: "Staff",
+            duty: "Roster Staff",
           },
+          {
+            img: Labels.images.fleetfootwork,
+            discordId: "850209060753899550",
+            name: "Stunflower",
+            title: "Staff",
+            duty: "Roster Staff",
+          },
+        ])}
+        {buildSection("SHOUTCASTERS", [
           {
             img: Labels.images.fleetfootwork,
             name: "MannyOrSonny",
