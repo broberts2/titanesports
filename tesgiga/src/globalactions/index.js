@@ -22,13 +22,9 @@ export default (subdomain) => {
 		},
 		Requests: {
 			getMyPermissions: async () =>
-				await Utils.request(
-					`/${subdomain}/Oracle/getMyPermissions`,
-					"get",
-					null
-				),
+				await Utils.request(`/admin/Oracle/getMyPermissions`, "get", null),
 			getAllChannels: async () =>
-				await Utils.request(`/${subdomain}/Oracle/getAllChannels`, "get", null),
+				await Utils.request(`/admin/Oracle/getAllChannels`, "get", null),
 			postApplication: async (body, origin, category) =>
 				await Utils.request(
 					`/${subdomain}/Applications/postApplication`,

@@ -256,22 +256,17 @@ module.exports = {
 		return permissionSet[req.query.action].some((a) => roles.includes(a));
 	},
 	getMyPermissions: async (req) => {
-		let i = 0;
 		if (req.headers.token && req.headers.token !== "undefined") {
 			const user = await fetch("https://discord.com/api/users/@me", {
 				headers: {
 					authorization: `Bearer ${req.headers.token}`,
 				},
 			}).then((res) => res.json());
-			console.log(`checkpoint ${++i}`);
 			const permissionSet = await Permissions.get();
-			console.log(`checkpoint ${++i}`);
 			const members = await Oracle.guilds
 				.fetch(config.guildId)
 				.then((res) => res.members);
-			console.log(`checkpoint ${++i}`);
 			const roles = await members.fetch(user.id).then((res) => res._roles);
-			console.log(`checkpoint ${++i}`);
 			const set = {
 				_myId: user.id,
 			};
