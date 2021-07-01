@@ -22,7 +22,7 @@ export default (props) => {
         multiline={props.multiline}
         rows={props.rows ? props.rows : 10}
         style={{ width: "100%" }}
-        value={props.value ? props.value : ""}
+        value={props.value}
         InputProps={{
           classes: {
             input: classes.inputProps,

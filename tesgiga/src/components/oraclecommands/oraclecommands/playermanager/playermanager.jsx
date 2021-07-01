@@ -34,6 +34,7 @@ export default (props) => {
   React.useEffect(async () => {
     const userList = await GlobalActions.Requests.getUsers().then((arr) => {
       const obj = {};
+      console.log(arr);
       arr.map((el) => (obj[el.displayname] = el));
       return obj;
     });

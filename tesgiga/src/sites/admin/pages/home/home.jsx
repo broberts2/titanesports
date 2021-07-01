@@ -112,6 +112,7 @@ const items = (
       key={key}
       onClick={() => {
         setDisplayName(displayName);
+        setDisplayService(null);
         setGsAccordion(false);
       }}
     >
