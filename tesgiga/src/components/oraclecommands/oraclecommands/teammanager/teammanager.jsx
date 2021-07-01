@@ -21,7 +21,7 @@ const map = {
 export default (props) => {
 	const classes = Style();
 	const [state, setState] = React.useState({
-		radioValue: "Divinity League",
+		radioValue: "",
 		editing: "On",
 		itemsLeft: [],
 		subs: {
@@ -30,7 +30,7 @@ export default (props) => {
 			2: "",
 		},
 	});
-	const setup = async (team) => {
+	const setup = async (team, radioValue) => {
 		const teams = {};
 		const players = { fwd: {}, rev: {} };
 		const logos = await GlobalActions.Requests.getTeamLogos();
@@ -54,6 +54,7 @@ export default (props) => {
 		};
 		setState((lastState) => ({
 			...lastState,
+			radioValue: radioValue ? radioValue : "Divinity League",
 			team,
 			players,
 			allTeams: teams,
@@ -89,33 +90,18 @@ export default (props) => {
 						value={state.radioValue}
 						items={["Divinity League", "Conqueror League"]}
 						row
-						onChange={(radioValue) => {
-							const teams = {};
-							Object.keys(state.allTeams).map((key) =>
-								state.allTeams[key].league === radioValue ||
-								key === "<new team>"
-									? (teams[key] = state.allTeams[key])
-									: null
-							);
-							setState((lastState) => ({
-								...lastState,
-								radioValue,
-								teams,
-								team: "<new team>",
-								itemsLeft: Object.keys(state.players.fwd).filter((id) =>
-									!state.teams["<new team>"].roster.includes(id)
-										? state.players.fwd[id]
-										: null
-								),
-							}));
-						}}
+						onChange={(radioValue) => setup("__null__", radioValue)}
 					/>
 					<Components.Typography>Select a Team</Components.Typography>
 					{state.teams ? (
 						<Components.RadioButton
 							row
 							value={state.team}
-							items={Object.keys(state.teams)}
+							items={Object.keys(state.teams).filter(
+								(el) =>
+									state.teams[el].league === state.radioValue ||
+									el === "<new team>"
+							)}
 							onChange={(team) => {
 								const subs = state.subs;
 								if (state.teams[team].subsIds) {
@@ -142,7 +128,7 @@ export default (props) => {
 					) : null}
 				</Utils.Document>
 			</div>
-			{state.team ? (
+			{state.team && state.team !== "__null__" ? (
 				<div
 					style={{ flex: "1 1 auto", overflowY: "auto", position: "relative" }}
 				>
@@ -196,7 +182,7 @@ export default (props) => {
 													),
 												})
 											);
-										setup(state.team);
+										setup(state.team, state.radioValue);
 								  }
 								: null
 						}
@@ -212,7 +198,7 @@ export default (props) => {
 													),
 												})
 											);
-										setup(state.team);
+										setup(state.team, state.radioValue);
 								  }
 								: null
 						}
@@ -223,7 +209,7 @@ export default (props) => {
 											await GlobalActionsLeagueOfLegends.Requests.deleteTeam(
 												state.teams[state.team]
 											);
-										setup();
+										setup(null, state.radioValue);
 								  }
 								: null
 						}

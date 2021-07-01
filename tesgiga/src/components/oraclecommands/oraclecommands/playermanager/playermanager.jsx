@@ -42,13 +42,18 @@ export default (props) => {
 			userList,
 			playerSearch: "",
 			selectedPlayer,
-			users: filterUsers(userList),
+			users: [],
 		}));
 	};
 	React.useEffect(setup, []);
 	return (
 		<div style={{ display: "flex", flexFlow: "column", height: "100%" }}>
-			<div style={{ flex: "0 1 auto" }}>
+			<div
+				style={{
+					flex: "1 1 auto",
+					overflowY: "auto",
+				}}
+			>
 				<Utils.Document title={"Players"} description={"Manage a player."}>
 					<div className={classes.editRadio} style={{ display: "none" }}>
 						<Components.Typography>Enable Editing</Components.Typography>
@@ -113,8 +118,7 @@ export default (props) => {
 			{state.selectedPlayer && state.selectedPlayer !== "__null__" ? (
 				<div
 					style={{
-						flex: "1 1 auto",
-						overflowY: "auto",
+						flex: "0 1 auto",
 					}}
 				>
 					<Utils.Document

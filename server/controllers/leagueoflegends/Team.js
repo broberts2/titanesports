@@ -6,7 +6,9 @@ module.exports = {
 	createTeam: async (req) => {
 		const roleId = await Oracle.createRole({
 			body: {
-				name: req.body.name,
+				name: `${req.body.name} - ${
+					req.body.league === "Divinity League" ? "Divinity" : "Conqueror"
+				}`,
 				color: req.body.league === "Divinity League" ? "YELLOW" : "RED",
 			},
 		}).then((role) => role.id);

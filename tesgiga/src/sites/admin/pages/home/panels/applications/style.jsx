@@ -8,7 +8,7 @@ export default makeStyles((theme) => ({
 	},
 	fabs: {
 		position: "absolute",
-		bottom: "-150px",
+		top: "calc(100% - 50px)",
 		left: "50%",
 		transform: "translate(-50%, -50%)",
 		transition: "all 0.5s ease",

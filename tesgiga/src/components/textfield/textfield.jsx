@@ -36,7 +36,11 @@ export default (props) => {
 				}}
 				onChange={(e) => {
 					if (props.onChange) props.onChange(e.target.value);
-					if (!props.value) setValue(e.target.value);
+					if (props.value) {
+						setValue("");
+					} else {
+						setValue(e.target.value);
+					}
 				}}
 				label={props.label}
 			/>
