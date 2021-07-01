@@ -53,6 +53,12 @@ module.exports = {
         : {}
     ),
   updateTeam: async (req) => {
+    const ThisTeam = await Team.find({ _id: req.body._id });
+    ThisTeam.roster.map((el) =>
+      Oracle[req.body.roster.includes(el) ? "assignRole" : "unassignRole"]({
+        body: { userId, roleId: ThisTeam.roleId },
+      })
+    );
     await Team.updateOne({ _id: req.body._id }, req.body);
   },
   deleteTeam: async (req) => {
