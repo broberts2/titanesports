@@ -38,21 +38,80 @@ module.exports = {
     return `${path[0]}//${subdomain}.${path[1]}?auth_token=${res.access_token}&refresh_token=${res.refresh_token}`;
   },
   createRole: async (req) => {
-    // const Guild = await Oracle.guilds.fetch(config.guildId);
-    // const res = await Guild.roles.create({
-    //   data: {
-    //     name: req.body.name,
-    //     color: req.body.color,
-    //   },
-    // });
-    // return res;
+    const Guild = await Oracle.guilds.fetch(config.guildId);
+    const role = await module.exports
+      .getAllRoles()
+      .then((roles) => roles.find((role) => role.name === req.body.name));
+    if (!role) {
+      const res = await Guild.roles.create({
+        data: {
+          name: req.body.name,
+          color: req.body.color,
+        },
+      });
+      return res;
+    } else {
+      return "Role already exists.";
+    }
+  },
+  editRole: async (req) => {
+    const role = await module.exports
+      .getAllRoles()
+      .then((roles) => roles.find((role) => role.id === req.body.id));
+    if (role) {
+      const res = role.edit({
+        name: req.body.name ? req.body.name : null,
+        color: req.body.color ? req.body.color : role.color,
+      });
+      return res;
+    } else {
+      return "Role does not exist.";
+    }
   },
   deleteRole: async (req) => {
-    const roles = await module.exports.getAllRoles();
-    const response = await roles
-      .find((role) => role.name === req.body.name)
-      .delete();
-    return response;
+    const role = await module.exports
+      .getAllRoles()
+      .then((roles) => roles.find((role) => role.id === req.body.id));
+    if (role) {
+      const res = role.delete();
+      return res;
+    } else {
+      return "Role does not exist.";
+    }
+  },
+  assignRole: async (req) => {
+    const user = await Oracle.guilds
+      .fetch(config.guildId)
+      .then((res) => res.members)
+      .then((members) => members.fetch(req.body.userId));
+    const role = await module.exports
+      .getAllRoles()
+      .then((roles) => roles.find((role) => role.id === req.body.roleId));
+    if (!role) {
+      return "Role does not exist.";
+    }
+    if (user) {
+      return user.roles.add(role);
+    } else {
+      return "User does not exist.";
+    }
+  },
+  unassignRole: async (req) => {
+    const user = await Oracle.guilds
+      .fetch(config.guildId)
+      .then((res) => res.members)
+      .then((members) => members.fetch(req.body.userId));
+    const role = await module.exports
+      .getAllRoles()
+      .then((roles) => roles.find((role) => role.id === req.body.roleId));
+    if (!role) {
+      return "Role does not exist.";
+    }
+    if (user) {
+      return user.roles.remove(role);
+    } else {
+      return "User does not exist.";
+    }
   },
   openDM: async (req) => {
     // Open DM in discord from staff page on website

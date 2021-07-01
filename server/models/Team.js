@@ -47,6 +47,11 @@ const Team = new Schema({
     unique: false,
     required: false,
   },
+  roleId: {
+    type: String,
+    unique: false,
+    required: true,
+  },
   subsIds: {
     type: Array,
     unique: false,

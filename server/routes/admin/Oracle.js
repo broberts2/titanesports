@@ -2,19 +2,6 @@ const Oracle = require("../../controllers/admin/Oracle");
 const ResponseHandler = require("../../response_handler");
 const Guard = require("../../guard");
 
-// Oracle.createRole({
-//   body: {
-//     name: "test",
-//     color: "RED",
-//   },
-// });
-
-// Oracle.deleteRole({
-//   body: {
-//     name: "new role",
-//   },
-// });
-
 module.exports = (app, subdomain, pretext) => {
   app.get(`/${subdomain}/${pretext}/OATH2`, async (req, res) => {
     const result = await Oracle.OATH2(req, subdomain);
