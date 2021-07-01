@@ -37,7 +37,7 @@ export default (props) => {
           preload
           loop
           muted
-          src={Labels.backgroundvideos.background5}
+          src={Labels.backgroundvideos.background6}
           className={classes.backgroundvideo}
         />
         <Grid className={classes.grid} container spacing={0}>

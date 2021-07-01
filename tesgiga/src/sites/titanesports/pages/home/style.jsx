@@ -10,12 +10,9 @@ export default makeStyles((theme) => ({
     background: "no-repeat",
     backgroundSize: "cover",
     overflowX: "hidden",
-    typography: {
-      color: "red",
-    },
   },
   typographywelcometitle: {
-    color: "slategray",
+    color: theme.palette.background.default,
     [theme.breakpoints.down("xs")]: {
       fontSize: theme.typography.h4.fontSize,
     },
@@ -24,7 +21,7 @@ export default makeStyles((theme) => ({
     },
   },
   typographywelcometext: {
-    color: theme.palette.background.main,
+    color: theme.palette.background.default,
     [theme.breakpoints.down("xs")]: {
       fontSize: theme.typography.h6.fontSize,
     },

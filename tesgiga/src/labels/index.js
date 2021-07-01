@@ -79,6 +79,7 @@ export default {
     background3: `${_}/static/backgroundvideos/background3.mp4`,
     background4: `${_}/static/backgroundvideos/background4.mp4`,
     background5: `${_}/static/backgroundvideos/background5.mp4`,
+    background6: `${_}/static/backgroundvideos/background6.mp4`,
   },
   music: {
     akali: `${_}/static/music/akali.mp3`,
