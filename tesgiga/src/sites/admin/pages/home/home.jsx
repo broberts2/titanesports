@@ -119,7 +119,6 @@ const items = (
       <ListItemText primary={displayName} />
     </ListItem>
   );
-  console.log(isAuth);
   return [
     isAuth
       ? {
@@ -165,6 +164,7 @@ const items = (
         }
       : null,
     isAuth &&
+    isAuth.discordOracleAccess &&
     (displayName === "Discord" ||
       displayName === "League of Legends" ||
       displayName === "Social Media")
@@ -174,56 +174,70 @@ const items = (
           cb: () => setDisplayService("Oracle"),
         }
       : null,
-    isAuth && displayName === "League of Legends"
+    isAuth && isAuth.leagueOfLegendsOBS && displayName === "League of Legends"
       ? {
           text: "OBS Streamlabs",
           icon: <OndemandVideoSharpIcon />,
           cb: () => setDisplayService("OBS Streamlabs"),
         }
       : null,
-    isAuth && displayName === "League of Legends"
+    isAuth &&
+    isAuth.leagueOfLegendsTeamManager &&
+    displayName === "League of Legends"
       ? {
           text: "Team Manager",
           icon: <GroupWorkRoundedIcon />,
           cb: () => setDisplayService("Team Manager"),
         }
       : null,
-    isAuth && displayName === "League of Legends"
+    isAuth &&
+    isAuth.leagueOfLegendsPlayerManager &&
+    displayName === "League of Legends"
       ? {
           text: "Player Manager",
           icon: <PeopleRoundedIcon />,
           cb: () => setDisplayService("Player Manager"),
         }
       : null,
-    isAuth && displayName === "League of Legends"
+    isAuth &&
+    isAuth.leagueOfLegendsMediaManager &&
+    displayName === "League of Legends"
       ? {
           text: "Media Manager",
           icon: <PanoramaOutlinedIcon />,
           cb: () => setDisplayService("Media Manager"),
         }
       : null,
-    isAuth && displayName === "League of Legends"
+    isAuth &&
+    isAuth.leagueOfLegendsTeamApplicationsDivinity &&
+    displayName === "League of Legends"
       ? {
           text: "Team Applications - Divinity",
           icon: <SupervisedUserCircleIcon />,
           cb: () => setDisplayService("Team Applications - Divinity"),
         }
       : null,
-    isAuth && displayName === "League of Legends"
+    isAuth &&
+    isAuth.leagueOfLegendsTeamApplicationsConquerors &&
+    displayName === "League of Legends"
       ? {
           text: "Team Applications - Conquerors",
           icon: <SupervisedUserCircleIcon />,
           cb: () => setDisplayService("Team Applications - Conquerors"),
         }
       : null,
-    isAuth && displayName === "League of Legends"
+    isAuth &&
+    isAuth.leagueOfLegendsStaffApplications &&
+    displayName === "League of Legends"
       ? {
           text: "Staff Applications",
           icon: <SupervisedUserCircleIcon />,
           cb: () => setDisplayService("Staff Applications"),
         }
       : null,
-    isAuth && displayName === "League of Legends"
+    isAuth &&
+    isAuth.leagueOfLegendsStaffCommunityFeedback &&
+    displayName === "League of Legends"
       ? {
           text: "Community Feedback",
           icon: <SupervisedUserCircleIcon />,
@@ -247,10 +261,10 @@ const items = (
 export default (props) => {
   const classes = Style();
   let isSignedIn;
-  const [displayName, setDisplayName] = React.useState("Discord");
-  const [displayService, setDisplayService] = React.useState("Oracle");
+  const [displayName, setDisplayName] = React.useState(null);
+  const [displayService, setDisplayService] = React.useState(null);
   const [gsAccordion, setGsAccordion] = React.useState(false);
-  const [isAuth, setIsAuth] = React.useState(null); // assign an object here with permissions on successful auth
+  const [isAuth, setIsAuth] = React.useState(null);
   const listItems = (arr) => (
     <List>
       {arr
