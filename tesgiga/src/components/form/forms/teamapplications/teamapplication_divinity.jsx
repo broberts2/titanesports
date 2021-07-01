@@ -93,20 +93,38 @@ export default (props) => {
             OP.gg link for Top Laner
           </Utils.Input>
           <Utils.Input isInput required>
+            Discord ID for Top Laner
+          </Utils.Input>
+          <Utils.Input isInput required>
             OP.gg link for Jungler
+          </Utils.Input>
+          <Utils.Input isInput required>
+            Discord ID for Jungler
           </Utils.Input>
           <Utils.Input isInput required>
             OP.gg link for Mid Laner
           </Utils.Input>
           <Utils.Input isInput required>
+            Discord ID for Mid Laner
+          </Utils.Input>
+          <Utils.Input isInput required>
             OP.gg link for ADC
+          </Utils.Input>
+          <Utils.Input isInput required>
+            Discord ID for ADC
           </Utils.Input>
           <Utils.Input isInput required>
             OP.gg link for Support
           </Utils.Input>
           <Utils.Input isInput required>
-            OP.gg links for all Substitutes
+            Discord ID for Support
           </Utils.Input>
+          <Utils.InputLong isInput required>
+            OP.gg links for all Substitutes
+          </Utils.InputLong>
+          <Utils.InputLong isInput required>
+            Discord IDs for all Substitutes
+          </Utils.InputLong>
           <Utils.Blurb title={"Entry Fee"}>
             Due to increasing overhead costs for shoutcasting, marketing, and
             server costs we do require a minimal entry fee from each team's
