@@ -8,16 +8,18 @@ import TitanDraft from "./pages/titandraft/titandraft";
 import Divinity from "./pages/divinity/divinity";
 import Conquerors from "./pages/conquerors/conquerors";
 import Applications from "./pages/applications/applications";
+import VideoUpload from "./pages/videoupload/videoupload";
 
 export default {
-  Home,
-  Community,
-  Staff,
-  Articles,
-  Article,
-  Statistics,
-  TitanDraft,
-  Divinity,
-  Conquerors,
-  Applications,
+	Home,
+	Community,
+	Staff,
+	Articles,
+	Article,
+	Statistics,
+	TitanDraft,
+	Divinity,
+	Conquerors,
+	Applications,
+	VideoUpload,
 };
