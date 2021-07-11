@@ -1,4 +1,5 @@
 const bodyParser = require("body-parser");
+const multer = require("multer");
 const path = require("path");
 const express = require("express");
 const app = express();
@@ -70,7 +71,7 @@ if (config.production) {
 	server = require("http").createServer(app);
 }
 
-routes(app, riot);
+routes(app, riot, multer);
 
 riotCb.listen(config.port + 1);
 server.listen(config.port, () =>

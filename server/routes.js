@@ -21,14 +21,12 @@ const ROUTES = {
 		DataDragon: require("./routes/leagueoflegends/DataDragon"),
 	},
 	valorant: {},
-	worldofwarcraft: {},
-	valheim: {},
 };
 
-module.exports = (app, riot) => {
+module.exports = (app, riot, multer) => {
 	for (let key in ROUTES) {
 		for (let subkey in ROUTES[key]) {
-			ROUTES[key][subkey](app, key, subkey);
+			ROUTES[key][subkey](app, key, subkey, multer);
 		}
 	}
 	riot.post(`/RIOT/callback`, async (req, res) => {

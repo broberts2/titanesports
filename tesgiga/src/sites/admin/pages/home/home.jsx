@@ -29,7 +29,7 @@ import Style from "./style";
 
 const GlobalActions = _GlobalActions("admin");
 
-const panelSelector = (conditions) => {
+const panelSelector = (conditions, props) => {
 	if (conditions.isAuth) {
 		if (
 			conditions.displayService === "Oracle" &&
@@ -53,7 +53,7 @@ const panelSelector = (conditions) => {
 		} else if (conditions.displayService === "Player Manager") {
 			return <Panels.PlayerManager />;
 		} else if (conditions.displayService === "Media Manager") {
-			return <Panels.MediaManager />;
+			return <Panels.MediaManager setModal={props.setModal} />;
 		} else if (conditions.displayService === "Team Applications - Divinity") {
 			return (
 				<Panels.Applications
@@ -144,13 +144,6 @@ const items = (
 									{listItem("li1", "League of Legends", <SportsEsportsIcon />)}
 									{listItem("li2", "Social Media", <ShareRoundedIcon />)}
 									{listItem("li3", "Valorant", <SportsEsportsIcon />, true)}
-									{listItem(
-										"li4",
-										"World of Warcraft",
-										<SportsEsportsIcon />,
-										true
-									)}
-									{listItem("li5", "Valheim", <SportsEsportsIcon />, true)}
 								</List>
 							</AccordionDetails>
 						</Accordion>
@@ -352,7 +345,10 @@ export default (props) => {
 									<div className={classes.panel}>
 										<div className={classes.content}>
 											<div className={classes.innercontent}>
-												{panelSelector({ isAuth, displayService, displayName })}
+												{panelSelector(
+													{ isAuth, displayService, displayName },
+													props
+												)}
 											</div>
 										</div>
 									</div>

@@ -13,6 +13,7 @@ import {
 	faScroll,
 	faPlusSquare,
 	faCloudUploadAlt,
+	faFilm,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Icons = {
@@ -25,6 +26,7 @@ const Icons = {
 	faUserFriends,
 	faScroll,
 	faPlusSquare,
+	faFilm,
 };
 
 export default (props) => {

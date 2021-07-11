@@ -7,6 +7,8 @@ const Account = require("../../models/Account");
 const Team = require("../../models/Team");
 const { set } = require("mongoose");
 const OracleUtils = require("../../oracle_utils/index")(Oracle);
+const Google = require("../../googlehelper");
+const fs = require("fs");
 
 Oracle.login(config.oracle.token);
 
@@ -68,6 +70,61 @@ module.exports = {
 			return "Role does not exist.";
 		}
 	},
+	ytUpload: async (req) => {
+		const res = await Google((resolve, auth, service) => {
+			service.youtube("v3").videos.insert(
+				{
+					auth,
+					part: "snippet, status",
+					requestBody: {
+						snippet: {
+							title: "req.files[0].title",
+							description: "req.files[0].description",
+							tags: "Titan Esports",
+							categoryId: 20,
+							defaultLanguage: "en",
+							defaultAudioLanguage: "en",
+							status: {
+								privacyStatus: "private",
+							},
+						},
+					},
+					media: {
+						body: fs.createReadStream(req.files[0].path),
+					},
+				},
+				(err) => {
+					if (err) {
+						console.log(err);
+						resolve("There was an error uploading your video.");
+					}
+					fs.unlink(req.files[0].path, function (err) {
+						if (err) throw err;
+						resolve("Video upload queue successful!");
+					});
+				}
+			);
+		});
+		return res;
+	},
+	uploadMedia: async (req) => {
+		const id = await OracleUtils.getDiscordIdByQuery(req);
+		if (id) {
+			await new Promise((resolve) =>
+				fs.rename(
+					req.files[0].path,
+					req.files[0].path.replace(
+						req.files[0].filename,
+						`${id}___---___${req.files[0].originalname}`
+					),
+					(err) => resolve()
+				)
+			);
+			return "Video submission successful!";
+		} else {
+			return "Id invalid.";
+		}
+	},
 	deleteRole: async (req) => {
 		const role = await module.exports
 			.getAllRoles()
@@ -117,8 +174,18 @@ module.exports = {
 		// Open DM in discord from staff page on website
 	},
 	getTeamLogos: async (req) => {
-		const imgs = OracleUtils.readStaticDirectory("teamlogos");
+		const imgs = OracleUtils.readStaticDirectory("uploads/teamlogos");
 		return imgs;
+	},
+	getUploads: async (req) => {
+		const reader = (dirname, obj = {}) => {
+			OracleUtils.readStaticDirectory(dirname).map(
+				(el) => (obj[el] = OracleUtils.readStaticDirectory(`${dirname}/${el}`))
+			);
+			return obj;
+		};
+		const structure = reader("uploads");
+		return structure;
 	},
 	getUsers: async (req) => {
 		const discordUsers = await Oracle.guilds

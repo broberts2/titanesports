@@ -31,7 +31,7 @@ export default (props) => {
 				>
 					{permissions && permissions.leagueOfLegendsUploadVideos ? (
 						<div className={classes.sub}>
-							<Components.Dropzone />
+							<Components.Dropzone domain={"leagueoflegends"} />
 						</div>
 					) : (
 						<div className={classes.sub}>

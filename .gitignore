@@ -9,9 +9,12 @@
 /coverage
 
 # production
+static/uploads/communityclips/**
+static/uploads/teamlogos/**
 
 # credentials
 **/config.js
+**/youtube-nodejs-quickstart.json
 **/client_secret.json
 
 # misc

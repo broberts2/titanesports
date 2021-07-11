@@ -145,7 +145,7 @@ export default (props) => {
 								config.production
 									? config.productionEndpoint
 									: config.developementEndpoint
-							}/static/teamlogos/${state.logo}`}
+							}/static/uploads/teamlogos/${state.logo}`}
 							style={{ width: "200px" }}
 						/>
 					</div>

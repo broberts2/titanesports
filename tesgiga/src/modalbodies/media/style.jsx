@@ -2,22 +2,16 @@ import { makeStyles } from "@material-ui/core/styles";
 
 export default makeStyles((theme) => ({
 	root: {
+		position: "relative",
 		width: "100%",
 		height: "100%",
 	},
-	droppane: {
-		width: "100%",
-	},
-	dropiconwrapper: {
-		width: "100%",
-	},
-	dropicon: {
+	media: {
 		width: "50%",
 	},
-	video: {
-		width: "50%",
-	},
-	spinner: {
-		color: "red",
+	controls: {
+		position: "absolute",
+		right: 0,
+		bottom: 0,
 	},
 }));

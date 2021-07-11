@@ -56,6 +56,8 @@ export default (subdomain) => {
 			},
 			deleteTeam: async (body) =>
 				await Utils.request(`/${subdomain}/Team/deleteTeam`, "delete", body),
+			videoSubmission: async (body) =>
+				await Utils.upload(`/${subdomain}/Oracle/videoSubmission`, null, body),
 			updateTeam: async (body) =>
 				await Utils.request(`/${subdomain}/Team/updateTeam`, "put", body),
 			getTeams: async (query) =>
@@ -132,6 +134,8 @@ export default (subdomain) => {
 				),
 			getTeamLogos: async (id) =>
 				await Utils.request(`/admin/Oracle/getTeamLogos`, "get", null),
+			getUploads: async (id) =>
+				await Utils.request(`/admin/Oracle/getUploads`, "get", null),
 			deleteArticle: async (id) =>
 				await Utils.request(`/${subdomain}/Article/deleteArticle`, "delete", {
 					id,
