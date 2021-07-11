@@ -29,7 +29,7 @@ export default (props) => {
 					justifyContent="center"
 					className={classes.videoupload}
 				>
-					{permissions && permissions.leagueOfLegendsUploadVideos ? (
+					{permissions ? (
 						<div className={classes.sub}>
 							<Components.Dropzone domain={"leagueoflegends"} />
 						</div>
